@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<title>変換ファミリテーブル</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	<div class="base">
+		<div class="Left">
+			<iframe src="menu.html" width="100%" height="100%"></iframe>
+		</div>
+		<div class="Right">
+		<H2>変換ファミリテーブル</H2>
+		<table width="610" align="left">
+			<tr>
+				<td>
+					<p>『マッピングテーブル』では、変換する部材と変換に使用するファミリ名の対応付けを変換ファミリテーブル（ConvRFA{Revitバージョン}.tbl）として保持する。<br>
+					この変換ファミリテーブルを編集することにより、任意のファミリを使用することが可能となる。(但し、変換条件に従うものとする。)</p>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+			<tr>
+				<td>
+					<strong>■&nbsp;変換ファミリテーブルの保存先</strong>
+					<table border="0" width="600" cellspacing="0">
+						<caption align="left">
+							<tr><td>下記のフォルダ内に『 ConvRFA{Revitバージョン}.tbl 』として保存</td></tr>
+							<tr><td>“(マイドキュメント)\Autodesk REXJ\{Revitバージョン}\ConvRFA{Revitバージョン}.tbl”</td></tr>
+						</caption>
+					</table>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+			<tr>
+				<td>
+					<strong>■&nbsp;変換ファミリテーブルの形式</strong>
+					<table border="0" width="600" cellspacing="0">
+						<caption align="left">
+							<tr><td>---&nbsp;変換するファミリの設定&nbsp;---</td></tr>
+							<tr><td>　・‘部材名’、‘ : ’、変換に使用する‘ファミリ名’の形式で記述</td></tr>
+							<tr><td>　⇒&nbsp;“部材名 : ファミリ名”</td></tr>
+							<tr><td>---&nbsp;変換する部材のパラメータの設定&nbsp;---</td></tr>
+							<tr><td>　・‘部材名：項目’、‘ : ’、変換に使用する‘パラメータ名’の形式で記述</td></tr>
+							<tr><td>　⇒&nbsp;“部材名 : 項目 : パラメータ名”</td></tr>
+						</caption>
+					</table>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+			<tr>
+				<td>
+					<strong>■&nbsp;共有パラメータファイル</strong>
+					<table border="0" width="600" cellspacing="0">
+						<caption align="left">
+							<tr><td>下記のフォルダ内に『 REXStructuralLink.txt 』として保存</td></tr>
+							<tr><td>“(マイドキュメント)\Autodesk REXJ\{Revitバージョン}\REXStructuralLink.txt”</td></tr>
+							<tr><td>　・ ST-Bridgeの情報を格納するファミリパラメータに共有パラメータとして追加</td></tr>
+							<tr><td>　・ 変換ファミリテーブルのパラメータを変更した場合は、</td></tr>
+							<tr><td>　　 共有パラメータも変更が必要</td></tr>
+						</caption>
+					</table>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+			<tr>
+				<td>
+					<strong>■&nbsp;変換ファミリテーブルの編集ツール</strong>
+					<table border="0" width="600" cellspacing="0">
+						<caption align="left">
+							<tr><td><a href="023.html">マッピングテーブル編集</a>により ConvRFA{Revitバージョン}.tbl と REXStructuralLink.txt を生成</td></tr>
+						</caption>
+					</table>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+			<tr>
+				<td>
+					<strong>■&nbsp;変換ファミリとパラメータの対応表</strong>
+					<table border="0" width="600" cellspacing="0">
+						<caption align="left">
+							<tr><td>変換ファミリ設定の種別ごとの変換に用いる変換パラメータ設定の対応は以下とする</td></tr>
+							<tr height="5"><td></td></tr>
+							<tr>
+								<td>
+									<b>＜柱＞</b>
+									<table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+										<tr>
+											<td bgcolor="#ddffee" align="center" height="30" width="320"><b>種別</b></td>
+											<td bgcolor="#ddffee" align="center" height="30" width="280"><b>パラメータ設定</b></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC柱</td><td>RC柱－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC円柱</td><td>RC円柱－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S柱H形鋼</td><td>S柱H形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S柱組立H形鋼</td><td>S柱組立H形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S柱角形鋼管</td><td>S柱角形鋼管－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S柱組立角形鋼管</td><td>S柱組立角形鋼管－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S柱鋼管</td><td>S柱鋼管－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S柱T形鋼</td><td>S柱T形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S柱溝形鋼</td><td>S柱溝形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S柱山形鋼</td><td>S柱山形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>SRC柱H形(矩形)</td><td>SRC柱H形(矩形)－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>SRC柱＋形(矩形)</td><td>SRC柱＋形(矩形)－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>SRC柱T形(矩形)</td><td>SRC柱T形(矩形)－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>SRC柱H形(円形)</td><td>SRC柱H形(円形)－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>SRC柱＋形(円形)</td><td>SRC柱＋形(円形)－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>SRC柱T形(円形)</td><td>SRC柱T形(円形)－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>CFT柱角形鋼管</td><td>CFT柱角形鋼管－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>CFT柱鋼管</td><td>CFT柱鋼管－パラメータ</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr height="5"><td></td></tr>
+							<tr>
+								<td>
+									<b>＜梁＞</b>
+									<table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+										<tr>
+											<td bgcolor="#ddffee" align="center" height="30" width="330" colspan="2"><b>種別</b></td>
+											<td bgcolor="#ddffee" align="center" height="30" width="270"><b>パラメータ設定</b></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="130">基礎梁</td><td>ハンチ付き基礎梁</td><td rowspan="4">RC梁－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>基礎小梁</td><td>ハンチ付き基礎小梁</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC大梁</td><td>ハンチ付きRC大梁</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC小梁</td><td>ハンチ付きRC小梁</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>片持基礎梁</td><td>片持基礎小梁</td><td rowspan="2">RC片持梁－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC片持梁</td><td>RC片持小梁</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S大梁</td><td>ハンチ付きS大梁</td><td rowspan="2">S梁・ブレースH形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S小梁</td><td>ハンチ付きS小梁</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S梁組立H形鋼</td><td>S小梁組立H形鋼</td><td rowspan="1">S梁・ブレース組立H形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S梁溝形鋼</td><td>S片持梁溝形鋼</td><td rowspan="2">S梁・ブレース溝形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S小梁溝形鋼</td><td>S片持小梁溝形鋼</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S梁リップ溝形鋼</td><td>S片持梁リップ溝形鋼</td><td rowspan="2">S梁・ブレースリップ溝形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S小梁リップ溝形鋼</td><td>S片持小梁リップ溝形鋼</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S梁山形鋼</td><td>S片持梁山形鋼</td><td rowspan="2">S梁・ブレース山形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S小梁山形鋼</td><td>S片持小梁山形鋼</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S片持梁</td><td>S片持梁組立H形鋼</td><td rowspan="2">S片持梁－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>S片持小梁</td><td>S片持小梁組立H形鋼</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>SRC大梁</td><td>SRC小梁</td><td rowspan="1">SRC梁－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>SRC片持梁</td><td>SRC片持小梁</td><td rowspan="1">SRC片持梁－パラメータ</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr height="5"><td></td></tr>
+							<tr>
+								<td>
+									<b>＜ブレース＞</b>
+									<table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+										<tr>
+											<td bgcolor="#ddffee" align="center" height="30" width="320"><b>種別</b></td>
+											<td bgcolor="#ddffee" align="center" height="30" width="280"><b>パラメータ設定</b></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="130">ブレース</td><td>ブレース－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレースH形鋼</td><td>S梁・ブレースH形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレース組立H形鋼</td><td>S梁・ブレース組立H形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレース角形鋼管</td><td>ブレース角形鋼管－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレース組立角形鋼管</td><td>ブレース組立角形鋼管－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレース円形鋼管</td><td>ブレース円形鋼管－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレース溝形鋼</td><td>S梁・ブレース溝形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレースリップ溝形鋼</td><td>S梁・ブレースリップ溝形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレース山形鋼</td><td>S梁・ブレース山形鋼－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレースフラットバー</td><td>ブレースフラットバー－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>ブレース丸鋼</td><td>ブレース丸鋼－パラメータ</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr height="5"><td></td></tr>
+							<tr>
+								<td>
+									<b>＜基礎＞</b>
+									<table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+										<tr>
+											<td bgcolor="#ddffee" align="center" height="30" width="320"><b>種別</b></td>
+											<td bgcolor="#ddffee" align="center" height="30" width="280"><b>パラメータ設定</b></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="130">RC基礎矩形</td><td>RC基礎矩形－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC基礎矩形テーパー</td><td>RC基礎矩形テーパー－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC基礎三角</td><td>RC基礎三角－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC基礎正三角形</td><td>RC基礎正三角形－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC基礎八角形</td><td>RC基礎八角形－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>布基礎</td><td>布基礎－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>場所打ち杭</td><td>場所打ち杭－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>既製杭</td><td>既製杭－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>RC杭</td><td>RC杭－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>鋼管杭</td><td>鋼管杭－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>既製杭 PHC</td><td>既製杭 PHC－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>既製杭 ST</td><td>既製杭 ST－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>既製杭 SC</td><td>既製杭 SC－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>既製杭 PRC</td><td>既製杭 PRC－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>既製杭 CPRC</td><td>既製杭 CPRC－パラメータ</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr height="5"><td></td></tr>
+							<tr>
+								<td>
+									<b>＜システムファミリ＞</b>
+									<table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+										<tr>
+											<td bgcolor="#ddffee" align="center" height="30" width="320"><b>種別</b></td>
+											<td bgcolor="#ddffee" align="center" height="30" width="280"><b>パラメータ設定</b></td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td width="130">（構造床）</td><td>床－パラメータ</td>
+										</tr>
+										<tr bgcolor="#ffffff">
+											<td>（構造壁）</td><td>壁－パラメータ</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</caption>
+					</table>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+		</table>
+		</div>
+	</div>
+	</body>
+</html>

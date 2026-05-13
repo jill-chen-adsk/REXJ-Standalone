@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Fukashi</value>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_ERR_CREATE" xml:space="preserve">
+    <value>Could not create the element</value>
+  </data>
+  <data name="IDS_ERR_FLOORPLAN" xml:space="preserve">
+    <value>Run this command in a floor plan view</value>
+  </data>
+  <data name="IDS_ERR_FUKASIHEIGHT" xml:space="preserve">
+    <value>With the current work level and offset, the furring height would be zero or negative; furring cannot be created.</value>
+  </data>
+  <data name="IDS_ERR_GETLEVEL" xml:space="preserve">
+    <value>Could not retrieve the upper level</value>
+  </data>
+  <data name="IDS_ERR_GETMATERIAL" xml:space="preserve">
+    <value>Could not retrieve the material</value>
+  </data>
+  <data name="IDS_ERR_GETVIEWLEVEL" xml:space="preserve">
+    <value>Could not get the level from the view</value>
+  </data>
+  <data name="IDS_ERR_OFFSETVALUE" xml:space="preserve">
+    <value>The offset value is invalid</value>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Could not define the parameter</value>
+  </data>
+  <data name="IDS_FAM_LSHAPE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_L字形</value>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_平行四辺形</value>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_長方形_側面-長方形</value>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_台形</value>
+  </data>
+  <data name="IDS_FAM_TRIANGLE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_三角形</value>
+  </data>
+  <data name="IDS_FAM_UNEVEN" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_凸凹形</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_MATERIAL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Material_ComboBox</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_UPPERLEVEL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Upper_Level_ComboBox</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_TXTBOX_OFFSET" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Offset_TextBox</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF" xml:space="preserve">
+    <value>ADSK_Fukashi_Material</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>AdskFukashiShParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>ADSK_Fukashi</value>
+  </data>
+  <data name="IDS_TXT_CLOSE" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="IDS_TXT_DEFAULTHEIGHT" xml:space="preserve">
+    <value>Default height</value>
+  </data>
+  <data name="IDS_TXT_EDGEGETTING" xml:space="preserve">
+    <value>Obtaining region furring boundary</value>
+  </data>
+  <data name="IDS_TXT_FAMILYLOADING" xml:space="preserve">
+    <value>Loading furring families</value>
+  </data>
+  <data name="IDS_TXT_FINISHCMD" xml:space="preserve">
+    <value>The Region Furring command will exit</value>
+  </data>
+  <data name="IDS_TXT_FLOW" xml:space="preserve">
+    <value>Flow</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI" xml:space="preserve">
+    <value>Furring</value>
+  </data>
+  <data name="IDS_TXT_FUKASHIMATERIAL" xml:space="preserve">
+    <value>Furring material</value>
+  </data>
+  <data name="IDS_TXT_FUKASHIOPENING" xml:space="preserve">
+    <value>Region Furring</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_ANGLE" xml:space="preserve">
+    <value>Furring angle</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_ANGLE1" xml:space="preserve">
+    <value>Furring angle 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_ANGLE2" xml:space="preserve">
+    <value>Furring angle 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH" xml:space="preserve">
+    <value>Furring depth</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH1" xml:space="preserve">
+    <value>Furring depth 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH2" xml:space="preserve">
+    <value>Furring depth 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH3" xml:space="preserve">
+    <value>Furring depth 3</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_FACEPICK" xml:space="preserve">
+    <value>Face-pick furring</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_LENGTH1" xml:space="preserve">
+    <value>Furring length 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_LENGTH2" xml:space="preserve">
+    <value>Furring length 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS" xml:space="preserve">
+    <value>Furring thickness</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS1" xml:space="preserve">
+    <value>Furring thickness 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS2" xml:space="preserve">
+    <value>Furring thickness 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH" xml:space="preserve">
+    <value>Furring width</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH1" xml:space="preserve">
+    <value>Furring width 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH2" xml:space="preserve">
+    <value>Furring width 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH3" xml:space="preserve">
+    <value>Furring width 3</value>
+  </data>
+  <data name="IDS_TXT_HEIGHT" xml:space="preserve">
+    <value>Height:</value>
+  </data>
+  <data name="IDS_TXT_INELEMENT_CONTENT" xml:space="preserve">
+    <value>The furring to be created overlaps other elements in whole or in part.</value>
+  </data>
+  <data name="IDS_TXT_INELEMENT_INSTRUCTION" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_TXT_INELEMENT_NG" xml:space="preserve">
+    <value>Do not create furring</value>
+  </data>
+  <data name="IDS_TXT_INELEMENT_OK" xml:space="preserve">
+    <value>Create furring</value>
+  </data>
+  <data name="IDS_TXT_MATERIAL" xml:space="preserve">
+    <value>Material:</value>
+  </data>
+  <data name="IDS_TXT_MM" xml:space="preserve">
+    <value>mm</value>
+  </data>
+  <data name="IDS_TXT_PICKPOS" xml:space="preserve">
+    <value>Region pick</value>
+  </data>
+  <data name="IDS_TXT_POS_X" xml:space="preserve">
+    <value>Coordinate X</value>
+  </data>
+  <data name="IDS_TXT_POS_Y" xml:space="preserve">
+    <value>Coordinate Y</value>
+  </data>
+  <data name="IDS_TXT_RETURN_PICKELEMENTS" xml:space="preserve">
+    <value>Return to element selection</value>
+  </data>
+</root>

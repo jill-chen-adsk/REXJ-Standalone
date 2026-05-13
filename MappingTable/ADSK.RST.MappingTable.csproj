@@ -1,0 +1,104 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>MappingTable</RootNamespace>
+    <AssemblyName>ADSK.RST.MappingTable</AssemblyName>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Platforms>x64</Platforms>
+    <UseWpf>true</UseWpf>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <DefineConstants>$(DefineConstants);REVIT2027;REVIT2025_OR_GREATER</DefineConstants>
+    <SatelliteResourceLanguages>ja;en</SatelliteResourceLanguages>
+    <AssemblyVersion>2027.4.0.2</AssemblyVersion>
+    <FileVersion>2027.4.0.2</FileVersion>
+    <Copyright>© 2025 Autodesk, Inc.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="RevitLNK.cs" />
+    <Compile Include="Commons.cs" />
+    <Compile Include="SetFamily.cs" />
+    <Compile Include="FamilyStructure.cs" />
+    <Compile Include="ParaSet.cs" />
+    <Compile Include="LoadFamily.cs" />
+    <Compile Include="LogData.cs" />
+    <Compile Include="AboutBox.cs" />
+    <Compile Include="AboutBox.Designer.cs" />
+    <Compile Include="AddParameterForm.cs" />
+    <Compile Include="AddParameterForm.Designer.cs" />
+    <Compile Include="LogForm.cs" />
+    <Compile Include="LogForm.Designer.cs" />
+    <Compile Include="ProgressBar.cs" />
+    <Compile Include="ProgressBar.Designer.cs" />
+    <Compile Include="STBParaBuild.cs" />
+    <Compile Include="STBParaBuild.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddParameterForm.resx">
+      <DependentUpon>AddParameterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressBar.resx">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STBParaBuild.resx">
+      <DependentUpon>STBParaBuild.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Configuration\ConvRFA2027.tbl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\ConvBase2027.tbl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\ConvRFA2027_3.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\ConvBase2027_4.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\ConvRFA2027_STB2.0_1.xlsm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\REXStructuralLink.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\REXStructuralLink_org.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\Icon*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\MappingTable.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MappingTableHelp\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPIUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+</Project>

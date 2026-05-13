@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_ERR_CHOOSE_X_AND_Y" xml:space="preserve">
+    <value>Grids on both X and Y axes are selected; dimensions cannot be created. Select only X-axis grids or only Y-axis grids.</value>
+  </data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>The command failed.</value>
+  </data>
+  <data name="IDS_ERR_DIRECTION" xml:space="preserve">
+    <value>Select grids in the same direction.</value>
+  </data>
+  <data name="IDS_ERR_HAS_MUTIL_INTERSECTION" xml:space="preserve">
+    <value>Dimensions are not created when there are two or more intersections between the same grids.</value>
+  </data>
+  <data name="IDS_ERR_HAS_ONE_INTERSECTION" xml:space="preserve">
+    <value>There is only one intersection point; dimensions cannot be created.</value>
+  </data>
+  <data name="IDS_ERR_NOGRIDSELECT" xml:space="preserve">
+    <value>Select grids before running the command.</value>
+  </data>
+  <data name="IDS_ERR_NO_CHECKBOX" xml:space="preserve">
+    <value>Dimensions cannot be created in the selected direction for the target grids. Choose a valid direction.</value>
+  </data>
+  <data name="IDS_ERR_NO_CREATE_DIM" xml:space="preserve">
+    <value>Dimensions cannot be created because there are multiple segments.</value>
+  </data>
+  <data name="IDS_ERR_OPENVIEWPLAN" xml:space="preserve">
+    <value>Open a floor plan view or section view.</value>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Parameter definition failed.</value>
+  </data>
+  <data name="IDS_ERR_POLYLINES" xml:space="preserve">
+    <value>Polyline grids are included; dimensions cannot be created. Select parallel grids, or linear grids together with arc grids.</value>
+  </data>
+  <data name="IDS_ERR_VALLARGE0" xml:space="preserve">
+    <value>Enter a value greater than zero.</value>
+  </data>
+  <data name="IDS_ERR_VALMORE0" xml:space="preserve">
+    <value>Enter a value of zero or greater.</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_GRIDDIMENSION" xml:space="preserve">
+    <value>RexJpn-GridDimension-Config</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_RADIUS" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+  </data>
+  <data name="IDS_TXT_A" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="IDS_TXT_ANO" xml:space="preserve">
+    <value>A: </value>
+  </data>
+  <data name="IDS_TXT_B" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="IDS_TXT_BNO" xml:space="preserve">
+    <value>B: </value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IDS_TXT_DIST" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IDS_TXT_GRIDDIMENSION" xml:space="preserve">
+    <value>Grid dimensions</value>
+  </data>
+  <data name="IDS_TXT_MULTIVIEW" xml:space="preserve">
+    <value>Create in multiple views</value>
+  </data>
+  <data name="IDS_TXT_NOVIEWSELECT" xml:space="preserve">
+    <value>Select at least one target view.</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_TXT_SELECTALLVIEW" xml:space="preserve">
+    <value>Select all views</value>
+  </data>
+  <data name="IDS_TXT_SELECTVIEWS" xml:space="preserve">
+    <value>Select views</value>
+  </data>
+  <data name="IDS_TXT_TYPE" xml:space="preserve">
+    <value>Dimension type</value>
+  </data>
+  <data name="IDS_UNIT_MM" xml:space="preserve">
+    <value>mm</value>
+  </data>
+</root>

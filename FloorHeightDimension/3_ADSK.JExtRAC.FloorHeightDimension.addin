@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Level Height Dimension</Name>
+    <Assembly>ADSK.JExtRAC.FloorHeightDimension.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.FloorHeightDimension.App</FullClassName>
+    <ClientId>A7F3E1C2-4B5D-4E89-9001-ABCDEF123456</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

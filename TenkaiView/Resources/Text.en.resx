@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="CMD_TENKAIVIEW" xml:space="preserve"><value>Interior Elevation for Room</value></data>
+  <data name="ERR_CANNOTSELECTROOM" xml:space="preserve"><value>Unable to select rooms.</value></data>
+  <data name="ERR_CHANGEROOMBOUNDARYFAIL" xml:space="preserve"><value>Failed to change room boundary settings.</value></data>
+  <data name="ERR_CREATEDIMENSIONFAIL" xml:space="preserve"><value>Failed to create dimensions: {0}</value></data>
+  <data name="ERR_CREATETENKAIVIEWFAIL" xml:space="preserve"><value>Failed to create elevation views: {0}</value></data>
+  <data name="ERR_NOACTIBEVIEW" xml:space="preserve"><value>No active view found.</value></data>
+  <data name="ERR_NODIMSTYLE" xml:space="preserve"><value>No dimension style found.</value></data>
+  <data name="ERR_NOFLOORPLAN" xml:space="preserve"><value>No floor plans found in the project.</value></data>
+  <data name="ERR_NOLEVEL" xml:space="preserve"><value>No levels found in the project.</value></data>
+  <data name="ERR_NOROOM" xml:space="preserve"><value>No rooms found in the project.</value></data>
+  <data name="ERR_NOROOMONLEVEL" xml:space="preserve"><value>No rooms found on the selected level.</value></data>
+  <data name="ERR_NOSELECTROOM" xml:space="preserve"><value>Please select rooms.</value></data>
+  <data name="ERR_NOSELECTVIEWFAMILY" xml:space="preserve"><value>Please select an elevation view family.</value></data>
+  <data name="ERR_NOTFLOORPLAN" xml:space="preserve"><value>Please run this from a floor plan view.</value></data>
+  <data name="ERR_NOTFLOORPLANVIEW" xml:space="preserve"><value>Please run this from a floor plan view.</value></data>
+  <data name="ERR_NOTNUMBER" xml:space="preserve"><value> must be a number.</value></data>
+  <data name="ERR_OPERATIONCANCEL" xml:space="preserve"><value>Interior elevation creation was cancelled.</value></data>
+  <data name="ERR_ROLLBACKFAIL" xml:space="preserve"><value>Could not restore room boundary volume settings. Please revert manually.</value></data>
+  <data name="ERR_UPDATECROPBOXFAIL" xml:space="preserve"><value>Failed to update crop regions: {0}</value></data>
+  <data name="ERR_VIEWDUPLICATED" xml:space="preserve"><value>Elevation views already exist for the selected room. Room name: {0}</value></data>
+  <data name="INFO_OPERATIONCANCEL" xml:space="preserve"><value>Cancelled.</value></data>
+  <data name="LBL_INFO" xml:space="preserve"><value>Press Cancel to stop.</value></data>
+  <data name="TRANS_CREATEDIMENSION" xml:space="preserve"><value>Create Dimensions</value></data>
+  <data name="TRANS_CREATEVIEWSECTION" xml:space="preserve"><value>Create Section</value></data>
+  <data name="TRANS_ELEVATIONMARKER" xml:space="preserve"><value>ELVMARKER</value></data>
+  <data name="TRANS_ROLLBACKROOMBOUNDARY" xml:space="preserve"><value>Restore Room Boundary Settings</value></data>
+  <data name="TRANS_SETROOMBOUNDARY" xml:space="preserve"><value>Room Boundary Settings</value></data>
+  <data name="TRANS_UPDATECROPBOX" xml:space="preserve"><value>Update Crop Box</value></data>
+  <data name="TXT_DIRECTIONA" xml:space="preserve"><value>(1)</value></data>
+  <data name="TXT_DIRECTIONB" xml:space="preserve"><value>(2)</value></data>
+  <data name="TXT_DIRECTIONC" xml:space="preserve"><value>(3)</value></data>
+  <data name="TXT_DIRECTIOND" xml:space="preserve"><value>(4)</value></data>
+  <data name="TXT_ERR" xml:space="preserve"><value>Error</value></data>
+  <data name="TXT_ERROR" xml:space="preserve"><value>Error</value></data>
+  <data name="TXT_PREFIX" xml:space="preserve"><value>CH</value></data>
+  <data name="TXT_PROCESSING" xml:space="preserve"><value>Creating elevation views for {0}...</value></data>
+  <data name="TXT_SHEETTITLEFORMAT" xml:space="preserve"><value>{0} ({1})</value></data>
+  <data name="TXT_SLASH" xml:space="preserve"><value>/</value></data>
+  <data name="TXT_SUFFIX_EAST" xml:space="preserve"><value>East</value></data>
+  <data name="TXT_SUFFIX_NORTH" xml:space="preserve"><value>North</value></data>
+  <data name="TXT_SUFFIX_SOUTH" xml:space="preserve"><value>South</value></data>
+  <data name="TXT_SUFFIX_WEST" xml:space="preserve"><value>West</value></data>
+  <data name="TXT_TRANSACTIONNAME" xml:space="preserve"><value>Create Interior Elevation</value></data>
+  <data name="TXT_UNDERSCORE" xml:space="preserve"><value>_</value></data>
+  <data name="TXT_VIEWA" xml:space="preserve"><value>A</value></data>
+  <data name="TXT_VIEWB" xml:space="preserve"><value>B</value></data>
+  <data name="TXT_VIEWC" xml:space="preserve"><value>C</value></data>
+  <data name="TXT_VIEWD" xml:space="preserve"><value>D</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ARCHITECTURAL" xml:space="preserve"><value>Architectural</value></data>
+  <data name="TXT_VIEWDISCIPLINE_COORDINATION" xml:space="preserve"><value>Coordination</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ELECTRICAL" xml:space="preserve"><value>Electrical</value></data>
+  <data name="TXT_VIEWDISCIPLINE_MECHANICAL" xml:space="preserve"><value>Mechanical</value></data>
+  <data name="TXT_VIEWDISCIPLINE_PLUMBING" xml:space="preserve"><value>Plumbing</value></data>
+  <data name="TXT_VIEWDISCIPLINE_STRUCTURAL" xml:space="preserve"><value>Structural</value></data>
+  <data name="DLG_CANCEL" xml:space="preserve"><value>Cancel</value></data>
+  <data name="DLG_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="GRP_VIEWSETTINGS" xml:space="preserve"><value>View Settings</value></data>
+  <data name="LBL_SCALE" xml:space="preserve"><value>Scale</value></data>
+  <data name="LBL_VIEWTYPE" xml:space="preserve"><value>View Type</value></data>
+  <data name="TIP_SCALE" xml:space="preserve"><value>If the view type has a view template with a scale setting, the template's scale takes precedence.</value></data>
+  <data name="TIP_VIEWTYPE" xml:space="preserve"><value>Select the view type to apply to the elevation views being created.</value></data>
+  <data name="GRP_TRIMBASE" xml:space="preserve"><value>Vertical Crop Range Reference</value></data>
+  <data name="RBN_TRIMLEVEL" xml:space="preserve"><value>Level</value></data>
+  <data name="RBN_TRIMVOL" xml:space="preserve"><value>Room Volume</value></data>
+  <data name="TIP_TRIMVOL" xml:space="preserve"><value>Uses the boundary recognized by Revit's elevation command, which may not exactly match the room boundary.</value></data>
+  <data name="GRP_CROPEXTEND" xml:space="preserve"><value>Crop Region Extension</value></data>
+  <data name="LBL_TOPBOTTOM" xml:space="preserve"><value>Top/Bottom (mm)</value></data>
+  <data name="LBL_LEFTRIGHT" xml:space="preserve"><value>Left/Right (mm)</value></data>
+  <data name="TIP_TOPBOTTOM" xml:space="preserve"><value>Set the extension distance (mm) above and below the crop region boundary.</value></data>
+  <data name="TIP_LEFTRIGHT" xml:space="preserve"><value>Set the extension distance (mm) left and right of the crop region boundary.
+The left/right boundary is determined by Revit's elevation command and may not exactly match the room boundary.</value></data>
+  <data name="GRP_ROOMS" xml:space="preserve"><value>Rooms for Interior Elevation</value></data>
+  <data name="BTN_SELECTALL" xml:space="preserve"><value>Select All</value></data>
+  <data name="BTN_CLEARALL" xml:space="preserve"><value>Clear All</value></data>
+  <data name="TIP_ROOMS" xml:space="preserve"><value>Check the rooms for which to create interior elevations.</value></data>
+  <data name="GRP_DIMSTYLE" xml:space="preserve"><value>Dimension Style</value></data>
+  <data name="LBL_DIMLEVEL" xml:space="preserve"><value>Level</value></data>
+  <data name="LBL_DIMGRID" xml:space="preserve"><value>Grid</value></data>
+  <data name="PROC_INFO" xml:space="preserve"><value>Press Start to create interior elevations.</value></data>
+  <data name="BTN_START" xml:space="preserve"><value>Start</value></data>
+  <data name="BTN_STOP" xml:space="preserve"><value>Stop</value></data>
+</root>

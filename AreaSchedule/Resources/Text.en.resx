@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:schema id="root">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xs:element name="root" ns1:IsDataSet="true">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="metadata">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" />
+              </xs:sequence>
+              <xs:attribute name="name" use="required" type="xsd:string" />
+              <xs:attribute name="type" type="xsd:string" />
+              <xs:attribute name="mimetype" type="xsd:string" />
+              <xs:attribute ref="xml:space" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="assembly">
+            <xs:complexType>
+              <xs:attribute name="alias" type="xsd:string" />
+              <xs:attribute name="name" type="xsd:string" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="data">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" ns1:Ordinal="1" />
+                <xs:element name="comment" type="xsd:string" minOccurs="0" ns1:Ordinal="2" />
+              </xs:sequence>
+              <xs:attribute name="name" type="xsd:string" use="required" ns1:Ordinal="1" />
+              <xs:attribute name="type" type="xsd:string" ns1:Ordinal="3" />
+              <xs:attribute name="mimetype" type="xsd:string" ns1:Ordinal="4" />
+              <xs:attribute ref="xml:space" />
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="resheader">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="value" type="xsd:string" minOccurs="0" ns1:Ordinal="1" />
+              </xs:sequence>
+              <xs:attribute name="name" type="xsd:string" use="required" />
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Japan Standards Extension</value>
+    <comment>ボタン パネル名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP Architecture</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_ERR_AREAOPTWALLCORELAYE" xml:space="preserve">
+    <value>The current room boundary uses the wall core finish line. Continue?</value>
+    <comment>エラー　現在の部屋境界　壁の躯体面</comment>
+  </data>
+  <data name="IDS_ERR_AREAOPTWALLFINISH" xml:space="preserve">
+    <value>The current room boundary uses the wall finish face. Continue?</value>
+    <comment>エラー　現在の部屋境界　壁の仕上面</comment>
+  </data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>The command failed.</value>
+    <comment>エラー　コマンドが失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEAREABNDBYROOMBND" xml:space="preserve">
+    <value>Failed to create area boundaries from room boundaries.</value>
+    <comment>エラー　部屋境界からエリア境界作成が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEAREABYROOM" xml:space="preserve">
+    <value>Failed to create areas from rooms.</value>
+    <comment>エラー　部屋からエリア作成が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEAREATAG" xml:space="preserve">
+    <value>Failed to create area tags.</value>
+    <comment>エラー　エリアタグ作成が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEBASISEXPRESSION" xml:space="preserve">
+    <value>Failed to create basis expressions. Check area shapes.</value>
+    <comment>エラー　根拠式作成に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_GETAREACALCOPT" xml:space="preserve">
+    <value>Failed to retrieve area calculation options.</value>
+    <comment>エラー　面積計算オプションの取得が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_NOTROOM" xml:space="preserve">
+    <value>There are no rooms.</value>
+    <comment>エラー　部屋が存在しません</comment>
+  </data>
+  <data name="IDS_ERR_PARAMAREA" xml:space="preserve">
+    <value>Failed to set area parameters.</value>
+    <comment>エラー　エリアパラメータの設定に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_PARAMCOMMAND" xml:space="preserve">
+    <value>Failed to define command parameters.</value>
+    <comment>エラー　コマンドパラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Failed to define parameters.</value>
+    <comment>エラー パラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_SELAREA" xml:space="preserve">
+    <value>Select an area and run the command again.</value>
+    <comment>エラー　エリアを選択してから起動してください</comment>
+  </data>
+  <data name="IDS_ERR_SELROOM" xml:space="preserve">
+    <value>Select a room and run the command again.</value>
+    <comment>エラー　部屋を選択してから起動してください</comment>
+  </data>
+  <data name="IDS_ERR_SETLEGALAREA" xml:space="preserve">
+    <value>Failed to tally legal area.</value>
+    <comment>エラー　法定面積集計が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_VALNULL" xml:space="preserve">
+    <value>The value is blank.</value>
+    <comment>エラー　値が空白です</comment>
+  </data>
+  <data name="IDS_ERR_VALNUMBER" xml:space="preserve">
+    <value>The value is not an integer.</value>
+    <comment>エラー　値が整数ではありません</comment>
+  </data>
+  <data name="IDS_ERR_VALRANGE" xml:space="preserve">
+    <value>The value is out of range.</value>
+    <comment>エラー　値が範囲外です</comment>
+  </data>
+  <data name="IDS_ERR_VIEWAREA" xml:space="preserve">
+    <value>Open an area plan view and run again.</value>
+    <comment>エラー　エリア平面図を開いてから使用してください</comment>
+  </data>
+  <data name="IDS_SET_AREAMARGINERROR" xml:space="preserve">
+    <value>0.001</value>
+    <comment>設定値　面積許容誤差</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_AREACALC" xml:space="preserve">
+    <value>Calculated Area (shared)</value>
+    <comment>共有パラメータ　定義名 計算面積</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_AREAEXPN" xml:space="preserve">
+    <value>Area Expression (shared)</value>
+    <comment>共有パラメータ　定義名 根拠式</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_BRANCHNUMBER" xml:space="preserve">
+    <value>Branch Number (shared)</value>
+    <comment>共有パラメータ　定義名 枝番号</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_ROOMNAME" xml:space="preserve">
+    <value>Room Name (shared)</value>
+    <comment>共有パラメータ　定義名 部屋名</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_ROOMNO" xml:space="preserve">
+    <value>Room Number (shared)</value>
+    <comment>共有パラメータ　定義名 部屋番号</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_GROUNDSEXPRESSION" xml:space="preserve">
+    <value>Grounds Expression Cmd</value>
+    <comment>共有パラメータ 定義名 コマンド 根拠式</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_LEGALAREA" xml:space="preserve">
+    <value>Legal Area Cmd</value>
+    <comment>共有パラメータ 定義名 コマンド 法定面積</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_ROOMCONVERTEDTOAREA" xml:space="preserve">
+    <value>Room to Area Cmd</value>
+    <comment>共有パラメータ 定義名 コマンド 部屋をエリアに変換</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_ROOM_LEGALAREA" xml:space="preserve">
+    <value>Legal Area (Room shared)</value>
+    <comment>共有パラメータ　定義名 法定面積</comment>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>JPExtension.txt</value>
+    <comment>共有パラメータ　ファイル名</comment>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+    <comment>共有パラメータ　グループ名</comment>
+  </data>
+  <data name="IDS_TXT_ADDAREATAG" xml:space="preserve">
+    <value>Add area tag</value>
+    <comment>エリアタグを付ける</comment>
+  </data>
+  <data name="IDS_TXT_AREACALC" xml:space="preserve">
+    <value>Area calculation</value>
+    <comment>エリア面積の計算</comment>
+  </data>
+  <data name="IDS_TXT_AREADECIMAL" xml:space="preserve">
+    <value>Rounding (result area)</value>
+    <comment>結果面積の桁処理</comment>
+  </data>
+  <data name="IDS_TXT_AREAMARGINERROR" xml:space="preserve">
+    <value>Area tolerance exceeded</value>
+    <comment>面積の許容誤差を超えています</comment>
+  </data>
+  <data name="IDS_TXT_AREA_LEGAL" xml:space="preserve">
+    <value>Area (legal) m²</value>
+    <comment>面積(法定) ㎡</comment>
+  </data>
+  <data name="IDS_TXT_AREA_RVT" xml:space="preserve">
+    <value>Area (Revit) m²</value>
+    <comment>面積(Revit) ㎡</comment>
+  </data>
+  <data name="IDS_TXT_BASISEXPRESSION" xml:space="preserve">
+    <value>Basis expression</value>
+    <comment>根拠式</comment>
+  </data>
+  <data name="IDS_TXT_CALCAREA" xml:space="preserve">
+    <value>Calculated area</value>
+    <comment>計算面積</comment>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>キャンセル</comment>
+  </data>
+  <data name="IDS_TXT_CHOICEWORK" xml:space="preserve">
+    <value>Select task</value>
+    <comment>作業の選択</comment>
+  </data>
+  <data name="IDS_TXT_CLOSE" xml:space="preserve">
+    <value>Ceiling (round up)</value>
+    <comment>切り上げ</comment>
+  </data>
+  <data name="IDS_TXT_CONVERTAREA" xml:space="preserve">
+    <value>Convert room to area boundary</value>
+    <comment>部屋をエリア境界に変換</comment>
+  </data>
+  <data name="IDS_TXT_CONVERTAREABOUNDARY" xml:space="preserve">
+    <value>Convert room boundaries to area boundaries</value>
+    <comment>部屋境界をエリア境界に変換する</comment>
+  </data>
+  <data name="IDS_TXT_CREATEAREA" xml:space="preserve">
+    <value>Create area</value>
+    <comment>エリア作成</comment>
+  </data>
+  <data name="IDS_TXT_CREATEAREABOUNDARY" xml:space="preserve">
+    <value>Create area boundary</value>
+    <comment>エリア境界作成</comment>
+  </data>
+  <data name="IDS_TXT_CREATEAREATAG" xml:space="preserve">
+    <value>Create area tag</value>
+    <comment>エリアタグ作成</comment>
+  </data>
+  <data name="IDS_TXT_CREATEBASISEXPN" xml:space="preserve">
+    <value>Create basis expression</value>
+    <comment>根拠式作成</comment>
+  </data>
+  <data name="IDS_TXT_CUTOFF" xml:space="preserve">
+    <value>Cutoff</value>
+    <comment>切り捨て</comment>
+  </data>
+  <data name="IDS_TXT_DECIMAL" xml:space="preserve">
+    <value>Decimals</value>
+    <comment>小数点以下第</comment>
+  </data>
+  <data name="IDS_TXT_DEFAULT" xml:space="preserve">
+    <value>Default</value>
+    <comment>既定</comment>
+  </data>
+  <data name="IDS_TXT_LEGALAREA" xml:space="preserve">
+    <value>Legal area</value>
+    <comment>法定面積</comment>
+  </data>
+  <data name="IDS_TXT_LENGTHDECIMAL" xml:space="preserve">
+    <value>Length rounding</value>
+    <comment>長さの桁処理</comment>
+  </data>
+  <data name="IDS_TXT_M" xml:space="preserve">
+    <value>m</value>
+    <comment>m</comment>
+  </data>
+  <data name="IDS_TXT_M2" xml:space="preserve">
+    <value>m²</value>
+    <comment>（m）</comment>
+  </data>
+  <data name="IDS_TXT_M22" xml:space="preserve">
+    <value>(m²)</value>
+    <comment>（㎡）</comment>
+  </data>
+  <data name="IDS_TXT_MM" xml:space="preserve">
+    <value>mm</value>
+    <comment>mm</comment>
+  </data>
+  <data name="IDS_TXT_NAME" xml:space="preserve">
+    <value>Name</value>
+    <comment>名称</comment>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+    <comment>OK</comment>
+  </data>
+  <data name="IDS_TXT_ORDER" xml:space="preserve">
+    <value>Order</value>
+    <comment>位を</comment>
+  </data>
+  <data name="IDS_TXT_PI" xml:space="preserve">
+    <value>Pi (π)</value>
+    <comment>円周率(π)</comment>
+  </data>
+  <data name="IDS_TXT_ROOMNAME" xml:space="preserve">
+    <value>Room name</value>
+    <comment>部屋名</comment>
+  </data>
+  <data name="IDS_TXT_ROOMNUMBER" xml:space="preserve">
+    <value>Room number</value>
+    <comment>部屋番号</comment>
+  </data>
+  <data name="IDS_TXT_ROUNDINGOFF" xml:space="preserve">
+    <value>Rounding mode</value>
+    <comment>四捨五入</comment>
+  </data>
+  <data name="IDS_TXT_SETLEGALAREA" xml:space="preserve">
+    <value>Tally legal area</value>
+    <comment>法定面積集計</comment>
+  </data>
+  <data name="IDS_TXT_TAG" xml:space="preserve">
+    <value>Tag</value>
+    <comment>タグ</comment>
+  </data>
+  <data name="IDS_TXT_UNIT" xml:space="preserve">
+    <value>Units</value>
+    <comment>単位</comment>
+  </data>
+  <data name="IDS_TXT_USEROOMNAME" xml:space="preserve">
+    <value>Use room name</value>
+    <comment>部屋名を使用</comment>
+  </data>
+  <data name="IDS_TXT_USEROOMNO" xml:space="preserve">
+    <value>Use room number</value>
+    <comment>部屋番号を使用</comment>
+  </data>
+  <data name="IDS_TXT_WALLCENTER" xml:space="preserve">
+    <value>Wall centerline</value>
+    <comment>壁の中心</comment>
+  </data>
+  <data name="IDS_TXT_WALLCORECENTER" xml:space="preserve">
+    <value>Wall structural core center</value>
+    <comment>壁の躯体芯</comment>
+  </data>
+  <data name="IDS_TXT_WALLCORELAYER" xml:space="preserve">
+    <value>Wall structural face</value>
+    <comment>壁の躯体面</comment>
+  </data>
+  <data name="IDS_TXT_WALLFINISH" xml:space="preserve">
+    <value>Wall finish face</value>
+    <comment>壁の仕上面</comment>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+    <comment>文字 カテゴリ</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve">
+    <value>Parameter</value>
+    <comment>文字 パラメータ</comment>
+  </data>
+</root>

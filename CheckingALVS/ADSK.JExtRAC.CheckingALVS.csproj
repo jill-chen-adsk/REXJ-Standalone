@@ -1,0 +1,111 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug 2027</Configuration>
+    <Platform Condition="'$(Platform)' == ''">x64</Platform>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ADSK.JExtRAC.CheckingALVS</RootNamespace>
+    <AssemblyName>ADSK.JExtRAC.CheckingALVS</AssemblyName>
+    <UseWpf>true</UseWpf>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <SatelliteResourceLanguages>ja;en</SatelliteResourceLanguages>
+    <NeutralLanguage>ja</NeutralLanguage>
+    <Configurations>Debug 2027;Release 2027</Configurations>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="ADSK.JExtRAC.CheckingALVS.Utils" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug 2027|x64'">
+    <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>embedded</DebugType>
+    <Optimize>false</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release 2027|x64'">
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.Microsoft.Office.Interop.Excel">
+      <HintPath>Interop.Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>false</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Text.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Text.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Resources\Image.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Image.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Components\FormEnvironmentalCheck.cs"><SubType>Form</SubType></Compile>
+    <Compile Update="Components\FormEnvironmentalCheck.Designer.cs"><DependentUpon>FormEnvironmentalCheck.cs</DependentUpon></Compile>
+    <Compile Update="Components\FormSetting.cs"><SubType>Form</SubType></Compile>
+    <Compile Update="Components\FormSetting.Designer.cs"><DependentUpon>FormSetting.cs</DependentUpon></Compile>
+    <Compile Update="Components\FormGroup.cs"><SubType>Form</SubType></Compile>
+    <Compile Update="Components\FormGroup.Designer.cs"><DependentUpon>FormGroup.cs</DependentUpon></Compile>
+    <Compile Update="Components\FormGroupName.cs"><SubType>Form</SubType></Compile>
+    <Compile Update="Components\FormGroupName.Designer.cs"><DependentUpon>FormGroupName.cs</DependentUpon></Compile>
+    <Compile Update="Components\FormChangedUsableDim.cs"><SubType>Form</SubType></Compile>
+    <Compile Update="Components\FormChangedUsableDim.Designer.cs"><DependentUpon>FormChangedUsableDim.cs</DependentUpon></Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Text.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Text.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Text.en.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="3_ADSK.JExtRAC.CheckingALVS.addin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Interop.Microsoft.Office.Interop.Excel.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="office.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.Vbe.Interop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Coefficient.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Images\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

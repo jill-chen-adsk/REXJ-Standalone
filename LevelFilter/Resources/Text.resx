@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="IDS_ERR_ERROR" xml:space="preserve"><value>エラー</value></data>
+  <data name="IDS_ERR_NOELEMENTSELECT" xml:space="preserve"><value>要素を選択してください。</value></data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve"><value>パラメータの定義に失敗しました</value></data>
+  <data name="IDS_SHPARAM_DEF_CMD" xml:space="preserve"><value>RexJpn-LevelFilter</value></data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve"><value>RexJParam.txt</value></data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve"><value>RexJpn</value></data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve"><value>カテゴリ</value></data>
+  <data name="IDS_TXT_COUNT" xml:space="preserve"><value>個数</value></data>
+  <data name="IDS_TXT_COUNTOBJECT" xml:space="preserve"><value>選択総数</value></data>
+  <data name="IDS_TXT_COUNTTYPE" xml:space="preserve"><value>選択項目数</value></data>
+  <data name="IDS_TXT_FAMILY" xml:space="preserve"><value>ファミリ</value></data>
+  <data name="IDS_TXT_FAMILYTYPE" xml:space="preserve"><value>ファミリタイプ</value></data>
+  <data name="IDS_TXT_FILTERFORM" xml:space="preserve"><value>階層フィルタ</value></data>
+  <data name="IDS_TXT_FILTERS" xml:space="preserve"><value>フィルタ</value></data>
+  <data name="IDS_TXT_MATERIAL" xml:space="preserve"><value>マテリアル</value></data>
+  <data name="IDS_TXT_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="IDS_TXT_OTHER" xml:space="preserve"><value>その他</value></data>
+  <data name="IDS_TXT_PARTS" xml:space="preserve"><value>パーツ</value></data>
+  <data name="IDS_TXT_PNTCHECK" xml:space="preserve"><value>適用</value></data>
+  <data name="IDS_TXT_RULEFILTERS" xml:space="preserve"><value>規則フィルタ</value></data>
+  <data name="IDS_TXT_SELECTALL" xml:space="preserve"><value>全選択</value></data>
+  <data name="IDS_TXT_SELECTCLEAR" xml:space="preserve"><value>選択解除</value></data>
+</root>

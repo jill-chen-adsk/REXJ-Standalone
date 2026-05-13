@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>レベルマッピング</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>レベルマッピング</H2>
+        <table width="600" align="left" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    ST-Bridgeの階とRevitのレベルのマッピングを行う。
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    レベルマッピング画面①（マッピング指定）<br>
+                    <img src="Image/008_01.png" style="WIDTH: 347px" alt="">
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    レベルマッピング画面②（オフセット指定）
+                    <img src="Image/008_06.png" style="WIDTH: 347px" alt="">
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="610" cellspacing="1">
+                        <strong>■&nbsp;レベル指定</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40">項目</td>
+                                        <td bgcolor="#ddffee" align="center" height="40">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ffffff" align="center" rowspan="2">
+                                            <img src="Image/008_02.png" width="300" alt="">
+                                        </td>
+                                        <td bgcolor="#ffffff">
+                                            ST-Bridgeの階に対するレベルを<br>
+                                            「Revitのレベル」<br>
+                                            「レベルを新規作成」<br>
+                                            「レベルを生成しない」<br>から選択する
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ffffff">
+                                            Revitに入力されたレベルを高さの低い順からST-Bridgeの階に割り当て、
+                                            レベルが割り当てられないST-Bridgeの階は「レベルを新規作成」を初期値とする。
+                                            （Revitレベルの名称がGLのレベルは除外する）
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ffffff" align="center">
+                                            <img src="Image/008_10.png" alt="">
+                                        </td>
+                                        <td bgcolor="#ffffff" align="">
+                                            Revitレベルを生成する位置のオフセットを指定する。<br>
+                                            <img src="Image/008_11.png" alt="">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="610" cellspacing="1">
+                        <strong>■&nbsp;基点位置指定</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee"></td>
+                                        <td bgcolor="#ddffee" align="center" height="40">項目</td>
+                                        <td bgcolor="#ddffee" align="center" height="40">内容</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" rowspan="3">マッピング指定の場合</td>
+                                        <td bgcolor="#ffffff" align="center"><img src="Image/008_03.png" width="" alt=""></td>
+                                        <td bgcolor="#ffffff">ST-Bridgeの変換の基点となる位置を、ST-Bridgeの通芯の交点で指定。</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ffffff" align="center"><img src="Image/008_04.png" width="" alt=""></td>
+                                        <td bgcolor="#ffffff">Revitの変換の基点となる位置を、Revitの通芯の交点で指定。
+                                            交差する二つの通芯を指定する。
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ffffff" align="center"><img src="Image/008_05.png" width="" alt=""></td>
+                                        <td bgcolor="#ffffff">基点の補正値を指定する。</td>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left">オフセット指定の場合</td>
+                                        <td bgcolor="#ffffff" align="center"><img src="Image/008_07.png" width="300" alt=""></td>
+                                        <td bgcolor="#ffffff">ST-Bridgeモデルをインポートする平面位置を㎜単位で指定する</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="610" cellspacing="1">
+                        <strong>■&nbsp;各ボタン操作</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40"><img src="Image/008_08.png" alt=""></td>
+                                        <td bgcolor="#ffffff">マテリアルマッピングを行う<br>
+                                            →&nbsp;<a href="009.html">マテリアルマッピング</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40"><img src="Image/008_09.png" alt=""></td>
+                                        <td bgcolor="#ffffff">レベルマッピングを中止し <a href="007.html">変換確認</a> へ戻る</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_04.png" alt=""></td>
+                                        <td bgcolor="#ffffff">『ST-Bridge Link』のヘルプを表示する</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_05.png" alt=""></td>
+                                        <td bgcolor="#ffffff">『ST-Bridge Link』のバージョン情報を表示する</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

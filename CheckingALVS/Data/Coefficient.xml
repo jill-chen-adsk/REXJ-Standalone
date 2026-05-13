@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Values>
+  <UseDistrictList>
+    <Item>
+      <Name>Residential District</Name>
+      <a>6</a>
+      <b>1.4</b>
+      <d>7</d>
+    </Item>
+    <Item>
+      <Name>Industrial District</Name>
+      <a>8</a>
+      <b>1</b>
+      <d>5</d>
+    </Item>
+    <Item>
+      <Name>Commercial District</Name>
+      <a>10</a>
+      <b>1</b>
+      <d>4</d>
+    </Item>
+  </UseDistrictList>
+  <RoomKindList>
+    <Item>
+      <Name></Name>
+      <Value>0</Value>
+    </Item>
+    <Item>
+      <Name>School Classroom</Name>
+      <Value>5</Value>
+    </Item>
+    <Item>
+      <Name>Nursery Classroom</Name>
+      <Value>5</Value>
+    </Item>
+    <Item>
+      <Name>Residential Living Room</Name>
+      <Value>7</Value>
+    </Item>
+    <Item>
+      <Name>Hospital / Clinic Ward</Name>
+      <Value>7</Value>
+    </Item>
+    <Item>
+      <Name>Dormitory / Boarding Room</Name>
+      <Value>7</Value>
+    </Item>
+    <Item>
+      <Name>Child Welfare Facility Room</Name>
+      <Value>7</Value>
+    </Item>
+    <Item>
+      <Name>University / Vocational Classroom</Name>
+      <Value>10</Value>
+    </Item>
+    <Item>
+      <Name>Hospital / Welfare Recreation Room</Name>
+      <Value>10</Value>
+    </Item>
+    <Item>
+      <Name>Windowless Room Daylighting Check</Name>
+      <Value>20</Value>
+    </Item>
+  </RoomKindList>
+  <SmokeNecessaryCoefficient>
+    <Item>
+      <Name>0</Name>
+      <Value>50</Value>
+    </Item>
+  </SmokeNecessaryCoefficient>
+  <VentilationNecessaryCoefficient>
+    <Item>
+      <Name>0</Name>
+      <Value>20</Value>
+    </Item>
+  </VentilationNecessaryCoefficient>
+  <SmokeWallLengthDefault>
+    <Item>
+      <Name>0</Name>
+      <Value>800</Value>
+    </Item>
+  </SmokeWallLengthDefault>
+</Values>

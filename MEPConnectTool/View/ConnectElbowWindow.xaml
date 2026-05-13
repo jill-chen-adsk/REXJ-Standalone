@@ -1,0 +1,68 @@
+﻿<Window x:Class="MEPConnectTool.View.ConnectElbowWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MEPConnectTool.View"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Title="Elbow Connection" Height="auto" Width="auto">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UIStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="Reference"  Style="{StaticResource GroupBox}">
+                    <StackPanel Orientation="Vertical" >
+                        <Image Source="../Res/RectElbow_0_480dpi.png" Width="188" Visibility="{Binding ElementName=RadioButtonRectElbow1R, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        <Image Source="../Res/RectElbow_1_480dpi.png" Width="188" Visibility="{Binding ElementName=RadioButtonRectElbowInnerR, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        <Image Source="../Res/RectElbow_2_480dpi.png" Width="188" Visibility="{Binding ElementName=RadioButtonRectElbowAtypical1R, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                        <Image Source="../Res/RectElbow_3_480dpi.png" Width="188" Visibility="{Binding ElementName=RadioButtonRectElbowAtypicalInnerR, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    </StackPanel>
+                </GroupBox>
+                <StackPanel Orientation="Vertical">
+                    <GroupBox Header="Family" Style="{StaticResource GroupBox}">
+                        <StackPanel Orientation="Vertical" x:Name="FamilyPanel">
+                            <RadioButton Content="011_角_エルボ_1R" x:Name="RadioButtonRectElbow1R"   GroupName="FamilyName" Checked="OnFamilyChecked" IsChecked="True"/>
+                            <RadioButton Content="011_角_エルボ_内R設定" x:Name="RadioButtonRectElbowInnerR" GroupName="FamilyName"  Checked="OnFamilyChecked"/>
+                            <RadioButton Content="011_角_エルボ_異形_1R" x:Name="RadioButtonRectElbowAtypical1R" GroupName="FamilyName"  Checked="OnFamilyChecked" />
+                            <RadioButton Content="011_角_エルボ_異形_内R指定" x:Name="RadioButtonRectElbowAtypicalInnerR" GroupName="FamilyName"  Checked="OnFamilyChecked" />
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Inner R / Hopper Length" Style="{StaticResource GroupBox}">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel x:Name="InnerRPanel" Orientation="Horizontal" VerticalAlignment="Center" Visibility="Collapsed">
+                                <TextBlock Text="Inner R" Width="48" />
+                                <TextBox x:Name="InnnerRadiusTextBox" Width="48" Text="600" Margin="5 0 0 0" />
+                                <TextBlock Text="mm" VerticalAlignment="Center" Margin="5 0 5 0" />
+                            </StackPanel>
+                            <StackPanel x:Name="HopperLengthPanel" Orientation="Horizontal" VerticalAlignment="Center" Visibility="Visible">
+                                <TextBlock Text="Hopper Len." Width="48" />
+                                <TextBox x:Name="HopperLengthTextBox" Width="48" Text="450" Margin="5 0 0 0" />
+                                <TextBlock Text="mm" VerticalAlignment="Center" Margin="5 0 5 0" />
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                
+                
+                    
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 8">
+                <Button Content="Cancel" Click="Cancel_OnClick" Style="{StaticResource Button}" />
+                <Button Content="Place" Click="Place_OnClick" Style="{StaticResource Button}" />
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

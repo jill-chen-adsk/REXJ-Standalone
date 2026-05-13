@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="CMD_VIEWDUPLICATE" xml:space="preserve"><value>ビュー複製</value></data>
+  <data name="ERR_CANNOTCOPY" xml:space="preserve"><value>次のビューが複製できません: {0} （タイプ: {1}）</value></data>
+  <data name="ERR_INPUTCOPYRULE" xml:space="preserve"><value>複製規則を追加してください。</value></data>
+  <data name="ERR_SELECTROW" xml:space="preserve"><value>削除する規則を選択してください。</value></data>
+  <data name="ERR_SELECTTARGETVIEW" xml:space="preserve"><value>複製対象のビューを選択してください。</value></data>
+  <data name="TXT_CANNOTCOPYVIEW" xml:space="preserve"><value>次のビューを複製できません。</value></data>
+  <data name="TXT_ERROR" xml:space="preserve"><value>エラー</value></data>
+  <data name="TXT_LEFTBRACE" xml:space="preserve"><value>(</value></data>
+  <data name="TXT_PREFIX" xml:space="preserve"><value>接頭</value></data>
+  <data name="TXT_RIGHTBRACE" xml:space="preserve"><value>)</value></data>
+  <data name="TXT_SUFFIX" xml:space="preserve"><value>接尾</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ARCHITECTURAL" xml:space="preserve"><value>意匠</value></data>
+  <data name="TXT_VIEWDISCIPLINE_COORDINATION" xml:space="preserve"><value>コーディネーション</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ELECTRICAL" xml:space="preserve"><value>電気</value></data>
+  <data name="TXT_VIEWDISCIPLINE_MECHANICAL" xml:space="preserve"><value>機械</value></data>
+  <data name="TXT_VIEWDISCIPLINE_PLUMBING" xml:space="preserve"><value>衛生</value></data>
+  <data name="TXT_VIEWDISCIPLINE_STRUCTURAL" xml:space="preserve"><value>構造</value></data>
+  <data name="TXT_VIEWFAMILY_ALL" xml:space="preserve"><value>&lt;すべて&gt;</value></data>
+  <data name="ERR_FIELD_EMPTY" xml:space="preserve"><value>{0}が未記入です。</value></data>
+  <data name="LBL_DISCIPLINE" xml:space="preserve"><value>専門分野</value></data>
+  <data name="LBL_VIEW_CATEGORY" xml:space="preserve"><value>ビューカテゴリ</value></data>
+  <data name="LBL_VIEW_TYPE_FILTER" xml:space="preserve"><value>ビュータイプ</value></data>
+  <data name="DGCOL_PREFIX_SUFFIX" xml:space="preserve"><value>接頭・接尾</value></data>
+  <data name="DGCOL_ADDED_TEXT" xml:space="preserve"><value>付加文字列</value></data>
+  <data name="DGCOL_VIEW_TEMPLATE" xml:space="preserve"><value>ビューテンプレート</value></data>
+  <data name="DGCOL_VIEW_TYPE" xml:space="preserve"><value>ビュータイプ</value></data>
+  <data name="BTN_ADD" xml:space="preserve"><value>追加</value></data>
+  <data name="BTN_DELETE" xml:space="preserve"><value>削除</value></data>
+  <data name="LBL_DUP_KIND" xml:space="preserve"><value>複製の種類</value></data>
+  <data name="BTN_CANCEL" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="LBL_CREDIT" xml:space="preserve"><value>提供：株式会社　日本設計</value></data>
+  <data name="DUP_MODE_DUPLICATE" xml:space="preserve"><value>複製</value></data>
+  <data name="DUP_MODE_WITH_DETAILING" xml:space="preserve"><value>詳細を含めた複製</value></data>
+  <data name="GP_ADD_STRING" xml:space="preserve"><value>付加する文字列</value></data>
+  <data name="LBL_ITEM_VIEW_TYPE" xml:space="preserve"><value>ビュータイプ</value></data>
+  <data name="LBL_ITEM_VIEW_TEMPLATE" xml:space="preserve"><value>ビューテンプレート</value></data>
+  <data name="TXT_VIEWTYPE_ALL" xml:space="preserve"><value>すべて</value></data>
+  <data name="TXT_VIEWTYPE_AREA_PLAN" xml:space="preserve"><value>エリア平面図</value></data>
+  <data name="TXT_VIEWTYPE_CEILING_PLAN" xml:space="preserve"><value>天井伏図</value></data>
+  <data name="TXT_VIEWTYPE_COLUMN_SCHEDULE" xml:space="preserve"><value>柱集計表</value></data>
+  <data name="TXT_VIEWTYPE_COST_REPORT" xml:space="preserve"><value>コストレポート</value></data>
+  <data name="TXT_VIEWTYPE_DETAIL" xml:space="preserve"><value>詳細</value></data>
+  <data name="TXT_VIEWTYPE_DRAFTING_VIEW" xml:space="preserve"><value>製図ビュー</value></data>
+  <data name="TXT_VIEWTYPE_DRAWING_SHEET" xml:space="preserve"><value>シート</value></data>
+  <data name="TXT_VIEWTYPE_ELEVATION" xml:space="preserve"><value>立面図</value></data>
+  <data name="TXT_VIEWTYPE_ENGINEERING_PLAN" xml:space="preserve"><value>構造伏図</value></data>
+  <data name="TXT_VIEWTYPE_FLOOR_PLAN" xml:space="preserve"><value>平面図</value></data>
+  <data name="TXT_VIEWTYPE_INTERNAL" xml:space="preserve"><value>内部</value></data>
+  <data name="TXT_VIEWTYPE_LEGEND" xml:space="preserve"><value>凡例</value></data>
+  <data name="TXT_VIEWTYPE_LOADS_REPORT" xml:space="preserve"><value>荷重レポート</value></data>
+  <data name="TXT_VIEWTYPE_PANEL_SCHEDULE" xml:space="preserve"><value>パネル集計表</value></data>
+  <data name="TXT_VIEWTYPE_PRESSURE_LOSS_REPORT" xml:space="preserve"><value>圧力損失レポート</value></data>
+  <data name="TXT_VIEWTYPE_PROJECT_BROWSER" xml:space="preserve"><value>プロジェクトブラウザ</value></data>
+  <data name="TXT_VIEWTYPE_RENDERING" xml:space="preserve"><value>レンダリング</value></data>
+  <data name="TXT_VIEWTYPE_REPORT" xml:space="preserve"><value>レポート</value></data>
+  <data name="TXT_VIEWTYPE_SECTION" xml:space="preserve"><value>断面図</value></data>
+  <data name="TXT_VIEWTYPE_SCHEDULE" xml:space="preserve"><value>集計表</value></data>
+  <data name="TXT_VIEWTYPE_SYSTEM_BROWSER" xml:space="preserve"><value>システムブラウザ</value></data>
+  <data name="TXT_VIEWTYPE_THREE_D" xml:space="preserve"><value>3D</value></data>
+  <data name="TXT_VIEWTYPE_UNDEFINED" xml:space="preserve"><value>未定義</value></data>
+  <data name="TXT_VIEWTYPE_WALKTHROUGH" xml:space="preserve"><value>ウォークスルー</value></data>
+</root>

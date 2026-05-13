@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ja">
+<head><title>差分インポート</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>差分インポート</H2>
+        <table width="800" align="left">
+            <tr>
+                <td><p>変換済みのモデルに対して差分インポートを行う。</p></td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="800" cellspacing="0">
+                        <strong>■&nbsp;前提条件</strong>
+                        <tr>
+                            <td>
+                                <table width="800" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">前提条件</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>差分インポートはST-Bridge Linkで変換したモデルに対して行う。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>新旧のSTBファイルに記載されているGUIDを使用する。<br>そのため、GUIDのないSTBファイルは差分インポートの対象外とする。<br>
+                                            なお、GUIDはrvtファイルの拡張ストレージに保持する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>変換前後でファミリの異なる場合は対象外とする。<br>（例：H形鋼→角形鋼管）</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        <tr>
+                    </table>
+                </td>
+            <tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="800" cellspacing="0">
+                        <strong>■&nbsp;差分インポート（断面のみ）</strong>
+                        <tr>
+                            <td>
+                                <table width="800" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">断面のみ</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>GUIDが一致するタイプのパラメータを更新する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>新STBのGUIDが見つからない場合は、新規断面としてタイプを作成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>旧STBのGUIDが新STBにない場合、既存タイプの削除は行わない。</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        <tr>
+                    </table>
+                </td>
+            <tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="800" cellspacing="0">
+                        <strong>■&nbsp;差分インポート（断面＋配置）</strong>
+                        <tr>
+                            <td>
+                                <table width="800" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">断面＋配置</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>軸、レベルの更新<br>
+                                            ・GUIDが一致する軸、レベルの名称、スパンを更新する。<br>
+                                            ・新STBのGUIDが見つからない場合は、新たに軸、レベルを生成する。<br>
+                                            ・旧STBのGUIDが新STBにない場合、軸、レベルの削除は行わない。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>断面の更新<br>
+                                            ・断面のみと同様とする。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>位置の更新<br>
+                                            ・GUIDが一致するインスタンスを検索する。<br>
+                                            ・見つけたインスタンスのタイプが新旧で異なる場合、新しいタイプへと切り替える。<br>
+                                            ・見つけたインスタンスを新STBでの節点位置に移動する。<br>
+                                            ・インスタンスが見つからない場合は、寄り、レベルオフセット等（offset_start_X等）の情報は除き、<br>
+                                            　節点位置で新たに要素を生成する。<br>
+                                            ・変換インスタンス指定ダイアログでOFFにしたタイプに紐づくインスタンスは、更新しない。
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        <tr>
+                    </table>
+                </td>
+            <tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="800" cellspacing="0">
+                        <strong>■&nbsp;差分インポート（断面＋詳細位置）</strong>
+                        <tr>
+                            <td>
+                                <table width="800" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">断面＋詳細位置</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>軸、レベルの更新<br>
+                                            ・断面＋配置と同様とする。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>断面の更新<br>
+                                            ・断面のみと同様とする。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>位置の更新<br>
+                                            ・GUIDが一致するインスタンスを検索する。<br>
+                                            ・見つけたインスタンスのタイプが新旧で異なる場合、新しいタイプへと切り替える。<br>
+                                            ・見つけたインスタンスを新STBでの節点位置に移動する。<br>
+                                            ・インスタンスが見つからない場合は、新たに要素を生成する。<br>
+                                            ・変換インスタンス指定ダイアログでOFFにしたタイプに紐づくインスタンスは、更新しない。
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        <tr>
+                    </table>
+                </td>
+            <tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Japan Standards Extension</value>
+    <comment>ボタン パネル名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP建築</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_ERR_AREAOPTWALLCORELAYE" xml:space="preserve">
+    <value>現在の部屋境界は「壁の躯体面」になっています。続行しますか？</value>
+    <comment>エラー　現在の部屋境界　壁の躯体面</comment>
+  </data>
+  <data name="IDS_ERR_AREAOPTWALLFINISH" xml:space="preserve">
+    <value>現在の部屋境界は「壁の仕上面」になっています。続行しますか？</value>
+    <comment>エラー　現在の部屋境界　壁の仕上面</comment>
+  </data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>コマンドが失敗しました</value>
+    <comment>エラー　コマンドが失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEAREABNDBYROOMBND" xml:space="preserve">
+    <value>部屋境界からエリア境界作成が失敗しました</value>
+    <comment>エラー　部屋境界からエリア境界作成が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEAREABYROOM" xml:space="preserve">
+    <value>部屋からエリア作成が失敗しました</value>
+    <comment>エラー　部屋からエリア作成が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEAREATAG" xml:space="preserve">
+    <value>エリアタグ作成が失敗しました</value>
+    <comment>エラー　エリアタグ作成が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEBASISEXPRESSION" xml:space="preserve">
+    <value>根拠式作成に失敗しました。エリア形状をご確認ください。</value>
+    <comment>エラー　根拠式作成に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_GETAREACALCOPT" xml:space="preserve">
+    <value>面積計算オプションの取得が失敗しました</value>
+    <comment>エラー　面積計算オプションの取得が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_NOTROOM" xml:space="preserve">
+    <value>部屋が存在しません</value>
+    <comment>エラー　部屋が存在しません</comment>
+  </data>
+  <data name="IDS_ERR_PARAMAREA" xml:space="preserve">
+    <value>エリアパラメータの設定に失敗しました</value>
+    <comment>エラー　エリアパラメータの設定に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_PARAMCOMMAND" xml:space="preserve">
+    <value>コマンドパラメータの定義に失敗しました</value>
+    <comment>エラー　コマンドパラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>パラメータの定義に失敗しました</value>
+    <comment>エラー パラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_SELAREA" xml:space="preserve">
+    <value>エリアを選択してから起動してください</value>
+    <comment>エラー　エリアを選択してから起動してください</comment>
+  </data>
+  <data name="IDS_ERR_SELROOM" xml:space="preserve">
+    <value>部屋を選択してから起動してください</value>
+    <comment>エラー　部屋を選択してから起動してください</comment>
+  </data>
+  <data name="IDS_ERR_SETLEGALAREA" xml:space="preserve">
+    <value>法定面積集計が失敗しました</value>
+    <comment>エラー　法定面積集計が失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_VALNULL" xml:space="preserve">
+    <value>値が空白です</value>
+    <comment>エラー　値が空白です</comment>
+  </data>
+  <data name="IDS_ERR_VALNUMBER" xml:space="preserve">
+    <value>値が整数ではありません</value>
+    <comment>エラー　値が整数ではありません</comment>
+  </data>
+  <data name="IDS_ERR_VALRANGE" xml:space="preserve">
+    <value>値が範囲外です</value>
+    <comment>エラー　値が範囲外です</comment>
+  </data>
+  <data name="IDS_ERR_VIEWAREA" xml:space="preserve">
+    <value>エリア平面図を開いてから使用してください</value>
+    <comment>エラー　エリア平面図を開いてから使用してください</comment>
+  </data>
+  <data name="IDS_SET_AREAMARGINERROR" xml:space="preserve">
+    <value>1.0</value>
+    <comment>設定値　面積許容誤差</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_AREACALC" xml:space="preserve">
+    <value>計算面積</value>
+    <comment>共有パラメータ　定義名 計算面積</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_AREAEXPN" xml:space="preserve">
+    <value>根拠式</value>
+    <comment>共有パラメータ　定義名 根拠式</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_BRANCHNUMBER" xml:space="preserve">
+    <value>枝番号</value>
+    <comment>共有パラメータ　定義名 枝番号</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_ROOMNAME" xml:space="preserve">
+    <value>部屋名</value>
+    <comment>共有パラメータ　定義名 部屋名</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_AREA_ROOMNO" xml:space="preserve">
+    <value>部屋番号</value>
+    <comment>共有パラメータ　定義名 部屋番号</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_GROUNDSEXPRESSION" xml:space="preserve">
+    <value>RexJpn-AreaSchedule-GroundsExpression</value>
+    <comment>共有パラメータ 定義名 コマンド 根拠式</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_LEGALAREA" xml:space="preserve">
+    <value>RexJpn-AreaSchedule-LegalArea</value>
+    <comment>共有パラメータ 定義名 コマンド 法定面積</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_ROOMCONVERTEDTOAREA" xml:space="preserve">
+    <value>RexJpn-AreaSchedule-RoomConvertedToArea</value>
+    <comment>共有パラメータ 定義名 コマンド 部屋をエリアに変換</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_ROOM_LEGALAREA" xml:space="preserve">
+    <value>法定面積</value>
+    <comment>共有パラメータ　定義名 法定面積</comment>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+    <comment>共有パラメータ　ファイル名</comment>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+    <comment>共有パラメータ　グループ名</comment>
+  </data>
+  <data name="IDS_TXT_ADDAREATAG" xml:space="preserve">
+    <value>エリアタグを付ける</value>
+    <comment>エリアタグを付ける</comment>
+  </data>
+  <data name="IDS_TXT_AREACALC" xml:space="preserve">
+    <value>エリア面積の計算</value>
+    <comment>エリア面積の計算</comment>
+  </data>
+  <data name="IDS_TXT_AREADECIMAL" xml:space="preserve">
+    <value>結果面積の桁処理</value>
+    <comment>結果面積の桁処理</comment>
+  </data>
+  <data name="IDS_TXT_AREAMARGINERROR" xml:space="preserve">
+    <value>面積の許容誤差を超えています</value>
+    <comment>面積の許容誤差を超えています</comment>
+  </data>
+  <data name="IDS_TXT_AREA_LEGAL" xml:space="preserve">
+    <value>面積(法定) ㎡</value>
+    <comment>面積(法定) ㎡</comment>
+  </data>
+  <data name="IDS_TXT_AREA_RVT" xml:space="preserve">
+    <value>面積(Revit) ㎡</value>
+    <comment>面積(Revit) ㎡</comment>
+  </data>
+  <data name="IDS_TXT_BASISEXPRESSION" xml:space="preserve">
+    <value>根拠式</value>
+    <comment>根拠式</comment>
+  </data>
+  <data name="IDS_TXT_CALCAREA" xml:space="preserve">
+    <value>計算面積</value>
+    <comment>計算面積</comment>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>キャンセル</value>
+    <comment>キャンセル</comment>
+  </data>
+  <data name="IDS_TXT_CHOICEWORK" xml:space="preserve">
+    <value>作業の選択</value>
+    <comment>作業の選択</comment>
+  </data>
+  <data name="IDS_TXT_CLOSE" xml:space="preserve">
+    <value>切り上げ</value>
+    <comment>切り上げ</comment>
+  </data>
+  <data name="IDS_TXT_CONVERTAREA" xml:space="preserve">
+    <value>部屋をエリア境界に変換</value>
+    <comment>部屋をエリア境界に変換</comment>
+  </data>
+  <data name="IDS_TXT_CONVERTAREABOUNDARY" xml:space="preserve">
+    <value>部屋境界をエリア境界に変換する</value>
+    <comment>部屋境界をエリア境界に変換する</comment>
+  </data>
+  <data name="IDS_TXT_CREATEAREA" xml:space="preserve">
+    <value>エリア作成</value>
+    <comment>エリア作成</comment>
+  </data>
+  <data name="IDS_TXT_CREATEAREABOUNDARY" xml:space="preserve">
+    <value>エリア境界作成</value>
+    <comment>エリア境界作成</comment>
+  </data>
+  <data name="IDS_TXT_CREATEAREATAG" xml:space="preserve">
+    <value>エリアタグ作成</value>
+    <comment>エリアタグ作成</comment>
+  </data>
+  <data name="IDS_TXT_CREATEBASISEXPN" xml:space="preserve">
+    <value>根拠式作成</value>
+    <comment>根拠式作成</comment>
+  </data>
+  <data name="IDS_TXT_CUTOFF" xml:space="preserve">
+    <value>切り捨て</value>
+    <comment>切り捨て</comment>
+  </data>
+  <data name="IDS_TXT_DECIMAL" xml:space="preserve">
+    <value>小数点以下第</value>
+    <comment>小数点以下第</comment>
+  </data>
+  <data name="IDS_TXT_DEFAULT" xml:space="preserve">
+    <value>既定</value>
+    <comment>既定</comment>
+  </data>
+  <data name="IDS_TXT_LEGALAREA" xml:space="preserve">
+    <value>法定面積</value>
+    <comment>法定面積</comment>
+  </data>
+  <data name="IDS_TXT_LENGTHDECIMAL" xml:space="preserve">
+    <value>長さの桁処理</value>
+    <comment>長さの桁処理</comment>
+  </data>
+  <data name="IDS_TXT_M" xml:space="preserve">
+    <value>m</value>
+    <comment>m</comment>
+  </data>
+  <data name="IDS_TXT_M2" xml:space="preserve">
+    <value>（m）</value>
+    <comment>（m）</comment>
+  </data>
+  <data name="IDS_TXT_M22" xml:space="preserve">
+    <value>（㎡）</value>
+    <comment>（㎡）</comment>
+  </data>
+  <data name="IDS_TXT_MM" xml:space="preserve">
+    <value>mm</value>
+    <comment>mm</comment>
+  </data>
+  <data name="IDS_TXT_NAME" xml:space="preserve">
+    <value>名称</value>
+    <comment>名称</comment>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+    <comment>OK</comment>
+  </data>
+  <data name="IDS_TXT_ORDER" xml:space="preserve">
+    <value>位を</value>
+    <comment>位を</comment>
+  </data>
+  <data name="IDS_TXT_PI" xml:space="preserve">
+    <value>円周率(π)</value>
+    <comment>円周率(π)</comment>
+  </data>
+  <data name="IDS_TXT_ROOMNAME" xml:space="preserve">
+    <value>部屋名</value>
+    <comment>部屋名</comment>
+  </data>
+  <data name="IDS_TXT_ROOMNUMBER" xml:space="preserve">
+    <value>部屋番号</value>
+    <comment>部屋番号</comment>
+  </data>
+  <data name="IDS_TXT_ROUNDINGOFF" xml:space="preserve">
+    <value>四捨五入</value>
+    <comment>四捨五入</comment>
+  </data>
+  <data name="IDS_TXT_SETLEGALAREA" xml:space="preserve">
+    <value>法定面積集計</value>
+    <comment>法定面積集計</comment>
+  </data>
+  <data name="IDS_TXT_TAG" xml:space="preserve">
+    <value>タグ</value>
+    <comment>タグ</comment>
+  </data>
+  <data name="IDS_TXT_UNIT" xml:space="preserve">
+    <value>単位</value>
+    <comment>単位</comment>
+  </data>
+  <data name="IDS_TXT_USEROOMNAME" xml:space="preserve">
+    <value>部屋名を使用</value>
+    <comment>部屋名を使用</comment>
+  </data>
+  <data name="IDS_TXT_USEROOMNO" xml:space="preserve">
+    <value>部屋番号を使用</value>
+    <comment>部屋番号を使用</comment>
+  </data>
+  <data name="IDS_TXT_WALLCENTER" xml:space="preserve">
+    <value>壁の中心</value>
+    <comment>壁の中心</comment>
+  </data>
+  <data name="IDS_TXT_WALLCORECENTER" xml:space="preserve">
+    <value>壁の躯体芯</value>
+    <comment>壁の躯体芯</comment>
+  </data>
+  <data name="IDS_TXT_WALLCORELAYER" xml:space="preserve">
+    <value>壁の躯体面</value>
+    <comment>壁の躯体面</comment>
+  </data>
+  <data name="IDS_TXT_WALLFINISH" xml:space="preserve">
+    <value>壁の仕上面</value>
+    <comment>壁の仕上面</comment>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>カテゴリ</value>
+    <comment>文字 カテゴリ</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve">
+    <value>パラメータ</value>
+    <comment>文字 パラメータ</comment>
+  </data>
+</root>

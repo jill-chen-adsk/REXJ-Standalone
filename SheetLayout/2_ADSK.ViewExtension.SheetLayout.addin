@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Auto Sheet Layout</Name>
+    <Assembly>ADSK.ViewExtension.SheetLayout.dll</Assembly>
+    <FullClassName>ADSK.ViewExtension.SheetLayout.App</FullClassName>
+    <ClientId>C4D5E6F7-A8B9-0123-CDEF-456789ABCDEF</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

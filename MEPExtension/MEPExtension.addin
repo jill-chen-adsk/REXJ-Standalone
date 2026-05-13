@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>MEPExtension</Name>
+    <Assembly>MEPExtension\MEPExtension.dll</Assembly>
+    <AddInId>B5C6D7E8-F901-2345-6789-ABCDEF012345</AddInId>
+    <FullClassName>RevitMEPAddinApp.App</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>MEPExtension - Flex Duct Convert</Name>
+    <Assembly>MEPExtension\MEPExtension.dll</Assembly>
+    <AddInId>C6D7E8F9-0123-4567-89AB-CDEF01234567</AddInId>
+    <FullClassName>CmdFlexDuctConvert.App</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>MEPExtension - Duct Slope Checker</Name>
+    <Assembly>MEPExtension\MEPExtension.dll</Assembly>
+    <AddInId>D7E8F901-2345-6789-ABCD-EF0123456789</AddInId>
+    <FullClassName>CmdDuctSlopeChecker.CmdDuctSlopeCheckerMain</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Japan Standards Extension</value>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP Architecture</value>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ</value>
+  </data>
+  <data name="IDS_ERR_CBONULL" xml:space="preserve">
+    <value>Selection is empty</value>
+  </data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>Command failed</value>
+  </data>
+  <data name="IDS_ERR_CREATEPARTSDRAW" xml:space="preserve">
+    <value>Failed to create fitting elevation drawing</value>
+  </data>
+  <data name="IDS_ERR_DELETEACTIVEVIEW" xml:space="preserve">
+    <value>Cannot delete the active view. Please activate a non-fitting-elevation view and try again.</value>
+  </data>
+  <data name="IDS_ERR_GETVIEWPARTS" xml:space="preserve">
+    <value>Failed to get elevation views</value>
+  </data>
+  <data name="IDS_ERR_LAYOUTPARTSDRAW" xml:space="preserve">
+    <value>Failed to layout fitting elevation drawings</value>
+  </data>
+  <data name="IDS_ERR_LSTNULL" xml:space="preserve">
+    <value>List box is empty</value>
+  </data>
+  <data name="IDS_ERR_NOPARTS" xml:space="preserve">
+    <value>No fittings (doors/windows) exist</value>
+  </data>
+  <data name="IDS_ERR_PARAMCOMMAND" xml:space="preserve">
+    <value>Failed to define command parameter</value>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Failed to define parameter</value>
+  </data>
+  <data name="IDS_ERR_SELPARTS" xml:space="preserve">
+    <value>No fittings (doors/windows) selected</value>
+  </data>
+  <data name="IDS_ERR_SETVIEWPORT" xml:space="preserve">
+    <value>Failed to set viewport</value>
+  </data>
+  <data name="IDS_ERR_VALNULL" xml:space="preserve">
+    <value>Value is empty</value>
+  </data>
+  <data name="IDS_ERR_VALNUMBER" xml:space="preserve">
+    <value>Value is not an integer</value>
+  </data>
+  <data name="IDS_ERR_VALRANGE" xml:space="preserve">
+    <value>Value is out of range</value>
+  </data>
+  <data name="IDS_ERR_VIEWSEC" xml:space="preserve">
+    <value>No section view family type available for creating fitting elevation drawings</value>
+  </data>
+  <data name="IDS_ERR_VIEWSHEET" xml:space="preserve">
+    <value>Please open a sheet view before using this command</value>
+  </data>
+  <data name="IDS_LST_SECVIEW_DOOR" xml:space="preserve">
+    <value>Elevation_Door</value>
+  </data>
+  <data name="IDS_LST_SECVIEW_WINDOW" xml:space="preserve">
+    <value>Elevation_Window</value>
+  </data>
+  <data name="IDS_SET_VIEWBBOXBLANK" xml:space="preserve">
+    <value>40.0</value>
+  </data>
+  <data name="IDS_SET_VIEWPORTSYM_1" xml:space="preserve">
+    <value>No Title</value>
+  </data>
+  <data name="IDS_SET_VIEWPORTSYM_2" xml:space="preserve">
+    <value>No Title</value>
+  </data>
+  <data name="IDS_SET_VIEWPORTSYM_3" xml:space="preserve">
+    <value>No Title</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_CREATEANDEDIT" xml:space="preserve">
+    <value>RexJpn-FittingSchedule-CreateAndEdit</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_LAYOUT" xml:space="preserve">
+    <value>RexJpn-FittingSchedule-Layout</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_MARK" xml:space="preserve">
+    <value>建具記号</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_NUMBER" xml:space="preserve">
+    <value>建具番号</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+  </data>
+  <data name="IDS_TXT_BLANK" xml:space="preserve">
+    <value>Margins</value>
+  </data>
+  <data name="IDS_TXT_BOTH" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <data name="IDS_TXT_BOTTOM" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="IDS_TXT_CHANGEOLDVIEW" xml:space="preserve">
+    <value>Rename old view and create new</value>
+  </data>
+  <data name="IDS_TXT_CLOSELOG" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="IDS_TXT_COLON1" xml:space="preserve">
+    <value>1:</value>
+  </data>
+  <data name="IDS_TXT_CREATEPARTSDRAWING" xml:space="preserve">
+    <value>Create (Doors/Windows) View</value>
+  </data>
+  <data name="IDS_TXT_CREATEVIEWPARTS" xml:space="preserve">
+    <value>Creating Elevation Views</value>
+  </data>
+  <data name="IDS_TXT_CUSTOM" xml:space="preserve">
+    <value>Custom...</value>
+  </data>
+  <data name="IDS_TXT_DELOLDVIEW" xml:space="preserve">
+    <value>Delete old view</value>
+  </data>
+  <data name="IDS_TXT_DETAILLEVEL" xml:space="preserve">
+    <value>Detail Level</value>
+  </data>
+  <data name="IDS_TXT_DETAILLEVEL_COARSE" xml:space="preserve">
+    <value>Coarse</value>
+  </data>
+  <data name="IDS_TXT_DETAILLEVEL_FINE" xml:space="preserve">
+    <value>Fine</value>
+  </data>
+  <data name="IDS_TXT_DETAILLEVEL_MEDIUM" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="IDS_TXT_DOOR" xml:space="preserve">
+    <value>Doors only</value>
+  </data>
+  <data name="IDS_TXT_DOORTAG" xml:space="preserve">
+    <value>Door Tag</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IDS_TXT_GETVIEWPARTS" xml:space="preserve">
+    <value>Getting Elevation Views</value>
+  </data>
+  <data name="IDS_TXT_HANDLINGDUPLICATEVIEW" xml:space="preserve">
+    <value>Handling Duplicate Views</value>
+  </data>
+  <data name="IDS_TXT_INFO" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="IDS_TXT_LAYOUTPARTSDRAWING" xml:space="preserve">
+    <value>Layout (Doors/Windows) Views in Sheet</value>
+  </data>
+  <data name="IDS_TXT_LAYOUTVIEWPARTS" xml:space="preserve">
+    <value>Laying out Elevation Views</value>
+  </data>
+  <data name="IDS_TXT_LEFT" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="IDS_TXT_LOG" xml:space="preserve">
+    <value>Error Log</value>
+  </data>
+  <data name="IDS_TXT_NEWLINE" xml:space="preserve">
+    <value>New Line</value>
+  </data>
+  <data name="IDS_TXT_NOTUPDATE" xml:space="preserve">
+    <value>Do not update (skip creation)</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="IDS_TXT_PLACEMENTSOLIDPICTURE" xml:space="preserve">
+    <value>Elevations to Place on Sheet</value>
+  </data>
+  <data name="IDS_TXT_RIGHT" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="IDS_TXT_SAVELOG" xml:space="preserve">
+    <value>Save Log</value>
+  </data>
+  <data name="IDS_TXT_SCALE" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="IDS_TXT_SETVIEWPORT" xml:space="preserve">
+    <value>Setting Viewports</value>
+  </data>
+  <data name="IDS_TXT_SIGNDEL" xml:space="preserve">
+    <value>←</value>
+  </data>
+  <data name="IDS_TXT_SIGNDN" xml:space="preserve">
+    <value>↓</value>
+  </data>
+  <data name="IDS_TXT_SIGNMOVE" xml:space="preserve">
+    <value>→</value>
+  </data>
+  <data name="IDS_TXT_SIGNUP" xml:space="preserve">
+    <value>↑</value>
+  </data>
+  <data name="IDS_TXT_SOLIDPICTURE" xml:space="preserve">
+    <value>Elevation Drawings</value>
+  </data>
+  <data name="IDS_TXT_TOP" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="IDS_TXT_WINDOW" xml:space="preserve">
+    <value>Windows only</value>
+  </data>
+  <data name="IDS_TXT_WINDOWTAG" xml:space="preserve">
+    <value>Window Tag</value>
+  </data>
+</root>

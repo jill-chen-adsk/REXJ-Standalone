@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>SectionListSteel</Name>
+    <Assembly>SectionListSteel\SectionListSteel.dll</Assembly>
+    <AddInId>B8C4D5E6-F7A8-9012-BCDE-FA3456789012</AddInId>
+    <FullClassName>SectionListSteel.ExtApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

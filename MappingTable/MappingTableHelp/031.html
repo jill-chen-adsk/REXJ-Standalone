@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <title>柱脚マッピングテーブル編集</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <div class="base">
+    <div class="Left">
+      <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+    <H2>柱脚マッピングテーブル編集</H2>
+    <table width="600" align="left" cellspacing="0">
+      <tr>
+        <td>
+          <p>柱脚マッピングテーブルファイル(ConvBase{Revitバージョン}.tbl)を編集する。</p>
+        </td>
+      </tr>
+      <tr height="15"><td><p></p></td></tr>
+      <tr>
+        <td>
+          <p><img src="Image/031_01.png" alt="" style="WIDTH: 600px"></p>
+        </td>
+      </tr>
+      <tr height="15"><td><p></p></td></tr>
+      <tr>
+        <td>
+          <TABLE BORDER="0" width="600" cellspacing="1">
+            <strong>■&nbsp;編集項目</strong>
+            <tr>
+              <td>
+                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                  <tr><td bgcolor="#ddffee" colspan="2">編集セル</td></tr>
+                  <tr bgcolor="#ffffff">
+                    <td nowrap>セル背景色</td>
+                    <td>背景色が『白』のセルを編集する</td>
+                  </tr>
+                  <tr><td bgcolor="#ddffee" colspan="2">メーカー名</td></tr>
+                  <tr bgcolor="#ffffff">
+                    <td colspan="2">
+                      St-Bridge柱脚製品情報のメーカー名を入力する。
+                    </td>
+                  </tr>
+
+                  <tr><td bgcolor="#ddffee" colspan="2">製品型番</td></tr>
+                  <tr bgcolor="#ffffff">
+                    <td colspan="2">
+                     ST-Bridge柱脚製品情報の製品型番を入力する。
+                    </td>
+                  </tr>
+
+                  <tr><td bgcolor="#ddffee" colspan="2">ファミリファイル保存場所（相対パス）</td></tr>
+                  <tr bgcolor="#ffffff">
+                    <td colspan="2">
+                      メーカー名・製品型番に対応するファミリの相対パスを入力する。
+                    </td>
+                  </tr>
+
+
+                  <tr><td bgcolor="#ddffee" colspan="2">タイプ名</td></tr>
+                  <tr bgcolor="#ffffff">
+                    <td colspan="2">
+                      メーカー名・製品型番に対応するファミリのタイプ名を入力する。
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      
+      <tr height="15"><td><p></p></td></tr>
+      
+      <tr>
+        <td>
+          <TABLE BORDER="0" width="600" cellspacing="1">
+            <strong>■&nbsp;各ボタン操作</strong>
+            <tr>
+              <td>
+                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                  <tr>
+                    <td bgcolor="#ddffee" align="center" height="40"><img src="Image/031_02.png" alt=""></td>
+                    <td bgcolor="#ffffff">
+                      入力された変換マッピングテーブルを&nbsp;ConvBase{Revitバージョン}.tbl&nbsp;として登録する<br>
+                      (登録完了または編集作業を中断する場合は、Excelを手動で終了する)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#ddffee" align="center" height="40"><img src="Image/031_03.png" alt=""></td>
+                    <td bgcolor="#ffffff">
+                      柱脚マッピングテーブルの最下行に行を追加する<br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#ddffee" align="center" height="40"><img src="Image/031_04.png" alt=""></td>
+                    <td bgcolor="#ffffff">
+                      柱脚マッピングテーブルで選択した行を削除する<br>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </TABLE>
+        </td>
+      </tr>
+      
+      <tr height="15"><td><p></p></td></tr>
+      
+      <tr>
+        <td>
+          <TABLE BORDER="0" width="600" cellspacing="1">
+            <strong>☆&nbsp;注意</strong>
+            <tr>
+              <td>
+                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                  <tr>
+                    <td bgcolor="#ffffff">
+                      柱脚マッピングテーブル編集はエクセルファイルになっています。<br>
+                      設定を複数保持する場合はファイルをコピーするのではなくシートを複製してご利用ください。 
+                    </td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#ffffff">
+                      エクセルファイル名"ConvBase{Revitバージョン}_*.xls"の「_」(アンダーバー)以降の数字はバージョンを表します。 <br>
+                      数字以外の文字がある場合はコマンドで認識できなくなりますのでご注意ください。
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr height="15"><td><p></p></td></tr>
+    </table>
+    </div>
+  </div>
+  </body>
+</html>

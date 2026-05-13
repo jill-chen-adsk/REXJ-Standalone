@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="CMD_TENKAIVIEW" xml:space="preserve"><value>展開図作成</value></data>
+  <data name="ERR_CANNOTSELECTROOM" xml:space="preserve"><value>部屋が選択できません。</value></data>
+  <data name="ERR_CHANGEROOMBOUNDARYFAIL" xml:space="preserve"><value>部屋境界の設定を変更することに失敗しました。</value></data>
+  <data name="ERR_CREATEDIMENSIONFAIL" xml:space="preserve"><value>寸法作成に失敗しました。:{0}</value></data>
+  <data name="ERR_CREATETENKAIVIEWFAIL" xml:space="preserve"><value>展開図作成に失敗しました。:{0}</value></data>
+  <data name="ERR_NOACTIBEVIEW" xml:space="preserve"><value>アクティブなビューがありません。</value></data>
+  <data name="ERR_NODIMSTYLE" xml:space="preserve"><value>寸法スタイルがありません。</value></data>
+  <data name="ERR_NOFLOORPLAN" xml:space="preserve"><value>建物に平面図がありません。</value></data>
+  <data name="ERR_NOLEVEL" xml:space="preserve"><value>建物にレベルがありません。</value></data>
+  <data name="ERR_NOROOM" xml:space="preserve"><value>建物に部屋がありません。</value></data>
+  <data name="ERR_NOROOMONLEVEL" xml:space="preserve"><value>選択されたレベルに部屋がありません。</value></data>
+  <data name="ERR_NOSELECTROOM" xml:space="preserve"><value>部屋を選択してください</value></data>
+  <data name="ERR_NOSELECTVIEWFAMILY" xml:space="preserve"><value>展開図ビューファミリを選択してください。</value></data>
+  <data name="ERR_NOTFLOORPLAN" xml:space="preserve"><value>平面ビューで起動してください。</value></data>
+  <data name="ERR_NOTFLOORPLANVIEW" xml:space="preserve"><value>平面図ビューで実行してください。</value></data>
+  <data name="ERR_NOTNUMBER" xml:space="preserve"><value>の値に数字を指定してください。</value></data>
+  <data name="ERR_OPERATIONCANCEL" xml:space="preserve"><value>展開図作成が中断されました。</value></data>
+  <data name="ERR_ROLLBACKFAIL" xml:space="preserve"><value>部屋境界の体積の設定を元に戻せませんでした。手動で元の設定に戻してください。</value></data>
+  <data name="ERR_UPDATECROPBOXFAIL" xml:space="preserve"><value>各ビューのトリミング領域の修正に失敗しました。:{0}</value></data>
+  <data name="ERR_VIEWDUPLICATED" xml:space="preserve"><value>選択した部屋にはすでに展開図が作成されています。部屋名：{0}</value></data>
+  <data name="INFO_OPERATIONCANCEL" xml:space="preserve"><value>キャンセルされました。</value></data>
+  <data name="LBL_INFO" xml:space="preserve"><value>中止するにはキャンセルを押してください。</value></data>
+  <data name="TRANS_CREATEDIMENSION" xml:space="preserve"><value>寸法作成</value></data>
+  <data name="TRANS_CREATEVIEWSECTION" xml:space="preserve"><value>断面作成</value></data>
+  <data name="TRANS_ELEVATIONMARKER" xml:space="preserve"><value>ELVMARKER</value></data>
+  <data name="TRANS_ROLLBACKROOMBOUNDARY" xml:space="preserve"><value>部屋境界の設定を元に戻す</value></data>
+  <data name="TRANS_SETROOMBOUNDARY" xml:space="preserve"><value>部屋境界の設定</value></data>
+  <data name="TRANS_UPDATECROPBOX" xml:space="preserve"><value>クロップボックスの修正</value></data>
+  <data name="TXT_DIRECTIONA" xml:space="preserve"><value>(1)</value></data>
+  <data name="TXT_DIRECTIONB" xml:space="preserve"><value>(2)</value></data>
+  <data name="TXT_DIRECTIONC" xml:space="preserve"><value>(3)</value></data>
+  <data name="TXT_DIRECTIOND" xml:space="preserve"><value>(4)</value></data>
+  <data name="TXT_ERR" xml:space="preserve"><value>エラー</value></data>
+  <data name="TXT_ERROR" xml:space="preserve"><value>エラー</value></data>
+  <data name="TXT_PREFIX" xml:space="preserve"><value>CH</value></data>
+  <data name="TXT_PROCESSING" xml:space="preserve"><value>{0}の展開図を作成しています...</value></data>
+  <data name="TXT_SHEETTITLEFORMAT" xml:space="preserve"><value>{0} ({1})</value></data>
+  <data name="TXT_SLASH" xml:space="preserve"><value>/</value></data>
+  <data name="TXT_SUFFIX_EAST" xml:space="preserve"><value>東</value></data>
+  <data name="TXT_SUFFIX_NORTH" xml:space="preserve"><value>北</value></data>
+  <data name="TXT_SUFFIX_SOUTH" xml:space="preserve"><value>南</value></data>
+  <data name="TXT_SUFFIX_WEST" xml:space="preserve"><value>西</value></data>
+  <data name="TXT_TRANSACTIONNAME" xml:space="preserve"><value>展開図作成</value></data>
+  <data name="TXT_UNDERSCORE" xml:space="preserve"><value>_</value></data>
+  <data name="TXT_VIEWA" xml:space="preserve"><value>A</value></data>
+  <data name="TXT_VIEWB" xml:space="preserve"><value>B</value></data>
+  <data name="TXT_VIEWC" xml:space="preserve"><value>C</value></data>
+  <data name="TXT_VIEWD" xml:space="preserve"><value>D</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ARCHITECTURAL" xml:space="preserve"><value>意匠</value></data>
+  <data name="TXT_VIEWDISCIPLINE_COORDINATION" xml:space="preserve"><value>調整</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ELECTRICAL" xml:space="preserve"><value>電気</value></data>
+  <data name="TXT_VIEWDISCIPLINE_MECHANICAL" xml:space="preserve"><value>設備</value></data>
+  <data name="TXT_VIEWDISCIPLINE_PLUMBING" xml:space="preserve"><value>衛生</value></data>
+  <data name="TXT_VIEWDISCIPLINE_STRUCTURAL" xml:space="preserve"><value>構造</value></data>
+  <data name="DLG_CANCEL" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="DLG_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="GRP_VIEWSETTINGS" xml:space="preserve"><value>ビュー設定</value></data>
+  <data name="LBL_SCALE" xml:space="preserve"><value>尺度</value></data>
+  <data name="LBL_VIEWTYPE" xml:space="preserve"><value>ビュータイプ</value></data>
+  <data name="TIP_SCALE" xml:space="preserve"><value>ビュータイプに縮尺を設定したビューテンプレートが設定されている場合は、ビューテンプレートの設定が優先されます。</value></data>
+  <data name="TIP_VIEWTYPE" xml:space="preserve"><value>作成する立面図に適用するビュータイプを選択してください。</value></data>
+  <data name="GRP_TRIMBASE" xml:space="preserve"><value>上下のトリミング範囲の基準</value></data>
+  <data name="RBN_TRIMLEVEL" xml:space="preserve"><value>レベル</value></data>
+  <data name="RBN_TRIMVOL" xml:space="preserve"><value>部屋のボリューム</value></data>
+  <data name="TIP_TRIMVOL" xml:space="preserve"><value>Revitが立面図コマンドで認識する領域の境界であり、必ずしも部屋境界と一致するわけではありません。</value></data>
+  <data name="GRP_CROPEXTEND" xml:space="preserve"><value>トリミング領域の拡張</value></data>
+  <data name="LBL_TOPBOTTOM" xml:space="preserve"><value>上下(mm)</value></data>
+  <data name="LBL_LEFTRIGHT" xml:space="preserve"><value>左右(mm)</value></data>
+  <data name="TIP_TOPBOTTOM" xml:space="preserve"><value>トリミング領域の上下の境界から何mm上下に拡張するかを実寸で設定します。</value></data>
+  <data name="TIP_LEFTRIGHT" xml:space="preserve"><value>トリミング領域の左右境界から何mm左右に拡張するかを実寸で設定します。
+左右の境界位置はRevitの立面図コマンドが認識する範囲であり、必ずしも部屋の境界と一致するわけではありません。</value></data>
+  <data name="GRP_ROOMS" xml:space="preserve"><value>展開図を作成する部屋</value></data>
+  <data name="BTN_SELECTALL" xml:space="preserve"><value>すべて選択</value></data>
+  <data name="BTN_CLEARALL" xml:space="preserve"><value>すべて解除</value></data>
+  <data name="TIP_ROOMS" xml:space="preserve"><value>展開図を作成する部屋にチェックを入れてください。</value></data>
+  <data name="GRP_DIMSTYLE" xml:space="preserve"><value>寸法スタイル</value></data>
+  <data name="LBL_DIMLEVEL" xml:space="preserve"><value>レベル</value></data>
+  <data name="LBL_DIMGRID" xml:space="preserve"><value>通り芯</value></data>
+  <data name="PROC_INFO" xml:space="preserve"><value>展開図を作成します。開始ボタンを押してください。</value></data>
+  <data name="BTN_START" xml:space="preserve"><value>開始</value></data>
+  <data name="BTN_STOP" xml:space="preserve"><value>中止</value></data>
+</root>

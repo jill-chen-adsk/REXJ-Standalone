@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>変換確認</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>変換確認</H2>
+        <table width="600" align="left">
+            <tr>
+                <td>『ST-Bridge Link』起動時にプロジェクトにロードされた変換ファミリテーブルに<br>一致するファミリを抽出し、変換ファミリ項目にファミリ名称を表示する。<br><br>
+                    → 柱脚の変換確認は <a href="033.html">こちら</a> を参照<br><br>
+
+                    <img src="Image/007_01.png" alt="" style="WIDTH: 579px">
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <table BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;部材変換</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="image/021_04.png" alt=""></td>
+                                        <td bgcolor="#ffffff">各部材の「生成する／しない」を選択する<br>（生成しないを選択した場合は、変換ファミリ項目の内容に関わらずモデル生成しない）</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <table BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;変換ファミリ項目</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr bgcolor="#ddffee" align="center">
+                                        <td>表示</td>
+                                        <td>データ・ファミリの有無</td>
+                                        <td>モデル生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>ファミリ名称が表示される</td>
+                                        <td>ST-Bridgeファイルにデータが存在する／ロード済ファミリが存在する</td>
+                                        <td>モデル生成する</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>空欄</td>
+                                        <td>ST-Bridgeファイルにデータが存在しない／ロード済ファミリの存在に関わらず</td>
+                                        <td>モデル生成しない</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>未ロードのため変換不可</td>
+                                        <td>ST-Bridgeファイルにデータが存在する／ロード済ファミリが存在しない<br>※未ロードのファミリがある場合はタブに<br>　&quot;&lt;未ロードあり&gt;&quot;を表示</td>
+                                        <td>モデル生成しない</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <table BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;軸変換設定</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="image/007_07.png" alt=""></td>
+                                        <td bgcolor="#ffffff">通り軸に所属する節点を結ぶように軸を生成する。軸からずれている節点がある場合折れ線となる。</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="image/007_08.png" alt=""></td>
+                                        <td bgcolor="#ffffff">基準点からの距離で軸を生成する。常に直線形状で軸が生成される。</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <table BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;コメントへのデバッグ出力</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="image/007_09.png" alt=""></td>
+                                        <td bgcolor="#ffffff">生成インスタンスのコメントパラメータにSTBファイル上のID生成ログを「出力する／しない」を選択する。コメントパラメータには上書き出力される。</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <table BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;各ボタン操作</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_06.png" alt=""></td>
+                                        <td bgcolor="#ffffff">「未ロードのため変換不可」の場合に表示され、該当部材のファミリをロードするためのファミリ選択ダイアログを表示する</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_02.png" alt=""></td>
+                                        <td bgcolor="#ffffff">レベルマッピングを行う<br>
+                                            → <a href="008.html">レベルマッピング</a></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_03.png" alt=""></td>
+                                        <td bgcolor="#ffffff">変換確認を中止し ST-Bridge Link を終了する</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_04.png" alt=""></td>
+                                        <td bgcolor="#ffffff">『ST-Bridge Link』のヘルプを表示する</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_05.png" alt=""></td>
+                                        <td bgcolor="#ffffff">『ST-Bridge Link』のバージョン情報を表示する</td>
+                                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Schedule Export</Name>
+    <Assembly>ADSK.JExtRAC.ExportSchedule.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.ExportSchedule.App</FullClassName>
+    <ClientId>7A2B8C3D-4E5F-6A7B-8C9D-0E1F2A3B4C5D</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

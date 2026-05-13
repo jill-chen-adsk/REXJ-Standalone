@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Parameter Filter</Name>
+    <Assembly>ADSK.JExtRAC.ParameterFilter.dll</Assembly>
+    <AddInId>F08CE9F4-0B2D-47A2-9E72-DD52A7BA8964</AddInId>
+    <FullClassName>ADSK.JExtRAC.ParameterFilter.App</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

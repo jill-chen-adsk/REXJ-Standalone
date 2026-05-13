@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_ERROR_FORMAT_SCALE" xml:space="preserve">
+    <value>”1:整数”形式で入力してください。</value>
+  </data>
+  <data name="IDS_ERR_NO_PLANE" xml:space="preserve">
+    <value>このビューでスケッチ面が見つかりません</value>
+  </data>
+  <data name="IDS_ERR_NO_PRINTER" xml:space="preserve">
+    <value>プリンタがインストールされていません</value>
+  </data>
+  <data name="IDS_ERR_SAME_POINT" xml:space="preserve">
+    <value>同じポイントでビューを作成できません</value>
+  </data>
+  <data name="IDS_INFO_PICK_POINT_1" xml:space="preserve">
+    <value>ポイント1を選択</value>
+  </data>
+  <data name="IDS_INFO_PICK_POINT_2" xml:space="preserve">
+    <value>ポイント2を選択</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_LOCATESLAB" xml:space="preserve">
+    <value>RexJpn-PrintRegion-Config</value>
+    <comment>共有パラメーター定義名コマンド印刷領域</comment>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+    <comment>共有パラメータ　ファイル名</comment>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+    <comment>共有パラメータ　グループ名</comment>
+  </data>
+  <data name="IDS_TXT_APPEARANCE" xml:space="preserve">
+    <value>外観</value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>キャンセル</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="IDS_TXT_CENTER" xml:space="preserve">
+    <value>中心</value>
+  </data>
+  <data name="IDS_TXT_COLORS" xml:space="preserve">
+    <value>カラー</value>
+  </data>
+  <data name="IDS_TXT_DELETE" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="IDS_TXT_FIT_TO_PAGE" xml:space="preserve">
+    <value>ページに合わせる</value>
+  </data>
+  <data name="IDS_TXT_HIDDEN_LINES_VIEWS" xml:space="preserve">
+    <value>隠線処理のビュー</value>
+  </data>
+  <data name="IDS_TXT_HIDE_CROP_BOUNDARIES" xml:space="preserve">
+    <value>トリミング境界を非表示</value>
+  </data>
+  <data name="IDS_TXT_HIDE_REF_WORK_PLANES" xml:space="preserve">
+    <value>参照面と作業面を非表示</value>
+  </data>
+  <data name="IDS_TXT_HIDE_SCOPE_BOXED" xml:space="preserve">
+    <value>スコープボックスを非表示</value>
+  </data>
+  <data name="IDS_TXT_HIDE_UNREFERENCED_VIEW_TAGS" xml:space="preserve">
+    <value>未参照のビュータグを非表示</value>
+  </data>
+  <data name="IDS_TXT_LANDSCAPE" xml:space="preserve">
+    <value>横</value>
+  </data>
+  <data name="IDS_TXT_NAME" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="IDS_TXT_NEW" xml:space="preserve">
+    <value>新しい</value>
+  </data>
+  <data name="IDS_TXT_OFFSET_FROM_CONER" xml:space="preserve">
+    <value>出力オフセット</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+    <comment>OK</comment>
+  </data>
+  <data name="IDS_TXT_OPTION" xml:space="preserve">
+    <value>オプション</value>
+  </data>
+  <data name="IDS_TXT_ORIENTATION" xml:space="preserve">
+    <value>向き</value>
+  </data>
+  <data name="IDS_TXT_PAPER" xml:space="preserve">
+    <value>用紙</value>
+  </data>
+  <data name="IDS_TXT_PAPER_PLACEMENT" xml:space="preserve">
+    <value>用紙の配置</value>
+  </data>
+  <data name="IDS_TXT_PICK_AREA" xml:space="preserve">
+    <value>印刷用の長方形領域をドラックで指定してください。</value>
+  </data>
+  <data name="IDS_TXT_PORTRAIT" xml:space="preserve">
+    <value>縦</value>
+  </data>
+  <data name="IDS_TXT_PREVIEW" xml:space="preserve">
+    <value>ビュースケール更新</value>
+  </data>
+  <data name="IDS_TXT_PREVIOUS" xml:space="preserve">
+    <value>変更前</value>
+  </data>
+  <data name="IDS_TXT_PRINTER_NAME" xml:space="preserve">
+    <value>プリンタ</value>
+  </data>
+  <data name="IDS_TXT_PRINT_REGION" xml:space="preserve">
+    <value>出力</value>
+  </data>
+  <data name="IDS_TXT_PRINT_SCALE" xml:space="preserve">
+    <value>印刷スケール</value>
+  </data>
+  <data name="IDS_TXT_PRINT_SETUP" xml:space="preserve">
+    <value>出力設定</value>
+  </data>
+  <data name="IDS_TXT_PROPERTIES" xml:space="preserve">
+    <value>出力設定</value>
+  </data>
+  <data name="IDS_TXT_RASTER_PROCESSING" xml:space="preserve">
+    <value>ラスター処理</value>
+  </data>
+  <data name="IDS_TXT_RASTER_QUALITY" xml:space="preserve">
+    <value>ラスター品質</value>
+  </data>
+  <data name="IDS_TXT_REGION_EDGES_MASK_COINCIDENT_LINES" xml:space="preserve">
+    <value>同じ場所にある線を領域エッジでマスク</value>
+  </data>
+  <data name="IDS_TXT_REMOVE_LINES_USING" xml:space="preserve">
+    <value>次を使用して線分を削除 :</value>
+  </data>
+  <data name="IDS_TXT_RENAME" xml:space="preserve">
+    <value>名前変更</value>
+  </data>
+  <data name="IDS_TXT_REPLACE_HALFTONE_WITH_THIN_LINES" xml:space="preserve">
+    <value>ハーフトーンを細線に置き換え</value>
+  </data>
+  <data name="IDS_TXT_REVERT" xml:space="preserve">
+    <value>以前の状態に戻す</value>
+  </data>
+  <data name="IDS_TXT_SAVE" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="IDS_TXT_SAVE_AS" xml:space="preserve">
+    <value>名前を付けて保存</value>
+  </data>
+  <data name="IDS_TXT_SCALE_FORMAT" xml:space="preserve">
+    <value>1:{0}</value>
+  </data>
+  <data name="IDS_TXT_SHOW_LOG_ENG" xml:space="preserve">
+    <value>Revit could not start the print job because it was unable to connect to the specified printer. Check your printer connectivity and try again.</value>
+  </data>
+  <data name="IDS_TXT_SHOW_LOG_JPN" xml:space="preserve">
+    <value>指定されたプリンタに接続できないため、Revit は出力ジョブを開始できませんでした。プリンタの接続を確認して、やり直してください。</value>
+  </data>
+  <data name="IDS_TXT_SIZE" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="IDS_TXT_SOURCE" xml:space="preserve">
+    <value>ソース</value>
+  </data>
+  <data name="IDS_TXT_VECTOR_PROCESSING" xml:space="preserve">
+    <value>ベクター処理</value>
+  </data>
+  <data name="IDS_TXT_VIEW_LINKS_IN_BLUE" xml:space="preserve">
+    <value>リンクを青で表示（カラー印刷のみ）</value>
+  </data>
+  <data name="IDS_TXT_ZOOM" xml:space="preserve">
+    <value>ズーム</value>
+  </data>
+  <data name="IDS_TXT_TRANSACTION_PRINT_REGION" xml:space="preserve">
+    <value>範囲指定印刷</value>
+  </data>
+  <data name="IDS_TXT_MARGIN_NO_MARGIN" xml:space="preserve">
+    <value>余白なし</value>
+  </data>
+  <data name="IDS_TXT_MARGIN_PRINTER_LIMIT" xml:space="preserve">
+    <value>プリンタの上限</value>
+  </data>
+  <data name="IDS_TXT_MARGIN_USER_DEFINED" xml:space="preserve">
+    <value>ユーザ設定</value>
+  </data>
+  <data name="IDS_TXT_RASTER_LOW" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="IDS_TXT_RASTER_MEDIUM" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="IDS_TXT_RASTER_HIGH" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="IDS_TXT_RASTER_PRESENTATION" xml:space="preserve">
+    <value>仕上</value>
+  </data>
+  <data name="IDS_TXT_COLOR_MONOCHROME" xml:space="preserve">
+    <value>モノクロ</value>
+  </data>
+  <data name="IDS_TXT_COLOR_GRAYSCALE" xml:space="preserve">
+    <value>グレースケール</value>
+  </data>
+  <data name="IDS_TXT_COLOR_COLOR" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="IDS_TXT_INVALID_INPUT" xml:space="preserve">
+    <value>無効な入力</value>
+  </data>
+  <data name="IDS_TXT_VIEW_PRINTER" xml:space="preserve">
+    <value>View Printer</value>
+  </data>
+</root>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Import Excel</Name>
+    <Assembly>ADSK.JExtRAC.ImportExcel.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.ImportExcel.App</FullClassName>
+    <ClientId>A3D72F1E-8B45-4C9A-B6E1-7D3F92A54C80</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

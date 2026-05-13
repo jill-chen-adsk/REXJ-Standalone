@@ -1,0 +1,118 @@
+<Window x:Class="MepManholeTool.Views.ParameterMappingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MepManholeTool.Views"
+        mc:Ignorable="d"
+        Title="Parameter Mapping" Height="450" Width="450">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <Label Content="Select Family:"/>
+            <ComboBox x:Name="FamilyComboBox" 
+                      ItemsSource="{Binding Families}"
+                      SelectedItem="{Binding SelectedFamily}"
+                      DisplayMemberPath="Name"
+                      Width="300"
+                      HorizontalAlignment="Left"
+                      Margin="0,5,0,0"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="ParameterMappingGrid" 
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserResizeColumns="False"
+                      CanUserReorderColumns="False"
+                      CanUserSortColumns="False"
+                      RowHeaderWidth="0" 
+                      IsReadOnly="False"
+                      ItemsSource="{Binding ParameterMappings}"
+                      Margin="0,5,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Revit Category" Binding="{Binding RevitCategory, Mode=TwoWay}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Target Parameter Name" Binding="{Binding FromParameter, Mode=TwoWay}" Width="*" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Parameter Name" Width="*">  
+                        <DataGridTemplateColumn.CellTemplate>  
+                            <DataTemplate>
+                                <Grid>
+                                    <ComboBox ItemsSource="{Binding DataContext.AvailableParameters, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    SelectedItem="{Binding ToParameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    IsHitTestVisible="False"
+                                    IsEnabled="False">
+                                        <ComboBox.Style>
+                                            <Style TargetType="ComboBox">
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding ToParameter}" Value="{x:Null}"/>
+                                                            <Condition Binding="{Binding Required}" Value="False"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </MultiDataTrigger>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding ToParameter}" Value=""/>
+                                                            <Condition Binding="{Binding Required}" Value="False"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                    </ComboBox>
+                                    <TextBlock Text="Optional" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding ToParameter}" Value="{x:Null}"/>
+                                                            <Condition Binding="{Binding Required}" Value="False"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </MultiDataTrigger>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding ToParameter}" Value=""/>
+                                                            <Condition Binding="{Binding Required}" Value="False"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                            </DataTemplate>  
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>  
+                                <StackPanel>
+                                    <ComboBox 
+                                    ItemsSource="{Binding DataContext.AvailableParameters, RelativeSource={RelativeSource AncestorType=Window}}"
+                                    SelectedItem="{Binding ToParameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    IsEditable="True"
+                                    />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="OK" Width="80" Height="30" Command="{Binding OKCommand}" Margin="0,0,10,0"/>
+            <Button Content="Cancel" Width="80" Height="30" Command="{Binding CancelCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>

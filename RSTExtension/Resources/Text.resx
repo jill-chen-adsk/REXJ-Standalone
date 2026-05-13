@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="IDS_TXT_RSTHELPHTM" xml:space="preserve"><value>Structure_Extension_Manual.pdf</value></data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve"><value>REXJ Standalone</value></data>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve"><value>Structure Tag Filter</value></data>
+  <data name="IDS_PUL_STRUCTURAL_EXT" xml:space="preserve"><value>Structure Tag Filter</value></data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve"><value>JExtRSTParam.txt</value></data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve"><value>JExtRST</value></data>
+  <data name="IDS_SHPARAM_DEF_SLABLEVEL" xml:space="preserve"><value>JExtRST-スラブレベル</value></data>
+  <data name="IDS_SHPARAM_DEF_EXCLSPMENTION_WALL" xml:space="preserve"><value>JExtRST-特記外設定-壁</value></data>
+  <data name="IDS_SHPARAM_DEF_EXCLSPMENTION_COLUMN" xml:space="preserve"><value>JExtRST-特記外設定-柱</value></data>
+  <data name="IDS_SHPARAM_DEF_EXCLSPMENTION_BEAM" xml:space="preserve"><value>JExtRST-特記外設定-梁</value></data>
+  <data name="IDS_SHPARAM_DEF_EXCLSPMENTION_SLAB" xml:space="preserve"><value>JExtRST-特記外設定-スラブ</value></data>
+  <data name="IDS_SHPARAM_DEF_EXCLSPMENTION_FOUNDATION" xml:space="preserve"><value>JExtRST-特記外設定-基礎</value></data>
+  <data name="IDS_COLNAME_ID" xml:space="preserve"><value>ID</value></data>
+  <data name="IDS_COLNAME_NAME" xml:space="preserve"><value>Name</value></data>
+  <data name="IDS_COLNAME_LEVEL" xml:space="preserve"><value>Level</value></data>
+  <data name="IDS_COLNAME_HEIGHT" xml:space="preserve"><value>Height</value></data>
+  <data name="IDS_COLNAME_SLABLEVEL" xml:space="preserve"><value>Slab level</value></data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve"><value>The command failed.</value></data>
+  <data name="IDS_ERR_OPENVIEWPLAN" xml:space="preserve"><value>Open a plan view before running this command.</value></data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve"><value>Failed to create or bind the shared parameter definition.</value></data>
+  <data name="IDS_ERR_SETLEVELVIEW" xml:space="preserve"><value>The active view does not have a level assigned.</value></data>
+  <data name="IDS_ERR_WORKVIEW" xml:space="preserve"><value>The working view or level selection is not valid.</value></data>
+  <data name="IDS_ERR_ACTIVEVIEW" xml:space="preserve"><value>No active view is available.</value></data>
+  <data name="IDS_ERR_NOTTAGDATA" xml:space="preserve"><value>No exclusion items are defined.</value></data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve"><value>Category</value></data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve"><value>Parameter</value></data>
+  <data name="IDS_TXT_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve"><value>Cancel</value></data>
+  <data name="IDS_TXT_NAME" xml:space="preserve"><value>Name</value></data>
+  <data name="IDS_TXT_HEIGHT" xml:space="preserve"><value>Elevation</value></data>
+  <data name="IDS_TXT_SLABLEVEL" xml:space="preserve"><value>Slab level</value></data>
+  <data name="IDS_TXT_REGISTLEVEL" xml:space="preserve"><value>Register slab level</value></data>
+  <data name="IDS_TXT_CORRECTFRAMINGPLAN" xml:space="preserve"><value>Correct Framing Plan</value></data>
+  <data name="IDS_TXT_EXPLANELEM" xml:space="preserve"><value>From the structural elements shown in the plan view,</value></data>
+  <data name="IDS_TXT_EXPLANELEMBASE" xml:space="preserve"><value>the columns, walls, and vertical braces on</value></data>
+  <data name="IDS_TXT_EXPLANELEMWORK" xml:space="preserve"><value>and the girders, beams, horizontal braces, and slabs on</value></data>
+  <data name="IDS_TXT_WORKHIDDEN" xml:space="preserve"><value>all other elements will be hidden.</value></data>
+  <data name="IDS_TXT_EXCLUSIONSPECIALMENTION" xml:space="preserve"><value>Exclusion Special Mention</value></data>
+  <data name="IDS_TXT_MARK" xml:space="preserve"><value>Mark</value></data>
+  <data name="IDS_TXT_LEVEL" xml:space="preserve"><value>Level</value></data>
+  <data name="IDS_TXT_FRAME" xml:space="preserve"><value>Structural framing</value></data>
+  <data name="IDS_TXT_GIRDER" xml:space="preserve"><value>Girder</value></data>
+  <data name="IDS_TXT_BEAM" xml:space="preserve"><value>Beam</value></data>
+  <data name="IDS_TXT_HBRACE" xml:space="preserve"><value>Horizontal brace</value></data>
+  <data name="IDS_TXT_VBRACE" xml:space="preserve"><value>Vertical brace</value></data>
+  <data name="IDS_TXT_OTHER" xml:space="preserve"><value>Other</value></data>
+  <data name="IDS_TXT_WALL" xml:space="preserve"><value>Wall</value></data>
+  <data name="IDS_TXT_EXTWALL" xml:space="preserve"><value>Exterior wall</value></data>
+  <data name="IDS_TXT_INTWALL" xml:space="preserve"><value>Interior wall</value></data>
+  <data name="IDS_TXT_SLAB" xml:space="preserve"><value>Slab</value></data>
+  <data name="IDS_TXT_COLUMN" xml:space="preserve"><value>Column</value></data>
+  <data name="IDS_TXT_FOUNDATION" xml:space="preserve"><value>Foundation</value></data>
+  <data name="IDS_TXT_DISPRESET" xml:space="preserve"><value>Show / reset</value></data>
+  <data name="IDS_TXT_NONDISP" xml:space="preserve"><value>Hide</value></data>
+  <data name="IDS_TXT_NOTHING" xml:space="preserve"><value>(None)</value></data>
+  <data name="IDS_TXT_TITLE_EXCLUSIONSPECIALMENTION" xml:space="preserve"><value>Exclusions are per the following</value></data>
+  <data name="IDS_VIEW_EXCLUSIONSPECIALMENTIONITEM" xml:space="preserve"><value>Exclusion items</value></data>
+  <data name="IDS_BTN_CORRECTFRAMINGPLAN_TT" xml:space="preserve"><value>Hides structural elements that do not belong to the selected slab level / work level. Activate a plan view before use.</value></data>
+  <data name="IDS_BTN_ESM_TT" xml:space="preserve"><value>Hides tag exceptions on the sheet for printing. Activate a view before use.</value></data>
+</root>

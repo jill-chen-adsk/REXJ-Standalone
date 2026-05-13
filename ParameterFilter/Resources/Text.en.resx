@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>Command failed</value>
+  </data>
+  <data name="IDS_ERR_ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IDS_ERR_GREATER0" xml:space="preserve">
+    <value>Please enter an integer of 0 or greater</value>
+  </data>
+  <data name="IDS_ERR_GREATERMAX" xml:space="preserve">
+    <value>Value must be less than or equal to the maximum</value>
+  </data>
+  <data name="IDS_ERR_LESSMIN" xml:space="preserve">
+    <value>Value must be greater than or equal to the minimum</value>
+  </data>
+  <data name="IDS_ERR_MINMAXVALUE" xml:space="preserve">
+    <value>Maximum must be greater than or equal to minimum</value>
+  </data>
+  <data name="IDS_ERR_NOELEMENTSELECT" xml:space="preserve">
+    <value>Please select elements</value>
+  </data>
+  <data name="IDS_ERR_NUMBERONLY" xml:space="preserve">
+    <value>Please enter an integer of 0 or greater</value>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Parameter definition failed</value>
+  </data>
+  <data name="IDS_ERR_SELECTTAB" xml:space="preserve">
+    <value>Use the &lt;&lt; Back and Next &gt;&gt; buttons to navigate between tabs.</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD" xml:space="preserve">
+    <value>RexJpn-LevelFilter</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="IDS_TXT_COUNT" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="IDS_TXT_COUNTOBJECT" xml:space="preserve">
+    <value>Total Selected</value>
+  </data>
+  <data name="IDS_TXT_COUNTTYPE" xml:space="preserve">
+    <value>Selected Types</value>
+  </data>
+  <data name="IDS_TXT_DGVPARAMETERGROUP" xml:space="preserve">
+    <value>Parameter Group List</value>
+  </data>
+  <data name="IDS_TXT_FAMILY" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="IDS_TXT_FAMILYTYPE" xml:space="preserve">
+    <value>Family Type</value>
+  </data>
+  <data name="IDS_TXT_FILTERFORM" xml:space="preserve">
+    <value>Parameter Filter</value>
+  </data>
+  <data name="IDS_TXT_NEXT" xml:space="preserve">
+    <value>Next &gt;&gt;</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_TXT_OTHER" xml:space="preserve">
+    <value>&lt;None&gt;</value>
+  </data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="IDS_TXT_PARAMETERGROUP" xml:space="preserve">
+    <value>Parameter Group Settings</value>
+  </data>
+  <data name="IDS_TXT_PNTCHECK" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="IDS_TXT_PREVIOUS" xml:space="preserve">
+    <value>&lt;&lt; Back</value>
+  </data>
+  <data name="IDS_TXT_PROGESSBAR" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="IDS_TXT_SELECTALL" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="IDS_TXT_SELECTCLEAR" xml:space="preserve">
+    <value>Clear Selection</value>
+  </data>
+  <data name="IDS_TXT_SELECTCONNECT" xml:space="preserve">
+    <value>Select Connected Elements</value>
+  </data>
+  <data name="IDS_TXT_SETTINGPARAMETERGROUP" xml:space="preserve">
+    <value>Parameter Group Settings</value>
+  </data>
+  <data name="IDS_TXT_VALUEPARAMETER" xml:space="preserve">
+    <value>Value (mm)</value>
+  </data>
+  <data name="IDS_TXT_VALUEPARAMETERMAX" xml:space="preserve">
+    <value>Max Value (mm)</value>
+  </data>
+  <data name="IDS_TXT_VALUEPARAMETERMIN" xml:space="preserve">
+    <value>Min Value (mm)</value>
+  </data>
+</root>

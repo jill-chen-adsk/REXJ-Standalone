@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>MEPConnectTool</Name>
+    <Assembly>MEPConnectTool\MEPConnectTool.dll</Assembly>
+    <AddInId>D1E2F3A4-B5C6-7890-DEF1-234567890ABC</AddInId>
+    <FullClassName>MEPConnectTool.App</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

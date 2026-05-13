@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REXJ Standalone Add-ins for Revit 2027 — Installation &amp; Usage Guide</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1a2e;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --border: #e2e8f0;
+      --code-bg: #f8fafc;
+      --code-fg: #334155;
+      --success: #16a34a;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --muted: #64748b;
+      --card-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+      --radius: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--fg);
+      background: #f1f5f9;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ─── Header ─── */
+    .hero {
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 48px 40px 40px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 24px rgba(37,99,235,.25);
+    }
+    .hero h1 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+    }
+    .hero .subtitle {
+      font-size: 1.05rem;
+      opacity: .88;
+    }
+
+    /* ─── Overview cards ─── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 24px;
+      border-left: 4px solid var(--accent);
+    }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .card .panel-name {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .card p { font-size: .92rem; color: #475569; }
+
+    /* ─── Sections ─── */
+    .section {
+      background: var(--bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 32px 36px;
+      margin-bottom: 24px;
+    }
+    .section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent-light);
+    }
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 10px;
+    }
+    .section h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 20px 0 8px;
+      color: #334155;
+    }
+    .section p, .section li {
+      font-size: .95rem;
+      color: #334155;
+    }
+    .section p { margin-bottom: 12px; }
+    .section ul, .section ol {
+      margin: 8px 0 16px 24px;
+    }
+    .section li { margin-bottom: 6px; }
+    .section li ul { margin-top: 6px; }
+    .section hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    /* ─── Inline code ─── */
+    code {
+      font-family: "Cascadia Code", "Fira Code", "Consolas", monospace;
+      font-size: .87em;
+      background: var(--code-bg);
+      color: var(--code-fg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* ─── Code blocks ─── */
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      border-radius: 6px;
+      padding: 18px 20px;
+      overflow-x: auto;
+      margin: 12px 0 18px;
+      line-height: 1.55;
+    }
+    pre code {
+      background: none;
+      border: none;
+      color: inherit;
+      padding: 0;
+      font-size: .88em;
+    }
+    .lang-label {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+
+    /* ─── Tables ─── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: .92rem;
+    }
+    th {
+      background: var(--accent-light);
+      font-weight: 600;
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--accent);
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f8fafc; }
+
+    /* ─── Badges ─── */
+    .badge {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 999px;
+      vertical-align: middle;
+    }
+    .badge-success { background: #dcfce7; color: var(--success); }
+    .badge-warning { background: #fef3c7; color: var(--warning); }
+    .badge-danger  { background: #fee2e2; color: var(--danger); }
+    .badge-muted   { background: #f1f5f9; color: var(--muted); }
+
+    /* ─── Callouts ─── */
+    .callout {
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: .92rem;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .callout-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .callout-info  { background: #eff6ff; border-left: 4px solid #2563eb; }
+    .callout-warn  { background: #fffbeb; border-left: 4px solid #d97706; }
+    .callout-tip   { background: #f0fdf4; border-left: 4px solid #16a34a; }
+
+    /* ─── Tree diagram ─── */
+    .tree pre {
+      background: var(--code-bg);
+      color: var(--code-fg);
+      border: 1px solid var(--border);
+      font-size: .85em;
+      line-height: 1.6;
+    }
+
+    /* ─── Print ─── */
+    @media print {
+      body { background: #fff; }
+      .page { padding: 0; }
+      .hero { box-shadow: none; }
+      .section { box-shadow: none; border: 1px solid #e2e8f0; }
+      pre { border: 1px solid #ccc; }
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 640px) {
+      .hero { padding: 32px 24px 28px; }
+      .hero h1 { font-size: 1.4rem; }
+      .section { padding: 24px 20px; }
+    }
+
+    /* ─── TOC ─── */
+    .toc {
+      background: var(--bg);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 24px 32px;
+      margin-bottom: 24px;
+    }
+    .toc h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 12px;
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .toc li {
+      margin-bottom: 4px;
+      font-size: .93rem;
+    }
+    .toc a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .toc a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>REXJ Standalone Add-ins for Revit 2027</h1>
+    <div class="subtitle">Installation &amp; Usage Guide</div>
+  </div>
+
+  <p style="margin-bottom:20px;font-size:.95rem;color:#334155;line-height:1.7">This guide explains how to install and use the <strong>eighteen</strong> standalone Revit 2027 add-ins. All eighteen appear under the shared <strong>REXJ Standalone</strong> ribbon tab, organized into panels: <strong>Section Box</strong>, <strong>Parameter Filter</strong>, <strong>Value Copy</strong>, <strong>Excel</strong>, <strong>Auto Floor</strong>, <strong>Join</strong>, <strong>Filter</strong>, <strong>Room</strong>, <strong>Print</strong>, <strong>Placement</strong>, <strong>Tagging</strong>, <strong>Sheets</strong>, and <strong>Views</strong>.</p>
+
+  <table>
+    <thead>
+      <tr><th>Add-in</th><th>Ribbon panel</th><th>Button(s)</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Enhanced Section Box</strong></td>
+        <td>Section Box</td>
+        <td><strong>Section Box Adjustment</strong>, <strong>Box View</strong></td>
+        <td>Adjust 3D section box dimensions and create box views from selected elements</td>
+      </tr>
+      <tr>
+        <td><strong>Parameter Filter</strong></td>
+        <td>Parameter Filter</td>
+        <td><strong>Parameter Filter</strong></td>
+        <td>Filter and select elements by their length parameters</td>
+      </tr>
+      <tr>
+        <td><strong>Value Copy (Eyedropper)</strong></td>
+        <td>Value Copy</td>
+        <td><strong>Copy Parameter</strong></td>
+        <td>Copy parameter values from one element to others</td>
+      </tr>
+      <tr>
+        <td><strong>Excel Export</strong></td>
+        <td>Excel</td>
+        <td><strong>Export Excel</strong></td>
+        <td>Export Revit element data (parameters) to Excel (.xlsx, .xls) or CSV format</td>
+      </tr>
+      <tr>
+        <td><strong>Excel Import</strong></td>
+        <td>Excel</td>
+        <td><strong>Import Excel</strong></td>
+        <td>Import parameter values from Excel back into Revit elements</td>
+      </tr>
+      <tr>
+        <td><strong>Auto Floor Creation</strong></td>
+        <td>Auto Floor</td>
+        <td><strong>Architecture Floor</strong>, <strong>Structural Floor</strong>, <strong>Foundation Slab</strong></td>
+        <td>Automatically create floors/slabs from wall or beam boundaries</td>
+      </tr>
+      <tr>
+        <td><strong>Join Adjustment</strong></td>
+        <td>Join</td>
+        <td><strong>Join Adjustment</strong></td>
+        <td>Adjust element join order and priority between overlapping structural elements</td>
+      </tr>
+      <tr>
+        <td><strong>Join Order Inspector</strong></td>
+        <td>Join</td>
+        <td><strong>Join Order Inspector</strong></td>
+        <td>Visually inspect which elements cut or are cut by a selected element at joins</td>
+      </tr>
+      <tr>
+        <td><strong>Schedule Export</strong></td>
+        <td>Excel</td>
+        <td><strong>Schedule Export</strong></td>
+        <td>Export the active schedule (&#38598;&#35336;&#34920;) to Excel with UID, Type, and Instance breakdown sheets</td>
+      </tr>
+      <tr>
+        <td><strong>Excel Image Insert</strong></td>
+        <td>Excel</td>
+        <td><strong>Excel Image Insert</strong></td>
+        <td>Capture the current Excel selection as a bitmap and insert it as an image in the active Revit view</td>
+      </tr>
+      <tr>
+        <td><strong>Level Filter</strong></td>
+        <td>Filter</td>
+        <td><strong>Level Filter</strong></td>
+        <td>Filter and select elements by category, family, family type, material (parts), or rule filters</td>
+      </tr>
+      <tr>
+        <td><strong>Room View Creation</strong></td>
+        <td>Room</td>
+        <td><strong>Room View Creation</strong></td>
+        <td>Automatically create floor/ceiling plan views cropped to individual room boundaries</td>
+      </tr>
+      <tr>
+        <td><strong>Range Print</strong></td>
+        <td>Print</td>
+        <td><strong>Range Print</strong></td>
+        <td>Print a user-selected rectangular region of any view with full print setup control</td>
+      </tr>
+      <tr>
+        <td><strong>Auto Tag Placement</strong></td>
+        <td>Tagging</td>
+        <td><strong>Auto Tag Placement</strong></td>
+        <td>Automatically place tags on elements with intelligent collision-free positioning</td>
+      </tr>
+      <tr>
+        <td><strong>Instance Array Layout</strong></td>
+        <td>Placement</td>
+        <td><strong>Instance Array Layout</strong></td>
+        <td>Place family instances in an array pattern within a specified region</td>
+      </tr>
+      <tr>
+        <td><strong>Auto Sheet Layout</strong></td>
+        <td>Sheets</td>
+        <td><strong>Auto Sheet Layout</strong></td>
+        <td>Automatically lay out views and schedules on new sheets based on a reference sheet</td>
+      </tr>
+      <tr>
+        <td><strong>View Duplicate</strong></td>
+        <td>Views</td>
+        <td><strong>View Duplicate</strong></td>
+        <td>Duplicate selected views with custom naming, view types, and view templates</td>
+      </tr>
+      <tr>
+        <td><strong>Interior Elevation for Room</strong></td>
+        <td>Views</td>
+        <td><strong>Interior Elevation for Room</strong></td>
+        <td>Automatically create interior elevation views for rooms</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Overview cards -->
+  <div class="cards">
+    <div class="card">
+      <h3>Enhanced Section Box</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Section Box</div>
+      <p>Adjust 3D section box dimensions and create box views from selected elements.</p>
+    </div>
+    <div class="card">
+      <h3>Parameter Filter</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Parameter Filter</div>
+      <p>Filter and select elements by their length parameters with value or range matching.</p>
+    </div>
+    <div class="card">
+      <h3>Value Copy (Eyedropper)</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Value Copy</div>
+      <p>Copy parameter values from a source element to one or more target elements.</p>
+    </div>
+    <div class="card">
+      <h3>Excel Export</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Excel</div>
+      <p>Export Revit element data (parameters) to Excel (.xlsx, .xls) or CSV format.</p>
+    </div>
+    <div class="card">
+      <h3>Excel Import</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Excel</div>
+      <p>Import parameter values from Excel back into Revit elements.</p>
+    </div>
+    <div class="card">
+      <h3>Auto Floor Creation</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Auto Floor</div>
+      <p>Automatically create architectural floors, structural floors, and foundation slabs from wall or beam boundaries.</p>
+    </div>
+    <div class="card">
+      <h3>Schedule Export</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Excel</div>
+      <p>Export the active schedule to Excel with UID, Type, and Instance breakdown sheets.</p>
+    </div>
+    <div class="card">
+      <h3>Excel Image Insert</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Excel</div>
+      <p>Capture the current Excel selection as a bitmap and insert it into the active Revit view.</p>
+    </div>
+    <div class="card">
+      <h3>Level Filter</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Filter</div>
+      <p>Filter and select elements by category, family, family type, material (parts), or rule filters.</p>
+    </div>
+    <div class="card">
+      <h3>Room View Creation</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Room</div>
+      <p>Automatically create floor or ceiling plan views cropped to individual room boundaries, with configurable view types, templates, room tags, and crop shapes.</p>
+    </div>
+    <div class="card">
+      <h3>Range Print</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Print</div>
+      <p>Print a user-selected rectangular region of any view with full print setup control.</p>
+    </div>
+    <div class="card">
+      <h3>Auto Tag Placement</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Tagging</div>
+      <p>Automatically place tags on elements with intelligent collision-free positioning.</p>
+    </div>
+    <div class="card">
+      <h3>Instance Array Layout</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Placement</div>
+      <p>Place family instances in an array pattern within a specified region.</p>
+    </div>
+    <div class="card">
+      <h3>Auto Sheet Layout</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Sheets</div>
+      <p>Automatically lay out views and schedules on new sheets based on a reference sheet.</p>
+    </div>
+    <div class="card">
+      <h3>View Duplicate</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Views</div>
+      <p>Duplicate selected views with custom naming, view types, and view templates.</p>
+    </div>
+    <div class="card">
+      <h3>Interior Elevation for Room</h3>
+      <div class="panel-name">Ribbon: REXJ Standalone &rarr; Views</div>
+      <p>Automatically create interior elevation views for rooms.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-bottom:24px">
+    <span class="callout-icon">&#127760;</span>
+    <span>All eighteen add-ins support <strong>Japanese</strong> (default) and <strong>English</strong> UI. See <a href="#language" style="color:var(--accent)">Language / Localization</a> for details.</span>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#prerequisites">Prerequisites</a></li>
+      <li><a href="#build">Step 1: Build the Add-ins</a></li>
+      <li><a href="#install">Step 2: Install the Add-ins</a></li>
+      <li><a href="#launch">Step 3: Launch Revit 2027</a></li>
+      <li><a href="#usage">Using the Add-ins</a></li>
+      <li><a href="#language">Language / Localization</a></li>
+      <li><a href="#uninstall">Uninstalling</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#structure">Project Structure Reference</a></li>
+    </ol>
+  </div>
+
+  <!-- Prerequisites -->
+  <div class="section" id="prerequisites">
+    <h2>Prerequisites</h2>
+    <ul>
+      <li><strong>Revit 2027</strong> installed at <code>C:\Program Files\Autodesk\Revit 2027\</code></li>
+      <li><strong>Microsoft Excel</strong> installed (required for Excel Export and Excel Import add-ins &mdash; uses COM Interop)</li>
+      <li>No other dependencies required &mdash; the add-ins are fully self-contained</li>
+      <li>Auto Floor Creation requires an <code>AutomaticFloor.xml</code> configuration file (included automatically in the build output)</li>
+    </ul>
+  </div>
+
+  <!-- Step 1: Build -->
+  <div class="section" id="build">
+    <h2>Step 1: Build the Add-ins</h2>
+    <p>If the add-ins have not already been built, open a terminal (Command Prompt or PowerShell) and run:</p>
+    <div class="lang-label">Command Line</div>
+    <pre><code>dotnet build "C:\REXJ\Standalone\REXJ-Standalone.sln" -c "Release 2027" -p:Platform=x64</code></pre>
+    <p>This produces the DLL and <code>.addin</code> files in each project's <code>bin\x64\Release 2027\</code> folder.</p>
+  </div>
+
+  <!-- Step 2: Install -->
+  <div class="section" id="install">
+    <h2>Step 2: Install the Add-ins</h2>
+
+    <h3>Option A: Manual Copy (Recommended)</h3>
+
+    <ol>
+      <li>
+        <p>Open Windows Explorer and navigate to your Revit 2027 add-ins folder:</p>
+        <pre><code>%AppData%\Autodesk\Revit\Addins\2027\</code></pre>
+        <div class="callout callout-tip">
+          <span class="callout-icon">&#128161;</span>
+          <span>Press <strong>Win + R</strong>, paste the path above, and press Enter to go there quickly.</span>
+        </div>
+      </li>
+      <li>
+        <p>Create a subfolder for organization (optional but recommended):</p>
+        <pre><code>%AppData%\Autodesk\Revit\Addins\2027\REXJ-Standalone\</code></pre>
+      </li>
+      <li>
+        <p>Copy these files from each project's build output into that folder:</p>
+        <table>
+          <thead>
+            <tr><th>Source Folder</th><th>Files to Copy</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>EnhancedSectionBox\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.EnhancedSectionBox.dll</code><br>
+                <code>ADSK.JExtRAC.EnhancedSectionBox.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>ParameterFilter\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.ParameterFilter.dll</code><br>
+                <code>ADSK.JExtRAC.ParameterFilter.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>ValueCopy\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.ValueCopy.dll</code><br>
+                <code>ADSK.JExtRAC.ValueCopy.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>ExportExcel\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.ExportExcel.dll</code><br>
+                <code>ADSK.JExtRAC.ExportExcel.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>ImportExcel\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.ImportExcel.dll</code><br>
+                <code>ADSK.JExtRAC.ImportExcel.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>AutomaticFloor\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.AutomaticFloor.dll</code><br>
+                <code>ADSK.JExtRAC.AutomaticFloor.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span><br>
+                <code>Data\</code> folder <span class="badge badge-muted">Config XML</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>SwitchJoinOrder\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.SwitchJoinOrder.dll</code><br>
+                <code>ADSK.JExtRAC.SwitchJoinOrder.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>JoinOrderInspector\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.JoinOrderInspector.dll</code><br>
+                <code>ADSK.JExtRAC.JoinOrderInspector.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>ExportSchedule\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.ExportSchedule.dll</code><br>
+                <code>ADSK.JExtRAC.ExportSchedule.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>ExcelImageInsert\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.ExcelImageInsert.dll</code><br>
+                <code>ADSK.JExtRAC.ExcelImageInsert.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>LevelFilter\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.LevelFilter.dll</code><br>
+                <code>ADSK.JExtRAC.LevelFilter.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>AutoCreateRoomView\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.AutoCreateRoomView.dll</code><br>
+                <code>ADSK.JExtRAC.AutoCreateRoomView.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>PrintRegion\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.PrintRegion.dll</code><br>
+                <code>ADSK.JExtRAC.PrintRegion.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>AutoLayoutTag\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.AutoLayoutTag.dll</code><br>
+                <code>ADSK.JExtRAC.AutoLayoutTag.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span><br>
+                <code>Settings.txt</code> <span class="badge badge-muted">tag placement distances</span><br>
+                <code>Newtonsoft.Json.dll</code> <span class="badge badge-muted">JSON serialization</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>LayoutInstanceInRegion\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.JExtRAC.LayoutInstanceInRegion.dll</code><br>
+                <code>ADSK.JExtRAC.LayoutInstanceInRegion.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>SheetLayout\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.ViewExtension.SheetLayout.dll</code><br>
+                <code>ADSK.ViewExtension.SheetLayout.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>ViewDuplicate\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.ViewExtension.ViewDuplicate.dll</code><br>
+                <code>ADSK.ViewExtension.ViewDuplicate.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+            <tr>
+              <td><code>TenkaiView\bin\x64\Release 2027\</code></td>
+              <td>
+                <code>ADSK.ViewExtension.TenkaiView.dll</code><br>
+                <code>ADSK.ViewExtension.TenkaiView.addin</code><br>
+                <code>en\</code> folder <span class="badge badge-muted">English UI</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\SwitchJoinOrder\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.SwitchJoinOrder.dll</code></li>
+          <li><code>ADSK.JExtRAC.SwitchJoinOrder.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\JoinOrderInspector\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.JoinOrderInspector.dll</code></li>
+          <li><code>ADSK.JExtRAC.JoinOrderInspector.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\ExportSchedule\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.ExportSchedule.dll</code></li>
+          <li><code>ADSK.JExtRAC.ExportSchedule.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\ExcelImageInsert\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.ExcelImageInsert.dll</code></li>
+          <li><code>ADSK.JExtRAC.ExcelImageInsert.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\LevelFilter\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.LevelFilter.dll</code></li>
+          <li><code>ADSK.JExtRAC.LevelFilter.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\AutoCreateRoomView\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.AutoCreateRoomView.dll</code></li>
+          <li><code>ADSK.JExtRAC.AutoCreateRoomView.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\PrintRegion\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.PrintRegion.dll</code></li>
+          <li><code>ADSK.JExtRAC.PrintRegion.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\AutoLayoutTag\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.AutoLayoutTag.dll</code></li>
+          <li><code>ADSK.JExtRAC.AutoLayoutTag.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly &mdash; required for English UI)</li>
+          <li><code>Settings.txt</code> (tag placement distance configuration)</li>
+          <li><code>Newtonsoft.Json.dll</code> (JSON serialization &mdash; required)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\LayoutInstanceInRegion\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.JExtRAC.LayoutInstanceInRegion.dll</code></li>
+          <li><code>ADSK.JExtRAC.LayoutInstanceInRegion.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\SheetLayout\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.ViewExtension.SheetLayout.dll</code></li>
+          <li><code>ADSK.ViewExtension.SheetLayout.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly &mdash; required for English UI)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\ViewDuplicate\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.ViewExtension.ViewDuplicate.dll</code></li>
+          <li><code>ADSK.ViewExtension.ViewDuplicate.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly &mdash; required for English UI)</li>
+        </ul>
+        <p><strong>From</strong> <code>C:\REXJ\Standalone\TenkaiView\bin\x64\Release 2027\</code>:</p>
+        <ul>
+          <li><code>ADSK.ViewExtension.TenkaiView.dll</code></li>
+          <li><code>ADSK.ViewExtension.TenkaiView.addin</code></li>
+          <li><code>en\</code> folder (English satellite assembly &mdash; required for English UI)</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>If you placed the files in a subfolder</strong>, edit each <code>.addin</code> file to use the full path to the DLL:</p>
+        <div class="lang-label">XML</div>
+        <pre><code>&lt;!-- Before (same folder only) --&gt;
+&lt;Assembly&gt;ADSK.JExtRAC.EnhancedSectionBox.dll&lt;/Assembly&gt;
+
+&lt;!-- After (use full path) --&gt;
+&lt;Assembly&gt;C:\path\to\REXJ-Standalone\ADSK.JExtRAC.EnhancedSectionBox.dll&lt;/Assembly&gt;</code></pre>
+        <div class="callout callout-info">
+          <span class="callout-icon">&#8505;&#65039;</span>
+          <span>If both the <code>.addin</code> and <code>.dll</code> files are in the <strong>same folder</strong>, no path changes are needed.</span>
+        </div>
+      </li>
+    </ol>
+
+    <hr>
+
+    <h3>Option B: Quick Install via PowerShell</h3>
+    <p>Run this script in PowerShell to copy everything automatically:</p>
+    <div class="lang-label">PowerShell</div>
+    <pre><code>$addinsDir = "$env:APPDATA\Autodesk\Revit\Addins\2027\REXJ-Standalone"
+New-Item -ItemType Directory -Force -Path $addinsDir | Out-Null
+
+$projects = @(
+    "C:\REXJ\Standalone\EnhancedSectionBox\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\ParameterFilter\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\ValueCopy\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\ExportExcel\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\ImportExcel\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\AutomaticFloor\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\SwitchJoinOrder\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\JoinOrderInspector\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\ExportSchedule\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\ExcelImageInsert\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\LevelFilter\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\AutoCreateRoomView\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\PrintRegion\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\AutoLayoutTag\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\LayoutInstanceInRegion\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\SheetLayout\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\ViewDuplicate\bin\x64\Release 2027",
+    "C:\REXJ\Standalone\TenkaiView\bin\x64\Release 2027"
+)
+
+foreach ($proj in $projects) {
+    Copy-Item "$proj\*.dll" -Destination $addinsDir -Force
+    Copy-Item "$proj\*.addin" -Destination $addinsDir -Force
+    # Copy English satellite assemblies
+    $enDir = Join-Path $proj "en"
+    if (Test-Path $enDir) {
+        $destEn = Join-Path $addinsDir "en"
+        New-Item -ItemType Directory -Force -Path $destEn | Out-Null
+        Copy-Item "$enDir\*" -Destination $destEn -Force
+    }
+    # Copy Data folder (AutomaticFloor config)
+    $dataDir = Join-Path $proj "Data"
+    if (Test-Path $dataDir) {
+        $destData = Join-Path $addinsDir "Data"
+        New-Item -ItemType Directory -Force -Path $destData | Out-Null
+        Copy-Item "$dataDir\*" -Destination $destData -Force
+    }
+    # Copy Settings.txt (AutoLayoutTag config)
+    $settingsFile = Join-Path $proj "Settings.txt"
+    if (Test-Path $settingsFile) {
+        Copy-Item $settingsFile -Destination $addinsDir -Force
+    }
+}
+
+# Update .addin files to use full DLL paths
+Get-ChildItem "$addinsDir\*.addin" | ForEach-Object {
+    $content = Get-Content $_.FullName -Raw
+    $dllName = [System.IO.Path]::GetFileNameWithoutExtension($_.Name) + ".dll"
+    $fullPath = Join-Path $addinsDir $dllName
+    $content = $content -replace "&lt;Assembly&gt;$dllName&lt;/Assembly&gt;",
+               "&lt;Assembly&gt;$fullPath&lt;/Assembly&gt;"
+    Set-Content $_.FullName -Value $content
+}
+
+Write-Host "Installation complete. Restart Revit 2027 to load the add-ins."</code></pre>
+  </div>
+
+  <!-- Step 3: Launch -->
+  <div class="section" id="launch">
+    <h2>Step 3: Launch Revit 2027</h2>
+    <ol>
+      <li>Start <strong>Revit 2027</strong>.</li>
+      <li>When Revit loads, you may see a security dialog asking whether to load the add-ins. Click <strong>Always Load</strong> or <strong>Load Once</strong> for each add-in.</li>
+      <li>Look for the <strong>REXJ Standalone</strong> tab in the ribbon at the top of the Revit window.</li>
+    </ol>
+    <div class="callout callout-info">
+      <span class="callout-icon">&#8505;&#65039;</span>
+      <span>All eighteen add-ins share a single ribbon tab called <strong>REXJ Standalone</strong>, organized into panels: <strong>Section Box</strong>, <strong>Parameter Filter</strong>, <strong>Value Copy</strong>, <strong>Excel</strong>, <strong>Auto Floor</strong>, <strong>Join</strong>, <strong>Filter</strong>, <strong>Room</strong>, <strong>Print</strong>, <strong>Placement</strong>, <strong>Tagging</strong>, <strong>Sheets</strong>, and <strong>Views</strong>.</span>
+    </div>
+  </div>
+
+  <!-- Using the Add-ins -->
+  <div class="section" id="usage">
+    <h2>Using the Add-ins</h2>
+
+    <!-- Section Box -->
+    <h3>1. Enhanced Section Box</h3>
+    <p>Located in <strong>REXJ Standalone</strong> tab &rarr; <strong>Section Box</strong> panel.</p>
+
+    <h4>Section Box Adjustment</h4>
+    <p>Adjusts the dimensions of an existing 3D section box by entering offset values.</p>
+    <ol>
+      <li>Open or switch to a <strong>3D view</strong> in your project.</li>
+      <li>Make sure the <strong>Section Box</strong> is visible (check the Section Box property in the Properties panel).</li>
+      <li>Click <strong>Section Box Adjustment</strong> on the ribbon.</li>
+      <li>A dialog appears showing the current section box dimensions.</li>
+      <li>Enter offset values (in millimeters) for Left, Right, Forward, Back, Top, and Bottom.</li>
+      <li>The section box updates in real-time as you type.</li>
+      <li>Click <strong>OK</strong> to accept the changes, or <strong>Cancel</strong> to revert.</li>
+    </ol>
+
+    <h4>Box View</h4>
+    <p>Creates a section box around selected elements.</p>
+    <ol>
+      <li>Click <strong>Box View</strong> on the ribbon.</li>
+      <li>A dialog appears with options to select elements:
+        <ul>
+          <li><strong>Object Selection</strong> &mdash; Pick individual elements from the model</li>
+          <li><strong>Link Selection</strong> &mdash; Pick elements from linked Revit models</li>
+          <li><strong>Region Selection</strong> &mdash; Draw a rectangular region to select elements</li>
+        </ul>
+      </li>
+      <li>After selecting elements, configure the box view options.</li>
+      <li>Click <strong>OK</strong> to create the section box around the selected elements.</li>
+    </ol>
+
+    <hr>
+
+    <!-- Parameter Filter -->
+    <h3>2. Parameter Filter</h3>
+    <p>Located in <strong>REXJ Standalone</strong> tab &rarr; <strong>Parameter Filter</strong> panel.</p>
+    <p>Filters and selects elements based on their length parameter values.</p>
+    <ol>
+      <li><strong>Select one or more elements</strong> in the model before running the command.</li>
+      <li>Click <strong>Parameter Filter</strong> on the ribbon.</li>
+      <li>A dialog appears showing:
+        <ul>
+          <li>A table of all selected elements with their categories, families, types, and length parameters</li>
+          <li>Filter controls for specifying exact values, or minimum/maximum ranges</li>
+          <li>A parameter group settings button to choose which parameter groups to display</li>
+        </ul>
+      </li>
+      <li>Enter your filter criteria:
+        <ul>
+          <li><strong>Value</strong> &mdash; Enter an exact length value to match</li>
+          <li><strong>Min / Max</strong> &mdash; Enter a range to match elements within that range</li>
+        </ul>
+      </li>
+      <li>Click the <strong>Select</strong> button to highlight matching elements in the model.</li>
+      <li>Use the <strong>Connected Elements</strong> option to also find elements that are physically connected to the selected ones (useful for MEP systems).</li>
+      <li>Click <strong>Close</strong> when finished.</li>
+    </ol>
+
+    <hr>
+
+    <!-- Value Copy -->
+    <h3>3. Value Copy (Eyedropper)</h3>
+    <p>Located in <strong>REXJ Standalone</strong> tab &rarr; <strong>Value Copy</strong> panel.</p>
+    <p>Copies parameter values from a source element to one or more target elements.</p>
+    <ol>
+      <li><strong>Select the target elements</strong> (the ones you want to copy values TO) before running the command.</li>
+      <li>Click <strong>Copy Parameter</strong> on the ribbon.</li>
+      <li>You will be prompted to <strong>pick the source element</strong> (the one you want to copy values FROM) in the model view. Click on it.</li>
+      <li>A parameter selection dialog appears showing all parameters of the source element:
+        <ul>
+          <li>Each parameter shows its name, group, and current value</li>
+          <li>Check/uncheck the parameters you want to copy</li>
+        </ul>
+      </li>
+      <li>Click <strong>OK</strong> to start copying.</li>
+      <li>A <strong>report dialog</strong> appears showing the result for each target element:
+        <table>
+          <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge-success">Success</span></td><td>Parameter was copied successfully</td></tr>
+            <tr><td><span class="badge badge-warning">Read-Only</span></td><td>Parameter cannot be modified</td></tr>
+            <tr><td><span class="badge badge-danger">Can't Copy</span></td><td>Parameter types are incompatible</td></tr>
+            <tr><td><span class="badge badge-muted">Out of Range</span></td><td>Value is outside the valid range for the target parameter</td></tr>
+          </tbody>
+        </table>
+      </li>
+      <li>Click <strong>Error Log</strong> to see detailed error messages if any copies failed.</li>
+      <li>Click <strong>Close</strong> when finished.</li>
+    </ol>
+  </div>
+
+  <!-- Excel Export -->
+  <div class="section" id="usage-excel">
+    <h2>4. Excel Export</h2>
+    <p>Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Excel</strong> panel.</p>
+    <p>Exports Revit element parameters to Excel (.xlsx, .xls) or CSV format. Requires Microsoft Excel to be installed.</p>
+    <ol>
+      <li>Click <strong>Export Excel</strong> on the ribbon.</li>
+      <li>A <strong>mode selection dialog</strong> appears &mdash; choose the scope of elements to export:
+        <ul>
+          <li><strong>All elements in project</strong> &mdash; exports all elements and types in the entire project</li>
+          <li><strong>Elements in current view</strong> &mdash; exports only elements visible in the active view</li>
+          <li><strong>Currently selected elements</strong> &mdash; exports only the elements you have selected</li>
+        </ul>
+      </li>
+      <li>The <strong>Excel Export</strong> dialog appears showing:
+        <ul>
+          <li><strong>Select Category</strong> (left panel) &mdash; check the categories you want to include</li>
+          <li><strong>Parameters</strong> (center panel) &mdash; available parameters for the checked categories</li>
+          <li><strong>Output</strong> (right panel) &mdash; parameters selected for export</li>
+        </ul>
+      </li>
+      <li>Use the <strong>&gt;</strong> and <strong>&lt;</strong> buttons to move parameters between the Parameters and Output lists.</li>
+      <li>Use the <strong>Up</strong> / <strong>Down</strong> arrows to reorder output parameters.</li>
+      <li>Use <strong>Save</strong> / <strong>Load</strong> / <strong>Restore</strong> buttons to save and reuse parameter configurations.</li>
+      <li>Click <strong>OK</strong> when ready.</li>
+      <li>A <strong>Save As</strong> dialog appears &mdash; choose the output file format:
+        <ul>
+          <li><code>.xlsx</code> &mdash; Excel Workbook (default)</li>
+          <li><code>.xls</code> &mdash; Legacy Excel format</li>
+          <li><code>.csv</code> &mdash; CSV UTF-8 (comma delimited)</li>
+        </ul>
+      </li>
+      <li>The export completes and a success message is shown.</li>
+    </ol>
+    <div class="callout callout-info">
+      <span class="callout-icon">&#128196;</span>
+      <span>Excel Export requires Microsoft Excel installed because it uses COM Interop to create and format workbooks. CSV export does not require Excel.</span>
+    </div>
+  </div>
+
+  <!-- Excel Import -->
+  <div class="section" id="usage-excel-import">
+    <h2>5. Excel Import</h2>
+    <p>Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Excel</strong> panel.</p>
+    <p>Imports parameter values from Excel back into Revit elements (reverse of Export).</p>
+    <ol>
+      <li>Click <strong>Import Excel</strong> on the ribbon.</li>
+      <li><strong>If Excel is already open</strong> with one or more workbooks, choose the workbook/sheet when prompted; <strong>otherwise</strong> a file dialog opens to select the spreadsheet.</li>
+      <li>The tool reads the <strong>UID</strong> column and parameter columns from the sheet, updates the matching Revit elements, and shows a summary when finished.</li>
+    </ol>
+    <div class="callout callout-tip">
+      <span class="callout-icon">&#128161;</span>
+      <span>Use <strong>Export Excel</strong> first, edit values in Excel, then <strong>Import Excel</strong> to write them back to Revit.</span>
+    </div>
+    <div class="callout callout-info">
+      <span class="callout-icon">&#128196;</span>
+      <span>Excel Import requires Microsoft Excel to be installed.</span>
+    </div>
+  </div>
+
+  <!-- Auto Floor Creation -->
+  <div class="section" id="usage-autofloor">
+    <h2>6. Auto Floor Creation</h2>
+    <p>Located in <strong>REXJ Standalone</strong> tab &rarr; <strong>Auto Floor</strong> panel. Provides three buttons for automatically creating floors and slabs from surrounding walls or beams.</p>
+
+    <h4>Architecture Floor</h4>
+    <p>Creates architectural floor slabs bounded by room-bounding walls.</p>
+    <ol>
+      <li>Open or switch to a <strong>Floor Plan</strong>, <strong>Ceiling Plan</strong>, or <strong>Engineering Plan</strong> view.</li>
+      <li>Click <strong>Architecture Floor</strong> on the ribbon.</li>
+      <li>A configuration dialog appears:
+        <ul>
+          <li><strong>Floor Type</strong> &mdash; select the floor type from the dropdown</li>
+          <li><strong>Level Height Offset</strong> &mdash; enter an offset value in mm from the level</li>
+          <li><strong>Lock to Walls</strong> &mdash; check to constrain (align/lock) the floor edges to the walls</li>
+          <li><strong>Span Direction</strong> &mdash; select or enter the span direction angle in degrees (-90 to 90)</li>
+        </ul>
+      </li>
+      <li>Click <strong>OK</strong> to accept the settings.</li>
+      <li><strong>Pick points</strong> in the model &mdash; click inside each enclosed wall region where you want a floor created. The tool detects the wall boundary polygon at each pick point and creates the floor automatically.</li>
+      <li>Press <strong>Esc</strong> when done. The created floors will be selected.</li>
+    </ol>
+
+    <h4>Structural Floor</h4>
+    <p>Creates structural floor slabs bounded by structural beams.</p>
+    <ol>
+      <li>Open or switch to a <strong>Floor Plan</strong>, <strong>Ceiling Plan</strong>, or <strong>Engineering Plan</strong> view.</li>
+      <li>Click <strong>Structural Floor</strong> on the ribbon.</li>
+      <li>Same configuration dialog as Architecture Floor (with structural floor types).</li>
+      <li>Click <strong>OK</strong> then pick points inside beam-bounded regions.</li>
+      <li>Press <strong>Esc</strong> when done.</li>
+    </ol>
+
+    <h4>Foundation Slab</h4>
+    <p>Creates foundation slabs bounded by structural beams.</p>
+    <ol>
+      <li>Open or switch to a <strong>Floor Plan</strong>, <strong>Ceiling Plan</strong>, or <strong>Engineering Plan</strong> view.</li>
+      <li>Click <strong>Foundation Slab</strong> on the ribbon.</li>
+      <li>Same configuration dialog (with foundation slab types).</li>
+      <li>Click <strong>OK</strong> then pick points inside beam-bounded regions.</li>
+      <li>Press <strong>Esc</strong> when done.</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <span class="callout-icon">&#8505;&#65039;</span>
+      <span>The tool calculates wall/beam intersection polygons to determine floor boundaries. The view must contain room-bounding walls (for Architecture) or structural beams with Usage set to &ldquo;Girder&rdquo; or &ldquo;Joist&rdquo; (for Structural/Foundation). The <code>AutomaticFloor.xml</code> configuration file must be present in the same folder as the DLL.</span>
+    </div>
+  </div>
+
+  <!-- Join Adjustment -->
+  <div class="card" id="join-adjustment" style="margin-top:28px">
+    <h2>7. Join Adjustment</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Join</strong> panel.</p>
+    <p style="margin-bottom:12px">Adjusts the join order and priority between overlapping structural and architectural elements. When two elements intersect, this tool controls which element &ldquo;cuts&rdquo; the other at the join.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li><strong>Optionally select elements</strong> before running the command. If no elements are selected, the tool processes all elements in the active view.</li>
+      <li>Click <strong>Join Adjustment</strong> on the ribbon.</li>
+      <li>The <strong>Join Order Adjustment</strong> dialog appears with two panels:
+        <ul>
+          <li><strong>Category Selection</strong> (left) &mdash; all element categories found in the model</li>
+          <li><strong>Join Priority Order</strong> (right) &mdash; categories added for priority ordering</li>
+        </ul>
+      </li>
+      <li>Use <strong>&gt;&gt;</strong> and <strong>&lt;&lt;</strong> buttons to move categories between panels.</li>
+      <li>Use <strong>Up</strong> / <strong>Down</strong> arrows to reorder &mdash; higher position = higher priority (cuts lower-priority elements).</li>
+      <li>Click <strong>Detail Adjustment</strong> to fine-tune join order within a category at the family level.</li>
+      <li>Check <strong>Process only joined elements</strong> to skip unjoin/rejoin steps and only switch the existing join order.</li>
+      <li>Click <strong>OK</strong> to execute.</li>
+      <li>A progress bar shows the processing status.</li>
+      <li>If any joins could not be processed, an <strong>Error Log</strong> dialog appears with details. You can save the log to a text file.</li>
+    </ol>
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Tip:</strong> Use Detail Adjustment when you need different priority orders for families within the same category (e.g., different wall types).
+    </div>
+  </div>
+
+  <!-- Join Order Inspector -->
+  <div class="card" id="join-order-inspector" style="margin-top:28px">
+    <h2>8. Join Order Inspector</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Join</strong> panel.</p>
+    <p style="margin-bottom:12px">Visually inspects the join order of a selected element, showing which joined elements &ldquo;cut&rdquo; it and which are &ldquo;cut by&rdquo; it. The view is color-coded for easy identification.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Click <strong>Join Order Inspector</strong> on the ribbon.</li>
+      <li><strong>Pick an element</strong> in the model view.</li>
+      <li>The inspector window shows the join order analysis with color-coded results.</li>
+      <li>Click any <strong>element ID button</strong> to select and zoom to that element.</li>
+      <li>Click <strong>Re-analyze</strong> to pick a different element.</li>
+    </ol>
+    <table style="width:100%;border-collapse:collapse;margin-top:12px">
+      <thead><tr style="background:#f1f5f9"><th style="padding:8px;border:1px solid #e2e8f0;text-align:left">Color</th><th style="padding:8px;border:1px solid #e2e8f0;text-align:left">Meaning</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:8px;border:1px solid #e2e8f0"><span style="background:#ffff65;padding:2px 12px;border-radius:3px">Yellow</span></td><td style="padding:8px;border:1px solid #e2e8f0">The selected (inspected) element</td></tr>
+        <tr><td style="padding:8px;border:1px solid #e2e8f0"><span style="background:#ff9999;padding:2px 12px;border-radius:3px">Red</span></td><td style="padding:8px;border:1px solid #e2e8f0">Elements that CUT the selected element (higher priority)</td></tr>
+        <tr><td style="padding:8px;border:1px solid #e2e8f0"><span style="background:#65b2ff;padding:2px 12px;border-radius:3px">Blue</span></td><td style="padding:8px;border:1px solid #e2e8f0">Elements that are CUT BY the selected element (lower priority)</td></tr>
+      </tbody>
+    </table>
+    <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> The color overrides are applied via a transaction and can be undone with Ctrl+Z.
+    </div>
+  </div>
+
+  <!-- Schedule Export -->
+  <div class="card" id="schedule-export" style="margin-top:28px">
+    <h2>9. Schedule Export</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Excel</strong> panel.</p>
+    <p style="margin-bottom:12px">Exports the active ViewSchedule to Excel with three worksheets: the main schedule, a Type breakdown, and an Instance breakdown. Requires Microsoft Excel to be installed.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Open or switch to a <strong>Schedule view</strong> (ViewSchedule) in your project.</li>
+      <li>Click <strong>Schedule Export</strong> on the ribbon.</li>
+      <li>A <strong>Save As</strong> dialog appears with options:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Add date to schedule name</strong> &mdash; appends a timestamp to the filename</li>
+          <li><strong>Each instance breakdown</strong> &mdash; controls whether the schedule is itemized</li>
+          <li><strong>Prioritize import function</strong> / <strong>Prioritize schedule display output</strong> &mdash; chooses export mode</li>
+        </ul>
+      </li>
+      <li>Choose the save location and file format (<code>.xlsx</code> or <code>.xls</code>).</li>
+      <li>The export creates an Excel workbook with three sheets:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>&#38598;&#35336;&#34920;</strong> &mdash; the main schedule data</li>
+          <li><strong>&#12479;&#12452;&#12503;&#20869;&#35379;</strong> &mdash; Type breakdown with linked values</li>
+          <li><strong>&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#20869;&#35379;</strong> &mdash; Instance breakdown with linked values</li>
+        </ul>
+      </li>
+      <li>A success message appears when complete.</li>
+    </ol>
+    <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> The active view must be a Schedule view. If not, a message asks you to select a schedule first. Excel must be installed for workbook creation.
+    </div>
+  </div>
+
+  <!-- Excel Image Insert -->
+  <div class="card" id="excel-image-insert" style="margin-top:28px">
+    <h2>10. Excel Image Insert</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Excel</strong> panel.</p>
+    <p style="margin-bottom:12px">Captures the current Excel selection as a bitmap image and inserts it into the active Revit view. Useful for pasting Excel tables and charts directly into Revit drawings.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li><strong>Open Excel</strong> and select the cells or range you want to capture.</li>
+      <li>Switch to <strong>Revit</strong> and click <strong>Excel Image Insert</strong> on the ribbon.</li>
+      <li>The tool automatically:
+        <ul style="margin:8px 0 8px 20px">
+          <li>Copies the current Excel selection to the clipboard as a bitmap</li>
+          <li>Saves it as a temporary BMP file</li>
+          <li>Imports the image into the center of the active Revit view</li>
+        </ul>
+      </li>
+      <li>The image appears as an <code>ImageInstance</code> in the view and can be moved, resized, or deleted like any other Revit image.</li>
+    </ol>
+    <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> Excel must be running with a visible selection before using this command. The tool requires Excel to be open &mdash; it does not open Excel or prompt for a file.
+    </div>
+  </div>
+
+  <!-- Level Filter -->
+  <div class="card" id="level-filter" style="margin-top:28px">
+    <h2>11. Level Filter</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Filter</strong> panel.</p>
+    <p style="margin-bottom:12px">Filters the current selection by category, family, family type, part material, or rule filters. Provides a tabbed dialog with checkboxes to narrow down the selection.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li><strong>Select one or more elements</strong> in the model before running the command. You can also select a Group (its members will be expanded).</li>
+      <li>Click <strong>Level Filter</strong> on the ribbon.</li>
+      <li>The <strong>Level Filter</strong> dialog appears with five tabs:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Category</strong> &mdash; lists all categories found in the selection with element counts</li>
+          <li><strong>Family</strong> &mdash; lists all families, grouped by category, with element counts</li>
+          <li><strong>Family Type</strong> &mdash; lists all family types with element counts</li>
+          <li><strong>Parts</strong> &mdash; lists materials found in Part elements (if any Parts are selected)</li>
+          <li><strong>Filters</strong> &mdash; lists all Rule Filters defined in the project and shows how many of the selected elements match each filter</li>
+        </ul>
+      </li>
+      <li>On each tab:
+        <ul style="margin:8px 0 8px 20px">
+          <li>Check the rows you want to keep in the selection</li>
+          <li>Use <strong>Select All</strong> to check all rows, or <strong>Clear Selection</strong> to uncheck all</li>
+          <li>The counters at the bottom show the number of checked items and total elements</li>
+        </ul>
+      </li>
+      <li>Click <strong>Apply</strong> (preview) to update the Revit selection to match only the checked items, without closing the dialog.</li>
+      <li>Click <strong>OK</strong> to apply the selection and close the dialog.</li>
+      <li>Click <strong>Cancel</strong> to restore the original selection and close.</li>
+    </ol>
+    <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> If no elements are selected before running the command, an error message will appear asking you to select elements first.
+    </div>
+  </div>
+
+  <!-- Room View Creation -->
+  <div class="card" id="room-view-creation" style="margin-top:28px">
+    <h2>12. Room View Creation</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Room</strong> panel.</p>
+    <p style="margin-bottom:12px">Automatically creates floor plan or ceiling plan views cropped to individual room boundaries, with configurable view types, templates, room tags, and crop shapes.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Click <strong>Room View Creation</strong> on the ribbon.</li>
+      <li>The <strong>Room View Creation</strong> dialog appears (modeless &mdash; you can interact with Revit while it&rsquo;s open):
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>View Category</strong> &mdash; select <strong>Floor Plan</strong> or <strong>Ceiling Plan</strong></li>
+          <li><strong>View Type</strong> &mdash; choose the plan type (e.g., &ldquo;Floor Plan&rdquo;, &ldquo;Reflected Ceiling Plan&rdquo;). Click <strong>Type Edit</strong> to modify the type properties.</li>
+          <li><strong>View Template</strong> &mdash; select a view template to apply. Click <strong>Manage Templates</strong> to open Revit&rsquo;s template management dialog.</li>
+          <li><strong>Room Tag</strong> &mdash; choose which room tag type to place. Click <strong>Type Edit</strong> to modify tag properties.</li>
+          <li><strong>Trimming</strong> &mdash; configure the crop region:
+            <ul style="margin:6px 0 6px 20px">
+              <li><strong>Shape</strong>: Rectangle (bounding box) or Room Shape (follows room boundary)</li>
+              <li><strong>Offset</strong>: Enter offset distance in mm to expand/shrink the crop region</li>
+            </ul>
+          </li>
+          <li><strong>Level</strong> list (left) &mdash; check levels to filter the room list</li>
+          <li><strong>Room</strong> list (right) &mdash; check the rooms you want to create views for</li>
+          <li><strong>When a view with the same name exists</strong>: Skip (don&rsquo;t create), Overwrite (delete and recreate), or Copy (create with numbered suffix)</li>
+        </ul>
+      </li>
+      <li>Click <strong>OK</strong> to create views and close, or <strong>Apply</strong> to create views and keep the dialog open.</li>
+      <li>Click <strong>Cancel</strong> to close without creating views.</li>
+    </ol>
+    <div style="background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> The dialog stays open (modeless) so you can inspect created views while continuing to create more. Each created view is named <code>{ViewType}_{Level}_{RoomName}</code>. Rooms that are not in properly enclosed regions will be skipped with a warning message.
+    </div>
+  </div>
+
+  <!-- Range Print -->
+  <div class="card" id="range-print" style="margin-top:28px">
+    <h2>13. Range Print</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Print</strong> panel.</p>
+    <p style="margin-bottom:12px">Prints a user-selected rectangular region of the current view with full print setup control, including printer selection, paper size, orientation, zoom, and appearance options.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Click <strong>Range Print</strong> on the ribbon.</li>
+      <li>In the Revit view, drag a rectangle to select the print area. A status bar prompt reads &ldquo;Drag to specify a rectangular area for printing.&rdquo;</li>
+      <li>A preview duplicate view is created showing the cropped region. The <strong>Print</strong> dialog appears:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Printer</strong> &mdash; select from installed printers via dropdown</li>
+          <li><strong>Print Setup</strong> &mdash; click to open the full <strong>Print Setup</strong> dialog with:
+            <ul style="margin:6px 0 6px 20px">
+              <li>Paper size, source, orientation (portrait/landscape)</li>
+              <li>Paper placement (center or offset from corner with user-defined margins)</li>
+              <li>Hidden line processing (vector or raster)</li>
+              <li>Zoom (fit to page or custom percentage)</li>
+              <li>Appearance (raster quality, colors: monochrome/grayscale/color)</li>
+              <li>Options (view links in blue, hide scope boxes, hide crop boundaries, etc.)</li>
+              <li>Settings management (save, save as, rename, revert, delete)</li>
+            </ul>
+          </li>
+          <li><strong>Print Scale</strong> &mdash; choose from standard scales (1:1 to 1:5000) or enter a custom scale in <code>1:N</code> format</li>
+          <li><strong>Update View Scale</strong> &mdash; preview the scale change in the duplicate view</li>
+        </ul>
+      </li>
+      <li>Click <strong>OK</strong> to print the region and close.</li>
+      <li>Click <strong>Cancel</strong> to close without printing. The temporary duplicate view is automatically deleted.</li>
+    </ol>
+    <div style="background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> The print region is defined in the current view&rsquo;s coordinate system. Grid lines that extend beyond the selected region are automatically trimmed to the region boundary. Section views and other annotation elements are hidden in the preview. All changes are rolled back after printing &mdash; no permanent modifications are made to the model.
+    </div>
+  </div>
+
+  <!-- Auto Tag Placement -->
+  <div class="card" id="auto-tag-placement" style="margin-top:28px">
+    <h2>14. Auto Tag Placement</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Tagging</strong> panel.</p>
+    <p style="margin-bottom:12px">Automatically places tags on elements with intelligent collision-free positioning. Tags are placed around elements, checking for intersections with other elements to avoid overlaps.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Click <strong>Auto Tag Placement</strong> on the ribbon.</li>
+      <li>The active view must be a <strong>Floor Plan</strong> or <strong>Ceiling Plan</strong> view. If not, an error message is shown.</li>
+      <li>The <strong>Tag Placement Settings</strong> dialog appears with two tabs:
+        <p style="margin:12px 0 6px;font-weight:600">Condition Settings tab:</p>
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Target Objects</strong> &mdash; choose between:
+            <ul style="margin:6px 0 6px 20px">
+              <li><em>Selected Objects</em> &mdash; click <strong>Select</strong> to pick elements manually in the view, then return to the dialog</li>
+              <li><em>All objects of specified categories</em> &mdash; check categories from the list (Doors, Windows, Walls, Floors, etc.)</li>
+            </ul>
+          </li>
+          <li><strong>Tag Position</strong> &mdash; check <strong>Left / Right</strong> and/or <strong>Top / Bottom</strong> to control tag placement directions</li>
+          <li><strong>Tag Leader Line</strong> &mdash; choose <em>With Leader</em> or <em>Without Leader</em></li>
+          <li><strong>Placement Area</strong> &mdash; choose <em>Automatic</em> (system determines best area) or <em>Manual</em> (drag a rectangle in the view)</li>
+          <li><strong>Existing Tag Processing</strong> &mdash; choose <em>New Only</em> (skip already-tagged elements), <em>Replace &amp; Relocate</em> (delete existing tags and recreate), or <em>Add More</em> (place additional tags)</li>
+        </ul>
+        <p style="margin:12px 0 6px;font-weight:600">Tag Settings tab:</p>
+        <ul style="margin:8px 0 8px 20px">
+          <li>A grid showing categories and their corresponding tag family types (selected via dropdown)</li>
+          <li><strong>View Template</strong> &mdash; displays the current view template name</li>
+          <li><strong>Save Settings</strong> &mdash; saves the current configuration per view template using Revit Extensible Storage</li>
+        </ul>
+      </li>
+      <li>Click <strong>Place Tags</strong> to execute tag placement.</li>
+      <li>After placement, if any tags are placed outside the view crop region, an <strong>Error Log</strong> dialog lists their IDs.</li>
+    </ol>
+    <div style="background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> Tag placement distances are configured via <code>Settings.txt</code> (located alongside the DLL). The file contains four values: distance A (element-to-tag offset), distance B (tag-to-tag offset), and two reserved values. Default values are 5, 30, 10, 10 (in mm). Settings are persisted per view template in Revit Extensible Storage (JSON format).
+    </div>
+  </div>
+
+  <!-- Instance Array Layout -->
+  <div class="card" id="instance-array-layout" style="margin-top:28px">
+    <h2>15. Instance Array Layout</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Placement</strong> panel.</p>
+    <p style="margin-bottom:12px">Places family instances in a grid-like array inside a region you define from a room/space or a picked rectangle. You choose category, family, and type; set placement pattern and count or spacing; then preview before committing.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Open a <strong>Floor Plan</strong>, <strong>Structural Plan</strong>, or <strong>Ceiling Plan</strong> view. Other view types show an error.</li>
+      <li>Click <strong>Instance Array Layout</strong> on the ribbon.</li>
+      <li>In <strong>Placement Position</strong>, define the region:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Select Object</strong> &mdash; pick a <strong>Room/Space</strong> boundary in the model, or</li>
+          <li><strong>Region Selection</strong> &mdash; use <strong>Pick Region</strong> (or <strong>2-Point Pick</strong>) to specify a rectangular area</li>
+        </ul>
+      </li>
+      <li>In <strong>Placement Family</strong>, choose <strong>Category</strong>, <strong>Family</strong>, and <strong>Type</strong> for the instances to place.</li>
+      <li>In <strong>Placement Settings</strong>:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Placement Pattern</strong> &mdash; <strong>Equal Spacing</strong> or <strong>Ratio (1:2:1)</strong></li>
+          <li><strong>Method</strong> &mdash; <strong>Count-Based</strong> (number of instances along each axis) or <strong>Interval-Based</strong> (spacing between instances)</li>
+          <li><strong>Margin</strong> &mdash; inset from the region edges (left, right, front, back)</li>
+          <li><strong>Axis Angle</strong> &mdash; rotation of the placement grid</li>
+          <li><strong>Family Angle</strong> &mdash; rotation applied to each placed family instance</li>
+          <li><strong>Offset from Level</strong> &mdash; vertical offset for new instances</li>
+        </ul>
+      </li>
+      <li>Use <strong>Preview</strong> to show temporary layout graphics in the view.</li>
+      <li>Optional: enable <strong>Do not place instances outside the region</strong> to exclude positions that fall outside the boundary.</li>
+      <li>Click <strong>Place</strong> to create instances and keep the dialog open, <strong>Place and Close</strong> to place and exit, or <strong>Close</strong> to exit without placing.</li>
+    </ol>
+    <div style="background:#eff6ff;border:1px solid #93c5fd;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> The command runs only in plan views (floor, structural, or ceiling). Interval and count constraints are validated against the region size; if spacing or counts are impossible, the add-in shows a warning message.
+    </div>
+  </div>
+
+  <!-- Auto Sheet Layout -->
+  <div class="card" id="auto-sheet-layout" style="margin-top:28px">
+    <h2>16. Auto Sheet Layout</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Sheets</strong> panel.</p>
+    <p style="margin-bottom:12px">Automatically creates new sheets and places views/schedules on them, using an existing reference sheet as a layout template.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Open or activate a <strong>Sheet</strong> view that you want to use as the reference layout.</li>
+      <li>Click <strong>Auto Sheet Layout</strong> on the ribbon.</li>
+      <li>The dialog shows:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Discipline filter</strong> &mdash; filter views by discipline (Architectural, Structural, Mechanical, etc.)</li>
+          <li><strong>View category</strong> &mdash; select the type of views to place (Floor Plan, Ceiling Plan, Section, etc.)</li>
+          <li><strong>View family type</strong> &mdash; further refine by view family type</li>
+          <li><strong>View list</strong> &mdash; shows all matching views; select one or more to place</li>
+          <li><strong>Sheet creation options</strong> &mdash; configure sheet numbering and naming</li>
+        </ul>
+      </li>
+      <li>The tool reads the layout of the reference sheet (viewport positions, sizes, and schedule positions).</li>
+      <li>For each selected view, a new sheet is created and the view is placed in the same position as the reference.</li>
+      <li>Schedules from the reference sheet are also duplicated onto each new sheet.</li>
+      <li>Click <strong>OK</strong> to create the sheets, or <strong>Cancel</strong> to abort.</li>
+    </ol>
+  </div>
+
+  <!-- View Duplicate -->
+  <div class="card" id="view-duplicate" style="margin-top:28px">
+    <h2>17. View Duplicate</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Views</strong> panel.</p>
+    <p style="margin-bottom:12px">Duplicates selected views with custom prefix/suffix naming, view type changes, and view template assignments.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Click <strong>View Duplicate</strong> on the ribbon.</li>
+      <li>The dialog shows:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Discipline</strong> dropdown &mdash; filter views by discipline</li>
+          <li><strong>View Category</strong> dropdown &mdash; select view type (Floor Plan, Section, Elevation, etc.)</li>
+          <li><strong>View Family Type</strong> dropdown &mdash; optional filter by view family type (or &ldquo;All&rdquo;)</li>
+          <li><strong>View list</strong> &mdash; select one or more views to duplicate (multi-select supported)</li>
+          <li><strong>Duplication mode</strong> &mdash; choose between <strong>Duplicate</strong> (structure only) or <strong>Duplicate with Detailing</strong></li>
+        </ul>
+      </li>
+      <li>Click <strong>Add</strong> to define a duplication rule:
+        <ul style="margin:8px 0 8px 20px">
+          <li>Choose <strong>Prefix</strong> or <strong>Suffix</strong> for naming</li>
+          <li>Enter the text to prepend/append</li>
+          <li>Select a <strong>View Template</strong> to apply to the duplicated view</li>
+          <li>Select a <strong>View Family Type</strong> for the duplicated view</li>
+        </ul>
+      </li>
+      <li>Add multiple rules to create multiple copies of each selected view.</li>
+      <li>Click <strong>Delete</strong> to remove a selected rule.</li>
+      <li>Click <strong>OK</strong> to execute duplication, or <strong>Cancel</strong> to abort.</li>
+    </ol>
+    <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> If a view with the same name already exists, the tool automatically appends a number in parentheses, e.g., &ldquo;Level 1 - Copy(1)&rdquo;.
+    </div>
+  </div>
+
+  <!-- Interior Elevation for Room -->
+  <div class="card" id="interior-elevation" style="margin-top:28px">
+    <h2>18. Interior Elevation for Room</h2>
+    <p style="margin-bottom:12px">Located in the <strong>REXJ Standalone</strong> tab &rarr; <strong>Views</strong> panel.</p>
+    <p style="margin-bottom:12px">Automatically creates interior elevation views for selected rooms.</p>
+    <ol style="margin-left:20px;margin-bottom:16px">
+      <li>Open or switch to a <strong>Floor Plan</strong> view.</li>
+      <li>Click <strong>Interior Elevation for Room</strong> on the ribbon.</li>
+      <li>The dialog shows:
+        <ul style="margin:8px 0 8px 20px">
+          <li><strong>Level</strong> dropdown &mdash; select the level to find rooms on</li>
+          <li><strong>Room list</strong> &mdash; displays all rooms on the selected level; select one or more rooms</li>
+          <li><strong>Elevation View Family</strong> &mdash; choose which elevation view family to use</li>
+          <li><strong>Dimension Style</strong> &mdash; select a dimension style to apply (optional)</li>
+          <li><strong>Options</strong>: crop region size adjustment, far clip offset, section box settings</li>
+        </ul>
+      </li>
+      <li>Select the rooms for which you want to create elevation views.</li>
+      <li>Click <strong>Create</strong> to start the process.</li>
+      <li>A progress dialog appears showing the creation status for each room.</li>
+      <li>For each room, the tool creates four elevation views (North, South, East, West) positioned at the room center, with crop regions sized to the room boundaries.</li>
+      <li>Click <strong>Stop</strong> to interrupt the process, or wait for it to complete.</li>
+      <li>Click <strong>Close</strong> when finished.</li>
+    </ol>
+    <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:12px 16px;margin-top:12px">
+      <strong>Note:</strong> If elevation views already exist for a selected room, a warning is shown and that room is skipped.
+    </div>
+  </div>
+
+  <!-- Language / Localization -->
+  <div class="section" id="language">
+    <h2>Language / Localization</h2>
+    <p>All eighteen add-ins support <strong>Japanese</strong> and <strong>English</strong> user interfaces. The language is selected <strong>automatically</strong> based on your Windows display language &mdash; no manual configuration is needed.</p>
+
+    <h3>How it works</h3>
+    <table>
+      <thead><tr><th>Windows Language</th><th>Add-in UI Language</th></tr></thead>
+      <tbody>
+        <tr><td>Japanese (&#26085;&#26412;&#35486;)</td><td>Japanese (default)</td></tr>
+        <tr><td>English (any variant)</td><td>English</td></tr>
+        <tr><td>Any other language</td><td>English (fallback)</td></tr>
+      </tbody>
+    </table>
+    <p>The add-ins use .NET satellite assemblies for localization. The English translations are stored in an <code>en\</code> subfolder next to each main DLL:</p>
+    <pre><code>REXJ-Standalone\
+&#9500;&#9472;&#9472; ADSK.JExtRAC.EnhancedSectionBox.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.ParameterFilter.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.ValueCopy.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.ExportExcel.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.ImportExcel.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.AutomaticFloor.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.SwitchJoinOrder.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.JoinOrderInspector.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.ExportSchedule.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.ExcelImageInsert.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.LevelFilter.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.AutoCreateRoomView.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.PrintRegion.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.AutoLayoutTag.dll
+&#9500;&#9472;&#9472; ADSK.JExtRAC.LayoutInstanceInRegion.dll
+&#9500;&#9472;&#9472; ADSK.ViewExtension.SheetLayout.dll
+&#9500;&#9472;&#9472; ADSK.ViewExtension.ViewDuplicate.dll
+&#9500;&#9472;&#9472; ADSK.ViewExtension.TenkaiView.dll
+&#9500;&#9472;&#9472; en\
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.EnhancedSectionBox.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ParameterFilter.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ValueCopy.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExportExcel.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ImportExcel.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.AutomaticFloor.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.SwitchJoinOrder.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.JoinOrderInspector.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExportSchedule.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExcelImageInsert.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.LevelFilter.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.AutoCreateRoomView.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.PrintRegion.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.AutoLayoutTag.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.LayoutInstanceInRegion.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.ViewExtension.SheetLayout.resources.dll
+&#9474;   &#9500;&#9472;&#9472; ADSK.ViewExtension.ViewDuplicate.resources.dll
+&#9474;   &#9492;&#9472;&#9472; ADSK.ViewExtension.TenkaiView.resources.dll
+&#9500;&#9472;&#9472; Data\
+&#9474;   &#9492;&#9472;&#9472; AutomaticFloor.xml
+&#9492;&#9472;&#9472; *.addin files</code></pre>
+
+    <h3>Using the English version</h3>
+    <p>If your Windows display language is already set to English, the add-ins will show English UI automatically after installation. No extra steps are needed.</p>
+    <p><strong>If your Windows is set to Japanese but you want English UI</strong>, change the display language:</p>
+    <ol>
+      <li>Open <strong>Settings</strong> &rarr; <strong>Time &amp; Language</strong> &rarr; <strong>Language &amp; region</strong>.</li>
+      <li>Under <strong>Windows display language</strong>, select <strong>English</strong>.</li>
+      <li>Sign out and sign back in (or restart) for the change to take effect.</li>
+      <li>Launch Revit &mdash; the add-ins will now show English UI.</li>
+    </ol>
+    <div class="callout callout-info">
+      <span class="callout-icon">&#8505;&#65039;</span>
+      <span>You do not need to change Revit's language separately. The add-ins follow the Windows display language, not Revit's language setting.</span>
+    </div>
+
+    <h3>What changes in English mode</h3>
+    <table>
+      <thead><tr><th>Element</th><th>Japanese</th><th>English</th></tr></thead>
+      <tbody>
+        <tr><td>Ribbon buttons</td><td>&#36984;&#25246;&#12508;&#12483;&#12463;&#12473;&#35519;&#25972; / &#12508;&#12483;&#12463;&#12473;&#12499;&#12517;&#12540;</td><td>Section Box Adjustment / Box View</td></tr>
+        <tr><td>Form titles</td><td>&#36984;&#25246;&#12508;&#12483;&#12463;&#12473;&#35519;&#25972; / &#36984;&#25246;&#12508;&#12483;&#12463;&#12473;&#20316;&#25104;</td><td>Section Box Adjustment / Create Box View</td></tr>
+        <tr><td>Labels (directions)</td><td>&#24038;&#12539;&#21491;&#12539;&#21069;&#12539;&#24460;&#12539;&#19978;&#12539;&#19979;</td><td>Left / Right / Front / Back / Top / Bottom</td></tr>
+        <tr><td>Error messages</td><td>3D&#12499;&#12517;&#12540;&#12391;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</td><td>Please run this command in a 3D view.</td></tr>
+        <tr><td>Parameter Filter UI</td><td>&#12497;&#12521;&#12513;&#12540;&#12479;&#12501;&#12451;&#12523;&#12479;</td><td>Parameter Filter</td></tr>
+        <tr><td>Value Copy UI</td><td>&#12503;&#12525;&#12497;&#12486;&#12451;&#19968;&#35239; / &#12524;&#12509;&#12540;&#12488;</td><td>Property List / Report</td></tr>
+        <tr><td>Excel Export dialog</td><td>Excel&#12456;&#12463;&#12473;&#12509;&#12540;&#12488;</td><td>Excel Export</td></tr>
+        <tr><td>Excel Export labels</td><td>&#12459;&#12486;&#12468;&#12522;&#12434;&#36984;&#25246; / &#12497;&#12521;&#12513;&#12540;&#12479;&#12540; / &#20986;&#21147;</td><td>Select Category / Parameters / Output</td></tr>
+        <tr><td>Excel Export buttons</td><td>&#26908;&#32034; / &#35373;&#23450;&#24489;&#20803; / &#35373;&#23450;&#35501;&#36796; / &#35373;&#23450;&#20445;&#23384; / &#12461;&#12515;&#12531;&#12475;&#12523;</td><td>Search / Restore / Load / Save / Cancel</td></tr>
+        <tr><td>Excel Import dialog</td><td>&#12452;&#12531;&#12509;&#12540;&#12488;&#12377;&#12427;Excel&#12501;&#12449;&#12452;&#12523;&#12434;&#36984;&#25246;</td><td>Select Excel File to Import</td></tr>
+        <tr><td>Excel Import messages</td><td>&#35501;&#12415;&#36796;&#12415;&#12364;&#32066;&#20102;&#12375;&#12414;&#12375;&#12383; / &#12456;&#12521;&#12540;</td><td>Import completed / Error</td></tr>
+        <tr><td>Auto Floor &mdash; Architecture</td><td>&#24847;&#21280;&#24202;&#37197;&#32622;</td><td>Architecture Floor Placement</td></tr>
+        <tr><td>Auto Floor &mdash; Structural</td><td>&#27083;&#36896;&#24202;&#37197;&#32622;</td><td>Structural Floor Placement</td></tr>
+        <tr><td>Auto Floor &mdash; Foundation</td><td>&#22522;&#30990;&#12473;&#12521;&#12502;&#37197;&#32622;</td><td>Foundation Slab Placement</td></tr>
+        <tr><td>Auto Floor labels</td><td>&#12524;&#12505;&#12523;&#39640;&#12373;&#12458;&#12501;&#12475;&#12483;&#12488; / &#26753;&#12395;&#25304;&#26463; / &#12473;&#12497;&#12531;&#26041;&#21521;</td><td>Level Height Offset / Lock to Beams / Span Direction</td></tr>
+        <tr><td>Auto Floor errors</td><td>&#12467;&#12510;&#12531;&#12489;&#12364;&#22833;&#25943;&#12375;&#12414;&#12375;&#12383; / &#24202;&#12364;&#20316;&#25104;&#12391;&#12365;&#12414;&#12379;&#12435;</td><td>Command failed / Could not create floor</td></tr>
+        <tr><td>Join Adjustment title</td><td>結合順位調整</td><td>Join Order Adjustment</td></tr>
+        <tr><td>Join Adjustment labels</td><td>カテゴリ選択 / 結合優先順位 / 詳細調整</td><td>Category Selection / Join Priority Order / Detail Adjustment</td></tr>
+        <tr><td>Join Adjustment buttons</td><td>OK / キャンセル / 結合している要素のみ処理</td><td>OK / Cancel / Process only joined elements</td></tr>
+        <tr><td>Join Adjustment log</td><td>エラーログ / ログ保存 / 閉じる</td><td>Error Log / Save Log / Close</td></tr>
+        <tr><td>Join Order Inspector title</td><td>結合順位確認</td><td>Join Order Inspector</td></tr>
+        <tr><td>Join Order Inspector prompt</td><td>結合順位を調べたい要素を選択</td><td>Select an element to inspect join order</td></tr>
+        <tr><td>Join Order Inspector categories</td><td>勝っている要素 / 負けている要素 / 選択した要素</td><td>Elements cutting / Elements cut by / Selected element</td></tr>
+        <tr><td>Join Order Inspector legend</td><td>勝っている (カット側) / 負けている (被カット側)</td><td>Cutting (wins over) / Cut by (loses to)</td></tr>
+        <tr><td>Schedule Export title</td><td>&#12456;&#12521;&#12540;&#12525;&#12464; / &#24773;&#22577;</td><td>Error Log / Information</td></tr>
+        <tr><td>Schedule Export dialog</td><td>&#21517;&#21069;&#12434;&#20184;&#12369;&#12390;&#20445;&#23384; / &#38598;&#35336;&#34920;&#21517;&#31216;&#12395;&#26085;&#20184;&#12434;&#20184;&#12369;&#12427;</td><td>Save As / Add date to schedule name</td></tr>
+        <tr><td>Schedule Export options</td><td>&#12452;&#12531;&#12509;&#12540;&#12488;&#27231;&#33021;&#12434;&#20778;&#20808; / &#38598;&#35336;&#34920;&#34920;&#31034;&#20986;&#21147;&#12434;&#20778;&#20808;</td><td>Prioritize import function / Prioritize schedule display output</td></tr>
+        <tr><td>Excel Image Insert errors</td><td>Excel&#12434;&#36215;&#21205;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356; / &#12452;&#12513;&#12540;&#12472;&#12501;&#12449;&#12452;&#12523;&#12398;&#21462;&#12426;&#36796;&#12415;&#12395;&#22833;&#25943;&#12375;&#12414;&#12375;&#12383;</td><td>Please start Excel first / Failed to import image file</td></tr>
+        <tr><td>Level Filter title</td><td>&#38542;&#23652;&#12501;&#12451;&#12523;&#12479;</td><td>Level Filter</td></tr>
+        <tr><td>Level Filter tabs</td><td>&#12459;&#12486;&#12468;&#12522; / &#12501;&#12449;&#12511;&#12522; / &#12501;&#12449;&#12511;&#12522;&#12479;&#12452;&#12503; / &#12497;&#12540;&#12484; / &#12501;&#12451;&#12523;&#12479;</td><td>Category / Family / Family Type / Parts / Filters</td></tr>
+        <tr><td>Level Filter buttons</td><td>&#20840;&#36984;&#25246; / &#36984;&#25246;&#35299;&#38500; / OK / &#12461;&#12515;&#12531;&#12475;&#12523; / &#36969;&#29992;</td><td>Select All / Clear Selection / OK / Cancel / Apply</td></tr>
+        <tr><td>Level Filter labels</td><td>&#36984;&#25246;&#38917;&#30446;&#25968; / &#36984;&#25246;&#32207;&#25968; / &#20491;&#25968;</td><td>Selected Items / Total Selected / Count</td></tr>
+        <tr><td>Level Filter errors</td><td>&#35201;&#32032;&#12434;&#36984;&#25246;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</td><td>Please select elements first.</td></tr>
+        <tr><td>Room View Creation title</td><td>&#21508;&#23460;&#12499;&#12517;&#12540;&#20316;&#25104;</td><td>Room View Creation</td></tr>
+        <tr><td>Room View Creation labels</td><td>&#12499;&#12517;&#12540;&#12459;&#12486;&#12468;&#12522; / &#12499;&#12517;&#12540;&#12479;&#12452;&#12503; / &#12499;&#12517;&#12540;&#12486;&#12531;&#12503;&#12524;&#12540;&#12488;</td><td>View Category / View Type / View Template</td></tr>
+        <tr><td>Room View Creation options</td><td>&#24179;&#38754;&#22259; / &#22825;&#20117;&#20239;&#22259; / &#30697;&#24418; / &#37096;&#23627;&#24418;&#29366;</td><td>Floor Plan / Ceiling Plan / Rectangle / Room Shape</td></tr>
+        <tr><td>Room View Creation buttons</td><td>&#12479;&#12452;&#12503;&#32232;&#38598; / &#12486;&#12531;&#12503;&#12524;&#12540;&#12488;&#31649;&#29702; / &#36969;&#29992;</td><td>Type Edit / Manage Templates / Apply</td></tr>
+        <tr><td>Room View Creation duplicate</td><td>&#12473;&#12461;&#12483;&#12503; / &#19978;&#26360;&#12365; / &#12467;&#12500;&#12540;</td><td>Skip / Overwrite / Copy</td></tr>
+        <tr><td>Room View Creation errors</td><td>&#37096;&#23627;&#12364;&#27491;&#12375;&#12367;&#38281;&#12376;&#12383;&#38936;&#22495;&#12395;&#12394;&#12356;&#12383;&#12417;...</td><td>Skipped creating views for rooms not in enclosed regions...</td></tr>
+        <tr><td>Range Print title</td><td>&#20986;&#21147;</td><td>Print</td></tr>
+        <tr><td>Range Print labels</td><td>&#12503;&#12522;&#12531;&#12479; / &#21360;&#21047;&#12473;&#12465;&#12540;&#12523; / &#20986;&#21147;&#35373;&#23450;</td><td>Printer / Print Scale / Print Setup</td></tr>
+        <tr><td>Range Print buttons</td><td>&#12499;&#12517;&#12540;&#12473;&#12465;&#12540;&#12523;&#26356;&#26032; / OK / &#12461;&#12515;&#12531;&#12475;&#12523;</td><td>Update View Scale / OK / Cancel</td></tr>
+        <tr><td>Range Print setup</td><td>&#29992;&#32025; / &#21521;&#12365; / &#32294; / &#27178; / &#29992;&#32025;&#12398;&#37197;&#32622;</td><td>Paper / Orientation / Portrait / Landscape / Paper Placement</td></tr>
+        <tr><td>Range Print margins</td><td>&#20013;&#24515; / &#20986;&#21147;&#12458;&#12501;&#12475;&#12483;&#12488; / &#20313;&#30333;&#12394;&#12375; / &#12503;&#12522;&#12531;&#12479;&#12398;&#19978;&#38480; / &#12518;&#12540;&#12470;&#35373;&#23450;</td><td>Center / Offset from Corner / No Margin / Printer Limit / User Defined</td></tr>
+        <tr><td>Range Print quality</td><td>&#20302; / &#27161;&#28310; / &#39640; / &#20181;&#19978;</td><td>Low / Medium / High / Presentation</td></tr>
+        <tr><td>Range Print colors</td><td>&#12514;&#12494;&#12463;&#12525; / &#12464;&#12524;&#12540;&#12473;&#12465;&#12540;&#12523; / &#33394;</td><td>Monochrome / Grayscale / Color</td></tr>
+        <tr><td>Range Print options</td><td>&#12473;&#12467;&#12540;&#12503;&#12508;&#12483;&#12463;&#12473;&#12434;&#38750;&#34920;&#31034; / &#12488;&#12522;&#12511;&#12531;&#12464;&#22659;&#30028;&#12434;&#38750;&#34920;&#31034;</td><td>Hide Scope Boxes / Hide Crop Boundaries</td></tr>
+        <tr><td>Auto Tag title</td><td>&#37197;&#32622;&#26465;&#20214;&#30906;&#35469;</td><td>Tag Placement Settings</td></tr>
+        <tr><td>Auto Tag object options</td><td>&#36984;&#25246;&#12458;&#12502;&#12472;&#12455;&#12463;&#12488; / &#29694;&#12499;&#12517;&#12540;&#12398;&#25351;&#23450;&#12459;&#12486;&#12468;&#12522;&#20840;&#12458;&#12502;&#12472;&#12455;&#12463;&#12488;</td><td>Selected Objects / All objects of specified categories</td></tr>
+        <tr><td>Auto Tag position</td><td>&#24038;&#21491; / &#19978;&#19979;</td><td>Left / Right / Top / Bottom</td></tr>
+        <tr><td>Auto Tag leader</td><td>&#12354;&#12426; / &#12394;&#12375;</td><td>With Leader / Without Leader</td></tr>
+        <tr><td>Auto Tag placement area</td><td>&#33258;&#21205;&#21028;&#23450; / &#25163;&#21205;&#35373;&#23450; / &#38936;&#22495;&#35373;&#23450;</td><td>Automatic / Manual / Set Area</td></tr>
+        <tr><td>Auto Tag existing tags</td><td>&#26032;&#35215;&#12398;&#12415; / &#26360;&#25563;&#20877;&#37197;&#32622; / &#36861;&#21152;&#37197;&#32622;</td><td>New Only / Replace &amp; Relocate / Add More</td></tr>
+        <tr><td>Auto Tag buttons</td><td>&#12479;&#12464;&#37197;&#32622; / &#12461;&#12515;&#12531;&#12475;&#12523; / &#36984;&#25246; / &#35373;&#23450;&#20445;&#23384;</td><td>Place Tags / Cancel / Select / Save Settings</td></tr>
+        <tr><td>Auto Tag errors</td><td>&#24179;&#38754;&#22294;&#12539;&#22825;&#20117;&#20239;&#22294;&#12499;&#12517;&#12540;&#12391;&#23455;&#34892;&#12375;&#12390;&#19979;&#12373;&#12356;</td><td>Please run in a Floor Plan or Ceiling Plan view</td></tr>
+        <tr><td>Auto Tag log</td><td>&#12456;&#12521;&#12540;&#12525;&#12464; / &#12525;&#12464;&#20445;&#23384; / &#38281;&#12376;&#12427;</td><td>Error Log / Save Log / Close</td></tr>
+        <tr><td>Instance Array Layout title</td><td>&#37197;&#21015;&#37197;&#32622;</td><td>Instance Array Layout</td></tr>
+        <tr><td>Instance Array Layout groups</td><td>&#37197;&#32622;&#20301;&#32622; / &#37197;&#32622;&#35373;&#23450; / &#12503;&#12524;&#12499;&#12517;&#12540; / &#37197;&#32622;&#12501;&#12449;&#12511;&#12522;</td><td>Placement Position / Placement Settings / Preview / Placement Family</td></tr>
+        <tr><td>Instance Array Layout patterns</td><td>&#22343;&#31561;&#37197;&#32622; / &#27604;&#29575;&#37197;&#32622;(1:2:1)</td><td>Equal Spacing / Ratio (1:2:1)</td></tr>
+        <tr><td>Instance Array Layout methods</td><td>&#20491;&#25968;&#25351;&#23450;&#37197;&#32622; / &#38291;&#38548;&#25351;&#23450;&#37197;&#32622;</td><td>Count-Based / Interval-Based</td></tr>
+        <tr><td>Instance Array Layout buttons</td><td>&#37197;&#32622; / &#37197;&#32622;&#12375;&#12390;&#32066;&#20102; / &#32066;&#20102; / 2&#28857;&#25351;&#31034; / &#38936;&#22495;&#25351;&#23450; / &#37096;&#23627;&#12539;&#12473;&#12506;&#12540;&#12473;</td><td>Place / Place and Close / Close / 2-Point Pick / Pick Region / Room/Space</td></tr>
+        <tr><td>Instance Array Layout fields</td><td>&#12459;&#12486;&#12468;&#12522; / &#12501;&#12449;&#12511;&#12522; / &#12479;&#12452;&#12503; / &#20313;&#30333; / &#37197;&#32622;&#36600;&#35282;&#24230; / &#12501;&#12449;&#12511;&#12522;&#35282;&#24230; / &#12524;&#12505;&#12523;&#12363;&#12425;&#12398;&#12458;&#12501;&#12475;&#12483;&#12488; / &#37197;&#32622;&#12497;&#12479;&#12540;&#12531; / &#25351;&#23450;&#26041;&#27861;</td><td>Category / Family / Type / Margin / Axis Angle / Family Angle / Offset from Level / Placement Pattern / Method</td></tr>
+        <tr><td>Instance Array Layout options</td><td>&#31684;&#22258;&#25351;&#23450; / &#36984;&#25246;&#12458;&#12502;&#12472;&#12455;&#12463;&#12488; / &#31684;&#22258;&#22806;&#12398;&#12452;&#12531;&#12473;&#12479;&#12531;&#12473;&#12434;&#37197;&#32622;&#12375;&#12394;&#12356;</td><td>Region Selection / Select Object / Do not place instances outside the region</td></tr>
+        <tr><td>Instance Array Layout view error</td><td>&#24179;&#38754;&#22294;&#12289;&#27083;&#36896;&#22294;&#12289;&#22825;&#20117;&#20239;&#22294;&#12499;&#12517;&#12540;&#12391;&#23455;&#34892;&#12375;&#12390;&#12367;&#12384;&#12373;&#12356;&#12290;</td><td>Please run this command in a Floor Plan, Structural Plan, or Ceiling Plan view.</td></tr>
+        <tr><td>Auto Sheet Layout title</td><td>シート自動配置</td><td>Auto Sheet Layout</td></tr>
+        <tr><td>Auto Sheet Layout errors</td><td>参考となるシートをアクティブにしてから...</td><td>Please activate a reference sheet before launching...</td></tr>
+        <tr><td>Auto Sheet Layout disciplines</td><td>意匠 / 構造 / 機械 / 電気 / 衛生</td><td>Architectural / Structural / Mechanical / Electrical / Plumbing</td></tr>
+        <tr><td>View Duplicate title</td><td>ビュー複製</td><td>View Duplicate</td></tr>
+        <tr><td>View Duplicate labels</td><td>専門分野 / ビューカテゴリ / ビュータイプ</td><td>Discipline / View Category / View Family Type</td></tr>
+        <tr><td>View Duplicate options</td><td>接頭辞 / 接尾辞</td><td>Prefix / Suffix</td></tr>
+        <tr><td>View Duplicate view types</td><td>平面図 / 天井伏図 / 立面図 / 断面図 / 3D</td><td>Floor Plan / Ceiling Plan / Elevation / Section / 3D</td></tr>
+        <tr><td>View Duplicate errors</td><td>複製対象のビューを選択してください</td><td>Please select target views to duplicate</td></tr>
+        <tr><td>Interior Elevation title</td><td>展開図作成</td><td>Interior Elevation for Room</td></tr>
+        <tr><td>Interior Elevation labels</td><td>レベル / 部屋 / ビューファミリ / 寸法スタイル</td><td>Level / Room / View Family / Dimension Style</td></tr>
+        <tr><td>Interior Elevation directions</td><td>北 / 南 / 東 / 西</td><td>North / South / East / West</td></tr>
+        <tr><td>Interior Elevation errors</td><td>平面図ビューで実行してください</td><td>Please run this from a floor plan view</td></tr>
+        <tr><td>Interior Elevation progress</td><td>{0}の展開図を作成しています...</td><td>Creating interior elevations for {0}...</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Troubleshooting English UI</h3>
+    <table>
+      <thead><tr><th style="width:40%">Problem</th><th>Solution</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>UI still shows Japanese on English Windows</strong></td>
+          <td>Make sure the <code>en\</code> subfolder with <code>.resources.dll</code> files is present next to the main DLLs. If missing, re-run the build and copy the <code>en\</code> folder.</td>
+        </tr>
+        <tr>
+          <td><strong>Some text is English but some is still Japanese</strong></td>
+          <td>Check that all eighteen <code>.resources.dll</code> files are in the <code>en\</code> folder. Each add-in has its own satellite assembly.</td>
+        </tr>
+        <tr>
+          <td><strong>Want English on a Japanese system without changing Windows language</strong></td>
+          <td>This is not supported out of the box. The add-ins follow the OS display language. Changing the Windows display language to English is the recommended approach.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Uninstalling -->
+  <div class="section" id="uninstall">
+    <h2>Uninstalling</h2>
+    <ol>
+      <li>Close Revit 2027.</li>
+      <li>Navigate to <code>%AppData%\Autodesk\Revit\Addins\2027\</code></li>
+      <li>Delete the <code>REXJ-Standalone</code> folder (or delete the individual <code>.addin</code> and <code>.dll</code> files).</li>
+      <li>Restart Revit.</li>
+    </ol>
+    <div class="callout callout-tip">
+      <span class="callout-icon">&#128161;</span>
+      <span>To temporarily disable an add-in without uninstalling, rename or delete just its <code>.addin</code> file.</span>
+    </div>
+  </div>
+
+  <!-- Troubleshooting -->
+  <div class="section" id="troubleshooting">
+    <h2>Troubleshooting</h2>
+    <table>
+      <thead>
+        <tr><th style="width:40%">Problem</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>REXJ Standalone tab does not appear</strong></td>
+          <td>Check that the <code>.addin</code> files are in the correct folder and that the <code>&lt;Assembly&gt;</code> path points to the actual DLL location. Restart Revit.</td>
+        </tr>
+        <tr>
+          <td><strong>"Could not load file or assembly" error</strong></td>
+          <td>Verify the DLL files are in the same folder as the <code>.addin</code> files, or that the <code>&lt;Assembly&gt;</code> path in the <code>.addin</code> is correct.</td>
+        </tr>
+        <tr>
+          <td><strong>Add-in loads but button does nothing</strong></td>
+          <td>Make sure you have the correct view or selection active. Section Box tools require a 3D view; Parameter Filter and Value Copy require selected elements.</td>
+        </tr>
+        <tr>
+          <td><strong>Security warning on every startup</strong></td>
+          <td>Click <strong>Always Load</strong> when prompted by Revit's add-in security dialog.</td>
+        </tr>
+        <tr>
+          <td><strong>Japanese text appears garbled</strong></td>
+          <td>Ensure your system supports Japanese text rendering (most modern Windows installations do). If you prefer English, see the <a href="#language">Language / Localization</a> section.</td>
+        </tr>
+        <tr>
+          <td><strong>English UI not showing on English Windows</strong></td>
+          <td>Ensure the <code>en\</code> subfolder with <code>.resources.dll</code> files was copied alongside the main DLLs. See <a href="#language">Language / Localization</a>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Project Structure -->
+  <div class="section tree" id="structure">
+    <h2>Project Structure Reference</h2>
+    <pre><code>C:\REXJ\Standalone\
+&#9500;&#9472;&#9472; REXJ-Standalone.sln              &larr; Visual Studio solution file
+&#9500;&#9472;&#9472; INSTALLATION_GUIDE.md            &larr; Markdown version of this guide
+&#9500;&#9472;&#9472; INSTALLATION_GUIDE.html          &larr; This file
+&#9474;
+&#9500;&#9472;&#9472; EnhancedSectionBox\              &larr; Section Box Extension
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.EnhancedSectionBox.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.EnhancedSectionBox.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; IExternalCommand implementations
+&#9474;   &#9500;&#9472;&#9472; Common\                      &larr; Shared utilities
+&#9474;   &#9500;&#9472;&#9472; Components\                  &larr; Attribute (resource helper)
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN)
+&#9474;   &#9492;&#9472;&#9472; Screen\                      &larr; WinForms UI
+&#9474;
+&#9500;&#9472;&#9472; ParameterFilter\                 &larr; Parameter-Based Selection
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ParameterFilter.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ParameterFilter.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs
+&#9474;   &#9500;&#9472;&#9472; Commands\
+&#9474;   &#9500;&#9472;&#9472; Components\                  &larr; Attribute, Elements, ProgressBarThread
+&#9474;   &#9500;&#9472;&#9472; Entities\                    &larr; Data model classes
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Localized strings and icons
+&#9474;   &#9492;&#9472;&#9472; UI\                          &larr; WinForms UI
+&#9474;
+&#9500;&#9472;&#9472; ValueCopy\                       &larr; Copy Parameter (Eyedropper)
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ValueCopy.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ValueCopy.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs
+&#9474;   &#9500;&#9472;&#9472; Commands\
+&#9474;   &#9500;&#9472;&#9472; Components\
+&#9474;   &#9500;&#9472;&#9472; Entities\
+&#9474;   &#9500;&#9472;&#9472; Resources\
+&#9474;   &#9500;&#9472;&#9472; Warning\                     &larr; Failure preprocessor
+&#9474;   &#9492;&#9472;&#9472; UI\                          &larr; WPF UI (active), WinForms UI (legacy)
+&#9474;
+&#9500;&#9472;&#9472; ExportExcel\                     &larr; Excel Export
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExportExcel.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExportExcel.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Excel panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; CmdExportExcel (IExternalCommand)
+&#9474;   &#9500;&#9472;&#9472; Components\                  &larr; Attribute, Parameters (local replacements)
+&#9474;   &#9500;&#9472;&#9472; Entities\                    &larr; CategoryItem, ParameterData, GetData
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN), Image.resx
+&#9474;   &#9500;&#9472;&#9472; UI\                          &larr; WinForms export dialog
+&#9474;   &#9492;&#9472;&#9472; Utils\                       &larr; ExcelUtils (COM Interop), Setting, Common
+&#9474;
+&#9500;&#9472;&#9472; ImportExcel\                     &larr; Excel Import
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ImportExcel.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ImportExcel.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Excel panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; CmdImportExcel (IExternalCommand)
+&#9474;   &#9500;&#9472;&#9472; Components\                  &larr; Attribute, Parameters (local replacements)
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN)
+&#9474;   &#9500;&#9472;&#9472; UI\                          &larr; WinForms sheet selection dialog
+&#9474;   &#9492;&#9472;&#9472; Utils\                       &larr; ExcelUtils (COM Interop, P/Invoke), CultureHelper
+&#9474;
+&#9500;&#9472;&#9472; AutomaticFloor\                  &larr; Auto Floor Creation
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.AutomaticFloor.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.AutomaticFloor.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (3 buttons)
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; CmdCreateArchitectureFloor, CmdCreateStructuralFloor, CmdFoundationSlab
+&#9474;   &#9500;&#9472;&#9472; Components\                  &larr; Attribute, Elements, Geometry (12+ algorithms), Parameters, Settings, Service
+&#9474;   &#9500;&#9472;&#9472; Data\                        &larr; AutomaticFloor.xml configuration
+&#9474;   &#9500;&#9472;&#9472; Entities\                    &larr; DtBase, DtCmd, DtItems, DtSlabType, SpBase, SpCmd, SpSlabType
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN), Image.resx
+&#9474;   &#9500;&#9472;&#9472; UI\                          &larr; WinForms configuration dialog
+&#9474;   &#9492;&#9472;&#9472; Utils\                       &larr; FloorCreator, Common, CultureHelper
+&#9500;&#9472;&#9472; SwitchJoinOrder\                 &larr; Join Adjustment
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.SwitchJoinOrder.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.SwitchJoinOrder.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Join panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\
+&#9474;   &#9500;&#9472;&#9472; Components\
+&#9474;   &#9500;&#9472;&#9472; Entities\
+&#9474;   &#9500;&#9472;&#9472; Resources\
+&#9474;   &#9500;&#9472;&#9472; UI\
+&#9474;   &#9492;&#9472;&#9472; Utils\
+&#9500;&#9472;&#9472; JoinOrderInspector\              &larr; Join Order Inspector
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.JoinOrderInspector.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.JoinOrderInspector.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Join panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\
+&#9474;   &#9500;&#9472;&#9472; Resources\
+&#9474;   &#9500;&#9472;&#9472; UI\
+&#9474;   &#9492;&#9472;&#9472; Utils\
+&#9500;&#9472;&#9472; ExportSchedule\                  &larr; Schedule Export
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExportSchedule.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExportSchedule.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Excel panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\
+&#9474;   &#9500;&#9472;&#9472; Components\
+&#9474;   &#9500;&#9472;&#9472; Resources\
+&#9474;   &#9500;&#9472;&#9472; UI\
+&#9474;   &#9500;&#9472;&#9472; UserControls\
+&#9474;   &#9492;&#9472;&#9472; Utils\
+&#9500;&#9472;&#9472; ExcelImageInsert\                &larr; Excel Image Insert
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExcelImageInsert.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.ExcelImageInsert.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Excel panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\
+&#9474;   &#9500;&#9472;&#9472; Components\
+&#9474;   &#9500;&#9472;&#9472; Resources\
+&#9474;   &#9492;&#9472;&#9472; Utils\
+&#9500;&#9472;&#9472; AutoCreateRoomView\                  &larr; Room View Creation
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.AutoCreateRoomView.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.AutoCreateRoomView.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Room panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; CmdAutoCreateRoomView (IExternalCommand)
+&#9474;   &#9500;&#9472;&#9472; Common\                      &larr; ComDialog (TaskDialog helper)
+&#9474;   &#9500;&#9472;&#9472; Components\                  &larr; Attribute, Settings (room area/volume)
+&#9474;   &#9500;&#9472;&#9472; ExternalEvent\               &larr; ExternalViewCreate (modeless event handler)
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN)
+&#9474;   &#9500;&#9472;&#9472; Screen\                      &larr; FormAutoCreateRoomView (WinForms modeless dialog)
+&#9474;   &#9492;&#9472;&#9472; Utils\                       &larr; CultureHelper
+&#9500;&#9472;&#9472; LayoutInstanceInRegion\         &larr; Instance Array Layout
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.LayoutInstanceInRegion.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.LayoutInstanceInRegion.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Placement panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; CmdLayoutInstance (IExternalCommand)
+&#9474;   &#9500;&#9472;&#9472; Common\                      &larr; ComDialog (TaskDialog helper)
+&#9474;   &#9500;&#9472;&#9472; Components\
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN)
+&#9474;   &#9500;&#9472;&#9472; Screen\                      &larr; FormLayoutInstance (WinForms)
+&#9474;   &#9492;&#9472;&#9472; Utils\                       &larr; CultureHelper
+&#9500;&#9472;&#9472; LevelFilter\                     &larr; Level Filter
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.LevelFilter.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.JExtRAC.LevelFilter.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Filter panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; CmdLevelFilter (IExternalCommand)
+&#9474;   &#9500;&#9472;&#9472; Components\                  &larr; Attribute, Elements, Parameters, Service, Settings
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN)
+&#9474;   &#9500;&#9472;&#9472; UI\                          &larr; FormLevelFilter (5-tab WinForms dialog)
+&#9474;   &#9492;&#9472;&#9472; Utils\                       &larr; CultureHelper
+&#9500;&#9472;&#9472; SheetLayout\                     &larr; Auto Sheet Layout (VB&rarr;C# conversion)
+&#9474;   &#9500;&#9472;&#9472; ADSK.ViewExtension.SheetLayout.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.ViewExtension.SheetLayout.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Sheets panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; CmdSheetLayout (IExternalCommand)
+&#9474;   &#9500;&#9472;&#9472; DialogItem\                  &larr; ItmView, ItmViewDiscipline, ItmViewFamilyType, ItmViewType, ItmViewPort, ItmSchedule
+&#9474;   &#9500;&#9472;&#9472; Sorter\                      &larr; CmpLevel, CmpViewGenLevel, CmpVpByNum
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN)
+&#9474;   &#9500;&#9472;&#9472; UI\                          &larr; DlgSheetLayout (WinForms dialog)
+&#9474;   &#9492;&#9472;&#9472; Utils\                       &larr; DialogUtil, RegistryHelper, CultureHelper
+&#9500;&#9472;&#9472; ViewDuplicate\                   &larr; View Duplicate (VB&rarr;C# conversion)
+&#9474;   &#9500;&#9472;&#9472; ADSK.ViewExtension.ViewDuplicate.csproj
+&#9474;   &#9500;&#9472;&#9472; ADSK.ViewExtension.ViewDuplicate.addin
+&#9474;   &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Views panel)
+&#9474;   &#9500;&#9472;&#9472; Commands\                    &larr; CmdViewDuplicate (IExternalCommand)
+&#9474;   &#9500;&#9472;&#9472; DialogItem\                  &larr; ItmView, ItmViewDiscipline, ItmViewFamilyType, ItmViewType
+&#9474;   &#9500;&#9472;&#9472; Sorter\                      &larr; CmpLevel
+&#9474;   &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN)
+&#9474;   &#9500;&#9472;&#9472; UI\                          &larr; DlgViewDuplicate, DlgViewDuplicateItem (WinForms)
+&#9474;   &#9492;&#9472;&#9472; Utils\                       &larr; DialogUtil, RegistryHelper, CultureHelper
+&#9492;&#9472;&#9472; TenkaiView\                      &larr; Interior Elevation for Room (VB&rarr;C# conversion)
+    &#9500;&#9472;&#9472; ADSK.ViewExtension.TenkaiView.csproj
+    &#9500;&#9472;&#9472; ADSK.ViewExtension.TenkaiView.addin
+    &#9500;&#9472;&#9472; App.cs                       &larr; Ribbon registration (Views panel)
+    &#9500;&#9472;&#9472; Commands\                    &larr; CmdTenkaiView (IExternalCommand)
+    &#9500;&#9472;&#9472; DialogItem\                  &larr; ItmViewFamily, ItmRoom, ItmDimStyle
+    &#9500;&#9472;&#9472; Sorter\                      &larr; CmpLevel, CmpLevelElement
+    &#9500;&#9472;&#9472; Resources\                   &larr; Text.resx (JA), Text.en.resx (EN)
+    &#9500;&#9472;&#9472; UI\                          &larr; DlgTenkaiView, DlgCreateTenkaiProcess (WinForms)
+    &#9492;&#9472;&#9472; Utils\                       &larr; RoomElevation, CreateTenkaiJoken, DialogUtil, RegistryHelper, CultureHelper</code></pre>
+  </div>
+
+</div>
+
+</body>
+</html>

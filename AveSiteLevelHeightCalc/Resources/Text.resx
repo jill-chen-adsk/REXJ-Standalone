@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Japan Standards Extension</value>
+    <comment>ボタン パネル名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP建築</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_ERROR_INVALID_LEVEL_VALUE" xml:space="preserve">
+    <value>入力した数字が範囲外でした。再入力してください。</value>
+    <comment>入力した数字が範囲外でした。再入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>コマンドが失敗しました</value>
+    <comment>エラー　コマンドが失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEAVEGLLEVELCALCPOS" xml:space="preserve">
+    <value>平均地盤面算定ポイント作成に失敗しました</value>
+    <comment>エラー　平均地盤面算定ポイント作成に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATECALCDRAW" xml:space="preserve">
+    <value>算定図作成に失敗しました</value>
+    <comment>エラー　算定図作成に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_CREATEGROUNDSEXP" xml:space="preserve">
+    <value>根拠式作成に失敗しました</value>
+    <comment>エラー　根拠式作成に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_NOLINEAREABOUNDARY" xml:space="preserve">
+    <value>エリア境界線が直線ではありません</value>
+    <comment>エラー　エリア境界線が直線ではありません</comment>
+  </data>
+  <data name="IDS_ERR_NOTCLOSEDAREABOUNDARY" xml:space="preserve">
+    <value>エリア境界線が閉じられていません</value>
+    <comment>エラー　エリア境界線が閉じられていません</comment>
+  </data>
+  <data name="IDS_ERR_PARAMCOMMAND" xml:space="preserve">
+    <value>コマンドパラメータの定義に失敗しました</value>
+    <comment>エラー　コマンドパラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>パラメータの定義に失敗しました</value>
+    <comment>エラー パラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_SELAREABOUNDARY" xml:space="preserve">
+    <value>エリア境界線を選択してから起動してください</value>
+    <comment>エラー　エリア境界線を選択してから起動してください</comment>
+  </data>
+  <data name="IDS_ERR_VALLARGE0" xml:space="preserve">
+    <value>値を0より大きく設定してください</value>
+    <comment>エラー　値を0より大きく設定してください</comment>
+  </data>
+  <data name="IDS_ERR_VALLES0" xml:space="preserve">
+    <value>値を0以下に設定してください</value>
+    <comment>エラー　値を0以下に設定してください</comment>
+  </data>
+  <data name="IDS_ERR_VALNULL" xml:space="preserve">
+    <value>値が空白です</value>
+    <comment>エラー　値が空白です</comment>
+  </data>
+  <data name="IDS_ERR_VALNUMBER" xml:space="preserve">
+    <value>値が整数ではありません</value>
+    <comment>エラー　値が整数ではありません</comment>
+  </data>
+  <data name="IDS_ERR_VALNUMERIC" xml:space="preserve">
+    <value>値が実数ではありません</value>
+    <comment>エラー　値が実数ではありません</comment>
+  </data>
+  <data name="IDS_ERR_VALRANGE" xml:space="preserve">
+    <value>値が範囲外です</value>
+    <comment>エラー　値が範囲外です</comment>
+  </data>
+  <data name="IDS_ERR_VIEWAREA" xml:space="preserve">
+    <value>エリア平面図を開いてから使用してください</value>
+    <comment>エラー　エリア平面図を開いてから使用してください</comment>
+  </data>
+  <data name="IDS_FILESETTINGNAME" xml:space="preserve">
+    <value>Settings.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_BGL" xml:space="preserve">
+    <value>BGL</value>
+    <comment>共有パラメータ 定義名 BGL</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_CREATE" xml:space="preserve">
+    <value>RexJpn-AveSiteLevleHeightCalc-Create</value>
+    <comment>共有パラメータ 定義名 コマンド 平均地盤面算定</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_DISPLEVEL" xml:space="preserve">
+    <value>表示レベル</value>
+    <comment>共有パラメータ 定義名 表示レベル</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_LEVEL" xml:space="preserve">
+    <value>表示レベル</value>
+    <comment>共有パラメータ 定義名 レベル</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_NUMBER" xml:space="preserve">
+    <value>番号</value>
+    <comment>共有パラメータ 定義名 番号</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_SCALEHORIZONTAL" xml:space="preserve">
+    <value>横縮尺</value>
+    <comment>共有パラメータ 定義名 横縮尺</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_SCALEVERTICAL" xml:space="preserve">
+    <value>縦縮尺</value>
+    <comment>共有パラメータ 定義名 縦縮尺</comment>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+    <comment>共有パラメータ　ファイル名</comment>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+    <comment>共有パラメータ　グループ名</comment>
+  </data>
+  <data name="IDS_SYMCIRCLE" xml:space="preserve">
+    <value>REXJ_平均地盤面算定_記号</value>
+  </data>
+  <data name="IDS_SYMNAME1.0" xml:space="preserve">
+    <value>ラベル 1.0mm</value>
+  </data>
+  <data name="IDS_SYMNAME2.0" xml:space="preserve">
+    <value>ラベル 2.0mm</value>
+  </data>
+  <data name="IDS_SYMNAME3.0" xml:space="preserve">
+    <value>ラベル 3.0mm</value>
+  </data>
+  <data name="IDS_SYMNAME4.0" xml:space="preserve">
+    <value>ラベル 4.0mm</value>
+  </data>
+  <data name="IDS_SYMNAME5.0" xml:space="preserve">
+    <value>ラベル 5.0mm</value>
+  </data>
+  <data name="IDS_SYMNAME_AVEGLLEVELPOINTSIGN" xml:space="preserve">
+    <value>REXJ_平均地盤面_符号</value>
+    <comment>シンボル名 REXJ_平均地盤面_符号</comment>
+  </data>
+  <data name="IDS_SYMNAME_CURRENTBGL" xml:space="preserve">
+    <value>REXJ_既存BGL</value>
+    <comment>シンボル名 REXJ_既存BGL</comment>
+  </data>
+  <data name="IDS_SYMNAME_DGL" xml:space="preserve">
+    <value>REXJ_設計GL</value>
+    <comment>シンボル名 REXJ_設計GL</comment>
+  </data>
+  <data name="IDS_SYMNAME_SCALE" xml:space="preserve">
+    <value>REXJ_縮尺</value>
+    <comment>ファミリ名 REXJ_縮尺</comment>
+  </data>
+  <data name="IDS_SYMTAG" xml:space="preserve">
+    <value>REXJ_平均地盤面算定_タグ</value>
+  </data>
+  <data name="IDS_TXT_1SLASH" xml:space="preserve">
+    <value>1/</value>
+    <comment>1/</comment>
+  </data>
+  <data name="IDS_TXT_AREADECIMAL" xml:space="preserve">
+    <value>結果面積の桁処理</value>
+    <comment>結果面積の桁処理</comment>
+  </data>
+  <data name="IDS_TXT_AVEGLLEVEL" xml:space="preserve">
+    <value>平均地盤面</value>
+    <comment>平均地盤面</comment>
+  </data>
+  <data name="IDS_TXT_BMHEIGHT" xml:space="preserve">
+    <value>BM高さ</value>
+    <comment>BM高さ</comment>
+  </data>
+  <data name="IDS_TXT_CALCDRAW" xml:space="preserve">
+    <value>算定図</value>
+    <comment>算定図</comment>
+  </data>
+  <data name="IDS_TXT_CALCPOINT" xml:space="preserve">
+    <value>算定ポイント</value>
+    <comment>算定ポイント</comment>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>キャンセル</value>
+    <comment>キャンセル</comment>
+  </data>
+  <data name="IDS_TXT_CLOSE" xml:space="preserve">
+    <value>閉じる</value>
+    <comment>閉じる</comment>
+  </data>
+  <data name="IDS_TXT_CLOSE1" xml:space="preserve">
+    <value>切り上げ</value>
+    <comment>切り上げ</comment>
+  </data>
+  <data name="IDS_TXT_CREATEAVEGLLEVELDRAW" xml:space="preserve">
+    <value>平均地盤面算定図作成</value>
+    <comment>平均地盤面算定図作成</comment>
+  </data>
+  <data name="IDS_TXT_CREATECALCDRAW" xml:space="preserve">
+    <value>算定図作成</value>
+    <comment>算定図作成</comment>
+  </data>
+  <data name="IDS_TXT_CURRENTBGL" xml:space="preserve">
+    <value>既存BGL</value>
+    <comment>既存BGL</comment>
+  </data>
+  <data name="IDS_TXT_CUTOFF" xml:space="preserve">
+    <value>切り捨て</value>
+    <comment>切り捨て</comment>
+  </data>
+  <data name="IDS_TXT_DECIMAL" xml:space="preserve">
+    <value>小数点以下第</value>
+    <comment>小数点以下第</comment>
+  </data>
+  <data name="IDS_TXT_DEL" xml:space="preserve">
+    <value>削除</value>
+    <comment>削除</comment>
+  </data>
+  <data name="IDS_TXT_DNSIGN" xml:space="preserve">
+    <value>↓</value>
+    <comment>↓</comment>
+  </data>
+  <data name="IDS_TXT_HORIZONTAL" xml:space="preserve">
+    <value>横</value>
+    <comment>横</comment>
+  </data>
+  <data name="IDS_TXT_LEVEL" xml:space="preserve">
+    <value>レベル</value>
+    <comment>レベル</comment>
+  </data>
+  <data name="IDS_TXT_LEVELFROMBM" xml:space="preserve">
+    <value>BMからのレベル</value>
+    <comment>BMからのレベル</comment>
+  </data>
+  <data name="IDS_TXT_M" xml:space="preserve">
+    <value>m</value>
+    <comment>m</comment>
+  </data>
+  <data name="IDS_TXT_MM" xml:space="preserve">
+    <value>mm</value>
+    <comment>mm</comment>
+  </data>
+  <data name="IDS_TXT_NUMBER" xml:space="preserve">
+    <value>番号</value>
+    <comment>番号</comment>
+  </data>
+  <data name="IDS_TXT_ORDER" xml:space="preserve">
+    <value>位を</value>
+    <comment>位を</comment>
+  </data>
+  <data name="IDS_TXT_ROUNDINGOFF" xml:space="preserve">
+    <value>四捨五入</value>
+    <comment>四捨五入</comment>
+  </data>
+  <data name="IDS_TXT_SCALE" xml:space="preserve">
+    <value>縮尺</value>
+    <comment>縮尺</comment>
+  </data>
+  <data name="IDS_TXT_UNITLENGTH" xml:space="preserve">
+    <value>単位</value>
+    <comment>長さ単位</comment>
+  </data>
+  <data name="IDS_TXT_UPDATELEVEL" xml:space="preserve">
+    <value>レベル更新</value>
+    <comment>レベル更新</comment>
+  </data>
+  <data name="IDS_TXT_UPDATENUMBER" xml:space="preserve">
+    <value>番号更新</value>
+    <comment>番号更新</comment>
+  </data>
+  <data name="IDS_TXT_UPSIGN" xml:space="preserve">
+    <value>↑</value>
+    <comment>↑</comment>
+  </data>
+  <data name="IDS_TXT_VERTICAL" xml:space="preserve">
+    <value>縦</value>
+    <comment>縦</comment>
+  </data>
+  <data name="IDS_TXT_VHRATE" xml:space="preserve">
+    <value>縦横比</value>
+    <comment>縦横比</comment>
+  </data>
+  <data name="IDS_VAL_DIMDISTY" xml:space="preserve">
+    <value>10.0</value>
+    <comment>値　寸法Y値間隔</comment>
+  </data>
+  <data name="IDS_VAL_DIMPOSY" xml:space="preserve">
+    <value>-20.0</value>
+    <comment>値　寸法位置Y値</comment>
+  </data>
+  <data name="IDS_VAL_DIMSUPDIST" xml:space="preserve">
+    <value>10.0</value>
+    <comment>値　寸法補助線距離</comment>
+  </data>
+  <data name="IDS_VAL_EXPINTERX" xml:space="preserve">
+    <value>5</value>
+    <comment>値　式　間隔X値</comment>
+  </data>
+  <data name="IDS_VAL_EXPINTERY" xml:space="preserve">
+    <value>-5</value>
+    <comment>値　式　間隔Y値</comment>
+  </data>
+  <data name="IDS_VAL_EXPSIGNTEXT" xml:space="preserve">
+    <value>－</value>
+    <comment>値　式　符号文字</comment>
+  </data>
+  <data name="IDS_VAL_GLEXT" xml:space="preserve">
+    <value>20</value>
+    <comment>値　設計GL延長値</comment>
+  </data>
+  <data name="IDS_VAL_SCALEPOSX" xml:space="preserve">
+    <value>-20</value>
+    <comment>値　縮尺位置X値</comment>
+  </data>
+  <data name="IDS_VAL_SIGNPOSY" xml:space="preserve">
+    <value>-3</value>
+    <comment>値　記号位置Y値</comment>
+  </data>
+  <data name="IDS_VIEW_CALCDRAW" xml:space="preserve">
+    <value>平均地盤面算定図</value>
+    <comment>ビュー　算定図</comment>
+  </data>
+  <data name="IDS_VIEW_GROUNDSEXP" xml:space="preserve">
+    <value>平均地盤面根拠式</value>
+    <comment>ビュー　根拠式</comment>
+  </data>
+  <data name="IDS_WAR_DELAVEGLLEVELPOINT" xml:space="preserve">
+    <value>既存の平均地盤面算定ポイントは削除されます</value>
+    <comment>警告　既存の平均地盤面算定ポイントは削除されます</comment>
+  </data>
+  <data name="IDS_WAR_UPDATELEVEL" xml:space="preserve">
+    <value>BMからのレベルを更新しますか？</value>
+    <comment>警告　BMからのレベルを更新しますか？</comment>
+  </data>
+</root>

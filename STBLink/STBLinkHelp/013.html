@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>レベル生成</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>レベル生成</H2>
+        <table width="600" align="left">
+            <tr>
+                <td>
+                    <p>ST-Bridgeから読み取った情報からレベルの変換を行う。</p>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;レベルの生成</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">レベル生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>レベルの情報は階(StbStories)の<br>名称：名称(name)<br>スパン長：代表高さ(height)<br>から取得する。<br>
+                                            レベルの生成にはシステムファミリのレベルファミリを使用する。
+                                            <p align="center"><img src="image/013_01.png" alt="" width="453" height="180"></p><br>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>&lt;レベル生成①&gt;<br>
+                                            既存のレベルをマッピングした場合、既存のレベルの名称と位置を変更する。<br>
+                                            また、レベルに対応する平面図ビューの名称も併せて変更を行う。<br><br><br>
+                                            <p align="center"><img src="image/013_02.png" alt="" width="497" height="189"></p><br>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>&lt;レベル生成②&gt;<br>
+                                            レベルマッピングで新規作成とした場合、レベルの生成を行う。<br>
+                                            また、レベルに対する平面図ビューも併せて生成する。<br><br><br>
+                                            <p align="center"><img src="image/013_03.png" alt="" width="511" height="188"></p><br>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>&lt;レベル生成③&gt;<br>
+                                            レベルマッピングでマッピングされなかった既存のレベルはそのままとする。<br><br><br>
+                                            <p align="center"><img src="image/013_04.png" alt="" width="504" height="188"></p><br>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>&lt;レベル生成④&gt;<br>
+                                            レベルマッピングでオフセット値を入力すると下図のように変換される。<br><br>
+                                            <p align="center"><img src="image/013_05.png" alt="" width="536" height="137"></p><br>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        <tr>
+                    </table>
+                </td>
+            <tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Excel Image Insert</Name>
+    <Assembly>ADSK.JExtRAC.ExcelImageInsert.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.ExcelImageInsert.App</FullClassName>
+    <ClientId>8B3C9D4E-5F6A-7B8C-9D0E-1F2A3B4C5D6E</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

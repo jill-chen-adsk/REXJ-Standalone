@@ -1,0 +1,36 @@
+﻿<Page x:Class="MepDuctPipeTool.DockPanelPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:MepDuctPipeTool.ViewModels"
+      Title="Flange Placement Settings" Height="135" Width="290" MinWidth="290" Background="White">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="UIStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Width="Auto" Height="Auto" IsEnabled="{Binding IsPanelControlEnabled, FallbackValue=true}">
+        <StackPanel Margin="5">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource DockContainerStackPanel}" Margin="3">
+                <Label Content="Pipe Accessory" Style="{StaticResource DockLabel}" />
+                <StackPanel>
+                    <ComboBox ItemsSource="{Binding AccessoryFamilies}" SelectedItem="{Binding SelectedAccessoryFamily}" DisplayMemberPath="Name"
+                              Style="{StaticResource DockCombobox}" Focusable="False" IsEditable="True" IsReadOnly="True" Text="{Binding AccessoryFamilyDisplayText}" />
+                    <ComboBox ItemsSource="{Binding AccessorySymbols}" SelectedItem="{Binding SelectedAccessorySymbol}" DisplayMemberPath="Name"
+                              Style="{StaticResource DockCombobox}" Focusable="False" IsEditable="True" IsReadOnly="True" Text="{Binding AccessorySymbolDisplayText}" />
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Style="{StaticResource DockContainerStackPanel}" Margin="3">
+                <Label Content="Flange" Style="{StaticResource DockLabel}" />
+                <StackPanel>
+                    <ComboBox ItemsSource="{Binding FlangeFamilies}" SelectedItem="{Binding SelectedFlangeFamily}" DisplayMemberPath="Name"
+                              Style="{StaticResource DockCombobox}" Focusable="False" IsEditable="True" IsReadOnly="True" Text="{Binding FlangeFamilyDisplayText}" />
+                    <ComboBox ItemsSource="{Binding FlangeSymbols}" SelectedItem="{Binding SelectedFlangeSymbol}" DisplayMemberPath="Name"
+                              Style="{StaticResource DockCombobox}" Focusable="False" IsEditable="True" IsReadOnly="True" Text="{Binding FlangeSymbolDisplayText}" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

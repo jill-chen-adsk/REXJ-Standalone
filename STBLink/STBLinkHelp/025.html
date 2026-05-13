@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>基礎・杭生成</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>基礎・杭生成</H2>
+        <table width="600" align="left">
+            <tr>
+                <td>
+                    <p>ST-Bridgeから読み取った情報から基礎・杭の変換を行う。</p>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;基礎の生成</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="6">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">RC基礎断面の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>コンクリート形状ごとにマッピングテーブルで設定されたファミリを使用する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>断面名称（name）をタイプ名にする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>マッピングされたファミリ内に該当するタイプ名がない場合は既存のタイプを複製し新たなタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>矩形テーパーのテーパー幅は「基礎幅／2」（=DX/2、=DY/2）をテーパー幅とする。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>連続基礎のテーパー幅は始端と終端の節点IDが一致する梁の幅とする。<br>
+                                            連続基礎の断面が同じで取り付く梁の幅が異なる場合は新たにタイプを作成しタイプ名の末尾にサフィックスを付ける。<br>
+                                            始端と終端が一致する梁が無い場合は変換対象外とする。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">6</td>
+                                        <td>複製したタイプに各タイプパラメータを設定する。<br>
+                                            対応する既存のタイプパラメータが無い属性は新規にタイプパラメータを追加し設定する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">7</td>
+                                        <td>各鉄筋の強度は最大のものを「鉄筋種別」に設定する。</td>
+                                    </tr>
+                                    <!-- RC杭の生成 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">RC杭断面の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>場所打ち杭または既製杭の選択に応じたマッピングテーブルで設定されたファミリを使用する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>断面名称（name）をタイプ名にする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>マッピングされたファミリ内に該当するタイプ名がない場合は既存のタイプを複製し新たなタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>複製したタイプに各タイプパラメータを設定する。<br>
+                                            対応する既存のタイプパラメータが無い属性は新規にタイプパラメータを追加し設定する。
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>場所打ち杭で変換するファミリは単独ファミリとし、<br>以下の形状パラメータを変換する。<br>
+                                            <!-- セル内のテーブル -->
+                                            <table width="540" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                <tr bgcolor="#c6d9f1">
+                                                    <td colspan="2">ST-Bridge属性</td>
+                                                    <td colspan="2">Revitパラメータ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td width="180">StbSecStraight<br>（ストレート）</td>
+                                                    <td width="130">D</td>
+                                                    <td width="150">直径</td>
+                                                    <td rowspan="8">
+                                                        <nobr>寸法</nobr>
+                                                    </td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="2">StbSecExtended_foot<br>（脚部拡大）</td>
+                                                    <td>D_axial</td>
+                                                    <td><p>直径</p></td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>D_extended_foot</td>
+                                                    <td>拡底部_直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="2">StbSecExtended_Top<br>（頂部拡大）</td>
+                                                    <td>D_extended_top</td>
+                                                    <td>拡頭部_直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>D_axial</td>
+                                                    <td>直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="3">StbSecExtended_Top_Foot<br>（両端拡大）</td>
+                                                    <td>D_extended_top</td>
+                                                    <td>拡頭部_直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>D_axial</td>
+                                                    <td>直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>D_extended_foot</td>
+                                                    <td>拡底部_直径</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">6</td>
+                                        <td>既製杭で変換するファミリはネストファミリとし、<br>以下の形状パラメータを変換する。<br>
+                                            <!-- セル内のテーブル -->
+                                            <table width="540" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                <tr bgcolor="#c6d9f1">
+                                                    <td colspan="2">ST-Bridge属性</td>
+                                                    <td colspan="2">Revitパラメータ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td width="180">StbSecStraight<br>（ストレート）</td>
+                                                    <td width="130">D</td>
+                                                    <td width="150">杭種1の<br>子ファミリの直径</td>
+                                                    <td rowspan="8">
+                                                        <nobr>寸法</nobr>
+                                                    </td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="2">StbSecExtended_Foot<br>（脚部拡大）</td>
+                                                    <td>D_axial</td>
+                                                    <td><p>杭種1の<br>子ファミリの直径</p></td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>D_extended_foot</td>
+                                                    <td>杭種2の<br>子ファミリの直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="2">StbSecExtended_Top<br>（頂部拡大）</td>
+                                                    <td>D_extended_top</td>
+                                                    <td>杭種1の<br>子ファミリの直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>D_axial</td>
+                                                    <td>杭種2の<br>子ファミリの直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="3">StbSecExtended_Top_Foot<br>（両端拡大）</td>
+                                                    <td>D_extended_top</td>
+                                                    <td>杭種1の<br>子ファミリの直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>D_axial</td>
+                                                    <td>杭種2の<br>子ファミリの直径</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>D_extended_foot</td>
+                                                    <td>杭種3の<br>子ファミリの直径</td>
+                                                </tr>
+                                            </table>
+                                            ※ 子ファミリのタイプ名は「φ(径)」とし、タイプ名が無い場合は既存のタイプを複製し新たなタイプを生成する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">7</td>
+                                        <td>２断面・３断面の場合の主筋種別・芯筋種別・帯筋強度は、それぞれ最大のものを設定する。</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- 基礎の配置 -->
+                    <TABLE BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;基礎の配置</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="6">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">フーチングの生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>断面ID（id_section）が一致するコンクリート形状が連続以外のRC基礎断面タイプを取得する。タイプが見つからない場合はタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>節点ID（idNode）の座標を取得する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>取得した座標のZ座標から配置するRevitのレベルを取得する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>取得したRC基礎断面タイプ、節点座標位置からフーチングを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>フーチング生成後、各インスタンスパラメータに属性を設定する。<br>
+                                            対応する既存のインスタンスパラメータが無い属性はインスタンスパラメータを新規に追加し設定する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">6</td>
+                                        <td>レベルからの高さオフセットは節点から下端までの距離とする。<br><br>
+                                            <img src="Image/025_01.png" alt="">
+                                        </td>
+                                    </tr>
+                                    <!-- 布基礎の配置 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">布基礎の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>断面ID（id_section）が一致するコンクリート形状が連続のRC基礎断面タイプを取得する。タイプが見つからない場合はタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>始端節点ID（idNode_start）、終端節点ID（idNode_end）から座標を取得する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>取得したRC基礎断面タイプ、節点座標位置から布基礎を生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>布基礎生成後、各インスタンスパラメータに属性を設定する。<br>
+                                            対応する既存のインスタンスパラメータが無い属性はインスタンスパラメータを新規に追加し設定する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>布基礎は底板部分を表し、基礎梁とは別にオフセットとレベルを指定する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">6</td>
+                                        <td>布基礎のオフセット、レベルは節点からの距離とする。<br><br>
+                                            <img src="Image/025_02.png" alt="">
+                                        </td>
+                                    </tr>
+                                    <!-- 杭基礎の配置 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">杭基礎の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>断面ID（id_section）が一致するRC杭断面のタイプを取得する。タイプが見つからない場合はタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>節点ID（idNode）から座標を取得する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>取得したRC杭断面タイプ、節点座標位置から杭基礎を生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>杭基礎生成後、各インスタンスパラメータに属性を設定する。<br>
+                                            対応する既存のインスタンスパラメータが無い属性はインスタンスパラメータを新規に追加し設定する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>杭長は変換する杭種に応じて変換する。<br><br>
+                                            <!-- セル内のテーブル -->
+                                            ＜場所打ち杭＞<br>
+                                            <table width="540" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                <tr bgcolor="#c6d9f1">
+                                                    <td>ST-Bridge属性</td>
+                                                    <td colspan="2">Revitパラメータ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td width="310">length_all</td>
+                                                    <td width="150">杭全長</td>
+                                                    <td>
+                                                        <nobr>寸法</nobr>
+                                                    </td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>length_head</td>
+                                                    <td>拡頭部_長さ</td>
+                                                    <td rowspan="2">
+                                                        <nobr>構造</nobr>
+                                                    </td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>length_foot</td>
+                                                    <td>拡底部_長さ</td>
+                                                </tr>
+                                            </table>
+                                            <br>
+                                            ＜既製杭＞<br>
+                                            <table width="540" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                <tr bgcolor="#c6d9f1">
+                                                    <td colspan="2">ST-Bridge属性</td>
+                                                    <td colspan="2">Revitパラメータ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td width="80">ストレート</td>
+                                                    <td width="220">length_all</td>
+                                                    <td width="150">杭種1_長さ</td>
+                                                    <td rowspan="8">
+                                                        <nobr>構造</nobr>
+                                                    </td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="2">脚部拡大</td>
+                                                    <td>(length_all)-(length_foot)</td>
+                                                    <td>杭種1_長さ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>length_foot</td>
+                                                    <td>杭種2_長さ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="2">頂部拡大</td>
+                                                    <td>length_head</td>
+                                                    <td>杭種1_長さ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>(length_all)-(length_head)</td>
+                                                    <td>杭種2_長さ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td rowspan="3">両端拡大</td>
+                                                    <td>length_head</td>
+                                                    <td>杭種1_長さ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>(length_all)-(length_head)<br>-(length_foot)</td>
+                                                    <td>杭種2_長さ</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>length_foot</td>
+                                                    <td>杭種3_長さ</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">6</td>
+                                        <td>level_topは節点から杭頭までの距離とする。</td>
+                                    </tr>
+                                    <!-- フーチングと杭基礎のグループ化 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">フーチングと杭基礎のグループ化</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>フーチングの節点と同じ節点IDの杭基礎を全て検索する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>節点IDが一致したフーチングと複数の杭基礎を１つのグループとしてグループ化する。</td>
+                                    </tr>
+                                    <!-- 布基礎と基礎梁のグループ化 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">布基礎と基礎梁のグループ化</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>布基礎の始点と終点の節点IDが一致する梁を検索する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>節点IDが一致した布基礎と梁を１つのグループとしてグループ化する。</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

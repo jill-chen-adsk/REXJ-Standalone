@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Auto Floor Creation</Name>
+    <Assembly>ADSK.JExtRAC.AutomaticFloor.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.AutomaticFloor.App</FullClassName>
+    <ClientId>B4E83A2F-9C56-4D7B-A8F3-6E2D1B5C9A47</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>STBLink</Name>
+    <Assembly>STBLink\STBLink.dll</Assembly>
+    <FullClassName>STBLink.RevitLNK</FullClassName>
+    <AddInId>E5F6A7B8-9012-3456-C789-DEF012345678</AddInId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>ADSK.JExtRAC.CheckingALVS.Standalone</Name>
+    <Assembly>ADSK.JExtRAC.CheckingALVS.dll</Assembly>
+    <AddInId>C3F4A5B6-7829-6901-C345-DEF012345690</AddInId>
+    <FullClassName>ADSK.JExtRAC.CheckingALVS.App</FullClassName>
+    <VendorId>ADSK.JExt</VendorId>
+    <VendorDescription>CheckingALVS standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

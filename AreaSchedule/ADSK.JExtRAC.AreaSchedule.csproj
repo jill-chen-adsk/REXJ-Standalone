@@ -1,0 +1,114 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)' == ''">Debug 2027</Configuration>
+    <Platform Condition="'$(Platform)' == ''">x64</Platform>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ADSK.JExtRAC.AreaSchedule</RootNamespace>
+    <AssemblyName>ADSK.JExtRAC.AreaSchedule</AssemblyName>
+    <UseWpf>true</UseWpf>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <SatelliteResourceLanguages>ja;en</SatelliteResourceLanguages>
+    <NeutralLanguage>ja</NeutralLanguage>
+    <Configurations>Debug 2027;Release 2027</Configurations>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug 2027|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
+    <DebugType>embedded</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release 2027|x64'">
+    <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GroundsExpression\FormCalcAreaWPF.xaml.cs">
+      <DependentUpon>FormCalcAreaWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="LegalArea\FormWarningRoomsWPF.xaml.cs">
+      <DependentUpon>FormWarningRoomsWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="GroundsExpression\FormCalcArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GroundsExpression\FormCalcArea.Designer.cs">
+      <DependentUpon>FormCalcArea.cs</DependentUpon>
+    </Compile>
+    <Compile Update="LegalArea\FormWarningRooms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LegalArea\FormWarningRooms.Designer.cs">
+      <DependentUpon>FormWarningRooms.cs</DependentUpon>
+    </Compile>
+    <Compile Update="RoomConvertedToArea\FormChoiceWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RoomConvertedToArea\FormChoiceWork.Designer.cs">
+      <DependentUpon>FormChoiceWork.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Text.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Text.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Image.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Image.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Image.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Image.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Text.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Text.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Text.en.resx" />
+    <EmbeddedResource Update="GroundsExpression\FormCalcArea.resx">
+      <DependentUpon>FormCalcArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LegalArea\FormWarningRooms.resx">
+      <DependentUpon>FormWarningRooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RoomConvertedToArea\FormChoiceWork.resx">
+      <DependentUpon>FormChoiceWork.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="1_ADSK.JExtRAC.AreaSchedule.addin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Images\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

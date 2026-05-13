@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Values>
+  <Copper>
+    <Item>
+      <ValMin>0</ValMin>
+      <ValMax>1</ValMax>
+      <Value>20</Value>
+    </Item>
+    <Item>
+      <ValMin>1</ValMin>
+      <ValMax>8</ValMax>
+      <Value>25</Value>
+    </Item>
+    <Item>
+      <ValMin>8</ValMin>
+      <ValMax>55</ValMax>
+      <Value>30</Value>
+    </Item>
+    <Item>
+      <ValMin>55</ValMin>
+      <ValMax>100</ValMax>
+      <Value>40</Value>
+    </Item>
+    <Item>
+      <ValMin>100</ValMin>
+      <ValMax>330</ValMax>
+      <Value>50</Value>
+    </Item>
+    <Item>
+      <ValMin>330</ValMin>
+      <ValMax>550</ValMax>
+      <Value>65</Value>
+    </Item>
+    <Item>
+      <ValMin>550</ValMin>
+      <ValMax>1350</ValMax>
+      <Value>80</Value>
+    </Item>
+    <Item>
+      <ValMin>1350</ValMin>
+      <ValMax>2900</ValMax>
+      <Value>100</Value>
+    </Item>
+  </Copper>
+</Values>

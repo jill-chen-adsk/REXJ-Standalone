@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="IDS_ERR_ROOM_NOT_ENCLOSED" xml:space="preserve"><value>部屋が正しく閉じた領域にないため、下記部屋のビュー作成をスキップしました。</value></data>
+  <data name="IDS_TXT_APPLY" xml:space="preserve"><value>適用</value></data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="IDS_TXT_CEILING_PER_ROOM" xml:space="preserve"><value>各室天伏図</value></data>
+  <data name="IDS_TXT_CEILING_PLAN" xml:space="preserve"><value>天井伏図</value></data>
+  <data name="IDS_TXT_COPY" xml:space="preserve"><value>コピー</value></data>
+  <data name="IDS_TXT_COPY_CREATE" xml:space="preserve"><value>コピー作成</value></data>
+  <data name="IDS_TXT_DUPLICATE_NAME" xml:space="preserve"><value>同名のビューが存在した場合</value></data>
+  <data name="IDS_TXT_FLOOR_PER_ROOM" xml:space="preserve"><value>各室平面図</value></data>
+  <data name="IDS_TXT_FLOOR_PLAN" xml:space="preserve"><value>平面図</value></data>
+  <data name="IDS_TXT_FORM_TITLE" xml:space="preserve"><value>各室ビュー作成</value></data>
+  <data name="IDS_TXT_LEVEL" xml:space="preserve"><value>レベル</value></data>
+  <data name="IDS_TXT_MANAGE_TEMPLATES" xml:space="preserve"><value>テンプレート管理</value></data>
+  <data name="IDS_TXT_MM" xml:space="preserve"><value>mm</value></data>
+  <data name="IDS_TXT_NONE_TEMPLATE" xml:space="preserve"><value>＜なし＞</value></data>
+  <data name="IDS_TXT_NO_ROOM_NAME" xml:space="preserve"><value>{なし}</value></data>
+  <data name="IDS_TXT_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="IDS_TXT_OFFSET" xml:space="preserve"><value>オフセット</value></data>
+  <data name="IDS_TXT_OVERWRITE" xml:space="preserve"><value>上書き</value></data>
+  <data name="IDS_TXT_RECTANGLE" xml:space="preserve"><value>矩形</value></data>
+  <data name="IDS_TXT_ROOMNAME" xml:space="preserve"><value>室名</value></data>
+  <data name="IDS_TXT_ROOM_BOUNDARY" xml:space="preserve"><value>部屋境界</value></data>
+  <data name="IDS_TXT_ROOM_SHAPE" xml:space="preserve"><value>部屋形状</value></data>
+  <data name="IDS_TXT_ROOM_TAG" xml:space="preserve"><value>ルームタグ</value></data>
+  <data name="IDS_TXT_SELECT_VIEW_CATEGORY" xml:space="preserve"><value>作成するビューカテゴリを選択してください。</value></data>
+  <data name="IDS_TXT_SHAPE" xml:space="preserve"><value>形状</value></data>
+  <data name="IDS_TXT_SKIP" xml:space="preserve"><value>スキップ</value></data>
+  <data name="IDS_TXT_TAG" xml:space="preserve"><value>タグ</value></data>
+  <data name="IDS_TXT_TRIM" xml:space="preserve"><value>トリミング</value></data>
+  <data name="IDS_TXT_TYPE_EDIT" xml:space="preserve"><value>タイプ編集</value></data>
+  <data name="IDS_TXT_VIEW_CATEGORY" xml:space="preserve"><value>ビューカテゴリ</value></data>
+  <data name="IDS_TXT_VIEW_TEMPLATE" xml:space="preserve"><value>ビューテンプレート</value></data>
+  <data name="IDS_TXT_VIEW_TYPE" xml:space="preserve"><value>ビュータイプ</value></data>
+  <data name="IDS_TXT_WARNING" xml:space="preserve"><value>警告</value></data>
+</root>

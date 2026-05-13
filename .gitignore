@@ -1,0 +1,41 @@
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# Compiled output / deployment
+Released/
+Installer/Output/
+
+# Excluded projects
+Reefs/
+
+# Deployed addin copies
+2027/
+
+# Debug symbols
+*.pdb
+
+# Installer binaries
+*.exe
+*.zip
+*.msi
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+*_wpftmp.csproj
+
+# NuGet
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+# Misc
+*.log
+*.tmp
+~$*

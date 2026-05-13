@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_COLNAME_ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="IDS_COLNAME_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="IDS_DEGREE" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="IDS_ERR_BEAMS" xml:space="preserve">
+    <value>Failed to retrieve beams.</value>
+  </data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>Command failed</value>
+  </data>
+  <data name="IDS_ERR_CURVBEAMS" xml:space="preserve">
+    <value>Failed to retrieve beam curves.</value>
+  </data>
+  <data name="IDS_ERR_LEVELBEAMS" xml:space="preserve">
+    <value>Failed to retrieve beam level.</value>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Failed to define parameter</value>
+  </data>
+  <data name="IDS_ERR_SLABTYPE" xml:space="preserve">
+    <value>Slab type is not set.</value>
+  </data>
+  <data name="IDS_ERR_VALNULL" xml:space="preserve">
+    <value>Value is blank</value>
+  </data>
+  <data name="IDS_ERR_VALNUMBER" xml:space="preserve">
+    <value>Value is not a number</value>
+  </data>
+  <data name="IDS_ERR_VALOUT" xml:space="preserve">
+    <value>Value is out of range</value>
+  </data>
+  <data name="IDS_FILE_ITEMS" xml:space="preserve">
+    <value>LocateSlab.xml</value>
+  </data>
+  <data name="IDS_INFO_ACTIVE_VIEW" xml:space="preserve">
+    <value>Please activate a plan view before running this command.</value>
+  </data>
+  <data name="IDS_INFO_NO_EXIST_BEAMS" xml:space="preserve">
+    <value>No beams found for floor generation.</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_LOCATESLAB" xml:space="preserve">
+    <value>RexJpn-LocateSlab-Config</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="IDS_TXT_DIRECTION" xml:space="preserve">
+    <value>Span Direction</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IDS_TXT_LEVELHEIGHTOFFSET" xml:space="preserve">
+    <value>Level Height Offset</value>
+  </data>
+  <data name="IDS_TXT_LOCATESLAB" xml:space="preserve">
+    <value>Floor Layout</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="IDS_TXT_SLABTYPE" xml:space="preserve">
+    <value>Slab Type</value>
+  </data>
+  <data name="IDS_UNIT_MM" xml:space="preserve">
+    <value>mm</value>
+  </data>
+</root>

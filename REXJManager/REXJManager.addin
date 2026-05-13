@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>REXJManager</Name>
+    <Assembly>REXJManager\REXJManager.dll</Assembly>
+    <AddInId>C9D5E6F7-A8B9-0123-CDEF-AB4567890123</AddInId>
+    <FullClassName>REXJManager.TabSettingApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

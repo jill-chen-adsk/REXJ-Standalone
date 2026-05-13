@@ -1,0 +1,2946 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_BEAMLISTIMAGE_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.BeamList.CmdBeamImage</value>
+    <comment>ボタン 梁イメージ生成 クラス名</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTIMAGE_NAME" xml:space="preserve">
+    <value>Beam Image Generate</value>
+    <comment>ボタン 梁イメージ生成 名前</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTIMAGE_TEXT" xml:space="preserve">
+    <value>Beam Image Generate</value>
+    <comment>ボタン 梁イメージ生成 文字</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTIMAGE_TOOLTIP_L" xml:space="preserve">
+    <value>Sets the beam section list image to the type parameter</value>
+    <comment>ボタン 梁イメージ生成 ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTIMAGE_TOOLTIP_S" xml:space="preserve">
+    <value>Beam section list image type parameter setting</value>
+    <comment>ボタン 梁イメージ生成 ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTSETTING_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.Setting.CmdBeamListSetting</value>
+    <comment>ボタン 梁リスト設定 クラス名</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTSETTING_NAME" xml:space="preserve">
+    <value>Beam List Settings</value>
+    <comment>ボタン 梁リスト設定 名前</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTSETTING_TEXT" xml:space="preserve">
+    <value>Beam List Settings</value>
+    <comment>ボタン 梁リスト設定 文字</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTSETTING_TOOLTIP_L" xml:space="preserve">
+    <value>Configure settings specific to beam list.</value>
+    <comment>ボタン 梁リスト設定 ツールチップ L</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLISTSETTING_TOOLTIP_S" xml:space="preserve">
+    <value>Beam list settings</value>
+    <comment>ボタン 梁リスト設定 ツールチップ S</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLIST_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.BeamList.CmdBeamList</value>
+    <comment>ボタン 梁リスト クラス名</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLIST_NAME" xml:space="preserve">
+    <value>Beam List</value>
+    <comment>ボタン 梁リスト 名前</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLIST_TEXT" xml:space="preserve">
+    <value>Beam List</value>
+    <comment>ボタン 梁リスト 文字</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLIST_TOOLTIP_L" xml:space="preserve">
+    <value>Creates a beam section list.</value>
+    <comment>ボタン 梁リスト ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_BEAMLIST_TOOLTIP_S" xml:space="preserve">
+    <value>Create beam section list</value>
+    <comment>ボタン 梁リスト ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTIMAGE_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.ColumnList.CmdColumnImage</value>
+    <comment>ボタン 柱イメージ生成 クラス名</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTIMAGE_NAME" xml:space="preserve">
+    <value>Column Image Generate</value>
+    <comment>ボタン 柱イメージ生成 名前</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTIMAGE_TEXT" xml:space="preserve">
+    <value>Column Image Generate</value>
+    <comment>ボタン 柱イメージ生成 文字</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTIMAGE_TOOLTIP_L" xml:space="preserve">
+    <value>Sets the column section list image to the type parameter</value>
+    <comment>ボタン 柱イメージ生成 ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTIMAGE_TOOLTIP_S" xml:space="preserve">
+    <value>Column section list image type parameter setting</value>
+    <comment>ボタン 柱イメージ生成 ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTSETTING_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.Setting.CmdColumnListSetting</value>
+    <comment>ボタン 柱リスト設定 クラス名</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTSETTING_NAME" xml:space="preserve">
+    <value>Column List Settings</value>
+    <comment>ボタン 柱リスト設定 名前</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTSETTING_TEXT" xml:space="preserve">
+    <value>Column List Settings</value>
+    <comment>ボタン 柱リスト設定 文字</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTSETTING_TOOLTIP_L" xml:space="preserve">
+    <value>Configure settings specific to column list.</value>
+    <comment>ボタン 柱リスト設定 ツールチップ L</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLISTSETTING_TOOLTIP_S" xml:space="preserve">
+    <value>Column list settings</value>
+    <comment>ボタン 柱リスト設定 ツールチップ S</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLIST_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.ColumnList.CmdColumnList</value>
+    <comment>ボタン 柱リスト クラス名</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLIST_NAME" xml:space="preserve">
+    <value>Column List</value>
+    <comment>ボタン 柱リスト 名前</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLIST_TEXT" xml:space="preserve">
+    <value>Column List</value>
+    <comment>ボタン 柱リスト 文字</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLIST_TOOLTIP_L" xml:space="preserve">
+    <value>Creates a column section list.</value>
+    <comment>ボタン 柱リスト ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_COLUMNLIST_TOOLTIP_S" xml:space="preserve">
+    <value>Create column section list</value>
+    <comment>ボタン 柱リスト ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_COMMONSETTING_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.Setting.CmdSetting</value>
+    <comment>ボタン 設定 クラス名</comment>
+  </data>
+  <data name="IDS_BTN_COMMONSETTING_NAME" xml:space="preserve">
+    <value>Common Settings</value>
+    <comment>ボタン 設定 名前</comment>
+  </data>
+  <data name="IDS_BTN_COMMONSETTING_TEXT" xml:space="preserve">
+    <value>Common Settings</value>
+    <comment>ボタン 設定 文字</comment>
+  </data>
+  <data name="IDS_BTN_COMMONSETTING_TOOLTIP_L" xml:space="preserve">
+    <value>Configure common settings for list creation such as drawing lines and dimensions.</value>
+    <comment>ボタン 設定 ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_COMMONSETTING_TOOLTIP_S" xml:space="preserve">
+    <value>Common settings for list creation</value>
+    <comment>ボタン 設定 ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_EACHONEBEAMLIST_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.BeamList.CmdEachOneBeamList</value>
+    <comment>ボタン 個別梁リスト クラス名</comment>
+  </data>
+  <data name="IDS_BTN_EACHONEBEAMLIST_NAME" xml:space="preserve">
+    <value>Beam List Export</value>
+    <comment>ボタン 個別梁リスト 名前</comment>
+  </data>
+  <data name="IDS_BTN_EACHONEBEAMLIST_TEXT" xml:space="preserve">
+    <value>Individual Export</value>
+    <comment>ボタン 個別梁リスト 文字</comment>
+  </data>
+  <data name="IDS_BTN_EACHONEBEAMLIST_TOOLTIP_L" xml:space="preserve">
+    <value>Exports beam section list as images for each type.</value>
+    <comment>ボタン 個別梁リスト ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_EACHONEBEAMLIST_TOOLTIP_S" xml:space="preserve">
+    <value>Export beam section list as images</value>
+    <comment>ボタン 個別梁リスト ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_EACHONECOLUMNLIST_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.ColumnList.CmdEachOneColumnList</value>
+    <comment>ボタン 個別柱リスト クラス名</comment>
+  </data>
+  <data name="IDS_BTN_EACHONECOLUMNLIST_NAME" xml:space="preserve">
+    <value>Column List Export</value>
+    <comment>ボタン 個別柱リスト 名前</comment>
+  </data>
+  <data name="IDS_BTN_EACHONECOLUMNLIST_TEXT" xml:space="preserve">
+    <value>Individual Export</value>
+    <comment>ボタン 個別柱リスト 文字</comment>
+  </data>
+  <data name="IDS_BTN_EACHONECOLUMNLIST_TOOLTIP_L" xml:space="preserve">
+    <value>Exports column section list as images for each type.</value>
+    <comment>ボタン 個別柱リスト ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_EACHONECOLUMNLIST_TOOLTIP_S" xml:space="preserve">
+    <value>Export column section list as images</value>
+    <comment>ボタン 個別柱リスト ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_LEVELSORTORDER_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.Setting.CmdLevelSortOrder</value>
+    <comment>ボタン 階記号ソート クラス名</comment>
+  </data>
+  <data name="IDS_BTN_LEVELSORTORDER_NAME" xml:space="preserve">
+    <value>Level Symbol Sort</value>
+    <comment>ボタン 階記号ソート 名前</comment>
+  </data>
+  <data name="IDS_BTN_LEVELSORTORDER_TEXT" xml:space="preserve">
+    <value>Level Symbol Sort</value>
+    <comment>ボタン 階記号ソート 文字</comment>
+  </data>
+  <data name="IDS_BTN_LEVELSORTORDER_TOOLTIP_L" xml:space="preserve">
+    <value>Set the level symbol order for list creation.</value>
+    <comment>ボタン 階記号ソート ツールチップ L</comment>
+  </data>
+  <data name="IDS_BTN_LEVELSORTORDER_TOOLTIP_S" xml:space="preserve">
+    <value>Level symbol order settings</value>
+    <comment>ボタン 階記号ソート ツールチップ S</comment>
+  </data>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>RC Section List</value>
+    <comment>ボタン パネル名</comment>
+  </data>
+  <data name="IDS_BTN_PARAMMAPPING_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.Setting.CmdParamMapping</value>
+    <comment>ボタン パラメータマッピング クラス名</comment>
+  </data>
+  <data name="IDS_BTN_PARAMMAPPING_NAME" xml:space="preserve">
+    <value>Parameter Mapping</value>
+    <comment>ボタン パラメータマッピング 名前</comment>
+  </data>
+  <data name="IDS_BTN_PARAMMAPPING_TEXT" xml:space="preserve">
+    <value>Parameter Mapping</value>
+    <comment>ボタン パラメータマッピング 文字</comment>
+  </data>
+  <data name="IDS_BTN_PARAMMAPPING_TOOLTIP_L" xml:space="preserve">
+    <value>The parameter mapping table is shared with Revit Extension SS3 Link.</value>
+    <comment>ボタン パラメータマッピング ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_PARAMMAPPING_TOOLTIP_S" xml:space="preserve">
+    <value>Edit the parameter mapping table used for section list creation.</value>
+    <comment>ボタン パラメータマッピング ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_SETTINGFILE_NAME" xml:space="preserve">
+    <value>Settings File</value>
+    <comment>ボタン 設定ファイル 名前</comment>
+  </data>
+  <data name="IDS_BTN_SETTINGFILE_TEXT" xml:space="preserve">
+    <value>Settings File</value>
+    <comment>ボタン 設定ファイル 文字</comment>
+  </data>
+  <data name="IDS_BTN_SETTINGFILE_TOOLTIP_L" xml:space="preserve">
+    <value>Edit settings file</value>
+    <comment>ボタン 設定ファイル ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_SETTINGFILE_TOOLTIP_S" xml:space="preserve">
+    <value>Edit settings file</value>
+    <comment>ボタン 設定ファイル ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_SETTING_TEXT" xml:space="preserve">
+    <value>Settings</value>
+    <comment>ボタン 設定 文字</comment>
+  </data>
+  <data name="IDS_BTN_SHOWHELP_CLASSNAME" xml:space="preserve">
+    <value>SectionListRC.CmdShowHelp</value>
+    <comment>ボタン 操作マニュアル クラス名</comment>
+  </data>
+  <data name="IDS_BTN_SHOWHELP_NAME" xml:space="preserve">
+    <value>Help</value>
+    <comment>ボタン 操作マニュアル 名前</comment>
+  </data>
+  <data name="IDS_BTN_SHOWHELP_TEXT" xml:space="preserve">
+    <value>Help</value>
+    <comment>ボタン 操作マニュアル 文字</comment>
+  </data>
+  <data name="IDS_BTN_SHOWHELP_TOOLTIP_L" xml:space="preserve">
+    <value />
+    <comment>ボタン 操作マニュアル ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_SHOWHELP_TOOLTIP_S" xml:space="preserve">
+    <value>Show help</value>
+    <comment>ボタン 操作マニュアル ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>REXJ Standalone</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ Standalone</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_ERR_0COREREBAR" xml:space="preserve">
+    <value>Core rebar count missing. (Core rebar diameter is entered.)</value>
+    <comment>エラー 芯鉄筋本数が入力されていません。（芯鉄筋径は入力されています）</comment>
+  </data>
+  <data name="IDS_ERR_2NDREBAR_COULDNOT" xml:space="preserve">
+    <value>Bundled rebar forces small diameter; cannot place 2nd-row bars.</value>
+    <comment>エラー 寄せ筋が細径になるため、2段筋を配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_ACTIVEPROJECTBROWSE" xml:space="preserve">
+    <value>Activate a drawing window before running this command.</value>
+    <comment>エラー 作図領域をアクティブにしてから実行してください。</comment>
+  </data>
+  <data name="IDS_ERR_CHECKPARAMETER" xml:space="preserve">
+    <value>Check the parameters.</value>
+    <comment>エラー パラメータを確認してください。</comment>
+  </data>
+  <data name="IDS_ERR_CIRCLEREBARNUM" xml:space="preserve">
+    <value>Main bar count must be a multiple of four.</value>
+    <comment>文字 主筋の本数が4の倍数ではありません。</comment>
+  </data>
+  <data name="IDS_ERR_COLUMNDIAMETER" xml:space="preserve">
+    <value>Column diameter is zero or less.</value>
+    <comment>エラー 柱の直径が0以下です。</comment>
+  </data>
+  <data name="IDS_ERR_COLUMNXORY" xml:space="preserve">
+    <value>Column width or depth is zero or less.</value>
+    <comment>エラー 柱の幅または高さが0以下です。</comment>
+  </data>
+  <data name="IDS_ERR_COREREBARINX2" xml:space="preserve">
+    <value>Need at least six Y first-row bars to place core rebar in row X2.</value>
+    <comment>エラー Y1段筋の本数が6本未満なため、芯鉄筋位置がX2段筋になり配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_COREREBARINY2" xml:space="preserve">
+    <value>Need at least six X first-row bars to place core rebar in row Y2.</value>
+    <comment>エラー X1段筋の本数が6本未満なため、芯鉄筋位置がY2段筋になり配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_COREREBARNUM" xml:space="preserve">
+    <value>Core rebar count must be zero or an even number of at least four bars.</value>
+    <comment>エラー 芯鉄筋は0または4以上の偶数本入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_COREREBAR_FAMILY_NOTSET" xml:space="preserve">
+    <value>Cannot load the core rebar diameter family.</value>
+    <comment>エラー 芯鉄筋径が規格外です。ファミリを取得できません。</comment>
+  </data>
+  <data name="IDS_ERR_FAILADDPARAMETER" xml:space="preserve">
+    <value>Failed to add the parameter.</value>
+    <comment>エラー パラメータ追加の追加に失敗しました。</comment>
+  </data>
+  <data name="IDS_ERR_FAMILYDOCUMENT" xml:space="preserve">
+    <value>Not available in a family document.</value>
+    <comment>エラー ファミリドキュメントでは実行できません。</comment>
+  </data>
+  <data name="IDS_ERR_GETTABLEVALUE" xml:space="preserve">
+    <value>Could not read the table file.</value>
+    <comment>エラー テーブルファイルの値を取得できませんでした。</comment>
+  </data>
+  <data name="IDS_ERR_GIRDERXORY" xml:space="preserve">
+    <value>Cannot determine if the beam is in X or Y direction.</value>
+    <comment>エラー 梁の幅または高さが0以下です。</comment>
+  </data>
+  <data name="IDS_ERR_HABADOMEX_CIRCLE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_ERR_HELPFILE" xml:space="preserve">
+    <value>Could not open the manual.</value>
+    <comment>エラー 操作マニュアルを開けません。</comment>
+  </data>
+  <data name="IDS_ERR_HOOPKEI" xml:space="preserve">
+    <value>Tie/hoop diameter missing.</value>
+    <comment>エラー 帯筋径が入力されていません。</comment>
+  </data>
+  <data name="IDS_ERR_HOOPPITCH" xml:space="preserve">
+    <value>Tie/hoop spacing missing.</value>
+    <comment>エラー 帯筋ピッチが入力されていません。</comment>
+  </data>
+  <data name="IDS_ERR_HOOPXNUM" xml:space="preserve">
+    <value>X-direction ties: min 2 bars, max X first-row bar count.</value>
+    <comment>エラー X方向帯筋の本数は2本以上、X1段筋の本数以下にしてください。</comment>
+  </data>
+  <data name="IDS_ERR_HOOPYNUM" xml:space="preserve">
+    <value>Y-direction ties: min 2 bars, max Y first-row bar count.</value>
+    <comment>エラー Y方向帯筋の本数は2本以上、Y1段筋の本数以下にしてください。</comment>
+  </data>
+  <data name="IDS_ERR_HOSO_FAMILY_NOTSET" xml:space="preserve">
+    <value>Cannot load the main bar small-diameter family.</value>
+    <comment>エラー 主筋細径が規格外です。ファミリを取得できません。</comment>
+  </data>
+  <data name="IDS_ERR_HUTO_FAMILY_NOTSET" xml:space="preserve">
+    <value>Cannot load the main bar large-diameter family.</value>
+    <comment>エラー 主筋太径が規格外です。ファミリを取得できません。</comment>
+  </data>
+  <data name="IDS_ERR_IFFLAG2_X2IS3_X1UNDER5" xml:space="preserve">
+    <value>Second-row corner flag on: cannot place three X second-row bars when X first row has fewer than five bars.</value>
+    <comment>エラー 2段筋コーナーフラグが立っているため、X1段筋が5本未満では3本のX2段筋を配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_IFFLAG2_Y2IS3_Y1UNDER5" xml:space="preserve">
+    <value>Second-row corner flag on: cannot place three Y second-row bars when Y first row has fewer than five bars.</value>
+    <comment>エラー 2段筋コーナーフラグが立っているため、Y1段筋が5本未満では3本のY2段筋を配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_INDIFFERENTFAMILY" xml:space="preserve">
+    <value> exists in multiple families.
+When the mark and classification are the same, only one drawing will be kept.</value>
+    <comment>エラー は複数のファミリに存在します。
+符号と分類が同じ場合、作図は1つのみ行われます。</comment>
+  </data>
+  <data name="IDS_ERR_INVALIDVALUE" xml:space="preserve">
+    <value>Invalid value.</value>
+    <comment>エラー 値が正しくありません。</comment>
+  </data>
+  <data name="IDS_ERR_LACKX1HUTOKEI" xml:space="preserve">
+    <value>Provide at least two large-diameter bars in X first row.</value>
+    <comment>エラー X1段筋太径の本数は2本以上にしてください。</comment>
+  </data>
+  <data name="IDS_ERR_LACKY1HUTOKEI" xml:space="preserve">
+    <value>Provide at least two large-diameter bars in Y first row.</value>
+    <comment>エラー Y1段筋太径の本数は2本以上にしてください。</comment>
+  </data>
+  <data name="IDS_ERR_NOCOLUMN" xml:space="preserve">
+    <value>No columns found.</value>
+    <comment>エラー リストに書き出せる柱がありません。終了します。</comment>
+  </data>
+  <data name="IDS_ERR_NOEXCEL" xml:space="preserve">
+    <value>Excel is not installed; cannot open the editing file.</value>
+    <comment>エラー Excelがインストールされていないため、編集用ファイルを開けません。</comment>
+  </data>
+  <data name="IDS_ERR_NOFAMILY" xml:space="preserve">
+    <value>No rebar families available.</value>
+    <comment>エラー 鉄筋ファミリがありません。</comment>
+  </data>
+  <data name="IDS_ERR_NOGIRDER" xml:space="preserve">
+    <value>No exportable beams; exiting.</value>
+    <comment>エラー リストに書き出せる梁がありません。終了します。</comment>
+  </data>
+  <data name="IDS_ERR_NOINT" xml:space="preserve">
+    <value>Enter an integer within 0 ≤ x ≤ 10.</value>
+    <comment>エラー 整数を入力してください。範囲は 0≦x≦10 です。</comment>
+  </data>
+  <data name="IDS_ERR_NOLISTLEVEL" xml:space="preserve">
+    <value>No elements carry section-list parameters; exiting.</value>
+    <comment>エラー 断面リスト用のパラメータを持つ要素がありません。終了します。</comment>
+  </data>
+  <data name="IDS_ERR_NOPARAMETERFILE" xml:space="preserve">
+    <value>Parameter file is missing.</value>
+    <comment>エラー パラメータファイルがありません。</comment>
+  </data>
+  <data name="IDS_ERR_NOPARAMETERFILEVALUE" xml:space="preserve">
+    <value>Could not load the parameter file.</value>
+    <comment>エラー パラメータファイルの内容を取得できませんでした。</comment>
+  </data>
+  <data name="IDS_ERR_NOREBARFAMILY" xml:space="preserve">
+    <value>No rebar families.</value>
+    <comment>エラー 鉄筋のファミリがありません</comment>
+  </data>
+  <data name="IDS_ERR_NOTARGETCOLUMN" xml:space="preserve">
+    <value>No columns match the parameter mapping settings. Register matching parameters via Parameter Mapping.</value>
+    <comment>エラー 現在のパラメータマッピングの設定に該当する柱がありません。パラメータマッピングより正しいパラメータを登録してください。</comment>
+  </data>
+  <data name="IDS_ERR_NOTARGETGIRDER" xml:space="preserve">
+    <value>No beams match the parameter mapping settings. Register matching parameters via Parameter Mapping.</value>
+    <comment>エラー 現在のパラメータマッピングの設定に該当する梁がありません。パラメータマッピングより正しいパラメータを登録してください。</comment>
+  </data>
+  <data name="IDS_ERR_NOTEXTTPASTE" xml:space="preserve">
+    <value>Paste item is not text.</value>
+    <comment>エラー 貼り付ける項目が文字ではありません。</comment>
+  </data>
+  <data name="IDS_ERR_NOTFAMILYDOCUMENT" xml:space="preserve">
+    <value>Available only inside a family document.</value>
+    <comment>エラー ファミリドキュメント以外では実行できません。</comment>
+  </data>
+  <data name="IDS_ERR_NOTSTRPLANEVIEW" xml:space="preserve">
+    <value>Structural floor plan missing; cannot build lists.</value>
+    <comment>エラー 構造伏図ビューがないためリストを作成できません。</comment>
+  </data>
+  <data name="IDS_ERR_ONELISTLEVEL" xml:space="preserve">
+    <value>Only one element has section-list data; cancelling sort.</value>
+    <comment>エラー 断面リスト用のパラメータを持つ要素が1つなので、ソートを終了します。</comment>
+  </data>
+  <data name="IDS_ERR_PARAMETERNAMEOVERWRITE" xml:space="preserve">
+    <value>Parameter mapping failed.</value>
+    <comment>エラー パラメータマッピングが失敗しました。</comment>
+  </data>
+  <data name="IDS_ERR_REBARNUM" xml:space="preserve">
+    <value>Provide an even main-bar count ≥ 4.</value>
+    <comment>エラー 主筋の本数は4以上の偶数本入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_SELOTHERFILE" xml:space="preserve">
+    <value>Select a different file.</value>
+    <comment>エラー 別のファイルを選択してください。</comment>
+  </data>
+  <data name="IDS_ERR_SELOTHERFILEORRESET" xml:space="preserve">
+    <value>Pick another file, or reload and save parameters.</value>
+    <comment>エラー 別のファイルを選択するか、パラメータの再設定と保存をしてください。</comment>
+  </data>
+  <data name="IDS_ERR_SETSETTINGFILE" xml:space="preserve">
+    <value>Specify the settings file from Common Settings.</value>
+    <comment>エラー 共通設定コマンドから、設定ファイルを設定してください。</comment>
+  </data>
+  <data name="IDS_ERR_SETTINGFILE" xml:space="preserve">
+    <value>Verify the settings file.</value>
+    <comment>エラー 設定ファイルを確認してください。</comment>
+  </data>
+  <data name="IDS_ERR_SETTINGFILEINCORRECT" xml:space="preserve">
+    <value>The settings file is invalid.</value>
+    <comment>エラー 設定ファイルの内容が正しくありません。</comment>
+  </data>
+  <data name="IDS_ERR_SETTINGOVERLAP" xml:space="preserve">
+    <value>Settings overlap detected.</value>
+    <comment>エラー 以下のパラメータが重複して設定されています。パラメータマッピングより正しいパラメータを登録してください。</comment>
+  </data>
+  <data name="IDS_ERR_SITA1HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>Bottom row 1 small-diameter count ≥ large-diameter count.</value>
+    <comment>エラー 下端1段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_SITA1LACKHUTOKEI" xml:space="preserve">
+    <value>Enter ≥ 2 bottom row-1 large-diameter main bars.</value>
+    <comment>エラー 1段筋主筋太径は2本以上入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_SITA2HUTOOVER1" xml:space="preserve">
+    <value>Bottom row 2 large-diameter count exceeds row 1.</value>
+    <comment>エラー 下端2段筋太径本数が1段筋太径本数より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_SITA2HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>Bottom row 2 small-diameter count ≥ large diameter count.</value>
+    <comment>エラー 下端2段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_SITA2_OVER_SITA1" xml:space="preserve">
+    <value>Bottom row 2 has more bars than row 1.</value>
+    <comment>エラー 下端1段筋より下端2段筋が多いです。</comment>
+  </data>
+  <data name="IDS_ERR_SITA3HUTOOVER2" xml:space="preserve">
+    <value>Bottom row 3 large-diameter count exceeds row 2.</value>
+    <comment>エラー 下端3段筋太径本数が2段筋太径本数より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_SITA3HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>Bottom row 3 small-diameter count ≥ large diameter count.</value>
+    <comment>エラー 下端3段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_SITA3_OVER_SITA2" xml:space="preserve">
+    <value>Bottom row 3 has more bars than row 2.</value>
+    <comment>エラー 下端2段筋より下端3段筋が多いです。</comment>
+  </data>
+  <data name="IDS_ERR_SPACINGKEI" xml:space="preserve">
+    <value>Spacer-bar diameter missing.</value>
+    <comment>エラー 幅止筋径が入力されていません。</comment>
+  </data>
+  <data name="IDS_ERR_SPACINGNUM" xml:space="preserve">
+    <value>Spacer count must be zero or ≤ half web bar count.</value>
+    <comment>エラー 幅止筋の本数は0または腹筋本数の半分以下にしてください。</comment>
+  </data>
+  <data name="IDS_ERR_SPACINGPITCH" xml:space="preserve">
+    <value>Spacer spacing missing.</value>
+    <comment>エラー 幅止筋ピッチが入力されていません。</comment>
+  </data>
+  <data name="IDS_ERR_SPACINGXNUM" xml:space="preserve">
+    <value>Too many spacer bars along X.</value>
+    <comment>エラー X方向幅止筋の本数が多いです。</comment>
+  </data>
+  <data name="IDS_ERR_SPACINGXNUM2" xml:space="preserve">
+    <value>X spacers ≤ first-row mains minus hoops.</value>
+    <comment>エラー X方向幅止筋は主筋1段筋本数から帯筋本数を引いた本数以下にしてください。</comment>
+  </data>
+  <data name="IDS_ERR_SPACINGYNUM" xml:space="preserve">
+    <value>Too many spacer bars along Y.</value>
+    <comment>エラー Y方向幅止筋の本数が多いです。</comment>
+  </data>
+  <data name="IDS_ERR_SPACINGYNUM2" xml:space="preserve">
+    <value>Y spacers ≤ first-row mains minus hoops.</value>
+    <comment>エラー Y方向幅止筋は主筋1段筋本数から帯筋本数を引いた本数以下にしてください。</comment>
+  </data>
+  <data name="IDS_ERR_STIRRUPDIAMETERNOTHING" xml:space="preserve">
+    <value>Stirrup diameter missing.</value>
+    <comment>エラー 肋筋径が入力されていません。</comment>
+  </data>
+  <data name="IDS_ERR_STIRRUPNUM" xml:space="preserve">
+    <value>Stirrups: between 2 and first-row bar count.</value>
+    <comment>エラー 肋筋の本数は2本以上、1段筋本数以下にしてください。</comment>
+  </data>
+  <data name="IDS_ERR_STIRRUPPITCH" xml:space="preserve">
+    <value>Stirrup spacing missing.</value>
+    <comment>エラー 肋筋ピッチが入力されていません。</comment>
+  </data>
+  <data name="IDS_ERR_SYUKINX1SHORTAGE" xml:space="preserve">
+    <value>Not enough X-first-row bars for core reinforcement.</value>
+    <comment>エラー X1段筋の本数が不足しているため芯鉄筋を配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_SYUKINY1SHORTAGE" xml:space="preserve">
+    <value>Not enough Y-first-row bars for core reinforcement.</value>
+    <comment>エラー Y1段筋の本数が不足しているため芯鉄筋を配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_SYUKIN_FAMILY_NOTSET" xml:space="preserve">
+    <value>Cannot load the main bar diameter family.</value>
+    <comment>エラー 主筋径が規格外です。ファミリを取得できません。</comment>
+  </data>
+  <data name="IDS_ERR_TITLE" xml:space="preserve">
+    <value>Error details</value>
+    <comment>エラー エラー内容</comment>
+  </data>
+  <data name="IDS_ERR_NO_VIEW_LIST" xml:space="preserve">
+    <value>Maximum height/width extents are too small to build the section list.</value>
+    <comment>縦最大・幅最大が小さいので、断面リストが生成できません。</comment>
+  </data>
+  <data name="IDS_ERR_UE1HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>Top row 1 small-diameter count ≥ large-diameter count.</value>
+    <comment>エラー 上端1段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_UE1LACKHUTOKEI" xml:space="preserve">
+    <value>Enter ≥ 2 top row-1 large-diameter main bars.</value>
+    <comment>エラー 1段筋主筋太径は2本以上入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_UE2HUTOOVER1" xml:space="preserve">
+    <value>Top row 2 large-diameter count exceeds row 1.</value>
+    <comment>エラー 上端2段筋太径本数が1段筋太径本数より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_UE2HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>Top row 2 small-diameter count ≥ large diameter count.</value>
+    <comment>エラー 上端2段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_UE2_OVER_UE1" xml:space="preserve">
+    <value>Top row 2 has more bars than row 1.</value>
+    <comment>エラー 上端1段筋より上端2段筋が多いです。</comment>
+  </data>
+  <data name="IDS_ERR_UE3HUTOOVER2" xml:space="preserve">
+    <value>Top row 3 large-diameter count exceeds row 2.</value>
+    <comment>エラー 上端3段筋太径本数が2段筋太径本数より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_UE3HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>Top row 3 small-diameter count ≥ large diameter count.</value>
+    <comment>エラー 上端3段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_UE3_OVER_UE2" xml:space="preserve">
+    <value>Top row 3 has more bars than row 2.</value>
+    <comment>エラー 上端2段筋より上端3段筋が多いです。</comment>
+  </data>
+  <data name="IDS_ERR_VALUEISZERO" xml:space="preserve">
+    <value>Enter an integer > 0.</value>
+    <comment>エラー 0より大きい整数を入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_WEBNUM" xml:space="preserve">
+    <value>Web reinforcement count must be even.</value>
+    <comment>エラー 腹筋は偶数本入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_WEB_FAMILY_NOTSET" xml:space="preserve">
+    <value>Cannot load web reinforcement diameter family.</value>
+    <comment>エラー 腹筋径が規格外です。ファミリを取得できません。</comment>
+  </data>
+  <data name="IDS_ERR_WRONGPASTEVALUE" xml:space="preserve">
+    <value>Paste item count mismatch.</value>
+    <comment>エラー 貼り付ける項目の数が違います。</comment>
+  </data>
+  <data name="IDS_ERR_X1HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>X first row small-diameter count ≥ large-diameter count.</value>
+    <comment>エラー X1段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_X2" xml:space="preserve">
+    <value>Layout cannot place X second-row reinforcement.</value>
+    <comment>エラー X2段筋を配筋できない組み合わせです。</comment>
+  </data>
+  <data name="IDS_ERR_X2CROSSY1" xml:space="preserve">
+    <value>Need ≥ 4 Y-row-1 large-diameter bars to place X second row.</value>
+    <comment>エラー Y1段筋太径が4本未満なためX2段筋が配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_X2CROSSY2" xml:space="preserve">
+    <value>Need ≥ 4 Y-row-2 large-diameter bars to place X second row.</value>
+    <comment>エラー Y2段筋太径が4本未満なためX2段筋が配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_X2HOSO_X1HUSOKU" xml:space="preserve">
+    <value>Need more X first-row bars for X second-row small diameters.</value>
+    <comment>エラー X2段筋細径を配置するにはX1段筋が少ないです。</comment>
+  </data>
+  <data name="IDS_ERR_X2HOSO_X2HUTO_UNDER2" xml:space="preserve">
+    <value>Need ≥ 2 large-diameter X-row-2 bars before adding small diameters.</value>
+    <comment>エラー X2段筋太径本数が2本未満なためX2段筋細径が配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_X2HOSO_Y1HUTO_UNDER4" xml:space="preserve">
+    <value>Need ≥ 4 Y-row-1 large-diameter bars for X-row-2 small diameters.</value>
+    <comment>エラー Y1段筋の太径が4本未満なため、X2段筋細径が配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_X2HUTO" xml:space="preserve">
+    <value>X-row-2 large diameter count must be zero or ≥ 2.</value>
+    <comment>エラー X2段筋の太径本数は、0または2本以上入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_X2HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>X-row-2 small-diameter count ≥ large-diameter count.</value>
+    <comment>エラー X2段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_X2HUTO_Y2HUTO_UNDER4" xml:space="preserve">
+    <value>Need ≥ 4 Y-row-2 large-diameter bars for X-row-2 corner steel.</value>
+    <comment>エラー Y2段筋の太径が4本未満なため、X2段筋のコーナー配筋ができません。</comment>
+  </data>
+  <data name="IDS_ERR_X2OVERX1HUTO" xml:space="preserve">
+    <value>X-row-2 large-diameter count exceeds X-row-1.</value>
+    <comment>エラー X2段筋の太径本数がX1段筋太径本数より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_X2OVERX1HUTO_NOFLAG" xml:space="preserve">
+    <value>X-row-2 large-diameter count exceeds (X-row-1 large diam. − 2).</value>
+    <comment>エラー X2段筋の太径本数が(X1段筋太径本数 - 2)より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_X2OVERX1_NOFLAG" xml:space="preserve">
+    <value>X-row-2 bar count exceeds (X-row-1 count − 2).</value>
+    <comment>エラー X2段筋の本数が(X1段筋本数 - 2)より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_X2_NOFLAG" xml:space="preserve">
+    <value>Second-row corner flag off: X second row not allowed.</value>
+    <comment>エラー 2段筋コーナーフラグがないため、X2段筋を配筋できない組み合わせです。</comment>
+  </data>
+  <data name="IDS_ERR_X2_OVER_X1" xml:space="preserve">
+    <value>X-row-2 has more bars than X-row-1.</value>
+    <comment>エラー X1段筋よりX2段筋の本数が多いです。</comment>
+  </data>
+  <data name="IDS_ERR_X2_OVER_X1_HOSO" xml:space="preserve">
+    <value>X-row-2 small-diameter count exceeds X-row-1.</value>
+    <comment>X2段筋の細径本数がX1段筋の細径本数より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_Y1HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>Y-row-1 small-diameter count ≥ large-diameter count.</value>
+    <comment>エラー Y1段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_Y2" xml:space="preserve">
+    <value>Layout cannot place Y second-row reinforcement.</value>
+    <comment>エラー Y2段筋を配筋できない組み合わせです。</comment>
+  </data>
+  <data name="IDS_ERR_Y2CROSSX1" xml:space="preserve">
+    <value>Need ≥ 4 X-row-1 large-diameter bars for Y-row-2.</value>
+    <comment>エラー X1段筋太径が4本未満なためY2段筋が配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_Y2CROSSX2" xml:space="preserve">
+    <value>Need ≥ 4 X-row-2 large-diameter bars for Y-row-2.</value>
+    <comment>エラー X2段筋太径が4本未満なためY2段筋が配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_Y2HOSO_X1HUTO_UNDER4" xml:space="preserve">
+    <value>Cannot place Y2 small diameter bars because X1 large diameter count is 4 or less.</value>
+    <comment>エラー X1段筋の太径が4本未満なため、Y2段筋細径が配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_Y2HOSO_Y1HUSOKU" xml:space="preserve">
+    <value>Need more Y first-row bars for Y second-row small diameters.</value>
+    <comment>エラー Y2段筋細径を配置するにはY1段筋が少ないです。</comment>
+  </data>
+  <data name="IDS_ERR_Y2HOSO_Y2HUTO_UNDER2" xml:space="preserve">
+    <value>Need ≥ 2 large-diameter Y-row-2 bars before adding small diameters.</value>
+    <comment>エラー Y2段筋太径本数が2本未満なためY2段筋細径が配置できません。</comment>
+  </data>
+  <data name="IDS_ERR_Y2HUTO" xml:space="preserve">
+    <value>Y-row-2 large diameter count must be zero or ≥ 2.</value>
+    <comment>エラー Y2段筋の太径本数は、0または2本以上入力してください。</comment>
+  </data>
+  <data name="IDS_ERR_Y2HUTO_ORUNDER_HOSO" xml:space="preserve">
+    <value>Y-row-2 small-diameter count ≥ large diameter count.</value>
+    <comment>エラー Y2段筋の細径本数が太径本数以上です。</comment>
+  </data>
+  <data name="IDS_ERR_Y2HUTO_X2HUTO_UNDER4" xml:space="preserve">
+    <value>Need ≥ 4 X-row-2 large-diameter bars for Y-row-2 corner steel.</value>
+    <comment>エラー X2段筋の太径が4本未満なため、Y2段筋のコーナー配筋ができません。</comment>
+  </data>
+  <data name="IDS_ERR_Y2OVERY1HUTO" xml:space="preserve">
+    <value>Y-row-2 large diameter count exceeds Y-row-1.</value>
+    <comment>エラー Y2段筋の太径本数がY1段筋太径本数より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_Y2OVERY1HUTO_NOFLAG" xml:space="preserve">
+    <value>Y-row-2 large diameter exceeds (Y-row-1 large diam. − 2).</value>
+    <comment>エラー Y2段筋の太径本数が(Y1段筋太径本数 - 2)より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_Y2OVERY1_NOFLAG" xml:space="preserve">
+    <value>Y-row-2 bar count exceeds (Y-row-1 count − 2).</value>
+    <comment>エラー Y2段筋の本数が(Y1段筋本数 - 2)より多いです。</comment>
+  </data>
+  <data name="IDS_ERR_Y2_NOFLAG" xml:space="preserve">
+    <value>Second-row corner flag off: Y second row not allowed.</value>
+    <comment>エラー 2段筋コーナーフラグがないため、Y2段筋を配筋できない組み合わせです。</comment>
+  </data>
+  <data name="IDS_ERR_Y2_OVER_Y1" xml:space="preserve">
+    <value>Y-row-2 has more bars than Y-row-1.</value>
+    <comment>エラー Y1段筋よりY2段筋の本数が多いです。</comment>
+  </data>
+  <data name="IDS_PNL_SECTIONLIST_NAME" xml:space="preserve">
+    <value>Section List Creation</value>
+    <comment>パネル 断面リスト作成 名前</comment>
+  </data>
+  <data name="IDS_SECTIONLIST_ASSEMBLYNAME" xml:space="preserve">
+    <value>SectionListRC.dll</value>
+    <comment>断面リスト アセンブリ名</comment>
+  </data>
+  <data name="IDS_SHARE_PARA_BEAM_RANGER" xml:space="preserve">
+    <value>ADSK_RCSectionList_BeamRange</value>
+  </data>
+  <data name="IDS_SHARE_PARA_COLUMN_RANGER" xml:space="preserve">
+    <value>ADSK_RCSectionList_ColumnRange</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF" xml:space="preserve">
+    <value>ADSK_SectionList-SettingFile</value>
+    <comment>共有パラメータ 定義名</comment>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>SectionListParam.txt</value>
+    <comment>共有パラメータ ファイル名</comment>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>ADSK_SectionList</value>
+    <comment>共有パラメータ グループ名</comment>
+  </data>
+  <data name="IDS_TXT_1DAN" xml:space="preserve">
+    <value>1段</value>
+    <comment>文字 1段</comment>
+  </data>
+  <data name="IDS_TXT_1DANKIN" xml:space="preserve">
+    <value>1段筋</value>
+    <comment>文字 1段筋</comment>
+  </data>
+  <data name="IDS_TXT_2DAN" xml:space="preserve">
+    <value>2段</value>
+    <comment>文字 2段</comment>
+  </data>
+  <data name="IDS_TXT_2DANKIN" xml:space="preserve">
+    <value>2段筋</value>
+    <comment>文字 2段筋</comment>
+  </data>
+  <data name="IDS_TXT_2NDREBARFLAG" xml:space="preserve">
+    <value>Second-row corner reinforcement flag</value>
+    <comment>文字 2段筋コーナー配筋フラグ</comment>
+  </data>
+  <data name="IDS_TXT_3DAN" xml:space="preserve">
+    <value>3段</value>
+    <comment>文字 3段</comment>
+  </data>
+  <data name="IDS_TXT_3DANKIN" xml:space="preserve">
+    <value>3段筋</value>
+    <comment>文字 3段筋</comment>
+  </data>
+  <data name="IDS_TXT_ABARAKIN" xml:space="preserve">
+    <value>肋筋</value>
+    <comment>文字 肋筋</comment>
+  </data>
+  <data name="IDS_TXT_ABARAKINKEI" xml:space="preserve">
+    <value>Stirrup Diameter</value>
+    <comment>文字 肋筋径</comment>
+  </data>
+  <data name="IDS_TXT_ADDFRAME" xml:space="preserve">
+    <value>Auxiliary frame</value>
+    <comment>文字 追加枠</comment>
+  </data>
+  <data name="IDS_TXT_ADDFRAMENUMBER" xml:space="preserve">
+    <value>Additional frame count</value>
+    <comment>文字 追加枠数</comment>
+  </data>
+  <data name="IDS_TXT_ADDFRAMENUMBEREXPLAIN" xml:space="preserve">
+    <value>Specify how many additional frames to add.</value>
+    <comment>文字 追加枠の数を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_ADSKREXJ" xml:space="preserve">
+    <value>Autodesk REXJ</value>
+    <comment>文字 Autodesk REXJ</comment>
+  </data>
+  <data name="IDS_TXT_ALL" xml:space="preserve">
+    <value>Show on all levels</value>
+    <comment>文字 すべての階に表示</comment>
+  </data>
+  <data name="IDS_TXT_ALLCOPY" xml:space="preserve">
+    <value>Copy all</value>
+    <comment>文字 すべてコピー</comment>
+  </data>
+  <data name="IDS_TXT_ALLPASTE" xml:space="preserve">
+    <value>Paste all</value>
+    <comment>文字 すべてペースト</comment>
+  </data>
+  <data name="IDS_TXT_ALLSECTION" xml:space="preserve">
+    <value>Show all sections</value>
+    <comment>文字 全断面の表示</comment>
+  </data>
+  <data name="IDS_TXT_ARRANGEMENTFRAME" xml:space="preserve">
+    <value>Rebar layout frame</value>
+    <comment>文字 配筋枠</comment>
+  </data>
+  <data name="IDS_TXT_ARRANGEMENTFRAMEEXPLAIN_1" xml:space="preserve">
+    <value>Main-bar frame, tie frame, stirrup frame, </value>
+    <comment>文字 主筋枠、芯鉄筋枠、帯筋枠、</comment>
+  </data>
+  <data name="IDS_TXT_ARRANGEMENTFRAMEEXPLAIN_2" xml:space="preserve">
+    <value>Specify height for extra framing rows.</value>
+    <comment>文字 追加枠の高さを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_ARRANGEMENTFRAMEHEIGHT" xml:space="preserve">
+    <value>Reinforcement-frame height</value>
+    <comment>文字 配筋枠高さ</comment>
+  </data>
+  <data name="IDS_TXT_AVERAGE" xml:space="preserve">
+    <value>Average left/right gaps</value>
+    <comment>文字 左右の平均</comment>
+  </data>
+  <data name="IDS_TXT_B" xml:space="preserve">
+    <value>B</value>
+    <comment>文字 B</comment>
+  </data>
+  <data name="IDS_TXT_BEAM" xml:space="preserve">
+    <value>Beam</value>
+    <comment>文字 Beam</comment>
+  </data>
+  <data name="IDS_TXT_BEAMLISTSETTING" xml:space="preserve">
+    <value>Beam list settings</value>
+    <comment>文字 梁リスト設定</comment>
+  </data>
+  <data name="IDS_TXT_BEAMLISTSETTING2" xml:space="preserve">
+    <value>Beam list settings II</value>
+    <comment>文字 梁リスト設定2</comment>
+  </data>
+  <data name="IDS_TXT_BEAMLISTVIEWSCALE" xml:space="preserve">
+    <value>Beam list view scale</value>
+    <comment>文字 梁リストビュー尺度</comment>
+  </data>
+  <data name="IDS_TXT_BEAM_1" xml:space="preserve">
+    <value>Beam 1</value>
+    <comment>文字 梁 1</comment>
+  </data>
+  <data name="IDS_TXT_BEAM_2" xml:space="preserve">
+    <value>Beam 2</value>
+    <comment>文字 梁2</comment>
+  </data>
+  <data name="IDS_TXT_BEAM_3" xml:space="preserve">
+    <value>Beam 3</value>
+    <comment>文字 梁3</comment>
+  </data>
+  <data name="IDS_TXT_BEAM_LIST" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="IDS_TXT_BEAM_OPTION" xml:space="preserve">
+    <value>Beam list — generation target selection</value>
+  </data>
+  <data name="IDS_TXT_BODY" xml:space="preserve">
+    <value>Structural body</value>
+    <comment>文字 躯体</comment>
+  </data>
+  <data name="IDS_TXT_BOTTOM_" xml:space="preserve">
+    <value>Bottom_</value>
+    <comment>文字 Bottom_</comment>
+  </data>
+  <data name="IDS_TXT_BOXHAUNCH" xml:space="preserve">
+    <value>ボックスハンチ</value>
+    <comment>文字 ボックスハンチ</comment>
+  </data>
+  <data name="IDS_TXT_BRACKET" xml:space="preserve">
+    <value>Bracket notation</value>
+    <comment>文字 括弧表示</comment>
+  </data>
+  <data name="IDS_TXT_BRACKETEXPLAIN" xml:space="preserve">
+    <value>Pick bracket style.</value>
+    <comment>文字 括弧表示を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_BRACKETNOSHOW" xml:space="preserve">
+    <value>No brackets</value>
+    <comment>文字 括弧なし</comment>
+  </data>
+  <data name="IDS_TXT_BRACKETSHOW" xml:space="preserve">
+    <value>Include brackets</value>
+    <comment>文字 括弧あり</comment>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>文字 キャンセル</comment>
+  </data>
+  <data name="IDS_TXT_CANTIBASE" xml:space="preserve">
+    <value>Show cantilever beam start</value>
+    <comment>文字 片持ち梁 元端の表示</comment>
+  </data>
+  <data name="IDS_TXT_CANTIEND" xml:space="preserve">
+    <value>Show cantilever beam tip</value>
+    <comment>文字 片持ち梁 先端の表示</comment>
+  </data>
+  <data name="IDS_TXT_CANTIGIRDER" xml:space="preserve">
+    <value>Cantilever beam</value>
+    <comment>文字 片持ち梁</comment>
+  </data>
+  <data name="IDS_TXT_CANTILEVER_BEAM" xml:space="preserve">
+    <value>Cantilever-Beam</value>
+    <comment>文字 Cantilever-Beam</comment>
+  </data>
+  <data name="IDS_TXT_CANTILEVER_FOUNDATION_BEAM" xml:space="preserve">
+    <value>Cantilever-Foundation-Beam</value>
+    <comment>文字 Cantilever-Foundation-Beam</comment>
+  </data>
+  <data name="IDS_TXT_CANTILEVER_FOUNDATION_GIRDER" xml:space="preserve">
+    <value>Cantilever-Foundation-Girder</value>
+    <comment>文字 Cantilever-Foundation-Girder</comment>
+  </data>
+  <data name="IDS_TXT_CANTILEVER_GIRDER" xml:space="preserve">
+    <value>Cantilever-Girder</value>
+    <comment>文字 Cantilever-Girder</comment>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>カテゴリ</value>
+    <comment>Internal dictionary key - must match hardcoded key in Parameters.cs</comment>
+  </data>
+  <data name="IDS_TXT_CENTERGAP" xml:space="preserve">
+    <value>Clear distance at mid-span</value>
+    <comment>文字 中間のあき</comment>
+  </data>
+  <data name="IDS_TXT_CENTERSECTION" xml:space="preserve">
+    <value>Show center portion</value>
+    <comment>文字 中央部の表示</comment>
+  </data>
+  <data name="IDS_TXT_CHECKBOX_BEAM" xml:space="preserve">
+    <value>Sub-beam</value>
+  </data>
+  <data name="IDS_TXT_CHECKBOX_CANTI_BEAM" xml:space="preserve">
+    <value>Cantilever sub-beam</value>
+  </data>
+  <data name="IDS_TXT_CHECKBOX_CANTI_FOUNDATION_BEAM" xml:space="preserve">
+    <value>Cantilever foundation sub-beam</value>
+  </data>
+  <data name="IDS_TXT_CHECKBOX_CANTI_FOUNDATION_GIRDER" xml:space="preserve">
+    <value>Cantilever foundation girder</value>
+  </data>
+  <data name="IDS_TXT_CHECKBOX_CANTI_GIRDER" xml:space="preserve">
+    <value>Cantilever girder</value>
+  </data>
+  <data name="IDS_TXT_CHECKBOX_FOUNDATION_BEAM" xml:space="preserve">
+    <value>Foundation sub-beam</value>
+  </data>
+  <data name="IDS_TXT_CHECKBOX_FOUNDATION_GIRDER" xml:space="preserve">
+    <value>Foundation girder</value>
+  </data>
+  <data name="IDS_TXT_CHECKBOX_GIRDER" xml:space="preserve">
+    <value>Girder</value>
+  </data>
+  <data name="IDS_TXT_CHECK_ALL" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="IDS_TXT_CHECK_RANGER" xml:space="preserve">
+    <value>ビュー分割する</value>
+  </data>
+  <data name="IDS_TXT_CHUKYAKU" xml:space="preserve">
+    <value>柱脚</value>
+    <comment>文字 柱脚</comment>
+  </data>
+  <data name="IDS_TXT_CHUOH" xml:space="preserve">
+    <value>Center</value>
+    <comment>文字 中央</comment>
+  </data>
+  <data name="IDS_TXT_CHUOU" xml:space="preserve">
+    <value>中央</value>
+    <comment>文字 中央</comment>
+  </data>
+  <data name="IDS_TXT_CHUTO" xml:space="preserve">
+    <value>柱頭</value>
+    <comment>文字 柱頭</comment>
+  </data>
+  <data name="IDS_TXT_CIRCLECOLUMN" xml:space="preserve">
+    <value>Round column</value>
+    <comment>文字 円柱</comment>
+  </data>
+  <data name="IDS_TXT_COLUMN" xml:space="preserve">
+    <value>Column</value>
+    <comment>文字 Column</comment>
+  </data>
+  <data name="IDS_TXT_COLUMNADDFRAMEEXPLAIN" xml:space="preserve">
+    <value>Specify how many additional framed tiers to add.</value>
+    <comment>文字 追加枠の段数を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_COLUMNCATEGORY" xml:space="preserve">
+    <value>Column-Category</value>
+    <comment>文字 Column-Category</comment>
+  </data>
+  <data name="IDS_TXT_COLUMNLISTSETTING" xml:space="preserve">
+    <value>Column list settings</value>
+    <comment>文字 柱リスト設定</comment>
+  </data>
+  <data name="IDS_TXT_COLUMNTYPE" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="IDS_TXT_COLUMNVIEWLISTSCALE" xml:space="preserve">
+    <value>Column list view scale</value>
+    <comment>文字 柱リストビュー尺度</comment>
+  </data>
+  <data name="IDS_TXT_COLUMN_KAKU_1" xml:space="preserve">
+    <value>Rectangular column 1</value>
+    <comment>文字 角柱 1</comment>
+  </data>
+  <data name="IDS_TXT_COLUMN_KAKU_2" xml:space="preserve">
+    <value>Rectangular column 2</value>
+    <comment>文字 角柱 2</comment>
+  </data>
+  <data name="IDS_TXT_COLUMN_LIST" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="IDS_TXT_COLUMN_OPTION" xml:space="preserve">
+    <value>Column list — generation target selection</value>
+  </data>
+  <data name="IDS_TXT_COMMONSETTING" xml:space="preserve">
+    <value>Common settings</value>
+    <comment>文字 共通設定</comment>
+  </data>
+  <data name="IDS_TXT_CONCRETETEIGENRITU" xml:space="preserve">
+    <value>コンクリート強度の低減率</value>
+    <comment>文字 コンクリート強度の低減率</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUHABADOMEKINXHONSU" xml:space="preserve">
+    <value>Column Base — Spacer Bars — X Direction Count</value>
+    <comment>文字 柱脚 幅止筋X方向本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUHABADOMEKINYHONSU" xml:space="preserve">
+    <value>Column Base — Spacer Bars — Y Direction Count</value>
+    <comment>文字 柱脚 幅止筋Y方向本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUHOOPPITCH" xml:space="preserve">
+    <value>Column Base — Tie / Hoop Spacing</value>
+    <comment>文字 柱脚 帯筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUHOOPXHONSU" xml:space="preserve">
+    <value>Column Base — Ties/Hoops — X Direction Count</value>
+    <comment>文字 柱脚 帯筋X方向本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUHOOPXKEI" xml:space="preserve">
+    <value>Column Base — Tie / Hoop Diameter</value>
+    <comment>文字 柱脚 帯筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUHOOPYHONSU" xml:space="preserve">
+    <value>Column Base — Ties/Hoops — Y Direction Count</value>
+    <comment>文字 柱脚 帯筋Y方向本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINHONSU" xml:space="preserve">
+    <value>Column Base — Main Bar Count</value>
+    <comment>文字 柱脚 主筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINHOSOKEI" xml:space="preserve">
+    <value>Column Base — Main Bars — Small Diameter</value>
+    <comment>文字 柱脚主筋細径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINHUTOKEI" xml:space="preserve">
+    <value>Column Base — Main Bars — Large Diameter</value>
+    <comment>文字 柱脚主筋太径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINKEI" xml:space="preserve">
+    <value>Column Base — Main Bar Diameter</value>
+    <comment>文字 柱脚 主筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINX1HOSOKEIHONSU" xml:space="preserve">
+    <value>Column Base — Main Bars X Direction — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 柱脚主筋X方向1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINX1HUTOKEIHONSU" xml:space="preserve">
+    <value>Column Base — Main Bars X Direction — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 柱脚主筋X方向1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINX2HOSOKEIHONSU" xml:space="preserve">
+    <value>Column Base — Main Bars X Direction — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 柱脚主筋X方向2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINX2HUTOKEIHONSU" xml:space="preserve">
+    <value>Column Base — Main Bars X Direction — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 柱脚主筋X方向2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINY1HOSOKEIHONSU" xml:space="preserve">
+    <value>Column Base — Main Bars Y Direction — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 柱脚主筋Y方向1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINY1HUTOKEIHONSU" xml:space="preserve">
+    <value>Column Base — Main Bars Y Direction — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 柱脚主筋Y方向1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINY2HOSOKEIHONSU" xml:space="preserve">
+    <value>Column Base — Main Bars Y Direction — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 柱脚主筋Y方向2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUKYAKUSYUKINY2HUTOKEIHONSU" xml:space="preserve">
+    <value>Column Base — Main Bars Y Direction — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 柱脚主筋Y方向2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHHABA" xml:space="preserve">
+    <value>Center — Beam Width</value>
+    <comment>文字 中央部 梁幅</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSEI" xml:space="preserve">
+    <value>Center — Beam Depth</value>
+    <comment>文字 中央部 梁せい</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSPACINGDIAMETER" xml:space="preserve">
+    <value>Center — Spacer Bar Diameter</value>
+    <comment>文字 中央部 幅止筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSPACINGNUMBER" xml:space="preserve">
+    <value>Center — Spacer Bar Count</value>
+    <comment>文字 中央部 幅止筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSPACINGPITCH" xml:space="preserve">
+    <value>Center — Spacer Bar Spacing</value>
+    <comment>文字 中央部 幅止筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSTIRRUPDIAMETER" xml:space="preserve">
+    <value>Center — Stirrup Diameter</value>
+    <comment>文字 中央部 肋筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSTIRRUPNUMBER" xml:space="preserve">
+    <value>Center — Stirrup Count</value>
+    <comment>文字 中央部 肋筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSTIRRUPPITCH" xml:space="preserve">
+    <value>Center — Stirrup Spacing</value>
+    <comment>文字 中央部 肋筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINSITA1HOSOKEIHONSU" xml:space="preserve">
+    <value>Center — Bottom Main Bars — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 中央部 下端主筋1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINSITA1HUTOKEIHONSU" xml:space="preserve">
+    <value>Center — Bottom Main Bars — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 中央部 下端主筋1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINSITA2HOSOKEIHONSU" xml:space="preserve">
+    <value>Center — Bottom Main Bars — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 中央部 下端主筋2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINSITA2HUTOKEIHONSU" xml:space="preserve">
+    <value>Center — Bottom Main Bars — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 中央部 下端主筋2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINSITA3HOSOKEIHONSU" xml:space="preserve">
+    <value>Center — Bottom Main Bars — 3rd Row Small Diameter Bar Count</value>
+    <comment>文字 中央部 下端主筋3段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINSITA3HUTOKEIHONSU" xml:space="preserve">
+    <value>Center — Bottom Main Bars — 3rd Row Large Diameter Bar Count</value>
+    <comment>文字 中央部 下端主筋3段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINSITAHOSOKEI" xml:space="preserve">
+    <value>Center — Bottom Main Bars — Small Diameter</value>
+    <comment>文字 中央部 下端主筋細径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINSITAHUTOKEI" xml:space="preserve">
+    <value>Center — Bottom Main Bars — Large Diameter</value>
+    <comment>文字 中央部 下端主筋太径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINUE1HOSOKEIHONSU" xml:space="preserve">
+    <value>Center — Top Main Bars — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 中央部 上端主筋1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINUE1HUTOKEIHONSU" xml:space="preserve">
+    <value>Center — Top Main Bars — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 中央部 上端主筋1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINUE2HOSOKEIHONSU" xml:space="preserve">
+    <value>Center — Top Main Bars — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 中央部 上端主筋2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINUE2HUTOKEIHONSU" xml:space="preserve">
+    <value>Center — Top Main Bars — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 中央部 上端主筋2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINUE3HOSOKEIHONSU" xml:space="preserve">
+    <value>Center — Top Main Bars — 3rd Row Small Diameter Bar Count</value>
+    <comment>文字 中央部 上端主筋3段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINUE3HUTOKEIHONSU" xml:space="preserve">
+    <value>Center — Top Main Bars — 3rd Row Large Diameter Bar Count</value>
+    <comment>文字 中央部 上端主筋3段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINUEHOSOKEI" xml:space="preserve">
+    <value>Center — Top Main Bars — Small Diameter</value>
+    <comment>文字 中央部 上端主筋細径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHSYUKINUEHUTOKEI" xml:space="preserve">
+    <value>Center — Top Main Bars — Large Diameter</value>
+    <comment>文字 中央部 上端主筋太径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHWEBDIAMETER" xml:space="preserve">
+    <value>Center — Web Reinforcement Diameter</value>
+    <comment>文字 中央部 腹筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUOHWEBNUMBER" xml:space="preserve">
+    <value>Center — Web Reinforcement Count</value>
+    <comment>文字 中央部 腹筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOHABADOMEKINXHONSU" xml:space="preserve">
+    <value>Column Head — Spacer Bars — X Direction Count</value>
+    <comment>文字 柱頭 幅止筋X方向本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOHABADOMEKINYHONSU" xml:space="preserve">
+    <value>Column Head — Spacer Bars — Y Direction Count</value>
+    <comment>文字 柱頭 幅止筋Y方向本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOHOOPPITCH" xml:space="preserve">
+    <value>Column Head — Tie / Hoop Spacing</value>
+    <comment>文字 柱頭 帯筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOHOOPXHONSU" xml:space="preserve">
+    <value>Column Head — Ties/Hoops — X Direction Count</value>
+    <comment>文字 柱頭 帯筋X方向本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOHOOPXKEI" xml:space="preserve">
+    <value>Column Head — Tie / Hoop Diameter</value>
+    <comment>文字 柱頭 帯筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOHOOPYHONSU" xml:space="preserve">
+    <value>Column Head — Ties/Hoops — Y Direction Count</value>
+    <comment>文字 柱頭 帯筋Y方向本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINHONSU" xml:space="preserve">
+    <value>Column Head — Main Bar Count</value>
+    <comment>文字 柱頭 主筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINHOSOKEI" xml:space="preserve">
+    <value>Column Head — Main Bars — Small Diameter</value>
+    <comment>文字 柱頭主筋細径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINHUTOKEI" xml:space="preserve">
+    <value>Column Head — Main Bars — Large Diameter</value>
+    <comment>文字 柱頭主筋太径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINKEI" xml:space="preserve">
+    <value>Column Head — Main Bar Diameter</value>
+    <comment>文字 柱頭 主筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINX1HOSOKEIHONSU" xml:space="preserve">
+    <value>Column Head — Main Bars X Direction — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 柱頭主筋X方向1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINX1HUTOKEIHONSU" xml:space="preserve">
+    <value>Column Head — Main Bars X Direction — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 柱頭主筋X方向1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINX2HOSOKEIHONSU" xml:space="preserve">
+    <value>Column Head — Main Bars X Direction — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 柱頭主筋X方向2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINX2HUTOKEIHONSU" xml:space="preserve">
+    <value>Column Head — Main Bars X Direction — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 柱頭主筋X方向2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINY1HOSOKEIHONSU" xml:space="preserve">
+    <value>Column Head — Main Bars Y Direction — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 柱頭主筋Y方向1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINY1HUTOKEIHONSU" xml:space="preserve">
+    <value>Column Head — Main Bars Y Direction — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 柱頭主筋Y方向1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINY2HOSOKEIHONSU" xml:space="preserve">
+    <value>Column Head — Main Bars Y Direction — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 柱頭主筋Y方向2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_CHUTOSYUKINY2HUTOKEIHONSU" xml:space="preserve">
+    <value>Column Head — Main Bars Y Direction — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 柱頭主筋Y方向2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_COLUMNCATEGORY" xml:space="preserve">
+    <value>Column grouping</value>
+    <comment>文字 柱分類</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_DX" xml:space="preserve">
+    <value>Column width</value>
+    <comment>文字 柱幅</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_DY" xml:space="preserve">
+    <value>Column depth</value>
+    <comment>文字 柱せい</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_GIRDERCATEGORY" xml:space="preserve">
+    <value>Beam grouping</value>
+    <comment>文字 梁分類</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_HABADOMEKINKEI" xml:space="preserve">
+    <value>Spacer bar diameter</value>
+    <comment>文字 幅止筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_HABADOMEKINPITCH" xml:space="preserve">
+    <value>Spacer spacing</value>
+    <comment>文字 幅止筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_HASIRAHUGO" xml:space="preserve">
+    <value>Column mark</value>
+    <comment>文字 柱符号</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANHABA" xml:space="preserve">
+    <value>i-End — Beam Width</value>
+    <comment>文字 i端 梁幅</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSEI" xml:space="preserve">
+    <value>i-End — Beam Depth</value>
+    <comment>文字 i端 梁せい</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSPACINGDIAMETER" xml:space="preserve">
+    <value>i-End — Spacer Bar Diameter</value>
+    <comment>文字 i端 幅止筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSPACINGNUMBER" xml:space="preserve">
+    <value>i-End — Spacer Bar Count</value>
+    <comment>文字 i端 幅止筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSPACINGPITCH" xml:space="preserve">
+    <value>i-End — Spacer Bar Spacing</value>
+    <comment>文字 i端 幅止筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSTIRRUPDIAMETER" xml:space="preserve">
+    <value>i-End — Stirrup Diameter</value>
+    <comment>文字 i端 肋筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSTIRRUPNUMBER" xml:space="preserve">
+    <value>i-End — Stirrup Count</value>
+    <comment>文字 i端 肋筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSTIRRUPPITCH" xml:space="preserve">
+    <value>i-End — Stirrup Spacing</value>
+    <comment>文字 i端 肋筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINSITA1HOSOKEIHONSU" xml:space="preserve">
+    <value>i-End — Bottom Main Bars — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 i端 下端主筋1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINSITA1HUTOKEIHONSU" xml:space="preserve">
+    <value>i-End — Bottom Main Bars — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 i端 下端主筋1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINSITA2HOSOKEIHONSU" xml:space="preserve">
+    <value>i-End — Bottom Main Bars — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 i端 下端主筋2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINSITA2HUTOKEIHONSU" xml:space="preserve">
+    <value>i-End — Bottom Main Bars — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 i端 下端主筋2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINSITA3HOSOKEIHONSU" xml:space="preserve">
+    <value>i-End — Bottom Main Bars — 3rd Row Small Diameter Bar Count</value>
+    <comment>文字 i端 下端主筋3段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINSITA3HUTOKEIHONSU" xml:space="preserve">
+    <value>i-End — Bottom Main Bars — 3rd Row Large Diameter Bar Count</value>
+    <comment>文字 i端 下端主筋3段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINSITAHOSOKEI" xml:space="preserve">
+    <value>i-End — Bottom Main Bars — Small Diameter</value>
+    <comment>文字 i端 下端主筋細径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINSITAHUTOKEI" xml:space="preserve">
+    <value>i-End — Bottom Main Bars — Large Diameter</value>
+    <comment>文字 i端 下端主筋太径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINUE1HOSOKEIHONSU" xml:space="preserve">
+    <value>i-End — Top Main Bars — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 i端 上端主筋1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINUE1HUTOKEIHONSU" xml:space="preserve">
+    <value>i-End — Top Main Bars — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 i端 上端主筋1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINUE2HOSOKEIHONSU" xml:space="preserve">
+    <value>i-End — Top Main Bars — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 i端 上端主筋2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINUE2HUTOKEIHONSU" xml:space="preserve">
+    <value>i-End — Top Main Bars — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 i端 上端主筋2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINUE3HOSOKEIHONSU" xml:space="preserve">
+    <value>i-End — Top Main Bars — 3rd Row Small Diameter Bar Count</value>
+    <comment>文字 i端 上端主筋3段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINUE3HUTOKEIHONSU" xml:space="preserve">
+    <value>i-End — Top Main Bars — 3rd Row Large Diameter Bar Count</value>
+    <comment>文字 i端 上端主筋3段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINUEHOSOKEI" xml:space="preserve">
+    <value>i-End — Top Main Bars — Small Diameter</value>
+    <comment>文字 i端 上端主筋細径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANSYUKINUEHUTOKEI" xml:space="preserve">
+    <value>i-End — Top Main Bars — Large Diameter</value>
+    <comment>文字 i端 上端主筋太径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANWEBDIAMETER" xml:space="preserve">
+    <value>i-End — Web Reinforcement Diameter</value>
+    <comment>文字 i端 腹筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_ITANWEBNUMBER" xml:space="preserve">
+    <value>i-End — Web Reinforcement Count</value>
+    <comment>文字 i端 腹筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANHABA" xml:space="preserve">
+    <value>j-End — Beam Width</value>
+    <comment>文字 j端 梁幅</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANHASEI" xml:space="preserve">
+    <value>j-End — Beam Depth</value>
+    <comment>文字 j端 梁せい</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSPACINGDIAMETER" xml:space="preserve">
+    <value>j-End — Spacer Bar Diameter</value>
+    <comment>文字 j端 幅止筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSPACINGNUMBER" xml:space="preserve">
+    <value>j-End — Spacer Bar Count</value>
+    <comment>文字 j端 幅止筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSPACINGPITCH" xml:space="preserve">
+    <value>j-End — Spacer Bar Spacing</value>
+    <comment>文字 j端 幅止筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSTIRRUPDIAMETER" xml:space="preserve">
+    <value>j-End — Stirrup Diameter</value>
+    <comment>文字 j端 肋筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSTIRRUPNUMBER" xml:space="preserve">
+    <value>j-End — Stirrup Count</value>
+    <comment>文字 j端 肋筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSTIRRUPPITCH" xml:space="preserve">
+    <value>j-End — Stirrup Spacing</value>
+    <comment>文字 j端 肋筋ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINSITA1HOSOKEIHONSU" xml:space="preserve">
+    <value>j-End — Bottom Main Bars — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 j端 下端主筋1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINSITA1HUTOKEIHONSU" xml:space="preserve">
+    <value>j-End — Bottom Main Bars — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 j端 下端主筋1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINSITA2HOSOKEIHONSU" xml:space="preserve">
+    <value>j-End — Bottom Main Bars — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 j端 下端主筋2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINSITA2HUTOKEIHONSU" xml:space="preserve">
+    <value>j-End — Bottom Main Bars — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 j端 下端主筋2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINSITA3HOSOKEIHONSU" xml:space="preserve">
+    <value>j-End — Bottom Main Bars — 3rd Row Small Diameter Bar Count</value>
+    <comment>文字 j端 下端主筋3段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINSITA3HUTOKEIHONSU" xml:space="preserve">
+    <value>j-End — Bottom Main Bars — 3rd Row Large Diameter Bar Count</value>
+    <comment>文字 j端 下端主筋3段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINSITAHOSOKEI" xml:space="preserve">
+    <value>j-End — Bottom Main Bars — Small Diameter</value>
+    <comment>文字 j端 下端主筋細径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINSITAHUTOKEI" xml:space="preserve">
+    <value>j-End — Bottom Main Bars — Large Diameter</value>
+    <comment>文字 j端 下端主筋太径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINUE1HOSOKEIHONSU" xml:space="preserve">
+    <value>j-End — Top Main Bars — 1st Row Small Diameter Bar Count</value>
+    <comment>文字 j端 上端主筋1段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINUE1HUTOKEIHONSU" xml:space="preserve">
+    <value>j-End — Top Main Bars — 1st Row Large Diameter Bar Count</value>
+    <comment>文字 j端 上端主筋1段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINUE2HOSOKEIHONSU" xml:space="preserve">
+    <value>j-End — Top Main Bars — 2nd Row Small Diameter Bar Count</value>
+    <comment>文字 j端 上端主筋2段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINUE2HUTOKEIHONSU" xml:space="preserve">
+    <value>j-End — Top Main Bars — 2nd Row Large Diameter Bar Count</value>
+    <comment>文字 j端 上端主筋2段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINUE3HOSOKEIHONSU" xml:space="preserve">
+    <value>j-End — Top Main Bars — 3rd Row Small Diameter Bar Count</value>
+    <comment>文字 j端 上端主筋3段筋細径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINUE3HUTOKEIHONSU" xml:space="preserve">
+    <value>j-End — Top Main Bars — 3rd Row Large Diameter Bar Count</value>
+    <comment>文字 j端 上端主筋3段筋太径本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINUEHOSOKEI" xml:space="preserve">
+    <value>j-End — Top Main Bars — Small Diameter</value>
+    <comment>文字 j端 上端主筋細径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANSYUKINUEHUTOKEI" xml:space="preserve">
+    <value>j-End — Top Main Bars — Large Diameter</value>
+    <comment>文字 j端 上端主筋太径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANWEBDIAMETER" xml:space="preserve">
+    <value>j-End — Web Reinforcement Diameter</value>
+    <comment>文字 j端 腹筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_JTANWEBNUMBER" xml:space="preserve">
+    <value>j-End — Web Reinforcement Count</value>
+    <comment>文字 j端 腹筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_SINTEKKINHONSU" xml:space="preserve">
+    <value>Core rebar quantity</value>
+    <comment>文字 芯鉄筋本数</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_SINTEKKINICHI" xml:space="preserve">
+    <value>Distance from structural surface to core rebar centroid</value>
+    <comment>文字 躯体面から芯鉄筋までの距離</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_SINTEKKINKEI" xml:space="preserve">
+    <value>Core rebar diameter</value>
+    <comment>文字 芯鉄筋径</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_SINTEKKINXICHI" xml:space="preserve">
+    <value>Structural face → core rebar distance along X</value>
+    <comment>文字 躯体面から芯鉄筋までのX方向距離</comment>
+  </data>
+  <data name="IDS_TXT_CONTENTS_SINTEKKINYICHI" xml:space="preserve">
+    <value>Structural face → core rebar distance along Y</value>
+    <comment>文字 躯体面から芯鉄筋までのY方向距離</comment>
+  </data>
+  <data name="IDS_TXT_COREREBAR" xml:space="preserve">
+    <value>芯鉄筋</value>
+    <comment>文字 芯鉄筋</comment>
+  </data>
+  <data name="IDS_TXT_COREREBARNUMBER" xml:space="preserve">
+    <value>CoreRebar_Number</value>
+    <comment>文字 CoreRebar_Number</comment>
+  </data>
+  <data name="IDS_TXT_CURRENTEXPORTFOLDER" xml:space="preserve">
+    <value>Current export folder:</value>
+    <comment>文字 現在の書き出しフォルダ :</comment>
+  </data>
+  <data name="IDS_TXT_CURRENTMAPPINGNAME" xml:space="preserve">
+    <value>&lt;Current mapped parameter name&gt;</value>
+    <comment>文字 現在の対応パラメータ名</comment>
+  </data>
+  <data name="IDS_TXT_CURRENTSETTINGFILE" xml:space="preserve">
+    <value>Current settings file:</value>
+    <comment>文字 現在の設定ファイル :</comment>
+  </data>
+  <data name="IDS_TXT_CURRENTTABLEFILE" xml:space="preserve">
+    <value>Current mapping table: </value>
+    <comment>文字 現在のマッピングテーブル :</comment>
+  </data>
+  <data name="IDS_TXT_CUSTOM" xml:space="preserve">
+    <value>Custom</value>
+    <comment>文字 カスタム</comment>
+  </data>
+  <data name="IDS_TXT_CUSTOMVIEWSCALE" xml:space="preserve">
+    <value>Custom view scale</value>
+    <comment>文字 カスタムビュー尺度</comment>
+  </data>
+  <data name="IDS_TXT_C_" xml:space="preserve">
+    <value>c_</value>
+    <comment>文字 c_</comment>
+  </data>
+  <data name="IDS_TXT_D" xml:space="preserve">
+    <value>D</value>
+    <comment>文字 D</comment>
+  </data>
+  <data name="IDS_TXT_DANKIN" xml:space="preserve">
+    <value>Row tiers</value>
+    <comment>文字 段筋</comment>
+  </data>
+  <data name="IDS_TXT_DEFAULTCENTER" xml:space="preserve">
+    <value>Center alignment</value>
+    <comment>文字 中央を基準</comment>
+  </data>
+  <data name="IDS_TXT_DEFAULTLEFT" xml:space="preserve">
+    <value>Align left</value>
+    <comment>文字 左を基準</comment>
+  </data>
+  <data name="IDS_TXT_DEFAULTTABLE" xml:space="preserve">
+    <value>Default</value>
+    <comment>文字 デフォルトテーブル</comment>
+  </data>
+  <data name="IDS_TXT_DESKTOP" xml:space="preserve">
+    <value>デスクトップ</value>
+    <comment>文字 デスクトップ</comment>
+  </data>
+  <data name="IDS_TXT_DIAMETER" xml:space="preserve">
+    <value>Diameter</value>
+    <comment>文字 Diameter</comment>
+  </data>
+  <data name="IDS_TXT_DIMENSIONHEIGHT" xml:space="preserve">
+    <value>Height dimensions</value>
+    <comment>文字 高さ寸法</comment>
+  </data>
+  <data name="IDS_TXT_DIMENSIONS" xml:space="preserve">
+    <value>Dimensions</value>
+    <comment>文字 寸法線</comment>
+  </data>
+  <data name="IDS_TXT_DIMENSIONSEXPLAIN" xml:space="preserve">
+    <value>Set how dimensions draw inside cross-section frames.</value>
+    <comment>文字 断面枠での寸法線の表示方法を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_DIMENSIONTYPE" xml:space="preserve">
+    <value>Dimension type</value>
+    <comment>文字 寸法タイプ</comment>
+  </data>
+  <data name="IDS_TXT_DIMENSIONTYPEEXPLAIN" xml:space="preserve">
+    <value>Pick dimension types to assign.</value>
+    <comment>文字 使用する寸法タイプを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_DIMENSIONWIDTH" xml:space="preserve">
+    <value>Width dimensions</value>
+    <comment>文字 幅寸法</comment>
+  </data>
+  <data name="IDS_TXT_DOWN" xml:space="preserve">
+    <value>Move down</value>
+    <comment>文字 下へ</comment>
+  </data>
+  <data name="IDS_TXT_DX" xml:space="preserve">
+    <value>DX</value>
+    <comment>文字 DX</comment>
+  </data>
+  <data name="IDS_TXT_DY" xml:space="preserve">
+    <value>DY</value>
+    <comment>文字 DY</comment>
+  </data>
+  <data name="IDS_TXT_EIZENKYOKAITEKKINMARK" xml:space="preserve">
+    <value>Rebar Mark_Eizenshoku Association</value>
+    <comment>文字 鉄筋マーク_営繕協会</comment>
+  </data>
+  <data name="IDS_TXT_ELLIPSISDIMENSION" xml:space="preserve">
+    <value>Omit duplicated dimensions</value>
+    <comment>文字 同一寸法省略</comment>
+  </data>
+  <data name="IDS_TXT_ENCHU" xml:space="preserve">
+    <value>Round column</value>
+    <comment>文字 円柱</comment>
+  </data>
+  <data name="IDS_TXT_END" xml:space="preserve">
+    <value>Finish</value>
+    <comment>文字 終了</comment>
+  </data>
+  <data name="IDS_TXT_ENDSECTION" xml:space="preserve">
+    <value>Show end zones</value>
+    <comment>文字 端部の表示</comment>
+  </data>
+  <data name="IDS_TXT_EVERYSTEP" xml:space="preserve">
+    <value>Per-row display</value>
+    <comment>文字 段別に表示</comment>
+  </data>
+  <data name="IDS_TXT_EXPORTFOLDER" xml:space="preserve">
+    <value>Individual export</value>
+    <comment>文字 個別書き出し</comment>
+  </data>
+  <data name="IDS_TXT_E_" xml:space="preserve">
+    <value>e_</value>
+    <comment>文字 e_</comment>
+  </data>
+  <data name="IDS_TXT_FONTTYPE" xml:space="preserve">
+    <value>Text style</value>
+    <comment>文字 文字タイプ</comment>
+  </data>
+  <data name="IDS_TXT_FONTTYPEEXPLAIN" xml:space="preserve">
+    <value>Pick text/note types to assign.</value>
+    <comment>文字 使用する文字タイプを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_FORMAT" xml:space="preserve">
+    <value>Format</value>
+    <comment>文字 書式</comment>
+  </data>
+  <data name="IDS_TXT_FOUNDATION_BEAM" xml:space="preserve">
+    <value>Foundation-Beam</value>
+    <comment>文字 Foundation-Beam</comment>
+  </data>
+  <data name="IDS_TXT_FOUNDATION_GIRDER" xml:space="preserve">
+    <value>Foundation-Girder</value>
+    <comment>文字 Foundation-Girder</comment>
+  </data>
+  <data name="IDS_TXT_FRAME" xml:space="preserve">
+    <value>Frame</value>
+    <comment>文字 枠</comment>
+  </data>
+  <data name="IDS_TXT_FRAMEWIDTH" xml:space="preserve">
+    <value>Frame width</value>
+    <comment>文字 枠幅</comment>
+  </data>
+  <data name="IDS_TXT_GIRDER" xml:space="preserve">
+    <value>Girder</value>
+    <comment>文字 Girder</comment>
+  </data>
+  <data name="IDS_TXT_GIRDERCATEGORY" xml:space="preserve">
+    <value>Girder-Category</value>
+    <comment>文字 Girder-Category</comment>
+  </data>
+  <data name="IDS_TXT_GIRDERREBARWITHBRACKET" xml:space="preserve">
+    <value>[3]D13@100</value>
+    <comment>文字 [3]D13@100</comment>
+  </data>
+  <data name="IDS_TXT_GIRDERREBARWITHBRACKETNON" xml:space="preserve">
+    <value>3-D13@100</value>
+    <comment>文字 3-D13@100</comment>
+  </data>
+  <data name="IDS_TXT_GIRDER_TXT" xml:space="preserve">
+    <value>Beam</value>
+    <comment>文字 梁</comment>
+  </data>
+  <data name="IDS_TXT_GROUP_RANGE" xml:space="preserve">
+    <value>Range selection</value>
+  </data>
+  <data name="IDS_TXT_HABADOMEKIN" xml:space="preserve">
+    <value>幅止筋</value>
+    <comment>文字 幅止筋</comment>
+  </data>
+  <data name="IDS_TXT_HARAKIN" xml:space="preserve">
+    <value>腹筋</value>
+    <comment>文字 腹筋</comment>
+  </data>
+  <data name="IDS_TXT_HARIHABA" xml:space="preserve">
+    <value>梁幅</value>
+    <comment>文字 梁幅</comment>
+  </data>
+  <data name="IDS_TXT_HARIHUGO" xml:space="preserve">
+    <value>Beam mark</value>
+    <comment>文字 梁符号</comment>
+  </data>
+  <data name="IDS_TXT_HARISEI" xml:space="preserve">
+    <value>梁せい</value>
+    <comment>文字 梁せい</comment>
+  </data>
+  <data name="IDS_TXT_HARISYUBETU" xml:space="preserve">
+    <value>梁種別</value>
+    <comment>文字 梁種別</comment>
+  </data>
+  <data name="IDS_TXT_HASHIRABUNRUI" xml:space="preserve">
+    <value>柱種別</value>
+    <comment>文字 柱種別</comment>
+  </data>
+  <data name="IDS_TXT_HASIRAHABA" xml:space="preserve">
+    <value>柱幅</value>
+    <comment>文字 柱幅</comment>
+  </data>
+  <data name="IDS_TXT_HASIRAHUGO" xml:space="preserve">
+    <value>Column mark</value>
+    <comment>文字 柱符号</comment>
+  </data>
+  <data name="IDS_TXT_HASIRASEI" xml:space="preserve">
+    <value>柱せい</value>
+    <comment>文字 柱せい</comment>
+  </data>
+  <data name="IDS_TXT_HASIRASYUBETU" xml:space="preserve">
+    <value>柱種別</value>
+    <comment>文字 柱種別</comment>
+  </data>
+  <data name="IDS_TXT_HAUNCHNAGASA" xml:space="preserve">
+    <value>ハンチ長さ</value>
+    <comment>文字 ハンチ長さ</comment>
+  </data>
+  <data name="IDS_TXT_HEADER_RCCG" xml:space="preserve">
+    <value>// RC片持梁－パラメータ //</value>
+    <comment>Data format marker - must match .tbl file headers</comment>
+  </data>
+  <data name="IDS_TXT_HEADER_RCCOLUMN" xml:space="preserve">
+    <value>// RC柱－パラメータ //</value>
+    <comment>Data format marker - must match .tbl file headers</comment>
+  </data>
+  <data name="IDS_TXT_HEADER_RCGIRDER" xml:space="preserve">
+    <value>// 基礎梁・ハンチ付き基礎梁・RC大梁・ハンチ付きRC大梁・RC小梁－パラメータ //</value>
+    <comment>Data format marker - must match .tbl file headers</comment>
+  </data>
+  <data name="IDS_TXT_HEADER_RCROUNDCOLUMN" xml:space="preserve">
+    <value>// RC円柱－パラメータ //</value>
+    <comment>Data format marker - must match .tbl file headers</comment>
+  </data>
+  <data name="IDS_TXT_HEIGHT" xml:space="preserve">
+    <value>Height</value>
+    <comment>文字 高さ</comment>
+  </data>
+  <data name="IDS_TXT_HELP" xml:space="preserve">
+    <value>Help</value>
+    <comment>ヘルプ</comment>
+  </data>
+  <data name="IDS_TXT_HONSU" xml:space="preserve">
+    <value>本数</value>
+    <comment>文字 本数</comment>
+  </data>
+  <data name="IDS_TXT_HOOP" xml:space="preserve">
+    <value>Tie / hoop</value>
+    <comment>文字 帯筋</comment>
+  </data>
+  <data name="IDS_TXT_HOOPFRAME" xml:space="preserve">
+    <value>Tie / hoop frame</value>
+    <comment>文字 帯筋枠</comment>
+  </data>
+  <data name="IDS_TXT_HOOPFRAMEEXPLAIN" xml:space="preserve">
+    <value>Set frame titles and delimiters.</value>
+    <comment>文字 枠のタイトルと区切り記号をを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_HOOPFRAMETITLE" xml:space="preserve">
+    <value>Tie-frame title</value>
+    <comment>文字 帯筋枠タイトル</comment>
+  </data>
+  <data name="IDS_TXT_HOOP_KATA" xml:space="preserve">
+    <value>Hoop</value>
+    <comment>文字 フープ</comment>
+  </data>
+  <data name="IDS_TXT_HOSOKEI" xml:space="preserve">
+    <value>細径</value>
+    <comment>文字 細径</comment>
+  </data>
+  <data name="IDS_TXT_HOSOKINHONSU" xml:space="preserve">
+    <value>細筋本数</value>
+    <comment>文字 細筋本数</comment>
+  </data>
+  <data name="IDS_TXT_HOUKOU" xml:space="preserve">
+    <value>方向</value>
+    <comment>文字 方向</comment>
+  </data>
+  <data name="IDS_TXT_HUGO" xml:space="preserve">
+    <value>符号</value>
+    <comment>文字 符号</comment>
+  </data>
+  <data name="IDS_TXT_HUTOKEI" xml:space="preserve">
+    <value>太径</value>
+    <comment>文字 太径</comment>
+  </data>
+  <data name="IDS_TXT_HUTOKINHONSU" xml:space="preserve">
+    <value>太筋本数</value>
+    <comment>文字 太筋本数</comment>
+  </data>
+  <data name="IDS_TXT_ICHI" xml:space="preserve">
+    <value>Location</value>
+    <comment>文字 位置</comment>
+  </data>
+  <data name="IDS_TXT_IFINITEMFRAME" xml:space="preserve">
+    <value>The level-display frame adopts the width of the item frame.</value>
+    <comment>文字 「階表示枠」の幅は、項目表示枠の幅になります。</comment>
+  </data>
+  <data name="IDS_TXT_IMAGECREATE" xml:space="preserve">
+    <value>Create image</value>
+    <comment>文字 イメージ作成</comment>
+  </data>
+  <data name="IDS_TXT_IMAGEEXPORTED" xml:space="preserve">
+    <value>Image export finished.</value>
+    <comment>文字 画像ファイルの出力が終了しました。</comment>
+  </data>
+  <data name="IDS_TXT_IMAGESET" xml:space="preserve">
+    <value>Image settings</value>
+    <comment>文字 イメージ設定</comment>
+  </data>
+  <data name="IDS_TXT_IMAGESET_BEAM" xml:space="preserve">
+    <value>Section list image copied to beam type parameters.</value>
+    <comment>文字 梁タイプパラメータに断面リストイメージを設定しました。</comment>
+  </data>
+  <data name="IDS_TXT_IMAGESET_COLUMN" xml:space="preserve">
+    <value>Section list image copied to column type parameters.</value>
+    <comment>文字 柱タイプパラメータに断面リストイメージを設定しました。</comment>
+  </data>
+  <data name="IDS_TXT_ITAN" xml:space="preserve">
+    <value>i-end</value>
+    <comment>文字 i端</comment>
+  </data>
+  <data name="IDS_TXT_ITANSECTION" xml:space="preserve">
+    <value>Show start/end region</value>
+    <comment>文字 始端部の表示</comment>
+  </data>
+  <data name="IDS_TXT_ITEMFRAME" xml:space="preserve">
+    <value>Item-display frame</value>
+    <comment>文字 項目表示枠</comment>
+  </data>
+  <data name="IDS_TXT_ITEMFRAMEEXPLAIN" xml:space="preserve">
+    <value>Specify the width of the item-display frame.</value>
+    <comment>文字 項目表示枠の幅を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_ITEMFRAMEWIDTH" xml:space="preserve">
+    <value>Item frame width</value>
+    <comment>文字 項目表示枠幅</comment>
+  </data>
+  <data name="IDS_TXT_JTAN" xml:space="preserve">
+    <value>j-end</value>
+    <comment>文字 j端</comment>
+  </data>
+  <data name="IDS_TXT_JTANSECTION" xml:space="preserve">
+    <value>Show opposing end detail</value>
+    <comment>文字 終端部の表示</comment>
+  </data>
+  <data name="IDS_TXT_KABURI" xml:space="preserve">
+    <value>Concrete cover thickness</value>
+    <comment>文字 かぶり厚</comment>
+  </data>
+  <data name="IDS_TXT_KABURI_EN" xml:space="preserve">
+    <value>Cover (round column)</value>
+    <comment>文字 かぶり厚(円柱)</comment>
+  </data>
+  <data name="IDS_TXT_KABURI_KAKU" xml:space="preserve">
+    <value>Cover (rectangular column)</value>
+    <comment>文字 かぶり厚(角柱)</comment>
+  </data>
+  <data name="IDS_TXT_KEI" xml:space="preserve">
+    <value>径</value>
+    <comment>文字 径</comment>
+  </data>
+  <data name="IDS_TXT_LEVELFRAME" xml:space="preserve">
+    <value>Level-display frame</value>
+    <comment>文字 階表示枠</comment>
+  </data>
+  <data name="IDS_TXT_LEVELFRAMEENDWORD" xml:space="preserve">
+    <value>Level frame suffix</value>
+    <comment>文字 階表示枠接尾語</comment>
+  </data>
+  <data name="IDS_TXT_LEVELFRAMEEXPLAIN" xml:space="preserve">
+    <value>Customize level-banner formatting.</value>
+    <comment>文字 階表示枠のスタイルを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_LEVELFRAMESHOW" xml:space="preserve">
+    <value>Show level frame</value>
+    <comment>文字 階表示枠を表示</comment>
+  </data>
+  <data name="IDS_TXT_LEVELFRAMESHOWINITEMFRAME" xml:space="preserve">
+    <value>Show level label inside the item frame</value>
+    <comment>文字 階表示を項目表示枠に表示</comment>
+  </data>
+  <data name="IDS_TXT_LEVELFRAMETITLE" xml:space="preserve">
+    <value>Level frame title</value>
+    <comment>文字 階表示枠タイトル</comment>
+  </data>
+  <data name="IDS_TXT_LEVELFRAMEWIDTH" xml:space="preserve">
+    <value>Level-frame width</value>
+    <comment>文字 階表示枠幅</comment>
+  </data>
+  <data name="IDS_TXT_LEVELSORT" xml:space="preserve">
+    <value>Level symbol order</value>
+    <comment>文字 階記号の順序</comment>
+  </data>
+  <data name="IDS_TXT_LINETYPE" xml:space="preserve">
+    <value>Line style type</value>
+    <comment>文字 線種タイプ</comment>
+  </data>
+  <data name="IDS_TXT_LINETYPEEXPLAIN" xml:space="preserve">
+    <value>Assign line style types.</value>
+    <comment>文字 線種タイプを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_LIST" xml:space="preserve">
+    <value>リスト</value>
+    <comment>文字 リスト</comment>
+  </data>
+  <data name="IDS_TXT_LISTLEVELSORT" xml:space="preserve">
+    <value>Set level ordering applied when generating lists.</value>
+    <comment>文字 リスト作成時のレベル順序を設定します。</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_BEAM" xml:space="preserve">
+    <value>RCリスト_小梁</value>
+    <comment>文字 RCリスト_小梁</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_CANTIBEAM" xml:space="preserve">
+    <value>RCリスト_片持ち小梁</value>
+    <comment>文字 RCリスト_片持ち小梁</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_BEAM_FOND" xml:space="preserve">
+    <value>RCリスト_基礎小梁</value>
+    <comment>文字 RCリスト_基礎小梁</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_CANTIBEAM_FOND" xml:space="preserve">
+    <value>RCリスト_片持ち基礎小梁</value>
+    <comment>文字 RCリスト_片持ち基礎小梁</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_COLUMN" xml:space="preserve">
+    <value>RCリスト_柱</value>
+    <comment>文字 RCリスト_柱</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_GIRDER" xml:space="preserve">
+    <value>RCリスト_大梁</value>
+    <comment>文字 RCリスト_大梁</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_CANTIGIRDER" xml:space="preserve">
+    <value>RCリスト_片持ち大梁</value>
+    <comment>文字 RCリスト_片持ち大梁</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_GIRDER_FOND" xml:space="preserve">
+    <value>RCリスト_基礎大梁</value>
+    <comment>文字 RCリスト_基礎大梁</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_CANTIGIRDER_FOND" xml:space="preserve">
+    <value>RCリスト_片持ち基礎大梁</value>
+    <comment>文字 RCリスト_片持ち基礎大梁</comment>
+  </data>
+  <data name="IDS_TXT_LISTVIEW_POST" xml:space="preserve">
+    <value>RCリスト_間柱</value>
+    <comment>文字 RCリスト_間柱</comment>
+  </data>
+  <data name="IDS_TXT_MAINREBAR" xml:space="preserve">
+    <value>Main reinforcement</value>
+    <comment>文字 主筋</comment>
+  </data>
+  <data name="IDS_TXT_MAX_HEIGHT" xml:space="preserve">
+    <value>Max height</value>
+  </data>
+  <data name="IDS_TXT_MAX_WIDTH" xml:space="preserve">
+    <value>Max width</value>
+  </data>
+  <data name="IDS_TXT_MM" xml:space="preserve">
+    <value>mm</value>
+    <comment>文字 mm</comment>
+  </data>
+  <data name="IDS_TXT_MOTOTAN" xml:space="preserve">
+    <value>元端</value>
+    <comment>文字 元端</comment>
+  </data>
+  <data name="IDS_TXT_NEXT" xml:space="preserve">
+    <value>Next</value>
+    <comment>文字 次へ</comment>
+  </data>
+  <data name="IDS_TXT_NOSHOW" xml:space="preserve">
+    <value>Hidden</value>
+    <comment>文字 非表示。</comment>
+  </data>
+  <data name="IDS_TXT_NUMBER" xml:space="preserve">
+    <value>Number</value>
+    <comment>文字 Number</comment>
+  </data>
+  <data name="IDS_TXT_OBIKIN" xml:space="preserve">
+    <value>帯筋</value>
+    <comment>文字 帯筋</comment>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+    <comment>文字 OK</comment>
+  </data>
+  <data name="IDS_TXT_OTHER" xml:space="preserve">
+    <value>Other</value>
+    <comment>文字 その他</comment>
+  </data>
+  <data name="IDS_TXT_OVERWRITESAVE" xml:space="preserve">
+    <value>Overwrite save</value>
+    <comment>文字 上書き保存</comment>
+  </data>
+  <data name="IDS_TXT_PARAMCONTENTS" xml:space="preserve">
+    <value>&lt;Parameter contents&gt;</value>
+    <comment>文字 パラメータの内容</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME" xml:space="preserve">
+    <value>ConvRFA2024_3.xls</value>
+    <comment>文字 パラメータファイル名</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_HEAD" xml:space="preserve">
+    <value>ConvRFA2024_</value>
+    <comment>文字 パラメータファイル名 先頭</comment>
+  </data>
+  <data name="IDS_TXT_TABLEFILE" xml:space="preserve">
+    <value>ConvRFA2024.tbl</value>
+    <comment>文字 テーブルファイル名</comment>
+  </data>
+  <data name="IDS_TXT_REVITVERSION" xml:space="preserve">
+    <value>2024</value>
+    <comment>文字 Revitバージョン</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_2022" xml:space="preserve">
+    <value>ConvRFA2022_3.xls</value>
+    <comment>文字 パラメータファイル名</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_HEAD_2022" xml:space="preserve">
+    <value>ConvRFA2022_</value>
+    <comment>文字 パラメータファイル名 先頭</comment>
+  </data>
+  <data name="IDS_TXT_TABLEFILE_2022" xml:space="preserve">
+    <value>ConvRFA2022.tbl</value>
+    <comment>文字 テーブルファイル名</comment>
+  </data>
+  <data name="IDS_TXT_REVITVERSION_2022" xml:space="preserve">
+    <value>2022</value>
+    <comment>文字 Revitバージョン</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_2023" xml:space="preserve">
+    <value>ConvRFA2023_3.xls</value>
+    <comment>文字 パラメータファイル名</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_HEAD_2023" xml:space="preserve">
+    <value>ConvRFA2023_</value>
+    <comment>文字 パラメータファイル名 先頭</comment>
+  </data>
+  <data name="IDS_TXT_TABLEFILE_2023" xml:space="preserve">
+    <value>ConvRFA2023.tbl</value>
+    <comment>文字 テーブルファイル名</comment>
+  </data>
+  <data name="IDS_TXT_REVITVERSION_2023" xml:space="preserve">
+    <value>2023</value>
+    <comment>文字 Revitバージョン</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_2024" xml:space="preserve">
+    <value>ConvRFA2024_3.xls</value>
+    <comment>文字 パラメータファイル名</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_HEAD_2024" xml:space="preserve">
+    <value>ConvRFA2024_</value>
+    <comment>文字 パラメータファイル名 先頭</comment>
+  </data>
+  <data name="IDS_TXT_TABLEFILE_2024" xml:space="preserve">
+    <value>ConvRFA2024.tbl</value>
+    <comment>文字 テーブルファイル名</comment>
+  </data>
+  <data name="IDS_TXT_REVITVERSION_2024" xml:space="preserve">
+    <value>2024</value>
+    <comment>文字 Revitバージョン</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_2025" xml:space="preserve">
+    <value>ConvRFA2025_3.xls</value>
+    <comment>文字 パラメータファイル名</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_HEAD_2025" xml:space="preserve">
+    <value>ConvRFA2025_</value>
+    <comment>文字 パラメータファイル名 先頭</comment>
+  </data>
+  <data name="IDS_TXT_TABLEFILE_2025" xml:space="preserve">
+    <value>ConvRFA2025.tbl</value>
+    <comment>文字 テーブルファイル名</comment>
+  </data>
+  <data name="IDS_TXT_REVITVERSION_2025" xml:space="preserve">
+    <value>2025</value>
+    <comment>文字 Revitバージョン</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_2026" xml:space="preserve">
+    <value>ConvRFA2026_3.xls</value>
+    <comment>文字 パラメータファイル名</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_HEAD_2026" xml:space="preserve">
+    <value>ConvRFA2026_</value>
+    <comment>文字 パラメータファイル名 先頭</comment>
+  </data>
+  <data name="IDS_TXT_TABLEFILE_2026" xml:space="preserve">
+    <value>ConvRFA2026.tbl</value>
+    <comment>文字 テーブルファイル名</comment>
+  </data>
+  <data name="IDS_TXT_REVITVERSION_2026" xml:space="preserve">
+    <value>2026</value>
+    <comment>文字 Revitバージョン</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_2027" xml:space="preserve">
+    <value>ConvRFA2027_3.xls</value>
+    <comment>文字 パラメータファイル名</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_HEAD_2027" xml:space="preserve">
+    <value>ConvRFA2027_</value>
+    <comment>文字 パラメータファイル名 先頭</comment>
+  </data>
+  <data name="IDS_TXT_TABLEFILE_2027" xml:space="preserve">
+    <value>ConvRFA2027.tbl</value>
+    <comment>文字 テーブルファイル名</comment>
+  </data>
+  <data name="IDS_TXT_REVITVERSION_2027" xml:space="preserve">
+    <value>2027</value>
+    <comment>文字 Revitバージョン</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_2028" xml:space="preserve">
+    <value>ConvRFA2028_3.xls</value>
+    <comment>文字 パラメータファイル名</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERFILE_NAME_HEAD_2028" xml:space="preserve">
+    <value>ConvRFA2028_</value>
+    <comment>文字 パラメータファイル名 先頭</comment>
+  </data>
+  <data name="IDS_TXT_TABLEFILE_2028" xml:space="preserve">
+    <value>ConvRFA2028.tbl</value>
+    <comment>文字 テーブルファイル名</comment>
+  </data>
+  <data name="IDS_TXT_REVITVERSION_2028" xml:space="preserve">
+    <value>2028</value>
+    <comment>文字 Revitバージョン</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETERNAMEOVERWRITE" xml:space="preserve">
+    <value>Parameter mapping succeeded.</value>
+    <comment>文字 パラメータをマッピングしました。</comment>
+  </data>
+  <data name="IDS_TXT_PARAMMAP" xml:space="preserve">
+    <value>Parameter mapping</value>
+    <comment>文字 パラメータマッピング</comment>
+  </data>
+  <data name="IDS_TXT_PARAMNAMEHABA" xml:space="preserve">
+    <value>幅</value>
+    <comment>文字 幅</comment>
+  </data>
+  <data name="IDS_TXT_PICKTABLE" xml:space="preserve">
+    <value>Mapping table selection</value>
+    <comment>文字 マッピングテーブルの指定</comment>
+  </data>
+  <data name="IDS_TXT_PITCH" xml:space="preserve">
+    <value>ピッチ</value>
+    <comment>文字 ピッチ</comment>
+  </data>
+  <data name="IDS_TXT_PITCH2" xml:space="preserve">
+    <value>Pitch</value>
+    <comment>文字 Pitch</comment>
+  </data>
+  <data name="IDS_TXT_PLEASEINPUT" xml:space="preserve">
+    <value>: enter required value.</value>
+    <comment>文字 に入力してください。</comment>
+  </data>
+  <data name="IDS_TXT_PLEASEINPUTDOUBLE" xml:space="preserve">
+    <value>Enter a decimal or whole number. Allowed range: 0 &lt; x &lt;= 100.</value>
+    <comment>文字 値は小数または整数で入力してください。範囲は 0&lt;x≦100 です。</comment>
+  </data>
+  <data name="IDS_TXT_PLEASEINPUTGREATERTHANZERO" xml:space="preserve">
+    <value>Enter an integer.</value>
+    <comment>値は整数で入力してください。</comment>
+  </data>
+  <data name="IDS_TXT_PLEASEINPUTGREATERZERO" xml:space="preserve">
+    <value>Enter an integer.</value>
+  </data>
+  <data name="IDS_TXT_PLEASEINPUTDOUBLEGREATERTHANZERO" xml:space="preserve">
+    <value>Enter a numeric value greater than zero.</value>
+  </data>
+  <data name="IDS_TXT_PLEASEINPUTINT" xml:space="preserve">
+    <value>Enter an integer.</value>
+    <comment>文字 整数を入力してください。</comment>
+  </data>
+  <data name="IDS_TXT_PLEASEINPUTZEROTOTEN" xml:space="preserve">
+    <value>Allowed range: 0 ≤ x ≤ 10.</value>
+    <comment>範囲は0&lt;=x&lt;=10です。</comment>
+  </data>
+  <data name="IDS_TXT_POSITIONFRAME" xml:space="preserve">
+    <value>Reference frame</value>
+    <comment>文字 位置表示枠</comment>
+  </data>
+  <data name="IDS_TXT_POSITIONFRAMEHEIGHTEXPLAIN" xml:space="preserve">
+    <value>Set positional frame row height.</value>
+    <comment>文字 位置表示枠の高さを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_POSITIONFRAMETITLEEXPLAIN" xml:space="preserve">
+    <value>Set titles for positional reference frames.</value>
+    <comment>文字 位置表示枠のタイトルを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_POST" xml:space="preserve">
+    <value>Post</value>
+    <comment>文字 Post</comment>
+  </data>
+  <data name="IDS_TXT_POSTTYPE" xml:space="preserve">
+    <value>Intermediate post</value>
+  </data>
+  <data name="IDS_TXT_PREV" xml:space="preserve">
+    <value>Previous</value>
+    <comment>文字 前へ</comment>
+  </data>
+  <data name="IDS_TXT_READ" xml:space="preserve">
+    <value>Load</value>
+    <comment>文字 読み込み</comment>
+  </data>
+  <data name="IDS_TXT_REBARPARTITIONSHOW" xml:space="preserve">
+    <value>Split by orientation / row tiers</value>
+    <comment>文字 方向別、段別に分割して表示</comment>
+  </data>
+  <data name="IDS_TXT_REBARSHOW" xml:space="preserve">
+    <value>Grouped by orientation and row tiers</value>
+    <comment>文字 方向別、段別にまとめて表示</comment>
+  </data>
+  <data name="IDS_TXT_REBARWITHBRACKET" xml:space="preserve">
+    <value>[4,2] D13@100</value>
+    <comment>文字 [4,2] D13@100</comment>
+  </data>
+  <data name="IDS_TXT_REBARWITHBRACKETNON" xml:space="preserve">
+    <value> 4-2-D13@100</value>
+    <comment>文字 4-2-D13@100</comment>
+  </data>
+  <data name="IDS_TXT_RECTANGLECOLUMN" xml:space="preserve">
+    <value>Rectangular column</value>
+    <comment>文字 矩形柱</comment>
+  </data>
+  <data name="IDS_TXT_RST_" xml:space="preserve">
+    <value>RST_</value>
+    <comment>文字 RST_</comment>
+  </data>
+  <data name="IDS_TXT_SAVEAS" xml:space="preserve">
+    <value>Save as…</value>
+    <comment>文字 名前を付けて保存</comment>
+  </data>
+  <data name="IDS_TXT_SAVESETTINGFILE" xml:space="preserve">
+    <value>Save settings file</value>
+    <comment>文字 設定ファイルの保存</comment>
+  </data>
+  <data name="IDS_TXT_SECTIONFRAME" xml:space="preserve">
+    <value>Display frame</value>
+    <comment>文字 表示枠</comment>
+  </data>
+  <data name="IDS_TXT_SECTIONFRAMEEXPLAIN" xml:space="preserve">
+    <value>Set section frames, graphical clear dimensions, tie titles, and related layout.</value>
+    <comment>文字 断面表示枠と図のあき寸法や帯筋のタイトル等を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_SECTIONFRAMEREBAREXPLAIN" xml:space="preserve">
+    <value>Define how mains display within the section outline.</value>
+    <comment>文字 断面枠での主筋の表示方法を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_SECTIONLIST" xml:space="preserve">
+    <value>断面リスト</value>
+    <comment>文字 断面リスト</comment>
+  </data>
+  <data name="IDS_TXT_SECTIONLISTHELPHTM" xml:space="preserve">
+    <value>RC_SectionList_Manual.pdf</value>
+    <comment>SectionList Manual file name</comment>
+  </data>
+  <data name="IDS_TXT_SELECT" xml:space="preserve">
+    <value>Select</value>
+    <comment>文字 選択</comment>
+  </data>
+  <data name="IDS_TXT_SELECT_BEAM_ITEMS" xml:space="preserve">
+    <value>Beam list — scope selection</value>
+  </data>
+  <data name="IDS_TXT_SELECT_COL_ITEMS" xml:space="preserve">
+    <value>Column list — scope selection</value>
+  </data>
+  <data name="IDS_TXT_SELECT_ITEMS" xml:space="preserve">
+    <value>Partial</value>
+  </data>
+  <data name="IDS_TXT_SELECT_TYPE" xml:space="preserve">
+    <value>Select type</value>
+  </data>
+  <data name="IDS_TXT_SENTAN" xml:space="preserve">
+    <value>先端</value>
+    <comment>文字 先端</comment>
+  </data>
+  <data name="IDS_TXT_SEPARATOR" xml:space="preserve">
+    <value>Delimiter between bar count and diameter</value>
+    <comment>文字 本数と径の区切り記号</comment>
+  </data>
+  <data name="IDS_TXT_SEPARATOREXPLAIN" xml:space="preserve">
+    <value>Select delimiter symbols between counts and diameters.</value>
+    <comment>文字 本数と径の区切り記号を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_SEPARATORLINE" xml:space="preserve">
+    <value>Separator line</value>
+    <comment>文字 区切り線</comment>
+  </data>
+  <data name="IDS_TXT_SEPARATORLINEEXPLAIN" xml:space="preserve">
+    <value>Set separator line visibility.</value>
+    <comment>文字 区切り線の表示を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_SETDEFAULT" xml:space="preserve">
+    <value>(Restores defaults.)</value>
+    <comment>文字 (デフォルト値をセットします)</comment>
+  </data>
+  <data name="IDS_TXT_SETTINGFILE" xml:space="preserve">
+    <value>Settings file</value>
+    <comment>文字 設定ファイル</comment>
+  </data>
+  <data name="IDS_TXT_SHAREFILE" xml:space="preserve">
+    <value>REXStructuralLink.txt</value>
+    <comment>文字 共有パラメータファイル</comment>
+  </data>
+  <data name="IDS_TXT_SHAREFILE_ORG" xml:space="preserve">
+    <value>REXStructuralLink_org.txt</value>
+    <comment>文字 共有パラメータファイル オリジナル</comment>
+  </data>
+  <data name="IDS_TXT_SHINTEKKIN" xml:space="preserve">
+    <value>Core rebar</value>
+    <comment>文字 芯鉄筋</comment>
+  </data>
+  <data name="IDS_TXT_SHOW" xml:space="preserve">
+    <value>Show</value>
+    <comment>文字 表示</comment>
+  </data>
+  <data name="IDS_TXT_SHOWALL" xml:space="preserve">
+    <value>Show all</value>
+    <comment>文字 すべて表示</comment>
+  </data>
+  <data name="IDS_TXT_SHOWFRAME" xml:space="preserve">
+    <value>Display frame</value>
+    <comment>文字 表示枠</comment>
+  </data>
+  <data name="IDS_TXT_SHOWFRAMEEXPLAIN" xml:space="preserve">
+    <value>Specify frame widths/titles/placement.</value>
+    <comment>文字 表示枠の幅やタイトル等を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_SHOWHEIGHT" xml:space="preserve">
+    <value>Height labeling</value>
+    <comment>文字 高さ表示</comment>
+  </data>
+  <data name="IDS_TXT_SHOWHEIGHTEXPLAIN" xml:space="preserve">
+    <value>Choose how elevations display on dimensions.</value>
+    <comment>文字 寸法線の高さ表示方法を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_SHOWHELPVIEW" xml:space="preserve">
+    <value>Show supporting figures.</value>
+    <comment>文字 ヘルプとなる図を表示します。</comment>
+  </data>
+  <data name="IDS_TXT_SHOWPACKAGE" xml:space="preserve">
+    <value>Grouped display</value>
+    <comment>文字 まとめて表示</comment>
+  </data>
+  <data name="IDS_TXT_SHOWSECTION" xml:space="preserve">
+    <value>Grouped by cross section</value>
+    <comment>文字 断面別に表示</comment>
+  </data>
+  <data name="IDS_TXT_SHOWWIDTH" xml:space="preserve">
+    <value>Width labeling</value>
+    <comment>文字 幅表示</comment>
+  </data>
+  <data name="IDS_TXT_SHOWWIDTHEXPLAIN" xml:space="preserve">
+    <value>Choose width dimension presentation styles.</value>
+    <comment>文字 寸法線の幅表示方法を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_SINTEKKIN" xml:space="preserve">
+    <value>芯鉄筋</value>
+    <comment>文字 芯鉄筋</comment>
+  </data>
+  <data name="IDS_TXT_SINTEKKINKYORI" xml:space="preserve">
+    <value>躯体面から芯鉄筋までの距離</value>
+    <comment>文字 躯体面から芯鉄筋までの距離</comment>
+  </data>
+  <data name="IDS_TXT_SINTEKKINXKYORI" xml:space="preserve">
+    <value>躯体面から芯鉄筋X方向までの距離</value>
+    <comment>文字 躯体面から芯鉄筋X方向までの距離</comment>
+  </data>
+  <data name="IDS_TXT_SINTEKKINYKYORI" xml:space="preserve">
+    <value>躯体面から芯鉄筋Y方向までの距離</value>
+    <comment>躯体面から芯鉄筋Y方向までの距離</comment>
+  </data>
+  <data name="IDS_TXT_SITA" xml:space="preserve">
+    <value>Bottom</value>
+    <comment>文字 下</comment>
+  </data>
+  <data name="IDS_TXT_SITABA" xml:space="preserve">
+    <value>Bottom zone</value>
+    <comment>文字 下端</comment>
+  </data>
+  <data name="IDS_TXT_SITAN" xml:space="preserve">
+    <value>始端</value>
+    <comment>文字 始端</comment>
+  </data>
+  <data name="IDS_TXT_SITASYUKIN" xml:space="preserve">
+    <value>下主筋</value>
+    <comment>文字 下主筋</comment>
+  </data>
+  <data name="IDS_TXT_SPACINGXDIRECTIONNUMBER" xml:space="preserve">
+    <value>Spacing_XDirectionNumber</value>
+    <comment>文字 Spacing_XDirectionNumber</comment>
+  </data>
+  <data name="IDS_TXT_SPACINGYDIRECTIONNUMBER" xml:space="preserve">
+    <value>Spacing_YDirectionNumber</value>
+    <comment>文字 Spacing_YDirectionNumber</comment>
+  </data>
+  <data name="IDS_TXT_SPACING_" xml:space="preserve">
+    <value>Spacing_</value>
+    <comment>文字 Spacing_</comment>
+  </data>
+  <data name="IDS_TXT_SPECIFY" xml:space="preserve">
+    <value>Specify</value>
+    <comment>文字 指定する</comment>
+  </data>
+  <data name="IDS_TXT_STIRRUP" xml:space="preserve">
+    <value>Stirrup</value>
+    <comment>文字 肋筋</comment>
+  </data>
+  <data name="IDS_TXT_STIRRUPFRAME" xml:space="preserve">
+    <value>Stirrup frame</value>
+    <comment>文字 肋筋枠</comment>
+  </data>
+  <data name="IDS_TXT_STIRRUPFRAMESHOW" xml:space="preserve">
+    <value>Show stirrup info</value>
+    <comment>文字 肋筋表示</comment>
+  </data>
+  <data name="IDS_TXT_STIRRUPFRAMESHOWEXPLAIN" xml:space="preserve">
+    <value>Choose stirrup frame presentation.</value>
+    <comment>文字 肋筋枠の表示を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_STIRRUPFRAMETITLEEXPLAIN" xml:space="preserve">
+    <value>Set captions for stirrup frames.</value>
+    <comment>文字 肋筋枠のタイトルを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_STIRRUP_" xml:space="preserve">
+    <value>Stirrup_</value>
+    <comment>文字 Stirrup_</comment>
+  </data>
+  <data name="IDS_TXT_STOPER" xml:space="preserve">
+    <value>Spacer / cross tie</value>
+    <comment>文字 幅止筋</comment>
+  </data>
+  <data name="IDS_TXT_SUCCEEDADDPARAMETER" xml:space="preserve">
+    <value>Parameter added successfully.</value>
+    <comment>文字 パラメータ追加を追加しました。</comment>
+  </data>
+  <data name="IDS_TXT_SYMBOLFRAME" xml:space="preserve">
+    <value>Schedule / mark frame</value>
+    <comment>文字 符号表示枠</comment>
+  </data>
+  <data name="IDS_TXT_SYMBOLFRAMEEXPLAIN" xml:space="preserve">
+    <value>Customize schedule / mark framing styles.</value>
+    <comment>文字 符号表示枠のスタイルを指定します。</comment>
+  </data>
+  <data name="IDS_TXT_SYMBOLFRAMEHEIGHT" xml:space="preserve">
+    <value>Mark-frame height</value>
+    <comment>文字 符号表示枠高さ</comment>
+  </data>
+  <data name="IDS_TXT_SYMBOLFRAMETITLE" xml:space="preserve">
+    <value>Mark frame title</value>
+    <comment>文字 符号表示枠タイトル</comment>
+  </data>
+  <data name="IDS_TXT_SYUBETU" xml:space="preserve">
+    <value>種別</value>
+    <comment>文字 種別</comment>
+  </data>
+  <data name="IDS_TXT_SYUKIN" xml:space="preserve">
+    <value>主筋</value>
+    <comment>文字 主筋</comment>
+  </data>
+  <data name="IDS_TXT_SYUTAN" xml:space="preserve">
+    <value>終端</value>
+    <comment>文字 終端</comment>
+  </data>
+  <data name="IDS_TXT_S_" xml:space="preserve">
+    <value>s_</value>
+    <comment>文字 s_</comment>
+  </data>
+  <data name="IDS_TXT_TABLE" xml:space="preserve">
+    <value>Mapping table</value>
+    <comment>文字 マッピングテーブル</comment>
+  </data>
+  <data name="IDS_TXT_TABLESELECT" xml:space="preserve">
+    <value>Mapping table picker</value>
+    <comment>文字  マッピングテーブル選択</comment>
+  </data>
+  <data name="IDS_TXT_TEKKINMARK" xml:space="preserve">
+    <value>SectionList_RebarMark</value>
+    <comment>文字 SectionList_RebarMark</comment>
+  </data>
+  <data name="IDS_TXT_TITLE" xml:space="preserve">
+    <value>Title</value>
+    <comment>文字 タイトル</comment>
+  </data>
+  <data name="IDS_TXT_TITLESHOW" xml:space="preserve">
+    <value>Show title</value>
+    <comment>文字 タイトル表示</comment>
+  </data>
+  <data name="IDS_TXT_TITLESHOWEXPLAIN" xml:space="preserve">
+    <value>Control how captions/titles render.</value>
+    <comment>文字 タイトルの表示方法を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_TOPONLY" xml:space="preserve">
+    <value>Show on top level only</value>
+    <comment>文字 最上部の階にのみ表示</comment>
+  </data>
+  <data name="IDS_TXT_TOP_" xml:space="preserve">
+    <value>Top_</value>
+    <comment>文字 Top_</comment>
+  </data>
+  <data name="IDS_TXT_TYOKKEI" xml:space="preserve">
+    <value>直径</value>
+    <comment>文字 直径</comment>
+  </data>
+  <data name="IDS_TXT_TYPENAME" xml:space="preserve">
+    <value>Type name</value>
+    <comment>文字 タイプ名</comment>
+  </data>
+  <data name="IDS_TXT_UE" xml:space="preserve">
+    <value>Top</value>
+    <comment>文字 上</comment>
+  </data>
+  <data name="IDS_TXT_UESYUKIN" xml:space="preserve">
+    <value>上主筋</value>
+    <comment>文字 上主筋</comment>
+  </data>
+  <data name="IDS_TXT_UNITY" xml:space="preserve">
+    <value>Total both sides</value>
+    <comment>文字 左右の空きの合計</comment>
+  </data>
+  <data name="IDS_TXT_UP" xml:space="preserve">
+    <value>Move up</value>
+    <comment>文字 上へ</comment>
+  </data>
+  <data name="IDS_TXT_USESHARETABLE" xml:space="preserve">
+    <value>(Uses the table shared with SS3 Link.)</value>
+    <comment>文字 SS3 Linkと共有のパラメータテーブルを使用します。</comment>
+  </data>
+  <data name="IDS_TXT_UWABA" xml:space="preserve">
+    <value>Top zone</value>
+    <comment>文字 上端</comment>
+  </data>
+  <data name="IDS_TXT_VIEWITEM" xml:space="preserve">
+    <value>Displayed fields</value>
+    <comment>文字 表示項目</comment>
+  </data>
+  <data name="IDS_TXT_VIEWSCALE" xml:space="preserve">
+    <value>List view scale</value>
+    <comment>文字 リストビュー尺度</comment>
+  </data>
+  <data name="IDS_TXT_VIEWSCALEEXPLAIN" xml:space="preserve">
+    <value>Specify the plan-view scale mapping.</value>
+    <comment>文字 平面図の尺度を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_VIEWSCALEVALUE" xml:space="preserve">
+    <value>Scale </value>
+    <comment>文字 尺度</comment>
+  </data>
+  <data name="IDS_TXT_VIEWSCALEVALUE_2" xml:space="preserve">
+    <value>Scale    1 :</value>
+    <comment>文字 尺度    1 :</comment>
+  </data>
+  <data name="IDS_TXT_WEBREINFORCEMENTFRAME" xml:space="preserve">
+    <value>Show web bars</value>
+    <comment>文字 腹筋表示</comment>
+  </data>
+  <data name="IDS_TXT_WEBREINFORCEMENTFRAMEEXPLAIN" xml:space="preserve">
+    <value>Choose web reinforcement frame presentation.</value>
+    <comment>文字 腹筋枠の表示を指定します。</comment>
+  </data>
+  <data name="IDS_TXT_WEB_" xml:space="preserve">
+    <value>Web_</value>
+    <comment>文字 Web_</comment>
+  </data>
+  <data name="IDS_TXT_WRITEPARAMETER" xml:space="preserve">
+    <value>Drafting parameters</value>
+    <comment>文字 描画パラメータ</comment>
+  </data>
+  <data name="IDS_TXT_WRITEPARAMETEREXPLAIN" xml:space="preserve">
+    <value>Configure parameters needed for plotted output.</value>
+    <comment>文字 描画に必要なパラメータを設定します。</comment>
+  </data>
+  <data name="IDS_TXT_X1" xml:space="preserve">
+    <value>X 1st row</value>
+    <comment>文字 X1段</comment>
+  </data>
+  <data name="IDS_TXT_X2" xml:space="preserve">
+    <value>X 2nd row</value>
+    <comment>文字 X2段</comment>
+  </data>
+  <data name="IDS_TXT_XHOUKOU" xml:space="preserve">
+    <value>X方向</value>
+    <comment>文字 X方向</comment>
+  </data>
+  <data name="IDS_TXT_Y1" xml:space="preserve">
+    <value>Y 1st row</value>
+    <comment>文字 Y1段</comment>
+  </data>
+  <data name="IDS_TXT_Y2" xml:space="preserve">
+    <value>Y 2nd row</value>
+    <comment>文字 Y2段</comment>
+  </data>
+  <data name="IDS_TXT_YHOUKOU" xml:space="preserve">
+    <value>Y方向</value>
+    <comment>文字 Y方向</comment>
+  </data>
+  <data name="IDS_TXT_YOSEHIDARI" xml:space="preserve">
+    <value>寄筋左</value>
+    <comment>文字 寄筋左</comment>
+  </data>
+  <data name="IDS_TXT_YOSEKIN" xml:space="preserve">
+    <value>寄せ筋</value>
+    <comment>文字 寄せ筋</comment>
+  </data>
+  <data name="IDS_TXT_YOSEMARK" xml:space="preserve">
+    <value>SectionList_YoseRebarMark</value>
+    <comment>文字 SectionList_YoseRebarMark</comment>
+  </data>
+  <data name="IDS_TXT_YOSEMIGI" xml:space="preserve">
+    <value>寄筋右</value>
+    <comment>文字 寄筋右</comment>
+  </data>
+  <data name="IDS_TXT_YOSESITA" xml:space="preserve">
+    <value>寄筋下</value>
+    <comment>文字 寄筋下</comment>
+  </data>
+  <data name="IDS_TXT_YOSEUE" xml:space="preserve">
+    <value>寄筋上</value>
+    <comment>文字 寄筋上</comment>
+  </data>
+  <data name="IDS_TXT_ZUMENDSIZE" xml:space="preserve">
+    <value>Sheet size D</value>
+    <comment>文字 図面Dサイズ</comment>
+  </data>
+  <data name="IDS_TXT_ALL_ENG" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="IDS_TXT_BEAM_TYPE_ENG" xml:space="preserve">
+    <value>Beam</value>
+  </data>
+  <data name="IDS_TXT_CANTIBEAM_TYPE_ENG" xml:space="preserve">
+    <value>Cantilever-Beam</value>
+  </data>
+  <data name="IDS_TXT_CANTIGIRDER_TYPE_ENG" xml:space="preserve">
+    <value>Cantilever-Girder</value>
+  </data>
+  <data name="IDS_TXT_CANTI_FOUD_BEAM_TYPE_ENG" xml:space="preserve">
+    <value>Cantilever-Foundation-Beam</value>
+  </data>
+  <data name="IDS_TXT_CANTI_FOUD_GIRDER_TYPE_ENG" xml:space="preserve">
+    <value>Cantilever-Foundation-Girder</value>
+  </data>
+  <data name="IDS_TXT_FALSE_ENG" xml:space="preserve">
+    <value>False</value>
+  </data>
+  <data name="IDS_TXT_FOUD_BEAM_TYPE_ENG" xml:space="preserve">
+    <value>Foundation-Beam</value>
+  </data>
+  <data name="IDS_TXT_FOUD_GIRDER_TYPE_ENG" xml:space="preserve">
+    <value>Foundation-Girder</value>
+  </data>
+  <data name="IDS_TXT_GIRDER_TYPE_ENG" xml:space="preserve">
+    <value>Girder</value>
+  </data>
+  <data name="IDS_TXT_PART_ENG" xml:space="preserve">
+    <value>Part</value>
+  </data>
+  <data name="IDS_TXT_TRUE_ENG" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="IDS_TXT_COLUMN_TYPE_ENG" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="IDS_TXT_POST_TYPE_ENG" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="IDS_TXT_BEAM_LARGE" xml:space="preserve">
+    <value>All members as girders</value>
+  </data>
+  <data name="IDS_TXT_BEAM_SMALL" xml:space="preserve">
+    <value>All members as sub-beams</value>
+  </data>
+  <data name="IDS_TXT_OBJECT_TYPE" xml:space="preserve">
+    <value>Target type</value>
+  </data>
+  <data name="IDS_ERR_COREREBARNUM_ROUND" xml:space="preserve">
+    <value>Core rebar count must be 0 or a multiple of 4.</value>
+    <comment>芯鉄筋は0または4の倍数本入力してください。</comment>
+  </data>
+  <data name="IDS_ERROR_SMALLSIZE" xml:space="preserve">
+    <value>The specified size is too small. The following section lists could not be created:</value>
+  </data>
+  <data name="IDS_TXT_BEAMLIST" xml:space="preserve">
+    <value>• Sub-beam list</value>
+  </data>
+  <data name="IDS_TXT_CANTIBEAMLIST" xml:space="preserve">
+    <value>• Cantilever sub-beam list</value>
+  </data>
+  <data name="IDS_TXT_CANTIFOUNDBEAMLIST" xml:space="preserve">
+    <value>• Cantilever foundation sub-beam list</value>
+  </data>
+  <data name="IDS_TXT_CANTIFOUNDGIRDERLIST" xml:space="preserve">
+    <value>• Cantilever foundation girder list</value>
+  </data>
+  <data name="IDS_TXT_CANTIGIRDERLIST" xml:space="preserve">
+    <value>• Cantilever girder list</value>
+  </data>
+  <data name="IDS_TXT_COLUMNLIST" xml:space="preserve">
+    <value>• Column list</value>
+  </data>
+  <data name="IDS_TXT_FOUNDBEAMLIST" xml:space="preserve">
+    <value>• Foundation sub-beam list</value>
+  </data>
+  <data name="IDS_TXT_FOUNDGIRDERLIST" xml:space="preserve">
+    <value>• Foundation girder list</value>
+  </data>
+  <data name="IDS_TXT_GIRDERLIST" xml:space="preserve">
+    <value>• Girder list</value>
+  </data>
+  <data name="IDS_TXT_POSTLIST" xml:space="preserve">
+    <value>• Post / stud list</value>
+  </data>
+  <data name="IDS_TXT_SELECT_BEAM_IMAGE_ITEMS" xml:space="preserve">
+    <value>Beam image — scope selection</value>
+    <comment>梁イメージ　生成範囲選択</comment>
+  </data>
+  <data name="IDS_TXT_SELECT_BEAM_IMAGE_OPTIONS" xml:space="preserve">
+    <value>Beam image — generation target</value>
+    <comment>梁イメージ　生成対象選択</comment>
+  </data>
+  <data name="IDS_TXT_SELECT_COL_IMAGE_ITEMS" xml:space="preserve">
+    <value>Column image — scope selection</value>
+    <comment>柱イメージ　生成範囲選択</comment>
+  </data>
+  <data name="IDS_TXT_SELECT_COL_IMAGE_OPTIONS" xml:space="preserve">
+    <value>Column image — generation target</value>
+    <comment>柱イメージ　生成対象選択</comment>
+  </data>
+  <data name="IDS_TXT_SELECT_EACHONEBEAM_ITEMS" xml:space="preserve">
+    <value>Beam individual export — scope selection</value>
+    <comment>梁個別書き出し　生成範囲選択</comment>
+  </data>
+  <data name="IDS_TXT_SELECT_EACHONEBEAM_OPTIONS" xml:space="preserve">
+    <value>Beam individual export — generation target</value>
+    <comment>梁個別書き出し　生成対象選択</comment>
+  </data>
+  <data name="IDS_TXT_SELECT_EACHONECOL_ITEMS" xml:space="preserve">
+    <value>Column individual export — scope selection</value>
+    <comment>柱個別書き出し　生成範囲選択</comment>
+  </data>
+  <data name="IDS_TXT_SELECT_EACHONECOL_OPTIONS" xml:space="preserve">
+    <value>Column individual export — generation target</value>
+    <comment>柱個別書き出し　生成対象選択</comment>
+  </data>
+</root>

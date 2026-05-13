@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LabelNotSelected" xml:space="preserve">
+    <value>未選択</value>
+  </data>
+  <data name="LabelNotSpecified" xml:space="preserve">
+    <value>未指定</value>
+  </data>
+  <data name="LabelSelected" xml:space="preserve">
+    <value>選択済み</value>
+  </data>
+  <data name="LabelSpecified" xml:space="preserve">
+    <value>指定済み</value>
+  </data>
+  <data name="PatternEqualSpacing" xml:space="preserve">
+    <value>均等配置</value>
+  </data>
+  <data name="PatternRatio121" xml:space="preserve">
+    <value>比率配置(1:2:1)</value>
+  </data>
+  <data name="RadioCountBased" xml:space="preserve">
+    <value>個数指定配置</value>
+  </data>
+  <data name="RadioIntervalBased" xml:space="preserve">
+    <value>間隔指定配置</value>
+  </data>
+  <data name="TransactionArrayLayout" xml:space="preserve">
+    <value>配列配置</value>
+  </data>
+  <data name="TransactionDeleteLine" xml:space="preserve">
+    <value>線分削除</value>
+  </data>
+  <data name="TransactionRotateFamily" xml:space="preserve">
+    <value>ファミリ回転</value>
+  </data>
+  <data name="TransactionOffset" xml:space="preserve">
+    <value>オフセット</value>
+  </data>
+  <data name="DialogWarning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="MsgViewTypeError" xml:space="preserve">
+    <value>平面図、国｢伏図、
+天井伏図ビューで実行してください。</value>
+  </data>
+  <data name="MsgPointsTooClose" xml:space="preserve">
+    <value>2点の距離が近すぎるため、配置軸角度を指定できません。</value>
+  </data>
+  <data name="MsgPickStartPoint" xml:space="preserve">
+    <value>始点を指定してください</value>
+  </data>
+  <data name="MsgPickEndPoint" xml:space="preserve">
+    <value>終点を指定してください</value>
+  </data>
+  <data name="MsgInvalidInput" xml:space="preserve">
+    <value>入力値の形式が正しくありません。</value>
+  </data>
+  <data name="MsgYIntervalMinError" xml:space="preserve">
+    <value>Y方向の間隔指定配置の最小値には、指定範囲の奥行の1/2より小さい値を指定してください。</value>
+  </data>
+  <data name="MsgXIntervalMinError" xml:space="preserve">
+    <value>X方向の間隔指定配置の最小値には、指定範囲の幅の1/2より小さい値を指定してください。</value>
+  </data>
+  <data name="MsgYDirectionError" xml:space="preserve">
+    <value>指定条件を満たす間隔でY方向に配置できません。</value>
+  </data>
+  <data name="MsgXDirectionError" xml:space="preserve">
+    <value>指定条件を満たす間隔でX方向に配置できません。</value>
+  </data>
+  <data name="GroupPlacementPosition" xml:space="preserve">
+    <value>配置位置</value>
+  </data>
+  <data name="GroupPlacementSettings" xml:space="preserve">
+    <value>配置設定</value>
+  </data>
+  <data name="GroupPreview" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="GroupPlacementFamily" xml:space="preserve">
+    <value>配置ファミリ</value>
+  </data>
+  <data name="LabelMargin" xml:space="preserve">
+    <value>余白</value>
+  </data>
+  <data name="LabelBack" xml:space="preserve">
+    <value>後</value>
+  </data>
+  <data name="LabelRight" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="LabelFront" xml:space="preserve">
+    <value>前</value>
+  </data>
+  <data name="LabelLeft" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="LabelAxisAngle" xml:space="preserve">
+    <value>配置軸角度</value>
+  </data>
+  <data name="LabelCategory" xml:space="preserve">
+    <value>カテゴリ</value>
+  </data>
+  <data name="LabelFamily" xml:space="preserve">
+    <value>ファミリ</value>
+  </data>
+  <data name="LabelType" xml:space="preserve">
+    <value>タイプ</value>
+  </data>
+  <data name="LabelFamilyAngle" xml:space="preserve">
+    <value>ファミリ角度</value>
+  </data>
+  <data name="LabelOffsetFromLevel" xml:space="preserve">
+    <value>レベルからのオフセット</value>
+  </data>
+  <data name="LabelPlacementPattern" xml:space="preserve">
+    <value>配置パターン</value>
+  </data>
+  <data name="LabelMethod" xml:space="preserve">
+    <value>指定方法</value>
+  </data>
+  <data name="LabelUnit" xml:space="preserve">
+    <value>個</value>
+  </data>
+  <data name="ButtonTwoPointPick" xml:space="preserve">
+    <value>2点指示</value>
+  </data>
+  <data name="ButtonPickRegion" xml:space="preserve">
+    <value>領域指定</value>
+  </data>
+  <data name="ButtonPickObject" xml:space="preserve">
+    <value>部屋/スペース</value>
+  </data>
+  <data name="RadioRegionSelection" xml:space="preserve">
+    <value>範囲指定</value>
+  </data>
+  <data name="RadioSelectObject" xml:space="preserve">
+    <value>選択オブジェクト</value>
+  </data>
+  <data name="CheckDeleteOutside" xml:space="preserve">
+    <value>範囲外のインスタンスを配置しない</value>
+  </data>
+  <data name="ButtonPlace" xml:space="preserve">
+    <value>配置</value>
+  </data>
+  <data name="ButtonClose" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="ButtonPlaceAndClose" xml:space="preserve">
+    <value>配置して終了</value>
+  </data>
+  <data name="FormTitle" xml:space="preserve">
+    <value>配列配置</value>
+  </data>
+  <data name="FilterRoom" xml:space="preserve">
+    <value>部屋</value>
+  </data>
+  <data name="FilterSpace" xml:space="preserve">
+    <value>スペース</value>
+  </data>
+  <data name="ParamBaseOffset" xml:space="preserve">
+    <value>基準レベル オフセット</value>
+  </data>
+  <data name="ParamTopOffset" xml:space="preserve">
+    <value>上部レベル オフセット</value>
+  </data>
+</root>

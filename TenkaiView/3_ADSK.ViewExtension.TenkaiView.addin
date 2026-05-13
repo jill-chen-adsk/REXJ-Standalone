@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Interior Elevation for Room</Name>
+    <Assembly>ADSK.ViewExtension.TenkaiView.dll</Assembly>
+    <FullClassName>ADSK.ViewExtension.TenkaiView.App</FullClassName>
+    <ClientId>8F3E2B1A-5C4D-4E6F-9A0B-1C2D3E4F5A6B</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

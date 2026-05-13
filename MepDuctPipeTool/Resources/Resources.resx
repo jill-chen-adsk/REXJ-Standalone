@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="RIBBON_TAB_NAME" xml:space="preserve">
+        <value>REXJ Standalone</value>
+    </data>
+    <data name="DOCKABLE_PANE_ID" xml:space="preserve">
+        <value>{CE3CD782-5A09-4F62-A596-140AB83C3A2F}</value>
+    </data>
+    <data name="DOCKABLE_PANE_NAME" xml:space="preserve">
+        <value>Flange Placement Settings</value>
+    </data>
+    <data name="RIBBON_PANEL_NAME" xml:space="preserve">
+        <value>Edit</value>
+    </data>
+    <data name="RIBBON_BTN_TXT_SHOW_SETTINGS" xml:space="preserve">
+        <value>Flange&#x0A;Settings</value>
+    </data>
+    <data name="TRANSACTION_NAME_INSERT_FLANGE" xml:space="preserve">
+        <value>Insert Flange</value>
+    </data>
+    <data name="COMMAND_NAME_INSERT_FLANGE" xml:space="preserve">
+        <value>Insert Flange</value>
+    </data>
+    <data name="WARN_INVALID_FAMILT_TYPE_IS_SELECTED" xml:space="preserve">
+        <value>Please select a valid family/type in the flange placement settings.</value>
+    </data>
+    <data name="ERR_CONNECTOR_NUM_IS_UNSUPPORTED" xml:space="preserve">
+        <value>Pipe accessories with other than 2 or 3 connectors are not supported.</value>
+    </data>
+    <data name="COMMAND_NAME_INSERT_PIPE_ACCESSORIES_WITH_FLANGE" xml:space="preserve">
+        <value>Place Flange/Accessory</value>
+    </data>
+    <data name="TRANSACTION_NAME_INSERT_PIPE_ACCESSORY_WITH_FLANGE" xml:space="preserve">
+        <value>Place Pipe Accessory with Flange</value>
+    </data>
+    <data name="ERR_CANNOT_EXECUTE_COMMAND" xml:space="preserve">
+        <value>Failed to execute the command.</value>
+    </data>
+    <data name="ERR_CONNECTOR_POS_MISMATCH" xml:space="preserve">
+        <value>The connector positions are misaligned. Fixing the family according to the manual may resolve the issue.</value>
+    </data>
+    <data name="ERR_COMPATIBLE_CONNECTOR_NOT_FOUND" xml:space="preserve">
+        <value>No compatible connector was found between the accessory and flange.</value>
+    </data>
+    <data name="ERR_CANNOT_IDENTIFY_CONNECTOR_DIRECTIONS" xml:space="preserve">
+        <value>Could not find a connector in the same direction as the pipe or in the branch direction.</value>
+    </data>
+    <data name="STATUS_PROMPT_SELECT_PIPE_OR_ACCESSORY" xml:space="preserve">
+        <value>Select a pipe or pipe accessory.</value>
+    </data>
+    <data name="STATUS_PROMPT_SLECT_PIPE" xml:space="preserve">
+        <value>Select a pipe.</value>
+    </data>
+    <data name="ERR_PIPE_IS_NOT_SELECTED" xml:space="preserve">
+        <value>No pipe is selected.</value>
+    </data>
+    <data name="WARN_FLANGE_FAMILY_ORIGIN_IS_NOT_ON_CONNECTOR" xml:space="preserve">
+        <value>The flange origin does not match the flat-face connector. Please use a different flange family.</value>
+    </data>
+    <data name="WARN_RADIUS_PARAMETER_IS_READONLY" xml:space="preserve">
+        <value>The diameter parameter of the pipe accessory or flange is read-only, so the diameter could not be changed.</value>
+    </data>
+    <data name="WARN_PIPE_SLOPE_IS_UNMATCH" xml:space="preserve">
+        <value>Cannot insert flange because the pipes connected to the accessory have different slopes. Change the slope or reposition the pipe accessory.</value>
+    </data>
+    <data name="ERR_CANNNOT_SPLIT_PIPE" xml:space="preserve">
+        <value>Failed to split the pipe.</value>
+    </data>
+    <data name="ADDIN_NAME" xml:space="preserve">
+        <value>Pipe/Duct Tool</value>
+    </data>
+    <data name="ERR_IN_COMMAND_CUSTOMIZER" xml:space="preserve">
+        <value>There was an issue with AddInCommandBinding. Please contact the REXJ addin developer.</value>
+    </data>
+    <data name="COMBOBOX_TXT_PROMPT_SELECT_FAMILY" xml:space="preserve">
+        <value>-- Select Family --</value>
+    </data>
+    <data name="COMBOBOX_TXT_PROMPT_SELECT_TYPE" xml:space="preserve">
+        <value>-- Select Type --</value>
+    </data>
+    <data name="RIBBON_BTN_TXT_INSERT_FLANGE" xml:space="preserve">
+        <value>Insert&#x0A;Flange</value>
+    </data>
+    <data name="RIBBON_BTN_TXT_INSERT_ACCESSORY_WITH_FLANGE" xml:space="preserve">
+        <value>Flange/&#x0A;Accessory</value>
+    </data>
+    <data name="RIBBON_IMG_SHOW_SETTINGS_32" xml:space="preserve">
+        <value>Resources/Images/flange-setting-Large.png</value>
+    </data>
+    <data name="RIBBON_IMG_SHOW_SETTINGS_16" xml:space="preserve">
+        <value>Resources/Images/flange-setting-Small.png</value>
+    </data>
+    <data name="RIBBON_IMG_INSERT_FLANGE_32" xml:space="preserve">
+        <value>Resources/Images/insert-flange-Large.png</value>
+    </data>
+    <data name="RIBBON_IMG_INSERT_FLANGE_16" xml:space="preserve">
+        <value>Resources/Images/insert-flange-Small.png</value>
+    </data>
+    <data name="RIBBON_IMG_INSERT_ACCESORRY_WITH_FLANGE_32" xml:space="preserve">
+        <value>Resources/Images/accessory-flange-Large.png</value>
+    </data>
+    <data name="RIBBON_IMG_INSERT_ACCESORRY_WITH_FLANGE_16" xml:space="preserve">
+        <value>Resources/Images/accessory-flange-Small.png</value>
+    </data>
+    <data name="RIBBON_BTN_TOOLTIP_SHOW_SETTING" xml:space="preserve">
+        <value>Set the family/type of flange and pipe accessory to place.</value>
+    </data>
+    <data name="RIBBON_BTN_TOOLTIP_INSERT_ACCESSORY_WITH_FLANGE" xml:space="preserve">
+        <value>Place pipe accessory and flange on a pipe.</value>
+    </data>
+    <data name="RIBBON_BTN_TOOLTIP_INSERT_FLANGE" xml:space="preserve">
+        <value>Place flange on a pipe or at the end of a pipe accessory.</value>
+    </data>
+    <data name="HELP_FILE_NAME" xml:space="preserve">
+        <value>Resources\Help\FlangeTools_Manual.pdf</value>
+    </data>
+    <data name="RUG_PARAM_GUID_INLET_DIAMETER" xml:space="preserve">
+        <value>b8385de5-ea05-4157-963d-09d516b0f190</value>
+    </data>
+    <data name="RUG_PARAM_GUID_OUTLET_DIAMETER" xml:space="preserve">
+        <value>a3d8fdf2-1160-4423-9d59-5f0169e970cc</value>
+    </data>
+    <data name="RIBBON_TAB_NAME_OLD" xml:space="preserve">
+        <value>REXJ Standalone</value>
+    </data>
+</root>

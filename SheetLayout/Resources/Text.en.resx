@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence><xsd:attribute name="name" use="required" type="xsd:string" /></xsd:complexType></xsd:element>
+          <xsd:element name="assembly"><xsd:complexType><xsd:attribute name="alias" type="xsd:string" /><xsd:attribute name="name" type="xsd:string" /></xsd:complexType></xsd:element>
+          <xsd:element name="data"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /><xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /><xsd:attribute name="type" type="xsd:string" /><xsd:attribute name="mimetype" type="xsd:string" /></xsd:complexType></xsd:element>
+          <xsd:element name="resheader"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /></xsd:complexType></xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="CMD_SHEETLAYOUT" xml:space="preserve"><value>Auto Sheet Layout</value></data>
+  <data name="ERR_NOTVIEWSHEET" xml:space="preserve"><value>Please activate a reference sheet before launching this command.</value></data>
+  <data name="ERR_NOVIEWPORTSCHEDULE" xml:space="preserve"><value>This sheet has no viewports or schedules.</value></data>
+  <data name="ERR_SELECTVIEW" xml:space="preserve"><value>Please select views to place on the sheet.</value></data>
+  <data name="TXT_ERROR" xml:space="preserve"><value>Error</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ARCHITECTURAL" xml:space="preserve"><value>Architectural</value></data>
+  <data name="TXT_VIEWDISCIPLINE_COORDINATION" xml:space="preserve"><value>Coordination</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ELECTRICAL" xml:space="preserve"><value>Electrical</value></data>
+  <data name="TXT_VIEWDISCIPLINE_MECHANICAL" xml:space="preserve"><value>Mechanical</value></data>
+  <data name="TXT_VIEWDISCIPLINE_PLUMBING" xml:space="preserve"><value>Plumbing</value></data>
+  <data name="TXT_VIEWDISCIPLINE_STRUCTURAL" xml:space="preserve"><value>Structural</value></data>
+  <data name="TXT_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="TXT_CANCEL" xml:space="preserve"><value>Cancel</value></data>
+  <data name="TXT_GRP_VIEWPORTS" xml:space="preserve"><value>Viewports</value></data>
+  <data name="TXT_GRP_SCHEDULES" xml:space="preserve"><value>Schedules</value></data>
+  <data name="TXT_LABEL_VIEWPORTS_ON_SHEET" xml:space="preserve"><value>Viewports on sheet</value></data>
+  <data name="TXT_LABEL_SELECT_VIEWS" xml:space="preserve"><value>Select views to place</value></data>
+  <data name="TXT_LABEL_ORDER_NEW_SHEET" xml:space="preserve"><value>Order on new sheets</value></data>
+  <data name="TXT_LABEL_DISCIPLINE" xml:space="preserve"><value>Discipline</value></data>
+  <data name="TXT_LABEL_VIEW_CATEGORY" xml:space="preserve"><value>View category</value></data>
+  <data name="TXT_LABEL_VIEW_FAMILY_TYPE" xml:space="preserve"><value>View type</value></data>
+  <data name="TXT_CHK_SAME_LEGEND" xml:space="preserve"><value>Place the same legends</value></data>
+  <data name="TXT_LABEL_SCHEDULES_ON_SHEET" xml:space="preserve"><value>Schedules on sheet</value></data>
+  <data name="TXT_LABEL_SCHEDULES_TO_PLACE" xml:space="preserve"><value>Schedules to place</value></data>
+  <data name="TXT_SCHEDULE_INFO" xml:space="preserve"><value>You can place the same schedule more than once.</value></data>
+  <data name="TXT_CREDIT" xml:space="preserve"><value>Provided by: Nikken Sekkei Ltd.</value></data>
+  <data name="TXT_COL_ID" xml:space="preserve"><value>ID</value></data>
+  <data name="TXT_COL_SHEET" xml:space="preserve"><value>Sheet</value></data>
+  <data name="TXT_COL_NUMBER" xml:space="preserve"><value>No.</value></data>
+  <data name="TXT_COL_NAME" xml:space="preserve"><value>Name</value></data>
+  <data name="TXT_ALL" xml:space="preserve"><value>All</value></data>
+  <data name="TXT_VT_ALL" xml:space="preserve"><value>All</value></data>
+  <data name="TXT_VT_AREA_PLAN" xml:space="preserve"><value>Area Plan</value></data>
+  <data name="TXT_VT_CEILING_PLAN" xml:space="preserve"><value>Ceiling Plan</value></data>
+  <data name="TXT_VT_COLUMN_SCHEDULE" xml:space="preserve"><value>Column Schedule</value></data>
+  <data name="TXT_VT_COST_REPORT" xml:space="preserve"><value>Cost Report</value></data>
+  <data name="TXT_VT_DETAIL" xml:space="preserve"><value>Detail</value></data>
+  <data name="TXT_VT_DRAFTING_VIEW" xml:space="preserve"><value>Drafting View</value></data>
+  <data name="TXT_VT_DRAWING_SHEET" xml:space="preserve"><value>Sheet</value></data>
+  <data name="TXT_VT_ELEVATION" xml:space="preserve"><value>Elevation</value></data>
+  <data name="TXT_VT_ENGINEERING_PLAN" xml:space="preserve"><value>Structural Plan</value></data>
+  <data name="TXT_VT_FLOOR_PLAN" xml:space="preserve"><value>Floor Plan</value></data>
+  <data name="TXT_VT_INTERNAL" xml:space="preserve"><value>Internal</value></data>
+  <data name="TXT_VT_LEGEND" xml:space="preserve"><value>Legend</value></data>
+  <data name="TXT_VT_LOADS_REPORT" xml:space="preserve"><value>Loads Report</value></data>
+  <data name="TXT_VT_PANEL_SCHEDULE" xml:space="preserve"><value>Panel Schedule</value></data>
+  <data name="TXT_VT_PRESSURE_LOSS_REPORT" xml:space="preserve"><value>Pressure Loss Report</value></data>
+  <data name="TXT_VT_PROJECT_BROWSER" xml:space="preserve"><value>Project Browser</value></data>
+  <data name="TXT_VT_RENDERING" xml:space="preserve"><value>Rendering</value></data>
+  <data name="TXT_VT_REPORT" xml:space="preserve"><value>Report</value></data>
+  <data name="TXT_VT_SECTION" xml:space="preserve"><value>Section</value></data>
+  <data name="TXT_VT_SCHEDULE" xml:space="preserve"><value>Schedule</value></data>
+  <data name="TXT_VT_SYSTEM_BROWSER" xml:space="preserve"><value>System Browser</value></data>
+  <data name="TXT_VT_THREE_D" xml:space="preserve"><value>3D View</value></data>
+  <data name="TXT_VT_UNDEFINED" xml:space="preserve"><value>Undefined</value></data>
+  <data name="TXT_VT_WALKTHROUGH" xml:space="preserve"><value>Walkthrough</value></data>
+</root>

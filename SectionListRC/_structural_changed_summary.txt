@@ -1,0 +1,1179 @@
+=== Structural scan: IDS referenced from Parameters/Beam/Column/Entities/...
+Distinct structural IDS count: 440
+
+Structural IDS with value changed orig->curr: 390
+
+--- Japanese-original (almost certainly revert for .tbl / Revit JP)
+390
+  IDS_BTN_BEAMLISTIMAGE_NAME
+    orig: '梁イメージ生成'
+    curr: 'Beam Image Generate'
+  IDS_BTN_BEAMLISTSETTING_NAME
+    orig: '梁リスト設定'
+    curr: 'Beam List Settings'
+  IDS_BTN_BEAMLIST_NAME
+    orig: '梁リスト'
+    curr: 'Beam List'
+  IDS_BTN_COLUMNLISTIMAGE_NAME
+    orig: '柱イメージ生成'
+    curr: 'Column Image Generate'
+  IDS_BTN_COLUMNLISTSETTING_NAME
+    orig: '柱リスト設定'
+    curr: 'Column List Settings'
+  IDS_BTN_COLUMNLIST_NAME
+    orig: '柱リスト'
+    curr: 'Column List'
+  IDS_BTN_EACHONEBEAMLIST_NAME
+    orig: '梁リスト出力'
+    curr: 'Beam List Export'
+  IDS_BTN_EACHONECOLUMNLIST_NAME
+    orig: '柱リスト出力'
+    curr: 'Column List Export'
+  IDS_BTN_LEVELSORTORDER_TEXT
+    orig: '階記号ソート'
+    curr: 'Level Symbol Sort'
+  IDS_BTN_LEVELSORTORDER_TOOLTIP_S
+    orig: '階記号順序の設定'
+    curr: 'Level symbol order settings'
+  IDS_BTN_SETTINGFILE_NAME
+    orig: '設定ファイル'
+    curr: 'Settings File'
+  IDS_ERROR_SMALLSIZE
+    orig: '指定サイズが小さすぎるので、以下の断面リストが生成されませんでした：'
+    curr: 'The specified size is too small. The following section lists could not be created:'
+  IDS_ERR_ACTIVEPROJECTBROWSE
+    orig: '作図領域をアクティブにしてから実行してください。'
+    curr: 'Activate a drawing window before running this command.'
+  IDS_ERR_COLUMNXORY
+    orig: '柱の幅または高さが0以下です。'
+    curr: 'Column width or depth is zero or less.'
+  IDS_ERR_FAMILYDOCUMENT
+    orig: 'ファミリドキュメントでは実行できません。'
+    curr: 'Not available in a family document.'
+  IDS_ERR_GETTABLEVALUE
+    orig: 'テーブルファイルの値を取得できませんでした。'
+    curr: 'Could not read the table file.'
+  IDS_ERR_GIRDERXORY
+    orig: '梁の幅または高さが0以下です。'
+    curr: 'Cannot determine if the beam is in X or Y direction.'
+  IDS_ERR_INDIFFERENTFAMILY
+    orig: 'は複数のファミリに存在します。\n符号と分類が同じ場合、作図は1つのみ行われます。'
+    curr: ' exists in multiple families.\nWhen the mark and classification are the same, only one drawing will be kept.'
+  IDS_ERR_INVALIDVALUE
+    orig: '値が正しくありません。'
+    curr: 'Invalid value.'
+  IDS_ERR_NOFAMILY
+    orig: '鉄筋ファミリがありません。'
+    curr: 'No rebar families available.'
+  IDS_ERR_NOINT
+    orig: '整数を入力してください。範囲は 0≦x≦10 です。'
+    curr: 'Enter an integer within 0 ≤ x ≤ 10.'
+  IDS_ERR_NOLISTLEVEL
+    orig: '断面リスト用のパラメータを持つ要素がありません。終了します。'
+    curr: 'No elements carry section-list parameters; exiting.'
+  IDS_ERR_NOPARAMETERFILE
+    orig: 'パラメータファイルがありません。'
+    curr: 'Parameter file is missing.'
+  IDS_ERR_NOPARAMETERFILEVALUE
+    orig: 'パラメータファイルの内容を取得できませんでした。'
+    curr: 'Could not load the parameter file.'
+  IDS_ERR_NOTARGETCOLUMN
+    orig: '現在のパラメータマッピングの設定に該当する柱がありません。パラメータマッピングより正しいパラメータを登録してください。'
+    curr: 'No columns match the parameter mapping settings. Register matching parameters via Parameter Mapping.'
+  IDS_ERR_NOTARGETGIRDER
+    orig: '現在のパラメータマッピングの設定に該当する梁がありません。パラメータマッピングより正しいパラメータを登録してください。'
+    curr: 'No beams match the parameter mapping settings. Register matching parameters via Parameter Mapping.'
+  IDS_ERR_NOTEXTTPASTE
+    orig: '貼り付ける項目が文字ではありません。'
+    curr: 'Paste item is not text.'
+  IDS_ERR_NOTSTRPLANEVIEW
+    orig: '構造伏図ビューがないためリストを作成できません。'
+    curr: 'Structural floor plan missing; cannot build lists.'
+  IDS_ERR_NO_VIEW_LIST
+    orig: '縦最大・幅最大が小さいので、断面リストが生成できません。'
+    curr: 'Maximum height/width extents are too small to build the section list.'
+  IDS_ERR_ONELISTLEVEL
+    orig: '断面リスト用のパラメータを持つ要素が1つなので、ソートを終了します。'
+    curr: 'Only one element has section-list data; cancelling sort.'
+  IDS_ERR_SELOTHERFILE
+    orig: '別のファイルを選択してください。'
+    curr: 'Select a different file.'
+  IDS_ERR_SELOTHERFILEORRESET
+    orig: '別のファイルを選択するか、パラメータの再設定と保存をしてください。'
+    curr: 'Pick another file, or reload and save parameters.'
+  IDS_ERR_SETSETTINGFILE
+    orig: '共通設定コマンドから、設定ファイルを設定してください。'
+    curr: 'Specify the settings file from Common Settings.'
+  IDS_ERR_SETTINGFILE
+    orig: '設定ファイルを確認してください。'
+    curr: 'Verify the settings file.'
+  IDS_ERR_SETTINGFILEINCORRECT
+    orig: '設定ファイルの内容が正しくありません。'
+    curr: 'The settings file is invalid.'
+  IDS_ERR_SETTINGOVERLAP
+    orig: '以下のパラメータが重複して設定されています。パラメータマッピングより正しいパラメータを登録してください。'
+    curr: 'Settings overlap detected.'
+  IDS_ERR_TITLE
+    orig: 'エラー内容'
+    curr: 'Error details'
+  IDS_ERR_WRONGPASTEVALUE
+    orig: '貼り付ける項目の数が違います。'
+    curr: 'Paste item count mismatch.'
+  IDS_TXT_1DAN
+    orig: '1段'
+    curr: '1st tier'
+  IDS_TXT_1DANKIN
+    orig: '1段筋'
+    curr: '1st row bars'
+  IDS_TXT_2DAN
+    orig: '2段'
+    curr: '2nd tier'
+  IDS_TXT_2DANKIN
+    orig: '2段筋'
+    curr: '2nd row bars'
+  IDS_TXT_2NDREBARFLAG
+    orig: '2段筋コーナー配筋フラグ'
+    curr: 'Second-row corner reinforcement flag'
+  IDS_TXT_3DAN
+    orig: '3段'
+    curr: '3rd tier'
+  IDS_TXT_3DANKIN
+    orig: '3段筋'
+    curr: '3rd row bars'
+  IDS_TXT_ABARAKIN
+    orig: '肋筋'
+    curr: 'Stirrup'
+  IDS_TXT_ALL
+    orig: 'すべての階に表示'
+    curr: 'Show on all levels'
+  IDS_TXT_ALLCOPY
+    orig: 'すべてコピー'
+    curr: 'Copy all'
+  IDS_TXT_ALLPASTE
+    orig: 'すべてペースト'
+    curr: 'Paste all'
+  IDS_TXT_ALLSECTION
+    orig: '全断面の表示'
+    curr: 'Show all sections'
+  IDS_TXT_AVERAGE
+    orig: '左右の平均'
+    curr: 'Average left/right gaps'
+  IDS_TXT_BEAMLIST
+    orig: '・小梁リスト'
+    curr: '• Sub-beam list'
+  IDS_TXT_BEAMLISTSETTING
+    orig: '梁リスト設定'
+    curr: 'Beam list settings'
+  IDS_TXT_BEAMLISTSETTING2
+    orig: '梁リスト設定2'
+    curr: 'Beam list settings II'
+  IDS_TXT_BEAMLISTVIEWSCALE
+    orig: '梁リストビュー尺度'
+    curr: 'Beam list view scale'
+  IDS_TXT_BEAM_LIST
+    orig: 'タイプ'
+    curr: 'Type'
+  IDS_TXT_BEAM_OPTION
+    orig: '梁リスト 生成対象選択'
+    curr: 'Beam list — generation target selection'
+  IDS_TXT_BODY
+    orig: '躯体'
+    curr: 'Structural body'
+  IDS_TXT_BOXHAUNCH
+    orig: 'ボックスハンチ'
+    curr: 'Box haunch'
+  IDS_TXT_BRACKETNOSHOW
+    orig: '括弧なし'
+    curr: 'No brackets'
+  IDS_TXT_BRACKETSHOW
+    orig: '括弧あり'
+    curr: 'Include brackets'
+  IDS_TXT_CANCEL
+    orig: 'キャンセル'
+    curr: 'Cancel'
+  IDS_TXT_CANTIBASE
+    orig: '片持ち梁元端の表示'
+    curr: 'Show cantilever beam start'
+  IDS_TXT_CANTIBEAMLIST
+    orig: '・片持ち小梁リスト'
+    curr: '• Cantilever sub-beam list'
+  IDS_TXT_CANTIEND
+    orig: '片持ち梁先端の表示'
+    curr: 'Show cantilever beam tip'
+  IDS_TXT_CANTIFOUNDBEAMLIST
+    orig: '・基礎片持ち小梁リスト'
+    curr: '• Cantilever foundation sub-beam list'
+  IDS_TXT_CANTIFOUNDGIRDERLIST
+    orig: '・基礎片持ち大梁リスト'
+    curr: '• Cantilever foundation girder list'
+  IDS_TXT_CANTIGIRDER
+    orig: '片持ち梁'
+    curr: 'Cantilever beam'
+  IDS_TXT_CANTIGIRDERLIST
+    orig: '・片持ち大梁リスト'
+    curr: '• Cantilever girder list'
+  IDS_TXT_CENTERGAP
+    orig: '中間のあき'
+    curr: 'Clear distance at mid-span'
+  IDS_TXT_CENTERSECTION
+    orig: '中央部の表示'
+    curr: 'Show center portion'
+  IDS_TXT_CHECKBOX_BEAM
+    orig: '小梁'
+    curr: 'Sub-beam'
+  IDS_TXT_CHECKBOX_CANTI_BEAM
+    orig: '片持ち小梁'
+    curr: 'Cantilever sub-beam'
+  IDS_TXT_CHECKBOX_CANTI_FOUNDATION_BEAM
+    orig: '基礎片持ち小梁'
+    curr: 'Cantilever foundation sub-beam'
+  IDS_TXT_CHECKBOX_CANTI_FOUNDATION_GIRDER
+    orig: '基礎片持ち大梁'
+    curr: 'Cantilever foundation girder'
+  IDS_TXT_CHECKBOX_CANTI_GIRDER
+    orig: '片持ち大梁'
+    curr: 'Cantilever girder'
+  IDS_TXT_CHECKBOX_FOUNDATION_BEAM
+    orig: '基礎小梁'
+    curr: 'Foundation sub-beam'
+  IDS_TXT_CHECKBOX_FOUNDATION_GIRDER
+    orig: '基礎大梁'
+    curr: 'Foundation girder'
+  IDS_TXT_CHECKBOX_GIRDER
+    orig: '大梁'
+    curr: 'Girder'
+  IDS_TXT_CHECK_ALL
+    orig: 'すべて'
+    curr: 'All'
+  IDS_TXT_CHECK_RANGER
+    orig: 'ビュー分割する'
+    curr: 'Split views'
+  IDS_TXT_CHUKYAKU
+    orig: '柱脚'
+    curr: 'Column base'
+  IDS_TXT_CHUOU
+    orig: '中央'
+    curr: 'Center'
+  IDS_TXT_CHUTO
+    orig: '柱頭'
+    curr: 'Column head'
+  IDS_TXT_CIRCLECOLUMN
+    orig: '円柱'
+    curr: 'Round column'
+  IDS_TXT_COLUMNLIST
+    orig: '・柱リスト'
+    curr: '• Column list'
+  IDS_TXT_COLUMNLISTSETTING
+    orig: '柱リスト設定'
+    curr: 'Column list settings'
+  IDS_TXT_COLUMNTYPE
+    orig: '柱'
+    curr: 'Column'
+  IDS_TXT_COLUMNVIEWLISTSCALE
+    orig: '柱リストビュー尺度'
+    curr: 'Column list view scale'
+  IDS_TXT_COLUMN_OPTION
+    orig: '柱リスト 生成対象選択'
+    curr: 'Column list — generation target selection'
+  IDS_TXT_COMMONSETTING
+    orig: '共通設定'
+    curr: 'Common settings'
+  IDS_TXT_CONCRETETEIGENRITU
+    orig: 'コンクリート強度の低減率'
+    curr: 'Concrete strength reduction factor'
+  IDS_TXT_CONTENTS_CHUKYAKUHABADOMEKINXHONSU
+    orig: '柱脚 幅止筋X方向本数'
+    curr: 'Column Base — Spacer Bars — X Direction Count'
+  IDS_TXT_CONTENTS_CHUKYAKUHABADOMEKINYHONSU
+    orig: '柱脚 幅止筋Y方向本数'
+    curr: 'Column Base — Spacer Bars — Y Direction Count'
+  IDS_TXT_CONTENTS_CHUKYAKUHOOPPITCH
+    orig: '柱脚 帯筋ピッチ'
+    curr: 'Column Base — Tie / Hoop Spacing'
+  IDS_TXT_CONTENTS_CHUKYAKUHOOPXHONSU
+    orig: '柱脚 帯筋X方向本数'
+    curr: 'Column Base — Ties/Hoops — X Direction Count'
+  IDS_TXT_CONTENTS_CHUKYAKUHOOPXKEI
+    orig: '柱脚 帯筋径'
+    curr: 'Column Base — Tie / Hoop Diameter'
+  IDS_TXT_CONTENTS_CHUKYAKUHOOPYHONSU
+    orig: '柱脚 帯筋Y方向本数'
+    curr: 'Column Base — Ties/Hoops — Y Direction Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINHONSU
+    orig: '柱脚 主筋本数'
+    curr: 'Column Base — Main Bar Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINHOSOKEI
+    orig: '柱脚 主筋細径'
+    curr: 'Column Base — Main Bars — Small Diameter'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINHUTOKEI
+    orig: '柱脚 主筋太径'
+    curr: 'Column Base — Main Bars — Large Diameter'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINKEI
+    orig: '柱脚 主筋径'
+    curr: 'Column Base — Main Bar Diameter'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINX1HOSOKEIHONSU
+    orig: '柱脚 主筋X方向1段筋細径本数'
+    curr: 'Column Base — Main Bars X Direction — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINX1HUTOKEIHONSU
+    orig: '柱脚 主筋X方向1段筋太径本数'
+    curr: 'Column Base — Main Bars X Direction — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINX2HOSOKEIHONSU
+    orig: '柱脚 主筋X方向2段筋細径本数'
+    curr: 'Column Base — Main Bars X Direction — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINX2HUTOKEIHONSU
+    orig: '柱脚 主筋X方向2段筋太径本数'
+    curr: 'Column Base — Main Bars X Direction — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINY1HOSOKEIHONSU
+    orig: '柱脚 主筋Y方向1段筋細径本数'
+    curr: 'Column Base — Main Bars Y Direction — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINY1HUTOKEIHONSU
+    orig: '柱脚 主筋Y方向1段筋太径本数'
+    curr: 'Column Base — Main Bars Y Direction — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINY2HOSOKEIHONSU
+    orig: '柱脚 主筋Y方向2段筋細径本数'
+    curr: 'Column Base — Main Bars Y Direction — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUKYAKUSYUKINY2HUTOKEIHONSU
+    orig: '柱脚 主筋Y方向2段筋太径本数'
+    curr: 'Column Base — Main Bars Y Direction — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHHABA
+    orig: '中央部 梁幅'
+    curr: 'Center — Beam Width'
+  IDS_TXT_CONTENTS_CHUOHSEI
+    orig: '中央部 梁せい'
+    curr: 'Center — Beam Depth'
+  IDS_TXT_CONTENTS_CHUOHSPACINGDIAMETER
+    orig: '中央部 幅止筋径'
+    curr: 'Center — Spacer Bar Diameter'
+  IDS_TXT_CONTENTS_CHUOHSPACINGNUMBER
+    orig: '中央部 幅止筋本数'
+    curr: 'Center — Spacer Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSPACINGPITCH
+    orig: '中央部 幅止筋ピッチ'
+    curr: 'Center — Spacer Bar Spacing'
+  IDS_TXT_CONTENTS_CHUOHSTIRRUPDIAMETER
+    orig: '中央部 肋筋径'
+    curr: 'Center — Stirrup Diameter'
+  IDS_TXT_CONTENTS_CHUOHSTIRRUPNUMBER
+    orig: '中央部 肋筋本数'
+    curr: 'Center — Stirrup Count'
+  IDS_TXT_CONTENTS_CHUOHSTIRRUPPITCH
+    orig: '中央部 肋筋ピッチ'
+    curr: 'Center — Stirrup Spacing'
+  IDS_TXT_CONTENTS_CHUOHSYUKINSITA1HOSOKEIHONSU
+    orig: '中央部 下端主筋1段筋細径本数'
+    curr: 'Center — Bottom Main Bars — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINSITA1HUTOKEIHONSU
+    orig: '中央部 下端主筋1段筋太径本数'
+    curr: 'Center — Bottom Main Bars — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINSITA2HOSOKEIHONSU
+    orig: '中央部 下端主筋2段筋細径本数'
+    curr: 'Center — Bottom Main Bars — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINSITA2HUTOKEIHONSU
+    orig: '中央部 下端主筋2段筋太径本数'
+    curr: 'Center — Bottom Main Bars — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINSITA3HOSOKEIHONSU
+    orig: '中央部 下端主筋3段筋細径本数'
+    curr: 'Center — Bottom Main Bars — 3rd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINSITA3HUTOKEIHONSU
+    orig: '中央部 下端主筋3段筋太径本数'
+    curr: 'Center — Bottom Main Bars — 3rd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINSITAHOSOKEI
+    orig: '中央部 下端主筋細径'
+    curr: 'Center — Bottom Main Bars — Small Diameter'
+  IDS_TXT_CONTENTS_CHUOHSYUKINSITAHUTOKEI
+    orig: '中央部 下端主筋太径'
+    curr: 'Center — Bottom Main Bars — Large Diameter'
+  IDS_TXT_CONTENTS_CHUOHSYUKINUE1HOSOKEIHONSU
+    orig: '中央部 上端主筋1段筋細径本数'
+    curr: 'Center — Top Main Bars — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINUE1HUTOKEIHONSU
+    orig: '中央部 上端主筋1段筋太径本数'
+    curr: 'Center — Top Main Bars — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINUE2HOSOKEIHONSU
+    orig: '中央部 上端主筋2段筋細径本数'
+    curr: 'Center — Top Main Bars — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINUE2HUTOKEIHONSU
+    orig: '中央部 上端主筋2段筋太径本数'
+    curr: 'Center — Top Main Bars — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINUE3HOSOKEIHONSU
+    orig: '中央部 上端主筋3段筋細径本数'
+    curr: 'Center — Top Main Bars — 3rd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINUE3HUTOKEIHONSU
+    orig: '中央部 上端主筋3段筋太径本数'
+    curr: 'Center — Top Main Bars — 3rd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUOHSYUKINUEHOSOKEI
+    orig: '中央部 上端主筋細径'
+    curr: 'Center — Top Main Bars — Small Diameter'
+  IDS_TXT_CONTENTS_CHUOHSYUKINUEHUTOKEI
+    orig: '中央部 上端主筋太径'
+    curr: 'Center — Top Main Bars — Large Diameter'
+  IDS_TXT_CONTENTS_CHUOHWEBDIAMETER
+    orig: '中央部 腹筋径'
+    curr: 'Center — Web Reinforcement Diameter'
+  IDS_TXT_CONTENTS_CHUOHWEBNUMBER
+    orig: '中央部 腹筋本数'
+    curr: 'Center — Web Reinforcement Count'
+  IDS_TXT_CONTENTS_CHUTOHABADOMEKINXHONSU
+    orig: '柱頭 幅止筋X方向本数'
+    curr: 'Column Head — Spacer Bars — X Direction Count'
+  IDS_TXT_CONTENTS_CHUTOHABADOMEKINYHONSU
+    orig: '柱頭 幅止筋Y方向本数'
+    curr: 'Column Head — Spacer Bars — Y Direction Count'
+  IDS_TXT_CONTENTS_CHUTOHOOPPITCH
+    orig: '柱頭 帯筋ピッチ'
+    curr: 'Column Head — Tie / Hoop Spacing'
+  IDS_TXT_CONTENTS_CHUTOHOOPXHONSU
+    orig: '柱頭 帯筋X方向本数'
+    curr: 'Column Head — Ties/Hoops — X Direction Count'
+  IDS_TXT_CONTENTS_CHUTOHOOPXKEI
+    orig: '柱頭 帯筋径'
+    curr: 'Column Head — Tie / Hoop Diameter'
+  IDS_TXT_CONTENTS_CHUTOHOOPYHONSU
+    orig: '柱頭 帯筋Y方向本数'
+    curr: 'Column Head — Ties/Hoops — Y Direction Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINHONSU
+    orig: '柱頭 主筋本数'
+    curr: 'Column Head — Main Bar Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINHOSOKEI
+    orig: '柱頭 主筋細径'
+    curr: 'Column Head — Main Bars — Small Diameter'
+  IDS_TXT_CONTENTS_CHUTOSYUKINHUTOKEI
+    orig: '柱頭 主筋太径'
+    curr: 'Column Head — Main Bars — Large Diameter'
+  IDS_TXT_CONTENTS_CHUTOSYUKINKEI
+    orig: '柱頭 主筋径'
+    curr: 'Column Head — Main Bar Diameter'
+  IDS_TXT_CONTENTS_CHUTOSYUKINX1HOSOKEIHONSU
+    orig: '柱頭 主筋X方向1段筋細径本数'
+    curr: 'Column Head — Main Bars X Direction — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINX1HUTOKEIHONSU
+    orig: '柱頭 主筋X方向1段筋太径本数'
+    curr: 'Column Head — Main Bars X Direction — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINX2HOSOKEIHONSU
+    orig: '柱頭 主筋X方向2段筋細径本数'
+    curr: 'Column Head — Main Bars X Direction — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINX2HUTOKEIHONSU
+    orig: '柱頭 主筋X方向2段筋太径本数'
+    curr: 'Column Head — Main Bars X Direction — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINY1HOSOKEIHONSU
+    orig: '柱頭 主筋Y方向1段筋細径本数'
+    curr: 'Column Head — Main Bars Y Direction — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINY1HUTOKEIHONSU
+    orig: '柱頭 主筋Y方向1段筋太径本数'
+    curr: 'Column Head — Main Bars Y Direction — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINY2HOSOKEIHONSU
+    orig: '柱頭 主筋Y方向2段筋細径本数'
+    curr: 'Column Head — Main Bars Y Direction — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_CHUTOSYUKINY2HUTOKEIHONSU
+    orig: '柱頭 主筋Y方向2段筋太径本数'
+    curr: 'Column Head — Main Bars Y Direction — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_COLUMNCATEGORY
+    orig: '柱分類'
+    curr: 'Column grouping'
+  IDS_TXT_CONTENTS_DX
+    orig: '柱幅'
+    curr: 'Column width'
+  IDS_TXT_CONTENTS_DY
+    orig: '柱せい'
+    curr: 'Column depth'
+  IDS_TXT_CONTENTS_GIRDERCATEGORY
+    orig: '梁分類'
+    curr: 'Beam grouping'
+  IDS_TXT_CONTENTS_HABADOMEKINKEI
+    orig: '幅止筋径'
+    curr: 'Spacer bar diameter'
+  IDS_TXT_CONTENTS_HABADOMEKINPITCH
+    orig: '幅止筋ピッチ'
+    curr: 'Spacer spacing'
+  IDS_TXT_CONTENTS_HASIRAHUGO
+    orig: '柱符号'
+    curr: 'Column mark'
+  IDS_TXT_CONTENTS_ITANHABA
+    orig: 'i端 梁幅'
+    curr: 'i-End — Beam Width'
+  IDS_TXT_CONTENTS_ITANSEI
+    orig: 'i端 梁せい'
+    curr: 'i-End — Beam Depth'
+  IDS_TXT_CONTENTS_ITANSPACINGDIAMETER
+    orig: 'i端 幅止筋径'
+    curr: 'i-End — Spacer Bar Diameter'
+  IDS_TXT_CONTENTS_ITANSPACINGNUMBER
+    orig: 'i端 幅止筋本数'
+    curr: 'i-End — Spacer Bar Count'
+  IDS_TXT_CONTENTS_ITANSPACINGPITCH
+    orig: 'i端 幅止筋ピッチ'
+    curr: 'i-End — Spacer Bar Spacing'
+  IDS_TXT_CONTENTS_ITANSTIRRUPDIAMETER
+    orig: 'i端 肋筋径'
+    curr: 'i-End — Stirrup Diameter'
+  IDS_TXT_CONTENTS_ITANSTIRRUPNUMBER
+    orig: 'i端 肋筋本数'
+    curr: 'i-End — Stirrup Count'
+  IDS_TXT_CONTENTS_ITANSTIRRUPPITCH
+    orig: 'i端 肋筋ピッチ'
+    curr: 'i-End — Stirrup Spacing'
+  IDS_TXT_CONTENTS_ITANSYUKINSITA1HOSOKEIHONSU
+    orig: 'i端 下端主筋1段筋細径本数'
+    curr: 'i-End — Bottom Main Bars — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINSITA1HUTOKEIHONSU
+    orig: 'i端 下端主筋1段筋太径本数'
+    curr: 'i-End — Bottom Main Bars — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINSITA2HOSOKEIHONSU
+    orig: 'i端 下端主筋2段筋細径本数'
+    curr: 'i-End — Bottom Main Bars — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINSITA2HUTOKEIHONSU
+    orig: 'i端 下端主筋2段筋太径本数'
+    curr: 'i-End — Bottom Main Bars — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINSITA3HOSOKEIHONSU
+    orig: 'i端 下端主筋3段筋細径本数'
+    curr: 'i-End — Bottom Main Bars — 3rd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINSITA3HUTOKEIHONSU
+    orig: 'i端 下端主筋3段筋太径本数'
+    curr: 'i-End — Bottom Main Bars — 3rd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINSITAHOSOKEI
+    orig: 'i端 下端主筋細径'
+    curr: 'i-End — Bottom Main Bars — Small Diameter'
+  IDS_TXT_CONTENTS_ITANSYUKINSITAHUTOKEI
+    orig: 'i端 下端主筋太径'
+    curr: 'i-End — Bottom Main Bars — Large Diameter'
+  IDS_TXT_CONTENTS_ITANSYUKINUE1HOSOKEIHONSU
+    orig: 'i端 上端主筋1段筋細径本数'
+    curr: 'i-End — Top Main Bars — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINUE1HUTOKEIHONSU
+    orig: 'i端 上端主筋1段筋太径本数'
+    curr: 'i-End — Top Main Bars — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINUE2HOSOKEIHONSU
+    orig: 'i端 上端主筋2段筋細径本数'
+    curr: 'i-End — Top Main Bars — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINUE2HUTOKEIHONSU
+    orig: 'i端 上端主筋2段筋太径本数'
+    curr: 'i-End — Top Main Bars — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINUE3HOSOKEIHONSU
+    orig: 'i端 上端主筋3段筋細径本数'
+    curr: 'i-End — Top Main Bars — 3rd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINUE3HUTOKEIHONSU
+    orig: 'i端 上端主筋3段筋太径本数'
+    curr: 'i-End — Top Main Bars — 3rd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_ITANSYUKINUEHOSOKEI
+    orig: 'i端 上端主筋細径'
+    curr: 'i-End — Top Main Bars — Small Diameter'
+  IDS_TXT_CONTENTS_ITANSYUKINUEHUTOKEI
+    orig: 'i端 上端主筋太径'
+    curr: 'i-End — Top Main Bars — Large Diameter'
+  IDS_TXT_CONTENTS_ITANWEBDIAMETER
+    orig: 'i端 腹筋径'
+    curr: 'i-End — Web Reinforcement Diameter'
+  IDS_TXT_CONTENTS_ITANWEBNUMBER
+    orig: 'i端 腹筋本数'
+    curr: 'i-End — Web Reinforcement Count'
+  IDS_TXT_CONTENTS_JTANHABA
+    orig: 'j端 梁幅'
+    curr: 'j-End — Beam Width'
+  IDS_TXT_CONTENTS_JTANHASEI
+    orig: 'j端 梁せい'
+    curr: 'j-End — Beam Depth'
+  IDS_TXT_CONTENTS_JTANSPACINGDIAMETER
+    orig: 'j端 幅止筋径'
+    curr: 'j-End — Spacer Bar Diameter'
+  IDS_TXT_CONTENTS_JTANSPACINGNUMBER
+    orig: 'j端 幅止筋本数'
+    curr: 'j-End — Spacer Bar Count'
+  IDS_TXT_CONTENTS_JTANSPACINGPITCH
+    orig: 'j端 幅止筋ピッチ'
+    curr: 'j-End — Spacer Bar Spacing'
+  IDS_TXT_CONTENTS_JTANSTIRRUPDIAMETER
+    orig: 'j端 肋筋径'
+    curr: 'j-End — Stirrup Diameter'
+  IDS_TXT_CONTENTS_JTANSTIRRUPNUMBER
+    orig: 'j端 肋筋本数'
+    curr: 'j-End — Stirrup Count'
+  IDS_TXT_CONTENTS_JTANSTIRRUPPITCH
+    orig: 'j端 肋筋ピッチ'
+    curr: 'j-End — Stirrup Spacing'
+  IDS_TXT_CONTENTS_JTANSYUKINSITA1HOSOKEIHONSU
+    orig: 'j端 下端主筋1段筋細径本数'
+    curr: 'j-End — Bottom Main Bars — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINSITA1HUTOKEIHONSU
+    orig: 'j端 下端主筋1段筋太径本数'
+    curr: 'j-End — Bottom Main Bars — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINSITA2HOSOKEIHONSU
+    orig: 'j端 下端主筋2段筋細径本数'
+    curr: 'j-End — Bottom Main Bars — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINSITA2HUTOKEIHONSU
+    orig: 'j端 下端主筋2段筋太径本数'
+    curr: 'j-End — Bottom Main Bars — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINSITA3HOSOKEIHONSU
+    orig: 'j端 下端主筋3段筋細径本数'
+    curr: 'j-End — Bottom Main Bars — 3rd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINSITA3HUTOKEIHONSU
+    orig: 'j端 下端主筋3段筋太径本数'
+    curr: 'j-End — Bottom Main Bars — 3rd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINSITAHOSOKEI
+    orig: 'j端 下端主筋細径'
+    curr: 'j-End — Bottom Main Bars — Small Diameter'
+  IDS_TXT_CONTENTS_JTANSYUKINSITAHUTOKEI
+    orig: 'j端 下端主筋太径'
+    curr: 'j-End — Bottom Main Bars — Large Diameter'
+  IDS_TXT_CONTENTS_JTANSYUKINUE1HOSOKEIHONSU
+    orig: 'j端 上端主筋1段筋細径本数'
+    curr: 'j-End — Top Main Bars — 1st Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINUE1HUTOKEIHONSU
+    orig: 'j端 上端主筋1段筋太径本数'
+    curr: 'j-End — Top Main Bars — 1st Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINUE2HOSOKEIHONSU
+    orig: 'j端 上端主筋2段筋細径本数'
+    curr: 'j-End — Top Main Bars — 2nd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINUE2HUTOKEIHONSU
+    orig: 'j端 上端主筋2段筋太径本数'
+    curr: 'j-End — Top Main Bars — 2nd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINUE3HOSOKEIHONSU
+    orig: 'j端 上端主筋3段筋細径本数'
+    curr: 'j-End — Top Main Bars — 3rd Row Small Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINUE3HUTOKEIHONSU
+    orig: 'j端 上端主筋3段筋太径本数'
+    curr: 'j-End — Top Main Bars — 3rd Row Large Diameter Bar Count'
+  IDS_TXT_CONTENTS_JTANSYUKINUEHOSOKEI
+    orig: 'j端 上端主筋細径'
+    curr: 'j-End — Top Main Bars — Small Diameter'
+  IDS_TXT_CONTENTS_JTANSYUKINUEHUTOKEI
+    orig: 'j端 上端主筋太径'
+    curr: 'j-End — Top Main Bars — Large Diameter'
+  IDS_TXT_CONTENTS_JTANWEBDIAMETER
+    orig: 'j端 腹筋径'
+    curr: 'j-End — Web Reinforcement Diameter'
+  IDS_TXT_CONTENTS_JTANWEBNUMBER
+    orig: 'j端 腹筋本数'
+    curr: 'j-End — Web Reinforcement Count'
+  IDS_TXT_CONTENTS_SINTEKKINHONSU
+    orig: '芯鉄筋本数'
+    curr: 'Core rebar quantity'
+  IDS_TXT_CONTENTS_SINTEKKINICHI
+    orig: '躯体面から芯鉄筋までの距離'
+    curr: 'Distance from structural surface to core rebar centroid'
+  IDS_TXT_CONTENTS_SINTEKKINKEI
+    orig: '芯鉄筋径'
+    curr: 'Core rebar diameter'
+  IDS_TXT_CONTENTS_SINTEKKINXICHI
+    orig: '躯体面から芯鉄筋までのX方向距離'
+    curr: 'Structural face → core rebar distance along X'
+  IDS_TXT_CONTENTS_SINTEKKINYICHI
+    orig: '躯体面から芯鉄筋までのY方向距離'
+    curr: 'Structural face → core rebar distance along Y'
+  IDS_TXT_COREREBAR
+    orig: '芯鉄筋'
+    curr: 'Core rebar'
+  IDS_TXT_CURRENTMAPPINGNAME
+    orig: '<現在の対応パラメータ名>'
+    curr: '<Current mapped parameter name>'
+  IDS_TXT_CURRENTSETTINGFILE
+    orig: '現在の設定ファイル :'
+    curr: 'Current settings file:'
+  IDS_TXT_CURRENTTABLEFILE
+    orig: '現在のマッピングテーブル : '
+    curr: 'Current mapping table: '
+  IDS_TXT_DEFAULTCENTER
+    orig: '中央を基準'
+    curr: 'Center alignment'
+  IDS_TXT_DEFAULTLEFT
+    orig: '左を基準'
+    curr: 'Align left'
+  IDS_TXT_DESKTOP
+    orig: 'デスクトップ'
+    curr: 'Desktop'
+  IDS_TXT_DIMENSIONHEIGHT
+    orig: '高さ寸法'
+    curr: 'Height dimensions'
+  IDS_TXT_DIMENSIONS
+    orig: '寸法線'
+    curr: 'Dimensions'
+  IDS_TXT_DIMENSIONSEXPLAIN
+    orig: '断面枠での寸法線の表示方法を指定します。'
+    curr: 'Set how dimensions draw inside cross-section frames.'
+  IDS_TXT_DIMENSIONTYPE
+    orig: '寸法タイプ'
+    curr: 'Dimension type'
+  IDS_TXT_DIMENSIONTYPEEXPLAIN
+    orig: '使用する寸法タイプを指定します。'
+    curr: 'Pick dimension types to assign.'
+  IDS_TXT_DIMENSIONWIDTH
+    orig: '幅寸法'
+    curr: 'Width dimensions'
+  IDS_TXT_DOWN
+    orig: '下へ'
+    curr: 'Move down'
+  IDS_TXT_EIZENKYOKAITEKKINMARK
+    orig: '鉄筋マーク_営繕協会'
+    curr: 'Rebar Mark_Eizenshoku Association'
+  IDS_TXT_ELLIPSISDIMENSION
+    orig: '同一寸法省略'
+    curr: 'Omit duplicated dimensions'
+  IDS_TXT_END
+    orig: '終了'
+    curr: 'Finish'
+  IDS_TXT_ENDSECTION
+    orig: '端部の表示'
+    curr: 'Show end zones'
+  IDS_TXT_EVERYSTEP
+    orig: '段別に表示'
+    curr: 'Per-row display'
+  IDS_TXT_FONTTYPE
+    orig: '文字タイプ'
+    curr: 'Text style'
+  IDS_TXT_FONTTYPEEXPLAIN
+    orig: '使用する文字タイプを指定します。'
+    curr: 'Pick text/note types to assign.'
+  IDS_TXT_FOUNDBEAMLIST
+    orig: '・基礎小梁リスト'
+    curr: '• Foundation sub-beam list'
+  IDS_TXT_FOUNDGIRDERLIST
+    orig: '・基礎大梁リスト'
+    curr: '• Foundation girder list'
+  IDS_TXT_FRAME
+    orig: '枠'
+    curr: 'Frame'
+  IDS_TXT_GIRDERLIST
+    orig: '・大梁リスト'
+    curr: '• Girder list'
+  IDS_TXT_GIRDER_TXT
+    orig: '梁'
+    curr: 'Beam'
+  IDS_TXT_GROUP_RANGE
+    orig: '範囲選択'
+    curr: 'Range selection'
+  IDS_TXT_HABADOMEKIN
+    orig: '幅止筋'
+    curr: 'Spacer / cross tie'
+  IDS_TXT_HARAKIN
+    orig: '腹筋'
+    curr: 'Web reinforcement'
+  IDS_TXT_HARIHABA
+    orig: '梁幅'
+    curr: 'Beam width'
+  IDS_TXT_HARIHUGO
+    orig: '梁符号'
+    curr: 'Beam mark'
+  IDS_TXT_HARISEI
+    orig: '梁せい'
+    curr: 'Beam depth'
+  IDS_TXT_HARISYUBETU
+    orig: '梁種別'
+    curr: 'Beam subtype'
+  IDS_TXT_HASHIRABUNRUI
+    orig: '柱種別'
+    curr: 'Column subtype'
+  IDS_TXT_HASIRAHABA
+    orig: '柱幅'
+    curr: 'Column width'
+  IDS_TXT_HASIRASEI
+    orig: '柱せい'
+    curr: 'Column depth'
+  IDS_TXT_HASIRASYUBETU
+    orig: '柱種別'
+    curr: 'Column subtype'
+  IDS_TXT_HAUNCHNAGASA
+    orig: 'ハンチ長さ'
+    curr: 'Haunch length'
+  IDS_TXT_HONSU
+    orig: '本数'
+    curr: '# of bars'
+  IDS_TXT_HOOPFRAME
+    orig: '帯筋枠'
+    curr: 'Tie / hoop frame'
+  IDS_TXT_HOOPFRAMEEXPLAIN
+    orig: '枠のタイトルと区切り記号をを指定します。'
+    curr: 'Set frame titles and delimiters.'
+  IDS_TXT_HOOPFRAMETITLE
+    orig: '帯筋枠タイトル'
+    curr: 'Tie-frame title'
+  IDS_TXT_HOSOKEI
+    orig: '細径'
+    curr: 'Small diameter'
+  IDS_TXT_HOSOKINHONSU
+    orig: '細筋本数'
+    curr: 'Small-diameter bar count'
+  IDS_TXT_HOUKOU
+    orig: '方向'
+    curr: 'Direction'
+  IDS_TXT_HUGO
+    orig: '符号'
+    curr: 'Mark'
+  IDS_TXT_HUTOKEI
+    orig: '太径'
+    curr: 'Large diameter'
+  IDS_TXT_HUTOKINHONSU
+    orig: '太筋本数'
+    curr: 'Large-diameter bar count'
+  IDS_TXT_IMAGECREATE
+    orig: 'イメージ生成'
+    curr: 'Create image'
+  IDS_TXT_IMAGEEXPORTED
+    orig: '画像ファイルの出力が終了しました。'
+    curr: 'Image export finished.'
+  IDS_TXT_IMAGESET_BEAM
+    orig: '梁タイプパラメータに断面リストイメージを設定しました。'
+    curr: 'Section list image copied to beam type parameters.'
+  IDS_TXT_IMAGESET_COLUMN
+    orig: '柱タイプパラメータに断面リストイメージを設定しました。'
+    curr: 'Section list image copied to column type parameters.'
+  IDS_TXT_ITANSECTION
+    orig: '始端部の表示'
+    curr: 'Show start/end region'
+  IDS_TXT_JTANSECTION
+    orig: '終端部の表示'
+    curr: 'Show opposing end detail'
+  IDS_TXT_KABURI
+    orig: 'かぶり厚'
+    curr: 'Concrete cover thickness'
+  IDS_TXT_KABURI_EN
+    orig: 'かぶり厚(円柱)'
+    curr: 'Cover (round column)'
+  IDS_TXT_KABURI_KAKU
+    orig: 'かぶり厚(角柱)'
+    curr: 'Cover (rectangular column)'
+  IDS_TXT_KEI
+    orig: '径'
+    curr: 'Dia.'
+  IDS_TXT_LEVELFRAMEENDWORD
+    orig: '階表示枠接尾語'
+    curr: 'Level frame suffix'
+  IDS_TXT_LEVELFRAMESHOW
+    orig: '階表示枠を表示'
+    curr: 'Show level frame'
+  IDS_TXT_LEVELFRAMESHOWINITEMFRAME
+    orig: '階表示を項目表示枠に表示'
+    curr: 'Show level label inside the item frame'
+  IDS_TXT_LEVELFRAMETITLE
+    orig: '階表示枠タイトル'
+    curr: 'Level frame title'
+  IDS_TXT_LINETYPE
+    orig: '線種タイプ'
+    curr: 'Line style type'
+  IDS_TXT_LINETYPEEXPLAIN
+    orig: '線種タイプを指定します。'
+    curr: 'Assign line style types.'
+  IDS_TXT_LIST
+    orig: 'リスト'
+    curr: 'List'
+  IDS_TXT_LISTLEVELSORT
+    orig: 'リスト作成時のレベル順序を設定します。'
+    curr: 'Set level ordering applied when generating lists.'
+  IDS_TXT_LISTVIEW_BEAM
+    orig: 'RCリスト_小梁'
+    curr: 'RC Section List_Sub-beam'
+  IDS_TXT_LISTVIEW_BEAM_FOND
+    orig: 'RCリスト_基礎小梁'
+    curr: 'RC Section List_Foundation Sub-beam'
+  IDS_TXT_LISTVIEW_CANTIBEAM
+    orig: 'RCリスト_片持ち小梁'
+    curr: 'RC Section List_Cantilever Sub-beam'
+  IDS_TXT_LISTVIEW_CANTIBEAM_FOND
+    orig: 'RCリスト_片持ち基礎小梁'
+    curr: 'RC Section List_Cantilever Foundation Sub-beam'
+  IDS_TXT_LISTVIEW_CANTIGIRDER
+    orig: 'RCリスト_片持ち大梁'
+    curr: 'RC Section List_Cantilever Girder'
+  IDS_TXT_LISTVIEW_CANTIGIRDER_FOND
+    orig: 'RCリスト_片持ち基礎大梁'
+    curr: 'RC Section List_Cantilever Foundation Girder'
+  IDS_TXT_LISTVIEW_COLUMN
+    orig: 'RCリスト_柱'
+    curr: 'RC Section List_Column'
+  IDS_TXT_LISTVIEW_GIRDER
+    orig: 'RCリスト_大梁'
+    curr: 'RC Section List_Girder'
+  IDS_TXT_LISTVIEW_GIRDER_FOND
+    orig: 'RCリスト_基礎大梁'
+    curr: 'RC Section List_Foundation Girder'
+  IDS_TXT_LISTVIEW_POST
+    orig: 'RCリスト_間柱'
+    curr: 'RC Section List_Post / Stud'
+  IDS_TXT_MAINREBAR
+    orig: '主筋'
+    curr: 'Main reinforcement'
+  IDS_TXT_MAX_HEIGHT
+    orig: '縦最大'
+    curr: 'Max height'
+  IDS_TXT_MAX_WIDTH
+    orig: '幅最大'
+    curr: 'Max width'
+  IDS_TXT_MOTOTAN
+    orig: '元端'
+    curr: 'Back span end'
+  IDS_TXT_NOSHOW
+    orig: '非表示'
+    curr: 'Hidden'
+  IDS_TXT_OBIKIN
+    orig: '帯筋'
+    curr: 'Tie / hoop'
+  IDS_TXT_OBJECT_TYPE
+    orig: '対象タイプ'
+    curr: 'Target type'
+  IDS_TXT_OTHER
+    orig: 'その他'
+    curr: 'Other'
+  IDS_TXT_OVERWRITESAVE
+    orig: '上書き保存'
+    curr: 'Overwrite save'
+  IDS_TXT_PARAMCONTENTS
+    orig: '<パラメータの内容>'
+    curr: '<Parameter contents>'
+  IDS_TXT_PARAMMAP
+    orig: 'パラメータマッピング'
+    curr: 'Parameter mapping'
+  IDS_TXT_PARAMNAMEHABA
+    orig: '幅'
+    curr: 'Width'
+  IDS_TXT_PICKTABLE
+    orig: 'マッピングテーブルの指定'
+    curr: 'Mapping table selection'
+  IDS_TXT_PITCH
+    orig: 'ピッチ'
+    curr: 'Spacing'
+  IDS_TXT_PLEASEINPUT
+    orig: 'に入力してください。'
+    curr: ': enter required value.'
+  IDS_TXT_PLEASEINPUTDOUBLE
+    orig: '値は小数または整数で入力してください。範囲は 0<x≦100 です。'
+    curr: 'Enter a decimal or whole number. Allowed range: 0 < x <= 100.'
+  IDS_TXT_PLEASEINPUTDOUBLEGREATERTHANZERO
+    orig: '0より大きい数値で入力してください。'
+    curr: 'Enter a numeric value greater than zero.'
+  IDS_TXT_PLEASEINPUTGREATERTHANZERO
+    orig: '値は整数で入力してください。'
+    curr: 'Enter an integer.'
+  IDS_TXT_PLEASEINPUTGREATERZERO
+    orig: '値は整数で入力してください。'
+    curr: 'Enter an integer.'
+  IDS_TXT_PLEASEINPUTINT
+    orig: '値は整数で入力してください。'
+    curr: 'Enter an integer.'
+  IDS_TXT_PLEASEINPUTZEROTOTEN
+    orig: '範囲は0<=x<=10です。'
+    curr: 'Allowed range: 0 ≤ x ≤ 10.'
+  IDS_TXT_POSITIONFRAME
+    orig: '位置表示枠'
+    curr: 'Reference frame'
+  IDS_TXT_POSITIONFRAMETITLEEXPLAIN
+    orig: '位置表示枠のタイトルを指定します。'
+    curr: 'Set titles for positional reference frames.'
+  IDS_TXT_POSTLIST
+    orig: '・間柱リスト'
+    curr: '• Post / stud list'
+  IDS_TXT_POSTTYPE
+    orig: '間柱'
+    curr: 'Intermediate post'
+  IDS_TXT_READ
+    orig: '読み込み'
+    curr: 'Load'
+  IDS_TXT_REBARPARTITIONSHOW
+    orig: '方向別、段別に分割して表示'
+    curr: 'Split by orientation / row tiers'
+  IDS_TXT_REBARSHOW
+    orig: '方向別、段別にまとめて表示'
+    curr: 'Grouped by orientation and row tiers'
+  IDS_TXT_RECTANGLECOLUMN
+    orig: '矩形柱'
+    curr: 'Rectangular column'
+  IDS_TXT_SAVEAS
+    orig: '名前を付けて保存'
+    curr: 'Save as…'
+  IDS_TXT_SECTIONFRAME
+    orig: '表示枠'
+    curr: 'Display frame'
+  IDS_TXT_SECTIONFRAMEEXPLAIN
+    orig: '断面表示枠と図のあき寸法や帯筋のタイトル等を指定します。'
+    curr: 'Set section frames, graphical clear dimensions, tie titles, and related layout.'
+  IDS_TXT_SECTIONFRAMEREBAREXPLAIN
+    orig: '断面枠での主筋の表示方法を指定します。'
+    curr: 'Define how mains display within the section outline.'
+  IDS_TXT_SECTIONLIST
+    orig: '断面リスト'
+    curr: 'Section list'
+  IDS_TXT_SELECT
+    orig: '選択'
+    curr: 'Select'
+  IDS_TXT_SELECT_BEAM_IMAGE_ITEMS
+    orig: '梁イメージ\u3000生成範囲選択'
+    curr: 'Beam image — scope selection'
+  IDS_TXT_SELECT_BEAM_IMAGE_OPTIONS
+    orig: '梁イメージ\u3000生成対象選択'
+    curr: 'Beam image — generation target'
+  IDS_TXT_SELECT_BEAM_ITEMS
+    orig: '梁リスト 生成範囲選択'
+    curr: 'Beam list — scope selection'
+  IDS_TXT_SELECT_COL_IMAGE_OPTIONS
+    orig: '柱イメージ\u3000生成対象選択'
+    curr: 'Column image — generation target'
+  IDS_TXT_SELECT_EACHONEBEAM_ITEMS
+    orig: '梁個別書き出し\u3000生成範囲選択'
+    curr: 'Beam individual export — scope selection'
+  IDS_TXT_SELECT_EACHONEBEAM_OPTIONS
+    orig: '梁個別書き出し\u3000生成対象選択'
+    curr: 'Beam individual export — generation target'
+  IDS_TXT_SELECT_EACHONECOL_OPTIONS
+    orig: '柱個別書き出し\u3000生成対象選択'
+    curr: 'Column individual export — generation target'
+  IDS_TXT_SELECT_ITEMS
+    orig: '一部'
+    curr: 'Partial'
+  IDS_TXT_SELECT_TYPE
+    orig: 'タイプ選択'
+    curr: 'Select type'
+  IDS_TXT_SENTAN
+    orig: '先端'
+    curr: 'Tip'
+  IDS_TXT_SEPARATOR
+    orig: '本数と径の区切り記号'
+    curr: 'Delimiter between bar count and diameter'
+  IDS_TXT_SEPARATORLINE
+    orig: '区切り線'
+    curr: 'Separator line'
+  IDS_TXT_SETDEFAULT
+    orig: '(デフォルト値をセットします)'
+    curr: '(Restores defaults.)'
+  IDS_TXT_SETTINGFILE
+    orig: '設定ファイル'
+    curr: 'Settings file'
+  IDS_TXT_SHOW
+    orig: '表示'
+    curr: 'Show'
+  IDS_TXT_SHOWALL
+    orig: 'すべて表示'
+    curr: 'Show all'
+  IDS_TXT_SHOWFRAME
+    orig: '表示枠'
+    curr: 'Display frame'
+  IDS_TXT_SHOWFRAMEEXPLAIN
+    orig: '表示枠の幅やタイトル等を指定します。'
+    curr: 'Specify frame widths/titles/placement.'
+  IDS_TXT_SHOWHELPVIEW
+    orig: 'ヘルプとなる図を表示します。'
+    curr: 'Show supporting figures.'
+  IDS_TXT_SHOWPACKAGE
+    orig: 'まとめて表示'
+    curr: 'Grouped display'
+  IDS_TXT_SHOWSECTION
+    orig: '断面別に表示'
+    curr: 'Grouped by cross section'
+  IDS_TXT_SINTEKKIN
+    orig: '芯鉄筋'
+    curr: 'Core rebar'
+  IDS_TXT_SINTEKKINKYORI
+    orig: '躯体面から芯鉄筋までの距離'
+    curr: 'Distance from structural surface to core rebar centroid'
+  IDS_TXT_SINTEKKINXKYORI
+    orig: '躯体面から芯鉄筋X方向までの距離'
+    curr: 'Distance from structural face to core rebar in X'
+  IDS_TXT_SINTEKKINYKYORI
+    orig: '躯体面から芯鉄筋Y方向までの距離'
+    curr: 'Distance from structural face to core rebar in Y'
+  IDS_TXT_SITAN
+    orig: '始端'
+    curr: 'Near end'
+  IDS_TXT_SITASYUKIN
+    orig: '下主筋'
+    curr: 'Bottom main bars'
+  IDS_TXT_SPECIFY
+    orig: '指定する'
+    curr: 'Specify'
+  IDS_TXT_STIRRUPFRAME
+    orig: '肋筋枠'
+    curr: 'Stirrup frame'
+  IDS_TXT_STIRRUPFRAMESHOW
+    orig: '肋筋表示'
+    curr: 'Show stirrup info'
+  IDS_TXT_STIRRUPFRAMESHOWEXPLAIN
+    orig: '肋筋枠の表示方法を指定します。'
+    curr: 'Choose stirrup frame presentation.'
+  IDS_TXT_STOPER
+    orig: '幅止筋'
+    curr: 'Spacer / cross tie'
+  IDS_TXT_SYMBOLFRAMETITLE
+    orig: '符号表示枠タイトル'
+    curr: 'Mark frame title'
+  IDS_TXT_SYUBETU
+    orig: '種別'
+    curr: 'Subtype'
+  IDS_TXT_SYUKIN
+    orig: '主筋'
+    curr: 'Main reinforcement'
+  IDS_TXT_SYUTAN
+    orig: '終端'
+    curr: 'Far end'
+  IDS_TXT_TABLE
+    orig: 'マッピングテーブル'
+    curr: 'Mapping table'
+  IDS_TXT_TABLESELECT
+    orig: 'マッピングテーブル選択'
+    curr: 'Mapping table picker'
+  IDS_TXT_TITLE
+    orig: 'タイトル'
+    curr: 'Title'
+  IDS_TXT_TITLESHOW
+    orig: 'タイトル表示'
+    curr: 'Show title'
+  IDS_TXT_TITLESHOWEXPLAIN
+    orig: 'タイトルの表示方法を指定します。'
+    curr: 'Control how captions/titles render.'
+  IDS_TXT_TOPONLY
+    orig: '最上部の階にのみ表示'
+    curr: 'Show on top level only'
+  IDS_TXT_TYOKKEI
+    orig: '直径'
+    curr: 'Diameter'
+  IDS_TXT_TYPENAME
+    orig: 'タイプ名'
+    curr: 'Type name'
+  IDS_TXT_UESYUKIN
+    orig: '上主筋'
+    curr: 'Top main bars'
+  IDS_TXT_UNITY
+    orig: '左右の合計'
+    curr: 'Total both sides'
+  IDS_TXT_UP
+    orig: '上へ'
+    curr: 'Move up'
+  IDS_TXT_USESHARETABLE
+    orig: '(SS3 Linkと共有のテーブルを使用します)'
+    curr: '(Uses the table shared with SS3 Link.)'
+  IDS_TXT_VIEWSCALE
+    orig: 'リストビュー尺度'
+    curr: 'List view scale'
+  IDS_TXT_VIEWSCALEEXPLAIN
+    orig: '平面図の尺度を指定します。'
+    curr: 'Specify the plan-view scale mapping.'
+  IDS_TXT_WEBREINFORCEMENTFRAME
+    orig: '腹筋表示'
+    curr: 'Show web bars'
+  IDS_TXT_WEBREINFORCEMENTFRAMEEXPLAIN
+    orig: '腹筋枠の表示方法を指定します。'
+    curr: 'Choose web reinforcement frame presentation.'
+  IDS_TXT_WRITEPARAMETER
+    orig: '描画パラメータ'
+    curr: 'Drafting parameters'
+  IDS_TXT_WRITEPARAMETEREXPLAIN
+    orig: '描画に必要なパラメータを設定します。'
+    curr: 'Configure parameters needed for plotted output.'
+  IDS_TXT_XHOUKOU
+    orig: 'X方向'
+    curr: 'X Direction'
+  IDS_TXT_YHOUKOU
+    orig: 'Y方向'
+    curr: 'Y Direction'
+  IDS_TXT_YOSEHIDARI
+    orig: '寄筋左'
+    curr: 'Bundled bars (left)'
+  IDS_TXT_YOSEKIN
+    orig: '寄せ筋'
+    curr: 'Bundled offset bars'
+  IDS_TXT_YOSEMIGI
+    orig: '寄筋右'
+    curr: 'Bundled bars (right)'
+  IDS_TXT_YOSESITA
+    orig: '寄筋下'
+    curr: 'Bundled bars (bottom)'
+  IDS_TXT_YOSEUE
+    orig: '寄筋上'
+    curr: 'Bundled bars (top)'
+
+--- ASCII-only original (often English in JP product; verify case-by-case)

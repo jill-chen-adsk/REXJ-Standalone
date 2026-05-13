@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>PipeSizing</Name>
+    <Assembly>PipeSizing\PipeSizing.dll</Assembly>
+    <AddInId>E8F90123-4567-89AB-CDEF-012345678901</AddInId>
+    <FullClassName>PipeSizing.ExtApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

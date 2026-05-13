@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDI_EXPORT_DATA_EMPTY" xml:space="preserve">
+    <value>No data to export.</value>
+  </data>
+  <data name="IDS_ERROR_CANNOT_EXPORT_EXCEL" xml:space="preserve">
+    <value>Cannot export to Excel.</value>
+  </data>
+  <data name="IDS_ERROR_NO_OPEN_EXCEL" xml:space="preserve">
+    <value>Excel is not running.</value>
+  </data>
+  <data name="IDS_ERROR_SEARCH_NOT_FOUND" xml:space="preserve">
+    <value>Target item not found.</value>
+  </data>
+  <data name="IDS_ERROR_TITLE_COLUMN" xml:space="preserve">
+    <value>Title row is unknown.</value>
+  </data>
+  <data name="IDS_EXPORT_SUCCESS" xml:space="preserve">
+    <value>Excel export completed successfully.</value>
+  </data>
+  <data name="IDS_INFO_CANNOT_REMOVE_EXIST" xml:space="preserve">
+    <value>Cannot delete Excel file.</value>
+  </data>
+  <data name="IDS_INFO_NO_EXIST_ELEMENTS" xml:space="preserve">
+    <value>No elements selected.</value>
+  </data>
+  <data name="IDS_INFO_SELECT_PARAMETER_TO_EXPORT" xml:space="preserve">
+    <value>Please select parameters to export.</value>
+  </data>
+  <data name="IDS_IN_CURRENT_VIEW" xml:space="preserve">
+    <value>Elements in current view</value>
+  </data>
+  <data name="IDS_MAIN_CONTENT" xml:space="preserve">
+    <value>Please select the range of elements to export.</value>
+  </data>
+  <data name="IDS_MAIN_INSTRUCTION" xml:space="preserve">
+    <value>Select Export Range</value>
+  </data>
+  <data name="IDS_SELECTION_ELEMENT" xml:space="preserve">
+    <value>Currently selected elements</value>
+  </data>
+  <data name="IDS_SELECT_ALL" xml:space="preserve">
+    <value>All elements in project</value>
+  </data>
+  <data name="IDS_TITILE_SELECT_MODE" xml:space="preserve">
+    <value>Excel Export</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IDS_TXT_INFORMATION" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="TXT_FILETYPE_CSV" xml:space="preserve">
+    <value>CSV UTF-8 (Comma delimited) | *.csv</value>
+  </data>
+  <data name="TXT_FILETYPE_XLSX" xml:space="preserve">
+    <value>Excel Workbook | *.xlsx</value>
+  </data>
+  <data name="TXT_FILETYPE_XLS" xml:space="preserve">
+    <value>Excel Files | *.xls</value>
+  </data>
+  <data name="IDS_FORM_TITLE" xml:space="preserve">
+    <value>Excel Export</value>
+  </data>
+  <data name="IDS_LBL_CATEGORY" xml:space="preserve">
+    <value>Select Category</value>
+  </data>
+  <data name="IDS_LBL_PARAMETER" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="IDS_LBL_OUTPUT" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="IDS_BTN_SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="IDS_BTN_RESTORE" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="IDS_BTN_LOAD" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="IDS_BTN_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="IDS_BTN_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IDS_SAVE_DIALOG_TITLE" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="IDS_SAVE_SETTINGS_TITLE" xml:space="preserve">
+    <value>Specify Settings File Name</value>
+  </data>
+  <data name="IDS_LOAD_SETTINGS_TITLE" xml:space="preserve">
+    <value>Load Parameter Settings File</value>
+  </data>
+  <data name="IDS_SETTINGS_FILE_FILTER" xml:space="preserve">
+    <value>Parameter Settings File (*.txt)|*.txt</value>
+  </data>
+  <data name="IDS_PSEUDO_TYPE_GUID" xml:space="preserve">
+    <value>TypeGUID</value>
+  </data>
+  <data name="IDS_PSEUDO_COUNT" xml:space="preserve">
+    <value>Count</value>
+  </data>
+</root>

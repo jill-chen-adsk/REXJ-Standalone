@@ -1,0 +1,41 @@
+﻿<Window x:Class="CmdFlexDuctConvert.FormDesignLength"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:CmdFlexDuctConvert"
+    mc:Ignorable="d"
+    Title="Enter Design Length" SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterOwner"
+    ResizeMode="NoResize"
+    Closing="Window_Closing"
+    ShowInTaskbar="False"
+        >
+    <Window.Resources>
+    </Window.Resources>
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Name="lblDesignLength" Grid.Column="0" Grid.Row="0" Margin="8" Content="Design Length (_L):" Target="{Binding ElementName=txtDesignLength}"/>
+        <TextBox Name="txtDesignLength" Grid.Column="1" Grid.Row="0" MinWidth="100" Margin="8"
+            VerticalContentAlignment="Center" HorizontalContentAlignment="Right"
+            MaxLength="8"
+            InputMethod.IsInputMethodEnabled="False"
+            PreviewTextInput="txtBox_PreviewTextInput"
+            Text="{Binding DesignLength, ValidatesOnDataErrors=True}"
+            GotKeyboardFocus="txtBox_GotKeyboardFocus"
+            LostKeyboardFocus="txtBox_LostKeyboardFocus"
+            TabIndex="1">
+            <TextBox.CommandBindings>
+                <CommandBinding Command="ApplicationCommands.Paste" Executed="textBox_PreviewExecuted"/>
+            </TextBox.CommandBindings>
+        </TextBox>
+        <Button IsDefault="False" Name="btnEnd" Click="btnEnd_Click" MinWidth="80" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" TabIndex="2">Close Command</Button>
+    </Grid>
+</Window>

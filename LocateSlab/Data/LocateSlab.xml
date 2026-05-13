@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Values>
+  <Default>
+    <Item>
+      <Name>ToleranceInter</Name>
+      <Value>310.0</Value>
+    </Item>
+  </Default>
+</Values>

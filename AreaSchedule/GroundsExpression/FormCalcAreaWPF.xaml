@@ -1,0 +1,98 @@
+<Window x:Class="ADSK.JExtRAC.AreaSchedule.GroundsExpression.FormCalcAreaWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Calculated area" Height="420" Width="320" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox x:Name="gpbLength" Grid.Row="0" Header="Length rounding" Margin="0,0,0,10" Padding="0,0,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label x:Name="lblUnit" Content="Units:" VerticalAlignment="Center"/>
+                    <RadioButton x:Name="rdbLengthMM" Content="mm" Margin="5,0" VerticalAlignment="Center"/>
+                    <RadioButton x:Name="rdbLengthM" Content="m" Margin="5,0" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" VerticalAlignment="Top">
+                        <Label x:Name="lblLengthDecimal" Content="Decimals" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtLengthDecimal" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+                        <Label x:Name="lblLengthOrder" Content="digit(s)" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <GroupBox Grid.Row="2" Grid.Column="0" Margin="0,0,0,0" Width="120">
+                        <StackPanel>
+                            <RadioButton x:Name="rdbLengthCut" Content="Cutoff" Margin="0,5"/>
+                            <RadioButton x:Name="rdbLengthClose" Content="Round Up" Margin="0,5"/>
+                            <RadioButton x:Name="rdbLengthRounding" Content="Round Off" Margin="0,5"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+
+                <Button x:Name="btnLengthDefault" Grid.Row="1" Grid.Column="0" Content="Default(_B)" 
+                        VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10,5" Width="80">
+                    <Button.InputBindings>
+                        <KeyBinding Key="B" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
+                    </Button.InputBindings>
+                </Button>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="gpbArea" Grid.Row="1" Header="Area rounding" Margin="0,0,0,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" >
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10"  VerticalAlignment="Top">
+                        <Label x:Name="lblAreaDecimal" Content="Decimals" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtAreaDecimal" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
+                        <Label x:Name="lblAreaOrder" Content="digit(s)" VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <GroupBox Margin="0,0,0,0" Width="120">
+                        <StackPanel>
+                            <RadioButton x:Name="rdbAreaCut" Content="Cutoff" Margin="0,5"/>
+                            <RadioButton x:Name="rdbAreaClose" Content="Round Up" Margin="0,5"/>
+                            <RadioButton x:Name="rdbAreaRounding" Content="Round Off" Margin="0,5"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                </StackPanel>
+
+                <Button x:Name="btnAreaDefault" Grid.Row="1" Grid.Column="0" Content="Default(_F)" 
+                        VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10,5" Width="80">
+                    <Button.InputBindings>
+                        <KeyBinding Key="F" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
+                    </Button.InputBindings>
+                </Button>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="gpbPi" Grid.Row="2" Header="Pi (π)" Margin="0,0,0,10">
+            <ComboBox x:Name="cboPi" Width="100" HorizontalAlignment="Left" Margin="10,5"/>
+        </GroupBox>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0">
+            <Button x:Name="btnOK" Content="OK" Width="96" Margin="0,0,10,0" Padding="10,5"/>
+            <Button x:Name="btnCancel" Content="Cancel(_C)" Width="96" Padding="10,5">
+                <Button.InputBindings>
+                    <KeyBinding Key="C" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
+                </Button.InputBindings>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window> 

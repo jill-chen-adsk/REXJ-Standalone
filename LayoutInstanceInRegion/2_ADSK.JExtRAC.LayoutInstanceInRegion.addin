@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Instance Array Layout</Name>
+    <Assembly>ADSK.JExtRAC.LayoutInstanceInRegion.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.LayoutInstanceInRegion.App</FullClassName>
+    <ClientId>D3E4F5A6-B7C8-9012-DE34-FA5678901234</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

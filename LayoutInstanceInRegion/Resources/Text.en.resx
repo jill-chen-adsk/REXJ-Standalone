@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LabelNotSelected" xml:space="preserve">
+    <value>Not Selected</value>
+  </data>
+  <data name="LabelNotSpecified" xml:space="preserve">
+    <value>Not Specified</value>
+  </data>
+  <data name="LabelSelected" xml:space="preserve">
+    <value>Selected</value>
+  </data>
+  <data name="LabelSpecified" xml:space="preserve">
+    <value>Specified</value>
+  </data>
+  <data name="PatternEqualSpacing" xml:space="preserve">
+    <value>Equal Spacing</value>
+  </data>
+  <data name="PatternRatio121" xml:space="preserve">
+    <value>Ratio (1:2:1)</value>
+  </data>
+  <data name="RadioCountBased" xml:space="preserve">
+    <value>Count-Based</value>
+  </data>
+  <data name="RadioIntervalBased" xml:space="preserve">
+    <value>Interval-Based</value>
+  </data>
+  <data name="TransactionArrayLayout" xml:space="preserve">
+    <value>Array Layout</value>
+  </data>
+  <data name="TransactionDeleteLine" xml:space="preserve">
+    <value>Delete Line</value>
+  </data>
+  <data name="TransactionRotateFamily" xml:space="preserve">
+    <value>Rotate Family</value>
+  </data>
+  <data name="TransactionOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="DialogWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="MsgViewTypeError" xml:space="preserve">
+    <value>Please run this command in a Floor Plan, Structural Plan,
+or Ceiling Plan view.</value>
+  </data>
+  <data name="MsgPointsTooClose" xml:space="preserve">
+    <value>The two points are too close to determine the placement axis angle.</value>
+  </data>
+  <data name="MsgPickStartPoint" xml:space="preserve">
+    <value>Specify the start point</value>
+  </data>
+  <data name="MsgPickEndPoint" xml:space="preserve">
+    <value>Specify the end point</value>
+  </data>
+  <data name="MsgInvalidInput" xml:space="preserve">
+    <value>Invalid input format.</value>
+  </data>
+  <data name="MsgYIntervalMinError" xml:space="preserve">
+    <value>For Y-direction interval placement, specify a minimum value less than half the depth of the specified region.</value>
+  </data>
+  <data name="MsgXIntervalMinError" xml:space="preserve">
+    <value>For X-direction interval placement, specify a minimum value less than half the width of the specified region.</value>
+  </data>
+  <data name="MsgYDirectionError" xml:space="preserve">
+    <value>Cannot place in the Y direction at an interval that meets the specified conditions.</value>
+  </data>
+  <data name="MsgXDirectionError" xml:space="preserve">
+    <value>Cannot place in the X direction at an interval that meets the specified conditions.</value>
+  </data>
+  <data name="GroupPlacementPosition" xml:space="preserve">
+    <value>Placement Position</value>
+  </data>
+  <data name="GroupPlacementSettings" xml:space="preserve">
+    <value>Placement Settings</value>
+  </data>
+  <data name="GroupPreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="GroupPlacementFamily" xml:space="preserve">
+    <value>Placement Family</value>
+  </data>
+  <data name="LabelMargin" xml:space="preserve">
+    <value>Margin</value>
+  </data>
+  <data name="LabelBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="LabelRight" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="LabelFront" xml:space="preserve">
+    <value>Front</value>
+  </data>
+  <data name="LabelLeft" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="LabelAxisAngle" xml:space="preserve">
+    <value>Axis Angle</value>
+  </data>
+  <data name="LabelCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="LabelFamily" xml:space="preserve">
+    <value>Family</value>
+  </data>
+  <data name="LabelType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="LabelFamilyAngle" xml:space="preserve">
+    <value>Family Angle</value>
+  </data>
+  <data name="LabelOffsetFromLevel" xml:space="preserve">
+    <value>Offset from Level</value>
+  </data>
+  <data name="LabelPlacementPattern" xml:space="preserve">
+    <value>Placement Pattern</value>
+  </data>
+  <data name="LabelMethod" xml:space="preserve">
+    <value>Method</value>
+  </data>
+  <data name="LabelUnit" xml:space="preserve">
+    <value>pcs</value>
+  </data>
+  <data name="ButtonTwoPointPick" xml:space="preserve">
+    <value>2-Point Pick</value>
+  </data>
+  <data name="ButtonPickRegion" xml:space="preserve">
+    <value>Pick Region</value>
+  </data>
+  <data name="ButtonPickObject" xml:space="preserve">
+    <value>Room/Space</value>
+  </data>
+  <data name="RadioRegionSelection" xml:space="preserve">
+    <value>Region Selection</value>
+  </data>
+  <data name="RadioSelectObject" xml:space="preserve">
+    <value>Select Object</value>
+  </data>
+  <data name="CheckDeleteOutside" xml:space="preserve">
+    <value>Do not place instances outside the region</value>
+  </data>
+  <data name="ButtonPlace" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="ButtonClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ButtonPlaceAndClose" xml:space="preserve">
+    <value>Place and Close</value>
+  </data>
+  <data name="FormTitle" xml:space="preserve">
+    <value>Instance Array Layout</value>
+  </data>
+  <data name="FilterRoom" xml:space="preserve">
+    <value>Rooms</value>
+  </data>
+  <data name="FilterSpace" xml:space="preserve">
+    <value>Spaces</value>
+  </data>
+  <data name="ParamBaseOffset" xml:space="preserve">
+    <value>Base Offset</value>
+  </data>
+  <data name="ParamTopOffset" xml:space="preserve">
+    <value>Top Offset</value>
+  </data>
+</root>

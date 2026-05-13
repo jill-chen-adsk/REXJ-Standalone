@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>ADSK.JExtRAC.AreaSchedule</Name>
+    <Assembly>ADSK.JExtRAC.AreaSchedule.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.AreaSchedule.App</FullClassName>
+    <ClientId>A1B2C3D4-E5F6-4789-A012-3456789ABCDE</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

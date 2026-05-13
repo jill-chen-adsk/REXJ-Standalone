@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>マッピングテーブル編集</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>マッピングテーブル編集</H2>
+
+        <table width="600" align="left" cellspacing="0">
+            <tr>
+                <td>
+                    <p>マッピングテーブルファイル(ConvRFA{Revitバージョン}}.tbl)および共有パラメータ<br>ファイル(REXStructuralLink.txt)を編集する。</p>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <p><img src="Image/023_01.png" alt="" width="600"></p>
+                    <!--元の画像サイズに0.5を掛ける　1200×0.5=600 -->
+                </td>
+            </tr>
+
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="1">
+                        <strong>■&nbsp;編集項目</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" colspan="2">編集セル</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td nowrap>セル背景色</td>
+                                        <td>背景色が『白』のセルを編集する</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" colspan="2">変換ファミリ&nbsp;－&nbsp;使用するファミリ名</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">
+                                            変換に使用するファミリを部材ごとに設定する<br>
+                                            (変換に使用するファミリは、予めプロジェクトにロードする)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" colspan="2">各部材&nbsp;－&nbsp;パラメータ名</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">
+                                            変換に使用するファミリが持つパラメータを設定する<br>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="1">
+                        <strong>■&nbsp;各ボタン操作</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40"><p><img src="Image/023_02.png" alt=""></p></td>
+                                        <td bgcolor="#ffffff">
+                                            入力された変換マッピングテーブルを ConvRFA{Revitバージョン}.tbl および REXStructuralLink.txt(共有パラメータファイル)として登録する<br>
+                                            (登録完了または編集作業を中断する場合は、Excelを手動で終了する)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40"><img src="Image/023_09.png" alt=""></td>
+                                        <td bgcolor="#ffffff">
+                                            既に編集済みのマッピングテーブル&nbsp;ConvRFA{Revitバージョン}_*.xls&nbsp;がある場合にボタンを表示し、&nbsp;ConvRFA{Revitバージョン}_*.xls&nbsp;のファミリ/パラメータ設定を本設定に移行する。
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40"><img src="Image/023_03.png" alt=""></td>
+                                        <td bgcolor="#ffffff">
+                                            マッピングテーブルについて、以下の説明を表示する。<br>
+                                            <img src="Image/023_04.png" alt="" style="WIDTH: 350px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40"><img src="Image/023_05.png" alt=""></td>
+                                        <td bgcolor="#ffffff">
+                                            ファミリ種別背景色について、以下の説明を表示する。<br>
+                                            <img src="Image/023_06.png" alt="" style="WIDTH: 350px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40"><img src="Image/023_07.png" alt=""></td>
+                                        <td bgcolor="#ffffff">
+                                            パラメータについて、以下の説明を表示する。<br>
+                                            <img src="Image/023_08.png" alt="" style="WIDTH: 350px">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40">ファミリクリック時の動作</td>
+                                        <td bgcolor="#ffffff">
+                                            該当するパラメータ設定のヘッダーが一番上に見えるよう自動スクロールする。
+                                        </td>
+                                    </tr>
+                                </table>
+                        <tr height="15">
+                            <td><p></p></td>
+                        </tr>
+                    </TABLE>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="1">
+                        <strong>☆&nbsp;注意</strong><br>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ffffff">
+                                            マッピングテーブル編集はエクセルファイルになっています。<br>
+                                            設定を複数保持する場合はファイルをコピーするのではなくシートを複製してご利用ください。
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ffffff">
+                                            エクセルファイル名"ConvRFA{Revitバージョン}_*.xls"の「_」(アンダーバー)以降の数字はバージョンを表します。 <br>
+                                            数字以外の文字がある場合はコマンドで認識できなくなりますのでご注意ください。
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

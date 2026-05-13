@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Auto Create Dimension</Name>
+    <Assembly>ADSK.JExtRAC.AutoCreateDimension.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.AutoCreateDimension.App</FullClassName>
+    <ClientId>A3C4D5E6-F7A8-4901-B2C3-D4E5F6A7B8C9</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

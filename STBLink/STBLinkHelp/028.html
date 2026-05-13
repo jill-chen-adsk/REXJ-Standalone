@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>壁・壁開口生成</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>壁・壁開口生成</H2>
+        <table width="600" align="left">
+            <tr>
+                <td>
+                    <p>ST-Bridgeから読み取った情報から壁・壁開口の変換を行う。</p>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;壁断面の生成</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="6">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">RC壁断面の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>RC壁断面（StbSecWall_RC）内のデータを標準壁として変換する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>断面名称（name）をタイプ名にする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>構造壁ファミリに該当するタイプ名がない場合は既存のタイプを複製し新たなタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>複製したタイプに各タイプパラメータを設定する。<br>対応する既存のタイプパラメータが無い属性はタイプパラメータを新規に追加し設定する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>コンクリート強度（strength_concrete）が空欄のときは共通情報（StbCommon）の建物全体のコンクリート強度（concrete_strength）を設定する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">6</td>
+                                        <td>壁開口配筋は壁断面に共通の補強筋として変換する。開口ごとに配筋が異なる場合は、RC開口断面（StbSecOpen_RC）の壁開口配筋（StbSecOpen_Wall）を用いて変換する。</td>
+                                    </tr>
+                                    <!-- RCパラペット断面の生成 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">RCパラペット断面の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>RCパラペット断面（StbSecParapetl_RC）内のデータを標準壁として変換する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>断面名称（name）をタイプ名にする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>構造壁ファミリに該当するタイプ名がない場合は既存のタイプを複製し新たなタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>複製したタイプに各タイプパラメータを設定する。<br>対応する既存のタイプパラメータが無い属性はタイプパラメータを新規に追加し設定する。</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <!-- 壁の配置 -->
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;壁の配置</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="6">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">壁の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>断面ID（id_section）と合致する断面IDの断面タイプを取得する。タイプが見つからない場合はタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>節点IDリスト（StbNodeid_List）から配置座標を取得し、座標から下部の拘束レベル、上部の拘束レベルを取得する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>取得した断面タイプ、レベル、節点座標位置、オフセット（offset）、構造スリット（上・下・右・左）から壁を生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>斜壁は変換対象外とする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>壁生成後、インスタンスパラメータに各属性を設定する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">6</td>
+                                        <td>パラメータ 構造用途 はST-Bridgeの値がWALL_NORMALの場合は「構造結合」、WALL_SHEARの場合は「耐力」を設定する。</td>
+                                    </tr>
+                                    <!-- 壁開口の配置 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">壁開口の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>壁の配置で生成した構造壁ファミリを抽出する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>開口（StbOpen）の開口位置（X）（position_X）、開口位置（Y）（position_Y）、開口寸法（X）（length_X）、開口寸法（Y）（length_Y）から開口の位置、サイズを得る。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>開口の回転は変換対象外とする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>1で抽出した構造壁に壁開口を生成する。<br>
+                                            <img src="Image/028_01.png" alt=""></td>
+                                    </tr>
+                                    <!-- パラペットの配置 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">パラペットの生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>パラペットは壁として生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">2</td>
+                                        <td>断面ID（id_section）と合致する断面IDの断面タイプを取得する。タイプが見つからない場合はタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">3</td>
+                                        <td>始端節点ID（idNode_start）、終点節点ID（idNode_end）から配置座標を取得し、座標から下部の拘束レベル、上部の拘束レベルを取得する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">4</td>
+                                        <td>取得した断面タイプ、レベル、オフセット、節点座標位置、高さから壁を生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">5</td>
+                                        <td>斜壁は変換対象外とする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">6</td>
+                                        <td>パラペット生成後、インスタンスパラメータに各属性を設定する。</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

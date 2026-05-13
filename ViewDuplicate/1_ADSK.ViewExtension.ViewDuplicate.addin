@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>View Duplicate</Name>
+    <Assembly>ADSK.ViewExtension.ViewDuplicate.dll</Assembly>
+    <FullClassName>ADSK.ViewExtension.ViewDuplicate.App</FullClassName>
+    <ClientId>E7B2C4D6-8A91-4F03-B2C5-D8E9F0A1B2C3</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

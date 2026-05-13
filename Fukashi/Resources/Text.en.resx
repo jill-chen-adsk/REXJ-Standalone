@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_FACE_ASSEMBLYNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.dll</value>
+  </data>
+  <data name="IDS_BTN_FACE_CLASSNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.Face.CmdFace</value>
+  </data>
+  <data name="IDS_BTN_FACE_NAME" xml:space="preserve">
+    <value>Face Furring</value>
+  </data>
+  <data name="IDS_BTN_FACE_TEXT" xml:space="preserve">
+    <value>Face Furring</value>
+  </data>
+  <data name="IDS_BTN_FACE_TOOLTIP_L" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_BTN_FACE_TOOLTIP_S" xml:space="preserve">
+    <value>Creates furring on the selected face</value>
+  </data>
+  <data name="IDS_BTN_MATERIAL_NAME" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="IDS_BTN_MATERIAL_TEXT" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="IDS_BTN_MATERIAL_TOOLTIP_S" xml:space="preserve">
+    <value>Specifies the material for furring elements</value>
+  </data>
+  <data name="IDS_BTN_OFFSET_NAME" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="IDS_BTN_OFFSET_TEXT" xml:space="preserve">
+    <value>Region Furring | Upper level offset</value>
+  </data>
+  <data name="IDS_BTN_OFFSET_TOOLTIP_S" xml:space="preserve">
+    <value>Specifies the offset value for region furring</value>
+  </data>
+  <data name="IDS_BTN_OPENING_ASSEMBLYNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.dll</value>
+  </data>
+  <data name="IDS_BTN_OPENING_CLASSNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.Opening.CmdOpening</value>
+  </data>
+  <data name="IDS_BTN_OPENING_NAME" xml:space="preserve">
+    <value>Region Furring</value>
+  </data>
+  <data name="IDS_BTN_OPENING_TEXT" xml:space="preserve">
+    <value>Region Furring</value>
+  </data>
+  <data name="IDS_BTN_OPENING_TOOLTIP_L" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_BTN_OPENING_TOOLTIP_S" xml:space="preserve">
+    <value>Creates furring in the closed region containing the selected point</value>
+  </data>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Fukashi</value>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_BTN_UPPERLEVEL_NAME" xml:space="preserve">
+    <value>Upper Level</value>
+  </data>
+  <data name="IDS_BTN_UPPERLEVEL_TEXT" xml:space="preserve">
+    <value>Region Furring | Upper Level</value>
+  </data>
+  <data name="IDS_BTN_UPPERLEVEL_TOOLTIP_S" xml:space="preserve">
+    <value>Specifies the upper level for region furring</value>
+  </data>
+  <data name="IDS_CMBBOX_MATERIAL_NAME" xml:space="preserve">
+    <value>Material_ComboBox</value>
+  </data>
+  <data name="IDS_CMBBOX_MATERIAL_TOOLTIP_S" xml:space="preserve">
+    <value>Specifies the material for furring elements</value>
+  </data>
+  <data name="IDS_CMBBOX_UPPERLEVEL_NAME" xml:space="preserve">
+    <value>Upper_Level_ComboBox</value>
+  </data>
+  <data name="IDS_CMBBOX_UPPERLEVEL_TOOLTIP_S" xml:space="preserve">
+    <value>Specifies the upper level for region furring</value>
+  </data>
+  <data name="IDS_RBN_RIBBON_CLASSNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.ExtApp</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_MATERIAL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Material_ComboBox</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_UPPERLEVEL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Upper_Level_ComboBox</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_TXTBOX_OFFSET" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Offset_TextBox</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF" xml:space="preserve">
+    <value>ADSK_Fukashi_Material</value>
+  </data>
+  <data name="IDS_TXTBOX_OFFSET_NAME" xml:space="preserve">
+    <value>Offset_TextBox</value>
+  </data>
+  <data name="IDS_TXTBOX_OFFSET_TOOLTIP_L" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_TXTBOX_OFFSET_TOOLTIP_S" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_TXT_FUKASHIHELPHTM" xml:space="preserve">
+    <value>FukashiExtension_Manual.pdf</value>
+  </data>
+  <data name="IDS_TXT_SETLEVEL" xml:space="preserve">
+    <value>Fukashi – Level settings</value>
+  </data>
+  <data name="IDS_TXT_SETMATERIAL" xml:space="preserve">
+    <value>Fukashi – Material settings</value>
+  </data>
+  <data name="IDS_TXT_SETMATERIAL1" xml:space="preserve">
+    <value>Remove material</value>
+  </data>
+  <data name="IDS_TXT_SETMATERIAL2" xml:space="preserve">
+    <value>Add material</value>
+  </data>
+</root>

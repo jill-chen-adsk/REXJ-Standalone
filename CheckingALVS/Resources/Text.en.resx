@@ -1,0 +1,1159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Japan Standards Extension</value>
+    <comment>ボタン パネル名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP Architecture</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_COLNAME_A" xml:space="preserve">
+    <value>a</value>
+    <comment>列名 α</comment>
+  </data>
+  <data name="IDS_COLNAME_ACORR" xml:space="preserve">
+    <value>ACorr</value>
+    <comment>列名 A(補正値)</comment>
+  </data>
+  <data name="IDS_COLNAME_AFFILIATIONROOM" xml:space="preserve">
+    <value>AffiliationRoom</value>
+    <comment>列名 所属部屋</comment>
+  </data>
+  <data name="IDS_COLNAME_AREA" xml:space="preserve">
+    <value>Area</value>
+    <comment>列名 面積</comment>
+  </data>
+  <data name="IDS_COLNAME_ATEMP" xml:space="preserve">
+    <value>ATemp</value>
+    <comment>列名 A(仮)</comment>
+  </data>
+  <data name="IDS_COLNAME_AVERAGECEILINGHEIGHT" xml:space="preserve">
+    <value>AverageCeilingHeight</value>
+    <comment>列名 平均天井高</comment>
+  </data>
+  <data name="IDS_COLNAME_B" xml:space="preserve">
+    <value>b</value>
+    <comment>列名 β</comment>
+  </data>
+  <data name="IDS_COLNAME_CALCGROUPNAME" xml:space="preserve">
+    <value>CalcGroupName</value>
+    <comment>列名 計算グループ名</comment>
+  </data>
+  <data name="IDS_COLNAME_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+    <comment>列名 カテゴリ</comment>
+  </data>
+  <data name="IDS_COLNAME_CEILINGHEIGHT" xml:space="preserve">
+    <value>CeilingHeight</value>
+    <comment>列名 天井高さ</comment>
+  </data>
+  <data name="IDS_COLNAME_D" xml:space="preserve">
+    <value>D</value>
+    <comment>列名 D</comment>
+  </data>
+  <data name="IDS_COLNAME_DISTHORIZONTAL_CORR" xml:space="preserve">
+    <value>DistHorizontalCorr</value>
+    <comment>列名 水平補正距離</comment>
+  </data>
+  <data name="IDS_COLNAME_DISTHORIZONTAL_MEAS" xml:space="preserve">
+    <value>DistHorizontalMeas</value>
+    <comment>列名 水平測定距離</comment>
+  </data>
+  <data name="IDS_COLNAME_DISTVERTICAL_CORR" xml:space="preserve">
+    <value>DistVerticalCorr</value>
+    <comment>列名 垂直補正距離</comment>
+  </data>
+  <data name="IDS_COLNAME_DISTVERTICAL_MEAS" xml:space="preserve">
+    <value>DistVerticalMeas</value>
+    <comment>列名 垂直測定距離</comment>
+  </data>
+  <data name="IDS_COLNAME_DSH" xml:space="preserve">
+    <value>DsH</value>
+    <comment>列名 d/h</comment>
+  </data>
+  <data name="IDS_COLNAME_GROUPNAME" xml:space="preserve">
+    <value>GroupName</value>
+    <comment>列名 グループ名</comment>
+  </data>
+  <data name="IDS_COLNAME_HEADHEIGHT" xml:space="preserve">
+    <value>HeadHeight</value>
+    <comment>列名 天端高さ</comment>
+  </data>
+  <data name="IDS_COLNAME_HEIGHT" xml:space="preserve">
+    <value>Height</value>
+    <comment>列名 高さ</comment>
+  </data>
+  <data name="IDS_COLNAME_HORIZONTALDIST" xml:space="preserve">
+    <value>HorizontalDist</value>
+    <comment>列名 水平距離</comment>
+  </data>
+  <data name="IDS_COLNAME_ID" xml:space="preserve">
+    <value>ID</value>
+    <comment>列名 ID</comment>
+  </data>
+  <data name="IDS_COLNAME_JUDGMENT" xml:space="preserve">
+    <value>Judgment</value>
+    <comment>列名 判定</comment>
+  </data>
+  <data name="IDS_COLNAME_LEVELNAME" xml:space="preserve">
+    <value>LevelName</value>
+    <comment>列名 レベル名</comment>
+  </data>
+  <data name="IDS_COLNAME_NECESSARYAREA" xml:space="preserve">
+    <value>NecessaryArea</value>
+    <comment>列名 必要面積</comment>
+  </data>
+  <data name="IDS_COLNAME_NECESSARYCOEFFICIENT" xml:space="preserve">
+    <value>NecessaryCoefficient</value>
+    <comment>列名 必要係数</comment>
+  </data>
+  <data name="IDS_COLNAME_OPENCOEFFICIENT" xml:space="preserve">
+    <value>OpenCoefficient</value>
+    <comment>列名 開口係数</comment>
+  </data>
+  <data name="IDS_COLNAME_ROADSIDE" xml:space="preserve">
+    <value>RoadSide</value>
+    <comment>列名 道路</comment>
+  </data>
+  <data name="IDS_COLNAME_ROOMKIND" xml:space="preserve">
+    <value>RoomKind</value>
+    <comment>列名 部屋種類</comment>
+  </data>
+  <data name="IDS_COLNAME_ROOMNAME" xml:space="preserve">
+    <value>RoomName</value>
+    <comment>列名 部屋名</comment>
+  </data>
+  <data name="IDS_COLNAME_ROOMNO" xml:space="preserve">
+    <value>RoomNo</value>
+    <comment>列名 部屋番号</comment>
+  </data>
+  <data name="IDS_COLNAME_SIGN" xml:space="preserve">
+    <value>Sign</value>
+    <comment>列名 符号</comment>
+  </data>
+  <data name="IDS_COLNAME_SMOKEWALLLENGTH" xml:space="preserve">
+    <value>SmokeWallLength</value>
+    <comment>列名 防煙壁長さ</comment>
+  </data>
+  <data name="IDS_COLNAME_SMOKEWINHEIGHT" xml:space="preserve">
+    <value>SmokeWinHeight</value>
+    <comment>列名 排煙窓高さ</comment>
+  </data>
+  <data name="IDS_COLNAME_SMOKEWINWIDTH" xml:space="preserve">
+    <value>SmokeWinWidth</value>
+    <comment>列名 排煙窓幅</comment>
+  </data>
+  <data name="IDS_COLNAME_TOTALUSABLEAREA" xml:space="preserve">
+    <value>TotalUsableArea</value>
+    <comment>列名 合計有効面積</comment>
+  </data>
+  <data name="IDS_COLNAME_TYPEID" xml:space="preserve">
+    <value>TypeID</value>
+    <comment>列名 TypeID</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEAREA" xml:space="preserve">
+    <value>UsableArea</value>
+    <comment>列名 有効面積</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEHEIGHT" xml:space="preserve">
+    <value>UsableHeight</value>
+    <comment>列名 有効高さ</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEHEIGHTCA" xml:space="preserve">
+    <value>UsableHeightCA</value>
+    <comment>列名 変更前有効高さ</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEHEIGHTCB" xml:space="preserve">
+    <value>UsableHeightCB</value>
+    <comment>列名 変更前有効高さ</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEHEIGHTSMOKE" xml:space="preserve">
+    <value>UsableHeightSmoke</value>
+    <comment>列名 排煙有効高さ</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEOPENAREA" xml:space="preserve">
+    <value>UsableOpenArea</value>
+    <comment>列名 有効開口面積</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEWIDTH" xml:space="preserve">
+    <value>UsableWidth</value>
+    <comment>列名 有効幅</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEWIDTHCA" xml:space="preserve">
+    <value>UsableWidthCA</value>
+    <comment>列名 変更後有効幅</comment>
+  </data>
+  <data name="IDS_COLNAME_USABLEWIDTHCB" xml:space="preserve">
+    <value>UsableWidthCB</value>
+    <comment>列名 変更前有効幅</comment>
+  </data>
+  <data name="IDS_COLNAME_VERANDA" xml:space="preserve">
+    <value>Veranda</value>
+    <comment>列名 縁側</comment>
+  </data>
+  <data name="IDS_COLNAME_VERTICALDIST" xml:space="preserve">
+    <value>VerticalDist</value>
+    <comment>列名 垂直距離</comment>
+  </data>
+  <data name="IDS_COLNAME_WIDTH" xml:space="preserve">
+    <value>Width</value>
+    <comment>列名 幅</comment>
+  </data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>The command failed.</value>
+    <comment>エラー コマンドが失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_EXCELUPDATE" xml:space="preserve">
+    <value>Overwrite the existing Excel file?</value>
+    <comment>エラー 既存のエクセルに上書き　確認</comment>
+  </data>
+  <data name="IDS_ERR_GETCOEFF_ROOMKIND" xml:space="preserve">
+    <value>Failed to retrieve room type coefficients.</value>
+    <comment>エラー 部屋種類係数取得に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_GETCOEFF_USEDISTRICT" xml:space="preserve">
+    <value>Failed to retrieve use district coefficients.</value>
+    <comment>エラー 用途地域係数取得に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_INSTALLEXCEL" xml:space="preserve">
+    <value>Please install Microsoft Excel.</value>
+    <comment>エラー エクセルをインストールしてください</comment>
+  </data>
+  <data name="IDS_ERR_PARAMCOMMAND" xml:space="preserve">
+    <value>Failed to define command parameters.</value>
+    <comment>エラー コマンドパラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Failed to define parameters.</value>
+    <comment>エラー パラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_PARAMDEFLIGHTING" xml:space="preserve">
+    <value>Failed to define daylighting parameters.</value>
+    <comment>エラー 採光パラメータの定義に失敗しました</comment>
+  </data>
+  <data name="IDS_ERR_ROOMNOLEGALAREA" xml:space="preserve">
+    <value>Legal area is not set for some or all rooms. Use the area value instead?</value>
+    <comment>エラー 部屋の法定面積未設定　確認</comment>
+  </data>
+  <data name="IDS_ERR_SELPARTS" xml:space="preserve">
+    <value>Select openings before running this command.</value>
+    <comment>エラー 建具を選択してから起動してください</comment>
+  </data>
+  <data name="IDS_ERR_SELROOM" xml:space="preserve">
+    <value>Select a room before running this command.</value>
+    <comment>エラー 部屋を選択してから起動してください</comment>
+  </data>
+  <data name="IDS_ERR_VALNULL" xml:space="preserve">
+    <value>The value is blank.</value>
+    <comment>エラー 値が空白です</comment>
+  </data>
+  <data name="IDS_ERR_VALNUMBER" xml:space="preserve">
+    <value>The value is not an integer.</value>
+    <comment>エラー　値が整数ではありません</comment>
+  </data>
+  <data name="IDS_ERR_VALNUMERIC" xml:space="preserve">
+    <value>The value is not numeric.</value>
+    <comment>エラー 値が数値ではありません</comment>
+  </data>
+  <data name="IDS_ERR_VALRANGE" xml:space="preserve">
+    <value>The value is out of range.</value>
+    <comment>エラー　値が範囲外です</comment>
+  </data>
+  <data name="IDS_ERR_VALSMOKEWALLLENGTH" xml:space="preserve">
+    <value>Smoke barrier length (set to 0.5 m or more)</value>
+    <comment>エラー 防煙壁長さ</comment>
+  </data>
+  <data name="IDS_FILE_COEFFICIENT" xml:space="preserve">
+    <value>Coefficient.xml</value>
+    <comment>ファイル 係数</comment>
+  </data>
+  <data name="IDS_PRT_SELECTWINDOOR" xml:space="preserve">
+    <value>Select Openings</value>
+    <comment>プロンプト 建具を選択</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD" xml:space="preserve">
+    <value>RexJpn-CheckingALVS</value>
+    <comment>共有パラメータ 定義名 コマンド</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_CEILINGHEIGHT" xml:space="preserve">
+    <value>Ceiling Height</value>
+    <comment>共有パラメータ 定義名 天井高さ</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_HEADHEIGHT" xml:space="preserve">
+    <value>Head Height</value>
+    <comment>共有パラメータ 定義名 天端高さ</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_HORIZONTALCORRDIST" xml:space="preserve">
+    <value>Horizontal Corrected Distance</value>
+    <comment>共有パラメータ 定義名 水平補正距離</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_HORIZONTALDIST" xml:space="preserve">
+    <value>Horizontal Distance</value>
+    <comment>共有パラメータ 定義名 水平距離</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_HORIZONTALMEASDIST" xml:space="preserve">
+    <value>Horizontal Measured Distance</value>
+    <comment>共有パラメータ 定義名 水平測定距離</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_MARK" xml:space="preserve">
+    <value>Opening Mark</value>
+    <comment>共有パラメータ 定義名 建具記号</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_NUMBER" xml:space="preserve">
+    <value>Opening Number</value>
+    <comment>共有パラメータ 定義名 建具番号</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_OPENCOEFF" xml:space="preserve">
+    <value>Opening Coefficient</value>
+    <comment>共有パラメータ 定義名 開口係数</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_ROADSIDE" xml:space="preserve">
+    <value>Road Side</value>
+    <comment>共有パラメータ 定義名 道路面</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_SMOKEWALLLENGTH" xml:space="preserve">
+    <value>Smoke Barrier Length</value>
+    <comment>共有パラメータ 定義名 防煙壁長さ</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_SMOKEWINHEIGHT" xml:space="preserve">
+    <value>Smoke Window Height</value>
+    <comment>共有パラメータ 定義名 排煙窓高さ</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_SMOKEWINWIDTH" xml:space="preserve">
+    <value>Smoke Window Width</value>
+    <comment>共有パラメータ 定義名 排煙窓幅</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_USABLEHEIGHTSMOKE" xml:space="preserve">
+    <value>Smoke Effective Height</value>
+    <comment>共有パラメータ 定義名 排煙有効高さ</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_VERANDA" xml:space="preserve">
+    <value>Veranda</value>
+    <comment>共有パラメータ 定義名 縁側</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_VERTICALCORRDIST" xml:space="preserve">
+    <value>Vertical Corrected Distance</value>
+    <comment>共有パラメータ 定義名 垂直補正距離</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_VERTICALDIST" xml:space="preserve">
+    <value>Vertical Distance</value>
+    <comment>共有パラメータ 定義名 垂直距離</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_VERTICALMEASDIST" xml:space="preserve">
+    <value>Vertical Measured Distance</value>
+    <comment>共有パラメータ 定義名 垂直測定距離</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_ROOM_CALCGROUP" xml:space="preserve">
+    <value>Room Calc Group</value>
+    <comment>共有パラメータ 定義名 部屋計算グループ</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_ROOM_GROUP" xml:space="preserve">
+    <value>Room Group</value>
+    <comment>共有パラメータ 定義名 部屋グループ</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_ROOM_KIND" xml:space="preserve">
+    <value>Room Type</value>
+    <comment>共有パラメータ 定義名 部屋種類</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_ROOM_LEGALAREA" xml:space="preserve">
+    <value>Legal Area</value>
+    <comment>共有パラメータ 定義名 法定面積</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF_ROOM_OUTDOORS" xml:space="preserve">
+    <value>Outdoors</value>
+    <comment>共有パラメータ 定義名 屋外</comment>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+    <comment>共有パラメータ ファイル名</comment>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+    <comment>共有パラメータ グループ名</comment>
+  </data>
+  <data name="IDS_TXT_1SX" xml:space="preserve">
+    <value>1/x</value>
+    <comment>文字 1/x</comment>
+  </data>
+  <data name="IDS_TXT_ADD" xml:space="preserve">
+    <value>Add</value>
+    <comment>文字 追加</comment>
+  </data>
+  <data name="IDS_TXT_ALPHA" xml:space="preserve">
+    <value>α</value>
+    <comment>文字 α</comment>
+  </data>
+  <data name="IDS_TXT_AREA" xml:space="preserve">
+    <value>Area</value>
+    <comment>文字 面積</comment>
+  </data>
+  <data name="IDS_TXT_AVERAGECEILINGHEIGHT" xml:space="preserve">
+    <value>Avg. Ceiling Height</value>
+    <comment>文字 平均天井高</comment>
+  </data>
+  <data name="IDS_TXT_AVERAGECEILINGHEIGHT_N" xml:space="preserve">
+    <value>Avg. Ceil.
+Height</value>
+    <comment>文字 平均
+天井高</comment>
+  </data>
+  <data name="IDS_TXT_A_CORR" xml:space="preserve">
+    <value>A (Corrected)</value>
+    <comment>文字 A(補正値)</comment>
+  </data>
+  <data name="IDS_TXT_A_CORR_N" xml:space="preserve">
+    <value>A
+(Corrected)</value>
+    <comment>文字 A
+(補正値)</comment>
+  </data>
+  <data name="IDS_TXT_A_TEMP" xml:space="preserve">
+    <value>A (Temp)</value>
+    <comment>文字 A(仮)</comment>
+  </data>
+  <data name="IDS_TXT_A_TEMP_N" xml:space="preserve">
+    <value>A
+(Temp)</value>
+    <comment>文字 A
+（仮）</comment>
+  </data>
+  <data name="IDS_TXT_BETA" xml:space="preserve">
+    <value>β</value>
+    <comment>文字 β</comment>
+  </data>
+  <data name="IDS_TXT_CALCGROUP" xml:space="preserve">
+    <value>Calc Group</value>
+    <comment>文字 計算グループ</comment>
+  </data>
+  <data name="IDS_TXT_CALCGROUP_N" xml:space="preserve">
+    <value>Calc
+Group</value>
+    <comment>文字 計算
+グループ</comment>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>文字 キャンセル</comment>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+    <comment>文字 カテゴリ</comment>
+  </data>
+  <data name="IDS_TXT_CEILINGHEIGHT" xml:space="preserve">
+    <value>Ceiling Height</value>
+    <comment>文字 天井高</comment>
+  </data>
+  <data name="IDS_TXT_CHANGEBULK" xml:space="preserve">
+    <value>Bulk Change</value>
+    <comment>文字 一括変更</comment>
+  </data>
+  <data name="IDS_TXT_CHANGEUSABLEDIMPARTS" xml:space="preserve">
+    <value>Confirm Opening Effective Dimension Change</value>
+    <comment>文字 建具の有効寸法変更確認</comment>
+  </data>
+  <data name="IDS_TXT_CLOS" xml:space="preserve">
+    <value>Round Up</value>
+    <comment>切り上げ</comment>
+  </data>
+  <data name="IDS_TXT_CLOSE" xml:space="preserve">
+    <value>Close</value>
+    <comment>文字 閉じる</comment>
+  </data>
+  <data name="IDS_TXT_COMMON" xml:space="preserve">
+    <value>d/h, A(Temp), A(Corrected)</value>
+    <comment>d/h・A(仮)・A(補正値)</comment>
+  </data>
+  <data name="IDS_TXT_CORRECTIONVALUE" xml:space="preserve">
+    <value>Correction Value</value>
+    <comment>文字 補正値</comment>
+  </data>
+  <data name="IDS_TXT_CREATEHEADER" xml:space="preserve">
+    <value>Create Header</value>
+    <comment>文字 見出しを作成する</comment>
+  </data>
+  <data name="IDS_TXT_CUTOFF" xml:space="preserve">
+    <value>Truncate</value>
+    <comment>切り捨て</comment>
+  </data>
+  <data name="IDS_TXT_D" xml:space="preserve">
+    <value>D</value>
+    <comment>文字 D</comment>
+  </data>
+  <data name="IDS_TXT_DECIMAL" xml:space="preserve">
+    <value>Decimal places</value>
+    <comment>小数点以下第</comment>
+  </data>
+  <data name="IDS_TXT_DEFAULT" xml:space="preserve">
+    <value>Default</value>
+    <comment>既定</comment>
+  </data>
+  <data name="IDS_TXT_DEL" xml:space="preserve">
+    <value>Delete</value>
+    <comment>文字 削除</comment>
+  </data>
+  <data name="IDS_TXT_DISTHORIZONTAL" xml:space="preserve">
+    <value>Horizontal Distance</value>
+    <comment>文字 水平距離</comment>
+  </data>
+  <data name="IDS_TXT_DISTHORIZONTAL_CORR" xml:space="preserve">
+    <value>Horizontal Corrected Dist.</value>
+    <comment>文字 水平補正距離</comment>
+  </data>
+  <data name="IDS_TXT_DISTHORIZONTAL_MEAS" xml:space="preserve">
+    <value>Horizontal Measured Dist.</value>
+    <comment>文字 水平測定距離</comment>
+  </data>
+  <data name="IDS_TXT_DISTHORIZONTAL_N" xml:space="preserve">
+    <value>d
+(Horiz. Dist.)</value>
+    <comment>文字 d
+(水平
+距離)</comment>
+  </data>
+  <data name="IDS_TXT_DISTVERTICAL" xml:space="preserve">
+    <value>Vertical Distance</value>
+    <comment>文字 垂直距離</comment>
+  </data>
+  <data name="IDS_TXT_DISTVERTICAL_CORR" xml:space="preserve">
+    <value>Vertical Corrected Dist.</value>
+    <comment>文字 垂直補正距離</comment>
+  </data>
+  <data name="IDS_TXT_DISTVERTICAL_MEAS" xml:space="preserve">
+    <value>Vertical Measured Dist.</value>
+    <comment>文字 垂直測定距離</comment>
+  </data>
+  <data name="IDS_TXT_DISTVERTICAL_N" xml:space="preserve">
+    <value>h
+(Vert. Dist.)</value>
+    <comment>文字 h
+(垂直
+距離)</comment>
+  </data>
+  <data name="IDS_TXT_DOESNT" xml:space="preserve">
+    <value>No</value>
+    <comment>文字 いない</comment>
+  </data>
+  <data name="IDS_TXT_DSH" xml:space="preserve">
+    <value>d/h
+(Ref.)</value>
+    <comment>文字 d/h
+(参考)</comment>
+  </data>
+  <data name="IDS_TXT_EDIT" xml:space="preserve">
+    <value>Edit</value>
+    <comment>文字 編集</comment>
+  </data>
+  <data name="IDS_TXT_FLOOR" xml:space="preserve">
+    <value>Floor</value>
+    <comment>文字 階</comment>
+  </data>
+  <data name="IDS_TXT_GROUP" xml:space="preserve">
+    <value>Group</value>
+    <comment>文字 グループ</comment>
+  </data>
+  <data name="IDS_TXT_GROUPNAME" xml:space="preserve">
+    <value>Group Name</value>
+    <comment>文字 グループ名</comment>
+  </data>
+  <data name="IDS_TXT_HEIGHT" xml:space="preserve">
+    <value>Height</value>
+    <comment>文字 高さ</comment>
+  </data>
+  <data name="IDS_TXT_IS" xml:space="preserve">
+    <value>Yes</value>
+    <comment>文字 あり</comment>
+  </data>
+  <data name="IDS_TXT_IT" xml:space="preserve">
+    <value>Yes</value>
+    <comment>文字 いる</comment>
+  </data>
+  <data name="IDS_TXT_JUDGMENT" xml:space="preserve">
+    <value>Judgment</value>
+    <comment>文字 判定</comment>
+  </data>
+  <data name="IDS_TXT_LEGALAREA" xml:space="preserve">
+    <value>Legal Area</value>
+    <comment>文字 法定面積</comment>
+  </data>
+  <data name="IDS_TXT_LEVEL" xml:space="preserve">
+    <value>Level</value>
+    <comment>文字 レベル</comment>
+  </data>
+  <data name="IDS_TXT_LIGHTING" xml:space="preserve">
+    <value>Daylighting</value>
+    <comment>文字 採光</comment>
+  </data>
+  <data name="IDS_TXT_LIGHTINGNESAREA" xml:space="preserve">
+    <value>Daylighting Req. Area</value>
+    <comment>文字 採光必要面積</comment>
+  </data>
+  <data name="IDS_TXT_LIGHTINGNESAREA_N" xml:space="preserve">
+    <value>Daylight
+Req. Area</value>
+    <comment>文字 採光
+必要面積</comment>
+  </data>
+  <data name="IDS_TXT_LIGHTINGNESCOEFF" xml:space="preserve">
+    <value>Daylighting Req. Coeff.</value>
+    <comment>文字 採光必要係数</comment>
+  </data>
+  <data name="IDS_TXT_LIGHTINGNESCOEFF_N" xml:space="preserve">
+    <value>Daylight
+Req. Coeff.</value>
+    <comment>文字 採光
+必要係数</comment>
+  </data>
+  <data name="IDS_TXT_LIGHTINGUSABLEAREA" xml:space="preserve">
+    <value>Effective Daylighting Area</value>
+    <comment>文字 有効採光面積</comment>
+  </data>
+  <data name="IDS_TXT_LIGHTINGUSABLEAREA_N" xml:space="preserve">
+    <value>Eff. Daylight
+Area</value>
+    <comment>文字 有効採光
+面積</comment>
+  </data>
+  <data name="IDS_TXT_LIGHTING_SMOKE_VENTILATION" xml:space="preserve">
+    <value>Daylighting / Smoke Exhaust / Ventilation</value>
+    <comment>文字 採光／排煙／換気</comment>
+  </data>
+  <data name="IDS_TXT_M2" xml:space="preserve">
+    <value>㎡</value>
+    <comment>文字 ㎡</comment>
+  </data>
+  <data name="IDS_TXT_NESAREA" xml:space="preserve">
+    <value>Required Area</value>
+    <comment>文字 必要面積</comment>
+  </data>
+  <data name="IDS_TXT_NONE" xml:space="preserve">
+    <value>None</value>
+    <comment>文字 なし</comment>
+  </data>
+  <data name="IDS_TXT_NOTHING" xml:space="preserve">
+    <value>None</value>
+    <comment>文字 なし</comment>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+    <comment>文字 OK</comment>
+  </data>
+  <data name="IDS_TXT_OPENCOEFF" xml:space="preserve">
+    <value>Opening Coefficient</value>
+    <comment>文字 開口係数</comment>
+  </data>
+  <data name="IDS_TXT_OPENINGUSABLEAREA" xml:space="preserve">
+    <value>Effective Opening Area</value>
+    <comment>文字 有効開口面積</comment>
+  </data>
+  <data name="IDS_TXT_OPENINGUSABLEAREA_N" xml:space="preserve">
+    <value>Eff. Opening
+Area</value>
+    <comment>文字 有効開口
+面積</comment>
+  </data>
+  <data name="IDS_TXT_OPENINGUSABLEHEIGHT" xml:space="preserve">
+    <value>Effective Opening Height</value>
+    <comment>文字 有効開口高さ</comment>
+  </data>
+  <data name="IDS_TXT_OPENINGUSABLEHEIGHT_N" xml:space="preserve">
+    <value>Eff. Opening
+Height</value>
+    <comment>文字 有効開口
+高さ</comment>
+  </data>
+  <data name="IDS_TXT_OPENINGUSABLEWIDTH" xml:space="preserve">
+    <value>Effective Opening Width</value>
+    <comment>文字 有効開口幅</comment>
+  </data>
+  <data name="IDS_TXT_OPENINGUSABLEWIDTH_N" xml:space="preserve">
+    <value>Eff. Opening
+Width</value>
+    <comment>文字 有効開口
+幅</comment>
+  </data>
+  <data name="IDS_TXT_ORDER" xml:space="preserve">
+    <value>digit(s)</value>
+    <comment>位を</comment>
+  </data>
+  <data name="IDS_TXT_OUTEXCEL" xml:space="preserve">
+    <value>Excel Output</value>
+    <comment>文字 Excel出力</comment>
+  </data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve">
+    <value>Parameter</value>
+    <comment>文字 パラメータ</comment>
+  </data>
+  <data name="IDS_TXT_PARTSAFFILIATIONROOM" xml:space="preserve">
+    <value>Opening Affiliation Room</value>
+    <comment>文字 建具要素所属部屋</comment>
+  </data>
+  <data name="IDS_TXT_PARTSELEMENTID" xml:space="preserve">
+    <value>Opening Element ID</value>
+    <comment>文字 建具要素ID</comment>
+  </data>
+  <data name="IDS_TXT_PARTSELEMENTTYPE" xml:space="preserve">
+    <value>Opening Element Type</value>
+    <comment>文字 建具要素タイプ</comment>
+  </data>
+  <data name="IDS_TXT_PARTSFROMROOMID" xml:space="preserve">
+    <value>Opening FROM Room ID</value>
+    <comment>文字 建具要素FROM部屋ID</comment>
+  </data>
+  <data name="IDS_TXT_PARTSFROMROOMOUTDOORS" xml:space="preserve">
+    <value>Opening FROM Room Outdoors</value>
+    <comment>文字 建具要素FROM部屋屋外</comment>
+  </data>
+  <data name="IDS_TXT_PARTSSIGN" xml:space="preserve">
+    <value>Opening Sign</value>
+    <comment>文字 建具符号</comment>
+  </data>
+  <data name="IDS_TXT_PARTSSIGN_N" xml:space="preserve">
+    <value>Opening
+Sign</value>
+    <comment>文字 建具
+符号</comment>
+  </data>
+  <data name="IDS_TXT_PARTSTOROOMID" xml:space="preserve">
+    <value>Opening TO Room ID</value>
+    <comment>文字 建具要素TO部屋ID</comment>
+  </data>
+  <data name="IDS_TXT_PARTSTOROOMOUTDOORS" xml:space="preserve">
+    <value>Opening TO Room Outdoors</value>
+    <comment>文字 建具要素TO部屋屋外</comment>
+  </data>
+  <data name="IDS_TXT_PARTSUPPERMOSTSIDEHEIGHT" xml:space="preserve">
+    <value>Opening Head Height</value>
+    <comment>文字 建具天端高さ</comment>
+  </data>
+  <data name="IDS_TXT_ROADSIDE" xml:space="preserve">
+    <value>Road Side</value>
+    <comment>文字 道路面</comment>
+  </data>
+  <data name="IDS_TXT_ROOMELEMENTID" xml:space="preserve">
+    <value>Room Element ID</value>
+    <comment>文字 部屋要素ID</comment>
+  </data>
+  <data name="IDS_TXT_ROOMGROUP" xml:space="preserve">
+    <value>Room Group</value>
+    <comment>文字 部屋グループ</comment>
+  </data>
+  <data name="IDS_TXT_ROOMGROUPTOTAL" xml:space="preserve">
+    <value>Room Group Total</value>
+    <comment>文字 部屋グループ集計</comment>
+  </data>
+  <data name="IDS_TXT_ROOMKIND" xml:space="preserve">
+    <value>Room Type</value>
+    <comment>文字 部屋種類</comment>
+  </data>
+  <data name="IDS_TXT_ROOMNAME" xml:space="preserve">
+    <value>Room Name</value>
+    <comment>文字 部屋名</comment>
+  </data>
+  <data name="IDS_TXT_ROOMNO" xml:space="preserve">
+    <value>Room Number</value>
+    <comment>文字 部屋番号</comment>
+  </data>
+  <data name="IDS_TXT_ROUNDINGOFF" xml:space="preserve">
+    <value>Round Off</value>
+    <comment>四捨五入</comment>
+  </data>
+  <data name="IDS_TXT_SAFE_SIDE" xml:space="preserve">
+    <value>(Safe side)</value>
+  </data>
+  <data name="IDS_TXT_SAVE" xml:space="preserve">
+    <value>Save</value>
+    <comment>文字 保存</comment>
+  </data>
+  <data name="IDS_TXT_SELECTEDPARTS" xml:space="preserve">
+    <value>Selected Openings</value>
+    <comment>文字 選択した建具</comment>
+  </data>
+  <data name="IDS_TXT_SELECTEDROOM" xml:space="preserve">
+    <value>Selected Room</value>
+    <comment>文字 選択した部屋</comment>
+  </data>
+  <data name="IDS_TXT_SELECTEDROOMGROUP" xml:space="preserve">
+    <value>Selected Room Group</value>
+    <comment>文字 選択した部屋グループ</comment>
+  </data>
+  <data name="IDS_TXT_SELECTPARTS" xml:space="preserve">
+    <value>Select Openings</value>
+    <comment>文字 建具を選択</comment>
+  </data>
+  <data name="IDS_TXT_SETTING" xml:space="preserve">
+    <value>Daylighting - Rounding Settings</value>
+    <comment>採光-桁処理設定</comment>
+  </data>
+  <data name="IDS_TXT_SITSUBANGO" xml:space="preserve">
+    <value>Room No.</value>
+    <comment>室番号</comment>
+  </data>
+  <data name="IDS_TXT_SITSUGROUP" xml:space="preserve">
+    <value>Room Group</value>
+    <comment>室グループ</comment>
+  </data>
+  <data name="IDS_TXT_SITSUMEI" xml:space="preserve">
+    <value>Room Name</value>
+    <comment>文字 室名</comment>
+  </data>
+  <data name="IDS_TXT_SMOKE" xml:space="preserve">
+    <value>Smoke Exhaust</value>
+    <comment>文字 排煙</comment>
+  </data>
+  <data name="IDS_TXT_SMOKENESAREA" xml:space="preserve">
+    <value>Smoke Req. Area</value>
+    <comment>文字 排煙必要面積</comment>
+  </data>
+  <data name="IDS_TXT_SMOKENESAREA_N" xml:space="preserve">
+    <value>Smoke
+Req. Area</value>
+    <comment>文字 排煙
+必要面積</comment>
+  </data>
+  <data name="IDS_TXT_SMOKENESCOEFF" xml:space="preserve">
+    <value>Smoke Req. Coeff.</value>
+    <comment>文字 排煙必要係数</comment>
+  </data>
+  <data name="IDS_TXT_SMOKENESCOEFF_N" xml:space="preserve">
+    <value>Smoke
+Req. Coeff.</value>
+    <comment>文字 排煙
+必要係数</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEUSABLEAREA" xml:space="preserve">
+    <value>Smoke Effective Area</value>
+    <comment>文字 排煙有効面積</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEUSABLEAREA_N" xml:space="preserve">
+    <value>Smoke Eff.
+Area</value>
+    <comment>文字 排煙有効
+面積</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEUSABLEHEIGHT" xml:space="preserve">
+    <value>Smoke Effective Height</value>
+    <comment>文字 排煙有効高さ</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEUSABLEHEIGHTBOTTOM" xml:space="preserve">
+    <value>Smoke Eff. Height Bottom</value>
+    <comment>文字 排煙有効高下端</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEUSABLEHEIGHT_N" xml:space="preserve">
+    <value>Smoke Eff.
+Height</value>
+    <comment>文字 排煙有効
+高さ</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEUSABLEWIDTH" xml:space="preserve">
+    <value>Smoke Effective Width</value>
+    <comment>文字 排煙有効幅</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEUSABLEWIDTH_N" xml:space="preserve">
+    <value>Smoke Eff.
+Width</value>
+    <comment>文字 排煙有効
+幅</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWALLLENGTH" xml:space="preserve">
+    <value>Smoke Barrier Length</value>
+    <comment>文字 防煙壁長さ</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWALLLENGTH_N" xml:space="preserve">
+    <value>Smoke Bar.
+Length</value>
+    <comment>文字 防煙壁
+長さ</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWINHEIGHT" xml:space="preserve">
+    <value>Smoke Win. Height</value>
+    <comment>文字 排煙窓高さ</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWINHEIGHTCA" xml:space="preserve">
+    <value>After
+Smoke Win. Height</value>
+    <comment>文字 変更後排煙窓高さ</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWINHEIGHTCB" xml:space="preserve">
+    <value>Before
+Smoke Win. Height</value>
+    <comment>文字 変更前排煙窓高さ</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWINHEIGHT_N" xml:space="preserve">
+    <value>Smoke Win.
+Height</value>
+    <comment>文字 排煙窓
+高さ</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWINWIDTH" xml:space="preserve">
+    <value>Smoke Win. Width</value>
+    <comment>文字 排煙窓幅</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWINWIDTHCA" xml:space="preserve">
+    <value>After
+Smoke Win. Width</value>
+    <comment>文字 変更後排煙窓幅</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWINWIDTHCB" xml:space="preserve">
+    <value>Before
+Smoke Win. Width</value>
+    <comment>文字 変更前排煙窓幅</comment>
+  </data>
+  <data name="IDS_TXT_SMOKEWINWIDTH_N" xml:space="preserve">
+    <value>Smoke Win.
+Width</value>
+    <comment>文字 排煙窓
+幅</comment>
+  </data>
+  <data name="IDS_TXT_SMOKE_SETTING" xml:space="preserve">
+    <value>Smoke Exhaust - Rounding Settings</value>
+    <comment>排煙-桁処理設定</comment>
+  </data>
+  <data name="IDS_TXT_TEMP" xml:space="preserve">
+    <value>Temp</value>
+    <comment>文字 仮</comment>
+  </data>
+  <data name="IDS_TXT_TOROAD" xml:space="preserve">
+    <value>To road</value>
+    <comment>文字 道路に</comment>
+  </data>
+  <data name="IDS_TXT_TOTAL" xml:space="preserve">
+    <value>Total</value>
+    <comment>文字 合計</comment>
+  </data>
+  <data name="IDS_TXT_TOUCHESIT" xml:space="preserve">
+    <value>Faces</value>
+    <comment>文字 面している</comment>
+  </data>
+  <data name="IDS_TXT_UPDATE" xml:space="preserve">
+    <value>Update</value>
+    <comment>文字 更新</comment>
+  </data>
+  <data name="IDS_TXT_UPPERMOSTSIDEHEIGHT" xml:space="preserve">
+    <value>Head Height</value>
+    <comment>文字 天端高さ</comment>
+  </data>
+  <data name="IDS_TXT_USABLEAREA" xml:space="preserve">
+    <value>Effective Area</value>
+    <comment>文字 有効面積</comment>
+  </data>
+  <data name="IDS_TXT_USABLEHEIGHTCA" xml:space="preserve">
+    <value>After
+Eff. Height</value>
+    <comment>文字 変更後有効高さ</comment>
+  </data>
+  <data name="IDS_TXT_USABLEHEIGHTCB" xml:space="preserve">
+    <value>Before
+Eff. Height</value>
+    <comment>文字 変更前有効高さ</comment>
+  </data>
+  <data name="IDS_TXT_USABLEWIDTHCA" xml:space="preserve">
+    <value>After
+Eff. Width</value>
+    <comment>文字 変更後有効幅</comment>
+  </data>
+  <data name="IDS_TXT_USABLEWIDTHCB" xml:space="preserve">
+    <value>Before
+Eff. Width</value>
+    <comment>文字 変更前有効幅</comment>
+  </data>
+  <data name="IDS_TXT_USEDISTRICT" xml:space="preserve">
+    <value>Use District</value>
+    <comment>文字 用途地域</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATION" xml:space="preserve">
+    <value>Ventilation</value>
+    <comment>文字 換気</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONNESAREA" xml:space="preserve">
+    <value>Ventilation Req. Area</value>
+    <comment>文字 換気必要面積</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONNESAREA_N" xml:space="preserve">
+    <value>Vent.
+Req. Area</value>
+    <comment>文字 換気
+必要面積</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONNESCOEFF" xml:space="preserve">
+    <value>Ventilation Req. Coeff.</value>
+    <comment>文字 換気必要係数</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONNESCOEFF_N" xml:space="preserve">
+    <value>Vent.
+Req. Coeff.</value>
+    <comment>文字 換気
+必要係数</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONUSABLEAREA" xml:space="preserve">
+    <value>Ventilation Effective Area</value>
+    <comment>文字 換気有効面積</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONUSABLEAREA_N" xml:space="preserve">
+    <value>Vent. Eff.
+Area</value>
+    <comment>文字 換気有効
+面積</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONUSABLEHEIGHT" xml:space="preserve">
+    <value>Ventilation Effective Height</value>
+    <comment>文字 換気有効高さ</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONUSABLEHEIGHT_N" xml:space="preserve">
+    <value>Vent. Eff.
+Height</value>
+    <comment>文字 換気有効
+高さ</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONUSABLEWIDTH" xml:space="preserve">
+    <value>Ventilation Effective Width</value>
+    <comment>文字 換気有効幅</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATIONUSABLEWIDTH_N" xml:space="preserve">
+    <value>Vent. Eff.
+Width</value>
+    <comment>文字 換気有効
+幅</comment>
+  </data>
+  <data name="IDS_TXT_VENTILATION_SETTING" xml:space="preserve">
+    <value>Ventilation - Rounding Settings</value>
+    <comment>換気-桁処理設定</comment>
+  </data>
+  <data name="IDS_TXT_VERANDA" xml:space="preserve">
+    <value>Veranda</value>
+    <comment>文字 縁側</comment>
+  </data>
+  <data name="IDS_TXT_WIDTH" xml:space="preserve">
+    <value>Width</value>
+    <comment>文字 幅</comment>
+  </data>
+  <data name="IDS_TXT_WINDOWAREA" xml:space="preserve">
+    <value>Window Area</value>
+    <comment>文字 窓の面積</comment>
+  </data>
+  <data name="IDS_TXT_WINDOWSMOKEUSABLEAREA" xml:space="preserve">
+    <value>Smoke Effective Area</value>
+    <comment>排煙有効面積</comment>
+  </data>
+</root>

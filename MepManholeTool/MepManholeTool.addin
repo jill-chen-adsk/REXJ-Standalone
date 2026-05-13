@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>MepManholeTool</Name>
+    <Assembly>MepManholeTool\MepManholeTool.dll</Assembly>
+    <AddInId>E2F3A4B5-C6D7-8901-EF12-345678901BCD</AddInId>
+    <FullClassName>MepManholeTool.Tools.MepManhole</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

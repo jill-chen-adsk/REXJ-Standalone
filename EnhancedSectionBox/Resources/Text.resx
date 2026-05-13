@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <!-- ===== Ribbon (App.cs) ===== -->
+  <data name="IDS_TAB_NAME" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_PANEL_NAME" xml:space="preserve">
+    <value>Section Box</value>
+  </data>
+  <data name="IDS_BTN_SECTIONBOX_ADJUST" xml:space="preserve">
+    <value>選択ボックス
+調整</value>
+  </data>
+  <data name="IDS_BTN_BOXVIEW" xml:space="preserve">
+    <value>ボックス
+ビュー</value>
+  </data>
+  <!-- ===== CmdSectionBoxAdjustment ===== -->
+  <data name="IDS_WARN_TITLE" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="IDS_ERR_TITLE" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="IDS_WARN_NOT3DVIEW" xml:space="preserve">
+    <value>3Dビューで実行してください。</value>
+  </data>
+  <data name="IDS_WARN_NOSECTIONBOX" xml:space="preserve">
+    <value>切断ボックスを表示してください。</value>
+  </data>
+  <data name="IDS_TRAN_SECTIONBOX_ADJUST" xml:space="preserve">
+    <value>選択拡張ボックス調整</value>
+  </data>
+  <!-- ===== CmdBoxView ===== -->
+  <data name="IDS_TRAN_BOXVIEW_CREATE" xml:space="preserve">
+    <value>選択拡張ボックス作成</value>
+  </data>
+  <data name="IDS_TXT_SELCOUNT" xml:space="preserve">
+    <value>選択数：</value>
+  </data>
+  <data name="IDS_TXT_RANGE_SPECIFIED" xml:space="preserve">
+    <value>指定済み</value>
+  </data>
+  <!-- ===== FormSectionBoxAdjustment (Designer) ===== -->
+  <data name="IDS_FORM_SECTIONBOX_TITLE" xml:space="preserve">
+    <value>選択ボックス調整</value>
+  </data>
+  <data name="IDS_GRP_LENGTH_ADJUST" xml:space="preserve">
+    <value>長さ調節</value>
+  </data>
+  <data name="IDS_LBL_LEFT" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="IDS_LBL_RIGHT" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="IDS_LBL_FRONT" xml:space="preserve">
+    <value>前</value>
+  </data>
+  <data name="IDS_LBL_BACK" xml:space="preserve">
+    <value>後</value>
+  </data>
+  <data name="IDS_LBL_TOP" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="IDS_LBL_BOTTOM" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="IDS_BTN_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_BTN_CANCEL" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <!-- ===== FormSectionBoxAdjustment (Runtime) ===== -->
+  <data name="IDS_TRAN_CENTER_CHANGE" xml:space="preserve">
+    <value>中心点変更</value>
+  </data>
+  <data name="IDS_TRAN_OFFSET" xml:space="preserve">
+    <value>オフセット</value>
+  </data>
+  <data name="IDS_ERR_INVALID_INPUT" xml:space="preserve">
+    <value>入力値の形式が正しくありません。</value>
+  </data>
+  <!-- ===== FormBoxView (Designer) ===== -->
+  <data name="IDS_FORM_BOXVIEW_TITLE" xml:space="preserve">
+    <value>選択ボックス作成</value>
+  </data>
+  <data name="IDS_GRP_XYPLANE" xml:space="preserve">
+    <value>XY平面の範囲</value>
+  </data>
+  <data name="IDS_LBL_NOT_SPECIFIED" xml:space="preserve">
+    <value>未指定</value>
+  </data>
+  <data name="IDS_LBL_SELCOUNT_0" xml:space="preserve">
+    <value>選択数：0</value>
+  </data>
+  <data name="IDS_BTN_SELECT_LINK" xml:space="preserve">
+    <value>リンクプロジェクトから選択</value>
+  </data>
+  <data name="IDS_BTN_RANGE_SPEC" xml:space="preserve">
+    <value>範囲指定</value>
+  </data>
+  <data name="IDS_BTN_SELECT_MAIN" xml:space="preserve">
+    <value>メインプロジェクトから選択</value>
+  </data>
+  <data name="IDS_RADIO_LEVEL_SPEC" xml:space="preserve">
+    <value>レベル指定</value>
+  </data>
+  <data name="IDS_CHK_ALIGN_ANGLE" xml:space="preserve">
+    <value>
+選択ボックスの角度を
+オブジェクトに合わせる
+</value>
+  </data>
+  <data name="IDS_RADIO_OBJECT_SPEC" xml:space="preserve">
+    <value>オブジェクト指定</value>
+  </data>
+  <data name="IDS_GRP_LEVEL_OFFSET" xml:space="preserve">
+    <value>レベル指定/オフセット</value>
+  </data>
+  <data name="IDS_LBL_OFFSET" xml:space="preserve">
+    <value>オフセット</value>
+  </data>
+  <data name="IDS_LBL_LOWER_LEVEL" xml:space="preserve">
+    <value>下端レベル</value>
+  </data>
+  <data name="IDS_LBL_UPPER_LEVEL" xml:space="preserve">
+    <value>上端レベル</value>
+  </data>
+  <data name="IDS_CHK_FLOOR" xml:space="preserve">
+    <value>床</value>
+  </data>
+  <data name="IDS_LBL_VIEW_NAME" xml:space="preserve">
+    <value>ビューの名前</value>
+  </data>
+  <data name="IDS_GRP_HIDE_UPPER_OBJECTS" xml:space="preserve">
+    <value>上端レベルに属するオブジェクトを非表示にする　※リンクプロジェクト内のオブジェクトは対象外</value>
+  </data>
+  <data name="IDS_CHK_BEAM" xml:space="preserve">
+    <value>梁</value>
+  </data>
+  <!-- ===== FormBoxView (Runtime) ===== -->
+  <data name="IDS_TRAN_VIEW_CREATE" xml:space="preserve">
+    <value>ビュー作成</value>
+  </data>
+  <data name="IDS_TRAN_HIDE" xml:space="preserve">
+    <value>非表示</value>
+  </data>
+  <data name="IDS_WARN_LEVEL_ORDER" xml:space="preserve">
+    <value>上端レベル高さ+上端オフセットの値が、下端レベル高さ+下端オフセットの値より高くなるよう、「レベル指定/オフセット」を指定してください。</value>
+  </data>
+  <data name="IDS_ERR_NO_DEFAULT_3DVIEW" xml:space="preserve">
+    <value>既定の3Dビューを作成してから実行してください。</value>
+  </data>
+</root>

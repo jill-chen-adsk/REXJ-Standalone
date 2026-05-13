@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>MepDuctPipeTool</Name>
+    <Assembly>MepDuctPipeTool\MepDuctPipeTool.dll</Assembly>
+    <AddInId>F3A4B5C6-D7E8-9012-F123-456789012CDE</AddInId>
+    <FullClassName>MepDuctPipeTool.DuctPipeToolApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

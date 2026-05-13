@@ -1,0 +1,186 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>STBLink</RootNamespace>
+    <AssemblyName>STBLink</AssemblyName>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+    <UseWpf>true</UseWpf>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+    <LangVersion>12</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DefineConstants>$(DefineConstants);REVIT2027;REVIT2025_OR_GREATER</DefineConstants>
+    <SatelliteResourceLanguages>ja;en</SatelliteResourceLanguages>
+    <AssemblyVersion>2027.4.0.2</AssemblyVersion>
+    <FileVersion>2027.4.0.2</FileVersion>
+    <Copyright>© 2025 Autodesk, Inc.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="RevitLNK.cs" />
+    <Compile Include="Commons.cs" />
+    <Compile Include="Data.cs" />
+    <Compile Include="fromSTB.cs" />
+    <Compile Include="FromSTB_v2.cs" />
+    <Compile Include="FromSTB_v2_sabun.cs" />
+    <Compile Include="toSTB.cs" />
+    <Compile Include="ToSTB_v2.cs" />
+    <Compile Include="ST-Bridge_v2.cs" />
+    <Compile Include="STBclass.cs" />
+    <Compile Include="SetFamily.cs" />
+    <Compile Include="FamilyStructure.cs" />
+    <Compile Include="LoadFamily.cs" />
+    <Compile Include="ParaSet.cs" />
+    <Compile Include="LogData.cs" />
+    <Compile Include="AboutBox.cs" />
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddParameterForm.cs" />
+    <Compile Include="AddParameterForm.Designer.cs">
+      <DependentUpon>AddParameterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConvertForm.cs" />
+    <Compile Include="ConvertForm.Designer.cs">
+      <DependentUpon>ConvertForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportForm.cs" />
+    <Compile Include="ExportForm.Designer.cs">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LevelMapping.cs" />
+    <Compile Include="LevelMapping.Designer.cs">
+      <DependentUpon>LevelMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogForm.cs" />
+    <Compile Include="LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialMapping.cs" />
+    <Compile Include="MaterialMapping.Designer.cs">
+      <DependentUpon>MaterialMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressBar.cs" />
+    <Compile Include="ProgressBar.Designer.cs">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressBar2.cs" />
+    <Compile Include="ProgressBar2.Designer.cs">
+      <DependentUpon>ProgressBar2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SabunForm.cs" />
+    <Compile Include="SabunForm.Designer.cs">
+      <DependentUpon>SabunForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="STBParaBuild.cs" />
+    <Compile Include="STBParaBuild.Designer.cs">
+      <DependentUpon>STBParaBuild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\RevitCompatibilityUtils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddParameterForm.resx">
+      <DependentUpon>AddParameterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConvertForm.resx">
+      <DependentUpon>ConvertForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportForm.resx">
+      <DependentUpon>ExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LevelMapping.resx">
+      <DependentUpon>LevelMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialMapping.resx">
+      <DependentUpon>MaterialMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressBar.resx">
+      <DependentUpon>ProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressBar2.resx">
+      <DependentUpon>ProgressBar2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SabunForm.resx">
+      <DependentUpon>SabunForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STBParaBuild.resx">
+      <DependentUpon>STBParaBuild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icon.ico" />
+    <EmbeddedResource Include="Resources\Icon_.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Configuration\Material_Mapping.tbl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\STBLink.chm" />
+    <Content Include="Configuration\Icon*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\SampleRC.stb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\SampleS.stb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="STBLinkHelp\*.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="STBLinkHelp\Image\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="STBLinkHelp\style.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPIUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.8" />
+  </ItemGroup>
+</Project>

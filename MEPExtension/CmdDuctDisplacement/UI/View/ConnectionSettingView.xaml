@@ -1,0 +1,194 @@
+﻿<Window x:Class="CmdDuctDisplacement.UI.View.ConnectionSettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:behind="clr-namespace:CmdDuctDisplacement.UI.Utility.CodeBehind"
+             xmlns:local="clr-namespace:CmdDuctDisplacement.UI.View"
+            xmlns:resource="clr-namespace:CmdDuctDisplacement.Resource"
+             mc:Ignorable="d"
+           Title="{Binding SelectObjName}" Width="647.525" SizeToContent="Height"   ResizeMode="NoResize" Background="#F0F0F0">
+
+    
+    
+    <i:Interaction.Behaviors>
+        <behind:ConnectionWindowDispatcher />
+    </i:Interaction.Behaviors>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="KeyDown">
+            <i:InvokeCommandAction Command="{Binding KeyDownCommand}">
+            </i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Margin="-2,0,4,7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="307*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+
+            <GroupBox  Header="{x:Static resource:ExResources.LVL_Position}" BorderThickness="2" FontWeight="Black" HorizontalAlignment="Left" Margin="23,15,0,0" VerticalAlignment="Top" Width="602">
+                <StackPanel Margin="0,0,0,0">
+                    <GroupBox  Header="{x:Static resource:ExResources.LVL_Level}" Height="96" Margin="40,10,10,10">
+                        <StackPanel Margin="2,10,-2,0">
+                            <DockPanel HorizontalAlignment="Left" Height="26" LastChildFill="False" Margin="59,0,0,0" VerticalAlignment="Top" Width="407">
+                                <Button   Command="{Binding SwitchCalMethodCommand }" Content="{Binding LevelButtonName}" FontWeight="Normal" Height="22" VerticalAlignment="Top" Width="54" Margin="48,0,0,0" />
+                                <TextBox  Name="FLTextBox" ContextMenu="{x:Null}" Text="{Binding DuctOffsetLevel , UpdateSourceTrigger=PropertyChanged }" InputMethod.IsInputMethodEnabled="False"   MaxLength="11"  Height="22" TextWrapping="Wrap"  VerticalAlignment="Bottom"  Width="77" Margin="0,0,0,4">
+
+                                    <i:Interaction.Behaviors>
+                                        <behind:FLTextBoxKeyDownDispatcher />
+                                    </i:Interaction.Behaviors>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PreviewTextInput">
+                                            <i:InvokeCommandAction Command="{Binding FLPreviewTextCommand}">
+                                            </i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="GotKeyboardFocus">
+                                            <i:InvokeCommandAction Command="{Binding FLTextKeyboardFocusCommand}">
+                                            </i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="LostFocus">
+                                            <i:InvokeCommandAction Command="{Binding FLTextBoxLostFocusCommand}">
+                                            </i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TextBox>
+                                <StackPanel Height="22" VerticalAlignment="Top" Width="17" Margin="0,0,0,0">
+                                    <Button  Command="{Binding IncreaseCommand }" Content="▲" Height="11"  VerticalAlignment="Top" Margin="0,0,2,0" FontSize="5" />
+                                    <Button  Command="{Binding DecreaseCommand }" Content="▼" Height="11"  VerticalAlignment="Top" Margin="0,0,2,0" FontSize="5" />
+                                </StackPanel>
+                                <Label  Content="mm" FontWeight="Normal" Height="26" VerticalAlignment="Top" Margin="0,2,0,0" />
+                                <ComboBox  Text="{Binding DuctReferenceLine}" IsEnabled="{Binding BaseLineControlFlag}" FontWeight="Normal" Height="22" VerticalAlignment="Top" Width="99" Margin="33,0,0,0">
+                                    <ComboBoxItem Content="{x:Static resource:ExResources.LVL_TopSide}" VerticalContentAlignment="Center" Margin="3" />
+                                    <ComboBoxItem Content="{x:Static resource:ExResources.LVL_Center}" VerticalContentAlignment="Center" Margin="3" />
+                                    <ComboBoxItem Content="{x:Static resource:ExResources.LVL_BottomSide}" VerticalContentAlignment="Center" Margin="3" />
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="23,0,0,0">
+                                <Label FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_SelectedFL}" />
+                                <TextBox   Text="{Binding SelctObj_InitalFL}" IsReadOnly="True" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Margin="5,3,0,0" Background="WhiteSmoke" Foreground="{Binding ForegroundColor}" />
+                                <Label FontWeight="Normal" Content="mm" Margin="3,3,0,0" Width="40" HorizontalAlignment="Left" />
+                            </DockPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox  Header="{x:Static resource:ExResources.LVL_Placement}" Height="116" Margin="40,5,10,10" Visibility="{Binding SetDisplay_TOBJ}">
+                        <DockPanel LastChildFill="False" Margin="23,1,0,-2" VerticalAlignment="Top">
+                            <Label FontWeight="Normal" Foreground="Blue" Content="{Binding TargetObjName}" VerticalAlignment="Top" Margin="5,25,0,0" />
+                            <Label FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_Of}" VerticalAlignment="Top" Margin="0,25,0,0" />
+                            <Button  Command="{Binding TopArrangementCommand}" Visibility="{Binding SetDisplay_TOBJ}" Background="{Binding TopArrangementColor}" Content="↑" FontSize="15"   VerticalContentAlignment="Top" Height="29" VerticalAlignment="Top" Width="32" Margin="0,25,0,0" />
+                            <Button  Command="{Binding BottomArrangmentCommand}" Visibility="{Binding SetDisplay_TOBJ}" Background="{Binding BottomArrangementColor}" Content="↓" FontSize="15" VerticalContentAlignment="Top" Height="29" VerticalAlignment="Top" Width="33" Margin="5,25,0,0" />
+                            <StackPanel HorizontalAlignment="Stretch"  Margin="5,0,0,0">
+                                <DockPanel>
+                                    <Label FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_Up}" Margin="32,0,0,0" />
+                                    <Label FontWeight="Normal"  Content="{Binding Location_TopObj}" Foreground="{Binding Location_TopObjColor}"  FontSize="11" Width="80" Height="23" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="0,0,0,0" />
+                                    <Label x:Name="label" Content="---" />
+                                    <Label FontWeight="Normal" Content="{Binding TopObjAddColorName}"  HorizontalAlignment="Left" Foreground="{Binding Location_TopObjColor}" Margin="4,0,0,0" />
+                                </DockPanel>
+                                <DockPanel Height="28"  Margin="0,0,0,0">
+                                    <Label FontWeight="Normal" Height="26" Margin="0,1" Width="69" Visibility="{Binding SetDisplay_TOBJ}" HorizontalAlignment="Left"  Content="{x:Static resource:ExResources.LVL_Separation}" VerticalContentAlignment="Top" />
+                                    <TextBox   Text="{Binding IsolationValue}" Foreground="{Binding IsolationValueColor}" IsReadOnly="True" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" Margin="0,3,0,0" Background="WhiteSmoke" />
+                                    <Label FontWeight="Normal"  Content="mm" Visibility="{Binding SetDisplay_TOBJ}" Margin="5,3,0,0" />
+                                    <Label   Content="{Binding IsolationWorningMessage}" Visibility="{Binding SetDisplay_TOBJ}" FontWeight="Black" Foreground="Red" Margin="0,0,0,0" />
+                                </DockPanel>
+                                <DockPanel Height="34">
+                                    <Label FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_Down}" Margin="32,0,0,0" />
+                                    <Label FontWeight="Normal"  Content="{Binding Location_BottomObj}" Foreground="{Binding Location_BottomObjColor}"  Width="80" FontSize="11" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"  VerticalAlignment="Top" Height="23" Margin="0,0,0,0" />
+                                    <Label x:Name="label1" Content="---" Height="34" VerticalAlignment="Top" />
+                                    <Label FontWeight="Normal" Content="{Binding BottomObjAddColorName}" HorizontalAlignment="Left"  Foreground="{Binding Location_BottomObjColor}" Margin="4,0,0,0" />
+                                </DockPanel>
+                            </StackPanel>
+                        </DockPanel>
+                    </GroupBox>
+                    <Expander Header="{Binding MoveOptionShow}" IsExpanded="{Binding MoveOptionExpandedFlag}" FontWeight="{Binding OptionFontWeight}">
+                        <GroupBox FontWeight="Black"  Header="{x:Static resource:ExResources.LVL_MoveOption}"   Margin="40,0,10,0">
+                            <StackPanel Margin="0,0,0,10">
+                                <GroupBox  Header="{x:Static resource:ExResources.LVL_RoundingPrecision}" FontWeight="Normal" Margin="19,10,0,0">
+                                    <DockPanel Margin="75,0,-2,0">
+                                        <RadioButton  IsChecked="{Binding FiftyButton}" FontWeight="Normal" Content="50mm" HorizontalAlignment="Left" Margin="0,0,0,0" />
+                                        <RadioButton  IsChecked="{Binding OneHandredButton}" FontWeight="Normal" Content="100mm" Height="16" VerticalAlignment="Top" Width="68" Margin="72,0,0,0" />
+                                        <RadioButton  IsChecked="{Binding NothingButton}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_None}" HorizontalAlignment="Left" Margin="58,0,0,0" />
+                                    </DockPanel>
+                                </GroupBox>
+                                <GroupBox  Header="{x:Static resource:ExResources.LVL_EnterTheThicknessOfFireproofCoatingOfTheBeam}" FontWeight="Normal" Margin="19,10,0,0">
+                                    <DockPanel Margin="75,0,-2,0">
+                                        <RadioButton  IsChecked="{Binding FireProofingValidButton}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_Valid}" HorizontalAlignment="Left" Margin="0,0,0,0" />
+                                        <RadioButton  IsChecked="{Binding FireProofingInValidButton}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_InValid}"  VerticalAlignment="Top"  Margin="81,0,0,0" />
+                                    </DockPanel>
+                                </GroupBox>
+                                <DockPanel Margin="11,7,0,7">
+                                    <DockPanel HorizontalAlignment="Left" Height="23" LastChildFill="False" Margin="12,10,0,0" VerticalAlignment="Top" Width="184">
+                                        <Label  Content="{x:Static resource:ExResources.LVL_TheDistanceOfElement}" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Margin="0,-1" Width="83" />
+                                        <TextBox Name="BetweenTextBox" ContextMenu="{x:Null}" Text="{Binding BetweenObjValue, UpdateSourceTrigger=PropertyChanged}" InputMethod.IsInputMethodEnabled="False" MaxLength="11"  Height="23" TextWrapping="Wrap" Margin="2,0,0,0" VerticalAlignment="Top" Width="69">
+                                            <i:Interaction.Behaviors>
+                                                <behind:FLTextBoxKeyDownDispatcher />
+                                            </i:Interaction.Behaviors>
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PreviewTextInput">
+                                                    <i:InvokeCommandAction Command="{Binding BetweenPreviewTextCommand}">
+                                                    </i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                                <i:EventTrigger EventName="LostFocus">
+                                                    <i:InvokeCommandAction Command="{Binding BetweenLostFocusCommand}">
+                                                    </i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                        <Label  Content="mm" FontWeight="Normal" Height="23" VerticalAlignment="Top" Width="32" />
+                                    </DockPanel>
+                                    <DockPanel Visibility="{Binding SetDisplayFireProofing}"  HorizontalAlignment="Left" Height="23" LastChildFill="False" Margin="20,10,0,0" VerticalAlignment="Top" Width="220">
+                                        <Label  Content="{x:Static resource:ExResources.LVL_ThicknessOfFireProofOfBeam}" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" />
+                                        <TextBox Name="FireTextBox" ContextMenu="{x:Null}" Text="{Binding FireProofingValue, UpdateSourceTrigger=PropertyChanged}" InputMethod.IsInputMethodEnabled="False" MaxLength="11"  Height="23" TextWrapping="Wrap" Margin="2,0,0,0" VerticalAlignment="Top" Width="69">
+                                            <i:Interaction.Behaviors>
+                                                <behind:FLTextBoxKeyDownDispatcher />
+                                            </i:Interaction.Behaviors>
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="PreviewTextInput">
+                                                    <i:InvokeCommandAction Command="{Binding FireProofingPreviewTextCommand}">
+                                                    </i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                                <i:EventTrigger EventName="LostFocus">
+                                                    <i:InvokeCommandAction Command="{Binding FireProofingLostFocusCommand}">
+                                                    </i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                        <Label  Content="mm" FontWeight="Normal" Height="23" VerticalAlignment="Top" />
+                                    </DockPanel>
+                                </DockPanel>
+                            </StackPanel>
+                        </GroupBox>
+                    </Expander>
+                    <DockPanel HorizontalAlignment="Right" Height="34" LastChildFill="False" Margin="0,5,4,10" VerticalAlignment="Top" Width="343">
+                        <Button  Command="{Binding MoveDIstanceCalLinkdCommand}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_Pick_a_TargetObject_LinkModel}" Height="22" Width="170" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0" />
+                        <Button  Command="{Binding MoveDIstanceCalCommand}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_Pick_a_TargetObject}" Height="22" Width="154" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="14,5,0,0" />
+                    </DockPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox  Header="{x:Static resource:ExResources.LVL_PlacementCondition}" BorderThickness="2" HorizontalAlignment="Left" Margin="23,5,0,10" FontWeight="Black" VerticalAlignment="Top" Height="99" Width="602">
+                <StackPanel Height="104" VerticalAlignment="Top" Margin="0,0,0,10">
+                    <GroupBox  Header="{Binding SelectObjName_MoveMethod}" Height="0"  Margin="0,0,0,0" Visibility="Hidden">
+                        <DockPanel   LastChildFill="False" Margin="100,0,0,0">
+                            <RadioButton  IsChecked="{Binding OffsetRadioButton}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_Offset}" Height="23" VerticalAlignment="Top" Margin="0,0,0,0" Width="67" />
+                            <RadioButton  IsChecked="{Binding UnityRadioButton}"  Visibility="Hidden" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_UnifyLevels}" Height="23" VerticalAlignment="Top" Margin="60,0,0,0" />
+                        </DockPanel>
+                    </GroupBox>
+                    <GroupBox  Header="{x:Static resource:ExResources.LVL_Junction}" Height="44" Margin="40,10,10,10">
+                        <DockPanel HorizontalAlignment="Left" Height="25" LastChildFill="False" Margin="100,0,0,0" VerticalAlignment="Top" Width="306">
+                            <RadioButton IsChecked="{Binding FortyFiveElbowRadioButton}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_DuctElbow45Degree}" Height="25" VerticalAlignment="Top" Margin="0,0,0,0" />
+                            <RadioButton  IsChecked="{Binding NinetyElbowRadioButton}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_DuctElbow90Degree}" Height="25" VerticalAlignment="Top" Margin="62,0,0,0" />
+                            <RadioButton  IsChecked="{Binding ScarveElbowRadioButton}" FontWeight="Normal" Content="{x:Static resource:ExResources.LVL_SCurveShapedDuct}" Height="25" VerticalAlignment="Top" Margin="62,0,0,0" />
+                        </DockPanel>
+                    </GroupBox>
+                </StackPanel>
+            </GroupBox>
+            <DockPanel HorizontalAlignment="Right" Height="34" LastChildFill="False" Margin="0,8,11,0" VerticalAlignment="Top" Width="346">
+                <Button  Command="{Binding ConnectionOKCommand}" Content="{Binding SelectObjName_Move}" Height="22" VerticalAlignment="Top" Width="105" Margin="0,0,0,0" />
+                <Button  Command="{Binding CancelCommand}" Content="{x:Static resource:ExResources.LVL_ReturnToSectionSelection}" Height="22" VerticalAlignment="Top" Width="105" Margin="14,0,0,0" />
+                <Button  Command="{Binding EndRoutineCommand}" Content="{x:Static resource:ExResources.LVL_EndThisCommand}" Height="22" VerticalAlignment="Top" Width="105" Margin="14,0,0,0" />
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

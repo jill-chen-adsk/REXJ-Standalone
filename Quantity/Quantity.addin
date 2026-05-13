@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Quantity</Name>
+    <Assembly>Quantity\Quantity.dll</Assembly>
+    <AddInId>F9012345-6789-ABCD-EF01-234567890ABC</AddInId>
+    <FullClassName>Quantity.ExtApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

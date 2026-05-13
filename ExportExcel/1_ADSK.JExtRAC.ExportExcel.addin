@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Export Excel</Name>
+    <Assembly>ADSK.JExtRAC.ExportExcel.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.ExportExcel.App</FullClassName>
+    <ClientId>5CB8DC98-B009-4FB0-ACFA-70DE57A2FBBB</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_FACE_ASSEMBLYNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.dll</value>
+    <comment>ボタン 面フカシ アセンブリ名</comment>
+  </data>
+  <data name="IDS_BTN_FACE_CLASSNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.Face.CmdFace</value>
+    <comment>ボタン 面フカシ クラス名</comment>
+  </data>
+  <data name="IDS_BTN_FACE_NAME" xml:space="preserve">
+    <value>面フカシ</value>
+    <comment>ボタン 面フカシ 名前</comment>
+  </data>
+  <data name="IDS_BTN_FACE_TEXT" xml:space="preserve">
+    <value>面フカシ</value>
+    <comment>ボタン 面フカシ 文字</comment>
+  </data>
+  <data name="IDS_BTN_FACE_TOOLTIP_L" xml:space="preserve">
+    <value />
+    <comment>ボタン 面フカシ ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_FACE_TOOLTIP_S" xml:space="preserve">
+    <value>選択した面にフカシを生成します</value>
+    <comment>ボタン 面フカシ ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_MATERIAL_NAME" xml:space="preserve">
+    <value>マテリアル</value>
+    <comment>ボタン マテリアル 名前</comment>
+  </data>
+  <data name="IDS_BTN_MATERIAL_TEXT" xml:space="preserve">
+    <value>マテリアル</value>
+    <comment>ボタン マテリアル 文字</comment>
+  </data>
+  <data name="IDS_BTN_MATERIAL_TOOLTIP_S" xml:space="preserve">
+    <value>フカシ要素に設定するマテリアルを指定します</value>
+    <comment>ボタン マテリアル ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_OFFSET_NAME" xml:space="preserve">
+    <value>オフセット</value>
+    <comment>ボタン オフセット 名前</comment>
+  </data>
+  <data name="IDS_BTN_OFFSET_TEXT" xml:space="preserve">
+    <value>島フカシ | 上端レベル オフセット</value>
+    <comment>ボタン オフセット 文字</comment>
+  </data>
+  <data name="IDS_BTN_OFFSET_TOOLTIP_S" xml:space="preserve">
+    <value>島フカシのオフセット値を指定します</value>
+    <comment>ボタン オフセット ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_OPENING_ASSEMBLYNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.dll</value>
+    <comment>ボタン 島フカシ アセンブリ名</comment>
+  </data>
+  <data name="IDS_BTN_OPENING_CLASSNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.Opening.CmdOpening</value>
+    <comment>ボタン 島フカシ クラス名</comment>
+  </data>
+  <data name="IDS_BTN_OPENING_NAME" xml:space="preserve">
+    <value>島フカシ</value>
+    <comment>ボタン 島フカシ 名前</comment>
+  </data>
+  <data name="IDS_BTN_OPENING_TEXT" xml:space="preserve">
+    <value>島フカシ</value>
+    <comment>ボタン 島フカシ 文字</comment>
+  </data>
+  <data name="IDS_BTN_OPENING_TOOLTIP_L" xml:space="preserve">
+    <value />
+    <comment>ボタン 島フカシ ツールチップL</comment>
+  </data>
+  <data name="IDS_BTN_OPENING_TOOLTIP_S" xml:space="preserve">
+    <value>選択した点を含む閉じた領域にフカシを生成します</value>
+    <comment>ボタン 島フカシ ツールチップS</comment>
+  </data>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>フカシ</value>
+    <comment>ボタン パネル名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP建築</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_BTN_UPPERLEVEL_NAME" xml:space="preserve">
+    <value>上部レベル</value>
+    <comment>ボタン 上部レベル 名前</comment>
+  </data>
+  <data name="IDS_BTN_UPPERLEVEL_TEXT" xml:space="preserve">
+    <value>島フカシ | 上部レベル</value>
+    <comment>ボタン 上部レベル 文字</comment>
+  </data>
+  <data name="IDS_BTN_UPPERLEVEL_TOOLTIP_S" xml:space="preserve">
+    <value>島フカシの上部レベルを指定します</value>
+    <comment>ボタン 上部レベル ツールチップS</comment>
+  </data>
+  <data name="IDS_CMBBOX_MATERIAL_NAME" xml:space="preserve">
+    <value>マテリアル_コンボボックス</value>
+    <comment>コンボボックス マテリアル 名前</comment>
+  </data>
+  <data name="IDS_CMBBOX_MATERIAL_TOOLTIP_S" xml:space="preserve">
+    <value>フカシ要素に設定するマテリアルを指定します</value>
+    <comment>コンボボックス マテリアル ツールチップS</comment>
+  </data>
+  <data name="IDS_CMBBOX_UPPERLEVEL_NAME" xml:space="preserve">
+    <value>上部レベル_コンボボックス</value>
+    <comment>コンボボックス 上部レベル 名前</comment>
+  </data>
+  <data name="IDS_CMBBOX_UPPERLEVEL_TOOLTIP_S" xml:space="preserve">
+    <value>島フカシの上部レベルを指定します</value>
+    <comment>コンボボックス 上部レベル ツールチップS</comment>
+  </data>
+  <data name="IDS_RBN_RIBBON_CLASSNAME" xml:space="preserve">
+    <value>ADSK.Ext.Fukashi.ExtApp</value>
+    <comment>リボン クラス名</comment>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_MATERIAL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%マテリアル_コンボボックス</value>
+    <comment>Revit内部ID マテリアルコンボボックス</comment>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_UPPERLEVEL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%上部レベル_コンボボックス</value>
+    <comment>Revit内部ID 上部レベルコンボボックス</comment>
+  </data>
+  <data name="IDS_RVT_INTERNALID_TXTBOX_OFFSET" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%オフセット_テキストボックス</value>
+    <comment>Revit内部ID オフセットテキストボックス</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF" xml:space="preserve">
+    <value>ADSK_Fukashi_Material</value>
+    <comment>共有パラメータ 定義名</comment>
+  </data>
+  <data name="IDS_TXTBOX_OFFSET_NAME" xml:space="preserve">
+    <value>オフセット_テキストボックス</value>
+    <comment>テキストボックス オフセット値 名前</comment>
+  </data>
+  <data name="IDS_TXTBOX_OFFSET_TOOLTIP_L" xml:space="preserve">
+    <value />
+    <comment>テキストボックス オフセット値 ツールチップL</comment>
+  </data>
+  <data name="IDS_TXTBOX_OFFSET_TOOLTIP_S" xml:space="preserve">
+    <value />
+    <comment>テキストボックス オフセット値 ツールチップS</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHIHELPHTM" xml:space="preserve">
+    <value>FukashiExtension_Manual.pdf</value>
+  </data>
+  <data name="IDS_TXT_SETLEVEL" xml:space="preserve">
+    <value>フカシ - レベル設定</value>
+    <comment>文字 フカシ - レベル設定</comment>
+  </data>
+  <data name="IDS_TXT_SETMATERIAL" xml:space="preserve">
+    <value>フカシ - マテリアル設定</value>
+    <comment>文字 フカシ - マテリアル設定</comment>
+  </data>
+  <data name="IDS_TXT_SETMATERIAL1" xml:space="preserve">
+    <value>マテリアル削除</value>
+    <comment>文字 マテリアル削除</comment>
+  </data>
+  <data name="IDS_TXT_SETMATERIAL2" xml:space="preserve">
+    <value>マテリアル追加</value>
+    <comment>文字 マテリアル追加</comment>
+  </data>
+</root>

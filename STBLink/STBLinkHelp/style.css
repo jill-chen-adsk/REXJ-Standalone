@@ -1,0 +1,20 @@
+.base {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+.Left {
+    width: 25%;
+    margin-right: 2em;
+}
+
+.Right {
+    width: 75%;
+}
+
+ul {
+    list-style: none;
+    padding-left: 1em;
+}

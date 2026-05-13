@@ -1,0 +1,60 @@
+<Project>
+    <Choose>
+        <When Condition=" $(Configuration.StartsWith('Debug ')) ">
+            <PropertyGroup>
+                <ConfigMode>Debug</ConfigMode>
+                <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <ConfigMode>Release</ConfigMode>
+                <DefineConstants>$(DefineConstants);RELEASE;$(EnvRelease)</DefineConstants>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
+    <Choose>
+        <When Condition=" $(Configuration.EndsWith(' 2022')) ">
+            <PropertyGroup>
+                <RevitVersion>2022</RevitVersion>
+                <DefineConstants>$(DefineConstants);REVIT2022;NET48</DefineConstants>
+            </PropertyGroup>
+        </When>
+        <When Condition=" $(Configuration.EndsWith(' 2023')) ">
+            <PropertyGroup>
+                <RevitVersion>2023</RevitVersion>
+                <DefineConstants>$(DefineConstants);REVIT2023;NET48</DefineConstants>
+            </PropertyGroup>
+        </When>
+        <When Condition=" $(Configuration.EndsWith(' 2024')) ">
+            <PropertyGroup>
+                <RevitVersion>2024</RevitVersion>
+                <DefineConstants>$(DefineConstants);REVIT2024;NET48</DefineConstants>
+            </PropertyGroup>
+        </When>
+        <When Condition=" $(Configuration.EndsWith(' 2025')) ">
+            <PropertyGroup>
+                <RevitVersion>2025</RevitVersion>
+                <DefineConstants>$(DefineConstants);REVIT2025;NETCORE</DefineConstants>
+            </PropertyGroup>
+        </When>
+        <When Condition=" $(Configuration.EndsWith(' 2026')) ">
+            <PropertyGroup>
+                <RevitVersion>2026</RevitVersion>
+                <DefineConstants>$(DefineConstants);REVIT2026;NETCORE</DefineConstants>
+            </PropertyGroup>
+        </When>
+        <Otherwise>
+            <PropertyGroup>
+                <RevitVersion>0</RevitVersion>
+            </PropertyGroup>
+        </Otherwise>
+    </Choose>
+
+    <PropertyGroup>
+        <RevitPath>C:\Program Files\Autodesk\Revit $(RevitVersion)\</RevitPath>
+        <OutputPath>..\..\..\..\..\bin\$(ConfigMode)\Revit Extension for Japan $(RevitVersion).bundle\Contents\REXJ_RST\</OutputPath>
+    </PropertyGroup>
+    
+</Project>

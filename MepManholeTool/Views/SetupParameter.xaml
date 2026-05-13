@@ -1,0 +1,665 @@
+﻿<Window x:Class="MepManholeTool.Views.SetupParameter"
+        x:Name="SetupParameterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:behavior="clr-namespace:MepManholeTool.Behavior"
+        xmlns:viewModel1="clr-namespace:MepManholeTool.ViewModel"
+        mc:Ignorable="d"
+        Title="Manhole Tool" Height="400" Width="1050" Loaded="Window_Loaded" 
+        ResizeMode="CanResize" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <viewModel1:SetupParameterViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <behavior:ColorConverter x:Key="ColorConverter"/>
+        <behavior:ZeroToEmptyConverter  x:Key="ZeroToEmptyConverter"/>
+        <behavior:FirstRowToEmptyConverter x:Key="FirstRowToEmptyConverter" />
+        <Style x:Key="CustomDataGridCell" TargetType="DataGridCell">
+            <Setter Property="BorderBrush" Value="#C2C2C2"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" 
+                                            HorizontalAlignment="Stretch"
+                                            Margin="{TemplateBinding Padding}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="White" Margin="17 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0 0 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="17" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Grid.ColumnSpan="5" BorderThickness="1 1 0 1" BorderBrush="#C2C2C2">
+                <TextBlock Text="Manhole Settings" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="5" Grid.ColumnSpan="3" BorderThickness="1 1 0 1" BorderBrush="#C2C2C2">
+                <TextBlock Text="Gradient" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="8" Grid.ColumnSpan="4" BorderThickness="1 1 1 1" BorderBrush="#C2C2C2">
+                <TextBlock Text="Calculation" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="12" BorderThickness="0 1 1 0" BorderBrush="#C2C2C2" Background="#F0F0F0"></Border>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0 0 0 0">
+            <Grid.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="17" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Symbol" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="1" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Ground Level" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="2" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Outlet Dia." TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="3" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Mud Puddle" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="4" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Pipe Step" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="5" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Slope Denom." TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="6" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Pipe Length" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="7" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Denom. Diff." TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="8" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Req. Invert (calc)" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="9" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Invert Elev." TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="10" BorderBrush="#C2C2C2" BorderThickness="1 1 0 1">
+                <TextBlock Text="Set Invert" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="11" BorderBrush="#C2C2C2" BorderThickness="1 1 1 1">
+                <TextBlock Text="Remarks" TextAlignment="Left" Padding="5" Background="LightGray" />
+            </Border>
+            <Border Grid.Column="12" BorderBrush="#C2C2C2" BorderThickness="0 0 1 0" Background="#F0F0F0"></Border>
+        </Grid>
+        <Border Grid.Row="2" Margin="0 0 0 0" BorderBrush="#C2C2C2" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="17" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderThickness="1 0 0 0" BorderBrush="#C2C2C2">
+                    <TextBlock Text="Bulk Setting" TextAlignment="Left" Background="LightGray" />
+                </Border>
+                <Border Grid.Column="1">
+                    <TextBox x:Name="BulkGroundLevelTextBox" Text="{Binding BulkGroundLevel, UpdateSourceTrigger=LostFocus}" IsReadOnly="{Binding ReadOnlyTopo, Mode=TwoWay}" TextAlignment="Right" BorderThickness="1 0 0 0" BorderBrush="#C2C2C2" InputMethod.IsInputMethodEnabled="False" Padding="5,2">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ReadOnlyTopo}" Value="True">
+                                        <Setter Property="Foreground" Value="LightGray"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </Border>
+                <Border Grid.Column="2">
+                    <TextBox x:Name="BulkOutputDiameterTextBox" Text="{Binding BulkOutputDiameter, UpdateSourceTrigger=LostFocus}" TextAlignment="Right" BorderThickness="1 0 0 0" BorderBrush="#C2C2C2" InputMethod.IsInputMethodEnabled="False" Padding="5,2"/>
+                </Border>
+                <Border Grid.Column="3">
+                    <TextBox x:Name="BulkMudPuddleTextBox" Text="{Binding BulkMudPuddle, UpdateSourceTrigger=LostFocus}" TextAlignment="Right" BorderThickness="1 0 0 0" BorderBrush="#C2C2C2" InputMethod.IsInputMethodEnabled="False" Padding="5,2"/>
+                </Border>
+                <Border Grid.Column="4">
+                    <TextBox x:Name="BulkPipeStepTextBox" Text="{Binding BulkPipeStep, UpdateSourceTrigger=LostFocus}" TextAlignment="Right" BorderThickness="1 0 0 0" BorderBrush="#C2C2C2" InputMethod.IsInputMethodEnabled="False" Padding="5,2"/>
+                </Border>
+                <Border Grid.Column="5">
+                    <TextBox x:Name="GradientDenominatorTextBox" Text="{Binding GradientDenominator, UpdateSourceTrigger=LostFocus}" TextAlignment="Right" BorderThickness="1 0 0 0" BorderBrush="#C2C2C2" InputMethod.IsInputMethodEnabled="False" Padding="5,2"/>
+                </Border>
+                <Border Grid.Column="6" BorderThickness="1 0 0 0" BorderBrush="#C2C2C2">
+                    <TextBlock Text="" TextAlignment="Left" Background="White" />
+                </Border>
+                <Border Grid.Column="7" BorderThickness="1 1 1 1" BorderBrush="White">
+                    <TextBlock Text="" Background="White" TextAlignment="Left" />
+                </Border>
+                <Border Grid.Column="8" BorderThickness="1 1 1 1" BorderBrush="White">
+                    <TextBlock Text="" Background="White" TextAlignment="Left" />
+                </Border>
+                <Border Grid.Column="9" BorderThickness="1 1 1 1" BorderBrush="White">
+                    <TextBlock Text="" TextAlignment="Left" Background="White"/>
+                </Border>
+                <Border Grid.Column="10" BorderThickness="1 1 1 1" BorderBrush="White">
+                    <TextBlock Text="" TextAlignment="Left" Background="White"/>
+                </Border>
+                <Border Grid.Column="11" BorderThickness="0 0 1 0" BorderBrush="#C2C2C2">
+                    <TextBlock Text="" TextAlignment="Left" Background="White"/>
+                </Border>
+                <Border Grid.Column="12" BorderThickness="0 0 1 0" BorderBrush="#C2C2C2" Background="#F0F0F0"></Border>
+            </Grid>
+        </Border>
+
+        <DataGrid x:Name="MasuSettingGrid" 
+            ItemsSource="{Binding MasuSetting}" 
+            Grid.Row="3" Grid.ColumnSpan="12"
+            HeadersVisibility="None"
+            RowHeaderWidth="0"
+            AutoGenerateColumns="False"
+            CanUserSortColumns="False"
+            CanUserAddRows="False" 
+            CanUserDeleteRows="True" 
+            IsReadOnly="False" 
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Stretch"
+            Background="White"
+            SelectedIndex="{Binding CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            VerticalScrollBarVisibility="Visible" 
+            HorizontalScrollBarVisibility="Auto"
+            BorderThickness="1 0 1 1"
+            BorderBrush="#C2C2C2"
+            GridLinesVisibility="None"
+            Margin="0 -1 0 0"
+            PreviewKeyDown="ParameterSetting_PreviewKeyDown">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="AliceBlue" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="AliceBlue" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="Black" />
+
+                 <!--the non-editing cell--> 
+                <DataTemplate x:Key="ReadonlyCellTemplate">
+                    <TextBlock Text="{Binding MasuItem.HeightToTopo, Mode=TwoWay}" TextAlignment="Right" HorizontalAlignment="Right" />
+                </DataTemplate>
+
+                 <!--the editing cell--> 
+                <DataTemplate x:Key="EditableCellTemplate">
+                    <TextBox Text="{Binding MasuItem.HeightToTopo, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextAlignment="Right" HorizontalContentAlignment="Right" />
+                </DataTemplate>
+
+                <Style TargetType="DataGridRowHeader">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                    <Setter Property="Width" Value="0" />
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Manhole No." Binding="{Binding MasuItem.MasuSymbol}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Margin" Value="-1 0 0 0"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Ground Level" CellTemplate="{StaticResource ReadonlyCellTemplate}" Width="*">
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ContentPresenter x:Name="Presenter" Content="{Binding}" ContentTemplate="{StaticResource ReadonlyCellTemplate}" />
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding EnableTopo}" Value="True">
+                                    <Setter TargetName="Presenter" Property="ContentTemplate">
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <TextBox Text="{Binding MasuItem.HeightToTopo, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+                                                         TextAlignment="Right" 
+                                                         HorizontalContentAlignment="Right">
+                                                    <TextBox.Style>
+                                                        <Style TargetType="TextBox">
+                                                            <Setter Property="BorderThickness" Value="0"/>
+                                                            <Setter Property="Background" Value="Transparent"/>
+                                                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsFocused" Value="True">
+                                                                    <Setter Property="BorderThickness" Value="0"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBox.Style>
+                                                </TextBox>
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding EnableTopo}" Value="False">
+                                    <Setter Property="Foreground" Value="LightGray"/>
+                                </DataTrigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <Trigger Property="IsEditing" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Outlet Dia." Width="*">
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <Trigger Property="IsEditing" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <!-- Null value trigger has highest priority (placed last) -->
+                                <DataTrigger Binding="{Binding MasuItem.OutputDiameter}" Value="{x:Null}">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock TextAlignment="Right" HorizontalAlignment="Stretch" InputMethod.IsInputMethodEnabled="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="{Binding MasuItem.OutputDiameter, StringFormat={}{0:0}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MasuItem.OutputDiameter}" Value="{x:Null}">
+                                                <Setter Property="Text" Value=""/>
+                                                <Setter Property="Foreground" Value="Gray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox BorderThickness="0" Background="Transparent" FocusVisualStyle="{x:Null}" TextAlignment="Right">
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="Text" Value="{Binding MasuItem.OutputDiameter, StringFormat={}{0:0}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MasuItem.OutputDiameter}" Value="{x:Null}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="Background" Value="LightGray"/>
+                                            </DataTrigger>
+                                            <Trigger Property="IsFocused" Value="True">
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Mud Puddle" Width="*">
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <Trigger Property="IsEditing" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <!-- Null value trigger has highest priority (placed last) -->
+                                <DataTrigger Binding="{Binding MasuItem.MudPuddle}" Value="{x:Null}">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock TextAlignment="Right" HorizontalAlignment="Stretch" InputMethod.IsInputMethodEnabled="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="{Binding MasuItem.MudPuddle, StringFormat={}{0:0}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MasuItem.MudPuddle}" Value="{x:Null}">
+                                                <Setter Property="Text" Value=""/>
+                                                <Setter Property="Foreground" Value="Gray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox BorderThickness="0" Background="Transparent" FocusVisualStyle="{x:Null}" TextAlignment="Right">
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="Text" Value="{Binding MasuItem.MudPuddle, StringFormat={}{0:0}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MasuItem.MudPuddle}" Value="{x:Null}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="Background" Value="LightGray"/>
+                                            </DataTrigger>
+                                            <Trigger Property="IsFocused" Value="True">
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Pipe Step" Width="*">
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <Trigger Property="IsEditing" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <!-- Null value trigger has highest priority (placed last) -->
+                                <DataTrigger Binding="{Binding MasuItem.PipeStep}" Value="{x:Null}">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock TextAlignment="Right" HorizontalAlignment="Stretch" InputMethod.IsInputMethodEnabled="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="{Binding MasuItem.PipeStep, StringFormat={}{0:0}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MasuItem.PipeStep}" Value="{x:Null}">
+                                                <Setter Property="Text" Value=""/>
+                                                <Setter Property="Foreground" Value="Gray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox BorderThickness="0" Background="Transparent" FocusVisualStyle="{x:Null}" TextAlignment="Right">
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="Text" Value="{Binding MasuItem.PipeStep, StringFormat={}{0:0}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding MasuItem.PipeStep}" Value="{x:Null}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Setter Property="Background" Value="LightGray"/>
+                                            </DataTrigger>
+                                            <Trigger Property="IsFocused" Value="True">
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Slope Denom." Binding="{Binding GradientDenominator, StringFormat={}{0:0}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}"/>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="InputMethod.IsInputMethodEnabled" Value="False"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Pipe Length" Binding="{Binding PipeLength, StringFormat={}{0:N2}, Mode=TwoWay}" IsReadOnly="True" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Foreground" Value="LightGray"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="InputMethod.IsInputMethodEnabled" Value="False"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Denom. Diff." Binding="{Binding GradientDenominatorDifference, StringFormat={}{0:0}, Mode=TwoWay}" IsReadOnly="True" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Foreground" Value="LightGray"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Right"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="InputMethod.IsInputMethodEnabled" Value="False"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Req. Invert (calc)" IsReadOnly="True" Width="2*">
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Foreground" Value="LightGray"/>
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock TextAlignment="Right" HorizontalAlignment="Stretch" InputMethod.IsInputMethodEnabled="False">
+                                <TextBlock.Text>
+                                    <MultiBinding Converter="{StaticResource FirstRowToEmptyConverter}">
+                                        <Binding Path="RequiredBottomHeight.Value"/>
+                                        <Binding Path="DataContext.MasuSetting" RelativeSource="{RelativeSource AncestorType=Window}"/>
+                                        <Binding Path="."/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Set Invert (input)" Width="2*">
+                    <DataGridTemplateColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <Trigger Property="IsEditing" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTemplateColumn.CellStyle>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding CheckBottomHeight.Value, Converter={StaticResource ZeroToEmptyConverter}, StringFormat={}{0:0}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" TextAlignment="Right"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding CheckBottomHeight.Value, Converter={StaticResource ZeroToEmptyConverter}, StringFormat={}{0:0}, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+                             HorizontalContentAlignment="Right"
+                             InputMethod.IsInputMethodEnabled="False"
+                             Loaded="TextBox_Loaded">
+                                <TextBox.Style>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsFocused" Value="True">
+                                                <Setter Property="BorderThickness" Value="0"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Set Invert (set)" Binding="{Binding BottomHeight.Value, StringFormat={}{0:0}, Mode=TwoWay}" IsReadOnly="True" Width="2*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}">
+                            <Setter Property="Foreground" Value="LightGray"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <Trigger Property="IsEditing" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource ColorConverter}">
+                                        <MultiBinding.Bindings>
+                                            <Binding Path="RequiredBottomHeight.Value" />
+                                            <Binding Path="BottomHeight.Value" />
+                                            <Binding RelativeSource="{RelativeSource Mode=Self}" />
+                                        </MultiBinding.Bindings>
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="LightGray"/>
+                            <Setter Property="TextAlignment" Value="Right"/>
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="InputMethod.IsInputMethodEnabled" Value="False"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Remarks" Binding="{Binding MasuItem.Biko}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell" BasedOn="{StaticResource CustomDataGridCell}"/>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="4" Margin="0 20 17 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1">
+                <TextBlock Text="" TextAlignment="Left" Background="Transparent" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1">
+                <TextBlock Text="Total Distance" TextAlignment="Left" Background="Transparent" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1">
+                <TextBox Text="{Binding TotalLength, StringFormat={}{0:N2}, Mode=TwoWay}" TextAlignment="Right" Background="Transparent" IsReadOnly="True" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1">
+                <TextBlock Text="mm" TextAlignment="Left" Background="Transparent" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1">
+                <TextBlock Text="Rounding" TextAlignment="Left" Background="Transparent" />
+            </Border>
+            <Border Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" HorizontalAlignment="Left">
+                <ComboBox x:Name="RoundingUnitComboBox" HorizontalAlignment="Left"
+                  Width="60" Height="20"
+                  ItemsSource="{Binding MasuToolUnits}"
+                  DisplayMemberPath="Symbol"
+                  SelectedItem="{Binding SelectedUnit}" />
+            </Border>
+
+            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <CheckBox x:Name="OverrideTopo" IsChecked="{Binding OverrideLevelHeight, Mode=TwoWay}">Override ground height</CheckBox>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="7" VerticalAlignment="Center">
+                <Button x:Name="ExecuteButton" Content="Execute" Width="50" Height="30" Command="{Binding OKCommand}" Background="White" BorderBrush="LightGray" BorderThickness="1" />
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_DIMTYPE_NAME" xml:space="preserve">
+    <value>Dimension Type</value>
+    <comment>ボタン 寸法タイプ 名前</comment>
+  </data>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Pipe/Duct Quantity Pickup</value>
+    <comment>ボタン パネル 名前</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP設備</value>
+    <comment>Legacy tab (unused)</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ Standalone</value>
+    <comment>Ribbon tab</comment>
+  </data>
+  <data name="IDS_BTN_TEXTTYPE_NAME" xml:space="preserve">
+    <value>Text Type</value>
+    <comment>Ribbon combo label</comment>
+  </data>
+  <data name="IDS_BTN_ENTPT_ASSEMBLYNAME" xml:space="preserve">
+    <value>Quantity.dll</value>
+    <comment>Obsolete; single-DLL merged add-in</comment>
+  </data>
+  <data name="IDS_BTN_QUANTITY_ASSEMBLYNAME" xml:space="preserve">
+    <value>Quantity.dll</value>
+    <comment>Ribbon assembly</comment>
+  </data>
+  <data name="IDS_BTN_QUANTITY_DUCT_CLASSNAME" xml:space="preserve">
+    <value>Quantity.CmdQuantityDuctExport</value>
+  </data>
+  <data name="IDS_BTN_QUANTITY_DUCT_NAME" xml:space="preserve">
+    <value>Duct Quantity</value>
+  </data>
+  <data name="IDS_BTN_QUANTITY_DUCT_TEXT" xml:space="preserve">
+    <value>Duct Quantity</value>
+  </data>
+  <data name="IDS_BTN_QUANTITY_DUCT_TOOLTIP_L" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_BTN_QUANTITY_DUCT_TOOLTIP_S" xml:space="preserve">
+    <value>Export duct quantities for the current view.</value>
+  </data>
+  <data name="IDS_BTN_QUANTITY_PIPE_CLASSNAME" xml:space="preserve">
+    <value>Quantity.CmdQuantityPipeExport</value>
+  </data>
+  <data name="IDS_BTN_QUANTITY_PIPE_NAME" xml:space="preserve">
+    <value>Pipe Quantity</value>
+  </data>
+  <data name="IDS_BTN_QUANTITY_PIPE_TEXT" xml:space="preserve">
+    <value>Pipe Quantity</value>
+  </data>
+  <data name="IDS_BTN_QUANTITY_PIPE_TOOLTIP_L" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_BTN_QUANTITY_PIPE_TOOLTIP_S" xml:space="preserve">
+    <value>Export pipe quantities for the current view.</value>
+  </data>
+  <data name="IDS_BTN_REASON_CLASSNAME" xml:space="preserve">
+    <value>Quantity.CmdQuantityReason</value>
+  </data>
+  <data name="IDS_BTN_REASON_NAME" xml:space="preserve">
+    <value>Quantity Diagram</value>
+  </data>
+  <data name="IDS_BTN_REASON_TEXT" xml:space="preserve">
+    <value>Quantity Diagram</value>
+  </data>
+  <data name="IDS_BTN_REASON_TOOLTIP_L" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_BTN_REASON_TOOLTIP_S" xml:space="preserve">
+    <value>Create quantity annotations in the current plan view.</value>
+  </data>
+  <data name="IDS_BTN_SHOWMANUAL_CLASSNAME" xml:space="preserve">
+    <value>Quantity.CmdShowManual</value>
+  </data>
+  <data name="IDS_BTN_SHOWMANUAL_NAME" xml:space="preserve">
+    <value>User Guide</value>
+  </data>
+  <data name="IDS_BTN_SHOWMANUAL_TEXT" xml:space="preserve">
+    <value>User Guide</value>
+  </data>
+  <data name="IDS_BTN_SHOWMANUAL_TOOLTIP_L" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IDS_BTN_SHOWMANUAL_TOOLTIP_S" xml:space="preserve">
+    <value>Open the Quantity add-in user guide (PDF).</value>
+  </data>
+  <data name="IDS_ERR_MANUALFILE" xml:space="preserve">
+    <value>Could not open the user guide.</value>
+  </data>
+  <data name="IDS_TXT_HELPHTM" xml:space="preserve">
+    <value>\Resources\MEP_Quantity_Help.htm</value>
+  </data>
+  <data name="IDS_TXT_JEXTRME_MANUAL" xml:space="preserve">
+    <value>\Resources\MEP_Quantity_Manual.pdf</value>
+  </data>
+  <data name="IDS_ERR_CANCEL" xml:space="preserve">
+    <value>The quantity operation was cancelled.</value>
+    <comment>文字 拾いがキャンセルされました。</comment>
+  </data>
+  <data name="IDS_ERR_DISCREPANCYDUCTSYSTEMTYPE" xml:space="preserve">
+    <value>A discrepancy list for duct system types was exported.
+(The list file is created in the same folder as the Revit project)</value>
+    <comment>エラー ダクトシステムタイプの食い違いリストが書き出されました。</comment>
+  </data>
+  <data name="IDS_ERR_DISCREPANCYPIPESYSTEMTYPE" xml:space="preserve">
+    <value>A discrepancy list for pipe system types was exported.
+(The list file is created in the same folder as the Revit project)</value>
+    <comment>エラー 配管システムタイプの食い違いリストが書き出されました。</comment>
+  </data>
+  <data name="IDS_ERR_EXECUTEVIEW" xml:space="preserve">
+    <value>Run this command from a sheet view or a floor plan view.</value>
+    <comment>エラー シートビューまたは平面ビューから実行してください。</comment>
+  </data>
+  <data name="IDS_ERR_EXPORTDUCTDISCREPANCY" xml:space="preserve">
+    <value>Failed to export the duct discrepancy list.</value>
+    <comment>文字 ダクト食い違いリストの書き出しに失敗しました。</comment>
+  </data>
+  <data name="IDS_ERR_EXPORTPIPEDISCREPANCY" xml:space="preserve">
+    <value>Failed to export the pipe discrepancy list.</value>
+    <comment>文字 配管食い違いリストの書き出しに失敗しました。</comment>
+  </data>
+  <data name="IDS_ERR_LOSTCHILDDUCT" xml:space="preserve">
+    <value>Duct IDs that did not meet the conditions were written to the export folder.</value>
+    <comment>エラー 条件外ダクトID</comment>
+  </data>
+  <data name="IDS_ERR_NOSELECT" xml:space="preserve">
+    <value>Select pipes or ducts, then run this command.</value>
+    <comment>エラー 配管やダクトを選択してから実行してください。</comment>
+  </data>
+  <data name="IDS_ERR_NOSUBJECT" xml:space="preserve">
+    <value>There are no target pipes or ducts in the current context.</value>
+    <comment>エラー 対象になるダクト配管がありません。</comment>
+  </data>
+  <data name="IDS_ERR_NOSUBJECTACCESSORY" xml:space="preserve">
+    <value>There are no target accessories.</value>
+    <comment>エラー 対象になる付属品がありません。</comment>
+  </data>
+  <data name="IDS_ERR_NOTFIND_DUCTSHIYOXML" xml:space="preserve">
+    <value>The duct system type specification data table file could not be found.</value>
+    <comment>エラー ダクトシステムタイプの仕様データテーブルファイルが見つかりません。</comment>
+  </data>
+  <data name="IDS_ERR_NOTFIND_PIPESHIYOXML" xml:space="preserve">
+    <value>The pipe system type specification data table file could not be found.</value>
+    <comment>エラー 配管システムタイプの仕様データテーブルファイルが見つかりません。</comment>
+  </data>
+  <data name="IDS_ERR_NOTFIND_XML" xml:space="preserve">
+    <value>The quantity data table file could not be found.</value>
+    <comment>エラー 拾い用データテーブルファイルが見つかりません。</comment>
+  </data>
+  <data name="IDS_ERR_NOTVIEWPLAN" xml:space="preserve">
+    <value>Run this command in a floor plan view.</value>
+    <comment>エラー 平面ビューで実行してください。</comment>
+  </data>
+  <data name="IDS_ERR_OUTPUTCSV" xml:space="preserve">
+    <value>Failed to write the CSV file.</value>
+    <comment>エラー CSV出力失敗</comment>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Failed to create the parameter definition.</value>
+    <comment>エラー パラメータ定義失敗</comment>
+  </data>
+  <data name="IDS_ERR_PRJECTVIEW" xml:space="preserve">
+    <value>Activate a drafting or model view (not Project Browser), then run again.</value>
+    <comment>エラー 作図領域をアクティブにしてから実行してください。</comment>
+  </data>
+  <data name="IDS_ERR_READFAILED_DUCTSHIYOXML" xml:space="preserve">
+    <value>Could not load the duct system type specification data table.</value>
+    <comment>エラー ダクトシステムタイプの仕様データテーブルが読み込めません。</comment>
+  </data>
+  <data name="IDS_ERR_READFAILED_PIPESHIYOXML" xml:space="preserve">
+    <value>Could not load the pipe system type specification data table.</value>
+    <comment>エラー 配管システムタイプの仕様データテーブルが読み込めません。</comment>
+  </data>
+  <data name="IDS_ERR_READFAILED_XML" xml:space="preserve">
+    <value>Could not load the quantity data table.</value>
+    <comment>エラー 拾い用データテーブルが読み込めません。</comment>
+  </data>
+  <data name="IDS_ERR_REIBAIKANSIZETABLE" xml:space="preserve">
+    <value>Failed to read the refrigerant pipe size table.</value>
+    <comment>文字 冷媒管サイズテーブルの取得に失敗しました。</comment>
+  </data>
+  <data name="IDS_ERR_TARGETVIEW" xml:space="preserve">
+    <value>No applicable view was found. The command was cancelled.</value>
+    <comment>文字 対象となるビューがないため中止します。</comment>
+  </data>
+  <data name="IDS_RVT_INTERNALID_HEAD" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_</value>
+    <comment>Revit内部ID 文頭</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF" xml:space="preserve">
+    <value>ADSK.JExtRME.LastTimeValue</value>
+    <comment>共有パラメータ 定義</comment>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>ADSK.JExtRME.txt</value>
+    <comment>共有パラメータ ファイル名</comment>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+    <comment>共有パラメータ グループ名</comment>
+  </data>
+  <data name="IDS_TXT_ATSURYOKU" xml:space="preserve">
+    <value>Pressure</value>
+    <comment>文字 圧力</comment>
+  </data>
+  <data name="IDS_TXT_ATSURYOKU_TOKKI" xml:space="preserve">
+    <value>Pressure_Note</value>
+    <comment>文字 圧力_特記</comment>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+    <comment>文字 Category</comment>
+  </data>
+  <data name="IDS_TXT_CHUKAMOKU" xml:space="preserve">
+    <value>Sub-category</value>
+    <comment>文字 中科目</comment>
+  </data>
+  <data name="IDS_TXT_CMDFINISH" xml:space="preserve">
+    <value>The command has finished.</value>
+    <comment>文字 コマンドが終了しました</comment>
+  </data>
+  <data name="IDS_TXT_CONTRACTDATE" xml:space="preserve">
+    <value>Contract Date</value>
+    <comment>文字 契約履行日</comment>
+  </data>
+  <data name="IDS_TXT_DEFDIMENSIONTYPE" xml:space="preserve">
+    <value>Quantity Dimension</value>
+    <comment>文字 既定の寸法線タイプ</comment>
+  </data>
+  <data name="IDS_TXT_DEFTEXTNOTETYPE" xml:space="preserve">
+    <value>Quantity Text</value>
+    <comment>文字 既定の文字タイプ</comment>
+  </data>
+  <data name="IDS_TXT_DUCTACCESSORYPRESSUREXML" xml:space="preserve">
+    <value>DuctAcc_FN_Pressure.xml</value>
+    <comment>文字 DuctAcc_FN_Pressure.xml</comment>
+  </data>
+  <data name="IDS_TXT_DUCTCONSTRUCTXML" xml:space="preserve">
+    <value>Duct_Construct.xml</value>
+    <comment>文字 Duct_Construct.xml</comment>
+  </data>
+  <data name="IDS_TXT_DUCTDISCREPANCYFILE" xml:space="preserve">
+    <value>DuctSystemType_DiscrepancyList.txt</value>
+    <comment>文字 ダクトシステムタイプ 食い違いリスト</comment>
+  </data>
+  <data name="IDS_TXT_DUCTFIREMATERIALXML" xml:space="preserve">
+    <value>Duct_FPDMaterial.xml</value>
+    <comment>文字 耐火ダクトXML</comment>
+  </data>
+  <data name="IDS_TXT_DUCTFORM" xml:space="preserve">
+    <value>Duct_FN_Form.xml</value>
+    <comment>文字 Duct_FN_Form.xml</comment>
+  </data>
+  <data name="IDS_TXT_DUCTPAINTSP" xml:space="preserve">
+    <value>Duct_PaintSp.xml</value>
+    <comment>文字 Duct_PaintSp.xml</comment>
+  </data>
+  <data name="IDS_TXT_DUCTPRESSUREXML" xml:space="preserve">
+    <value>Duct_FN_Pressure.xml</value>
+    <comment>文字 Duct_FN_Pressure.xml</comment>
+  </data>
+  <data name="IDS_TXT_DUCTSEALXML" xml:space="preserve">
+    <value>Duct_FN_Seal.xml</value>
+    <comment>文字 Duct_FN_Seal.xml</comment>
+  </data>
+  <data name="IDS_TXT_DUCTSIZE_HABA" xml:space="preserve">
+    <value>Duct Width</value>
+    <comment>文字 ダクト幅</comment>
+  </data>
+  <data name="IDS_TXT_DUCTSIZE_KEI" xml:space="preserve">
+    <value>Duct Diameter</value>
+    <comment>文字 ダクト径</comment>
+  </data>
+  <data name="IDS_TXT_DUCTSIZE_TAKASA" xml:space="preserve">
+    <value>Duct Height</value>
+    <comment>文字 ダクト高</comment>
+  </data>
+  <data name="IDS_TXT_DUCT_FLEXIBLEKAKU" xml:space="preserve">
+    <value>Flexible Duct Rectangular</value>
+    <comment>文字 フレキシブル ダクト角形</comment>
+  </data>
+  <data name="IDS_TXT_DUCT_FLEXIBLEMARU" xml:space="preserve">
+    <value>Flexible Duct Round</value>
+    <comment>文字 フレキシブル ダクト丸形</comment>
+  </data>
+  <data name="IDS_TXT_DUCT_KAKUGATA" xml:space="preserve">
+    <value>Rectangular Duct</value>
+    <comment>文字 角型ダクト</comment>
+  </data>
+  <data name="IDS_TXT_DUCT_MARUGATA" xml:space="preserve">
+    <value>Round Duct</value>
+    <comment>文字 丸型ダクト</comment>
+  </data>
+  <data name="IDS_TXT_EXECUTENOTSHEET" xml:space="preserve">
+    <value>You are running from a plan view, not a sheet view.
+Sheet-specific information (drawing numbers, etc.) will not be retrieved.
+Do you want to continue?</value>
+    <comment>文字 実行ビュー確認</comment>
+  </data>
+  <data name="IDS_TXT_EXECUTEQUANTITYEXPORT" xml:space="preserve">
+    <value>Create the quantity schedule / export?</value>
+    <comment>文字 拾い書の作成を行いますか？</comment>
+  </data>
+  <data name="IDS_TXT_FAMILY" xml:space="preserve">
+    <value>Family</value>
+    <comment>文字 Family</comment>
+  </data>
+  <data name="IDS_TXT_FINISH" xml:space="preserve">
+    <value>Quantity export finished.</value>
+    <comment>文字 拾い書出力が終了しました。</comment>
+  </data>
+  <data name="IDS_TXT_HAIKANKOSYO" xml:space="preserve">
+    <value>Pipe Designation</value>
+    <comment>文字 配管呼称</comment>
+  </data>
+  <data name="IDS_TXT_HAIKANMEISYO" xml:space="preserve">
+    <value>Pipe Name</value>
+    <comment>文字 配管名称</comment>
+  </data>
+  <data name="IDS_TXT_HIDUKE" xml:space="preserve">
+    <value>Date</value>
+    <comment>文字 日付</comment>
+  </data>
+  <data name="IDS_TXT_HIROI" xml:space="preserve">
+    <value>1 Pickup</value>
+    <comment>文字 1 拾い</comment>
+  </data>
+  <data name="IDS_TXT_HIROIKUBUN" xml:space="preserve">
+    <value>Cost_Pickup Classification</value>
+    <comment>文字 積算_拾い区分</comment>
+  </data>
+  <data name="IDS_TXT_HIROIORIGINALEXCEL_PIPE" xml:space="preserve">
+    <value>Excel\Pipe\ST-P-H-01-配管.xlsx</value>
+    <comment>文字 拾いオリジナルExcel 配管</comment>
+  </data>
+  <data name="IDS_TXT_HIROIORIGINALEXCEL_REIBAIKAN2WAY" xml:space="preserve">
+    <value>Excel\Pipe\ST-P-H-02-冷媒2W.xlsx</value>
+    <comment>文字 拾いオリジナルExcel 冷媒管2way</comment>
+  </data>
+  <data name="IDS_TXT_HIROIORIGINALEXCEL_REIBAIKAN3WAY" xml:space="preserve">
+    <value>Excel\Pipe\ST-P-H-03-冷媒3W.xlsx</value>
+    <comment>文字 拾いオリジナルExcel 冷媒管3way</comment>
+  </data>
+  <data name="IDS_TXT_HOONKUBUN" xml:space="preserve">
+    <value>Cost_Insulation Class</value>
+    <comment>文字 積算_保温区分</comment>
+  </data>
+  <data name="IDS_TXT_HOONKUBUN_INPEI" xml:space="preserve">
+    <value>Concealed</value>
+    <comment>文字 保温区分 隠蔽</comment>
+  </data>
+  <data name="IDS_TXT_HOONKUBUN_KIKAISHITSU" xml:space="preserve">
+    <value>Mechanical Room</value>
+    <comment>文字 保温区分 機械室</comment>
+  </data>
+  <data name="IDS_TXT_HOONKUBUN_OKUNAIROSYUTSU" xml:space="preserve">
+    <value>Indoor Exposed</value>
+    <comment>文字 保温区分 屋内露出</comment>
+  </data>
+  <data name="IDS_TXT_HOONKUBUN_TASHITSUKASYO" xml:space="preserve">
+    <value>High Humidity Area</value>
+    <comment>文字 保温区分 多湿箇所</comment>
+  </data>
+  <data name="IDS_TXT_HOON_ARI" xml:space="preserve">
+    <value>Insulated</value>
+    <comment>文字 保温有</comment>
+  </data>
+  <data name="IDS_TXT_HOON_NASHI" xml:space="preserve">
+    <value>Non-insulated</value>
+    <comment>文字 保温無</comment>
+  </data>
+  <data name="IDS_TXT_INCLUDE_DUCTSYSTEMTYPE" xml:space="preserve">
+    <value>No discrepancies found in duct system types.</value>
+    <comment>文字 ダクトシステムタイプに食い違いはありません。</comment>
+  </data>
+  <data name="IDS_TXT_INCLUDE_PIPESYSTEMTYPE" xml:space="preserve">
+    <value>No discrepancies found in pipe system types.</value>
+    <comment>文字 配管システムタイプに食い違いはありません。</comment>
+  </data>
+  <data name="IDS_TXT_INVIEWPIPE" xml:space="preserve">
+    <value>No pipes are selected.
+Run on all pipes in the view?</value>
+    <comment>文字 実行確認</comment>
+  </data>
+  <data name="IDS_TXT_INVIEWPIPEDUCT" xml:space="preserve">
+    <value>No pipes or ducts are selected.
+Run on all pipes and ducts in the view?</value>
+    <comment>文字 実行確認</comment>
+  </data>
+  <data name="IDS_TXT_IRIGUCHIKEI" xml:space="preserve">
+    <value>Inlet Diameter</value>
+    <comment>文字 入口径</comment>
+  </data>
+  <data name="IDS_TXT_KAI" xml:space="preserve">
+    <value>Floor</value>
+    <comment>文字 階</comment>
+  </data>
+  <data name="IDS_TXT_KAISU" xml:space="preserve">
+    <value>Floor Count</value>
+    <comment>文字 階数</comment>
+  </data>
+  <data name="IDS_TXT_KAMOKU" xml:space="preserve">
+    <value>Category</value>
+    <comment>文字 科目</comment>
+  </data>
+  <data name="IDS_TXT_KASYONUM" xml:space="preserve">
+    <value>Quantity Count</value>
+    <comment>文字 箇所数</comment>
+  </data>
+  <data name="IDS_TXT_KEITO" xml:space="preserve">
+    <value>System</value>
+    <comment>文字 系統</comment>
+  </data>
+  <data name="IDS_TXT_KEITO_TOKKI" xml:space="preserve">
+    <value>System_Note</value>
+    <comment>文字 系統_特記</comment>
+  </data>
+  <data name="IDS_TXT_KOHANSEI" xml:space="preserve">
+    <value>Steel Plate</value>
+    <comment>文字 鋼板製</comment>
+  </data>
+  <data name="IDS_TXT_KOHO" xml:space="preserve">
+    <value>Method</value>
+    <comment>文字 工法</comment>
+  </data>
+  <data name="IDS_TXT_KOHO_DUCTCI" xml:space="preserve">
+    <value>Method(Round Duct)</value>
+    <comment>文字 工法(円形ダクト)</comment>
+  </data>
+  <data name="IDS_TXT_KOHO_DUCTSQ" xml:space="preserve">
+    <value>Method(Rect Duct)</value>
+    <comment>文字 工法(長方形ダクト)</comment>
+  </data>
+  <data name="IDS_TXT_KOHO_TOKKI" xml:space="preserve">
+    <value>Method_Note</value>
+    <comment>文字 工法_特記</comment>
+  </data>
+  <data name="IDS_TXT_KOJI" xml:space="preserve">
+    <value>Project</value>
+    <comment>文字 工事</comment>
+  </data>
+  <data name="IDS_TXT_KOJIMEISYO" xml:space="preserve">
+    <value>Project Name</value>
+    <comment>文字 工事名称</comment>
+  </data>
+  <data name="IDS_TXT_KOSYO" xml:space="preserve">
+    <value>Designation</value>
+    <comment>文字 呼称</comment>
+  </data>
+  <data name="IDS_TXT_KOZO" xml:space="preserve">
+    <value>Structure</value>
+    <comment>文字 構造</comment>
+  </data>
+  <data name="IDS_TXT_LOSTCHILDDUCTFILENAME" xml:space="preserve">
+    <value>OutOfCondition_DuctID</value>
+    <comment>文字 条件外ダクト書き出しファイル名</comment>
+  </data>
+  <data name="IDS_TXT_MEISYO" xml:space="preserve">
+    <value>Name</value>
+    <comment>文字 名称</comment>
+  </data>
+  <data name="IDS_TXT_NEWFOLDER" xml:space="preserve">
+    <value>New Folder</value>
+    <comment>文字 新しいフォルダー</comment>
+  </data>
+  <data name="IDS_TXT_NOTSUBJECTXML" xml:space="preserve">
+    <value>QuantityNotSubject.xml</value>
+    <comment>文字 数量拾い除外リストXML</comment>
+  </data>
+  <data name="IDS_TXT_OUTAREARANGE" xml:space="preserve">
+    <value>Element IDs partially or fully outside spaces, or overlapping multiple spaces, were exported.</value>
+    <comment>文字 範囲外要素ID</comment>
+  </data>
+  <data name="IDS_TXT_OUTAREARANGE2" xml:space="preserve">
+    <value>Elements partially or fully outside spaces, or overlapping multiple spaces.</value>
+    <comment>文字 範囲外要素ID2</comment>
+  </data>
+  <data name="IDS_TXT_PIPECONSTRUCTXML" xml:space="preserve">
+    <value>Pipe_Construct.xml</value>
+    <comment>文字 Pipe_Construct.xml</comment>
+  </data>
+  <data name="IDS_TXT_PIPEDISCREPANCYFILE" xml:space="preserve">
+    <value>PipeSystemType_DiscrepancyList.txt</value>
+    <comment>文字 配管システムタイプ 食い違いリスト</comment>
+  </data>
+  <data name="IDS_TXT_PIPEHEATXML" xml:space="preserve">
+    <value>Pipe_Heat.xml</value>
+    <comment>文字 Pipe_Heat.xml</comment>
+  </data>
+  <data name="IDS_TXT_PIPEPAINTSP" xml:space="preserve">
+    <value>Pipe_PaintSp.xml</value>
+    <comment>文字 Pipe_PaintSp.xml</comment>
+  </data>
+  <data name="IDS_TXT_QUANTITYEXPORT" xml:space="preserve">
+    <value>Quantity export</value>
+    <comment>文字 拾い書出力</comment>
+  </data>
+  <data name="IDS_TXT_QUANTITYEXPORT_CALCULATING" xml:space="preserve">
+    <value>Calculating quantities...</value>
+    <comment>文字 数量計算中...</comment>
+  </data>
+  <data name="IDS_TXT_QUANTITYEXPORT_EXPORT" xml:space="preserve">
+    <value>Building export...</value>
+    <comment>文字 拾い書作成中...</comment>
+  </data>
+  <data name="IDS_TXT_QUANTITYEXPORT_READY" xml:space="preserve">
+    <value>Preparing export...</value>
+    <comment>文字 拾い書準備中...</comment>
+  </data>
+  <data name="IDS_TXT_QUANTITYREASON_DRAWING" xml:space="preserve">
+    <value>Creating quantity diagram...</value>
+    <comment>文字 拾い図作成中...</comment>
+  </data>
+  <data name="IDS_TXT_QUANTITYREASON_FINISH" xml:space="preserve">
+    <value>Quantity diagram complete.</value>
+    <comment>拾い図終了...</comment>
+  </data>
+  <data name="IDS_TXT_QUANTITYREASON_READY" xml:space="preserve">
+    <value>Preparing quantity diagram...</value>
+    <comment>文字 拾い図準備中...</comment>
+  </data>
+  <data name="IDS_TXT_QUANTITYSETTINGXML" xml:space="preserve">
+    <value>ADSK.JExtRME.Quantity_Setting.xml</value>
+    <comment>文字 ADSK.JExtRME.Quantity_Setting.xml</comment>
+  </data>
+  <data name="IDS_TXT_REIBAI2WAY" xml:space="preserve">
+    <value>Refrigerant 2-Way</value>
+    <comment>文字 冷媒2way</comment>
+  </data>
+  <data name="IDS_TXT_REIBAI3WAY" xml:space="preserve">
+    <value>Refrigerant 3-Way</value>
+    <comment>文字 冷媒3way</comment>
+  </data>
+  <data name="IDS_TXT_REIBAIKANKEIHUGO" xml:space="preserve">
+    <value>Refrigerant Pipe Size Code</value>
+    <comment>文字 冷媒管径符号</comment>
+  </data>
+  <data name="IDS_TXT_REIBAIKANSIZEXML_2WAY" xml:space="preserve">
+    <value>ReibaikanSize_2way.xml</value>
+    <comment>文字 冷媒管サイズXML 2way</comment>
+  </data>
+  <data name="IDS_TXT_REIBAIKANSIZEXML_3WAY" xml:space="preserve">
+    <value>ReibaikanSize_3way.xml</value>
+    <comment>文字 冷媒管サイズXML 3way</comment>
+  </data>
+  <data name="IDS_TXT_SEAL" xml:space="preserve">
+    <value>Seal</value>
+    <comment>文字 シール</comment>
+  </data>
+  <data name="IDS_TXT_SEKISANSYUMOKU" xml:space="preserve">
+    <value>Cost_Item Type</value>
+    <comment>文字 積算_種目</comment>
+  </data>
+  <data name="IDS_TXT_SEKOKUBUN" xml:space="preserve">
+    <value>Cost_Construction Class</value>
+    <comment>文字 積算_施工区分</comment>
+  </data>
+  <data name="IDS_TXT_SEKOKUBUN_KAKUKAIKIKAISHITSU" xml:space="preserve">
+    <value>Per-floor Mech Room</value>
+    <comment>文字 施工区分 各階機械室</comment>
+  </data>
+  <data name="IDS_TXT_SEKOKUBUN_OKUGAI" xml:space="preserve">
+    <value>Outdoor</value>
+    <comment>文字 施工区分 屋外</comment>
+  </data>
+  <data name="IDS_TXT_SEKOKUBUN_SOKOSYOKO" xml:space="preserve">
+    <value>Storage/Archive</value>
+    <comment>文字 施工区分 倉庫・書庫</comment>
+  </data>
+  <data name="IDS_TXT_SEKOKUBUN_SYUKIKAISHITSU" xml:space="preserve">
+    <value>Main Mech Room</value>
+    <comment>文字 施工区分 主機械室</comment>
+  </data>
+  <data name="IDS_TXT_SETSUGO" xml:space="preserve">
+    <value>Joining Method</value>
+    <comment>文字 接合方法</comment>
+  </data>
+  <data name="IDS_TXT_SHEETCOUNT" xml:space="preserve">
+    <value>Sheet #</value>
+    <comment>文字 枚目</comment>
+  </data>
+  <data name="IDS_TXT_SHEETDATE" xml:space="preserve">
+    <value>Sheet Issue Date</value>
+    <comment>文字 シート発行日</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTACCESSORY_DAMPER" xml:space="preserve">
+    <value>QTY-Duct Accessories(Damper)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ付属品(ﾀﾞﾝﾊﾟ)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTCIGWD" xml:space="preserve">
+    <value>QTY-Duct(Round GWD)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(円形GWD)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTCISS" xml:space="preserve">
+    <value>QTY-Duct(Round SS-L/H)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(円形SS-L・H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTCISUS" xml:space="preserve">
+    <value>QTY-Duct(Round SUS-L/H)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(円形SUS-L・H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTFLEX" xml:space="preserve">
+    <value>QTY-Flexible Duct</value>
+    <comment>文字 シート名 ﾌﾚｷｼﾌﾞﾙﾀﾞｸﾄ-拾い</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_PVCSQH" xml:space="preserve">
+    <value>QTY-Duct(Rect PVC-H)</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(長方形PVC-H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_PVCSQL" xml:space="preserve">
+    <value>QTY-Duct(Rect PVC-L)</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(長方形PVC-L)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_SSCI" xml:space="preserve">
+    <value>QTY-Duct(Round SS-L/H)</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(円形SS-L・H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_SSSQH" xml:space="preserve">
+    <value>QTY-Duct(Rect SS-H)</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(長方形SS-H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_SSSQL_ANGLE" xml:space="preserve">
+    <value>QTY-Duct(Rect SS-L)Angle Flange</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(長方形SS-L)ｱﾝｸﾞﾙﾌﾗﾝｼﾞ</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_SSSQL_TOMOITA" xml:space="preserve">
+    <value>QTY-Duct(Rect SS-L)TDC Flange</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(長方形SS-L)共板ﾌﾗﾝｼﾞ</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_SSSQL_TOMOITAANGLE" xml:space="preserve">
+    <value>QTY-Duct(Rect SS-L)TDC+Angle</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(長方形SS-L)共板_ｱﾝｸﾞﾙ</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_SUSCI" xml:space="preserve">
+    <value>QTY-Duct(Round SUS-L/H)</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(円形SUS-L・H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_SUSSQH" xml:space="preserve">
+    <value>QTY-Duct(Rect SUS-H)</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(長方形SUS-H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTPIPE_SUSSQL" xml:space="preserve">
+    <value>QTY-Duct(Rect SUS-L)</value>
+    <comment>文字 拾い-ﾀﾞｸﾄ(長方形SUS-L)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQGWD" xml:space="preserve">
+    <value>QTY-Duct(Rect GWD)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形GWD)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQPVCH" xml:space="preserve">
+    <value>QTY-Duct(Rect PVC-H)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形PVC-H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQPVCL" xml:space="preserve">
+    <value>QTY-Duct(Rect PVC-L)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形PVC-L)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQSSH" xml:space="preserve">
+    <value>QTY-Duct(Rect SS-H)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形SS-H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQSSL_ANGLE" xml:space="preserve">
+    <value>QTY-Duct(Rect SS-L)Angle Flange</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形SS-L)ｱﾝｸﾞﾙﾌﾗﾝｼﾞ</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQSSL_TOMOITA" xml:space="preserve">
+    <value>QTY-Duct(Rect SS-L)TDC Flange</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形SS-L)共板ﾌﾗﾝｼﾞ</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQSSL_TOMOITAANGLE" xml:space="preserve">
+    <value>QTY-Duct(Rect SS-L)TDC+Angle</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形SS-L)共板_ｱﾝｸﾞﾙ</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQSUSH" xml:space="preserve">
+    <value>QTY-Duct(Rect SUS-H)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形SUS-H)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSQSUSL" xml:space="preserve">
+    <value>QTY-Duct(Rect SUS-L)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(長方形SUS-L)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_DUCTSTEEL" xml:space="preserve">
+    <value>QTY-Duct(Steel Plate)</value>
+    <comment>文字 シート名 拾い-ﾀﾞｸﾄ(鋼板製)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_PIPE" xml:space="preserve">
+    <value>QTY-Pipe(HVAC/Plumbing)</value>
+    <comment>文字 シート名 拾い-配管(空調･衛生) </comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_PIPEACCESSORY_VALVE" xml:space="preserve">
+    <value>QTY-Pipe Accessories(Valves)</value>
+    <comment>文字 シート名 拾い-配管付属品(弁類)</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_REIBAIKAN2WAY" xml:space="preserve">
+    <value>QTY-Refrigerant 2-Way</value>
+    <comment>文字 シート名 拾い-冷媒2W</comment>
+  </data>
+  <data name="IDS_TXT_SHEETNAME_REIBAIKAN3WAY" xml:space="preserve">
+    <value>QTY-Refrigerant 3-Way</value>
+    <comment>文字 シート名 拾い-冷媒3W</comment>
+  </data>
+  <data name="IDS_TXT_SPEC" xml:space="preserve">
+    <value>Spec</value>
+    <comment>文字 Spec</comment>
+  </data>
+  <data name="IDS_TXT_SPEC1" xml:space="preserve">
+    <value>Spec 1</value>
+    <comment>文字 仕様</comment>
+  </data>
+  <data name="IDS_TXT_SPEC2" xml:space="preserve">
+    <value>Spec 2</value>
+    <comment>文字 仕様2</comment>
+  </data>
+  <data name="IDS_TXT_SPEC3" xml:space="preserve">
+    <value>Spec 3</value>
+    <comment>文字 仕様3</comment>
+  </data>
+  <data name="IDS_TXT_SPEC4" xml:space="preserve">
+    <value>Spec 4</value>
+    <comment>文字 仕様4</comment>
+  </data>
+  <data name="IDS_TXT_SPEC5" xml:space="preserve">
+    <value>Spec 5</value>
+    <comment>文字 仕様5</comment>
+  </data>
+  <data name="IDS_TXT_SPEC6" xml:space="preserve">
+    <value>Spec 6</value>
+    <comment>文字 仕様6</comment>
+  </data>
+  <data name="IDS_TXT_SPEC7" xml:space="preserve">
+    <value>Spec 7</value>
+    <comment>文字 仕様7</comment>
+  </data>
+  <data name="IDS_TXT_STARTEXPORT" xml:space="preserve">
+    <value>Starting the quantity export.</value>
+    <comment>文字 拾い書への書き出しを開始します。</comment>
+  </data>
+  <data name="IDS_TXT_STOP" xml:space="preserve">
+    <value>The quantity operation was stopped.</value>
+    <comment>文字 拾いを中止しました。</comment>
+  </data>
+  <data name="IDS_TXT_SUMMARY" xml:space="preserve">
+    <value>Summary</value>
+    <comment>文字 Summary</comment>
+  </data>
+  <data name="IDS_TXT_SYOUON" xml:space="preserve">
+    <value>Sound Attenuator</value>
+    <comment>文字 消音</comment>
+  </data>
+  <data name="IDS_TXT_SYOUONELBOW" xml:space="preserve">
+    <value>Sound Attenuator Elbow</value>
+    <comment>文字 消音エルボ</comment>
+  </data>
+  <data name="IDS_TXT_SYUBETSUENVIRONMENT" xml:space="preserve">
+    <value>Type(Environment)</value>
+    <comment>文字 種別(周囲環境)</comment>
+  </data>
+  <data name="IDS_TXT_SYUBETSUENVIRONMENT_TOKKI" xml:space="preserve">
+    <value>Type(Environment)_Note</value>
+    <comment>文字 種別(周囲環境)_特記</comment>
+  </data>
+  <data name="IDS_TXT_SYUBETSUYOTO" xml:space="preserve">
+    <value>Type(Usage)</value>
+    <comment>文字 種別(用途)</comment>
+  </data>
+  <data name="IDS_TXT_SYUKUSYAKU" xml:space="preserve">
+    <value>Scale</value>
+    <comment>文字 縮尺</comment>
+  </data>
+  <data name="IDS_TXT_SYUMOKU" xml:space="preserve">
+    <value>Item Type</value>
+    <comment>文字 種目</comment>
+  </data>
+  <data name="IDS_TXT_TAIATSU" xml:space="preserve">
+    <value>Pressure Rating</value>
+    <comment>文字 耐圧</comment>
+  </data>
+  <data name="IDS_TXT_TAIATSU_TOKKI" xml:space="preserve">
+    <value>Pressure Rating_Note</value>
+    <comment>文字 耐圧_特記</comment>
+  </data>
+  <data name="IDS_TXT_TAIKA" xml:space="preserve">
+    <value>Fire Resistant</value>
+    <comment>文字 耐火</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTACCESSORY_DAMPER" xml:space="preserve">
+    <value>ST-D-H-21-ﾀﾞｸﾄ付属品.xlsx</value>
+    <comment>文字 ST-D-H-21-ﾀﾞｸﾄ付属品.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_PVCSQH" xml:space="preserve">
+    <value>ST-D-H-132-ﾀﾞｸﾄ単管_長方形_PVC_H.xlsx</value>
+    <comment>文字 ST-D-H-132-ﾀﾞｸﾄ単管_長方形_PVC_H.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_PVCSQL" xml:space="preserve">
+    <value>ST-D-H-131-ﾀﾞｸﾄ単管_長方形_PVC_L.xlsx</value>
+    <comment>文字 ST-D-H-131-ﾀﾞｸﾄ単管_長方形_PVC_L.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_SSCI" xml:space="preserve">
+    <value>ST-D-H-115-ﾀﾞｸﾄ単管_円形_SS.xlsx</value>
+    <comment>文字 ST-D-H-115-ﾀﾞｸﾄ単管_円形_SS.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_SSSQH" xml:space="preserve">
+    <value>ST-D-H-114-ﾀﾞｸﾄ単管_長方形_SS_H.xlsx</value>
+    <comment>文字 ST-D-H-114-ﾀﾞｸﾄ単管_長方形_SS_H.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_SSSQL_ANGLE" xml:space="preserve">
+    <value>ST-D-H-113-ﾀﾞｸﾄ単管_長方形_SS_L_ｱﾝｸﾞﾙ.xlsx</value>
+    <comment>文字 ST-D-H-113-ﾀﾞｸﾄ単管_長方形_SS_L_ｱﾝｸﾞﾙ</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_SSSQL_TOMOITA" xml:space="preserve">
+    <value>ST-D-H-112-ﾀﾞｸﾄ単管_長方形_SS_L_共板.xlsx</value>
+    <comment>文字 ST-D-H-112-ﾀﾞｸﾄ単管_長方形_SS_L_共板.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_SSSQL_TOMOITAANGLE" xml:space="preserve">
+    <value>ST-D-H-111-ﾀﾞｸﾄ単管_長方形_SS_L_共板ｱﾝｸﾞﾙ.xlsx</value>
+    <comment>文字 ST-D-H-111-ﾀﾞｸﾄ単管_長方形_SS_L_共板ｱﾝｸﾞﾙ.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_SUSCI" xml:space="preserve">
+    <value>ST-D-H-123-ﾀﾞｸﾄ単管_円形_SUS.xlsx</value>
+    <comment>文字 ST-D-H-123-ﾀﾞｸﾄ単管_円形_SUS.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_SUSSQH" xml:space="preserve">
+    <value>ST-D-H-122-ﾀﾞｸﾄ単管_長方形_SUS_H.xlsx</value>
+    <comment>文字 ST-D-H-122-ﾀﾞｸﾄ単管_長方形_SUS_H.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCTPIPE_SUSSQL" xml:space="preserve">
+    <value>ST-D-H-121-ﾀﾞｸﾄ単管_長方形_SUS_L.xlsx</value>
+    <comment>文字 ST-D-H-121-ﾀﾞｸﾄ単管_長方形_SUS_L.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_FLEX" xml:space="preserve">
+    <value>ST-D-H-071-ﾀﾞｸﾄ_ﾌﾚｷｼﾌﾞﾙﾀﾞｸﾄ.xlsx</value>
+    <comment>文字 ST-D-H-071-ﾀﾞｸﾄ_ﾌﾚｷｼﾌﾞﾙﾀﾞｸﾄ.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_GWDCI" xml:space="preserve">
+    <value>ST-D-H-062-ﾀﾞｸﾄ_円形_GWD.xlsx</value>
+    <comment>文字 ST-D-H-062-ﾀﾞｸﾄ_円形_GWD.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_GWDSQ" xml:space="preserve">
+    <value>ST-D-H-061-ﾀﾞｸﾄ_長方形_GWD.xlsx</value>
+    <comment>文字 ST-D-H-061-ﾀﾞｸﾄ_長方形_GWD.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_PVCSQH" xml:space="preserve">
+    <value>ST-D-H-032-ﾀﾞｸﾄ_長方形_PVC_H.xlsx</value>
+    <comment>文字 ST-D-H-032-ﾀﾞｸﾄ_長方形_PVC_H.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_PVCSQL" xml:space="preserve">
+    <value>ST-D-H-031-ﾀﾞｸﾄ_長方形_PVC_L.xlsx</value>
+    <comment>文字 ST-D-H-031-ﾀﾞｸﾄ_長方形_PVC_L.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_SSCI" xml:space="preserve">
+    <value>ST-D-H-015-ﾀﾞｸﾄ_円形_SS.xlsx</value>
+    <comment>文字 ST-D-H-015-ﾀﾞｸﾄ_円形_SS.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_SSSQH" xml:space="preserve">
+    <value>ST-D-H-014-ﾀﾞｸﾄ_長方形_SS_H.xlsx</value>
+    <comment>文字 ST-D-H-014-ﾀﾞｸﾄ_長方形_SS_H.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_SSSQL_ANGLE" xml:space="preserve">
+    <value>ST-D-H-013-ﾀﾞｸﾄ_長方形_SS_L_ｱﾝｸﾞﾙ.xlsx</value>
+    <comment>文字 ST-D-H-013-ﾀﾞｸﾄ_長方形_SS_L_ｱﾝｸﾞﾙ.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_SSSQL_TOMOITA" xml:space="preserve">
+    <value>ST-D-H-012-ﾀﾞｸﾄ_長方形_SS_L_共板.xlsx</value>
+    <comment>文字 ST-D-H-012-ﾀﾞｸﾄ_長方形_SS_L_共板.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_SSSQL_TOMOITAANGLE" xml:space="preserve">
+    <value>ST-D-H-011-ﾀﾞｸﾄ_長方形_SS_L_共板ｱﾝｸﾞﾙ.xlsx</value>
+    <comment>文字 ST-D-H-011-ﾀﾞｸﾄ_長方形_SS_L_共板ｱﾝｸﾞﾙ.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_STEEL" xml:space="preserve">
+    <value>ST-D-H-041-ﾀﾞｸﾄ_鋼板製.xlsx</value>
+    <comment>文字 ST-D-H-041-ﾀﾞｸﾄ_鋼板製.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_SUSCI" xml:space="preserve">
+    <value>ST-D-H-023-ﾀﾞｸﾄ_円形_SUS.xlsx</value>
+    <comment>文字 ST-D-H-023-ﾀﾞｸﾄ_円形_SUS.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_SUSSQH" xml:space="preserve">
+    <value>ST-D-H-022-ﾀﾞｸﾄ_長方形_SUS_H.xlsx</value>
+    <comment>文字 ST-D-H-021-ﾀﾞｸﾄ_長方形_SUS_H.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_DUCT_SUSSQL" xml:space="preserve">
+    <value>ST-D-H-021-ﾀﾞｸﾄ_長方形_SUS_L.xlsx</value>
+    <comment>文字 ST-D-H-021-ﾀﾞｸﾄ_長方形_SUS_L.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TEMPEXCEL_PIPEACCESSORY_VALVE" xml:space="preserve">
+    <value>ST-P-H-02-配管付属品.xlsx</value>
+    <comment>文字 ST-P-H-02-配管付属品.xlsx</comment>
+  </data>
+  <data name="IDS_TXT_TOHMEISYO" xml:space="preserve">
+    <value>Building Name</value>
+    <comment>文字 棟名称</comment>
+  </data>
+  <data name="IDS_TXT_TOSO_TOKKI" xml:space="preserve">
+    <value>Paint_Note</value>
+    <comment>文字 塗装_特記</comment>
+  </data>
+  <data name="IDS_TXT_VALUES" xml:space="preserve">
+    <value>Values</value>
+    <comment>文字 Values</comment>
+  </data>
+  <data name="IDS_TXT_VANE" xml:space="preserve">
+    <value>With Vanes</value>
+    <comment>文字 ベーン付</comment>
+  </data>
+  <data name="IDS_TXT_VANEELBOW" xml:space="preserve">
+    <value>Vane Elbow</value>
+    <comment>文字 ベーン付エルボ</comment>
+  </data>
+  <data name="IDS_TXT_VIEWPLAN" xml:space="preserve">
+    <value>Floor Plan</value>
+    <comment>文字 平面図</comment>
+  </data>
+  <data name="IDS_TXT_XMLFILEFOLDER" xml:space="preserve">
+    <value>MEP Specifications</value>
+    <comment>文字 MEP Specifications</comment>
+  </data>
+  <data name="IDS_TXT_YOTO" xml:space="preserve">
+    <value>Usage</value>
+    <comment>文字 用途</comment>
+  </data>
+  <data name="IDS_TXT_ZAISHITSU" xml:space="preserve">
+    <value>Material</value>
+    <comment>文字 材質</comment>
+  </data>
+  <data name="IDS_TXT_ZUMENBANGO" xml:space="preserve">
+    <value>Drawing Number</value>
+    <comment>文字 図面番号</comment>
+  </data>
+</root>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>変換確認（柱脚）</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>変換確認（柱脚）</H2>
+        <table width="600" align="left">
+            <tr>
+                <td>選択した ST-Bridge に入力された柱脚のメーカー名・製品型番<br>および変換柱脚ファミリテーブルに一致するファミリ名・タイプ名を表示する。<br><br>
+                    <img src="Image/033_01.png" alt="" style="WIDTH: 579px">
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <table BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;部材変換</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="image/021_04.png" alt=""></td>
+                                        <td bgcolor="#ffffff">柱脚を「生成する／しない」を選択する<br>（生成しないを選択した場合は、変換ファミリ項目の内容に関わらずモデル生成しない）</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <table BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;変換ファミリ項目</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr bgcolor="#ddffee" align="center">
+                                        <td width="180">項目</td>
+                                        <td>内容</td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td>メーカ名・製品型番</td>
+                                        <td>変換するST-Bridgeに入力されている柱脚のメーカー名・製品型番を表示する</td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td>ファミリ名・タイプ名</td>
+                                        <td>変換するST-Bridgeの柱脚に一致する柱脚マッピングテーブルに記載されたファミリ名・タイプ名を表示する</td>
+                                    </tr>
+                                </table>
+
+                        <tr height="15">
+                            <td><p></p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="6">
+                                    <tr bgcolor="#ddffee" align="center">
+                                        <td>ファミリのロード状態</td>
+                                        <td width="150">「ロード」欄表示</td>
+                                        <td width="100">備考欄表示</td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td>ファミリがロードされている場合<br>
+                                            （タイプが指定されている場合はタイプも一致している場合）
+                                        </td>
+                                        <td>
+                                            <CENTER><img src="Image/033_04.png" alt=""></CENTER>
+                                        </td>
+                                        <td>
+                                            <CENTER>空欄</CENTER>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td>柱脚マッピングテーブルに登録されたファミリファイルが存在するがロードされていない場合</td>
+                                        <td>
+                                            <CENTER><img src="Image/033_03.png" alt=""></CENTER>
+                                        </td>
+                                        <td>
+                                            <CENTER><img src="Image/033_05.png" alt=""></CENTER>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td>メーカー名・製品型番が柱脚マッピングテーブルで指定されていない場合</td>
+                                        <td>
+                                            <CENTER><img src="Image/033_02.png" alt=""></CENTER>
+                                        </td>
+                                        <td>
+                                            <CENTER><img src="Image/033_06.png" alt=""></CENTER>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td>ファミリファイルが見つからない場合</td>
+                                        <td>
+                                            <CENTER><img src="Image/033_03.png" alt=""></CENTER>
+                                        </td>
+                                        <td>
+                                            <CENTER><img src="Image/033_07.png" alt=""></CENTER>
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td>タイプが見つからない場合</td>
+                                        <td>
+                                            <CENTER><img src="Image/033_03.png" alt=""></CENTER>
+                                        </td>
+                                        <td>
+                                            <CENTER><img src="Image/033_08.png" alt=""></CENTER>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr height="20">
+                            <td><p></p></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr bgcolor="#ddffee" align="center">
+                                        <td width="100">エラー番号</td>
+                                        <td>メッセージ内容（欄外に表示）</td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td>
+                                            <CENTER><img src="Image/033_06.png" alt=""></CENTER>
+                                        </td>
+                                        <td>メーカー名・製品型番が柱脚マッピングテーブルで指定されていません。柱脚マッピングテーブルを確認してください。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>
+                                            <CENTER><img src="Image/033_07.png" alt=""></CENTER>
+                                        </td>
+                                        <td>ファミリファイルが見つかりません。柱脚ファミリパスまたはファミリファイルを確認してください。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>
+                                            <CENTER><img src="Image/033_08.png" alt=""></CENTER>
+                                        </td>
+                                        <td>柱脚ファミリに柱脚マッピングテーブルで指定されたタイプが見つかりません。柱脚ファミリまたは柱脚マッピングテーブルを確認してください。</td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <table BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;各ボタン操作</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/033_03.png" alt=""></td>
+                                        <td bgcolor="#ffffff">未ロードの柱脚ファミリをロードする</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/033_09.png" alt=""></td>
+                                        <td bgcolor="#ffffff">全ての未ロードの柱脚ファミリをロードする</td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_02.png" alt=""></td>
+                                        <td bgcolor="#ffffff">レベルマッピングを行う<br>
+                                            → <a href="008.html">レベルマッピング</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_03.png" alt=""></td>
+                                        <td bgcolor="#ffffff">変換確認を中止し、ST-Bridge Link を終了する</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_04.png" alt=""></td>
+                                        <td bgcolor="#ffffff">『ST-Bridge Link』のヘルプを表示する</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center"><img src="Image/007_05.png" alt=""></td>
+                                        <td bgcolor="#ffffff">『ST-Bridge Link』のバージョン情報を表示する</td>
+                                    </tr>
+
+
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>差分インポート</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>差分インポート</H2>
+        <table width="1000" align="left" cellspacing="0" border="0">
+            <tr>
+                <td>差分インポート時に対象とするタイプを選択する。</td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td><p><img src="Image/056.png" alt="" style="WIDTH: 428px"></p></td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <table BORDER="0" width="1000" cellspacing="1">
+                        <strong>■&nbsp;項目</strong>
+                        <tr>
+                            <td>
+                                <table width="1000" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr bgcolor="#ffffff">
+                                        <td bgcolor="#ddffee">
+                                            変換タイプ指定
+                                        </td>
+                                        <td>
+                                            ・変換対象のタイプを選択する。<br>
+                                            ・表記は、“STBの符号 : Revitタイプ名(ファミリ名)”とする。<br>
+                                            ・データにGUIDが紐づくタイプがない場合、”STBの符号 : 新規”とする。
+                                        </td>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td bgcolor="#ddffee">
+                                            変換インスタンス指定
+                                        </td>
+                                        <td>
+                                            ・変換対象のインスタンスが使用しているタイプを選択する。<br>
+                                            ・表記はタイプ同様とする。<br>
+                                            ・OFFにした場合、そのタイプを使用しているインスタンスは変換対象外となる。<br>
+                                            ・変換前後で符号が変わっている場合、対象外となるのは、新しい符号（新STB）に紐づくインスタンスとする。<br>
+                                            　例）Revitデータ＝1G1、STB＝1G2　の場合、<br>
+                                            　　　1G1：ON、1G2：OFF　→　変換対象外（Revitデータは1G1のまま）<br>
+                                            　　　1G1：OFF、1G2：ON　→　変換対象（1G1を使っているインスタンスは1G2タイプに変わる）<br>
+                                            ・柱脚（構造接合）については、柱脚部材が紐づく柱タイプのチェック内容に依存する。
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

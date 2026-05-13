@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>フカシ</value>
+    <comment>ボタン パネル名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP建築</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ</value>
+    <comment>ボタン タブ名</comment>
+  </data>
+  <data name="IDS_CMBBOX_MATERIAL_NAME" xml:space="preserve">
+    <value>マテリアル_コンボボックス</value>
+    <comment>コンボボックス マテリアル 名前</comment>
+  </data>
+  <data name="IDS_ERR_EDGEANGLE" xml:space="preserve">
+    <value>指定したエッジ同士の傾きが違うため、基準面を分割できません</value>
+    <comment>エラー 指定したエッジ同士の傾きが違うため、基準面を分割できません</comment>
+  </data>
+  <data name="IDS_ERR_EDGEANGLEBASE" xml:space="preserve">
+    <value>指定したエッジに基準面と同じ傾きがないため、、基準面を分割できません</value>
+    <comment>エラー 指定したエッジに基準面と同じ傾きがないため、、基準面を分割できません</comment>
+  </data>
+  <data name="IDS_ERR_GETMATERIAL" xml:space="preserve">
+    <value>マテリアルを取得できませんでした</value>
+    <comment>エラー マテリアルを取得できませんでした</comment>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>パラメータ定義ができませんでした</value>
+    <comment>エラー パラメータ定義ができませんでした</comment>
+  </data>
+  <data name="IDS_ERR_PICKEDEDGEOVER" xml:space="preserve">
+    <value>選択されたエッジが多すぎます</value>
+    <comment>エラー 選択されたエッジが多すぎます</comment>
+  </data>
+  <data name="IDS_ERR_PICKEDGE" xml:space="preserve">
+    <value>エッジを選択してください</value>
+    <comment>エラー エッジを選択してください</comment>
+  </data>
+  <data name="IDS_ERR_PICKPLANARFACE" xml:space="preserve">
+    <value>平面を選択してください</value>
+    <comment>エラー 平面を選択してください</comment>
+  </data>
+  <data name="IDS_ERR_RELEVANT" xml:space="preserve">
+    <value>指定したエッジは基準面と関連性がありません</value>
+    <comment>エラー 指定したエッジは基準面と関連性がありません</comment>
+  </data>
+  <data name="IDS_ERR_RELEVANTEDGEFACE" xml:space="preserve">
+    <value>指定したエッジから有効な面を判定できません</value>
+    <comment>エラー 指定したエッジから有効な面を判定できません</comment>
+  </data>
+  <data name="IDS_ERR_RELEVANTEDGES" xml:space="preserve">
+    <value>指定したエッジ同士ではフカシを生成できません</value>
+    <comment>エラー 指定したエッジ同士ではフカシを生成できません</comment>
+  </data>
+  <data name="IDS_ERR_RELEVANTFACE" xml:space="preserve">
+    <value>指定した面は基準面と関連性がありません</value>
+    <comment>エラー 指定した面は基準面と関連性がありません</comment>
+  </data>
+  <data name="IDS_ERR_SELECT_TARGET" xml:space="preserve">
+    <value>選択対象はコンクリート躯体(床スラブ・壁・構造柱・構造梁・構造基礎)です</value>
+    <comment>エラー 選択対象はコンクリート躯体(床スラブ・壁・構造柱・構造梁・構造基礎)です</comment>
+  </data>
+  <data name="IDS_FAM_LSHAPE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_L字形</value>
+    <comment>ファミリ フカシファミリ_一般モデル_L字形</comment>
+  </data>
+  <data name="IDS_FAM_LSHAPE_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_L字形</value>
+    <comment>ファミリ フカシファミリ_構造柱_L字形</comment>
+  </data>
+  <data name="IDS_FAM_LSHAPE_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_L字形</value>
+    <comment>ファミリ フカシファミリ_構造基礎_L字形</comment>
+  </data>
+  <data name="IDS_FAM_LSHAPE_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_L字形</value>
+    <comment>ファミリ フカシファミリ_構造フレーム_L字形</comment>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_平行四辺形</value>
+    <comment>ファミリ フカシファミリ_一般モデル_平行四辺形</comment>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_平行四辺形</value>
+    <comment>ファミリ フカシファミリ_構造柱_平行四辺形</comment>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_平行四辺形</value>
+    <comment>ファミリ フカシファミリ_構造基礎_平行四辺形</comment>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_平行四辺形</value>
+    <comment>ファミリ フカシファミリ_構造フレーム_平行四辺形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_長方形_側面-長方形</value>
+    <comment>ファミリ フカシファミリ_一般モデル_長方形_側面-長方形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_長方形_側面-長方形</value>
+    <comment>ファミリ フカシファミリ_構造柱_長方形_側面-長方形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_長方形_側面-長方形</value>
+    <comment>ファミリ フカシファミリ_構造基礎_長方形_側面-長方形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_長方形_側面-長方形</value>
+    <comment>ファミリ フカシファミリ_構造フレーム_長方形_側面-長方形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_TORAPEZOID" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_長方形_側面-台形</value>
+    <comment>ファミリ フカシファミリ_一般モデル_長方形_側面-台形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_TORAPEZOID_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_長方形_側面-台形</value>
+    <comment>ファミリ フカシファミリ_構造柱_長方形_側面-台形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_TORAPEZOID_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_長方形_側面-台形</value>
+    <comment>ファミリ フカシファミリ_構造基礎_長方形_側面-台形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_TORAPEZOID_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_長方形_側面-台形</value>
+    <comment>ファミリ フカシファミリ_構造フレーム_長方形_側面-台形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_TRIANGLE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_長方形_側面-三角形</value>
+    <comment>ファミリ フカシファミリ_一般モデル_長方形_側面-三角形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_TRIANGLE_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_長方形_側面-三角形</value>
+    <comment>ファミリ フカシファミリ_構造柱_長方形_側面-三角形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_TRIANGLE_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_長方形_側面-三角形</value>
+    <comment>ファミリ フカシファミリ_構造基礎_長方形_側面-三角形</comment>
+  </data>
+  <data name="IDS_FAM_RECT_TRIANGLE_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_長方形_側面-三角形</value>
+    <comment>ファミリ フカシファミリ_構造フレーム_長方形_側面-三角形</comment>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_台形</value>
+    <comment>ファミリ フカシファミリ_一般モデル_台形</comment>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_台形</value>
+    <comment>ファミリ フカシファミリ_構造柱_台形</comment>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_台形</value>
+    <comment>ファミリ フカシファミリ_構造基礎_台形</comment>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_台形</value>
+    <comment>ファミリ フカシファミリ_構造フレーム_台形</comment>
+  </data>
+  <data name="IDS_FAM_TRIANGLE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_三角形</value>
+    <comment>ファミリ フカシファミリ_一般モデル_三角形</comment>
+  </data>
+  <data name="IDS_FAM_TRIANGLE_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_三角形</value>
+    <comment>ファミリ フカシファミリ_構造柱_三角形</comment>
+  </data>
+  <data name="IDS_FAM_TRIANGLE_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_三角形</value>
+    <comment>ファミリ フカシファミリ_構造基礎_三角形</comment>
+  </data>
+  <data name="IDS_FAM_TRIANGLE_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_三角形</value>
+    <comment>ファミリ フカシファミリ_構造フレーム_三角形</comment>
+  </data>
+  <data name="IDS_FAM_UNEVEN" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_凸凹形</value>
+    <comment>ファミリ フカシファミリ_一般モデル_T字形</comment>
+  </data>
+  <data name="IDS_FAM_UNEVEN_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_凸凹形</value>
+    <comment>ファミリ フカシファミリ_構造柱_T字形</comment>
+  </data>
+  <data name="IDS_FAM_UNEVEN_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_凸凹形</value>
+    <comment>ファミリ フカシファミリ_構造基礎_T字形</comment>
+  </data>
+  <data name="IDS_FAM_UNEVEN_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_凸凹形</value>
+    <comment>ファミリ フカシファミリ_構造フレーム_T字形</comment>
+  </data>
+  <data name="IDS_PICK_YOUSO" xml:space="preserve">
+    <value>要素が選択されていません</value>
+    <comment>文字 要素が選択されていません</comment>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_MATERIAL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%マテリアル_コンボボックス</value>
+    <comment>Revit内部ID マテリアルコンボボックス</comment>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_UPPERLEVEL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%上部レベル_コンボボックス</value>
+    <comment>Revit内部ID 上部レベルコンボボックス</comment>
+  </data>
+  <data name="IDS_RVT_INTERNALID_TXTBOX_OFFSET" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%オフセット_テキストボックス</value>
+    <comment>Revit内部ID オフセットテキストボックス</comment>
+  </data>
+  <data name="IDS_SHPARAM_DEF" xml:space="preserve">
+    <value>ADSK_Fukashi_Material</value>
+    <comment>共有パラメータ 定義名</comment>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>AdskFukashiShParam.txt</value>
+    <comment>共有パラメータ ファイル名</comment>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>ADSK_Fukashi</value>
+    <comment>共有パラメータ グループ名</comment>
+  </data>
+  <data name="IDS_TXT_CLOSE" xml:space="preserve">
+    <value>閉じる</value>
+    <comment>文字 閉じる</comment>
+  </data>
+  <data name="IDS_TXT_ERRSOLID_FINISHCMD" xml:space="preserve">
+    <value>ソリッド形状が合成できない、または取得できませんでした
+面フカシコマンドを終了します</value>
+    <comment>文字 ソリッド形状が合成できない、または取得できませんでした
+面フカシコマンドを終了します</comment>
+  </data>
+  <data name="IDS_TXT_EXCLUDE_ELEM" xml:space="preserve">
+    <value>除外部材を指定しますか？</value>
+    <comment>文字 除外部材を指定しますか？</comment>
+  </data>
+  <data name="IDS_TXT_FACEOREDGE_CONTENT" xml:space="preserve">
+    <value>指定した面またはエッジから、生成するフカシの厚さを求めます。
+面及びエッジを1つ指定できます。</value>
+    <comment>文字 指定した面またはエッジから、生成するフカシの厚さを求めます</comment>
+  </data>
+  <data name="IDS_TXT_FACEOREDGE_CONTENT_RECT" xml:space="preserve">
+    <value>指定した面またはエッジから、生成するフカシの厚さを求めます。
+指定した面が長方形のため、面は1つ、エッジは1つまたは2つ指定できます。</value>
+    <comment>文字 指定した面またはエッジから、生成するフカシの厚さを求めます</comment>
+  </data>
+  <data name="IDS_TXT_FACEOREDGE_INSTRUCTION" xml:space="preserve">
+    <value>面またはエッジの指定</value>
+    <comment>文字 面またはエッジの指定</comment>
+  </data>
+  <data name="IDS_TXT_FAMILYLOADING" xml:space="preserve">
+    <value>フカシファミリをロード中 </value>
+    <comment>文字 フカシファミリをロード中 </comment>
+  </data>
+  <data name="IDS_TXT_FINISHCMD" xml:space="preserve">
+    <value>面フカシコマンドを終了します</value>
+    <comment>文字 面フカシコマンドを終了します</comment>
+  </data>
+  <data name="IDS_TXT_FLOW" xml:space="preserve">
+    <value>フロー</value>
+    <comment>文字 フロー</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHIFACE" xml:space="preserve">
+    <value>面フカシ</value>
+    <comment>文字 面フカシ</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHIMATERIAL" xml:space="preserve">
+    <value>フカシマテリアル</value>
+    <comment>文字 フカシマテリアル</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_ANGLE1" xml:space="preserve">
+    <value>フカシ角度1</value>
+    <comment>文字 フカシ角度1</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_ANGLE2" xml:space="preserve">
+    <value>フカシ角度2</value>
+    <comment>文字 フカシ角度2</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH" xml:space="preserve">
+    <value>フカシ奥行</value>
+    <comment>文字 フカシ奥行</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH1" xml:space="preserve">
+    <value>フカシ奥行1</value>
+    <comment>文字 フカシ奥行1</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH2" xml:space="preserve">
+    <value>フカシ奥行2</value>
+    <comment>文字 フカシ奥行2</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH3" xml:space="preserve">
+    <value>フカシ奥行3</value>
+    <comment>文字 フカシ奥行3</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_FACEPICK" xml:space="preserve">
+    <value>面指定フカシ</value>
+    <comment>文字 面指定フカシ</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_LENGTH1" xml:space="preserve">
+    <value>フカシ長さ1</value>
+    <comment>文字 フカシ長さ1</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_LENGTH2" xml:space="preserve">
+    <value>フカシ長さ2</value>
+    <comment>文字 フカシ長さ2</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS" xml:space="preserve">
+    <value>フカシ厚さ</value>
+    <comment>文字 フカシ厚さ</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS1" xml:space="preserve">
+    <value>フカシ厚さ1</value>
+    <comment>文字 フカシ厚さ1</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS2" xml:space="preserve">
+    <value>フカシ厚さ2</value>
+    <comment>文字 フカシ厚さ2</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH" xml:space="preserve">
+    <value>フカシ幅</value>
+    <comment>文字 フカシ幅</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH1" xml:space="preserve">
+    <value>フカシ幅1</value>
+    <comment>文字 フカシ幅1</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH2" xml:space="preserve">
+    <value>フカシ幅2</value>
+    <comment>文字 フカシ幅2</comment>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH3" xml:space="preserve">
+    <value>フカシ幅3</value>
+    <comment>文字 フカシ幅3</comment>
+  </data>
+  <data name="IDS_TXT_MATERIAL" xml:space="preserve">
+    <value>マテリアル ：</value>
+    <comment>文字 マテリアル</comment>
+  </data>
+  <data name="IDS_TXT_MM" xml:space="preserve">
+    <value>mm</value>
+    <comment>文字 mm</comment>
+  </data>
+  <data name="IDS_TXT_ONLY1EDGE" xml:space="preserve">
+    <value>1つ目のエッジが選択されました。
+2つ目を選択しない場合、「Escキー」で選択を終了してください。</value>
+    <comment>文字 1つ目のエッジが選択されました。</comment>
+  </data>
+  <data name="IDS_TXT_PICKFACE" xml:space="preserve">
+    <value>面指定</value>
+    <comment>文字 面指定</comment>
+  </data>
+  <data name="IDS_TXT_PICK_EDGE" xml:space="preserve">
+    <value>エッジを1つ指定する</value>
+    <comment>文字 エッジを1つ指定する</comment>
+  </data>
+  <data name="IDS_TXT_PICK_EDGES" xml:space="preserve">
+    <value>エッジを2つ指定する</value>
+    <comment>文字 エッジを2つ指定する</comment>
+  </data>
+  <data name="IDS_TXT_PICK_FACE" xml:space="preserve">
+    <value>面を指定する</value>
+    <comment>文字 面を指定する</comment>
+  </data>
+  <data name="IDS_TXT_PICK_JOINSOLID" xml:space="preserve">
+    <value>結合する部材を複数選択して終了ボタンを押してください。結合しない場合は、そのまま終了ボタンを押してください。ESCを押すと終了します。</value>
+    <comment>文字 結合する部材を複数選択して終了ボタンを押してください。結合しない場合は、そのまま終了ボタンを押してください。ESCを押すと終了します。</comment>
+  </data>
+  <data name="IDS_TXT_PICK_KIJUNFACE" xml:space="preserve">
+    <value>クリックしてふかす面を選択します。ESCを押すと終了します。</value>
+    <comment>文字 クリックしてふかす面を選択します。ESCを押すと終了します。</comment>
+  </data>
+  <data name="IDS_TXT_RETURN_PICKFACE" xml:space="preserve">
+    <value>基準面の選択に戻ります</value>
+    <comment>文字 基準面の選択に戻ります</comment>
+  </data>
+  <data name="IDS_TXT_THICKNESS" xml:space="preserve">
+    <value>厚さ ：</value>
+    <comment>文字 厚さ</comment>
+  </data>
+</root>

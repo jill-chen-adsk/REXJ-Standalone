@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>梁生成</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>梁生成</H2>
+        <table width="600" align="left">
+            <tr>
+                <td>
+                    <p>ST-Bridgeから読み取った情報から梁の変換を行う。</p>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;梁断面の生成</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">RC梁断面の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>RC梁断面（StbSecBeam_RC）内のデータをRC梁断面として変換する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">2</td>
+                                        <td>梁属性(基礎梁/大梁/小梁/片持等)およびコンクリート形状ごとにマッピングテーブルで設定されたファミリを使用する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">3</td>
+                                        <td>所属階（floor）＋断面名称（name）をタイプ名にする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">4</td>
+                                        <td>マッピングされたファミリ内に該当するタイプ名・梁種別がない場合は既存のタイプを複製し新たなタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">5</td>
+                                        <td>複製したタイプに各タイプパラメータを設定する。<br>
+                                            対応する既存のタイプパラメータが無い属性はタイプパラメータを新規に追加し設定する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">6</td>
+                                        <td>タイプパラメータ「梁種別」はkind_beamがGIRDERの場合「大梁」、BEAMの場合「小梁」とする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">7</td>
+                                        <td>コンクリート強度（strength_concrete）が空欄の場合は梁の所属階の階情報（StbStory）のコンクリート強度（concrete_strength）をタイプパラメータに設定する。<br>
+                                            階情報のコンクリート強度が空欄の場合は共通情報（StbCommon）の建物全体のコンクリート強度（concrete_strength）を設定する。
+                                        </td>
+                                    </tr>
+                                    <!-- S梁断面の生成 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">S梁断面の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>S梁断面（StbSecBeam_S）内のデータをS梁断面として変換する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">2</td>
+                                        <td>梁属性(基礎梁/大梁/小梁/片持等)および鉄骨形状（shape）の属している鉄骨断面ごとにマッピングテーブルで設定されたファミリを使用する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">3</td>
+                                        <td>鉄骨形状が角型鋼・組立角型鋼・円形鋼管・T形鋼の梁は変換対象外とする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">4</td>
+                                        <td>所属階（floor）＋断面名称（name）をタイプ名にする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">5</td>
+                                        <td>マッピングされたファミリ内に該当するタイプ名・梁種別がない場合は既存のタイプを複製し新たなタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">6</td>
+                                        <td>配布テンプレートのファミリ（溝形鋼・リップ溝形鋼・山形鋼）の鉄骨断面は1断面しかないので、中央・始端・終端の優先順で断面を変換する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">7</td>
+                                        <td>複製したタイプに各タイプパラメータを設定する。<br>
+                                            対応する既存のタイプパラメータが無い属性はタイプパラメータを新規に追加し設定する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">8</td>
+                                        <td>タイプパラメータ「梁種別」はkind_beamがGIRDERの場合「大梁」、BEAMの場合「小梁」とする。</td>
+                                    </tr>
+                                    <!-- SRC梁断面の生成 -->
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">SRC梁断面の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>SRC梁断面（StbSecBeam_SRC）内のデータをSRC梁断面として変換する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">2</td>
+                                        <td>梁属性(基礎梁/大梁/小梁/片持等)およびコンクリート形状・鉄骨形状ごとにマッピングテーブルで設定されたファミリを使用する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">3</td>
+                                        <td>所属階（floor）＋断面名称（name）をタイプ名にする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">4</td>
+                                        <td>マッピングされたファミリ内に該当するタイプ名・梁種別がない場合は既存のタイプを複製し新たなタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">5</td>
+                                        <td>複製したタイプに各タイプパラメータを設定する。<br>
+                                            対応する既存のタイプパラメータが無い属性はタイプパラメータを新規に追加し設定する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">6</td>
+                                        <td>タイプパラメータ「梁種別」はkind_beamがGIRDERの場合「大梁」、BEAMの場合「小梁」とする。
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- 梁の配置 -->
+                    <TABLE BORDER="0" width="600" cellspacing="0">
+                        <strong>■&nbsp;梁の配置</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="left" height="40" colspan="2">梁の生成</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center" width="25">1</td>
+                                        <td>部材情報（StbMembers）の梁（StbGirders）、小梁（StbBeams）の情報から梁を生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">2</td>
+                                        <td>断面ID（id_section）と合致する断面IDの断面タイプを取得する。タイプが見つからない場合はタイプを生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">3</td>
+                                        <td>ハンチ位置（始端）（haunch_start）ハンチ位置（終端）（haunch_end）を取得する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">4</td>
+                                        <td>取得した断面タイプの始端・終端ハンチパラメータとST-Bridge情報のハンチ位置が異なる場合、新たにタイプを作成しタイプ名の末尾にサフィックスを付ける。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">5</td>
+                                        <td>断面IDからST-Bridgeの梁断面を探し、所属階を取得する。所属階を配置の基準レベルとする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">6</td>
+                                        <td>始端節点ID（idNode_start）、終端節点ID（idNode_end）の座標を取得する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">7</td>
+                                        <td>Revitの参照レベルは、階（StbStories）の節点IDリスト（StbNodeid_List）から所属階を取得し、その代表高さと近しいRevitのレベルを設定する。<br>
+                                            節点IDリストに始端・終端節点IDがない場合は、2点の中点座標に近しいRevitのレベルを設定する。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">8</td>
+                                        <td>終端節点のZ座標から上部レベルを取得する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">9</td>
+                                        <td>取得した断面タイプ、レベル、節点座標位置から梁を生成する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">10</td>
+                                        <td>梁生成後、インスタンスパラメータに各属性を設定する。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">11</td>
+                                        <td>レベル・オフセットは以下のように変換する。<br>
+                                            <!-- セル内の表 -->
+                                            <table align="right" width="545" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                <tr bgcolor="#c6d9f1">
+                                                    <td align="center" width="165"><b>パラメータ名</b></td>
+                                                    <td align="center"><b>処理内容</b></td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>始端レベル オフセット<br>終端レベル オフセット</td>
+                                                    <td>節点の位置およびレベルマッピングオフセットとレベル[level] による計算値を設定</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>yz位置合わせ</td>
+                                                    <td>「個別」を設定</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>始端y位置合わせ<br>終端y位置合わせ</td>
+                                                    <td>「基準点」を設定</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>始端yオフセット値</td>
+                                                    <td>
+                                                        梁の始端側座標を<br>
+                                                        始端側オフセット（X）[offset_start_X]、<br>
+                                                        始端側オフセット（Y）[offset_start_Y]分、<br>
+                                                        終端側座標を<br>
+                                                        終端側オフセット（X）[offset_end_X]、<br>
+                                                        終端側オフセット（Y）[offset_end_Y]分、<br>
+                                                        動かした梁の延長線と始端節点からの垂線が交わる点までの距離をオフセット[offset]に加算した値を設定<br><br>
+                                                        <CENTER><img src="Image/027_01.png" width="254" align="center"></CENTER>
+                                                    </td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>終端yオフセット値</td>
+                                                    <td>上記と同じだけ動かした梁の延長線上と終端節点からの垂線が交わる点までの距離をオフセット[offset]に加算した値を設定</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>始端z位置合わせ<br>終端z位置合わせ</td>
+                                                    <td>「上」を設定</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>始端zオフセット値</td>
+                                                    <td>始端側オフセット（Z）[offset_start_Z]を設定</td>
+                                                </tr>
+                                                <tr bgcolor="#ffffff">
+                                                    <td>終端zオフセット値</td>
+                                                    <td>終端側オフセット（Z）[offset_end_Z]を設定</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">12</td>
+                                        <td>パラメータ 構造用途 は、StbGirdersなら「大梁」、StbBeamsなら「小梁」とする。</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td align="center">13</td>
+                                        <td>S梁・SRC梁はインスタンスパラメータ「始端の接合部カットオフ長さ」「終端の接合部カットオフ長さ」の値を「0」にする。</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

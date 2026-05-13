@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Enhanced Section Box</Name>
+    <Assembly>ADSK.JExtRAC.EnhancedSectionBox.dll</Assembly>
+    <AddInId>2E7B1FCF-1754-4870-A87B-4E92DA5D19F3</AddInId>
+    <FullClassName>ADSK.JExtRAC.EnhancedSectionBox.App</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

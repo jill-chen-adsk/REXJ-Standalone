@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_ERR_ALLVALUE" xml:space="preserve">
+    <value>Cannot specify value together with minimum and maximum values.</value>
+  </data>
+  <data name="IDS_ERR_INPUTVALUE" xml:space="preserve">
+    <value>Select the attributes you want to copy.</value>
+  </data>
+  <data name="IDS_ERR_NOSELECTELEMENT" xml:space="preserve">
+    <value>Select one or more "copy destination" instances.</value>
+  </data>
+  <data name="IDS_LOG_CANNOTCOPY" xml:space="preserve">
+    <value>Cannot copy.</value>
+  </data>
+  <data name="IDS_LOG_CANOTFINDPARAMETER" xml:space="preserve">
+    <value>Parameter could not be found.</value>
+  </data>
+  <data name="IDS_LOG_OUTOFRANGE" xml:space="preserve">
+    <value>The value is out of range.</value>
+  </data>
+  <data name="IDS_LOG_READONLYORRECIPE" xml:space="preserve">
+    <value>Parameter is read-only or formula-driven and cannot be edited.</value>
+  </data>
+  <data name="IDS_LOG_SUSSCESS" xml:space="preserve">
+    <value>Copy completed successfully.</value>
+  </data>
+  <data name="IDS_TXT_APPLY" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IDS_TXT_CLOSELOG" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="IDS_TXT_COPYFORM" xml:space="preserve">
+    <value>Property list</value>
+  </data>
+  <data name="IDS_TXT_ERRORDISPLAY" xml:space="preserve">
+    <value>Error log display</value>
+  </data>
+  <data name="IDS_TXT_FAMILYSTRINGFORM" xml:space="preserve">
+    <value>Family name</value>
+  </data>
+  <data name="IDS_TXT_ICONSTATUSFORM" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="IDS_TXT_INSTANCEIDFORM" xml:space="preserve">
+    <value>Instance ID</value>
+  </data>
+  <data name="IDS_TXT_LOG" xml:space="preserve">
+    <value>Error log</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_TXT_PARAMETERNAMEFORM" xml:space="preserve">
+    <value>Parameter name</value>
+  </data>
+  <data name="IDS_TXT_REPORTFORM" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="IDS_TXT_SAVELOG" xml:space="preserve">
+    <value>Save log</value>
+  </data>
+  <data name="IDS_TXT_STATUSFORM" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="IDS_TXT_STATUSNOTOKSTRINGFORM" xml:space="preserve">
+    <value>×</value>
+  </data>
+  <data name="IDS_TXT_STATUSOKSTRINGFORM" xml:space="preserve">
+    <value>○</value>
+  </data>
+  <data name="IDS_TXT_TYPESTRINGFORM" xml:space="preserve">
+    <value>Type name</value>
+  </data>
+  <data name="IDS_MSG_WARN_TITLE" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="IDS_MSG_SELECT_OBJECTS" xml:space="preserve">
+    <value>Please select one or more elements.</value>
+  </data>
+  <data name="IDS_TRN_PLACEMENT" xml:space="preserve">
+    <value>Placement</value>
+  </data>
+  <data name="IDS_TRN_BATCH_DIMENSION" xml:space="preserve">
+    <value>Batch Object Dimension</value>
+  </data>
+  <data name="IDS_TRN_WORKPLANE" xml:space="preserve">
+    <value>Work plane</value>
+  </data>
+  <data name="IDS_TRN_DETAIL_LINE" xml:space="preserve">
+    <value>Detail line</value>
+  </data>
+  <data name="IDS_MSG_PICK_DIM_BASE_POINT" xml:space="preserve">
+    <value>Specify the reference point for dimension placement.</value>
+  </data>
+  <data name="IDS_DIM_ERROR_FACES_CORES" xml:space="preserve">
+    <value>Some faces or reference lines/grid lines could not be dimensioned.</value>
+  </data>
+  <data name="IDS_DIM_FORM_TITLE" xml:space="preserve">
+    <value>Batch Object Dimension</value>
+  </data>
+  <data name="IDS_DIM_GROUPBOX_PLACEMENT_TYPE" xml:space="preserve">
+    <value>Placement type</value>
+  </data>
+  <data name="IDS_DIM_RADIO_FACE_CORE" xml:space="preserve">
+    <value>Face – Reference</value>
+  </data>
+  <data name="IDS_DIM_RADIO_FACE_FACE" xml:space="preserve">
+    <value>Face – Face</value>
+  </data>
+  <data name="IDS_DIM_RADIO_CORE_CORE" xml:space="preserve">
+    <value>Reference – Reference</value>
+  </data>
+  <data name="IDS_DIM_CHECK_DETAIL_LINE_NOTE" xml:space="preserve">
+    <value>&#xD;&#xA;If references cannot be obtained,&#xD;&#xA;create detail lines&#xD;&#xA;</value>
+  </data>
+</root>

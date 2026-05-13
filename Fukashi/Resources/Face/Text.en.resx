@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Fukashi</value>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_CMBBOX_MATERIAL_NAME" xml:space="preserve">
+    <value>Material_ComboBox</value>
+  </data>
+  <data name="IDS_ERR_EDGEANGLE" xml:space="preserve">
+    <value>The selected edges have different slopes, so the reference face cannot be split</value>
+  </data>
+  <data name="IDS_ERR_EDGEANGLEBASE" xml:space="preserve">
+    <value>None of the selected edges have the same slope as the reference face, so the reference face cannot be split</value>
+  </data>
+  <data name="IDS_ERR_GETMATERIAL" xml:space="preserve">
+    <value>Could not retrieve the material</value>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Could not define the parameter</value>
+  </data>
+  <data name="IDS_ERR_PICKEDEDGEOVER" xml:space="preserve">
+    <value>Too many edges are selected</value>
+  </data>
+  <data name="IDS_ERR_PICKEDGE" xml:space="preserve">
+    <value>Please select an edge</value>
+  </data>
+  <data name="IDS_ERR_PICKPLANARFACE" xml:space="preserve">
+    <value>Please select a planar face</value>
+  </data>
+  <data name="IDS_ERR_RELEVANT" xml:space="preserve">
+    <value>The selected edge is not associated with the reference face</value>
+  </data>
+  <data name="IDS_ERR_RELEVANTEDGEFACE" xml:space="preserve">
+    <value>A valid face could not be determined from the selected edge</value>
+  </data>
+  <data name="IDS_ERR_RELEVANTEDGES" xml:space="preserve">
+    <value>Furring cannot be created from the combination of selected edges</value>
+  </data>
+  <data name="IDS_ERR_RELEVANTFACE" xml:space="preserve">
+    <value>The selected face is not associated with the reference face</value>
+  </data>
+  <data name="IDS_ERR_SELECT_TARGET" xml:space="preserve">
+    <value>Valid targets are concrete structure (floor slab, wall, structural column, structural beam, structural foundation)</value>
+  </data>
+  <data name="IDS_FAM_LSHAPE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_L字形</value>
+  </data>
+  <data name="IDS_FAM_LSHAPE_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_L字形</value>
+  </data>
+  <data name="IDS_FAM_LSHAPE_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_L字形</value>
+  </data>
+  <data name="IDS_FAM_LSHAPE_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_L字形</value>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_平行四辺形</value>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_平行四辺形</value>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_平行四辺形</value>
+  </data>
+  <data name="IDS_FAM_PARALLELOGRAM_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_平行四辺形</value>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_長方形_側面-長方形</value>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_長方形_側面-長方形</value>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_長方形_側面-長方形</value>
+  </data>
+  <data name="IDS_FAM_RECT_RECTANGLE_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_長方形_側面-長方形</value>
+  </data>
+  <data name="IDS_FAM_RECT_TORAPEZOID" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_長方形_側面-台形</value>
+  </data>
+  <data name="IDS_FAM_RECT_TORAPEZOID_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_長方形_側面-台形</value>
+  </data>
+  <data name="IDS_FAM_RECT_TORAPEZOID_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_長方形_側面-台形</value>
+  </data>
+  <data name="IDS_FAM_RECT_TORAPEZOID_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_長方形_側面-台形</value>
+  </data>
+  <data name="IDS_FAM_RECT_TRIANGLE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_長方形_側面-三角形</value>
+  </data>
+  <data name="IDS_FAM_RECT_TRIANGLE_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_長方形_側面-三角形</value>
+  </data>
+  <data name="IDS_FAM_RECT_TRIANGLE_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_長方形_側面-三角形</value>
+  </data>
+  <data name="IDS_FAM_RECT_TRIANGLE_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_長方形_側面-三角形</value>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_台形</value>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_台形</value>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_台形</value>
+  </data>
+  <data name="IDS_FAM_TORAPEZOID_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_台形</value>
+  </data>
+  <data name="IDS_FAM_TRIANGLE" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_三角形</value>
+  </data>
+  <data name="IDS_FAM_TRIANGLE_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_三角形</value>
+  </data>
+  <data name="IDS_FAM_TRIANGLE_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_三角形</value>
+  </data>
+  <data name="IDS_FAM_TRIANGLE_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_三角形</value>
+  </data>
+  <data name="IDS_FAM_UNEVEN" xml:space="preserve">
+    <value>フカシファミリ_一般モデル_凸凹形</value>
+  </data>
+  <data name="IDS_FAM_UNEVEN_COLUMN" xml:space="preserve">
+    <value>フカシファミリ_構造柱_凸凹形</value>
+  </data>
+  <data name="IDS_FAM_UNEVEN_FOUNDATION" xml:space="preserve">
+    <value>フカシファミリ_構造基礎_凸凹形</value>
+  </data>
+  <data name="IDS_FAM_UNEVEN_FRAME" xml:space="preserve">
+    <value>フカシファミリ_構造フレーム_凸凹形</value>
+  </data>
+  <data name="IDS_PICK_YOUSO" xml:space="preserve">
+    <value>No element is selected</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_MATERIAL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Material_ComboBox</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_CMBBOX_UPPERLEVEL" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Upper_Level_ComboBox</value>
+  </data>
+  <data name="IDS_RVT_INTERNALID_TXTBOX_OFFSET" xml:space="preserve">
+    <value>CustomCtrl_%CustomCtrl_%REXJ Standalone%Fukashi%Offset_TextBox</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF" xml:space="preserve">
+    <value>ADSK_Fukashi_Material</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>AdskFukashiShParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>ADSK_Fukashi</value>
+  </data>
+  <data name="IDS_TXT_CLOSE" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="IDS_TXT_ERRSOLID_FINISHCMD" xml:space="preserve">
+    <value>The solid shape could not be combined or retrieved.
+The Face Furring command will exit.</value>
+  </data>
+  <data name="IDS_TXT_EXCLUDE_ELEM" xml:space="preserve">
+    <value>Do you want to specify elements to exclude?</value>
+  </data>
+  <data name="IDS_TXT_FACEOREDGE_CONTENT" xml:space="preserve">
+    <value>From the selected face or edge, the furring thickness is determined.
+You can specify one face and one edge.</value>
+  </data>
+  <data name="IDS_TXT_FACEOREDGE_CONTENT_RECT" xml:space="preserve">
+    <value>From the selected face or edge, the furring thickness is determined.
+Because the face is rectangular, you can specify one face and one or two edges.</value>
+  </data>
+  <data name="IDS_TXT_FACEOREDGE_INSTRUCTION" xml:space="preserve">
+    <value>Select face or edge</value>
+  </data>
+  <data name="IDS_TXT_FAMILYLOADING" xml:space="preserve">
+    <value>Loading furring families</value>
+  </data>
+  <data name="IDS_TXT_FINISHCMD" xml:space="preserve">
+    <value>The Face Furring command will exit</value>
+  </data>
+  <data name="IDS_TXT_FLOW" xml:space="preserve">
+    <value>Flow</value>
+  </data>
+  <data name="IDS_TXT_FUKASHIFACE" xml:space="preserve">
+    <value>Face Furring</value>
+  </data>
+  <data name="IDS_TXT_FUKASHIMATERIAL" xml:space="preserve">
+    <value>Furring material</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_ANGLE1" xml:space="preserve">
+    <value>Furring angle 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_ANGLE2" xml:space="preserve">
+    <value>Furring angle 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH" xml:space="preserve">
+    <value>Furring depth</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH1" xml:space="preserve">
+    <value>Furring depth 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH2" xml:space="preserve">
+    <value>Furring depth 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_DEPTH3" xml:space="preserve">
+    <value>Furring depth 3</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_FACEPICK" xml:space="preserve">
+    <value>Face-pick furring</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_LENGTH1" xml:space="preserve">
+    <value>Furring length 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_LENGTH2" xml:space="preserve">
+    <value>Furring length 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS" xml:space="preserve">
+    <value>Furring thickness</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS1" xml:space="preserve">
+    <value>Furring thickness 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_THICKNESS2" xml:space="preserve">
+    <value>Furring thickness 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH" xml:space="preserve">
+    <value>Furring width</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH1" xml:space="preserve">
+    <value>Furring width 1</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH2" xml:space="preserve">
+    <value>Furring width 2</value>
+  </data>
+  <data name="IDS_TXT_FUKASHI_WIDTH3" xml:space="preserve">
+    <value>Furring width 3</value>
+  </data>
+  <data name="IDS_TXT_MATERIAL" xml:space="preserve">
+    <value>Material:</value>
+  </data>
+  <data name="IDS_TXT_MM" xml:space="preserve">
+    <value>mm</value>
+  </data>
+  <data name="IDS_TXT_ONLY1EDGE" xml:space="preserve">
+    <value>The first edge has been selected.
+Press Esc to finish if you do not need a second edge.</value>
+  </data>
+  <data name="IDS_TXT_PICKFACE" xml:space="preserve">
+    <value>Pick face</value>
+  </data>
+  <data name="IDS_TXT_PICK_EDGE" xml:space="preserve">
+    <value>Pick one edge</value>
+  </data>
+  <data name="IDS_TXT_PICK_EDGES" xml:space="preserve">
+    <value>Pick two edges</value>
+  </data>
+  <data name="IDS_TXT_PICK_FACE" xml:space="preserve">
+    <value>Pick a face</value>
+  </data>
+  <data name="IDS_TXT_PICK_JOINSOLID" xml:space="preserve">
+    <value>Select multiple elements to combine and click Finish; to skip combining, click Finish without selecting; press Esc to cancel.</value>
+  </data>
+  <data name="IDS_TXT_PICK_KIJUNFACE" xml:space="preserve">
+    <value>Click to select the face to fur (reference face); press Esc to exit.</value>
+  </data>
+  <data name="IDS_TXT_RETURN_PICKFACE" xml:space="preserve">
+    <value>Return to reference face selection</value>
+  </data>
+  <data name="IDS_TXT_THICKNESS" xml:space="preserve">
+    <value>Thickness:</value>
+  </data>
+</root>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>インポート機能</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>インポート機能</H2>
+        <table width="600" align="left" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    <table width="600" align="left" cellspacing="0" border="0">
+                        <tr bgcolor="#ffffff">
+                            <td bgcolor="#ffffff">
+                                インポート機能は、ST-Bridgeを読み取り、
+                                柱・間柱・柱脚・大梁・小梁・Sブレース・RCスラブ・デッキスラブ・スラブ開口・壁・壁開口・パラペット・基礎・布基礎・杭基礎
+                                をRevitのモデルとして生成する機能です。
+                                この機能はプロジェクトでのみ使用可能です。<br>
+                                （※本アドインでは接続関係が正しく記載されていない.stbファイルはインポートできない可能性があります。）
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr bgcolor="#ffffff">
+                            <td bgcolor="#ffffff"><img src="Image/004_01.png" alt=""></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br>
+                    <table width="800" align="left" cellspacing="2" border="0" bgcolor="#000000" cellpadding="5">
+                        <tr>
+                            <td bgcolor="#ffffff" align="left">
+                                これまでST-Bridge Linkでは、標準パス内（"C:\Users\&lt;UserName&gt;\Documents\Autodesk REXJ\{Revitバージョン}}\）に存在するファイル（マッピングテーブルファイル「ConvRFA{Revitバージョン}.tbl」、共有パラメータファイル「REXStructuralLink.txt」など）を使用して変換を行ってきました。
+                                <br>この度、何らかの理由により上記の標準パスが利用できない場合を想定し、必要なファイルを他のフォルダにコピーして利用頂けるよう、仕様変更を行いました。
+
+                                <br><br>利用方法：標準パス内に存在するファイル一式（下記参照）を任意のフォルダにコピーします。Revitを起動し、[管理]タブの[共有パラメータ]を実行します。[共有パラメータ]ダイアログボックス内の[参照]ボタンより、コピーしたフォルダ内の"REXStructuralLink.txt"を指定してください。これにより、Revit側で指定された共有パラメータパスと同じフォルダにあるファイルが利用されるようになります。
+
+                                <br><br>コピーするファイル：下記7つのファイルを全て同じフォルダにコピーしてください。
+                                <br>1.ConvBase{Revitバージョン}.tbl
+                                <br>2.ConvBase{Revitバージョン}3.xls
+                                <br>3.ConvRFA{Revitバージョン}.tbl
+                                <br>4.ConvRFA{Revitバージョン}_3.xls
+                                <br>5.ConvRFA{Revitバージョン}_STB2.0_1.xlsm
+                                <br>6.REXStructuralLink.txt
+                                <br>7.REXStructuralLink_org.txt
+
+                                <br><br>※必ず"REXStructuralLink.txt"を名称を変更せずにコピーしてください。事前に共有パラメータのパス設定を変更されていても、ファイル名が"REXStructuralLink.txt"以外の場合には従来通り標準パスにあるファイルが利用されます。
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

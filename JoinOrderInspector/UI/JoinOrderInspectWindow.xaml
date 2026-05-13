@@ -1,0 +1,54 @@
+<Window x:Class="ADSK.JExtRAC.JoinOrderInspector.UI.JoinOrderInspectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Join Order Inspector" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+            <Border Background="#FFF9C4" BorderBrush="#FFD54F" BorderThickness="1" CornerRadius="3" Padding="8,4" Margin="0,0,8,0">
+                <TextBlock x:Name="legendSelected" Text="Selected Element" FontWeight="SemiBold"/>
+            </Border>
+            <Border Background="#FFCDD2" BorderBrush="#EF9A9A" BorderThickness="1" CornerRadius="3" Padding="8,4" Margin="0,0,8,0">
+                <TextBlock x:Name="legendCutting" Text="Cutting (wins over)"/>
+            </Border>
+            <Border Background="#BBDEFB" BorderBrush="#90CAF9" BorderThickness="1" CornerRadius="3" Padding="8,4">
+                <TextBlock x:Name="legendCutBy" Text="Cut by (loses to)"/>
+            </Border>
+        </StackPanel>
+
+        <ListBox x:Name="elementListBox" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="{Binding Id}" Margin="0,0,10,0" Padding="5,2" Click="Element_Button_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Id}" Value="">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <TextBlock Grid.Column="1" Text="{Binding Info}" VerticalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button x:Name="btnReanalyze" Grid.Row="2" Content="Re-analyze" HorizontalAlignment="Left"
+                Padding="12,4" Margin="0,8,0,0" Click="BtnReanalyze_Click"/>
+    </Grid>
+</Window>

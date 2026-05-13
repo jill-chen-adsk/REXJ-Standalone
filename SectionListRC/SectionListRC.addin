@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>SectionListRC</Name>
+    <Assembly>SectionListRC\SectionListRC.dll</Assembly>
+    <AddInId>A7B3C4D5-E6F7-8901-ABCD-EF2345678901</AddInId>
+    <FullClassName>SectionListRC.ExtApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,244 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <PlatformTarget>x64</PlatformTarget>
+    <RootNamespace>MEPExtension</RootNamespace>
+    <AssemblyName>MEPExtension</AssemblyName>
+    <UseWpf>true</UseWpf>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DefineConstants>REVIT2027;FIX_SKIPPER</DefineConstants>
+    <Nullable>disable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows">
+      <HintPath>C:\Program Files\Autodesk\Revit 2027\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+  </ItemGroup>
+
+  <!-- RevitMEPAddinApp -->
+  <ItemGroup>
+    <Compile Include="RevitMEPAddinApp\App.cs" />
+    <Compile Include="RevitMEPAddinApp\AppDocEvents.cs" />
+    <Compile Include="RevitMEPAddinApp\Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RevitMEPAddinApp\Properties\ExResource.cs" />
+    <EmbeddedResource Include="RevitMEPAddinApp\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LogicalName>RevitMEPAddinApp.Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Common Library -->
+  <ItemGroup>
+    <Compile Include="Common\Constant\CommonDefine.cs" />
+    <Compile Include="Common\Logger\Logger.cs" />
+    <Compile Include="Common\Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Resource\AccessResx.cs" />
+    <Compile Include="Common\RevitLib\WrpArrangement.cs" />
+    <Compile Include="Common\RevitLib\WrpDocument.cs" />
+    <Compile Include="Common\RevitLib\WrpGeometry.cs" />
+    <Compile Include="Common\RevitLib\WrpLineStyle.cs" />
+    <Compile Include="Common\RevitLib\WrpMEP.cs" />
+    <Compile Include="Common\RevitLib\WrpViews.cs" />
+    <EmbeddedResource Include="Common\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LogicalName>Common.Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- CmdRotateTees -->
+  <ItemGroup>
+    <Compile Include="CmdRotateTees\Command.cs" />
+    <Compile Include="CmdRotateTees\CommandFabric.cs" />
+    <Compile Include="CmdRotateTees\CommandFabricTap.cs" />
+    <Compile Include="CmdRotateTees\CommandGeneric.cs" />
+    <Compile Include="CmdRotateTees\Common.cs" />
+    <Compile Include="CmdRotateTees\Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CmdRotateTees\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CmdRotateTees\UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <EmbeddedResource Include="CmdRotateTees\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LogicalName>CmdRotateTees.Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- CmdMoveConnector -->
+  <ItemGroup>
+    <Compile Include="CmdMoveConnector\CommandA.cs" />
+    <Compile Include="CmdMoveConnector\CommandFabric.cs" />
+    <Compile Include="CmdMoveConnector\CommandGeneric.cs" />
+    <Compile Include="CmdMoveConnector\Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CmdMoveConnector\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LogicalName>CmdMoveConnector.Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- CmdFlexDuctConvert -->
+  <ItemGroup>
+    <Compile Include="CmdFlexDuctConvert\App.cs" />
+    <Compile Include="CmdFlexDuctConvert\Command.cs" />
+    <Compile Include="CmdFlexDuctConvert\Common\CreateMepModelFlexDuct.cs" />
+    <Compile Include="CmdFlexDuctConvert\Common\CSetProjectParameter.cs" />
+    <Compile Include="CmdFlexDuctConvert\InputDesignLengthDialog.cs" />
+    <Compile Include="CmdFlexDuctConvert\Properties\Resource.Designer.cs" />
+    <Compile Include="CmdFlexDuctConvert\WPF\FormDesignLength.xaml.cs">
+      <DependentUpon>FormDesignLength.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmdFlexDuctConvert\WPF\WPFModel.cs" />
+    <Compile Include="CmdFlexDuctConvert\WPF\WPFView.xaml.cs">
+      <DependentUpon>WPFView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CmdFlexDuctConvert\WPF\WPFViewModel.cs" />
+    <EmbeddedResource Include="CmdFlexDuctConvert\Properties\Resource.resx">
+      <SubType>Designer</SubType>
+      <LogicalName>CmdFlexDuctConvert.Properties.Resource.resources</LogicalName>
+    </EmbeddedResource>
+    <Page Include="CmdFlexDuctConvert\WPF\FormDesignLength.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CmdFlexDuctConvert\WPF\WPFView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <!-- CmdDuctSlopeChecker -->
+  <ItemGroup>
+    <Compile Include="CmdDuctSlopeChecker\CmdDuctSlopeChecker.cs" />
+    <Compile Include="CmdDuctSlopeChecker\CmdDuctSlopeCheckerMain.cs" />
+    <Compile Include="CmdDuctSlopeChecker\Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CmdDuctSlopeChecker\Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LogicalName>CmdDuctSlopeChecker.Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- CmdDuctDisplacement -->
+  <ItemGroup>
+    <Compile Include="CmdDuctDisplacement\Command.cs" />
+    <Compile Include="CmdDuctDisplacement\Constant\DuctDisplacementDefine.cs" />
+    <Compile Include="CmdDuctDisplacement\Filters\SelectionFilters\DuctPipeBeamSelectionFilter.cs" />
+    <Compile Include="CmdDuctDisplacement\Filters\SelectionFilters\DuctPipeGridSelectionFilter.cs" />
+    <Compile Include="CmdDuctDisplacement\Filters\SelectionFilters\DuctSelectionFilter.cs" />
+    <Compile Include="CmdDuctDisplacement\Logic\CmdDuctDisplacement.cs" />
+    <Compile Include="CmdDuctDisplacement\Logic\MEPOperation.cs" />
+    <Compile Include="CmdDuctDisplacement\Logic\MEPOperationForDuct.cs" />
+    <Compile Include="CmdDuctDisplacement\Logic\MEPOperationForPipe.cs" />
+    <Compile Include="CmdDuctDisplacement\Resource\ExResource.cs" />
+    <Compile Include="CmdDuctDisplacement\Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\BetweenLostFocusCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\BetweenPreviewTextCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\BottomArrangmentCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\CancelCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\DecreaseCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\EndRoutineCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\FireProofingLostFocusCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\FireProofingPreviewTextCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\FLPreviewTextCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\FLTextBoxLostFocusCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\FLTextKeyboardFocusCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\IncreaseCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\KeyDownCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\MoveDistanceCalCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\MoveDistanceCalLinkdCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\OKCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\SwitchCalMethodCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Commands\DuctConnection\TopArrangementCommand.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Common\CalCulation.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Common\RoundNum.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Controller\PropertySet.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Controller\WindowControl.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Model\ControlEventManager\TextBoxHandle.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Model\ControlStatus.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Model\Entity\WindowReceiveProperty.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Model\InheritBase\ModelBase.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Model\InheritBase\PreviewTextBoxInputBase.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Model\InheritBase\TextBoxLostFocusBase.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Utility\CodeBehind\ConnectionWindowDispatcher.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\Utility\CodeBehind\FLTextBoxKeyDownDispatcher.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\ViewModel\ConnectionSettingViewModel.cs" />
+    <Compile Include="CmdDuctDisplacement\UI\View\ConnectionSettingView.xaml.cs">
+      <DependentUpon>ConnectionSettingView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="CmdDuctDisplacement\UI\View\ConnectionSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <EmbeddedResource Include="CmdDuctDisplacement\Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <LogicalName>CmdDuctDisplacement.Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Assembly Info -->
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <!-- Content: help PDFs, addin manifest -->
+  <ItemGroup>
+    <None Include="MEPExtension.addin" />
+  </ItemGroup>
+
+</Project>

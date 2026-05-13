@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Assembly>ADSK.JExtRAC.FittingSchedule.dll</Assembly>
+    <ClientId>B8A2C7E1-4F3D-4A9B-8E6C-1D5F7A3B9E2D</ClientId>
+    <FullClassName>ADSK.JExtRAC.FittingSchedule.App</FullClassName>
+    <Name>Fitting Schedule</Name>
+    <VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+    <VendorId>ADSK</VendorId>
+  </AddIn>
+</RevitAddIns>

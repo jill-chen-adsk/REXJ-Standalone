@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Assembly>ADSK.JExtRAC.LocateSlab.dll</Assembly>
+    <ClientId>DA1DA729-EDAA-4A87-B750-AC311DC39B03</ClientId>
+    <FullClassName>ADSK.JExtRAC.LocateSlab.App</FullClassName>
+    <Name>Beam Range Floor Layout</Name>
+    <VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+    <VendorId>ADSK</VendorId>
+  </AddIn>
+</RevitAddIns>

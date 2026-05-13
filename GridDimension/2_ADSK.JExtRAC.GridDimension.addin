@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Grid Dimension</Name>
+    <Assembly>ADSK.JExtRAC.GridDimension.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.GridDimension.App</FullClassName>
+    <ClientId>A7F2E1D4-8B3C-4E5F-9A1B-6C2D8E4F5012</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

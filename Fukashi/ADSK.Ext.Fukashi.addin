@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Fukashi Tool</Name>
+    <Assembly>ADSK.Ext.Fukashi\ADSK.Ext.Fukashi.dll</Assembly>
+    <AddInId>A1B2C3D4-5678-9ABC-DEF0-1234567890AB</AddInId>
+    <FullClassName>ADSK.Ext.Fukashi.ExtApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ</VendorDescription>
+  </AddIn>
+</RevitAddIns>

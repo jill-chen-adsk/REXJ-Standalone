@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Join Adjustment</Name>
+    <Assembly>ADSK.JExtRAC.SwitchJoinOrder.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.SwitchJoinOrder.App</FullClassName>
+    <ClientId>C5F94A3E-7D28-4B6C-91E5-8A3F2D6B1C49</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_ERROR_CANNOT_EXPORT_SCHEDULE" xml:space="preserve">
+    <value>集計表のデータをExcelに出力できません。</value>
+  </data>
+  <data name="IDS_EXPORT_SUCCESS" xml:space="preserve">
+    <value>Excelエクスポートが正常に完了しました。</value>
+  </data>
+  <data name="IDS_EXPORT_WARNINGFAMILYANDTYPE" xml:space="preserve">
+    <value>UIDが出力されませんが実行しますか？
+「各インスタンスの内訳」のチェックON、または、「並べ替え/グループ化」における「タイプ」/「ファミリとタイプ」の設定を確認してください。</value>
+  </data>
+  <data name="IDS_EXPORT_WARNINGSHOWHEADER" xml:space="preserve">
+    <value>属性名称が出力されませんが実行しますか？
+「見出しを表示」のチェックONを確認してください。</value>
+  </data>
+  <data name="IDS_EXPORT_WARNING_FAMILYANDTYPE_SHOWHEADER" xml:space="preserve">
+    <value>UID、属性名称が出力されませんが実行しますか？
+「各インスタンスの内訳」のチェックON、または、「並べ替え/グループ化」における「タイプ」/「ファミリとタイプ」の設定を確認してください。
+「見出しを表示」のチェックONを確認してください。</value>
+  </data>
+  <data name="IDS_INFO_CANNOT_REMOVE_EXIST" xml:space="preserve">
+    <value>Excelファイルが削除できません。</value>
+  </data>
+  <data name="IDS_INFO_NO_ACTIVE_SCHEDULE" xml:space="preserve">
+    <value>集計表を選択状態にしてコマンドを起動してください。</value>
+  </data>
+  <data name="IDS_INFO_PATH_EMPTY" xml:space="preserve">
+    <value>ファイル名は空白です。ファイル名を入力してください。</value>
+  </data>
+  <data name="IDS_SAVE_EXCEL" xml:space="preserve">
+    <value>名前を付けて保存</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+  </data>
+  <data name="IDS_TXT_CLOSELOG" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="IDS_TXT_INFORMATION" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="IDS_TXT_LOG" xml:space="preserve">
+    <value>エラーログ</value>
+  </data>
+  <data name="IDS_TXT_SAVELOG" xml:space="preserve">
+    <value>ログ保存</value>
+  </data>
+  <data name="IDS_TXT_WARNING" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="IDS_CHK_ADD_DATETIME" xml:space="preserve">
+    <value>集計表名称に日付を付ける</value>
+  </data>
+  <data name="IDS_CHK_ITEMIZED" xml:space="preserve">
+    <value>各インスタンスの内訳</value>
+  </data>
+  <data name="IDS_RAD_FOR_IMPORT" xml:space="preserve">
+    <value>インポート機能を優先</value>
+  </data>
+  <data name="IDS_RAD_FOR_SCHEDULE" xml:space="preserve">
+    <value>集計表表示出力を優先</value>
+  </data>
+</root>

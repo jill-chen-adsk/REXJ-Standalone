@@ -1,0 +1,474 @@
+[
+    {
+        "Family": "",
+        "Mapping": [
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "記号",
+                "ToParameter": "",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "備考",
+                "ToParameter": "",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝サイズ",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "出口径",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝深さ",
+                "ToParameter": "",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "泥だまり",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝(管底差)",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "流出管底",
+                "ToParameter": "",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "当該桝地盤レベル",
+                "ToParameter": "",
+                "Required": true
+            }
+        ]
+    },
+    {
+        "Family": "合流桝_仮配置用",
+        "Mapping": [
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "記号",
+                "ToParameter": "記号",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "備考",
+                "ToParameter": "備考",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝サイズ",
+                "ToParameter": "桝サイズ",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "出口径",
+                "ToParameter": "出口径",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝深さ",
+                "ToParameter": "桝深さ",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "泥だまり",
+                "ToParameter": "泥だまり",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝(管底差)",
+                "ToParameter": "配管段差",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "流出管底",
+                "ToParameter": "基準レベルからの管底高",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "当該桝地盤レベル",
+                "ToParameter": "当該桝地盤レベル",
+                "Required": true
+            }
+        ]
+    },
+    {
+        "Family": "08060_トラップ桝",
+        "Mapping": [
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "記号",
+                "ToParameter": "記号",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "備考",
+                "ToParameter": "コメント",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝サイズ",
+                "ToParameter": "桝サイズ",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "出口径",
+                "ToParameter": "出口径",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝深さ",
+                "ToParameter": "桝深さ",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "泥だまり",
+                "ToParameter": "泥だまり",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝(管底差)",
+                "ToParameter": "桝(管底差)",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "流出管底",
+                "ToParameter": "流出管底",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "当該桝地盤レベル",
+                "ToParameter": "当該桝地盤レベル",
+                "Required": true
+            }
+        ]
+    },
+    {
+        "Family": "250318_インバート桝",
+        "Mapping": [
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "記号",
+                "ToParameter": "記号",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "備考",
+                "ToParameter": "備考",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝サイズ",
+                "ToParameter": "桝サイズ",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "出口径",
+                "ToParameter": "出口径",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝深さ",
+                "ToParameter": "桝深さ",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "泥だまり",
+                "ToParameter": "泥だまり",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝(管底差)",
+                "ToParameter": "桝(管底差)",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "流出管底",
+                "ToParameter": "流出管底",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "当該桝地盤レベル",
+                "ToParameter": "当該桝地盤レベル",
+                "Required": true
+            }
+        ]
+    },
+    {
+        "Family": "08070_公共桝",
+        "Mapping": [
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "記号",
+                "ToParameter": "記号",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "備考",
+                "ToParameter": "コメント",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝サイズ",
+                "ToParameter": "桝サイズ",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "出口径",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝深さ",
+                "ToParameter": "桝深さ",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "泥だまり",
+                "ToParameter": "泥だまり",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝(管底差)",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "流出管底",
+                "ToParameter": "流入管底",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "当該桝地盤レベル",
+                "ToParameter": "当該桝地盤レベル",
+                "Required": true
+            }
+        ]
+    },
+    {
+        "Family": "08050_インバート桝_SC",
+        "Mapping": [
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "記号",
+                "ToParameter": "記号",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "備考",
+                "ToParameter": "コメント",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝サイズ",
+                "ToParameter": "桝サイズ",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "出口径",
+                "ToParameter": "出口径",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝深さ",
+                "ToParameter": "桝深さ",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "泥だまり",
+                "ToParameter": "泥だまり",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝(管底差)",
+                "ToParameter": "桝(管底差)",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "流出管底",
+                "ToParameter": "流出管底",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "当該桝地盤レベル",
+                "ToParameter": "当該桝地盤レベル",
+                "Required": true
+            }
+        ]
+    },
+    {
+        "Family": "08060_ため桝_RC",
+        "Mapping": [
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "記号",
+                "ToParameter": "記号",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "備考",
+                "ToParameter": "コメント",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝サイズ",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "出口径",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝深さ",
+                "ToParameter": "桝深さ",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "泥だまり",
+                "ToParameter": "泥だまり",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝(管底差)",
+                "ToParameter": "桝(管底差)",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "流出管底",
+                "ToParameter": "流出管底",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "当該桝地盤レベル",
+                "ToParameter": "当該桝地盤レベル",
+                "Required": true
+            }
+        ]
+    },
+    {
+        "Family": "08061_トラップ桝_NEWサンプル250827",
+        "Mapping": [
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "記号",
+                "ToParameter": "記号",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "備考",
+                "ToParameter": "備考",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝サイズ",
+                "ToParameter": "桝サイズ",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "出口径",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝深さ",
+                "ToParameter": "桝深さ",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "泥だまり",
+                "ToParameter": "",
+                "Required": false
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "桝(管底差)",
+                "ToParameter": "桝(管底差)",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "流出管底",
+                "ToParameter": "流出管底",
+                "Required": true
+            },
+            {
+                "Category": "Pipe Accessories",
+                "FromParameter": "当該桝地盤レベル",
+                "ToParameter": "当該桝地盤レベル",
+                "Required": true
+            }
+        ]
+    }
+]

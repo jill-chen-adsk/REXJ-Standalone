@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>Command failed</value>
+  </data>
+  <data name="IDS_ERR_NO_CHECKBOX" xml:space="preserve">
+    <value>Please select a tag placement position.</value>
+  </data>
+  <data name="IDS_ERR_NO_ELEMENT" xml:space="preserve">
+    <value>No target elements found. Please reselect target elements.</value>
+  </data>
+  <data name="IDS_ERR_NO_SELECT_OBJECT" xml:space="preserve">
+    <value>Please select target objects.</value>
+  </data>
+  <data name="IDS_ERR_NO_SPECCIFY_PLACE_TAG" xml:space="preserve">
+    <value>Please specify a tag placement area.</value>
+  </data>
+  <data name="IDS_ERR_OPENVIEWPLAN" xml:space="preserve">
+    <value>Please run in a Floor Plan or Ceiling Plan view.</value>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>Parameter definition failed</value>
+  </data>
+  <data name="IDS_FILE_ITEMS" xml:space="preserve">
+    <value>Settings.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_AUTOMATIC_TAG" xml:space="preserve">
+    <value>RexJpn-AutoLayoutTag-Config</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+  </data>
+  <data name="IDS_TXT_ALL_CATEGORY" xml:space="preserve">
+    <value>All objects of specified categories in current view</value>
+  </data>
+  <data name="IDS_TXT_AREA_PREMISES" xml:space="preserve">
+    <value>Placement Area</value>
+  </data>
+  <data name="IDS_TXT_AUTOMATIC_TAG" xml:space="preserve">
+    <value>Tag Placement Settings</value>
+  </data>
+  <data name="IDS_TXT_AUTO_JUDGMENT" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="IDS_TXT_CLOSELOG" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IDS_TXT_EXTENSIBLE_STORAGE_NAME" xml:space="preserve">
+    <value>AutomaticTag</value>
+  </data>
+  <data name="IDS_TXT_FIELD_SETTING" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="IDS_TXT_GUID" xml:space="preserve">
+    <value>31ccbf548db547fb8935d94118d87657</value>
+  </data>
+  <data name="IDS_TXT_HAND_PRESET_TAG" xml:space="preserve">
+    <value>Existing Tag Processing</value>
+  </data>
+  <data name="IDS_TXT_HAS_LEADER" xml:space="preserve">
+    <value>With Leader</value>
+  </data>
+  <data name="IDS_TXT_INFORMATION" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="IDS_TXT_LEADER" xml:space="preserve">
+    <value>Tag Leader Line</value>
+  </data>
+  <data name="IDS_TXT_LEFT_RIGHT" xml:space="preserve">
+    <value>Left / Right</value>
+  </data>
+  <data name="IDS_TXT_LOG" xml:space="preserve">
+    <value>Error Log</value>
+  </data>
+  <data name="IDS_TXT_NONE" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="IDS_TXT_NO_LEADER" xml:space="preserve">
+    <value>Without Leader</value>
+  </data>
+  <data name="IDS_TXT_OBJECT" xml:space="preserve">
+    <value>Target Objects</value>
+  </data>
+  <data name="IDS_TXT_ODER_MORE" xml:space="preserve">
+    <value>Add More</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_TXT_ONLY_NEW_TAG" xml:space="preserve">
+    <value>New Only</value>
+  </data>
+  <data name="IDS_TXT_OUTSIDE_CROP_VIEW" xml:space="preserve">
+    <value>The following tags are placed outside the view crop region and may not be visible:</value>
+  </data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="IDS_TXT_PICK_AREA" xml:space="preserve">
+    <value>Drag to specify a rectangular area for tag placement.</value>
+  </data>
+  <data name="IDS_TXT_PICK_OBJECTS" xml:space="preserve">
+    <value>Select target elements and press Finish when done.</value>
+  </data>
+  <data name="IDS_TXT_POSITTION_TAG" xml:space="preserve">
+    <value>Tag Position</value>
+  </data>
+  <data name="IDS_TXT_RESET" xml:space="preserve">
+    <value>Replace &amp; Relocate</value>
+  </data>
+  <data name="IDS_TXT_SAVELOG" xml:space="preserve">
+    <value>Save Log</value>
+  </data>
+  <data name="IDS_TXT_SAVE_SETTING" xml:space="preserve">
+    <value>Save Settings</value>
+  </data>
+  <data name="IDS_TXT_SCHEMA_NAME" xml:space="preserve">
+    <value>SettingsInfo</value>
+  </data>
+  <data name="IDS_TXT_SELECT" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="IDS_TXT_SELECTION_NUMBER" xml:space="preserve">
+    <value>Selected: </value>
+  </data>
+  <data name="IDS_TXT_SELECT_OBJECT" xml:space="preserve">
+    <value>Selected Objects</value>
+  </data>
+  <data name="IDS_TXT_SETTING_CONDITION" xml:space="preserve">
+    <value>Condition Settings</value>
+  </data>
+  <data name="IDS_TXT_SETTING_TAG" xml:space="preserve">
+    <value>Tag Settings</value>
+  </data>
+  <data name="IDS_TXT_SET_AREA" xml:space="preserve">
+    <value>Set Area</value>
+  </data>
+  <data name="IDS_TXT_SET_BY_HAND" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="IDS_TXT_SET_TAG" xml:space="preserve">
+    <value>Place Tags</value>
+  </data>
+  <data name="IDS_TXT_TAG" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="IDS_TXT_TOP_BOTTOM" xml:space="preserve">
+    <value>Top / Bottom</value>
+  </data>
+  <data name="IDS_TXT_VENDOR_ID" xml:space="preserve">
+    <value>Autodesk</value>
+  </data>
+  <data name="IDS_TXT_VIEW_TEMPLATE" xml:space="preserve">
+    <value>View Template:</value>
+  </data>
+  <data name="IDS_TXT_XXX" xml:space="preserve">
+    <value>xxx</value>
+  </data>
+</root>

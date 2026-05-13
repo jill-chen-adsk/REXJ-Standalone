@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LVL_AmountMovement" xml:space="preserve">
+    <value>Move amount</value>
+  </data>
+  <data name="LVL_AmountMovementOPT_Disp" xml:space="preserve">
+    <value>Show move-distance options</value>
+  </data>
+  <data name="LVL_AmountMovementOPT_Hidden" xml:space="preserve">
+    <value>Hide move-distance options</value>
+  </data>
+  <data name="LVL_Beam" xml:space="preserve">
+    <value>Beam</value>
+  </data>
+  <data name="LVL_BottomSide" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="LVL_Center" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="LVL_Down" xml:space="preserve">
+    <value>Down:</value>
+  </data>
+  <data name="LVL_DuctElbow45Degree" xml:space="preserve">
+    <value>45° elbow</value>
+  </data>
+  <data name="LVL_DuctElbow90Degree" xml:space="preserve">
+    <value>90° elbow</value>
+  </data>
+  <data name="LVL_EndThisCommand" xml:space="preserve">
+    <value>Exit command</value>
+  </data>
+  <data name="LVL_EnterTheThicknessOfFireproofCoatingOfTheBeam" xml:space="preserve">
+    <value>Beam fireproofing thickness (entry)</value>
+  </data>
+  <data name="LVL_FloorLevel" xml:space="preserve">
+    <value>FL</value>
+  </data>
+  <data name="LVL_InValid" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="LVL_IsolationWorningMessage_less" xml:space="preserve">
+    <value> interferes with </value>
+  </data>
+  <data name="LVL_IsolationWorningMessage_more" xml:space="preserve">
+    <value>Required clearance between routed elements cannot be maintained</value>
+  </data>
+  <data name="LVL_Junction" xml:space="preserve">
+    <value>Fittings</value>
+  </data>
+  <data name="LVL_Level" xml:space="preserve">
+    <value>Level constraint</value>
+  </data>
+  <data name="LVL_Move" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="LVL_MoveOption" xml:space="preserve">
+    <value>Move-distance options</value>
+  </data>
+  <data name="LVL_Moving" xml:space="preserve">
+    <value>Apply move</value>
+  </data>
+  <data name="LVL_MovingMethod" xml:space="preserve">
+    <value>Move mode</value>
+  </data>
+  <data name="LVL_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="LVL_Of" xml:space="preserve">
+    <value> of </value>
+  </data>
+  <data name="LVL_Offset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
+  <data name="LVL_OfTarget" xml:space="preserve">
+    <value>Clearances — </value>
+  </data>
+  <data name="LVL_Pick_a_TargetObject" xml:space="preserve">
+    <value>Pick clearance target</value>
+  </data>
+  <data name="LVL_Placement" xml:space="preserve">
+    <value>Placement zone</value>
+  </data>
+  <data name="LVL_PlacementCondition" xml:space="preserve">
+    <value>Layout rules</value>
+  </data>
+  <data name="LVL_Position" xml:space="preserve">
+    <value>Placement position</value>
+  </data>
+  <data name="LVL_ReturnToSectionSelection" xml:space="preserve">
+    <value>Back to segment pick</value>
+  </data>
+  <data name="LVL_RoundingPrecision" xml:space="preserve">
+    <value>Rounding increment</value>
+  </data>
+  <data name="LVL_SelectedFL" xml:space="preserve">
+    <value>Selected element FL:</value>
+  </data>
+  <data name="LVL_Separation" xml:space="preserve">
+    <value>Clearance spacing</value>
+  </data>
+  <data name="LVL_TheDistanceOfElement" xml:space="preserve">
+    <value>Minimum clearance between routed elements</value>
+  </data>
+  <data name="LVL_ThicknessOfFireProofOfBeam" xml:space="preserve">
+    <value>Beam fireproofing thickness</value>
+  </data>
+  <data name="LVL_TopSide" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="LVL_UnifyLevels" xml:space="preserve">
+    <value>Match levels</value>
+  </data>
+  <data name="LVL_Up" xml:space="preserve">
+    <value>Up:</value>
+  </data>
+  <data name="LVL_Valid" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="S_CURVE_ANGLE" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="S_CURVE_OVL_FAMILY" xml:space="preserve">
+    <value>S管(楕円型)</value>
+  </data>
+  <data name="S_CURVE_OVL_FILE" xml:space="preserve">
+    <value>S管(楕円型).rfa</value>
+  </data>
+  <data name="S_CURVE_OVL_TYPE" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="S_CURVE_REC_FAMILY" xml:space="preserve">
+    <value>S管(角型)</value>
+  </data>
+  <data name="S_CURVE_REC_FILE" xml:space="preserve">
+    <value>S管(角型).rfa</value>
+  </data>
+  <data name="S_CURVE_REC_TYPE" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="S_CURVE_RND_FAMILY" xml:space="preserve">
+    <value>S管(円型)</value>
+  </data>
+  <data name="S_CURVE_RND_FILE" xml:space="preserve">
+    <value>S管(円型).rfa</value>
+  </data>
+  <data name="S_CURVE_RND_TYPE" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="LVL_SCurveShapedDuct" xml:space="preserve">
+    <value>S-curve</value>
+  </data>
+  <data name="LOG_LEVEL_MAX" xml:space="preserve">
+    <value>1</value>
+    <comment>5:none, 1:error, 2:warn, 3:info, 4:trace</comment>
+  </data>
+  <data name="LOG_LEVEL_MIN" xml:space="preserve">
+    <value>3</value>
+    <comment>5:none, 1:error, 2:warn, 3:info, 4:trace</comment>
+  </data>
+  <data name="S_CURVE_PIPE_FAMILY" xml:space="preserve">
+    <value>S管(配管)</value>
+  </data>
+  <data name="S_CURVE_PIPE_FILE" xml:space="preserve">
+    <value>S管(配管).rfa</value>
+  </data>
+  <data name="S_CURVE_PIPE_TYPE" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="Worn_Caption" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Worn_ExceptionMessege" xml:space="preserve">
+    <value>A fatal error occurred; the routing cannot be moved.</value>
+  </data>
+  <data name="LVL_Shape" xml:space="preserve">
+    <value>Shape</value>
+  </data>
+  <data name="MSG_WARN1" xml:space="preserve">
+    <value>The two MEPCurve elements are not connected.</value>
+  </data>
+  <data name="MSG_WARN2" xml:space="preserve">
+    <value>Start this command from a plan view or a reflected ceiling plan.</value>
+  </data>
+  <data name="REQ_ENTER_POINT" xml:space="preserve">
+    <value>Pick split point </value>
+  </data>
+  <data name="REQ_ENTER_POINT_CNT" xml:space="preserve">
+    <value>: </value>
+  </data>
+  <data name="REQ_ENTER_TARGET" xml:space="preserve">
+    <value>Pick a reference element to derive the move amount.</value>
+  </data>
+  <data name="MSG_ERROR1" xml:space="preserve">
+    <value>Segment pick error: the specified duct or pipe is not contained in the picked segment.</value>
+  </data>
+  <data name="MSG_ERROR2" xml:space="preserve">
+    <value>Could not reserve space for reconnecting the routing segment; cannot apply the move.</value>
+  </data>
+  <data name="LVL_EllipticalDuct" xml:space="preserve">
+    <value>Oval duct</value>
+  </data>
+  <data name="LVL_PipeType" xml:space="preserve">
+    <value>Pipe type</value>
+  </data>
+  <data name="LVL_RoundDuct" xml:space="preserve">
+    <value>Round duct</value>
+  </data>
+  <data name="LVL_SquareDuct" xml:space="preserve">
+    <value>Rectangular duct</value>
+  </data>
+  <data name="MSG_ERROR3" xml:space="preserve">
+    <value>Could not trim the branch taps; routing cannot be moved.</value>
+  </data>
+  <data name="MSG_WARN3" xml:space="preserve">
+    <value>You cannot pick a duct endpoint that connects to a fabrication part.</value>
+  </data>
+  <data name="MSG_WARN4" xml:space="preserve">
+    <value>For the move segment, pick two distinct points.</value>
+  </data>
+  <data name="DIALOG_TITLE_CONFIRM" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="DIALOG_TITLE_WARN" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="REQ_ENTER_CUT_OBJ" xml:space="preserve">
+    <value>Select the duct or pipe to trim at the picked split location.</value>
+  </data>
+  <data name="LVL_DIRECT_SHAPE" xml:space="preserve">
+    <value>Beam</value>
+  </data>
+  <data name="LVL_Pick_a_TargetObject_LinkModel" xml:space="preserve">
+    <value>Pick clearance target &lt;linked model&gt;</value>
+  </data>
+</root>

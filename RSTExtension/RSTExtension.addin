@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>RSTExtension</Name>
+    <Assembly>RSTExtension\RSTExtension.dll</Assembly>
+    <AddInId>F1A2B3C4-D5E6-7890-ABCD-EF1234567890</AddInId>
+    <FullClassName>RSTExtension.ExtApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

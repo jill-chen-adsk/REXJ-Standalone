@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Japan Standards Extension</value>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>JP建築</value>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ</value>
+  </data>
+  <data name="IDS_ERR_CBONULL" xml:space="preserve">
+    <value>選択肢が空白です</value>
+  </data>
+  <data name="IDS_ERR_COMMAND" xml:space="preserve">
+    <value>コマンドが失敗しました</value>
+  </data>
+  <data name="IDS_ERR_CREATEPARTSDRAW" xml:space="preserve">
+    <value>建具姿図作成が失敗しました</value>
+  </data>
+  <data name="IDS_ERR_DELETEACTIVEVIEW" xml:space="preserve">
+    <value>アクティブビューが削除できませんので、処理が終了します。建具姿図以外ビューをアクティブにして再実行してください。</value>
+  </data>
+  <data name="IDS_ERR_GETVIEWPARTS" xml:space="preserve">
+    <value>姿図ビュー取得に失敗しました</value>
+  </data>
+  <data name="IDS_ERR_LAYOUTPARTSDRAW" xml:space="preserve">
+    <value>建具姿図のレイアウトが失敗しました</value>
+  </data>
+  <data name="IDS_ERR_LSTNULL" xml:space="preserve">
+    <value>リストボックスが空です</value>
+  </data>
+  <data name="IDS_ERR_NOPARTS" xml:space="preserve">
+    <value>建具が存在しません</value>
+  </data>
+  <data name="IDS_ERR_PARAMCOMMAND" xml:space="preserve">
+    <value>コマンドパラメータの定義に失敗しました</value>
+  </data>
+  <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
+    <value>パラメータの定義に失敗しました</value>
+  </data>
+  <data name="IDS_ERR_SELPARTS" xml:space="preserve">
+    <value>建具が選択されていません</value>
+  </data>
+  <data name="IDS_ERR_SETVIEWPORT" xml:space="preserve">
+    <value>ビューポート設定に失敗しました</value>
+  </data>
+  <data name="IDS_ERR_VALNULL" xml:space="preserve">
+    <value>値が空白です</value>
+  </data>
+  <data name="IDS_ERR_VALNUMBER" xml:space="preserve">
+    <value>値が整数ではありません</value>
+  </data>
+  <data name="IDS_ERR_VALRANGE" xml:space="preserve">
+    <value>値が範囲外です</value>
+  </data>
+  <data name="IDS_ERR_VIEWSEC" xml:space="preserve">
+    <value>建具姿図を生成できる断面図ビューファミリタイプが存在しません</value>
+  </data>
+  <data name="IDS_ERR_VIEWSHEET" xml:space="preserve">
+    <value>シートビューを開いてから使用してください</value>
+  </data>
+  <data name="IDS_LST_SECVIEW_DOOR" xml:space="preserve">
+    <value>姿図_ドア</value>
+  </data>
+  <data name="IDS_LST_SECVIEW_WINDOW" xml:space="preserve">
+    <value>姿図_窓</value>
+  </data>
+  <data name="IDS_SET_VIEWBBOXBLANK" xml:space="preserve">
+    <value>40.0</value>
+  </data>
+  <data name="IDS_SET_VIEWPORTSYM_1" xml:space="preserve">
+    <value>No Title</value>
+  </data>
+  <data name="IDS_SET_VIEWPORTSYM_2" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="IDS_SET_VIEWPORTSYM_3" xml:space="preserve">
+    <value>タイトルなし</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_CREATEANDEDIT" xml:space="preserve">
+    <value>RexJpn-FittingSchedule-CreateAndEdit</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_LAYOUT" xml:space="preserve">
+    <value>RexJpn-FittingSchedule-Layout</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_MARK" xml:space="preserve">
+    <value>建具記号</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_PARTS_NUMBER" xml:space="preserve">
+    <value>建具番号</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+  </data>
+  <data name="IDS_TXT_BLANK" xml:space="preserve">
+    <value>余白</value>
+  </data>
+  <data name="IDS_TXT_BOTH" xml:space="preserve">
+    <value>両方</value>
+  </data>
+  <data name="IDS_TXT_BOTTOM" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="IDS_TXT_CATEGORY" xml:space="preserve">
+    <value>カテゴリ</value>
+  </data>
+  <data name="IDS_TXT_CHANGEOLDVIEW" xml:space="preserve">
+    <value>古いビューの名前を変更し新たに作成する</value>
+  </data>
+  <data name="IDS_TXT_CLOSELOG" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="IDS_TXT_COLON1" xml:space="preserve">
+    <value>1:</value>
+  </data>
+  <data name="IDS_TXT_CREATEPARTSDRAWING" xml:space="preserve">
+    <value>建具姿図作成</value>
+  </data>
+  <data name="IDS_TXT_CREATEVIEWPARTS" xml:space="preserve">
+    <value>姿図ビュー作成</value>
+  </data>
+  <data name="IDS_TXT_CUSTOM" xml:space="preserve">
+    <value>カスタム...</value>
+  </data>
+  <data name="IDS_TXT_DELOLDVIEW" xml:space="preserve">
+    <value>古いビューを削除する</value>
+  </data>
+  <data name="IDS_TXT_DETAILLEVEL" xml:space="preserve">
+    <value>詳細レベル</value>
+  </data>
+  <data name="IDS_TXT_DETAILLEVEL_COARSE" xml:space="preserve">
+    <value>簡略</value>
+  </data>
+  <data name="IDS_TXT_DETAILLEVEL_FINE" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="IDS_TXT_DETAILLEVEL_MEDIUM" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="IDS_TXT_DOOR" xml:space="preserve">
+    <value>ドアのみ</value>
+  </data>
+  <data name="IDS_TXT_DOORTAG" xml:space="preserve">
+    <value>ドアタグ</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="IDS_TXT_GETVIEWPARTS" xml:space="preserve">
+    <value>姿図ビュー取得</value>
+  </data>
+  <data name="IDS_TXT_HANDLINGDUPLICATEVIEW" xml:space="preserve">
+    <value>重複したビューの処理</value>
+  </data>
+  <data name="IDS_TXT_INFO" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="IDS_TXT_LAYOUTPARTSDRAWING" xml:space="preserve">
+    <value>建具姿図レイアウト</value>
+  </data>
+  <data name="IDS_TXT_LAYOUTVIEWPARTS" xml:space="preserve">
+    <value>姿図ビューレイアウト</value>
+  </data>
+  <data name="IDS_TXT_LEFT" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="IDS_TXT_LOG" xml:space="preserve">
+    <value>エラーログ</value>
+  </data>
+  <data name="IDS_TXT_NEWLINE" xml:space="preserve">
+    <value>改行</value>
+  </data>
+  <data name="IDS_TXT_NOTUPDATE" xml:space="preserve">
+    <value>更新しない（新たに作成しない）</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_TXT_PARAMETER" xml:space="preserve">
+    <value>パラメータ</value>
+  </data>
+  <data name="IDS_TXT_PLACEMENTSOLIDPICTURE" xml:space="preserve">
+    <value>シートに配置する姿図</value>
+  </data>
+  <data name="IDS_TXT_RIGHT" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="IDS_TXT_SAVELOG" xml:space="preserve">
+    <value>ログ保存</value>
+  </data>
+  <data name="IDS_TXT_SCALE" xml:space="preserve">
+    <value>縮尺</value>
+  </data>
+  <data name="IDS_TXT_SETVIEWPORT" xml:space="preserve">
+    <value>ビューポート設定</value>
+  </data>
+  <data name="IDS_TXT_SIGNDEL" xml:space="preserve">
+    <value>←</value>
+  </data>
+  <data name="IDS_TXT_SIGNDN" xml:space="preserve">
+    <value>↓</value>
+  </data>
+  <data name="IDS_TXT_SIGNMOVE" xml:space="preserve">
+    <value>→</value>
+  </data>
+  <data name="IDS_TXT_SIGNUP" xml:space="preserve">
+    <value>↑</value>
+  </data>
+  <data name="IDS_TXT_SOLIDPICTURE" xml:space="preserve">
+    <value>姿図</value>
+  </data>
+  <data name="IDS_TXT_TOP" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="IDS_TXT_WINDOW" xml:space="preserve">
+    <value>窓のみ</value>
+  </data>
+  <data name="IDS_TXT_WINDOWTAG" xml:space="preserve">
+    <value>窓タグ</value>
+  </data>
+</root>

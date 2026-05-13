@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Level Filter</Name>
+    <Assembly>ADSK.JExtRAC.LevelFilter.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.LevelFilter.App</FullClassName>
+    <ClientId>9C4D0E5F-6A7B-8C9D-AE0F-1A2B3C4D5E6F</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

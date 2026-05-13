@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>変換条件</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>変換条件</H2>
+        <table width="800" align="left">
+            <tr>
+                <td>
+                    <p>ST-Bridge Link の変換条件</p>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="800" cellspacing="0">
+                        <strong>■&nbsp;変換条件</strong>
+                        <tr>
+                            <td>
+                                <table width="800" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <td bgcolor="#ddffee" align="center" height="40" width="400">変換条件内容</td>
+                                        <td bgcolor="#ddffee" align="center" height="40" width="">備考</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">Revit(日本語版)のアドインコマンドとする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">対象とするST-Bridgeのバージョンは 『1.4』 以下、または 『2.0.1』 とする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">マッピングテーブルを用いて変換するファミリおよびパラメータを任意に変更可能とする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">マッピングテーブルはST-Bridge Link用に項目を追加したテーブルを使用し、SS3 Link・RC断面リスト作成・S断面リスト作成と共通の設定とする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">ST-Bridgeの共通情報はプロジェクト情報として変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">鉄筋・継手のモデル化は行わない。</td>
+                                        <td>パラメータとして変換</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">柱はRC柱・S柱・SRC柱・CFT柱を変換対象とする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">S柱・SRC柱・CFT柱の鉄骨情報は１断面分を変換する。</td>
+                                        <td>柱脚・中央・柱頭の優先順で変換</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">柱脚はマッピングテーブル方式で変換するものとし、ST-Bridgeのメーカー名・製品型番に応じたファミリ名・タイプ名で変換する。</td>
+                                        <td>デフォルトでセンクシア株式会社が提供するハイベースNEO工法（角形鋼管柱/円形鋼管柱/H形柱）、旭化成建材株式会社・岡部株式会社が提供するベースパック柱脚工法（角形鋼管柱/円形鋼管柱/H形柱）のファミリに対応</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">梁はRC梁・S梁・SRC梁を変換対象とする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">ブレースはSブレースを変換対象とする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">スラブは床ファミリで変換する。</td>
+                                        <td>開口も変換</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">デッキプレートおよび既製スラブは床ファミリで変換し、デッキプレートおよび既製スラブに関する情報はパラメータとして変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">壁は壁ファミリで変換する。</td>
+                                        <td>開口も変換</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">パラペットは壁ファミリで変換し、パラペットに関する情報はパラメータとして変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">基礎は基礎ファミリで変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">矩形テーパーのテーパー幅は「基礎幅／2」（=DX/2、=DY/2）で変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">布基礎は構造基礎カテゴリで作成された布基礎ファミリで変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">布基礎は節点が一致する梁がある場合のみ変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">布基礎のテーパー幅は節点が一致する梁の幅で変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">杭は「ストレート」「脚部拡大」「頂部拡大」「両端拡大」を表す3断面の形状を持つファミリを対象とし、「場所打ち杭」または「既製杭」を選択して変換する。</td>
+                                        <td>変換時に杭のタイプを選択</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">場所打ち杭は、単独ファミリ(子ファミリを持たないファミリ)で、杭全長・杭径および拡底・拡頭の杭長・杭径を持つファミリを対象とする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">既製杭は、ネストファミリ(子ファミリを持つファミリ)で、ネストしたファミリ側で杭長・杭径を持つファミリを対象とする。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">節点が一致する基礎と杭はグループ化して変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">節点が一致する基礎梁と布基礎はグループ化して変換する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">部材種類による下記の順で勝ち負けを考慮し変換する。<br>
+                                            「杭＞基礎＞柱＞梁＞壁・ブレース＞床」
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">変換終了後に変換ログ(エラー/警告/メッセージ)を表示する。</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">以下の部材は変換対象外とする。
+                                            <!-- セル内のテーブル -->
+                                            <table>
+                                                <tr>
+                                                    <td width="5"></td>
+                                                    <td>
+                                                        <table width="390" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                            <tr bgcolor="#c6d9f1">
+                                                                <td colspan="3">柱</td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>S柱リップ溝形鋼<br>S柱フラットバー<br>S柱丸鋼</td>
+                                                                <td colspan="2">SRC柱□形<br>SRC柱○形<br><br></td>
+                                                            </tr>
+                                                            <tr bgcolor="#c6d9f1">
+                                                                <td colspan="3">梁</td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>S梁角形鋼管<br>S梁組立角形鋼管<br>S梁円形鋼管</td>
+                                                                <td>S梁T形鋼<br>S梁フラットバー<br>S梁丸鋼</td>
+                                                                <td>SRC梁□形<br>SRC梁○形<br><br></td>
+                                                            </tr>
+                                                            <tr bgcolor="#c6d9f1">
+                                                                <td colspan="3">ブレース</td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td colspan="3">SブレースT形鋼</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">以下の部材はST-Bridgeの中央断面で変換する。
+                                            <!-- セル内のテーブル -->
+                                            <table>
+                                                <tr>
+                                                    <td width="5"></td>
+                                                    <td>
+                                                        <table width="390" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>Sブレース角形鋼管<br>Sブレース組立角形鋼管<br>Sブレース円形鋼管<br>Sブレースフラットバー<br>Sブレース丸鋼</td>
+                                                                <td>S梁・Sブレース溝形鋼<br>S梁・Sブレース山形鋼<br>S梁・Sブレースリップ溝形鋼<br><br><br></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>配布する変換ファミリの形状寸法が1断面のため中央断面で変換</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">以下の部材の2丁扱いは単材で変換する。
+                                            <!-- セル内のテーブル -->
+                                            <table>
+                                                <tr>
+                                                    <td width="5"></td>
+                                                    <td>
+                                                        <table width="390" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>溝形鋼</td>
+                                                                <td>山形鋼</td>
+                                                                <td>リップ溝形鋼</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>配布する変換ファミリが2丁扱いに非対応のため単材で変換</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="400">配布テンプレートに含まれるファミリによる制限は以下とする。
+                                            <!-- セル内のテーブル -->
+                                            <table>
+                                                <tr>
+                                                    <td width="5"></td>
+                                                    <td>
+                                                        <table width="390" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                                            <tr bgcolor="#ffffff">
+                                                                <td rowspan="3">Steel_Girder_H<br>Steel_Girder_BH<br>Steel_Beam_H</td>
+                                                                <td>フィレット半径が0mm以下の場合はDROPで変換<br>
+                                                                    フィレット半径が0mmより大きい場合はSLOPEで変換
+                                                                </td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>始端と終端で異なるハンチ種類であってもフィレット半径によって変換</td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>水平ハンチ形状および鉛直ハンチ形状はBOTHで変換</td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td rowspan="3">Steel_Girder_H_Top<br>Steel_Girder_BH_Top</td>
+                                                                <td>フィレット半径が0mm以下の場合はDROPで変換<br>
+                                                                    フィレット半径が0mmより大きい場合はSLOPEで変換
+                                                                </td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>始端と終端で異なるハンチ種類であってもフィレット半径によって変換</td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>水平ハンチ形状はBOTH、鉛直ハンチ形状はTOPで変換</td>
+                                                            </tr>
+                                                            <tr bgcolor="#ffffff">
+                                                                <td>SRC_Girder_icj</td>
+                                                                <td>鉄骨のハンチ形状には非対応</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>マッピングテーブルで指定したパラメータにはST-Bridgeの入力値を変換する</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </TABLE>
+                </td>
+            </tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

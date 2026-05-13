@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDS_ERROR_FORMAT_SCALE" xml:space="preserve">
+    <value>Please enter in "1:integer" format.</value>
+  </data>
+  <data name="IDS_ERR_NO_PLANE" xml:space="preserve">
+    <value>No sketch plane found in this view</value>
+  </data>
+  <data name="IDS_ERR_NO_PRINTER" xml:space="preserve">
+    <value>No printer is installed</value>
+  </data>
+  <data name="IDS_ERR_SAME_POINT" xml:space="preserve">
+    <value>Cannot create view with the same point</value>
+  </data>
+  <data name="IDS_INFO_PICK_POINT_1" xml:space="preserve">
+    <value>Select point 1</value>
+  </data>
+  <data name="IDS_INFO_PICK_POINT_2" xml:space="preserve">
+    <value>Select point 2</value>
+  </data>
+  <data name="IDS_SHPARAM_DEF_CMD_LOCATESLAB" xml:space="preserve">
+    <value>RexJpn-PrintRegion-Config</value>
+  </data>
+  <data name="IDS_SHPARAM_FILE" xml:space="preserve">
+    <value>RexJParam.txt</value>
+  </data>
+  <data name="IDS_SHPARAM_GROUP" xml:space="preserve">
+    <value>RexJpn</value>
+  </data>
+  <data name="IDS_TXT_APPEARANCE" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="IDS_TXT_CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="IDS_TXT_CENTER" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="IDS_TXT_COLORS" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="IDS_TXT_DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IDS_TXT_FIT_TO_PAGE" xml:space="preserve">
+    <value>Fit to Page</value>
+  </data>
+  <data name="IDS_TXT_HIDDEN_LINES_VIEWS" xml:space="preserve">
+    <value>Hidden Line Views</value>
+  </data>
+  <data name="IDS_TXT_HIDE_CROP_BOUNDARIES" xml:space="preserve">
+    <value>Hide Crop Boundaries</value>
+  </data>
+  <data name="IDS_TXT_HIDE_REF_WORK_PLANES" xml:space="preserve">
+    <value>Hide Ref/Work Planes</value>
+  </data>
+  <data name="IDS_TXT_HIDE_SCOPE_BOXED" xml:space="preserve">
+    <value>Hide Scope Boxes</value>
+  </data>
+  <data name="IDS_TXT_HIDE_UNREFERENCED_VIEW_TAGS" xml:space="preserve">
+    <value>Hide Unreferenced View Tags</value>
+  </data>
+  <data name="IDS_TXT_LANDSCAPE" xml:space="preserve">
+    <value>Landscape</value>
+  </data>
+  <data name="IDS_TXT_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="IDS_TXT_NEW" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="IDS_TXT_OFFSET_FROM_CONER" xml:space="preserve">
+    <value>Offset from Corner</value>
+  </data>
+  <data name="IDS_TXT_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="IDS_TXT_OPTION" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="IDS_TXT_ORIENTATION" xml:space="preserve">
+    <value>Orientation</value>
+  </data>
+  <data name="IDS_TXT_PAPER" xml:space="preserve">
+    <value>Paper</value>
+  </data>
+  <data name="IDS_TXT_PAPER_PLACEMENT" xml:space="preserve">
+    <value>Paper Placement</value>
+  </data>
+  <data name="IDS_TXT_PICK_AREA" xml:space="preserve">
+    <value>Drag to specify a rectangular area for printing.</value>
+  </data>
+  <data name="IDS_TXT_PORTRAIT" xml:space="preserve">
+    <value>Portrait</value>
+  </data>
+  <data name="IDS_TXT_PREVIEW" xml:space="preserve">
+    <value>Update View Scale</value>
+  </data>
+  <data name="IDS_TXT_PREVIOUS" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="IDS_TXT_PRINTER_NAME" xml:space="preserve">
+    <value>Printer</value>
+  </data>
+  <data name="IDS_TXT_PRINT_REGION" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="IDS_TXT_PRINT_SCALE" xml:space="preserve">
+    <value>Print Scale</value>
+  </data>
+  <data name="IDS_TXT_PRINT_SETUP" xml:space="preserve">
+    <value>Print Setup</value>
+  </data>
+  <data name="IDS_TXT_PROPERTIES" xml:space="preserve">
+    <value>Print Setup</value>
+  </data>
+  <data name="IDS_TXT_RASTER_PROCESSING" xml:space="preserve">
+    <value>Raster Processing</value>
+  </data>
+  <data name="IDS_TXT_RASTER_QUALITY" xml:space="preserve">
+    <value>Raster Quality</value>
+  </data>
+  <data name="IDS_TXT_REGION_EDGES_MASK_COINCIDENT_LINES" xml:space="preserve">
+    <value>Mask Coincident Lines with Region Edges</value>
+  </data>
+  <data name="IDS_TXT_REMOVE_LINES_USING" xml:space="preserve">
+    <value>Remove lines using:</value>
+  </data>
+  <data name="IDS_TXT_RENAME" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="IDS_TXT_REPLACE_HALFTONE_WITH_THIN_LINES" xml:space="preserve">
+    <value>Replace Halftone with Thin Lines</value>
+  </data>
+  <data name="IDS_TXT_REVERT" xml:space="preserve">
+    <value>Revert</value>
+  </data>
+  <data name="IDS_TXT_SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="IDS_TXT_SAVE_AS" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="IDS_TXT_SCALE_FORMAT" xml:space="preserve">
+    <value>1:{0}</value>
+  </data>
+  <data name="IDS_TXT_SHOW_LOG_ENG" xml:space="preserve">
+    <value>Revit could not start the print job because it was unable to connect to the specified printer. Check your printer connectivity and try again.</value>
+  </data>
+  <data name="IDS_TXT_SHOW_LOG_JPN" xml:space="preserve">
+    <value>指定されたプリンタに接続できないため、Revit は出力ジョブを開始できませんでした。プリンタの接続を確認して、やり直してください。</value>
+  </data>
+  <data name="IDS_TXT_SIZE" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="IDS_TXT_SOURCE" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="IDS_TXT_VECTOR_PROCESSING" xml:space="preserve">
+    <value>Vector Processing</value>
+  </data>
+  <data name="IDS_TXT_VIEW_LINKS_IN_BLUE" xml:space="preserve">
+    <value>View Links in Blue (color print only)</value>
+  </data>
+  <data name="IDS_TXT_ZOOM" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="IDS_TXT_TRANSACTION_PRINT_REGION" xml:space="preserve">
+    <value>Range Print</value>
+  </data>
+  <data name="IDS_TXT_MARGIN_NO_MARGIN" xml:space="preserve">
+    <value>No Margin</value>
+  </data>
+  <data name="IDS_TXT_MARGIN_PRINTER_LIMIT" xml:space="preserve">
+    <value>Printer Limit</value>
+  </data>
+  <data name="IDS_TXT_MARGIN_USER_DEFINED" xml:space="preserve">
+    <value>User Defined</value>
+  </data>
+  <data name="IDS_TXT_RASTER_LOW" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="IDS_TXT_RASTER_MEDIUM" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="IDS_TXT_RASTER_HIGH" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="IDS_TXT_RASTER_PRESENTATION" xml:space="preserve">
+    <value>Presentation</value>
+  </data>
+  <data name="IDS_TXT_COLOR_MONOCHROME" xml:space="preserve">
+    <value>Monochrome</value>
+  </data>
+  <data name="IDS_TXT_COLOR_GRAYSCALE" xml:space="preserve">
+    <value>Grayscale</value>
+  </data>
+  <data name="IDS_TXT_COLOR_COLOR" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="IDS_TXT_INVALID_INPUT" xml:space="preserve">
+    <value>Invalid input</value>
+  </data>
+  <data name="IDS_TXT_VIEW_PRINTER" xml:space="preserve">
+    <value>View Printer</value>
+  </data>
+</root>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Value Copy</Name>
+    <Assembly>ADSK.JExtRAC.ValueCopy.dll</Assembly>
+    <AddInId>7F2D9E91-C6B1-42D5-9C6C-530FD8F26340</AddInId>
+    <FullClassName>ADSK.JExtRAC.ValueCopy.App</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>ADSK.JExtRAC.AveSiteLevelHeightCalc</Name>
+    <Assembly>ADSK.JExtRAC.AveSiteLevelHeightCalc.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.AveSiteLevelHeightCalc.App</FullClassName>
+    <ClientId>B2E3F4A5-6718-5890-B234-CDEF01234589</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

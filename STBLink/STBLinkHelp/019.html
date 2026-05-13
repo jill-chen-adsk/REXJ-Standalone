@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <title>変換対象一覧</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="base">
+    <div class="Left">
+        <iframe src="menu.html" width="100%" height="100%"></iframe>
+    </div>
+    <div class="Right">
+        <H2>変換対象一覧</H2>
+        <table width="600" align="left">
+            <tr>
+                <td>
+                    <p>ST-Bridge Link の変換対象一覧</p>
+                </td>
+            </tr>
+
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <TABLE BORDER="0" width="600" cellspacing="1">
+                        <strong>■&nbsp;変換対象一覧</strong>
+                        <tr>
+                            <td>
+                                <table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+                                    <tr>
+                                        <th bgcolor="#ddffee" width="" align="center" rowspan="2" colspan="2">
+                                            <nobr>ST-Bridge</nobr>
+                                            <br>要素
+                                        </th>
+                                        <th bgcolor="#ddffee" width="" align="center" colspan="2">インポートするパラメータ</th>
+                                        <th bgcolor="#ddffee" width="" align="center" rowspan="2">内容</th>
+                                    </tr>
+                                    <tr>
+                                        <th height="30" align="center" bgcolor="#ddffee">タイプパラメータ</th>
+                                        <th height="30" align="center" bgcolor="#ddffee">インスタンスパラメータ</th>
+                                    </tr>
+
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">階</td>
+                                        <td colspan="2">（レベルとして変換）</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">軸</td>
+                                        <td colspan="2">（X軸、Y軸、作図用軸を通芯として変換）</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">柱</td>
+                                        <td colspan="">断面ID</td>
+                                        <td>
+                                            部材ID、回転、オフセット、ふかし厚さ、材端条件、ジョイント位置
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td rowspan="5"></td>
+                                        <td>RC柱</td>
+                                        <td>コンクリート形状サイズ、主筋、軸筋、帯筋、幅止筋、材料強度</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>S柱</td>
+                                        <td>鉄骨形状サイズ、材料強度、柱脚</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>SRC柱</td>
+                                        <td>コンクリート形状サイズ、鉄骨形状サイズ、鉄骨偏芯、主筋、帯筋、幅止筋、材料強度、柱脚</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>CFT柱</td>
+                                        <td>鉄骨形状サイズ、材料強度、柱脚</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>基礎柱</td>
+                                        <td>柱高さ、コンクリート形状サイズ、主筋、軸筋、帯筋、幅止筋、材料強度</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">梁</td>
+                                        <td colspan="">断面ID、外端内端指定、片持梁指定、ハンチ位置</td>
+                                        <td>部材ID、回転、基礎梁指定、オフセット、レベル、ふかし厚さ、材端条件、ジョイント位置</td>
+                                        <td>ST-Bridgeは梁のハンチ位置を配置ごとに持つ。断面が同じでハンチ位置の異なる梁がある場合、
+                                            別の梁として扱う。タイプ名は元の名称＋サフィックスとする。
+                                        </td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td rowspan="3"></td>
+                                        <td>RC梁</td>
+                                        <td>コンクリート形状サイズ、主筋、あばら筋、腹筋、幅止筋、材料強度</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>S梁</td>
+                                        <td>鉄骨形状サイズ、材料強度</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>SRC梁</td>
+                                        <td>コンクリート形状サイズ、鉄骨形状サイズ、主筋、あばら筋、腹筋、幅止筋、材料強度、鉄骨位置</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">ブレース</td>
+                                        <td colspan="">断面ID</td>
+                                        <td>部材ID、回転、オフセット、材端条件、ジョイント位置</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td></td>
+                                        <td>Sブレース</td>
+                                        <td>鉄骨形状サイズ、材料強度、種別(水平/垂直)</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">スラブ</td>
+                                        <td colspan="">断面ID、片持指定、基礎指定、土間指定</td>
+                                        <td>部材ID、レベル、片持指定（配置）、ふかし厚さ、ハンチ形状、頂点オフセット</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td rowspan="3"></td>
+                                        <td>RCスラブ</td>
+                                        <td>コンクリート厚、材料強度、配筋(径、ピッチ、鉄筋強度)、開口補強筋(径、本数、鉄筋強度)</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>デッキスラブ</td>
+                                        <td>コンクリート厚、材料強度、配筋(径、ピッチ、鉄筋強度)、デッキメーカー、製品型番、デッキ高さ</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>開口</td>
+                                        <td></td>
+                                        <td>位置、寸法、回転</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">壁</td>
+                                        <td colspan="">断面ID</td>
+                                        <td>部材ID、オフセット、ふかし厚さ、耐力区分、スリット位置、土圧指定</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="15" rowspan="2"></td>
+                                        <td>RC壁</td>
+                                        <td>コンクリート厚、材料強度、配筋(径、ピッチ、鉄筋強度)、端部補強筋/開口補強筋(径、本数、鉄筋強度)</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>開口</td>
+                                        <td></td>
+                                        <td>位置、寸法</td>
+                                        <td>（壁開口の回転はRevit上で不可）</td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">パラペット</td>
+                                        <td>断面ID</td>
+                                        <td>部材ID、オフセット、レベル、アゴ方向</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="15"></td>
+                                        <td>RCパラペット</td>
+                                        <td>コンクリート形状サイズ、材料強度、配筋(径、ピッチ、鉄筋強度)、補強筋(径、ピッチ、本数、鉄筋強度)</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td colspan="2">基礎</td>
+                                        <td>断面ID</td>
+                                        <td>部材ID、回転、オフセット、レベル、ふかし厚さ</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="15" rowspan="3"></td>
+                                        <td>RC基礎</td>
+                                        <td>コンクリート形状サイズ、材料強度、配筋(径、本数、鉄筋強度)</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td>杭</td>
+                                        <td>杭長、杭径、配筋（主筋・帯筋）</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr bgcolor="#ffffff">
+                                        <td width="50">布基礎</td>
+                                        <td>コンクリート形状サイズ(幅、厚さ)、材料強度、配筋(径、本数、ピッチ、鉄筋強度)</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        <tr>
+                    </table>
+                </td>
+            <tr>
+            <tr height="15">
+                <td><p></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Join Order Inspector</Name>
+    <Assembly>ADSK.JExtRAC.JoinOrderInspector.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.JoinOrderInspector.App</FullClassName>
+    <ClientId>D6A85B4F-3E17-4C8D-92F6-1B5A7E3C9D02</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

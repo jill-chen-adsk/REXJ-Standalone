@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Range Print</Name>
+    <Assembly>ADSK.JExtRAC.PrintRegion.dll</Assembly>
+    <FullClassName>ADSK.JExtRAC.PrintRegion.App</FullClassName>
+    <ClientId>B1C2D3E4-F5A6-7890-1234-567890ABCDEF</ClientId>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk</VendorDescription>
+  </AddIn>
+</RevitAddIns>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="IDI_EXPORT_DATA_EMPTY" xml:space="preserve">
+    <value>エクスポートのデータが存在しません。</value>
+  </data>
+  <data name="IDS_ERROR_CANNOT_EXPORT_EXCEL" xml:space="preserve">
+    <value>Excelにエクスポートできません。</value>
+  </data>
+  <data name="IDS_ERROR_NO_OPEN_EXCEL" xml:space="preserve">
+    <value>Excelが起動していません。</value>
+  </data>
+  <data name="IDS_ERROR_SEARCH_NOT_FOUND" xml:space="preserve">
+    <value>対象項目が存在しません。</value>
+  </data>
+  <data name="IDS_ERROR_TITLE_COLUMN" xml:space="preserve">
+    <value>タイトル行が不明です。</value>
+  </data>
+  <data name="IDS_EXPORT_SUCCESS" xml:space="preserve">
+    <value>Excelエクスポートが正常に完了しました。</value>
+  </data>
+  <data name="IDS_INFO_CANNOT_REMOVE_EXIST" xml:space="preserve">
+    <value>Excelファイルが削除できません。</value>
+  </data>
+  <data name="IDS_INFO_NO_EXIST_ELEMENTS" xml:space="preserve">
+    <value>要素が選択されていません。</value>
+  </data>
+  <data name="IDS_INFO_SELECT_PARAMETER_TO_EXPORT" xml:space="preserve">
+    <value>出力パラメータをご選択ください。</value>
+  </data>
+  <data name="IDS_IN_CURRENT_VIEW" xml:space="preserve">
+    <value>現在のビューにある要素</value>
+  </data>
+  <data name="IDS_MAIN_CONTENT" xml:space="preserve">
+    <value>書出す要素の範囲を選択してください。</value>
+  </data>
+  <data name="IDS_MAIN_INSTRUCTION" xml:space="preserve">
+    <value>書出し範囲の選択</value>
+  </data>
+  <data name="IDS_SELECTION_ELEMENT" xml:space="preserve">
+    <value>現在選択されている要素</value>
+  </data>
+  <data name="IDS_SELECT_ALL" xml:space="preserve">
+    <value>プロジェクト全体の要素</value>
+  </data>
+  <data name="IDS_TITILE_SELECT_MODE" xml:space="preserve">
+    <value>Excelエクスポート</value>
+  </data>
+  <data name="IDS_TXT_ERROR" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="IDS_TXT_INFORMATION" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="TXT_FILETYPE_CSV" xml:space="preserve">
+    <value>CSV UTF-8 (コンマ区切り) | *.csv</value>
+  </data>
+  <data name="TXT_FILETYPE_XLSX" xml:space="preserve">
+    <value>Excel Workbook | *.xlsx</value>
+  </data>
+  <data name="TXT_FILETYPE_XLS" xml:space="preserve">
+    <value>Excel Files | *.xls</value>
+  </data>
+  <data name="IDS_FORM_TITLE" xml:space="preserve">
+    <value>Excelエクスポート</value>
+  </data>
+  <data name="IDS_LBL_CATEGORY" xml:space="preserve">
+    <value>カテゴリを選択</value>
+  </data>
+  <data name="IDS_LBL_PARAMETER" xml:space="preserve">
+    <value>パラメーター</value>
+  </data>
+  <data name="IDS_LBL_OUTPUT" xml:space="preserve">
+    <value>出力</value>
+  </data>
+  <data name="IDS_BTN_SEARCH" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="IDS_BTN_RESTORE" xml:space="preserve">
+    <value>設定復元</value>
+  </data>
+  <data name="IDS_BTN_LOAD" xml:space="preserve">
+    <value>設定読込</value>
+  </data>
+  <data name="IDS_BTN_SAVE" xml:space="preserve">
+    <value>設定保存</value>
+  </data>
+  <data name="IDS_BTN_CANCEL" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="IDS_SAVE_DIALOG_TITLE" xml:space="preserve">
+    <value>名前を付けて保存</value>
+  </data>
+  <data name="IDS_SAVE_SETTINGS_TITLE" xml:space="preserve">
+    <value>設定ファイル名を指定</value>
+  </data>
+  <data name="IDS_LOAD_SETTINGS_TITLE" xml:space="preserve">
+    <value>パラメーター設定ファイルを読み込み</value>
+  </data>
+  <data name="IDS_SETTINGS_FILE_FILTER" xml:space="preserve">
+    <value>パラメーター設定ファイル(*.txt)|*.txt</value>
+  </data>
+  <data name="IDS_PSEUDO_TYPE_GUID" xml:space="preserve">
+    <value>タイプGUID</value>
+  </data>
+  <data name="IDS_PSEUDO_COUNT" xml:space="preserve">
+    <value>個数</value>
+  </data>
+</root>

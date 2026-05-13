@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Mapping Table</Name>
+    <Assembly>ADSK.RST.MappingTable\ADSK.RST.MappingTable.dll</Assembly>
+    <AddInId>D4E5F6A7-8901-2345-B678-CDEF01234567</AddInId>
+    <FullClassName>MappingTable.RevitLNK</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk REXJ Standalone</VendorDescription>
+  </AddIn>
+</RevitAddIns>

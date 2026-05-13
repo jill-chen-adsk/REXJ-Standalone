@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<title>ブレース生成</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	<div class="base">
+		<div class="Left">
+			<iframe src="menu.html" width="100%" height="100%"></iframe>
+		</div>
+		<div class="Right">
+		<H2>ブレース生成</H2>
+		<table width="600" align="left">
+			<tr>
+				<td>
+					<p>ST-Bridgeから読み取った情報からブレースの変換を行う。</p>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+			<tr>
+				<td>
+					<TABLE BORDER="0" width="600" cellspacing="0">
+						<strong>■&nbsp;Sブレース断面の生成</strong>
+						<tr>
+							<td>
+								<table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+									<tr>
+										<td bgcolor="#ddffee" align="left" height="40" colspan="2">Sブレース断面の生成</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center" width="25">1</td>
+										<td>Sブレース断面（StbSecBrace_S）内のデータをSブレース断面として変換する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">2</td>
+										<td>鉄骨形状（shape）の属している鉄骨断面ごとにマッピングテーブルで設定されたファミリを使用する。鉄骨梁のファミリと同じものを使用する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">3</td>
+										<td>T形鋼は変換対象外とする。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">4</td>
+										<td>断面名称（name）をタイプ名にする。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">5</td>
+										<td>マッピングされたファミリ内に該当するタイプ名・ブレースの種別がない場合は既存のタイプを複製し新たなタイプを生成する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">6</td>
+										<td>配布テンプレートのファミリ（H形鋼・組立H形鋼以外）の鉄骨断面は1断面しかないので、中央・始端・終端の優先順で断面を変換する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">7</td>
+										<td>構造用途を「pran bracing」に設定する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">8</td>
+										<td>複製したタイプに各タイプパラメータを設定する。<br>
+										対応する既存のタイプパラメータが無い属性はタイプパラメータを新規に追加し設定する。
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</TABLE>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+			<!-- ブレースの配置 -->
+			<tr>
+				<td>
+					<TABLE BORDER="0" width="600" cellspacing="0">
+						<strong>■&nbsp;ブレースの配置</strong>
+						<tr>
+							<td>
+								<table width="600" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+									<tr>
+										<td bgcolor="#ddffee" align="left" height="40" colspan="2">ブレースの生成</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center" width="25">1</td>
+										<td>断面ID（id_section）と合致する断面IDの断面タイプを取得する。タイプが見つからない場合はタイプを生成する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">2</td>
+										<td>断面IDからST-Bridgeのブレース断面を探し、所属階を取得する。所属階を配置の基準レベルとする。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">3</td>
+										<td>始端節点ID（idNode_start）、終端節点ID（idNode_end）の座標を取得する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">4</td>
+										<td>取得した断面タイプ、節点座標位置からブレースを生成する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">5</td>
+										<td>ブレース生成後、インスタンスパラメータに各属性を設定する。</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">6</td>
+										<td>レベル・オフセットは以下のように変換する。<br>
+											<!-- セル内の表 -->
+											<table align="right" width="545" border="0" cellspacing="1" bgcolor="#000000" cellpadding="5">
+												<tr bgcolor="#c6d9f1">
+													<td align="center" width="165"><b>パラメータ名</b></td>
+													<td align="center"><b>処理内容</b></td>
+												</tr>
+												<tr bgcolor="#ffffff">
+													<td>始端レベル オフセット<br>終端レベル オフセット</td>
+													<td>節点の位置およびレベルマッピングオフセットによる計算値</td>
+												</tr>
+												<tr bgcolor="#ffffff">
+													<td>yz位置合わせ</td>
+													<td>「個別」を設定</td>
+												</tr>
+												<tr bgcolor="#ffffff">
+													<td>始端y位置合わせ<br>終端y位置合わせ</td>
+													<td>「基準点」を設定</td>
+												</tr>
+												<tr bgcolor="#ffffff">
+													<td>始端yオフセット値</td>
+													<td>
+														ブレースの始端側座標を<br>
+														始端側オフセット（X）[offset_start_X]、<br>
+														始端側オフセット（Y）[offset_start_Y]分、<br>
+														終端側座標を<br>
+														終端側オフセット（X）[offset_end_X]、<br>
+														終端側オフセット（Y）[offset_end_Y]分、<br>
+														動かしたブレースの延長線と始端節点からの垂線が交わる点までの距離を設定<br><br>
+														<CENTER><img src="Image/029_01.png" width="254"></CENTER>
+													</td>
+												</tr>
+												<tr bgcolor="#ffffff">
+													<td>終端yオフセット値</td>
+													<td>上記と同じだけ動かした梁の延長線上と終端節点からの垂線が交わる点までの距離を設定</td>
+												</tr>
+												<tr bgcolor="#ffffff">
+													<td>始端z位置合わせ<br>終端z位置合わせ</td>
+													<td>「上」を設定</td>
+												</tr>
+												<tr bgcolor="#ffffff">
+													<td>始端zオフセット値</td>
+													<td>始端側オフセット（Z）[offset_start_Z]を設定</td>
+												</tr>
+												<tr bgcolor="#ffffff">
+													<td>終端zオフセット値</td>
+													<td>終端側オフセット（Z）[offset_end_Z]を設定</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr bgcolor="#ffffff">
+										<td align="center">7</td>
+										<td>パラメータ 構造用途 は「ブレース」とする。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</TABLE>
+				</td>
+			</tr>
+			<tr height="15"><td><p></p></td></tr>
+		</table>
+		</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CMD_VERTICALMARK" xml:space="preserve">
+    <value>Create Pipe Arrow Mark</value>
+  </data>
+  <data name="CMD_VERTICAL_DUCT" xml:space="preserve">
+    <value>Create Duct Arrow Mark</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="IDS_BTN_PANELNAME" xml:space="preserve">
+    <value>Arrow Mark Tool</value>
+  </data>
+  <data name="IDS_BTN_TABNAME_OLD" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_BTN_TABNAME" xml:space="preserve">
+    <value>REXJ Standalone</value>
+  </data>
+  <data name="IDS_BTN_VERTICALDUCTMARK_ASSEMBLYNAME" xml:space="preserve">
+    <value>ADSK.MepVerticalMark.dll</value>
+  </data>
+  <data name="IDS_BTN_VERTICALDUCTMARK_CLASSNAME" xml:space="preserve">
+    <value>ADSK.MepVerticalMark.CmdVerticalDuctMark</value>
+  </data>
+  <data name="IDS_BTN_VERTICALDUCTMARK_NAME" xml:space="preserve">
+    <value>Arrow Duct</value>
+  </data>
+  <data name="IDS_BTN_VERTICALDUCTMARK_TEXT" xml:space="preserve">
+    <value>Arrow
+Duct</value>
+  </data>
+  <data name="IDS_BTN_VERTICALDUCTMARK_TOOLTIP" xml:space="preserve">
+    <value>Creates arrow marks for vertical ducts</value>
+  </data>
+  <data name="IDS_BTN_VERTICALPIPEMARK_ASSEMBLYNAME" xml:space="preserve">
+    <value>ADSK.MepVerticalMark.dll</value>
+  </data>
+  <data name="IDS_BTN_VERTICALPIPEMARK_CLASSNAME" xml:space="preserve">
+    <value>ADSK.MepVerticalMark.CmdVerticalPipeMark</value>
+  </data>
+  <data name="IDS_BTN_VERTICALPIPEMARK_NAME" xml:space="preserve">
+    <value>Arrow Pipe</value>
+  </data>
+  <data name="IDS_BTN_VERTICALPIPEMARK_TEXT" xml:space="preserve">
+    <value>Arrow
+Pipe</value>
+  </data>
+  <data name="IDS_BTN_VERTICALPIPEMARK_TOOLTIP" xml:space="preserve">
+    <value>Creates arrow marks for vertical pipes</value>
+  </data>
+  <data name="IDS_ERR_CREATEDETAILLINEERR" xml:space="preserve">
+    <value>Error creating detail line</value>
+  </data>
+  <data name="IDS_ERR_FAMILYNOTLOAD" xml:space="preserve">
+    <value>{0} is not loaded.</value>
+  </data>
+  <data name="IDS_ERR_INVALIDPOINT" xml:space="preserve">
+    <value>Invalid point position.</value>
+  </data>
+  <data name="IDS_ERR_NOCURRENTLEVELDUCT" xml:space="preserve">
+    <value>No duct found passing through {0}+100.</value>
+  </data>
+  <data name="IDS_ERR_NOCURRENTLEVELPIPE" xml:space="preserve">
+    <value>No pipe found passing through {0}+100.</value>
+  </data>
+  <data name="IDS_ERR_NOLEADERLINESTYLE" xml:space="preserve">
+    <value>Line style "{0}" is not defined.</value>
+  </data>
+  <data name="IDS_ERR_NOTVIEWPLAN" xml:space="preserve">
+    <value>Please run this command from a floor plan view.</value>
+  </data>
+  <data name="IDS_ERR_NOUPLEVELDUCT" xml:space="preserve">
+    <value>No duct found passing through {0}-100.</value>
+  </data>
+  <data name="IDS_ERR_NOUPLEVELPIPE" xml:space="preserve">
+    <value>No pipe found passing through {0}-100.</value>
+  </data>
+  <data name="IDS_ERR_NOUPPERLEVEL" xml:space="preserve">
+    <value>No upper level found.</value>
+  </data>
+  <data name="IDS_ERR_SELECTDUCT" xml:space="preserve">
+    <value>Please select a duct.</value>
+  </data>
+  <data name="IDS_ERR_SELECTPIPE" xml:space="preserve">
+    <value>Please select a pipe.</value>
+  </data>
+  <data name="IDS_INFO_OPERATIONCANCEL" xml:space="preserve">
+    <value>Operation was cancelled.</value>
+  </data>
+  <data name="IDS_STATUS_SELECTDUCT" xml:space="preserve">
+    <value>Select vertical duct</value>
+  </data>
+  <data name="IDS_STATUS_SELECTPIPE" xml:space="preserve">
+    <value>Select vertical pipe</value>
+  </data>
+  <data name="IDS_STATUS_SELECTPLACETAGPOINT" xml:space="preserve">
+    <value>Specify a point to place the tag.</value>
+  </data>
+  <data name="IDS_STATUS_SELECTSTARTDUCT" xml:space="preserve">
+    <value>Select the starting duct</value>
+  </data>
+  <data name="IDS_STATUS_SELECTSTARTPIPE" xml:space="preserve">
+    <value>Select the starting pipe</value>
+  </data>
+  <data name="IDS_TXT_COLON" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="IDS_TXT_DOWNDIR" xml:space="preserve">
+    <value>Downward</value>
+  </data>
+  <data name="IDS_TXT_ERR" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="IDS_TXT_HELP" xml:space="preserve">
+    <value>RME 矢羽配管・ダクト.pdf</value>
+  </data>
+  <data name="IDS_TXT_HELPFOLDER" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="IDS_TXT_INFO" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="IDS_TXT_UPDIR" xml:space="preserve">
+    <value>Upward</value>
+  </data>
+  <data name="IDS_TXT_ZATSUHAISUI" xml:space="preserve">
+    <value>雑排水</value>
+  </data>
+  <data name="LINESTYLE_LEADER" xml:space="preserve">
+    <value>*引出線 - D2/黒/実線</value>
+  </data>
+  <data name="MARK_D" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="MARK_HAISUI" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="MARK_R" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="TAG_DUCT_SIZE_100" xml:space="preserve">
+    <value>タグ 矢羽 ダクト サイズ_SC 100</value>
+  </data>
+  <data name="TAG_DUCT_SIZE_200" xml:space="preserve">
+    <value>タグ 矢羽 ダクト サイズ_SC 200</value>
+  </data>
+  <data name="TAG_DUCT_YABANE_100" xml:space="preserve">
+    <value>タグ 矢羽 ダクト システム省略形_SC 100</value>
+  </data>
+  <data name="TAG_DUCT_YABANE_200" xml:space="preserve">
+    <value>タグ 矢羽 ダクト システム省略形_SC 200</value>
+  </data>
+  <data name="TAG_PIPE_REIBAI_100" xml:space="preserve">
+    <value>タグ 矢羽 配管 冷媒管符号_SC 100</value>
+  </data>
+  <data name="TAG_PIPE_REIBAI_200" xml:space="preserve">
+    <value>タグ 矢羽 配管 冷媒管符号_SC 200</value>
+  </data>
+  <data name="TAG_PIPE_SIZE_100" xml:space="preserve">
+    <value>タグ 矢羽 配管 サイズ_SC 100</value>
+  </data>
+  <data name="TAG_PIPE_SIZE_200" xml:space="preserve">
+    <value>タグ 矢羽 配管 サイズ_SC 200</value>
+  </data>
+  <data name="TAG_PIPE_YABANE_EX_100" xml:space="preserve">
+    <value>タグ 矢羽 配管 システム省略形_排水_SC 100</value>
+  </data>
+  <data name="TAG_PIPE_YABANE_EX_200" xml:space="preserve">
+    <value>タグ 矢羽 配管 システム省略形_排水_SC 200</value>
+  </data>
+  <data name="TAG_PIPE_YABANE_SA_100" xml:space="preserve">
+    <value>タグ 矢羽 配管 システム省略形_供給_SC 100</value>
+  </data>
+  <data name="TAG_PIPE_YABANE_SA_200" xml:space="preserve">
+    <value>タグ 矢羽 配管 システム省略形_供給_SC 200</value>
+  </data>
+  <data name="TRANS_CREATELINESTYLE" xml:space="preserve">
+    <value>Create Line Style</value>
+  </data>
+  <data name="TRANS_CREATEMARK" xml:space="preserve">
+    <value>Create Arrow Mark</value>
+  </data>
+  <data name="TRANS_CREATEUNDERLINE" xml:space="preserve">
+    <value>Create Underline</value>
+  </data>
+  <data name="TRANS_MOVETAG" xml:space="preserve">
+    <value>Move Tag</value>
+  </data>
+  <data name="TYPE_COMMA" xml:space="preserve">
+    <value>カンマ</value>
+  </data>
+  <data name="TYPE_NASHI" xml:space="preserve">
+    <value>00_なし</value>
+  </data>
+  <data name="TYPE_OSUI" xml:space="preserve">
+    <value>01_汚水</value>
+  </data>
+  <data name="TYPE_SHITA" xml:space="preserve">
+    <value>02_下</value>
+  </data>
+  <data name="TYPE_STANDARD" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="TYPE_TSUKI" xml:space="preserve">
+    <value>00_通気</value>
+  </data>
+  <data name="TYPE_UE" xml:space="preserve">
+    <value>01_上</value>
+  </data>
+  <data name="TYPE_ZATSUHAISUI" xml:space="preserve">
+    <value>02_雑排水</value>
+  </data>
+  <data name="IDS_ERR_NO_SPECIFIED_PIPE" xml:space="preserve">
+    <value>No pipe found passing through {0}{1}.</value>
+  </data>
+  <data name="IDS_ERR_NO_SPECIFIED_DUCT" xml:space="preserve">
+    <value>No duct found passing through {0}{1}.</value>
+  </data>
+</root>

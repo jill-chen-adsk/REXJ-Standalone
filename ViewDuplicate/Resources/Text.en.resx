@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence><xsd:attribute name="name" use="required" type="xsd:string" /><xsd:attribute name="type" type="xsd:string" /><xsd:attribute name="mimetype" type="xsd:string" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element>
+          <xsd:element name="assembly"><xsd:complexType><xsd:attribute name="alias" type="xsd:string" /><xsd:attribute name="name" type="xsd:string" /></xsd:complexType></xsd:element>
+          <xsd:element name="data"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /><xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" /><xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" /><xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element>
+          <xsd:element name="resheader"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /></xsd:complexType></xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="CMD_VIEWDUPLICATE" xml:space="preserve"><value>View Duplicate</value></data>
+  <data name="ERR_CANNOTCOPY" xml:space="preserve"><value>Cannot duplicate the following view: {0} with type {1}</value></data>
+  <data name="ERR_INPUTCOPYRULE" xml:space="preserve"><value>Please add a duplication rule.</value></data>
+  <data name="ERR_SELECTROW" xml:space="preserve"><value>Please select a rule to delete.</value></data>
+  <data name="ERR_SELECTTARGETVIEW" xml:space="preserve"><value>Please select target views to duplicate.</value></data>
+  <data name="TXT_CANNOTCOPYVIEW" xml:space="preserve"><value>Cannot copy the following views:</value></data>
+  <data name="TXT_ERROR" xml:space="preserve"><value>Error</value></data>
+  <data name="TXT_LEFTBRACE" xml:space="preserve"><value>(</value></data>
+  <data name="TXT_PREFIX" xml:space="preserve"><value>Prefix</value></data>
+  <data name="TXT_RIGHTBRACE" xml:space="preserve"><value>)</value></data>
+  <data name="TXT_SUFFIX" xml:space="preserve"><value>Suffix</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ARCHITECTURAL" xml:space="preserve"><value>Architectural</value></data>
+  <data name="TXT_VIEWDISCIPLINE_COORDINATION" xml:space="preserve"><value>Coordination</value></data>
+  <data name="TXT_VIEWDISCIPLINE_ELECTRICAL" xml:space="preserve"><value>Electrical</value></data>
+  <data name="TXT_VIEWDISCIPLINE_MECHANICAL" xml:space="preserve"><value>Mechanical</value></data>
+  <data name="TXT_VIEWDISCIPLINE_PLUMBING" xml:space="preserve"><value>Plumbing</value></data>
+  <data name="TXT_VIEWDISCIPLINE_STRUCTURAL" xml:space="preserve"><value>Structural</value></data>
+  <data name="TXT_VIEWFAMILY_ALL" xml:space="preserve"><value>&lt;All&gt;</value></data>
+  <data name="ERR_FIELD_EMPTY" xml:space="preserve"><value>{0} is required.</value></data>
+  <data name="LBL_DISCIPLINE" xml:space="preserve"><value>Discipline</value></data>
+  <data name="LBL_VIEW_CATEGORY" xml:space="preserve"><value>View category</value></data>
+  <data name="LBL_VIEW_TYPE_FILTER" xml:space="preserve"><value>View type</value></data>
+  <data name="DGCOL_PREFIX_SUFFIX" xml:space="preserve"><value>Prefix / suffix</value></data>
+  <data name="DGCOL_ADDED_TEXT" xml:space="preserve"><value>Added text</value></data>
+  <data name="DGCOL_VIEW_TEMPLATE" xml:space="preserve"><value>View template</value></data>
+  <data name="DGCOL_VIEW_TYPE" xml:space="preserve"><value>View type</value></data>
+  <data name="BTN_ADD" xml:space="preserve"><value>Add</value></data>
+  <data name="BTN_DELETE" xml:space="preserve"><value>Delete</value></data>
+  <data name="LBL_DUP_KIND" xml:space="preserve"><value>Duplicate mode</value></data>
+  <data name="BTN_CANCEL" xml:space="preserve"><value>Cancel</value></data>
+  <data name="LBL_CREDIT" xml:space="preserve"><value>Provided by Nihon Sekkei, Inc.</value></data>
+  <data name="DUP_MODE_DUPLICATE" xml:space="preserve"><value>Duplicate</value></data>
+  <data name="DUP_MODE_WITH_DETAILING" xml:space="preserve"><value>Duplicate with detailing</value></data>
+  <data name="GP_ADD_STRING" xml:space="preserve"><value>Text to add</value></data>
+  <data name="LBL_ITEM_VIEW_TYPE" xml:space="preserve"><value>View type</value></data>
+  <data name="LBL_ITEM_VIEW_TEMPLATE" xml:space="preserve"><value>View template</value></data>
+  <data name="TXT_VIEWTYPE_ALL" xml:space="preserve"><value>All</value></data>
+  <data name="TXT_VIEWTYPE_AREA_PLAN" xml:space="preserve"><value>Area Plan</value></data>
+  <data name="TXT_VIEWTYPE_CEILING_PLAN" xml:space="preserve"><value>Ceiling Plan</value></data>
+  <data name="TXT_VIEWTYPE_COLUMN_SCHEDULE" xml:space="preserve"><value>Column Schedule</value></data>
+  <data name="TXT_VIEWTYPE_COST_REPORT" xml:space="preserve"><value>Cost Report</value></data>
+  <data name="TXT_VIEWTYPE_DETAIL" xml:space="preserve"><value>Detail</value></data>
+  <data name="TXT_VIEWTYPE_DRAFTING_VIEW" xml:space="preserve"><value>Drafting View</value></data>
+  <data name="TXT_VIEWTYPE_DRAWING_SHEET" xml:space="preserve"><value>Sheet</value></data>
+  <data name="TXT_VIEWTYPE_ELEVATION" xml:space="preserve"><value>Elevation</value></data>
+  <data name="TXT_VIEWTYPE_ENGINEERING_PLAN" xml:space="preserve"><value>Structural Plan</value></data>
+  <data name="TXT_VIEWTYPE_FLOOR_PLAN" xml:space="preserve"><value>Floor Plan</value></data>
+  <data name="TXT_VIEWTYPE_INTERNAL" xml:space="preserve"><value>Internal</value></data>
+  <data name="TXT_VIEWTYPE_LEGEND" xml:space="preserve"><value>Legend</value></data>
+  <data name="TXT_VIEWTYPE_LOADS_REPORT" xml:space="preserve"><value>Loads Report</value></data>
+  <data name="TXT_VIEWTYPE_PANEL_SCHEDULE" xml:space="preserve"><value>Panel Schedule</value></data>
+  <data name="TXT_VIEWTYPE_PRESSURE_LOSS_REPORT" xml:space="preserve"><value>Pressure Loss Report</value></data>
+  <data name="TXT_VIEWTYPE_PROJECT_BROWSER" xml:space="preserve"><value>Project Browser</value></data>
+  <data name="TXT_VIEWTYPE_RENDERING" xml:space="preserve"><value>Rendering</value></data>
+  <data name="TXT_VIEWTYPE_REPORT" xml:space="preserve"><value>Report</value></data>
+  <data name="TXT_VIEWTYPE_SECTION" xml:space="preserve"><value>Section</value></data>
+  <data name="TXT_VIEWTYPE_SCHEDULE" xml:space="preserve"><value>Schedule</value></data>
+  <data name="TXT_VIEWTYPE_SYSTEM_BROWSER" xml:space="preserve"><value>System Browser</value></data>
+  <data name="TXT_VIEWTYPE_THREE_D" xml:space="preserve"><value>3D</value></data>
+  <data name="TXT_VIEWTYPE_UNDEFINED" xml:space="preserve"><value>Undefined</value></data>
+  <data name="TXT_VIEWTYPE_WALKTHROUGH" xml:space="preserve"><value>Walkthrough</value></data>
+</root>
