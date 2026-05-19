@@ -3,7 +3,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "REXJ Standalone Add-ins"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "ADSK REXJ"
 #define MyAppURL "https://github.com/rexj"
 #define RevitYear "2027"
