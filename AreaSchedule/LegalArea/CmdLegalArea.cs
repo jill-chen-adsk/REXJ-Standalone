@@ -1,6 +1,7 @@
 
 using System;
 using System.Windows;
+using System.Windows.Interop;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.AreaSchedule;
@@ -64,7 +65,7 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                 Revit.DB.ViewPlan activeViewAreaPlan = cmpElements.ActiveViewAreaPlan;
                 if (activeViewAreaPlan == null)
                 {
-                    MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_VIEWAREA"), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowError(rvtUIApp, cmpAttribute.ResourceText("IDS_ERR_VIEWAREA"));
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -78,7 +79,7 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                     rooms = cmpElements.GetElementsRoom(1, 1, activeViewAreaPlan.GenLevel);
                     if (rooms.Count == 0)
                     {
-                        MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOTROOM"), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        ShowError(rvtUIApp, cmpAttribute.ResourceText("IDS_ERR_NOTROOM"));
                         cmpParameters.SetSharedParamDefault();
                         transGroup.Assimilate();
                         return retExtCom;
@@ -89,12 +90,15 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                     rooms = cmpElements.SelSetRooms;
                     if (rooms.Count == 0)
                     {
-                        MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_SELROOM"), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        ShowError(rvtUIApp, cmpAttribute.ResourceText("IDS_ERR_SELROOM"));
                         cmpParameters.SetSharedParamDefault();
                         transGroup.Assimilate();
                         return retExtCom;
                     }
                 }
+
+                // Bind shared parameters inside a transaction so they persist in the project
+                trans.Start("BindSharedParameters");
 
                 // データテーブル - 部屋
                 RvtExtApp.Entities.DtRoom entDtRoom = new RvtExtApp.Entities.DtRoom(cmpAttribute,
@@ -109,6 +113,8 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                                                                                     cmpGeometry,
                                                                                     cmpParameters,
                                                                                     cmpSettings);
+
+                trans.Commit();
 
                 // サービス
                 RvtExtApp.Components.Service cmpService = new RvtExtApp.Components.Service(cmpAttribute,
@@ -130,7 +136,7 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                 {
                     trans.RollBack();
                     progressBarThread.Close();
-                    MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_SETLEGALAREA"), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowError(rvtUIApp, cmpAttribute.ResourceText("IDS_ERR_SETLEGALAREA"));
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -143,6 +149,7 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                     // 画面表示
                     System.Data.DataTable data = cmpService.GetWarningRoomsTable(warningRooms);
                     RvtExtApp.LegalArea.FormWarningRoomsWPF form = new RvtExtApp.LegalArea.FormWarningRoomsWPF(cmpAttribute, data);
+                    SetRevitAsOwner(rvtUIApp, form);
                     bool? dialogResult = form.ShowDialog();
                     if (dialogResult != true)
                     {
@@ -165,12 +172,34 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                 string errMsg = cmpAttribute.ResourceText("IDS_ERR_COMMAND")
                     + System.Environment.NewLine + System.Environment.NewLine
                     + ex.GetType().Name + ": " + ex.Message;
-                MessageBox.Show(errMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowError(rvtUIApp, errMsg);
             }
 
             cmpParameters.SetSharedParamDefault();
             transGroup.Assimilate();
             return retExtCom;
+        }
+
+        private static void ShowError(Revit.UI.UIApplication rvtUIApp, string msg)
+        {
+            var ownerWindow = new Window
+            {
+                WindowStyle = WindowStyle.None,
+                ShowInTaskbar = false,
+                AllowsTransparency = true,
+                Opacity = 0,
+                Width = 0,
+                Height = 0
+            };
+            new WindowInteropHelper(ownerWindow) { Owner = rvtUIApp.MainWindowHandle };
+            ownerWindow.Show();
+            MessageBox.Show(ownerWindow, msg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            ownerWindow.Close();
+        }
+
+        private static void SetRevitAsOwner(Revit.UI.UIApplication rvtUIApp, Window window)
+        {
+            new WindowInteropHelper(window) { Owner = rvtUIApp.MainWindowHandle };
         }
 
         #endregion Member Functions

@@ -36,12 +36,21 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         {
             var culture = Thread.CurrentThread.CurrentUICulture;
 
-            if (_enTextResourceManager != null &&
-                culture.TwoLetterISOLanguageName == "en")
+            if (culture.TwoLetterISOLanguageName == "en")
             {
+                if (_enTextResourceManager != null)
+                {
+                    try
+                    {
+                        string enVal = _enTextResourceManager.GetString(key, CultureInfo.InvariantCulture);
+                        if (enVal != null) return enVal;
+                    }
+                    catch { }
+                }
+
                 try
                 {
-                    string enVal = _enTextResourceManager.GetString(key);
+                    string enVal = _textResourceManager.GetString(key, new CultureInfo("en"));
                     if (enVal != null) return enVal;
                 }
                 catch { }

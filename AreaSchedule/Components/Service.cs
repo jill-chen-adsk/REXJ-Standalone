@@ -75,6 +75,20 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
 
         #endregion Constructor
 
+        private static Revit.DB.Line SafeCreateBound(Revit.DB.XYZ p0, Revit.DB.XYZ p1)
+        {
+            if (p0 == null || p1 == null) return null;
+            if (p0.DistanceTo(p1) < 1.0e-3) return null;
+            try
+            {
+                return Revit.DB.Line.CreateBound(p0, p1);
+            }
+            catch (Autodesk.Revit.Exceptions.ArgumentsInconsistentException)
+            {
+                return null;
+            }
+        }
+
         // メンバ関数
 
         #region Member Functions
@@ -647,12 +661,28 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                             {
                                 figureType = CheckArc(optimizeCurves);
                             }
-                            
-                            // どの形状でもない場合
-                            if ( figureType == 0 ) {
-                                return false ;
+
+                            // Diagnostic: log segment info
+                            try
+                            {
+                                string diagPath = System.IO.Path.Combine(
+                                    System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                                    "GroundsExpression_Debug.log");
+                                var sb = new System.Text.StringBuilder();
+                                sb.AppendLine($"Area: {area.Name} (Id={area.Id.Value})");
+                                sb.AppendLine($"  Raw segments: {curves.Count}");
+                                sb.AppendLine($"  Optimized segments: {optimizeCurves.Count}");
+                                sb.AppendLine($"  FigureType: {figureType}");
+                                for (int si = 0; si < optimizeCurves.Count; si++)
+                                {
+                                    var c = optimizeCurves[si];
+                                    sb.AppendLine($"  Seg[{si}]: {c.GetType().Name} len={c.ApproximateLength:F6} " +
+                                        $"({c.GetEndPoint(0).X:F4},{c.GetEndPoint(0).Y:F4})->({c.GetEndPoint(1).X:F4},{c.GetEndPoint(1).Y:F4})");
+                                }
+                                sb.AppendLine();
+                                System.IO.File.AppendAllText(diagPath, sb.ToString());
                             }
-                            
+                            catch { }
                         }
 
                         // 根拠式値
@@ -726,9 +756,12 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
             }
 
             // 対角線
-            Revit.DB.Line diagLine1 = Revit.DB.Line.CreateBound(figure[0].GetEndPoint(0), figure[2].GetEndPoint(0));
-
-            Revit.DB.Line diagLine2 = Revit.DB.Line.CreateBound(figure[1].GetEndPoint(0), figure[3].GetEndPoint(0));
+            Revit.DB.Line diagLine1 = SafeCreateBound(figure[0].GetEndPoint(0), figure[2].GetEndPoint(0));
+            Revit.DB.Line diagLine2 = SafeCreateBound(figure[1].GetEndPoint(0), figure[3].GetEndPoint(0));
+            if (diagLine1 == null || diagLine2 == null)
+            {
+                return ret;
+            }
 
             // 対角線の交点
             Revit.DB.XYZ interPos = null;
@@ -816,6 +849,15 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 if (flagDiagRatio)
                 {
                     ret = 14;
+                }
+                else
+                {
+                    // Check if any pair of opposite sides is parallel (general trapezoid)
+                    if (_CmpGeometry.CompareParallelism(figure[0], figure[2]) ||
+                        _CmpGeometry.CompareParallelism(figure[1], figure[3]))
+                    {
+                        ret = 14;
+                    }
                 }
             }
             return ret;
@@ -1126,6 +1168,13 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
             {
                 index2 = lbIndices[1];
             }
+            // Ensure index1 → index2 are sequential around the polygon
+            if (figure.Count > 2 && UtilValue.GetNextIndex(index1, figure.Count) != index2)
+            {
+                int tmp = index1;
+                index1 = index2;
+                index2 = tmp;
+            }
 
             // 正方形・長方形
             if ((figureType == 10) || (figureType == 12))
@@ -1159,8 +1208,9 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 index4 = UtilValue.GetNextIndex(index3, figure.Count);
 
                 // 対角線
-                line1 = Revit.DB.Line.CreateBound(figure[index1].GetEndPoint(0), figure[index3].GetEndPoint(0));
-                line2 = Revit.DB.Line.CreateBound(figure[index2].GetEndPoint(0), figure[index4].GetEndPoint(0));
+                line1 = SafeCreateBound(figure[index1].GetEndPoint(0), figure[index3].GetEndPoint(0));
+                line2 = SafeCreateBound(figure[index2].GetEndPoint(0), figure[index4].GetEndPoint(0));
+                if (line1 == null || line2 == null) return false;
                 _CmpGeometry.IntersecCurve2D(line1, line2, ref midPos);
                 if (midPos != null)
                 {
@@ -1213,16 +1263,16 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 // 高さ
                 pos1 = _CmpGeometry.Center2Point(figure[disIndex2]);
                 pos2 = _CmpGeometry.GetVerticalPos2D(figure[disIndex1], pos1);
-                line = Revit.DB.Line.CreateBound(pos1, pos2);
-                _CmpGeometry.IntersecCurve2D(figure[disIndex1], line, ref midPos);
+                line = SafeCreateBound(pos1, pos2);
+                if (line != null) _CmpGeometry.IntersecCurve2D(figure[disIndex1], line, ref midPos);
                 if (midPos == null)
                 {
                     for (int i = 0; i < 2; ++i)
                     {
                         pos1 = figure[disIndex2].GetEndPoint(i);
                         pos2 = _CmpGeometry.GetVerticalPos2D(figure[disIndex1], pos1);
-                        line = Revit.DB.Line.CreateBound(pos1, pos2);
-                        _CmpGeometry.IntersecCurve2D(figure[disIndex1], line, ref midPos);
+                        line = SafeCreateBound(pos1, pos2);
+                        if (line != null) _CmpGeometry.IntersecCurve2D(figure[disIndex1], line, ref midPos);
                         if (midPos != null)
                         {
                             break;
@@ -1232,11 +1282,15 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                     {
                         pos1 = _CmpGeometry.GetVerticalPos2D(figure[disIndex1], figure[disIndex2].GetEndPoint(1));
                         pos2 = _CmpGeometry.GetVerticalPos2D(figure[disIndex2], figure[disIndex1].GetEndPoint(1));
-                        line = Revit.DB.Line.CreateBound(pos1, pos2);
-                        pos = _CmpGeometry.Center2Point(line);
-                        midPos = _CmpGeometry.GetVerticalPos2D(figure[disIndex1], pos);
+                        line = SafeCreateBound(pos1, pos2);
+                        if (line != null)
+                        {
+                            pos = _CmpGeometry.Center2Point(line);
+                            midPos = _CmpGeometry.GetVerticalPos2D(figure[disIndex1], pos);
+                        }
                     }
                 }
+                if (midPos == null) return false;
 
                 midPos = new Revit.DB.XYZ(midPos.X, midPos.Y, figure[disIndex2].GetEndPoint(0).Z);
                 verticalPos = _CmpGeometry.GetVerticalPos2D(figure[disIndex2], midPos);
@@ -1247,8 +1301,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 values.Add(heightStr);
                 valuesPos.Add(_CmpGeometry.Center2Point(midPos, verticalPos));
                 valuesVec.Add(_CmpGeometry.GetLeaning(midPos, verticalPos));
-                line = Revit.DB.Line.CreateBound(midPos, verticalPos);
-                lines.Add(line);
+                line = SafeCreateBound(midPos, verticalPos);
+                if (line != null) lines.Add(line);
 
                 // 上底・下底
                 btSideF = figure[disIndex1].Length;
@@ -1305,8 +1359,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 {
                     pos1 = figure[disIndex3].GetEndPoint(0);
                     pos2 = _CmpGeometry.GetVerticalPos2D(figure[disIndex1], pos1);
-                    line = Revit.DB.Line.CreateBound(pos1, pos2);
-                    _CmpGeometry.IntersecCurve2D(figure[disIndex1], line, ref midPos);
+                    line = SafeCreateBound(pos1, pos2);
+                    if (line != null) _CmpGeometry.IntersecCurve2D(figure[disIndex1], line, ref midPos);
                     if (midPos != null)
                     {
                         break;
@@ -1338,8 +1392,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 values.Add(heightStr);
                 valuesPos.Add(_CmpGeometry.Center2Point(midPos, verticalPos));
                 valuesVec.Add(_CmpGeometry.GetLeaning(midPos, verticalPos));
-                line = Revit.DB.Line.CreateBound(midPos, verticalPos);
-                lines.Add(line);
+                line = SafeCreateBound(midPos, verticalPos);
+                if (line != null) lines.Add(line);
 
                 // 面積
                 areaExpnStr = btSideStr + " × " + heightStr + " ÷ " + "2";
@@ -1353,7 +1407,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
             {
                 // 円弧
                 arc = figure[index1] as Revit.DB.Arc;
-                line = Revit.DB.Line.CreateBound(arc.Center, arc.GetEndPoint(0));
+                line = SafeCreateBound(arc.Center, arc.GetEndPoint(0));
+                if (line == null) return false;
 
                 // 半径
                 radiusF = line.Length;
@@ -1406,7 +1461,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 pos = arcs[index2].GetEndPoint(1);
                 angle = 0.0;
                 midPos = _CmpGeometry.GetArcMid(pos, center, radius, length, ref angle);
-                line = Revit.DB.Line.CreateBound(center, midPos);
+                line = SafeCreateBound(center, midPos);
+                if (line == null) return false;
 
                 // 半径
                 radiusF = line.Length;
@@ -1458,7 +1514,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
 
                 // 半径
                 Revit.DB.XYZ center = arcs[0].Center;
-                Revit.DB.Line rdLine = Revit.DB.Line.CreateBound(center, arcs[0].GetEndPoint(0));
+                Revit.DB.Line rdLine = SafeCreateBound(center, arcs[0].GetEndPoint(0));
+                if (rdLine == null) return false;
                 radiusF = rdLine.Length;
                 radius = radiusF;
                 radiusStr = ConvertLengthUnit(radiusF, unitLength, decimalPointLen, fractionTypeLen, ref radius);
@@ -1484,8 +1541,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 valuesVec.Add(_CmpGeometry.GetLeaning(midPos1, btLine.GetEndPoint(1)));
 
                 // 高さ
-                Revit.DB.Line htLine = null;
-                htLine = Revit.DB.Line.CreateBound(center, midPos1);
+                Revit.DB.Line htLine = SafeCreateBound(center, midPos1);
+                if (htLine == null) return false;
                 heightF = htLine.Length;
                 height = heightF;
                 heightStr = ConvertLengthUnit(heightF, unitLength, decimalPointLen, fractionTypeLen, ref height);

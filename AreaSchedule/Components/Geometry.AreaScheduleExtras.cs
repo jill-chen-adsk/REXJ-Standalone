@@ -161,6 +161,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         public IList<Curve> OptimizeLineVertexNoConvLine(IList<Curve> curves)
         {
             if (curves == null || curves.Count == 0) return curves;
+
+            // First pass: merge collinear connected segments (sequential adjacency)
             var outList = new List<Curve>();
             foreach (Curve c in curves)
             {
@@ -181,6 +183,70 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 }
                 outList.Add(c);
             }
+
+            // Wrap-around: merge last and first segments if collinear and connected
+            if (outList.Count > 2 && outList[outList.Count - 1] is Line lastSeg && outList[0] is Line firstSeg)
+            {
+                if (CompareParallelism(lastSeg, firstSeg) &&
+                    Distance2D(lastSeg.GetEndPoint(1), firstSeg.GetEndPoint(0)) < Approx0Len)
+                {
+                    try
+                    {
+                        Line merged = Line.CreateBound(lastSeg.GetEndPoint(0), firstSeg.GetEndPoint(1));
+                        outList[0] = merged;
+                        outList.RemoveAt(outList.Count - 1);
+                    }
+                    catch { }
+                }
+            }
+
+            // Second pass: remove very short segments that create spurious vertices
+            // at corners, and extend adjacent segments to meet.
+            // Threshold: segments shorter than 2% of total perimeter are considered artifacts.
+            if (outList.Count > 3)
+            {
+                double totalLength = 0;
+                foreach (var seg in outList) totalLength += seg.ApproximateLength;
+                double shortSegThreshold = totalLength * 0.02;
+                if (shortSegThreshold < 0.033) shortSegThreshold = 0.033;
+
+                var filtered = new List<Curve>();
+                for (int i = 0; i < outList.Count; i++)
+                {
+                    if (outList[i] is Line ln && ln.Length < shortSegThreshold)
+                        continue;
+                    filtered.Add(outList[i]);
+                }
+                if (filtered.Count >= 3 && filtered.Count < outList.Count)
+                {
+                    // Reconnect the remaining segments by adjusting endpoints
+                    var reconnected = new List<Curve>();
+                    for (int i = 0; i < filtered.Count; i++)
+                    {
+                        int next = (i + 1) % filtered.Count;
+                        XYZ end = filtered[i].GetEndPoint(1);
+                        XYZ start = filtered[next].GetEndPoint(0);
+                        if (Distance2D(end, start) > Approx0Len && filtered[i] is Line currLine && filtered[next] is Line nextLine)
+                        {
+                            XYZ interPos = null;
+                            IntersecCurve2D(currLine, nextLine, ref interPos);
+                            if (interPos != null)
+                            {
+                                try
+                                {
+                                    var newCurr = Line.CreateBound(currLine.GetEndPoint(0), interPos);
+                                    var newNext = Line.CreateBound(interPos, nextLine.GetEndPoint(1));
+                                    filtered[i] = newCurr;
+                                    filtered[next] = newNext;
+                                }
+                                catch { }
+                            }
+                        }
+                    }
+                    outList = filtered;
+                }
+            }
+
             return outList;
         }
 
