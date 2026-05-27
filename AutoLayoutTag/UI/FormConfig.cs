@@ -83,6 +83,19 @@ namespace ADSK.JExtRAC.AutoLayoutTag.UI
             _EntDtTag.NumberShow += 1;
         }
 
+        // Clear the default row selection AFTER the form is shown — doing it earlier
+        // (in the constructor / SetData) is overridden by WinForms' auto-focus pass.
+        protected override void OnShown(System.EventArgs e)
+        {
+            base.OnShown(e);
+            try
+            {
+                this.dgvCategory.ClearSelection();
+                this.dgvCategory.CurrentCell = null;
+            }
+            catch { /* ignore */ }
+        }
+
         #endregion Constructor
 
         // Member functions
@@ -167,6 +180,15 @@ namespace ADSK.JExtRAC.AutoLayoutTag.UI
                 // Reload the form
                 SetValueDgv(this.dgvCategory, _EntDtTag.LstBuiltInCategory);
             }
+
+            // Clear the default row selection so the first category doesn't look "selected"
+            // when the form opens. The user must explicitly click to toggle a category checkbox.
+            try
+            {
+                this.dgvCategory.ClearSelection();
+                this.dgvCategory.CurrentCell = null;
+            }
+            catch { /* ignore UI state quirks */ }
         }
 
         /// ================================================================================
@@ -646,7 +668,10 @@ namespace ADSK.JExtRAC.AutoLayoutTag.UI
         {
             try
             {
-                if (cateItem == BuiltInCategory.INVALID || listSymbol == null)
+                // Skip categories that have no tag family loaded — otherwise the row would render
+                // with an empty dropdown, validation would pass, and the command would silently fail
+                // when GetData() skips the row (Value == null).
+                if (cateItem == BuiltInCategory.INVALID || listSymbol == null || listSymbol.Count == 0)
                     return;
 
                 int index = dgvsetting.Rows.Add();
@@ -774,7 +799,54 @@ namespace ADSK.JExtRAC.AutoLayoutTag.UI
             // Check element
             if (this.dgvSaveSetting == null || this.dgvSaveSetting.Rows.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_NO_SELECT_OBJECT"), _CmpAttribute.ResourceText("IDS_TXT_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
+                // Pick the most actionable message for the user's current mode + state.
+                string msgKey;
+                if (RdbGetObject == 1)
+                {
+                    // "All Categories" mode — either the user didn't check a category, or they did
+                    // but no tag family is loaded for any of the checked categories.
+                    bool anyCategoryChecked = false;
+                    if (this.dgvCategory != null)
+                    {
+                        for (int i = 0; i < this.dgvCategory.Rows.Count; i++)
+                        {
+                            object v = this.dgvCategory.Rows[i].Cells[0].Value;
+                            if (v != null && v is bool && (bool)v)
+                            {
+                                anyCategoryChecked = true;
+                                break;
+                            }
+                        }
+                    }
+                    msgKey = anyCategoryChecked ? "IDS_ERR_NO_TAG_FAMILY" : "IDS_ERR_NO_CATEGORY_CHECKED";
+                }
+                else
+                {
+                    // "Selected Objects" mode — either the user didn't pick anything, or they did
+                    // but no tag family is loaded for any of the picked objects' categories.
+                    bool anyObjectsPicked = (_EntDtTag.LstElement != null && _EntDtTag.LstElement.Count > 0);
+                    msgKey = anyObjectsPicked ? "IDS_ERR_NO_TAG_FAMILY" : "IDS_ERR_NO_SELECT_OBJECT";
+                }
+                System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText(msgKey), _CmpAttribute.ResourceText("IDS_TXT_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
+                return false;
+            }
+
+            // Defensive: rows exist but none has a tag family selected (e.g. an empty dropdown
+            // from a view-template restore path). Without this, the command would silently
+            // do nothing because GetData() skips rows where Cells[1].Value is null.
+            bool anyValidTagFamily = false;
+            for (int i = 0; i < this.dgvSaveSetting.Rows.Count; i++)
+            {
+                var cell = this.dgvSaveSetting.Rows[i].Cells[1] as DataGridViewComboBoxCell;
+                if (cell != null && cell.Value != null)
+                {
+                    anyValidTagFamily = true;
+                    break;
+                }
+            }
+            if (!anyValidTagFamily)
+            {
+                System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_NO_TAG_FAMILY"), _CmpAttribute.ResourceText("IDS_TXT_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
                 return false;
             }
 
