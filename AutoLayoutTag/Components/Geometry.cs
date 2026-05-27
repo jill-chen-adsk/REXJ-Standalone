@@ -14,12 +14,7 @@ namespace ADSK.JExtRAC.AutoLayoutTag.Components
             RvtDBDoc = rvtUIDoc.Document;
         }
 
-        public double UnitCoe
-        {
-            get
-            {
-                return UnitUtils.ConvertToInternalUnits(1.0, UnitTypeId.Millimeters);
-            }
-        }
+        // Unit conversion: internal units (feet) to millimeters. mm = ft * UnitCoe; ft = mm / UnitCoe.
+        public double UnitCoe => 304.8;
     }
 }
