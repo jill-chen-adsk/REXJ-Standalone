@@ -1,4 +1,4 @@
-﻿; REXJ Standalone Add-ins Installer for Revit 2027
+; REXJ Standalone Add-ins Installer for Revit 2027
 ; Built with Inno Setup 6
 ; https://jrsoftware.org/isinfo.php
 
