@@ -1,9 +1,9 @@
-; REXJ Standalone Add-ins Installer for Revit 2027
+﻿; REXJ Standalone Add-ins Installer for Revit 2027
 ; Built with Inno Setup 6
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "REXJ Standalone Add-ins"
-#define MyAppVersion "1.0.1"
+#define MyAppVersion "1.0.2"
 #define MyAppPublisher "ADSK REXJ"
 #define MyAppURL "https://github.com/rexj"
 #define RevitYear "2027"
