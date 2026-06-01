@@ -288,7 +288,7 @@ namespace ADSK.JExtRAC.FittingSchedule.Entities
                     _DataScale.Columns.Add("Value", typeof(int));
 
                     row = _DataScale.NewRow();
-                    row["Name"] = "カスタム...";
+                    row["Name"] = "Custom...";
                     row["Value"] = 0;
                     _DataScale.Rows.Add(row);
 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error Log</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Theme variables */
+    body {
+      --bg: #263545;
+      --bg-input: #1e2a3a;
+      --text: #e0e8f0;
+      --text-label: #8fa4b8;
+      --border: #3a4f63;
+      --border-hover: #5a7a94;
+      --accent: #4dacff;
+      --accent-hover: #6dbbff;
+      --accent-text: #0d1b2a;
+    }
+
+    body[data-theme="light"] {
+      --bg: #f5f5f5;
+      --bg-input: #ffffff;
+      --text: #1a1a1a;
+      --text-label: #555555;
+      --border: #d0d0d0;
+      --border-hover: #999999;
+      --accent: #0066cc;
+      --accent-hover: #0052a3;
+      --accent-text: #ffffff;
+    }
+
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 13px;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    pre {
+      font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      user-select: text;
+    }
+
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding: 12px 16px;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-secondary:hover { background: rgba(0, 102, 204, 0.08); }
+    .btn-primary {
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: var(--accent-text);
+    }
+    .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <pre id="logOutput"></pre>
+  </div>
+  <hr class="divider" />
+  <div class="footer">
+    <button class="btn-secondary" id="btnSave">Save Log</button>
+    <button class="btn-primary" id="btnClose">Close</button>
+  </div>
+
+  <script>
+    (function() {
+      function postMessage(msg) {
+        if (window.chrome && window.chrome.webview) {
+          window.chrome.webview.postMessage(msg);
+        }
+      }
+
+      window.initLog = function(data) {
+        if (data.theme) {
+          document.body.setAttribute('data-theme', data.theme);
+        }
+        if (data.logText != null) {
+          document.getElementById('logOutput').textContent = data.logText;
+        }
+      };
+
+      document.getElementById('btnSave').addEventListener('click', function() {
+        postMessage({ action: 'save' });
+      });
+
+      document.getElementById('btnClose').addEventListener('click', function() {
+        postMessage({ action: 'close' });
+      });
+    })();
+  </script>
+</body>
+</html>
