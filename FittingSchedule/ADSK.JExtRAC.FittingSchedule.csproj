@@ -47,6 +47,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="CreateAndEdit\CreateViewDialog.html" />
+    <EmbeddedResource Include="Layout\LayoutDialog.html" />
+    <EmbeddedResource Include="UI\LogDialog.html" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\Text.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

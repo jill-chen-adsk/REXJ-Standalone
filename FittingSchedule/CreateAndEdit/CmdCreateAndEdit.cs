@@ -48,8 +48,6 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             // プログレスバー
             ProgressBarThread progressBarThread = new ProgressBarThread(false, true);
 
-            System.Windows.Forms.DialogResult retDlg;
-
             // 戻り値
             Revit.UI.Result retExtCom = Revit.UI.Result.Cancelled;
 
@@ -66,6 +64,19 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                 Collections.Generic.IList<Revit.DB.FamilyInstance> elemsDoor;
                 Collections.Generic.IList<Revit.DB.FamilyInstance> elemsWindow;
 
+                // Check if user is on a sheet view (doors/windows not directly visible)
+                var activeView = rvtUIDoc.ActiveView;
+                if (activeView.ViewType == Revit.DB.ViewType.DrawingSheet)
+                {
+                    RvtExtApp.UI.MessageWindow.Show(
+                        "Wrong view type",
+                        "This command needs to run from a floor plan, ceiling plan, or 3D view where doors and windows are visible.\n\n" +
+                        "Please switch to a plan view containing doors/windows and try again.");
+                    cmpParameters.SetSharedParamDefault();
+                    transGroup.Assimilate();
+                    return retExtCom;
+                }
+
                 // 選択要素数が0の場合
                 Collections.Generic.ICollection<Revit.DB.ElementId> elemIds = rvtUIDoc.Selection.GetElementIds();
                 int selSetCount = elemIds.Count;
@@ -76,9 +87,11 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                     elemsWindow = cmpElements.ElemntsWindowTypes;
                     if ((elemsDoor.Count == 0) && (elemsWindow.Count == 0))
                     {
-                        System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOPARTS"));
+                        RvtExtApp.UI.MessageWindow.Show(
+                            "No doors or windows found",
+                            "No doors or windows were found in the current view.\n\n" +
+                            "Make sure you are in a view that contains door or window elements, or select specific doors/windows before running this command.");
                         cmpParameters.SetSharedParamDefault();
-                        // トランザクションを統合
                         transGroup.Assimilate();
                         return retExtCom;
                     }
@@ -92,9 +105,11 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                     elemsWindow = cmpElements.SelSetWindowTypes;
                     if ((elemsDoor.Count == 0) && (elemsWindow.Count == 0))
                     {
-                        System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_SELPARTS"));
+                        RvtExtApp.UI.MessageWindow.Show(
+                            "No doors or windows selected",
+                            "None of the selected elements are doors or windows.\n\n" +
+                            "Please select door or window elements and try again.");
                         cmpParameters.SetSharedParamDefault();
-                        // トランザクションを統合
                         transGroup.Assimilate();
                         return retExtCom;
                     }
@@ -116,7 +131,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                 if (entDtCmd.ErrMsg != "")
                 {
                     trans.RollBack();
-                    System.Windows.Forms.MessageBox.Show(entDtCmd.ErrMsg);
+                    RvtExtApp.UI.MessageWindow.Show("Command Error", entDtCmd.ErrMsg);
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -139,13 +154,13 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                                                                                                          cmpSettings);
                 entDtWinDoorType.GetDataCreateAndEdit(entDtCmd.Data[0], entDtCmd.Data[1]);
 
-                // 画面表示
-                RvtExtApp.CreateAndEdit.FormCreatePartsDrawing form = new RvtExtApp.CreateAndEdit.FormCreatePartsDrawing(cmpAttribute,
-                                                                                                                         entDtView,
-                                                                                                                         entDtWinDoorType,
-                                                                                                                         entDtCmd);
-                retDlg = form.ShowDialog();
-                if (retDlg == System.Windows.Forms.DialogResult.OK)
+                // 画面表示 (WebView2 WPF Dialog)
+                var createViewWindow = new RvtExtApp.CreateAndEdit.CreateViewWindow(cmpAttribute,
+                                                                                    entDtView,
+                                                                                    entDtWinDoorType,
+                                                                                    entDtCmd);
+                bool? wpfResult = createViewWindow.ShowDialog();
+                if (wpfResult == true)
                 {
                     // コマンドデータ設定
                     entDtCmd.SetData();
@@ -228,7 +243,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                         string viewName = cmpService.SetPartsViewName(familyInstance.Symbol, partsName, partsDrawName);
                         if (viewName == rvtUIDoc.ActiveView.Name)
                         {
-                            System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_DELETEACTIVEVIEW"));
+                            RvtExtApp.UI.MessageWindow.Show("Cannot delete view", cmpAttribute.ResourceText("IDS_ERR_DELETEACTIVEVIEW"));
                             cmpParameters.SetSharedParamDefault();
                             // トランザクションを統合
                             transGroup.Assimilate();
@@ -255,7 +270,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                     progressBarThread.Close();
 
                     if (errMsg == "VIEWSEC_FAILD") {
-                        System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_VIEWSEC"), cmpAttribute.ResourceText("IDS_TXT_INFO"));
+                        RvtExtApp.UI.MessageWindow.Show(cmpAttribute.ResourceText("IDS_TXT_INFO"), cmpAttribute.ResourceText("IDS_ERR_VIEWSEC"));
                     }
                     else {
                         strLog.AppendLine("-----------------------");
@@ -271,8 +286,8 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                         strLog.AppendLine("-----------------------");
                         // show form log
                         if (strLog.Length != 0) {
-                            RvtExtApp.UI.FormLog frmLog = new RvtExtApp.UI.FormLog(cmpAttribute, strLog);
-                            frmLog.ShowDialog();
+                            var logWindow = new RvtExtApp.UI.LogWindow(cmpAttribute, strLog);
+                            logWindow.ShowDialog();
                         }
                     }
                     cmpParameters.SetSharedParamDefault();
@@ -312,8 +327,8 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                 // show form log
                 if (strLog.Length != 0)
                 {
-                    RvtExtApp.UI.FormLog frmLog = new RvtExtApp.UI.FormLog(cmpAttribute, strLog);
-                    frmLog.ShowDialog();
+                    var logWindow = new RvtExtApp.UI.LogWindow(cmpAttribute, strLog);
+                    logWindow.ShowDialog();
                 }
                 trans.RollBack();
             }
