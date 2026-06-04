@@ -3,7 +3,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "REXJ Standalone Add-ins"
-#define MyAppVersion "1.0.2"
+#define MyAppVersion "1.1.0"
 #define MyAppPublisher "ADSK REXJ"
 #define MyAppURL "https://github.com/rexj"
 #define RevitYear "2027"
@@ -57,7 +57,7 @@ Name: "floor\locateslab"; Description: "Slab Join && Split"; Types: full
 
 ; --- Filter Tools ---
 Name: "filter"; Description: "Filter Tools"; Types: full compact
-Name: "filter\levelfilter"; Description: "Level Filter"; Types: full compact
+Name: "filter\levelfilter"; Description: "Level Filter (Weave-compliant)"; Types: full compact
 Name: "filter\paramfilter"; Description: "Parameter Filter"; Types: full compact
 
 ; --- Dimension Tools ---
@@ -71,7 +71,7 @@ Name: "view"; Description: "View Tools"; Types: full
 Name: "view\viewduplicate"; Description: "View Duplicate (Copy)"; Types: full
 Name: "view\sheetlayout"; Description: "Auto Sheet Layout"; Types: full
 Name: "view\tenkaiview"; Description: "Interior Elevation for Room"; Types: full
-Name: "view\sectionbox"; Description: "Enhanced Section Box"; Types: full
+Name: "view\sectionbox"; Description: "Enhanced Section Box (Weave-compliant)"; Types: full
 Name: "view\roomview"; Description: "Room View Creation"; Types: full
 
 ; --- Join Tools ---
@@ -86,7 +86,7 @@ Name: "taglayout\layoutinstance"; Description: "Instance Array Layout"; Types: f
 
 ; --- Window/Door View ---
 Name: "fittingschedule"; Description: "Window/Door View Tools"; Types: full
-Name: "fittingschedule\fitting"; Description: "Create && Layout (Doors/Windows) Views"; Types: full
+Name: "fittingschedule\fitting"; Description: "Create && Layout (Doors/Windows) Views (Weave-compliant)"; Types: full
 
 ; --- Fukashi (Furring) Tools ---
 Name: "fukashi"; Description: "Fukashi (Wall Furring) Tools"; Types: full
