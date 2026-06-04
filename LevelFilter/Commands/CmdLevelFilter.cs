@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using System.Windows.Forms;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ADSK.JExtRAC.LevelFilter.Utils;
+using ADSK.JExtRAC.LevelFilter.UI;
 using RvtExtApp = ADSK.JExtRAC.LevelFilter;
 
 namespace ADSK.JExtRAC.LevelFilter.Commands
@@ -48,7 +48,9 @@ namespace ADSK.JExtRAC.LevelFilter.Commands
 
             if (selElems.Count == 0)
             {
-                MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOELEMENTSELECT"), cmpAttribute.ResourceText("IDS_ERR_ERROR"), MessageBoxButtons.OK);
+                MessageWindow.Show(
+                    cmpAttribute.ResourceText("IDS_ERR_ERROR"),
+                    cmpAttribute.ResourceText("IDS_ERR_NOELEMENTSELECT"));
                 return result;
             }
 
@@ -79,8 +81,8 @@ namespace ADSK.JExtRAC.LevelFilter.Commands
 
             cmpService.GetFormData(rvtUIDoc.Document, lstRuleFilter, elemSet, materialSet, ref dicCat, ref dicFam, ref dicFamType, ref dicPart, ref dicFilter);
 
-            var formFilter = new RvtExtApp.UI.FormLevelFilter(rvtUIDoc, cmpAttribute, elemSet, partList, dicCat, dicFam, dicFamType, dicPart, dicFilter, selElems, filterTabNum);
-            formFilter.ShowDialog();
+            var filterWindow = new LevelFilterWindow(rvtUIDoc, cmpAttribute, elemSet, partList, dicCat, dicFam, dicFamType, dicPart, dicFilter, selElems, filterTabNum);
+            filterWindow.ShowDialog();
 
             result = Result.Succeeded;
             return result;

@@ -36,22 +36,18 @@ namespace ADSK.JExtRAC.EnhancedSectionBox.Commands
             using (TransactionGroup transGroup = new TransactionGroup(Doc, res.ResourceText("IDS_TRAN_SECTIONBOX_ADJUST"))) {
                 transGroup.Start(res.ResourceText("IDS_TRAN_SECTIONBOX_ADJUST"));
 
-                while (true) {
-                    FormSectionBoxAdjustment form = new FormSectionBoxAdjustment(commandData);
-                    form.ShowDialog();
+                var window = new SectionBoxAdjustmentWindow(commandData);
+                window.ShowDialog();
 
-                    while (form.DialogResult != System.Windows.Forms.DialogResult.OK) {
-                        if (form.DialogResult == System.Windows.Forms.DialogResult.Yes) {
-                            transGroup.Assimilate();
-                            return Result.Succeeded;
-                        }
-                        if (form.DialogResult == System.Windows.Forms.DialogResult.No) {
-                            transGroup.RollBack();
-                            return Result.Succeeded;
-                        }
-                    }
+                if (window.Result == SectionBoxAdjustmentWindow.AdjustResult.OK) {
+                    transGroup.Assimilate();
+                }
+                else {
+                    transGroup.RollBack();
                 }
             }
+
+            return Result.Succeeded;
         }
     }
 }

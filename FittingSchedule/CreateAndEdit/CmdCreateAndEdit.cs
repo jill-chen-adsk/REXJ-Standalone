@@ -159,6 +159,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                                                                                     entDtView,
                                                                                     entDtWinDoorType,
                                                                                     entDtCmd);
+                new System.Windows.Interop.WindowInteropHelper(createViewWindow) { Owner = rvtUIApp.MainWindowHandle };
                 bool? wpfResult = createViewWindow.ShowDialog();
                 if (wpfResult == true)
                 {
