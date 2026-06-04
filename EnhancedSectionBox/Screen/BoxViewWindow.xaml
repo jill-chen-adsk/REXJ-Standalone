@@ -1,0 +1,194 @@
+<Window x:Class="ADSK.JExtRAC.EnhancedSectionBox.Screen.BoxViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Create Box View"
+        Width="620" SizeToContent="Height"
+        MinHeight="400" MinWidth="500"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="CanResize"
+        ShowInTaskbar="True">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="4" />
+    </WindowChrome.WindowChrome>
+    <Border x:Name="outerBorder" CornerRadius="4" Background="#f0f0f0">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.3" />
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Title Bar -->
+            <Grid x:Name="titleBarGrid" Grid.Row="0" Background="#f0f0f0"
+                  MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <TextBlock x:Name="titleText" Text="Create Box View"
+                           FontSize="14" FontWeight="SemiBold"
+                           FontFamily="ArtifaktElement, Segoe UI, sans-serif"
+                           VerticalAlignment="Center" Margin="14,0,0,0" />
+                <Button x:Name="btnClose" Click="BtnClose_Click"
+                        HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Margin="0,0,10,0" Width="28" Height="28"
+                        Background="Transparent" BorderBrush="Transparent"
+                        Foreground="#555555" Cursor="Hand"
+                        WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="bd" Background="Transparent" CornerRadius="4">
+                                <Path Data="M18,6 L6,18 M6,6 L18,18"
+                                      Stroke="{TemplateBinding Foreground}" StrokeThickness="2"
+                                      Width="14" Height="14" Stretch="Uniform"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bd" Property="Background" Value="#20000000" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <!-- Divider -->
+            <Border x:Name="dividerBorder" Grid.Row="1" Background="#d0d0d0" />
+
+            <!-- Content -->
+            <StackPanel Grid.Row="2" Margin="14,10,14,14">
+                <!-- XY Plane Range Group -->
+                <GroupBox x:Name="grpXYPlane" Header="XY Plane Range" Margin="0,0,0,8"
+                          FontFamily="ArtifaktElement, Segoe UI, sans-serif" FontSize="12">
+                    <Grid Margin="6,6,6,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Radio Buttons Row -->
+                        <RadioButton x:Name="radioByObject" Content="By Object" Grid.Row="0" Grid.Column="0"
+                                     IsChecked="True" Margin="0,0,0,8" Checked="Radio_Changed" />
+                        <RadioButton x:Name="radioPickRange" Content="Pick Range" Grid.Row="0" Grid.Column="1"
+                                     Margin="0,0,0,8" Checked="Radio_Changed" />
+                        <RadioButton x:Name="radioByLevel" Content="By Level" Grid.Row="0" Grid.Column="2"
+                                     Margin="0,0,0,8" Checked="Radio_Changed" />
+
+                        <!-- By Object controls -->
+                        <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,4">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <Button x:Name="btnSelectMain" Content="Select from Main"
+                                        Width="130" Height="26" Click="BtnSelectMain_Click"
+                                        FontSize="11" />
+                                <TextBlock x:Name="lblMainCount" Text="Selected: 0"
+                                           VerticalAlignment="Center" Margin="8,0,0,0" FontSize="11" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <Button x:Name="btnSelectLink" Content="Select from Link"
+                                        Width="130" Height="26" Click="BtnSelectLink_Click"
+                                        FontSize="11" />
+                                <TextBlock x:Name="lblLinkCount" Text="Selected: 0"
+                                           VerticalAlignment="Center" Margin="8,0,0,0" FontSize="11" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Pick Range controls -->
+                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
+                                    VerticalAlignment="Top" Margin="0,0,8,4">
+                            <Button x:Name="btnPickRange" Content="Pick Range"
+                                    Width="90" Height="26" Click="BtnPickRange_Click"
+                                    FontSize="11" />
+                            <TextBlock x:Name="lblRegion" Text="Not specified"
+                                       VerticalAlignment="Center" Margin="8,0,0,0" FontSize="11"
+                                       TextTrimming="CharacterEllipsis" MaxWidth="70" />
+                        </StackPanel>
+
+                        <!-- By Level ListBox -->
+                        <ListBox x:Name="lstLevels" Grid.Row="1" Grid.Column="2"
+                                 Height="90" SelectionMode="Multiple"
+                                 IsEnabled="False" FontSize="11" />
+
+                        <!-- Align checkbox -->
+                        <CheckBox x:Name="chkAlignAngle" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                  Content="Align section box angle to selected objects"
+                                  VerticalContentAlignment="Center"
+                                  Margin="0,8,0,0" FontSize="11" />
+                    </Grid>
+                </GroupBox>
+
+                <!-- Level / Offset Group -->
+                <GroupBox x:Name="grpLevelOffset" Header="Level / Offset" Margin="0,0,0,8"
+                          FontFamily="ArtifaktElement, Segoe UI, sans-serif" FontSize="12">
+                    <Grid Margin="6,6,6,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Top Level" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontSize="11" />
+                        <ComboBox x:Name="cmbTopLevel" Grid.Row="0" Grid.Column="1" Height="24" FontSize="11" />
+                        <TextBlock Text="Offset" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2"
+                                   HorizontalAlignment="Center" FontSize="11" />
+                        <TextBox x:Name="txtTopOffset" Grid.Row="0" Grid.Column="3" Height="24"
+                                 Text="0" TextAlignment="Right" FontSize="11" VerticalContentAlignment="Center" />
+                        <TextBlock x:Name="lblUnitTop" Text="mm" VerticalAlignment="Center" Grid.Row="0" Grid.Column="4"
+                                   Margin="4,0,0,0" FontSize="11" />
+
+                        <TextBlock Text="Bottom Level" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontSize="11" />
+                        <ComboBox x:Name="cmbBottomLevel" Grid.Row="1" Grid.Column="1" Height="24" FontSize="11" />
+                        <TextBlock Text="Offset" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"
+                                   HorizontalAlignment="Center" FontSize="11" />
+                        <TextBox x:Name="txtBottomOffset" Grid.Row="1" Grid.Column="3" Height="24"
+                                 Text="0" TextAlignment="Right" FontSize="11" VerticalContentAlignment="Center" />
+                        <TextBlock x:Name="lblUnitBottom" Text="mm" VerticalAlignment="Center" Grid.Row="1" Grid.Column="4"
+                                   Margin="4,0,0,0" FontSize="11" />
+                    </Grid>
+                </GroupBox>
+
+                <!-- Hide objects Group -->
+                <GroupBox x:Name="grpHideObjects" Header="Hide objects at top level (excludes linked project objects)"
+                          Margin="0,0,0,8" FontFamily="ArtifaktElement, Segoe UI, sans-serif" FontSize="12">
+                    <StackPanel Orientation="Horizontal" Margin="6,6,6,6">
+                        <CheckBox x:Name="chkFloors" Content="Floors" Margin="0,0,30,0" FontSize="11" />
+                        <CheckBox x:Name="chkBeams" Content="Beams" FontSize="11" />
+                    </StackPanel>
+                </GroupBox>
+
+                <!-- View Name -->
+                <StackPanel Orientation="Horizontal" Margin="0,4,0,12">
+                    <TextBlock x:Name="lblViewName" Text="View Name" VerticalAlignment="Center" Margin="0,0,12,0"
+                               FontFamily="ArtifaktElement, Segoe UI, sans-serif" FontSize="12" />
+                    <ComboBox x:Name="cmbViewName" Width="180" Height="24" IsEditable="True"
+                              FontSize="11" TextBoxBase.TextChanged="ViewName_Changed" />
+                </StackPanel>
+
+                <!-- Footer Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,4,0,0">
+                    <Button x:Name="btnOK" Content="OK" Width="80" Height="28"
+                            Click="BtnOK_Click" IsEnabled="False" Margin="0,0,8,0"
+                            FontFamily="ArtifaktElement, Segoe UI, sans-serif" FontSize="12" />
+                    <Button x:Name="btnCancel" Content="Cancel" Width="80" Height="28"
+                            Click="BtnCancel_Click"
+                            FontFamily="ArtifaktElement, Segoe UI, sans-serif" FontSize="12" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -49,8 +49,6 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
             // プログレスバー
             ProgressBarThread progressBarThread = new ProgressBarThread(false, true);
 
-            System.Windows.Forms.DialogResult retDlg;
-
             // 戻り値
             Revit.UI.Result retExtCom = Revit.UI.Result.Cancelled;
 
@@ -66,7 +64,7 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
                 // 現在ビューチェック[シート]
                 if (cmpElements.ActiveViewSheet == null)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_VIEWSHEET"));
+                    RvtExtApp.UI.MessageWindow.Show("Wrong view type", "This command must be run from a sheet view.\n\nPlease switch to a sheet view and try again.");
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -89,7 +87,7 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
                 if (entDtCmd.ErrMsg != "")
                 {
                     trans.RollBack();
-                    System.Windows.Forms.MessageBox.Show(entDtCmd.ErrMsg);
+                    RvtExtApp.UI.MessageWindow.Show("Command Error", entDtCmd.ErrMsg);
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -107,11 +105,9 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
 
                 // Form show
                 // 画面表示
-                RvtExtApp.Layout.FormLayoutPartsDrawing form = new RvtExtApp.Layout.FormLayoutPartsDrawing(cmpAttribute,
-                                                                                                           entDtViewSheet,
-                                                                                                           entDtCmd);
-                retDlg = form.ShowDialog();
-                if (retDlg == System.Windows.Forms.DialogResult.OK)
+                var layoutWindow = new RvtExtApp.Layout.LayoutWindow(cmpAttribute, entDtViewSheet, entDtCmd);
+                bool? wpfResult = layoutWindow.ShowDialog();
+                if (wpfResult == true)
                 {
                     // コマンドデータ設定
                     trans.Start("SaveCommandData");
@@ -175,8 +171,8 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
                     // show form log
                     if (strLog.Length != 0)
                     {
-                        RvtExtApp.UI.FormLog frmLog = new RvtExtApp.UI.FormLog(cmpAttribute, strLog);
-                        frmLog.ShowDialog();
+                        var logWindow = new RvtExtApp.UI.LogWindow(cmpAttribute, strLog);
+                        logWindow.ShowDialog();
                     }
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
@@ -215,8 +211,8 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
                     // show form log
                     if (strLog.Length != 0)
                     {
-                        RvtExtApp.UI.FormLog frmLog = new RvtExtApp.UI.FormLog(cmpAttribute, strLog);
-                        frmLog.ShowDialog();
+                        var logWindow = new RvtExtApp.UI.LogWindow(cmpAttribute, strLog);
+                        logWindow.ShowDialog();
                     }
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
@@ -251,8 +247,8 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
                     // show form log
                     if (strLog.Length != 0)
                     {
-                        RvtExtApp.UI.FormLog frmLog = new RvtExtApp.UI.FormLog(cmpAttribute, strLog);
-                        frmLog.ShowDialog();
+                        var logWindow = new RvtExtApp.UI.LogWindow(cmpAttribute, strLog);
+                        logWindow.ShowDialog();
                     }
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
@@ -268,8 +264,8 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
                     strLog.AppendLine("-----------------------");
                     strLog.AppendLine(errMsg);
                     strLog.AppendLine("-----------------------");
-                    RvtExtApp.UI.FormLog frmLog = new RvtExtApp.UI.FormLog(cmpAttribute, strLog);
-                    frmLog.ShowDialog();
+                    var logWindow = new RvtExtApp.UI.LogWindow(cmpAttribute, strLog);
+                    logWindow.ShowDialog();
                 }
 
                 retExtCom = Revit.UI.Result.Succeeded;
@@ -295,8 +291,8 @@ namespace ADSK.JExtRAC.FittingSchedule.Layout
                 // show form log
                 if (strLog.Length != 0)
                 {
-                    RvtExtApp.UI.FormLog frmLog = new RvtExtApp.UI.FormLog(cmpAttribute, strLog);
-                    frmLog.ShowDialog();
+                    var logWindow = new RvtExtApp.UI.LogWindow(cmpAttribute, strLog);
+                    logWindow.ShowDialog();
                 }
                 trans.RollBack();
             }

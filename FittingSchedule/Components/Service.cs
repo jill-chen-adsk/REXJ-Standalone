@@ -685,7 +685,9 @@ namespace ADSK.JExtRAC.FittingSchedule.Components
 
                 if (table.Rows.Count == 0)
                 {
-                    errMsg = "GetViewSection: DataTable has 0 rows (no views selected for layout).";
+                    errMsg = "No elevation views are available for layout.\n\n"
+                           + "Please create door/window elevation views first using 'Create Window/Door View', "
+                           + "then return to this command to place them on the sheet.";
                     ret = false;
                     return ret;
                 }
@@ -955,7 +957,26 @@ namespace ADSK.JExtRAC.FittingSchedule.Components
 
                 if (viewPortSymbol == null)
                 {
-                    erro = "SetViewPort: 'No Title' viewport symbol not found. Viewports placed but title not removed.";
+                    // Collect diagnostic info about available viewport types
+                    var diagInfo = new System.Text.StringBuilder();
+                    diagInfo.AppendLine("SetViewPort: 'No Title' viewport symbol not found. Viewports placed but title not removed.");
+                    diagInfo.AppendLine("Available viewport types in project:");
+                    try
+                    {
+                        var allVpTypes = new Revit.DB.FilteredElementCollector(_CmpElements.RvtDBDoc)
+                            .OfClass(typeof(Revit.DB.ElementType));
+                        foreach (var e in allVpTypes)
+                        {
+                            var t = e as Revit.DB.ElementType;
+                            if (t != null && t.FamilyName != null &&
+                                t.FamilyName.ToLowerInvariant().Contains("viewport"))
+                            {
+                                diagInfo.AppendLine("  FamilyName=\"" + t.FamilyName + "\" Name=\"" + t.Name + "\" Id=" + t.Id);
+                            }
+                        }
+                    }
+                    catch { }
+                    erro = diagInfo.ToString();
                     return ret;
                 }
 

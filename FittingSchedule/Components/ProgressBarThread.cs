@@ -1,86 +1,66 @@
 using System;
-using System.Drawing;
-using System.Windows.Forms;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace ADSK.JExtRAC.FittingSchedule.Components
 {
     public class ProgressBarThread
     {
-        private Form _form;
-        private ProgressBar _progressBar;
-        private Label _label;
+        private ProgressWindow _window;
 
         public ProgressBarThread(bool showCancel, bool showProgress)
         {
-            _form = new Form
-            {
-                Text = "Processing...",
-                FormBorderStyle = FormBorderStyle.FixedDialog,
-                StartPosition = FormStartPosition.CenterScreen,
-                MaximizeBox = false,
-                MinimizeBox = false,
-                ControlBox = false,
-                TopMost = true,
-                AutoScaleMode = AutoScaleMode.Dpi,
-                AutoScaleDimensions = new SizeF(96F, 96F),
-                Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point),
-                ClientSize = new Size(400, 80),
-                Padding = new Padding(12)
-            };
-
-            _label = new Label
-            {
-                Dock = DockStyle.Top,
-                Height = 24,
-                TextAlign = ContentAlignment.MiddleLeft,
-                AutoSize = false
-            };
-
-            _progressBar = new ProgressBar
-            {
-                Dock = DockStyle.Bottom,
-                Height = 28
-            };
-
-            _form.Controls.Add(_progressBar);
-            _form.Controls.Add(_label);
+            _window = new ProgressWindow();
         }
 
         public void ShowDialog()
         {
-            _form.Show();
-            Application.DoEvents();
+            _window.Show();
+            DoEvents();
         }
 
         public void SetData(string text, int value)
         {
-            _label.Text = text;
-            _progressBar.Value = 0;
-            Application.DoEvents();
+            if (_window == null) return;
+            _window.SetStatus(text);
+            DoEvents();
         }
 
         public void SetData(int max, int value)
         {
-            _progressBar.Minimum = 0;
-            _progressBar.Maximum = Math.Max(max, 1);
-            _progressBar.Value = Math.Min(value, _progressBar.Maximum);
-            Application.DoEvents();
+            if (_window == null) return;
+            _window.SetMaximum(max, value);
+            DoEvents();
         }
 
         public void SetData(int value)
         {
-            if (value <= _progressBar.Maximum)
-                _progressBar.Value = value;
-            Application.DoEvents();
+            if (_window == null) return;
+            _window.SetValue(value);
+            DoEvents();
         }
 
         public void Close()
         {
-            if (_form != null && !_form.IsDisposed)
+            if (_window != null)
             {
-                _form.Close();
-                _form.Dispose();
+                _window.Close();
+                _window = null;
             }
+        }
+
+        private static void DoEvents()
+        {
+            var frame = new DispatcherFrame();
+            Dispatcher.CurrentDispatcher.BeginInvoke(
+                DispatcherPriority.Background,
+                new DispatcherOperationCallback(obj =>
+                {
+                    ((DispatcherFrame)obj).Continue = false;
+                    return null;
+                }),
+                frame);
+            Dispatcher.PushFrame(frame);
         }
     }
 }

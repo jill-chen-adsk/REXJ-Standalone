@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create doors and windows view</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Theme variables */
+    body {
+      --bg: #263545;
+      --bg-input: #1e2a3a;
+      --text: #e0e8f0;
+      --text-label: #8fa4b8;
+      --border: #3a4f63;
+      --border-hover: #5a7a94;
+      --accent: #4dacff;
+      --accent-hover: #6dbbff;
+      --accent-text: #0d1b2a;
+      --radio-border: #5a7a94;
+      --modal-bg: #1e2a3a;
+      --chevron-fill: %238fa4b8;
+    }
+
+    body[data-theme="light"] {
+      --bg: #f5f5f5;
+      --bg-input: #ffffff;
+      --text: #1a1a1a;
+      --text-label: #555555;
+      --border: #d0d0d0;
+      --border-hover: #999999;
+      --accent: #0066cc;
+      --accent-hover: #0052a3;
+      --accent-text: #ffffff;
+      --radio-border: #999999;
+      --modal-bg: #ffffff;
+      --chevron-fill: %23555555;
+    }
+
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 13px;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .field-group { display: flex; flex-direction: column; gap: 4px; }
+    .field-group > label {
+      font-size: 11px;
+      color: var(--text-label);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    select {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%238fa4b8'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+    }
+    select:focus { border-color: var(--accent); }
+    select:hover { border-color: var(--border-hover); }
+
+    .radio-group { display: flex; flex-direction: column; gap: 6px; }
+    .radio-group.row { flex-direction: row; gap: 16px; }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text);
+    }
+    .radio-label input[type="radio"] {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--radio-border);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .radio-label input[type="radio"]:checked { border-color: var(--accent); }
+    .radio-label input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .radio-label input[type="radio"]:hover { border-color: var(--accent); }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      padding: 12px 16px;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .btn-cancel {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-cancel:hover { background: rgba(0, 102, 204, 0.08); }
+    .btn-create {
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: var(--accent-text);
+    }
+    .btn-create:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: var(--text-label);
+    }
+
+    /* Custom scale modal overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    .modal-box {
+      background: var(--modal-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      min-width: 280px;
+    }
+    .modal-box h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .modal-box .input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .modal-box .input-row span { color: var(--text-label); }
+    .modal-box input[type="number"] {
+      flex: 1;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+    .modal-box input[type="number"]:focus { border-color: var(--accent); }
+    .modal-box .modal-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="loading">Loading...</div>
+
+  <script>
+    (function() {
+      var state = {
+        doorTagId: -1,
+        windowTagId: -1,
+        scale: 100,
+        scaleCustom: 100,
+        detailLevel: 2,
+        duplicateHandling: 0
+      };
+
+      var doorTags = [];
+      var windowTags = [];
+      var scales = [];
+      var detailLevels = [];
+      var isImperial = false;
+      var showCustomModal = false;
+      var labels = {
+        doorTag: 'Door tag',
+        windowTag: 'Window tag',
+        scale: 'Scale',
+        detailLevel: 'Detail level',
+        handlingDuplicate: 'Handling duplicate views',
+        deleteOldView: 'Delete old view',
+        keepExisting: 'Keep existing view',
+        renameOldView: 'Rename old view and create new',
+        customScale: 'Custom Scale',
+        scalePrefix: '1:',
+        cancel: 'Cancel',
+        createView: 'Create view',
+        ok: 'OK'
+      };
+
+      function postMessage(msg) {
+        if (window.chrome && window.chrome.webview) {
+          window.chrome.webview.postMessage(msg);
+        }
+      }
+
+      window.initSettings = function(data) {
+        // Apply theme
+        if (data.theme) {
+          document.body.setAttribute('data-theme', data.theme);
+        }
+
+        if (data.isImperial) isImperial = true;
+        if (data.doorTags) doorTags = data.doorTags;
+        if (data.windowTags) windowTags = data.windowTags;
+        if (data.scales) scales = data.scales;
+        if (data.detailLevels) detailLevels = data.detailLevels;
+        if (data.labels) {
+          for (var k in data.labels) {
+            if (data.labels[k]) labels[k] = data.labels[k];
+          }
+        }
+        if (data.currentSettings) {
+          state.doorTagId = data.currentSettings.doorTagId != null ? data.currentSettings.doorTagId : -1;
+          state.windowTagId = data.currentSettings.windowTagId != null ? data.currentSettings.windowTagId : -1;
+          state.scale = data.currentSettings.scale != null ? data.currentSettings.scale : 100;
+          state.scaleCustom = data.currentSettings.scaleCustom != null ? data.currentSettings.scaleCustom : 100;
+          state.detailLevel = data.currentSettings.detailLevel != null ? data.currentSettings.detailLevel : 2;
+          state.duplicateHandling = data.currentSettings.duplicateHandling != null ? data.currentSettings.duplicateHandling : 0;
+        }
+
+        // Default to first available item if stored ID doesn't match any option
+        if (state.doorTagId === -1 && doorTags.length > 0) {
+          state.doorTagId = doorTags[0].value;
+        }
+        if (state.windowTagId === -1 && windowTags.length > 0) {
+          state.windowTagId = windowTags[0].value;
+        }
+
+        // If a custom scale was previously saved, add it to the scale list
+        if (state.scale === 0 && state.scaleCustom > 0) {
+          addCustomScaleToList(state.scaleCustom);
+        }
+
+        // If saved scale doesn't match any option in the list, default to first real scale
+        if (state.scale !== 0 && state.scale !== -999) {
+          var found = scales.some(function(s) { return s.value === state.scale; });
+          if (!found && scales.length > 1) {
+            state.scale = scales[1].value;
+          }
+        }
+
+        render();
+      };
+
+      function formatCustomScale(val) {
+        var tag = ' (' + labels.customScale.replace('...', '').trim() + ')';
+        if (!isImperial) return '1:' + val + tag;
+        if (val === 1) return '12" = 1\'-0"' + tag;
+        if (val <= 12) return Math.round(12 / val) + '" = 1\'-0"' + tag;
+        var feet = Math.round(val / 12);
+        return '1" = ' + feet + '\'-0"' + tag;
+      }
+
+      function addCustomScaleToList(val) {
+        scales = scales.filter(function(s) { return s.value !== -999; });
+        var entry = { value: -999, name: formatCustomScale(val) };
+        if (scales.length > 0 && scales[0].value === 0) {
+          scales.splice(1, 0, entry);
+        } else {
+          scales.unshift(entry);
+        }
+      }
+
+      function escHtml(str) {
+        if (str == null) return '';
+        var d = document.createElement('div');
+        d.textContent = String(str);
+        return d.innerHTML;
+      }
+
+      function buildOptions(items, selectedValue) {
+        var html = '';
+        for (var i = 0; i < items.length; i++) {
+          var sel = items[i].value == selectedValue ? ' selected' : '';
+          html += '<option value="' + items[i].value + '"' + sel + '>' + escHtml(items[i].name) + '</option>';
+        }
+        return html;
+      }
+
+      function render() {
+        var detailHtml = '';
+        if (detailLevels.length <= 4) {
+          var radios = '';
+          for (var i = 0; i < detailLevels.length; i++) {
+            var chk = detailLevels[i].value == state.detailLevel ? ' checked' : '';
+            radios += '<label class="radio-label"><input type="radio" name="detailLevel" value="' +
+              detailLevels[i].value + '"' + chk + ' />' + escHtml(detailLevels[i].name) + '</label>';
+          }
+          detailHtml = '<div class="radio-group row" id="rgDetail">' + radios + '</div>';
+        } else {
+          detailHtml = '<select id="selDetailLevel">' + buildOptions(detailLevels, state.detailLevel) + '</select>';
+        }
+
+        var dupValues = [
+          { value: 0, label: labels.deleteOldView },
+          { value: 1, label: labels.keepExisting },
+          { value: 2, label: labels.renameOldView }
+        ];
+        var dupRadios = '';
+        for (var i = 0; i < dupValues.length; i++) {
+          var chk = dupValues[i].value == state.duplicateHandling ? ' checked' : '';
+          dupRadios += '<label class="radio-label"><input type="radio" name="duplicateHandling" value="' +
+            dupValues[i].value + '"' + chk + ' />' + escHtml(dupValues[i].label) + '</label>';
+        }
+
+        var modalHtml = '';
+        if (showCustomModal) {
+          modalHtml =
+            '<div class="modal-overlay" id="modalOverlay">' +
+              '<div class="modal-box">' +
+                '<h2>' + escHtml(labels.customScale) + '</h2>' +
+                '<div class="input-row">' +
+                  '<span>' + escHtml(labels.scalePrefix) + '</span>' +
+                  '<input type="number" id="inputCustomScale" min="1" max="9999" value="' + state.scaleCustom + '" />' +
+                '</div>' +
+                '<div class="modal-buttons">' +
+                  '<button class="btn-cancel" id="btnModalCancel">' + escHtml(labels.cancel) + '</button>' +
+                  '<button class="btn-create" id="btnModalOK">' + escHtml(labels.ok) + '</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>';
+        }
+
+        document.getElementById('app').innerHTML =
+          '<div class="content">' +
+            '<div class="field-group">' +
+              '<label>' + escHtml(labels.doorTag) + '</label>' +
+              '<select id="selDoorTag">' + buildOptions(doorTags, state.doorTagId) + '</select>' +
+            '</div>' +
+            '<div class="field-group">' +
+              '<label>' + escHtml(labels.windowTag) + '</label>' +
+              '<select id="selWindowTag">' + buildOptions(windowTags, state.windowTagId) + '</select>' +
+            '</div>' +
+            '<div class="field-group">' +
+              '<label>' + escHtml(labels.scale) + '</label>' +
+              '<select id="selScale">' + buildOptions(scales, state.scale) + '</select>' +
+            '</div>' +
+            '<div class="field-group">' +
+              '<label>' + escHtml(labels.detailLevel) + '</label>' +
+              detailHtml +
+            '</div>' +
+            '<hr class="divider" />' +
+            '<div class="field-group">' +
+              '<label>' + escHtml(labels.handlingDuplicate) + '</label>' +
+              '<div class="radio-group" id="rgDuplicate">' + dupRadios + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<hr class="divider" />' +
+          '<div class="footer">' +
+            '<button class="btn-cancel" id="btnCancel">' + escHtml(labels.cancel) + '</button>' +
+            '<button class="btn-create" id="btnCreate">' + escHtml(labels.createView) + '</button>' +
+          '</div>' +
+          modalHtml;
+
+        document.getElementById('app').className = '';
+        bindEvents();
+      }
+
+      function bindEvents() {
+        document.getElementById('selDoorTag').addEventListener('change', function(e) {
+          state.doorTagId = Number(e.target.value);
+        });
+        document.getElementById('selWindowTag').addEventListener('change', function(e) {
+          state.windowTagId = Number(e.target.value);
+        });
+        document.getElementById('selScale').addEventListener('change', function(e) {
+          var val = Number(e.target.value);
+          if (val === 0) {
+            showCustomModal = true;
+            render();
+          } else {
+            state.scale = val;
+          }
+        });
+
+        var detailSelect = document.getElementById('selDetailLevel');
+        if (detailSelect) {
+          detailSelect.addEventListener('change', function(e) {
+            state.detailLevel = Number(e.target.value);
+          });
+        }
+        var detailRadios = document.querySelectorAll('input[name="detailLevel"]');
+        for (var i = 0; i < detailRadios.length; i++) {
+          detailRadios[i].addEventListener('change', function(e) {
+            state.detailLevel = Number(e.target.value);
+          });
+        }
+
+        var dupRadios = document.querySelectorAll('input[name="duplicateHandling"]');
+        for (var i = 0; i < dupRadios.length; i++) {
+          dupRadios[i].addEventListener('change', function(e) {
+            state.duplicateHandling = Number(e.target.value);
+          });
+        }
+
+        document.getElementById('btnCreate').addEventListener('click', function() {
+          postMessage({
+            action: 'create',
+            doorTagId: state.doorTagId,
+            windowTagId: state.windowTagId,
+            scale: state.scale,
+            scaleCustom: state.scaleCustom,
+            detailLevel: state.detailLevel,
+            duplicateHandling: state.duplicateHandling
+          });
+        });
+
+        document.getElementById('btnCancel').addEventListener('click', function() {
+          postMessage({ action: 'cancel' });
+        });
+
+        // Custom scale modal events
+        var btnModalOK = document.getElementById('btnModalOK');
+        if (btnModalOK) {
+          btnModalOK.addEventListener('click', function() {
+            var input = document.getElementById('inputCustomScale');
+            var val = parseInt(input.value, 10);
+            if (val >= 1 && val <= 9999) {
+              state.scaleCustom = val;
+              state.scale = -999;
+              addCustomScaleToList(val);
+            }
+            showCustomModal = false;
+            render();
+          });
+        }
+        var btnModalCancel = document.getElementById('btnModalCancel');
+        if (btnModalCancel) {
+          btnModalCancel.addEventListener('click', function() {
+            showCustomModal = false;
+            var sel = document.getElementById('selScale');
+            if (sel && state.scale !== 0) {
+              sel.value = state.scale;
+            }
+            render();
+          });
+        }
+        var modalOverlay = document.getElementById('modalOverlay');
+        if (modalOverlay) {
+          modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+              showCustomModal = false;
+              render();
+            }
+          });
+          var input = document.getElementById('inputCustomScale');
+          if (input) input.focus();
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

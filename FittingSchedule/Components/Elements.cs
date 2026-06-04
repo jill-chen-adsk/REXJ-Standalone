@@ -301,23 +301,61 @@ namespace ADSK.JExtRAC.FittingSchedule.Components
                 {
                     _cmpAttribute.ResourceText("IDS_SET_VIEWPORTSYM_1"),
                     _cmpAttribute.ResourceText("IDS_SET_VIEWPORTSYM_2"),
-                    _cmpAttribute.ResourceText("IDS_SET_VIEWPORTSYM_3")
+                    _cmpAttribute.ResourceText("IDS_SET_VIEWPORTSYM_3"),
+                    "No Title",
+                    "なし",
+                    "タイトルなし",
+                    "无标题",
+                    "無標題"
                 };
-                var types = new List<Type> { typeof(ElementType) };
-                var elems = GetElementsDoc(null, types, null, names, null);
-                if (elems != null)
+
+                // Strategy 1: Filter by Viewport category + element type
+                var collector = new FilteredElementCollector(RvtDBDoc)
+                    .OfCategory(BuiltInCategory.OST_Viewports)
+                    .WhereElementIsElementType();
+
+                foreach (var elem in collector)
                 {
-                    foreach (var elem in elems)
+                    var et = elem as ElementType;
+                    if (et == null) continue;
+
+                    foreach (var name in names)
                     {
-                        if (elem.GetType() != typeof(ElementType)) continue;
-                        var et = elem as ElementType;
-                        if (et.FamilyName != LabelUtils.GetLabelFor(BuiltInCategory.OST_Viewports)) continue;
-                        foreach (var name in names)
-                        {
-                            if (elem.Name == name) return et;
-                        }
+                        if (string.Equals(et.Name, name, StringComparison.OrdinalIgnoreCase))
+                            return et;
                     }
                 }
+
+                // Strategy 2: Search all ElementTypes by FamilyName "Viewport"
+                foreach (var elem in new FilteredElementCollector(RvtDBDoc).OfClass(typeof(ElementType)))
+                {
+                    var et = elem as ElementType;
+                    if (et == null) continue;
+                    if (et.FamilyName != "Viewport" && et.FamilyName != "ビューポート") continue;
+
+                    foreach (var name in names)
+                    {
+                        if (string.Equals(et.Name, name, StringComparison.OrdinalIgnoreCase))
+                            return et;
+                    }
+                }
+
+                // Strategy 3: Broad search for any viewport-related type with no-title-like name
+                foreach (var elem in new FilteredElementCollector(RvtDBDoc).OfClass(typeof(ElementType)))
+                {
+                    var et = elem as ElementType;
+                    if (et == null) continue;
+
+                    string familyLower = (et.FamilyName ?? "").ToLowerInvariant();
+                    if (!familyLower.Contains("viewport") && !familyLower.Contains("ビューポート")) continue;
+
+                    string lower = et.Name.ToLowerInvariant();
+                    if (lower.Contains("no title") || lower.Contains("notitle") ||
+                        lower.Contains("empty") || lower.Contains("blank") ||
+                        et.Name.Contains("なし") || et.Name.Contains("无") || et.Name.Contains("無"))
+                        return et;
+                }
+
                 return null;
             }
         }
