@@ -22,6 +22,12 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
         private readonly RvtExtApp.Entities.DtCmd _entDtCmd;
         private readonly bool _isDarkTheme;
 
+        private static double? _savedLeft;
+        private static double? _savedTop;
+        private static readonly string _posFile = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            "ADSK", "JExtRAC", "FittingSchedule", "createview_pos.txt");
+
         public CreateViewWindow(
             RvtExtApp.Components.Attribute cmpAttribute,
             RvtExtApp.Entities.DtView entDtView,
@@ -36,8 +42,70 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
 
             _isDarkTheme = UIThemeManager.CurrentTheme == UITheme.Dark;
             ApplyThemeColors();
+            RestorePosition();
 
             Loaded += OnWindowLoaded;
+            Closing += OnWindowClosing;
+        }
+
+        private void RestorePosition()
+        {
+            if (_savedLeft.HasValue && _savedTop.HasValue &&
+                IsOnScreen(_savedLeft.Value, _savedTop.Value))
+            {
+                Left = _savedLeft.Value;
+                Top = _savedTop.Value;
+                WindowStartupLocation = WindowStartupLocation.Manual;
+                return;
+            }
+
+            try
+            {
+                if (File.Exists(_posFile))
+                {
+                    var parts = File.ReadAllText(_posFile).Split(',');
+                    if (parts.Length == 2 &&
+                        double.TryParse(parts[0], out double l) &&
+                        double.TryParse(parts[1], out double t) &&
+                        IsOnScreen(l, t))
+                    {
+                        Left = l;
+                        Top = t;
+                        _savedLeft = l;
+                        _savedTop = t;
+                        WindowStartupLocation = WindowStartupLocation.Manual;
+                        return;
+                    }
+                }
+            }
+            catch { }
+
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+
+        private static bool IsOnScreen(double left, double top)
+        {
+            var virtualWidth = SystemParameters.VirtualScreenWidth;
+            var virtualHeight = SystemParameters.VirtualScreenHeight;
+            var virtualLeft = SystemParameters.VirtualScreenLeft;
+            var virtualTop = SystemParameters.VirtualScreenTop;
+
+            return left >= virtualLeft - 100 &&
+                   top >= virtualTop - 100 &&
+                   left < virtualLeft + virtualWidth &&
+                   top < virtualTop + virtualHeight;
+        }
+
+        private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _savedLeft = Left;
+            _savedTop = Top;
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(_posFile));
+                File.WriteAllText(_posFile, Left + "," + Top);
+            }
+            catch { }
         }
 
         private void ApplyThemeColors()
@@ -72,6 +140,8 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
 
         private async void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
+            Activate();
+
             var userDataFolder = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "ADSK", "JExtRAC", "FittingSchedule", "WebView2");
@@ -121,6 +191,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             var initData = JsonSerializer.Serialize(new
             {
                 theme = _isDarkTheme ? "dark" : "light",
+                isImperial = _entDtView.IsImperial,
                 doorTags,
                 windowTags,
                 scales,
@@ -133,6 +204,22 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                     detailLevel = _entDtView.ViewDetailLevel,
                     duplicateHandling = _entDtView.DuplicateViewOpt,
                     scaleCustom = _entDtView.ViewScaleCustom
+                },
+                labels = new
+                {
+                    doorTag = _cmpAttribute.ResourceText("IDS_TXT_DOORTAG"),
+                    windowTag = _cmpAttribute.ResourceText("IDS_TXT_WINDOWTAG"),
+                    scale = _cmpAttribute.ResourceText("IDS_TXT_SCALE"),
+                    detailLevel = _cmpAttribute.ResourceText("IDS_TXT_DETAILLEVEL"),
+                    handlingDuplicate = _cmpAttribute.ResourceText("IDS_TXT_HANDLINGDUPLICATEVIEW"),
+                    deleteOldView = _cmpAttribute.ResourceText("IDS_TXT_DELOLDVIEW"),
+                    keepExisting = _cmpAttribute.ResourceText("IDS_TXT_NOTUPDATE"),
+                    renameOldView = _cmpAttribute.ResourceText("IDS_TXT_CHANGEOLDVIEW"),
+                    customScale = _cmpAttribute.ResourceText("IDS_TXT_CUSTOM"),
+                    scalePrefix = _cmpAttribute.ResourceText("IDS_TXT_COLON1"),
+                    cancel = _cmpAttribute.ResourceText("IDS_TXT_CANCEL"),
+                    createView = _cmpAttribute.ResourceText("IDS_TXT_CREATEVIEWPARTS"),
+                    ok = _cmpAttribute.ResourceText("IDS_TXT_OK")
                 }
             });
 

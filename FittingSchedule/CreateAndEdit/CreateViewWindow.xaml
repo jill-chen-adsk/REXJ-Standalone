@@ -4,11 +4,13 @@
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         Title="Create doors and windows view"
         Width="480" Height="520"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="Manual"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Topmost="True"
+        ShowInTaskbar="True">
     <Border x:Name="outerBorder" CornerRadius="4">
         <Grid>
             <Grid.RowDefinitions>
