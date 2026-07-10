@@ -47,6 +47,45 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
             }
         }
 
+        public bool IsImperial
+        {
+            get
+            {
+                try { return RvtDBDoc.DisplayUnitSystem == DisplayUnit.IMPERIAL; }
+                catch { return false; }
+            }
+        }
+
+        public ForgeTypeId LengthUnitTypeId =>
+            RvtDBDoc.GetUnits().GetFormatOptions(SpecTypeId.Length).GetUnitTypeId();
+
+        public ForgeTypeId AreaUnitTypeId =>
+            RvtDBDoc.GetUnits().GetFormatOptions(SpecTypeId.Area).GetUnitTypeId();
+
+        /// <summary>Convert a millimeter value (Japanese code constants) to project length display units.</summary>
+        public double FromMillimeters(double millimeters) =>
+            UnitUtils.ConvertFromInternalUnits(
+                UnitUtils.ConvertToInternalUnits(millimeters, UnitTypeId.Millimeters),
+                LengthUnitTypeId);
+
+        public string LengthUnitLabel => GetUnitLabel(LengthUnitTypeId);
+
+        public string AreaUnitLabel => GetUnitLabel(AreaUnitTypeId);
+
+        private static string GetUnitLabel(ForgeTypeId unitTypeId)
+        {
+            if (unitTypeId == UnitTypeId.Millimeters) return "mm";
+            if (unitTypeId == UnitTypeId.Centimeters) return "cm";
+            if (unitTypeId == UnitTypeId.Meters) return "m";
+            if (unitTypeId == UnitTypeId.Feet) return "ft";
+            if (unitTypeId == UnitTypeId.FeetFractionalInches) return "ft";
+            if (unitTypeId == UnitTypeId.Inches) return "in";
+            if (unitTypeId == UnitTypeId.SquareMeters) return "m\u00B2";
+            if (unitTypeId == UnitTypeId.SquareFeet) return "ft\u00B2";
+            if (unitTypeId == UnitTypeId.SquareMillimeters) return "mm\u00B2";
+            return unitTypeId.TypeId;
+        }
+
         public Transform GetElemTransform(FamilyInstance familyInstance)
         {
             try { return familyInstance.GetTotalTransform(); }

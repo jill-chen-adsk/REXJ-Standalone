@@ -43,11 +43,12 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
             RvtExtApp.Components.Geometry cmpGeometry = new RvtExtApp.Components.Geometry(rvtUIDoc);
             RvtExtApp.Components.Parameters cmpParameters = new RvtExtApp.Components.Parameters(cmpAttribute, rvtUIDoc);
             RvtExtApp.Components.Settings cmpSettings = new RvtExtApp.Components.Settings(rvtUIDoc);
+            IntPtr ownerHandle = rvtUIApp.MainWindowHandle;
 
             // プログレスバー
             ProgressBarThread progressBarThread = new ProgressBarThread(false, true);
-
-            System.Windows.Forms.DialogResult retDlg;
+            progressBarThread.SetOwner(ownerHandle);
+            progressBarThread.SetCommandTitle(WeaveCommandTitles.RoomToArea(cmpAttribute));
 
             // 戻り値
             Revit.UI.Result retExtCom = Revit.UI.Result.Cancelled;
@@ -65,7 +66,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                 Revit.DB.ViewPlan activeViewAreaPlan = cmpElements.ActiveViewAreaPlan;
                 if (activeViewAreaPlan == null)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_VIEWAREA"));
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_VIEWAREA"));
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -76,7 +77,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                 Collections.Generic.IList<Revit.DB.Architecture.Room> selSetRooms = cmpElements.SelSetRooms;
                 if (selSetRooms.Count == 0)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_SELROOM"));
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_SELROOM"));
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -98,7 +99,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                                                                                  4);
                 if (entDtCmd.ErrMsg != "")
                 {
-                    System.Windows.Forms.MessageBox.Show(entDtCmd.ErrMsg);
+                    ShowMessage(ownerHandle, cmpAttribute, entDtCmd.ErrMsg);
 
                     trans.RollBack();
                     cmpParameters.SetSharedParamDefault();
@@ -124,12 +125,9 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                 entDtArea.GetDataRoomConvertedToArea(entDtCmd.Data[1], entDtCmd.Data[2], entDtCmd.Data[3]);
 
                 // 画面表示
-                RvtExtApp.RoomConvertedToArea.FormChoiceWork form = new RvtExtApp.RoomConvertedToArea.FormChoiceWork(cmpAttribute,
-                                                                                                                     entDtRoom,
-                                                                                                                     entDtArea,
-                                                                                                                     entDtCmd);
-                retDlg = form.ShowDialog();
-                if (retDlg == System.Windows.Forms.DialogResult.OK)
+                var form = new FormChoiceWorkWPF(cmpAttribute, entDtRoom, entDtArea, entDtCmd);
+                bool? dialogResult = WeaveDialogHost.ShowDialog(form, ownerHandle);
+                if (dialogResult == true)
                 {
                     // コマンドデータ設定
                     entDtCmd.SetData();
@@ -156,7 +154,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                 // 面積計算オプションをチェック
                 if (cmpService.CheckRoomBndLocType(entDtRoom.RoomBndLocType) == false)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_GETAREACALCOPT"));
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_GETAREACALCOPT"));
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -174,7 +172,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                 if (cmpService.CreateAreaBndByRoomBnd(selSetRooms, activeViewAreaPlan, ref progressBarThread, ref trans) == false)
                 {
                     progressBarThread.Close();
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_CREATEAREABNDBYROOMBND"));
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_CREATEAREABNDBYROOMBND"));
 
                     trans.RollBack();
                     cmpParameters.SetSharedParamDefault();
@@ -190,7 +188,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                 if (cmpService.CreateAreaByRoom(selSetRooms, activeViewAreaPlan, ref areas, ref progressBarThread) == false)
                 {
                     progressBarThread.Close();
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_CREATEAREABYROOM"));
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_CREATEAREABYROOM"));
 
                     trans.RollBack();
                     cmpParameters.SetSharedParamDefault();
@@ -208,7 +206,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                     if (cmpService.CreateAreaTag(activeViewAreaPlan, areas, entDtArea.TagNameOpt, entDtArea.TagID, ref progressBarThread) == false)
                     {
                         progressBarThread.Close();
-                        System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_CREATEAREATAG"));
+                        ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_CREATEAREATAG"));
 
                         trans.RollBack();
                         cmpParameters.SetSharedParamDefault();
@@ -234,7 +232,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                     progressBarThread.Close();
                 }
 
-                if (trans.GetStatus() != Revit.DB.TransactionStatus.Committed)
+                if (trans.GetStatus() == Revit.DB.TransactionStatus.Started)
                 {
                     trans.RollBack();
                 }
@@ -242,7 +240,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                 string errMsg = cmpAttribute.ResourceText("IDS_ERR_COMMAND")
                     + System.Environment.NewLine + System.Environment.NewLine
                     + ex.GetType().Name + ": " + ex.Message;
-                System.Windows.Forms.MessageBox.Show(errMsg);
+                ShowMessage(ownerHandle, cmpAttribute, errMsg);
             }
 
             // トランザクションを統合
@@ -250,6 +248,18 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
 
             cmpParameters.SetSharedParamDefault();
             return retExtCom;
+        }
+
+        private static void ShowMessage(
+            IntPtr ownerHandle,
+            RvtExtApp.Components.Attribute cmpAttribute,
+            string message)
+        {
+            WeaveDialogHost.ShowMessage(
+                ownerHandle,
+                message,
+                WeaveCommandTitles.RoomToArea(cmpAttribute),
+                cmpAttribute.ResourceText("IDS_TXT_OK"));
         }
 
         #endregion Member Functions

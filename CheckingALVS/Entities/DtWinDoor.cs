@@ -1481,12 +1481,14 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
             }
 
             // 計算1(c1)
-            //  天井高さ >= 3000 :
-            //    天井高さ / 2 < 2100 : 2100
+            //  天井高さ >= 3000mm :
+            //    天井高さ / 2 < 2100mm : 2100mm
             //                       : 天井高さ / 2
             double c1 = 0.0;
-            stdBtm = 2100;
-            if (dCeilingHeight >= 3000)
+            var geometry = base.CmpGeometry;
+            double ceilingHeightMin = geometry.FromMillimeters(3000);
+            stdBtm = geometry.FromMillimeters(2100);
+            if (dCeilingHeight >= ceilingHeightMin)
             {
                 dValue = dCeilingHeight * 0.5;
                 if (dValue < stdBtm)
@@ -1501,11 +1503,11 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
 
             // 計算2(c2)
             //  計算1(c1) > 0 : 計算1(c1)
-            //    防煙壁長さ >= 800 : 天井高さ - 800
-            //      防煙壁長さ >= 500 : 天井高さ - 防煙壁長さ
+            //    防煙壁長さ >= 800mm : 天井高さ - 800mm
+            //      防煙壁長さ >= 500mm : 天井高さ - 防煙壁長さ
             double c2 = 0.0;
-            stdBtm = 500;
-            stdTop = 800;
+            stdBtm = geometry.FromMillimeters(500);
+            stdTop = geometry.FromMillimeters(800);
             if (c1 > 0)
             {
                 c2 = c1;

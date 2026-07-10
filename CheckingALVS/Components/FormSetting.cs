@@ -50,6 +50,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                             RvtExtApp.Entities.DtCmd entDtCmd)
         {
             InitializeComponent();
+            RevitFormTheme.Apply(this);
             _CmpAttribute = cmpAttribute;
             _EntDtCmd = entDtCmd;
             _EntDtCmd.CommandKind = commanndKind;
@@ -82,7 +83,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
             switch (_EntDtCmd.CommandKind)
             {
                 case 0:// lighting
-                    this.Text = _CmpAttribute.ResourceText("IDS_TXT_SETTING");
+                    this.Text = CheckingCommandTitles.GetCommandTitle(_CmpAttribute, 0);
                     //hide groupbox
                     gpbAreaToBeSmoked.Visible = false;
                     gpbAreaToBeVentilated.Visible = false;
@@ -123,7 +124,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                     break;
 
                 case 1:// Ventilation
-                    this.Text = _CmpAttribute.ResourceText("IDS_TXT_SMOKE_SETTING");
+                    this.Text = CheckingCommandTitles.GetCommandTitle(_CmpAttribute, 1);
                     //Hide groupbox
                     gpbAreaToBeVentilated.Visible = false;
                     gpbEffectiveVentilationArea.Visible = false;
@@ -153,7 +154,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                     break;
 
                 case 2:// Smoke Exhoustion
-                    this.Text = _CmpAttribute.ResourceText("IDS_TXT_VENTILATION_SETTING");
+                    this.Text = CheckingCommandTitles.GetCommandTitle(_CmpAttribute, 2);
                     //Hide groupbox
                     gpbAreaToBeSmoked.Visible = false;
                     gpbEffectiveSmokeExtractionArea.Visible = false;

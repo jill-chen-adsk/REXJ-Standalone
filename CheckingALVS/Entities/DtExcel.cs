@@ -357,7 +357,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                 if (colName == base.ColNameArea)
                 {
                     data.Rows[0][colName] = base.CmpAttribute.ResourceText("IDS_TXT_LEGALAREA");
-                    data.Rows[1][colName] = "(" + base.CmpAttribute.ResourceText("IDS_TXT_M2") + ")";
+                    data.Rows[1][colName] = "(" + base.CmpGeometry.AreaUnitLabel + ")";
                     continue;
                 }
 
@@ -403,7 +403,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                             break;
                     }
                     data.Rows[0][colName] = sValue;
-                    data.Rows[1][colName] = "(" + base.CmpAttribute.ResourceText("IDS_TXT_M2") + ")";
+                    data.Rows[1][colName] = "(" + base.CmpGeometry.AreaUnitLabel + ")";
                     continue;
                 }
 
@@ -419,7 +419,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                 if (colName == base.ColNameHorizontalDist)
                 {
                     data.Rows[0][colName] = "d";
-                    data.Rows[1][colName] = "";
+                    data.Rows[1][colName] = "(" + base.CmpGeometry.LengthUnitLabel + ")";
                     continue;
                 }
 
@@ -427,7 +427,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                 if (colName == base.ColNameVerticalDist)
                 {
                     data.Rows[0][colName] = "h";
-                    data.Rows[1][colName] = "";
+                    data.Rows[1][colName] = "(" + base.CmpGeometry.LengthUnitLabel + ")";
                     continue;
                 }
 
@@ -506,7 +506,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                             break;
                     }
                     data.Rows[0][colName] = sValue;
-                    data.Rows[1][colName] = "";
+                    data.Rows[1][colName] = "(" + base.CmpGeometry.LengthUnitLabel + ")";
                     continue;
                 }
 
@@ -529,7 +529,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                             break;
                     }
                     data.Rows[0][colName] = sValue;
-                    data.Rows[1][colName] = "";
+                    data.Rows[1][colName] = "(" + base.CmpGeometry.LengthUnitLabel + ")";
                     continue;
                 }
 
@@ -537,7 +537,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                 if (colName == base.ColNameUsableOpenArea)
                 {
                     data.Rows[0][colName] = base.CmpAttribute.ResourceText("IDS_TXT_OPENINGUSABLEAREA");
-                    data.Rows[1][colName] = "";
+                    data.Rows[1][colName] = "(" + base.CmpGeometry.AreaUnitLabel + ")";
                     continue;
                 }
 
@@ -560,7 +560,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                             break;
                     }
                     data.Rows[0][colName] = sValue;
-                    data.Rows[1][colName] = "";
+                    data.Rows[1][colName] = "(" + base.CmpGeometry.AreaUnitLabel + ")";
                     continue;
                 }
 
@@ -885,10 +885,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                                             if (UtilValue.IsNumber(sValue) == true)
                                             {
                                                 dValue = double.Parse(sValue);
-                                                if (_ColConvMAry[k] == true)
-                                                {
-                                                    dValue /= 1000.0;
-                                                }
+                                                // Length columns are already in project display units.
                                                 //sValue = UtilValue.Rounding(dValue, 3, 2);
                                                 sValue = dValue.ToString();
                                             }

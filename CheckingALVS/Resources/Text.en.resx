@@ -478,7 +478,7 @@
     <comment>共有パラメータ 定義名 部屋種類</comment>
   </data>
   <data name="IDS_SHPARAM_DEF_ROOM_LEGALAREA" xml:space="preserve">
-    <value>Legal Area</value>
+    <value>Legal Area (Room shared)</value>
     <comment>共有パラメータ 定義名 法定面積</comment>
   </data>
   <data name="IDS_SHPARAM_DEF_ROOM_OUTDOORS" xml:space="preserve">
@@ -1155,5 +1155,14 @@ Width</value>
   <data name="IDS_TXT_WINDOWSMOKEUSABLEAREA" xml:space="preserve">
     <value>Smoke Effective Area</value>
     <comment>排煙有効面積</comment>
+  </data>
+  <data name="IDS_TXT_CMD_DAYLIGHTCHECK" xml:space="preserve">
+    <value>Daylight Check</value>
+  </data>
+  <data name="IDS_TXT_CMD_SMOKEEXHAUST" xml:space="preserve">
+    <value>Smoke Exhaust Check</value>
+  </data>
+  <data name="IDS_TXT_CMD_VENTILATIONCHECK" xml:space="preserve">
+    <value>Ventilation Check</value>
   </data>
 </root>

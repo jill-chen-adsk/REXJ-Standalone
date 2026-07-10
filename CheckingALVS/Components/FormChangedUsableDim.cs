@@ -51,6 +51,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                                     System.Data.DataTable changeData)
         {
             InitializeComponent();
+            RevitFormTheme.Apply(this);
 
             _CmpAttribute = cmpAttribute;
             _EntDtWinDoor = entDtWinDoor;

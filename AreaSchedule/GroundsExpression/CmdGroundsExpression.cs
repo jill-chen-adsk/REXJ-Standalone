@@ -1,6 +1,5 @@
 
 using System;
-using System.Windows;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.AreaSchedule;
@@ -45,9 +44,12 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
             RvtExtApp.Components.Geometry cmpGeometry = new RvtExtApp.Components.Geometry(rvtUIDoc);
             RvtExtApp.Components.Parameters cmpParameters = new RvtExtApp.Components.Parameters(cmpAttribute, rvtUIDoc);
             RvtExtApp.Components.Settings cmpSettings = new RvtExtApp.Components.Settings(rvtUIDoc);
+            IntPtr ownerHandle = rvtUIApp.MainWindowHandle;
 
             // プログレスバー
             ProgressBarThread progressBarThread = new ProgressBarThread(false, true);
+            progressBarThread.SetOwner(ownerHandle);
+            progressBarThread.SetCommandTitle(WeaveCommandTitles.GroundsExpression(cmpAttribute));
 
             // 戻り値
             Revit.UI.Result retExtCom = Revit.UI.Result.Cancelled;
@@ -65,7 +67,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
                 Revit.DB.ViewPlan activeViewAreaPlan = cmpElements.ActiveViewAreaPlan;
                 if (activeViewAreaPlan == null)
                 {
-                    MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_VIEWAREA"), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_VIEWAREA"));
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -75,7 +77,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
                 // 選択セットチェック[エリア]
                 if (cmpElements.SelSetAreas.Count == 0)
                 {
-                    MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_SELAREA"), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_SELAREA"));
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -98,7 +100,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
                 if (entDtCmd.ErrMsg != "")
                 {
                     trans.RollBack();
-                    MessageBox.Show(entDtCmd.ErrMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowMessage(ownerHandle, cmpAttribute, entDtCmd.ErrMsg);
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -127,7 +129,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
 
                 // 画面表示
                 RvtExtApp.GroundsExpression.FormCalcAreaWPF form = new RvtExtApp.GroundsExpression.FormCalcAreaWPF(cmpAttribute, entDtArea, entDtCmd);
-                bool? dialogResult = form.ShowDialog();
+                bool? dialogResult = WeaveDialogHost.ShowDialog(form, ownerHandle);
                 if (dialogResult == true)
                 {
                     // コマンドデータ設定
@@ -157,7 +159,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
                 if (cmpService.SetAreaParameter(cmpElements.SelSetAreas, cmpElements.ActiveViewAreaPlan) == false)
                 {
                     trans.RollBack();
-                    MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_PARAMAREA"), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_PARAMAREA"));
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -187,7 +189,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
                 {
                     trans.RollBack();
                     progressBarThread.Close();
-                    MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_CREATEBASISEXPRESSION"), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_CREATEBASISEXPRESSION"));
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -208,7 +210,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
                 string errMsg = cmpAttribute.ResourceText("IDS_ERR_COMMAND")
                     + System.Environment.NewLine + System.Environment.NewLine
                     + ex.GetType().Name + ": " + ex.Message;
-                MessageBox.Show(errMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowMessage(ownerHandle, cmpAttribute, errMsg);
             }
 
             // トランザクションを統合
@@ -216,6 +218,18 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
 
             cmpParameters.SetSharedParamDefault();
             return retExtCom;
+        }
+
+        private static void ShowMessage(
+            IntPtr ownerHandle,
+            RvtExtApp.Components.Attribute cmpAttribute,
+            string message)
+        {
+            WeaveDialogHost.ShowMessage(
+                ownerHandle,
+                message,
+                WeaveCommandTitles.GroundsExpression(cmpAttribute),
+                cmpAttribute.ResourceText("IDS_TXT_OK"));
         }
 
         #endregion Member Functions

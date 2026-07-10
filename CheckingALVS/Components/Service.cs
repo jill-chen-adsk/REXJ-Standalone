@@ -179,7 +179,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                 double roomHeight = 0.0;
                 if (roomArea != 0.0)
                 {
-                    roomHeight = (roomVol / roomArea) * 1000.0;
+                    roomHeight = roomVol / roomArea;
                 }
                 string roomHeightStr = _CmpSettings.Round(roomHeight).ToString();
                 heights.Add(roomHeightStr);

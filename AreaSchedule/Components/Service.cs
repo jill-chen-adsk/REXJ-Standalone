@@ -113,30 +113,25 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         ///     <P>2021/11/24 Modified Applied Technology</p></history>
         /// ================================================================================
         private
-        string ConvertLengthUnit(double value, int unitLen, int decimalPointLen, int fractionTypeLen, ref double valueRound)
+        string ConvertLengthUnit(double valueInternalFt, int unitLen, int decimalPointLen, int fractionTypeLen, ref double valueInternalFtOut)
         {
-            double unitCoe = _CmpGeometry.UnitCoe;
-            double unitCoeTh = _CmpGeometry.UnitCoeTh;
-            double dValue = value;
-            string sValue = "";
+            var displayUnit = unitLen == 1
+                ? _CmpGeometry.AlternateLengthUnitTypeId
+                : _CmpGeometry.LengthUnitTypeId;
 
-            if (unitLen == 0)
-            {
-                dValue = _CmpSettings.Round(value * unitCoe);
-            }
-            else if (unitLen == 1)
-            {
-                dValue = _CmpSettings.Round(value * unitCoeTh);
-            }
-            sValue = UtilValue.Rounding(dValue, decimalPointLen, fractionTypeLen);
+            double dValue = _CmpSettings.Round(
+                Revit.DB.UnitUtils.ConvertFromInternalUnits(valueInternalFt, displayUnit));
+            string sValue = UtilValue.Rounding(dValue, decimalPointLen, fractionTypeLen);
 
-            valueRound = double.Parse(sValue); ;
-            if (unitLen == 0)
-            {
-                valueRound *= 0.001;
-            }
-
+            valueInternalFtOut = valueInternalFt;
             return sValue;
+        }
+
+        private string FormatAreaFromInternal(double areaInternalSqFt, int decimalPointArea, int fractionTypeArea)
+        {
+            double areaDisplay = Revit.DB.UnitUtils.ConvertFromInternalUnits(
+                areaInternalSqFt, _CmpGeometry.AreaUnitTypeId);
+            return UtilValue.Rounding(areaDisplay, decimalPointArea, fractionTypeArea);
         }
 
         /// ================================================================================
@@ -258,87 +253,98 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
             Revit.DB.SketchPlane sketchPlane = _CmpElements.CreateSketchPlaneProjOrigin();
             trans.Commit();
 
-            // 部屋境界取得
             int cntProgress = 0;
             progressBarThread.SetData(rooms.Count, cntProgress);
 
-            // 部屋境界位置タイプ
             Revit.DB.SpatialElementBoundaryLocation bndLocType = _CmpSettings.GetRoomAreaComputation();
+            var sessionCurves = new Collections.Generic.List<Revit.DB.Curve>();
 
-            // 部屋
+            Revit.DB.FailureHandlingOptions failureOptions = trans.GetFailureHandlingOptions();
+            failureOptions.SetFailuresPreprocessor(new AreaBoundaryFailuresPreprocessor());
+            trans.SetFailureHandlingOptions(failureOptions);
+
+            trans.Start("CreateAreaBoundaries");
             foreach (Revit.DB.Architecture.Room room in rooms)
             {
-                if (room != null)
+                if (room == null)
                 {
-                    // 部屋の境界線
-                    Collections.Generic.IList<Collections.Generic.IList<Revit.DB.Curve>> roomCrvAryAry =
-                        new Collections.Generic.List<Collections.Generic.IList<Revit.DB.Curve>>();
-                    _CmpGeometry.GetRoomCurves(room, bndLocType, ref roomCrvAryAry);
-                    if (roomCrvAryAry != null)
+                    progressBarThread.SetData(++cntProgress);
+                    continue;
+                }
+
+                Collections.Generic.IList<Collections.Generic.IList<Revit.DB.Curve>> roomCrvAryAry =
+                    new Collections.Generic.List<Collections.Generic.IList<Revit.DB.Curve>>();
+                _CmpGeometry.GetRoomCurves(room, bndLocType, ref roomCrvAryAry);
+                if (roomCrvAryAry != null)
+                {
+                    foreach (Collections.Generic.IList<Revit.DB.Curve> crvAry in roomCrvAryAry)
                     {
-                        foreach (Collections.Generic.IList<Revit.DB.Curve> crvAry in roomCrvAryAry)
+                        if (crvAry == null)
+                            continue;
+
+                        Collections.Generic.IList<Revit.DB.Curve> areaCircleCurves = _CmpGeometry.GetCircle(crvAry);
+                        if (areaCircleCurves != null && areaCircleCurves.Count == 2)
                         {
-                            if (crvAry != null)
-                            {
-                                bool flagCircle = false;
+                            CreateAreaBoundaryCurveIfNeeded(sketchPlane, viewPlan, areaCircleCurves[0], sessionCurves);
+                            CreateAreaBoundaryCurveIfNeeded(sketchPlane, viewPlan, areaCircleCurves[1], sessionCurves);
+                        }
+                        else
+                        {
+                            Collections.Generic.IList<Revit.DB.Curve> mergedCurves =
+                                _CmpGeometry.OptimizeLineVertexNoConvLine(crvAry);
+                            if (mergedCurves == null)
+                                continue;
 
-                                // エリアの境界線を作成
-                                Collections.Generic.IList<Revit.DB.Curve> areaCircleCurves = _CmpGeometry.GetCircle(crvAry);
-                                if (areaCircleCurves != null)
-                                {
-                                    if (areaCircleCurves.Count == 2)
-                                    {
-                                        flagCircle = true;
-                                    }
-                                }
-
-                                // 円の場合
-                                if (flagCircle == true)
-                                {
-                                    bool flagArc1 = false;
-                                    bool flagArc2 = false;
-                                    flagArc1 = CompareAreaCurveElems(areaCircleCurves[0], viewPlan);
-                                    flagArc2 = CompareAreaCurveElems(areaCircleCurves[1], viewPlan);
-
-                                    if (flagArc1 == false)
-                                    {
-                                        trans.Start("ModelCurveArc1");
-                                        Revit.DB.ModelCurve modelCurve = _CmpGeometry.RvtDBDoc.Create.NewAreaBoundaryLine(sketchPlane, areaCircleCurves[0], viewPlan);
-                                        trans.Commit();
-                                    }
-                                    if (flagArc2 == false)
-                                    {
-                                        trans.Start("ModelCurveArc2");
-                                        Revit.DB.ModelCurve modelCurve = _CmpGeometry.RvtDBDoc.Create.NewAreaBoundaryLine(sketchPlane, areaCircleCurves[1], viewPlan);
-                                        trans.Commit();
-                                    }
-                                }
-
-                                // 円以外の場合
-                                else
-                                {
-                                    foreach (Revit.DB.Curve curve in crvAry)
-                                    {
-                                        if (curve != null)
-                                        {
-                                            if (CompareAreaCurveElems(curve, viewPlan) == false)
-                                            {
-                                                trans.Start("ModelCurve");
-                                                Revit.DB.ModelCurve modelCurve = _CmpGeometry.RvtDBDoc.Create.NewAreaBoundaryLine(sketchPlane, curve, viewPlan);
-                                                trans.Commit();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            foreach (Revit.DB.Curve curve in mergedCurves)
+                                CreateAreaBoundaryCurveIfNeeded(sketchPlane, viewPlan, curve, sessionCurves);
                         }
                     }
                 }
+
                 progressBarThread.SetData(++cntProgress);
             }
+            trans.Commit();
 
             ret = true;
             return ret;
+        }
+
+        void CreateAreaBoundaryCurveIfNeeded(Revit.DB.SketchPlane sketchPlane,
+                                             Revit.DB.ViewPlan viewPlan,
+                                             Revit.DB.Curve curve,
+                                             Collections.Generic.IList<Revit.DB.Curve> sessionCurves)
+        {
+            if (curve == null || ShouldSkipAreaBoundaryCurve(curve, viewPlan, sessionCurves))
+                return;
+
+            _CmpGeometry.RvtDBDoc.Create.NewAreaBoundaryLine(sketchPlane, curve, viewPlan);
+            sessionCurves.Add(curve);
+        }
+
+        bool ShouldSkipAreaBoundaryCurve(Revit.DB.Curve areaCurve,
+                                         Revit.DB.View view,
+                                         Collections.Generic.IList<Revit.DB.Curve> sessionCurves)
+        {
+            if (CompareAreaCurveElems(areaCurve, view))
+                return true;
+
+            if (sessionCurves == null)
+                return false;
+
+            foreach (Revit.DB.Curve existing in sessionCurves)
+            {
+                if (existing == null)
+                    continue;
+
+                if (_CmpGeometry.IsEqualCurve2D(areaCurve, existing))
+                    return true;
+
+                if (areaCurve is Revit.DB.Line lineA && existing is Revit.DB.Line lineB
+                    && _CmpGeometry.AreCollinearOverlapping(lineA, lineB))
+                    return true;
+            }
+
+            return false;
         }
 
         /// ================================================================================
@@ -501,26 +507,18 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                         _EntSpArea.RoomNo = "";
                     }
 
-                    // パラメータ値確認
-                    bool paramFlag1 = true;
-                    bool paramFlag2 = true;
-                    if (_EntSpArea.RoomName == "")
-                    {
-                        paramFlag1 = false;
-                    }
-                    if (_EntSpArea.RoomNo == "")
-                    {
-                        paramFlag2 = false;
-                    }
-
                     // エリアのパラメータ設定
                     if (rooms != null)
                     {
-                        if ((paramFlag1 == false) || (paramFlag2 == false))
+                        Revit.DB.XYZ areaPos = _CmpGeometry.GetElementLocPos(area);
+                        Revit.DB.Architecture.Room fillRoom = _CmpElements.GetRoomInPoint(rooms, areaPos);
+                        if (fillRoom == null)
                         {
-                            Revit.DB.XYZ areaPos = _CmpGeometry.GetElementLocPos(area);
-                            Revit.DB.Architecture.Room fillRoom = _CmpElements.GetRoomInPoint(rooms, areaPos);
+                            fillRoom = _CmpElements.GetRoomInPoint(rooms, GetAreaReferencePoint(area));
+                        }
 
+                        if (fillRoom != null)
+                        {
                             if (SetAreaRoomName(area, fillRoom) == false)
                             {
                                 ret = false;
@@ -561,8 +559,14 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                     Revit.DB.Curve curve = curveElem.GeometryCurve as Revit.DB.Curve;
                     if (curve != null)
                     {
-                        // エリア線分要素と比較
                         ret = _CmpGeometry.IsEqualCurve2D(areaCurve, curve);
+                        if (ret == false
+                            && areaCurve is Revit.DB.Line lineA
+                            && curve is Revit.DB.Line lineB)
+                        {
+                            ret = _CmpGeometry.AreCollinearOverlapping(lineA, lineB);
+                        }
+
                         if (ret == true)
                         {
                             break;
@@ -618,9 +622,6 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 // 線種取得
                 Revit.DB.Element lineStyle = _CmpElements.LineStyleHidden;
 
-                // 面積の単位をm2に設定
-                _CmpSettings.SetUnitAreaM2(decimalPointArea - 1);
-
                 // エリア境界取得
                 Collections.Generic.IList<Collections.Generic.IList<Collections.Generic.IList<Revit.DB.Curve>>> areasCrvAryAry = _CmpGeometry.AreasBoundaries(areas);
 
@@ -660,6 +661,18 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                             if (figureType == 0)
                             {
                                 figureType = CheckArc(optimizeCurves);
+                            }
+
+                            // 直交多角形（L字・T字など）
+                            if (figureType == 0)
+                            {
+                                figureType = CheckOrthogonalPolygon(optimizeCurves);
+                            }
+
+                            // 面取り正方形・正八角形
+                            if (figureType == 0)
+                            {
+                                figureType = CheckChamferedSquare(optimizeCurves);
                             }
 
                             // Diagnostic: log segment info
@@ -907,6 +920,34 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         }
 
         /// ================================================================================
+        /// <summary>直交多角形のチェック</summary>
+        ///
+        /// <returns><p>40 = 直交多角形（矩形分割）</p></returns>
+        /// ================================================================================
+        public
+        int CheckOrthogonalPolygon(Collections.Generic.IList<Revit.DB.Curve> figure)
+        {
+            if (_CmpGeometry.TryDecomposeOrthogonalPolygon(figure, out _, out _))
+                return 40;
+
+            return 0;
+        }
+
+        /// ================================================================================
+        /// <summary>面取り正方形・正八角形のチェック</summary>
+        ///
+        /// <returns><p>50 = 面取り正方形（中央矩形 + 四隅直角三角形）</p></returns>
+        /// ================================================================================
+        public
+        int CheckChamferedSquare(Collections.Generic.IList<Revit.DB.Curve> figure)
+        {
+            if (_CmpGeometry.IsChamferedSquarePolygon(figure))
+                return 50;
+
+            return 0;
+        }
+
+        /// ================================================================================
         /// <summary>円弧のチェック</summary>
         ///
         /// <param name="figure">図形の線分</param>
@@ -1062,7 +1103,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         ///                                   <p>20= 三角形</p>
         ///                                   <p>30= 円</p>
         ///                                   <p>31= 円弧</p>
-        ///                                   <p>32= 弓形</p></param>
+        ///                                   <p>32= 弓形</p>
+        ///                                   <p>40= 直交多角形</p></param>
         /// <param name="unitLength"      ><p>長さの単位</p>
         ///                                   <p>0=mm</p>
         ///                                   <p>1=m</p></param>
@@ -1110,8 +1152,6 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         {
             bool ret = false;
 
-            double unitCoeM2 = _CmpGeometry.UnitCoeM2;
-            double unitCoeTh = _CmpGeometry.UnitCoeTh;
             string widthStr = "";
             string heightStr = "";
             string upSideStr = "";
@@ -1168,13 +1208,6 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
             {
                 index2 = lbIndices[1];
             }
-            // Ensure index1 → index2 are sequential around the polygon
-            if (figure.Count > 2 && UtilValue.GetNextIndex(index1, figure.Count) != index2)
-            {
-                int tmp = index1;
-                index1 = index2;
-                index2 = tmp;
-            }
 
             // 正方形・長方形
             if ((figureType == 10) || (figureType == 12))
@@ -1198,12 +1231,16 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 // 面積
                 areaExpnStr = widthStr + " × " + heightStr;
                 areaValue = width * height;
-                areaCalcStr = UtilValue.Rounding(areaValue, decimalPointArea, fractionTypeArea);
+                areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
                 ret = true;
             }
             // ひし形
             else if (figureType == 11)
             {
+                if (UtilValue.GetNextIndex(index1, figure.Count) != index2)
+                {
+                    int tmp = index1; index1 = index2; index2 = tmp;
+                }
                 index3 = UtilValue.GetNextIndex(index2, figure.Count);
                 index4 = UtilValue.GetNextIndex(index3, figure.Count);
 
@@ -1234,7 +1271,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                     // 面積
                     areaExpnStr = widthStr + " × " + heightStr + " ÷ " + "2";
                     areaValue = width * height / 2;
-                    areaCalcStr = UtilValue.Rounding(areaValue, decimalPointArea, fractionTypeArea);
+                    areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
                     ret = true;
                 }
             }
@@ -1242,6 +1279,15 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
             // 平行四辺形・台形
             else if ((figureType == 13) || (figureType == 14))
             {
+                // Ensure sequential ordering: index1 → index2 → index3 → index4
+                // GetLeftBottomCurveIndex may return non-sequential pairs (e.g., [0,3])
+                // We need index2 = next after index1, so swap if needed
+                if (UtilValue.GetNextIndex(index1, figure.Count) != index2)
+                {
+                    int tmp = index1;
+                    index1 = index2;
+                    index2 = tmp;
+                }
                 index3 = UtilValue.GetNextIndex(index2, figure.Count);
                 index4 = UtilValue.GetNextIndex(index3, figure.Count);
 
@@ -1332,7 +1378,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 {
                     areaExpnStr = btSideStr + " × " + heightStr;
                     areaValue = btSide * height;
-                    areaCalcStr = UtilValue.Rounding(areaValue, decimalPointArea, fractionTypeArea);
+                    areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
                     ret = true;
                 }
                 // 面積(台形)
@@ -1340,7 +1386,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 {
                     areaExpnStr = "(" + upSideStr + " ＋ " + btSideStr + ")" + " × " + heightStr + " ÷ " + "2";
                     areaValue = (upSide + btSide) * height / 2;
-                    areaCalcStr = UtilValue.Rounding(areaValue, decimalPointArea, fractionTypeArea);
+                    areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
                     ret = true;
                 }
             }
@@ -1398,7 +1444,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 // 面積
                 areaExpnStr = btSideStr + " × " + heightStr + " ÷ " + "2";
                 areaValue = btSide * height / 2;
-                areaCalcStr = UtilValue.Rounding(areaValue, decimalPointArea, fractionTypeArea);
+                areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
                 ret = true;
             }
 
@@ -1423,7 +1469,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 // 面積
                 areaExpnStr = radiusStr + " × " + radiusStr + " × " + piStr;
                 areaValue = radius * radius * double.Parse(piStr);
-                areaCalcStr = UtilValue.Rounding(areaValue, decimalPointArea, fractionTypeArea);
+                areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
                 ret = true;
             }
 
@@ -1482,7 +1528,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 // 面積
                 areaExpnStr = radiusStr + " × " + radiusStr + " × " + piStr + " × " + angleStr + " ÷ " + "360";
                 areaValue = radius * radius * double.Parse(piStr) * double.Parse(angleStr) / 360;
-                areaCalcStr = UtilValue.Rounding(areaValue, decimalPointArea, fractionTypeArea);
+                areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
                 ret = true;
             }
 
@@ -1555,10 +1601,141 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 // 面積
                 areaExpnStr = "(" + radiusStr + " × " + radiusStr + " × " + piStr + " × " + angleStr + " ÷ " + "360" + ")" + " － " + "(" + btSideStr + " × " + heightStr + " ÷ " + "2" + ")";
                 areaValue = (radius * radius * double.Parse(piStr) * double.Parse(angleStr) / 360) - (btSide * height / 2);
-                areaCalcStr = UtilValue.Rounding(areaValue, decimalPointArea, fractionTypeArea);
+                areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
+                ret = true;
+            }
+            // 直交多角形（L字・T字など）
+            else if (figureType == 40)
+            {
+                if (_CmpGeometry.TryDecomposeOrthogonalPolygon(figure,
+                        out Collections.Generic.List<OrthogonalRectanglePiece> pieces,
+                        out Collections.Generic.List<Revit.DB.Line> auxiliaryLines) == false)
+                {
+                    return false;
+                }
+
+                var termStrings = new Collections.Generic.List<string>();
+                areaValue = 0.0;
+                foreach (OrthogonalRectanglePiece piece in pieces)
+                {
+                    double pieceWidthF = piece.WidthInternal;
+                    double pieceHeightF = piece.HeightInternal;
+                    double pieceWidth = pieceWidthF;
+                    double pieceHeight = pieceHeightF;
+                    string pieceWidthStr = ConvertLengthUnit(pieceWidthF, unitLength, decimalPointLen, fractionTypeLen, ref pieceWidth);
+                    string pieceHeightStr = ConvertLengthUnit(pieceHeightF, unitLength, decimalPointLen, fractionTypeLen, ref pieceHeight);
+                    termStrings.Add(pieceWidthStr + " × " + pieceHeightStr);
+                    areaValue += pieceWidth * pieceHeight;
+                }
+
+                areaExpnStr = string.Join(" + ", termStrings);
+                areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
+
+                var labeledDimensions = new Collections.Generic.HashSet<string>();
+                foreach (Revit.DB.Curve curve in figure)
+                {
+                    if (curve is not Revit.DB.Line boundaryLine)
+                        continue;
+
+                    double segLenF = boundaryLine.Length;
+                    double segLen = segLenF;
+                    string segLenStr = ConvertLengthUnit(segLenF, unitLength, decimalPointLen, fractionTypeLen, ref segLen);
+                    Revit.DB.XYZ start = boundaryLine.GetEndPoint(0);
+                    Revit.DB.XYZ end = boundaryLine.GetEndPoint(1);
+                    bool isHorizontal = Math.Abs(end.X - start.X) >= Math.Abs(end.Y - start.Y);
+                    string dimensionKey = segLenStr + (isHorizontal ? "|H" : "|V");
+                    if (!labeledDimensions.Add(dimensionKey))
+                        continue;
+
+                    Revit.DB.XYZ midPosSeg = _CmpGeometry.Center2Point(boundaryLine);
+                    values.Add(segLenStr);
+                    valuesPos.Add(midPosSeg);
+                    valuesVec.Add(_CmpGeometry.GetLeaning(midPosSeg, boundaryLine.GetEndPoint(1)));
+                }
+
+                foreach (Revit.DB.Line auxiliaryLine in auxiliaryLines)
+                {
+                    if (auxiliaryLine != null)
+                        lines.Add(auxiliaryLine);
+                }
+
+                ret = true;
+            }
+            // 面取り正方形・正八角形
+            else if (figureType == 50)
+            {
+                if (_CmpGeometry.TryDecomposeChamferedSquare(figure,
+                        out ChamferedSquareDecomposition decomposition,
+                        out Collections.Generic.List<Revit.DB.Line> auxiliaryLines) == false)
+                {
+                    return false;
+                }
+
+                double bboxSideF = decomposition.BboxSideInternal;
+                double chamferLegF = decomposition.ChamferLegInternal;
+                double bboxSide = bboxSideF;
+                double chamferLeg = chamferLegF;
+                string bboxSideStr = ConvertLengthUnit(bboxSideF, unitLength, decimalPointLen, fractionTypeLen, ref bboxSide);
+                string chamferLegStr = ConvertLengthUnit(chamferLegF, unitLength, decimalPointLen, fractionTypeLen, ref chamferLeg);
+
+                areaExpnStr = bboxSideStr + " × " + bboxSideStr + " － 4 × (" +
+                    chamferLegStr + " × " + chamferLegStr + " ÷ 2)";
+                areaValue = decomposition.AreaInternal;
+                areaCalcStr = FormatAreaFromInternal(areaValue, decimalPointArea, fractionTypeArea);
+
+                var labeledDimensions = new Collections.Generic.HashSet<string>();
+                foreach (Revit.DB.Curve curve in figure)
+                {
+                    if (curve is not Revit.DB.Line boundaryLine)
+                        continue;
+
+                    double segLenF = boundaryLine.Length;
+                    double segLen = segLenF;
+                    string segLenStr = ConvertLengthUnit(segLenF, unitLength, decimalPointLen, fractionTypeLen, ref segLen);
+                    string orientation = ClassifyBoundaryEdgeForLabel(boundaryLine);
+                    string dimensionKey = segLenStr + "|" + orientation;
+                    if (!labeledDimensions.Add(dimensionKey))
+                        continue;
+
+                    Revit.DB.XYZ midPosSeg = _CmpGeometry.Center2Point(boundaryLine);
+                    values.Add(segLenStr);
+                    valuesPos.Add(midPosSeg);
+                    valuesVec.Add(_CmpGeometry.GetLeaning(midPosSeg, boundaryLine.GetEndPoint(1)));
+                }
+
+                if (labeledDimensions.Add(chamferLegStr + "|Leg"))
+                {
+                    double z = figure[0].GetEndPoint(0).Z;
+                    Revit.DB.XYZ legMid = _CmpGeometry.Center2Point(
+                        new Revit.DB.XYZ(decomposition.MinX + chamferLegF, decomposition.MaxY, z),
+                        new Revit.DB.XYZ(decomposition.MinX + chamferLegF, decomposition.MaxY - chamferLegF, z));
+                    values.Add(chamferLegStr);
+                    valuesPos.Add(legMid);
+                    valuesVec.Add(new Revit.DB.XYZ(0, -1, 0));
+                }
+
+                foreach (Revit.DB.Line auxiliaryLine in auxiliaryLines)
+                {
+                    if (auxiliaryLine != null)
+                        lines.Add(auxiliaryLine);
+                }
+
                 ret = true;
             }
             return ret;
+        }
+
+        private static string ClassifyBoundaryEdgeForLabel(Revit.DB.Line line)
+        {
+            Revit.DB.XYZ start = line.GetEndPoint(0);
+            Revit.DB.XYZ end = line.GetEndPoint(1);
+            double dx = System.Math.Abs(end.X - start.X);
+            double dy = System.Math.Abs(end.Y - start.Y);
+            if (dy < 1.0e-6)
+                return "H";
+            if (dx < 1.0e-6)
+                return "V";
+            return "D";
         }
 
         /// ================================================================================
@@ -1697,6 +1874,12 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 return ret;
             }
 
+            if (SetAreaParameter(areas, viewPlan) == false)
+            {
+                ret = false;
+                return ret;
+            }
+
             if (rooms != null)
             {
                 int cntProgress = 0;
@@ -1738,6 +1921,100 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
             return ret;
         }
 
+        private Revit.DB.XYZ GetAreaReferencePoint(Revit.DB.Area area)
+        {
+            Revit.DB.XYZ pos = _CmpGeometry.GetElementLocPos(area);
+            if (pos != null && !pos.IsAlmostEqualTo(Revit.DB.XYZ.Zero))
+                return pos;
+
+            Collections.Generic.IList<Collections.Generic.IList<Revit.DB.Curve>> loops = null;
+            _CmpGeometry.GetAreaCurves(area, ref loops);
+            if (loops == null || loops.Count == 0 || loops[0].Count == 0)
+                return Revit.DB.XYZ.Zero;
+
+            double x = 0.0;
+            double y = 0.0;
+            double z = 0.0;
+            int count = 0;
+            foreach (Revit.DB.Curve curve in loops[0])
+            {
+                Revit.DB.XYZ point = curve.GetEndPoint(0);
+                x += point.X;
+                y += point.Y;
+                z += point.Z;
+                count++;
+            }
+
+            if (count == 0)
+                return Revit.DB.XYZ.Zero;
+
+            return new Revit.DB.XYZ(x / count, y / count, z / count);
+        }
+
+        private static bool RoomNumbersEqual(string left, string right)
+        {
+            if (left == right)
+                return true;
+
+            if (string.IsNullOrWhiteSpace(left) || string.IsNullOrWhiteSpace(right))
+                return false;
+
+            string leftTrimmed = left.Trim();
+            string rightTrimmed = right.Trim();
+            if (leftTrimmed == rightTrimmed)
+                return true;
+
+            if (int.TryParse(leftTrimmed, System.Globalization.NumberStyles.Integer,
+                    System.Globalization.CultureInfo.InvariantCulture, out int leftNumber) &&
+                int.TryParse(rightTrimmed, System.Globalization.NumberStyles.Integer,
+                    System.Globalization.CultureInfo.InvariantCulture, out int rightNumber))
+            {
+                return leftNumber == rightNumber;
+            }
+
+            return false;
+        }
+
+        private bool AreaIdentifiersMatch(string areaName, string areaNumber, string roomName, string roomNumber)
+        {
+            if (string.IsNullOrEmpty(areaName) || string.IsNullOrEmpty(areaNumber))
+                return false;
+
+            return areaName == roomName && RoomNumbersEqual(areaNumber, roomNumber);
+        }
+
+        private bool AreaMatchesRoomByIdentifiers(Revit.DB.Area area, string roomName, string roomNumber)
+        {
+            _EntSpArea.CurrentElem = (Revit.DB.Element)area;
+
+            if (AreaIdentifiersMatch(_EntSpArea.RoomName, _EntSpArea.RoomNo, roomName, roomNumber))
+                return true;
+
+            string builtInName = _EntSpArea.AreaName ?? string.Empty;
+            string builtInNumber = GetAreaBuiltInNumber(area);
+            return AreaIdentifiersMatch(builtInName, builtInNumber, roomName, roomNumber);
+        }
+
+        private static string GetAreaBuiltInNumber(Revit.DB.Area area)
+        {
+            Revit.DB.Parameter param = area.get_Parameter(Revit.DB.BuiltInParameter.ROOM_NUMBER);
+            if (param == null)
+                return string.Empty;
+
+            if (param.StorageType == Revit.DB.StorageType.String)
+                return param.AsString() ?? string.Empty;
+
+            return param.AsValueString() ?? string.Empty;
+        }
+
+        private bool AreaMatchesRoomSpatially(Revit.DB.Area area, Revit.DB.Architecture.Room room)
+        {
+            Revit.DB.XYZ areaPos = GetAreaReferencePoint(area);
+            return areaPos != null
+                && !areaPos.IsAlmostEqualTo(Revit.DB.XYZ.Zero)
+                && room.IsPointInRoom(areaPos);
+        }
+
         /// ================================================================================
         /// <summary>部屋名と部屋番号が一致するエリア取得</summary>
         ///
@@ -1761,23 +2038,18 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
 
             if (areas != null)
             {
-                // エリア
                 foreach (Revit.DB.Area area in areas)
                 {
-                    // 注：暗黙の型変換ではRevitAPIのElementとRevitAPIUIのElementを取り違えてしまいエラーが出るため型変換を明示している
-                    _EntSpArea.CurrentElem = (Revit.DB.Element)area;
+                    if (AreaMatchesRoomByIdentifiers(area, roomName, roomNumber))
+                        retAreas.Add(area);
+                }
 
-                    // エリア名・エリア番号
-                    string areaName = _EntSpArea.RoomName;
-                    string areaNumber = _EntSpArea.RoomNo;
-
-                    // 名前と番号を比較
-                    if ((areaName != null) && (areaNumber != null))
+                if (retAreas.Count == 0)
+                {
+                    foreach (Revit.DB.Area area in areas)
                     {
-                        if ((areaName == roomName) && (areaNumber == roomNumber))
-                        {
+                        if (AreaMatchesRoomSpatially(area, room))
                             retAreas.Add(area);
-                        }
                     }
                 }
             }
@@ -1796,7 +2068,6 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         public
         System.Data.DataTable GetWarningRoomsTable(Collections.Generic.IList<Revit.DB.Architecture.Room> rooms)
         {
-            double unitCoeM2 = _CmpGeometry.UnitCoeM2;
             System.Data.DataTable table = new System.Data.DataTable();
             table.Columns.Add("RoomName", typeof(string));
             table.Columns.Add("RoomNumber", typeof(string));
@@ -1811,16 +2082,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                     _EntSpRoom.CurrentElem = room;
 
                     // Revitの面積と計算面積
-                    double roomRvtArea = _EntSpRoom.RoomArea * unitCoeM2;
-                    string roomRvtAreaStr = roomRvtArea.ToString();
-                    double roomLglArea = _EntSpRoom.LegalArea * unitCoeM2;
-                    string roomLglAreaStr = roomLglArea.ToString();
-
-                    // 面積誤差が大きいと警告対象
-                    if (roomRvtAreaStr.Length > roomLglAreaStr.Length)
-                    {
-                        roomRvtAreaStr = roomRvtAreaStr.Substring(0, roomLglAreaStr.Length);
-                    }
+                    string roomRvtAreaStr = FormatAreaFromInternal(_EntSpRoom.RoomArea, 2, 0);
+                    string roomLglAreaStr = FormatAreaFromInternal(_EntSpRoom.LegalArea, 2, 0);
 
                     // 警告する部屋をテーブルデータに設定
                     System.Data.DataRow row = table.NewRow();

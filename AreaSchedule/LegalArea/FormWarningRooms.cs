@@ -29,6 +29,9 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
         /// <summary>警告する部屋のデータ</summary>
         private System.Data.DataTable _Data;
 
+        /// <summary>面積表示単位</summary>
+        private string _AreaUnitLabel;
+
         #endregion Memeber Variables
 
         // コンストラクタ
@@ -43,11 +46,13 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
         /// <history>2011/08/02 Created GSA,Inc. Shinichi Ishii</history>
         /// ================================================================================
         public FormWarningRooms(RvtExtApp.Components.Attribute cmpAttribute,
-                                System.Data.DataTable data)
+                                System.Data.DataTable data,
+                                string areaUnitLabel)
         {
             InitializeComponent();
             _CmpAttribute = cmpAttribute;
             _Data = data;
+            _AreaUnitLabel = areaUnitLabel ?? string.Empty;
         }
 
         #endregion Constructor
@@ -68,8 +73,8 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
 
             this.dgvRooms.Columns[0].HeaderText = _CmpAttribute.ResourceText("IDS_TXT_ROOMNAME");
             this.dgvRooms.Columns[1].HeaderText = _CmpAttribute.ResourceText("IDS_TXT_ROOMNUMBER");
-            this.dgvRooms.Columns[2].HeaderText = _CmpAttribute.ResourceText("IDS_TXT_AREA_RVT");
-            this.dgvRooms.Columns[3].HeaderText = _CmpAttribute.ResourceText("IDS_TXT_AREA_LEGAL");
+            this.dgvRooms.Columns[2].HeaderText = string.Format(_CmpAttribute.ResourceText("IDS_TXT_AREA_RVT"), _AreaUnitLabel);
+            this.dgvRooms.Columns[3].HeaderText = string.Format(_CmpAttribute.ResourceText("IDS_TXT_AREA_LEGAL"), _AreaUnitLabel);
             this.btnOK.Text = "&" + _CmpAttribute.ResourceText("IDS_TXT_OK");
             this.btnCancel.Text = _CmpAttribute.ResourceText("IDS_TXT_CANCEL") + "(&C)";
         }

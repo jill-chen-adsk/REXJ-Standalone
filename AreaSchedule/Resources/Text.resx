@@ -165,6 +165,10 @@
     <value>部屋が存在しません</value>
     <comment>エラー　部屋が存在しません</comment>
   </data>
+  <data name="IDS_ERR_NOTROOM_ONLEVEL" xml:space="preserve">
+    <value>レベル {0} に部屋が存在しません。</value>
+    <comment>エラー　指定レベルに部屋が存在しません</comment>
+  </data>
   <data name="IDS_ERR_PARAMAREA" xml:space="preserve">
     <value>エリアパラメータの設定に失敗しました</value>
     <comment>エラー　エリアパラメータの設定に失敗しました</comment>
@@ -270,12 +274,12 @@
     <comment>面積の許容誤差を超えています</comment>
   </data>
   <data name="IDS_TXT_AREA_LEGAL" xml:space="preserve">
-    <value>面積(法定) ㎡</value>
-    <comment>面積(法定) ㎡</comment>
+    <value>面積(法定) ({0})</value>
+    <comment>面積(法定) with project unit</comment>
   </data>
   <data name="IDS_TXT_AREA_RVT" xml:space="preserve">
-    <value>面積(Revit) ㎡</value>
-    <comment>面積(Revit) ㎡</comment>
+    <value>面積(Revit) ({0})</value>
+    <comment>面積(Revit) with project unit</comment>
   </data>
   <data name="IDS_TXT_BASISEXPRESSION" xml:space="preserve">
     <value>根拠式</value>
@@ -357,6 +361,34 @@
     <value>mm</value>
     <comment>mm</comment>
   </data>
+  <data name="IDS_TXT_METERSUNIT" xml:space="preserve">
+    <value>メートル (m)</value>
+    <comment>メートル (m)</comment>
+  </data>
+  <data name="IDS_TXT_INCHESUNIT" xml:space="preserve">
+    <value>インチ (in)</value>
+    <comment>インチ (in)</comment>
+  </data>
+  <data name="IDS_TXT_FEETUNIT" xml:space="preserve">
+    <value>フィート (ft)</value>
+    <comment>フィート (ft)</comment>
+  </data>
+  <data name="IDS_TXT_MILLIMETERSUNIT" xml:space="preserve">
+    <value>ミリメートル (mm)</value>
+    <comment>ミリメートル (mm)</comment>
+  </data>
+  <data name="IDS_TXT_PROJECTUNITSLABEL" xml:space="preserve">
+    <value>プロジェクト単位</value>
+    <comment>プロジェクト単位</comment>
+  </data>
+  <data name="IDS_TXT_PROJECTUNITS" xml:space="preserve">
+    <value>プロジェクト単位 ({0})</value>
+    <comment>プロジェクト単位 ({0})</comment>
+  </data>
+  <data name="IDS_TXT_AREAUNITNOTE" xml:space="preserve">
+    <value>面積はプロジェクト単位 ({0}) を使用します。</value>
+    <comment>面積はプロジェクト単位 ({0}) を使用します。</comment>
+  </data>
   <data name="IDS_TXT_NAME" xml:space="preserve">
     <value>名称</value>
     <comment>名称</comment>
@@ -388,6 +420,14 @@
   <data name="IDS_TXT_SETLEGALAREA" xml:space="preserve">
     <value>法定面積集計</value>
     <comment>法定面積集計</comment>
+  </data>
+  <data name="IDS_TXT_LEGALAREA_ALL_COMPLIANT" xml:space="preserve">
+    <value>レベル {1} の {0} 室はすべて誤差範囲内です。法定面積を更新しました。</value>
+    <comment>テキスト　全室が法定面積誤差内</comment>
+  </data>
+  <data name="IDS_TXT_LEGALAREA_SELECTED_COMPLIANT" xml:space="preserve">
+    <value>選択した {0} 室はすべて誤差範囲内です。法定面積を更新しました。</value>
+    <comment>テキスト　選択部屋が法定面積誤差内</comment>
   </data>
   <data name="IDS_TXT_TAG" xml:space="preserve">
     <value>タグ</value>
@@ -428,5 +468,14 @@
   <data name="IDS_TXT_PARAMETER" xml:space="preserve">
     <value>パラメータ</value>
     <comment>文字 パラメータ</comment>
+  </data>
+  <data name="IDS_TXT_CMD_ROOMTOAREA" xml:space="preserve">
+    <value>部屋をエリアに変換</value>
+  </data>
+  <data name="IDS_TXT_CMD_GROUNDSEXPRESSION" xml:space="preserve">
+    <value>根拠式</value>
+  </data>
+  <data name="IDS_TXT_CMD_LEGALAREA" xml:space="preserve">
+    <value>法定面積</value>
   </data>
 </root>

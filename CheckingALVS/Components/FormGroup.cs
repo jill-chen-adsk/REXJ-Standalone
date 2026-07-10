@@ -49,6 +49,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                          System.Windows.Forms.TreeNodeCollection groups)
         {
             InitializeComponent();
+            RevitFormTheme.Apply(this);
 
             _CmpAttribute = cmpAttribute;
             _Groups = groups;

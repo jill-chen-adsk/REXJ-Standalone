@@ -64,6 +64,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                                       RvtExtApp.Entities.DtCmd entDtCmd)
         {
             InitializeComponent();
+            RevitFormTheme.Apply(this);
 
             _CmpAttribute = cmpAttribute;
             _EntDtRoom = entDtRoom;
@@ -93,24 +94,10 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         private
         void SetText()
         {
-            string sValue = "";
+            string sValue = CheckingCommandTitles.GetCommandTitle(_CmpAttribute, _EntDtRoom.CommandKind);
 
             // フォームタイトル
-            switch (_EntDtRoom.CommandKind)
-            {
-                case 0:
-                    sValue = _CmpAttribute.ResourceText("IDS_TXT_LIGHTING");
-                    break;
-
-                case 1:
-                    sValue = _CmpAttribute.ResourceText("IDS_TXT_SMOKE");
-                    break;
-
-                case 2:
-                    sValue = _CmpAttribute.ResourceText("IDS_TXT_VENTILATION");
-                    break;
-            }
-            this.Text = sValue + string.Format("[Ver.{0}]", Assembly.GetExecutingAssembly().GetName().Version);
+            this.Text = sValue;
 
             // コントロール文字
             this.lblSelectRoomGroup.Text = _CmpAttribute.ResourceText("IDS_TXT_SELECTEDROOMGROUP");

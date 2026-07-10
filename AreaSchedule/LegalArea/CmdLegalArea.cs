@@ -1,7 +1,5 @@
-
 using System;
 using System.Windows;
-using System.Windows.Interop;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.AreaSchedule;
@@ -48,6 +46,8 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
 
             // プログレスバー
             ProgressBarThread progressBarThread = new ProgressBarThread(false, true);
+            progressBarThread.SetOwner(rvtUIApp.MainWindowHandle);
+            progressBarThread.SetCommandTitle(WeaveCommandTitles.LegalArea(cmpAttribute));
 
             // 戻り値
             Revit.UI.Result retExtCom = Revit.UI.Result.Cancelled;
@@ -65,36 +65,31 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                 Revit.DB.ViewPlan activeViewAreaPlan = cmpElements.ActiveViewAreaPlan;
                 if (activeViewAreaPlan == null)
                 {
-                    ShowError(rvtUIApp, cmpAttribute.ResourceText("IDS_ERR_VIEWAREA"));
+                    ShowError(rvtUIApp, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_VIEWAREA"));
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
                 }
 
-                // 選択セットチェック[部屋]
-                Collections.Generic.IList<Revit.DB.Architecture.Room> rooms = cmpElements.SelSetRooms;
-                Collections.Generic.ICollection<Revit.DB.ElementId> elemIds = rvtUIDoc.Selection.GetElementIds();
-                if (elemIds.Count == 0)
+                // Resolve rooms: use selected rooms when present, otherwise all rooms on the area plan level.
+                Collections.Generic.IList<Revit.DB.Architecture.Room> selectedRooms = cmpElements.SelSetRooms;
+                Collections.Generic.IList<Revit.DB.Architecture.Room> rooms = selectedRooms;
+                bool usedSelectedRooms = selectedRooms.Count > 0;
+                if (rooms.Count == 0)
                 {
-                    rooms = cmpElements.GetElementsRoom(1, 1, activeViewAreaPlan.GenLevel);
-                    if (rooms.Count == 0)
-                    {
-                        ShowError(rvtUIApp, cmpAttribute.ResourceText("IDS_ERR_NOTROOM"));
-                        cmpParameters.SetSharedParamDefault();
-                        transGroup.Assimilate();
-                        return retExtCom;
-                    }
+                    rooms = cmpElements.GetRoomsForAreaPlan(activeViewAreaPlan);
                 }
-                else
+
+                if (rooms.Count == 0)
                 {
-                    rooms = cmpElements.SelSetRooms;
-                    if (rooms.Count == 0)
-                    {
-                        ShowError(rvtUIApp, cmpAttribute.ResourceText("IDS_ERR_SELROOM"));
-                        cmpParameters.SetSharedParamDefault();
-                        transGroup.Assimilate();
-                        return retExtCom;
-                    }
+                    string levelName = activeViewAreaPlan.GenLevel?.Name ?? string.Empty;
+                    string errMsg = string.IsNullOrEmpty(levelName)
+                        ? cmpAttribute.ResourceText("IDS_ERR_NOTROOM")
+                        : string.Format(cmpAttribute.ResourceText("IDS_ERR_NOTROOM_ONLEVEL"), levelName);
+                    ShowError(rvtUIApp, cmpAttribute, errMsg);
+                    cmpParameters.SetSharedParamDefault();
+                    transGroup.Assimilate();
+                    return retExtCom;
                 }
 
                 // Bind shared parameters inside a transaction so they persist in the project
@@ -136,7 +131,7 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                 {
                     trans.RollBack();
                     progressBarThread.Close();
-                    ShowError(rvtUIApp, cmpAttribute.ResourceText("IDS_ERR_SETLEGALAREA"));
+                    ShowError(rvtUIApp, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_SETLEGALAREA"));
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -148,7 +143,8 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                 {
                     // 画面表示
                     System.Data.DataTable data = cmpService.GetWarningRoomsTable(warningRooms);
-                    RvtExtApp.LegalArea.FormWarningRoomsWPF form = new RvtExtApp.LegalArea.FormWarningRoomsWPF(cmpAttribute, data);
+                    RvtExtApp.LegalArea.FormWarningRoomsWPF form = new RvtExtApp.LegalArea.FormWarningRoomsWPF(
+                        cmpAttribute, data, cmpGeometry.AreaUnitLabel);
                     SetRevitAsOwner(rvtUIApp, form);
                     bool? dialogResult = form.ShowDialog();
                     if (dialogResult != true)
@@ -158,6 +154,15 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                         transGroup.Assimilate();
                         return retExtCom;
                     }
+                }
+                else
+                {
+                    ShowSuccess(
+                        rvtUIApp,
+                        cmpAttribute,
+                        rooms.Count,
+                        usedSelectedRooms,
+                        activeViewAreaPlan.GenLevel?.Name ?? string.Empty);
                 }
                 trans.Commit();
 
@@ -172,7 +177,7 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
                 string errMsg = cmpAttribute.ResourceText("IDS_ERR_COMMAND")
                     + System.Environment.NewLine + System.Environment.NewLine
                     + ex.GetType().Name + ": " + ex.Message;
-                ShowError(rvtUIApp, errMsg);
+                ShowError(rvtUIApp, cmpAttribute, errMsg);
             }
 
             cmpParameters.SetSharedParamDefault();
@@ -180,26 +185,36 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
             return retExtCom;
         }
 
-        private static void ShowError(Revit.UI.UIApplication rvtUIApp, string msg)
+        private static void ShowError(Revit.UI.UIApplication rvtUIApp, RvtExtApp.Components.Attribute cmpAttribute, string msg)
         {
-            var ownerWindow = new Window
-            {
-                WindowStyle = WindowStyle.None,
-                ShowInTaskbar = false,
-                AllowsTransparency = true,
-                Opacity = 0,
-                Width = 0,
-                Height = 0
-            };
-            new WindowInteropHelper(ownerWindow) { Owner = rvtUIApp.MainWindowHandle };
-            ownerWindow.Show();
-            MessageBox.Show(ownerWindow, msg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            ownerWindow.Close();
+            WeaveDialogHost.ShowMessage(
+                rvtUIApp.MainWindowHandle,
+                msg,
+                WeaveCommandTitles.LegalArea(cmpAttribute),
+                cmpAttribute.ResourceText("IDS_TXT_OK"));
+        }
+
+        private static void ShowSuccess(
+            Revit.UI.UIApplication rvtUIApp,
+            RvtExtApp.Components.Attribute cmpAttribute,
+            int roomCount,
+            bool usedSelectedRooms,
+            string levelName)
+        {
+            string message = usedSelectedRooms
+                ? string.Format(cmpAttribute.ResourceText("IDS_TXT_LEGALAREA_SELECTED_COMPLIANT"), roomCount)
+                : string.Format(cmpAttribute.ResourceText("IDS_TXT_LEGALAREA_ALL_COMPLIANT"), roomCount, levelName);
+
+            WeaveDialogHost.ShowMessage(
+                rvtUIApp.MainWindowHandle,
+                message,
+                WeaveCommandTitles.LegalArea(cmpAttribute),
+                cmpAttribute.ResourceText("IDS_TXT_OK"));
         }
 
         private static void SetRevitAsOwner(Revit.UI.UIApplication rvtUIApp, Window window)
         {
-            new WindowInteropHelper(window) { Owner = rvtUIApp.MainWindowHandle };
+            WeaveDialogHost.SetOwner(window, rvtUIApp.MainWindowHandle);
         }
 
         #endregion Member Functions

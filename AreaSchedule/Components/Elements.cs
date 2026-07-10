@@ -73,20 +73,76 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
                 .ToList();
         }
 
-        public IList<Room> GetElementsRoom(int _a, int _b)
+        public IList<Room> GetElementsRoom(int optBoundary, int optLocation)
         {
-            return new FilteredElementCollector(RvtDBDoc)
+            var boundaryOptions = new SpatialElementBoundaryOptions();
+            var rooms = new List<Room>();
+            foreach (Room room in new FilteredElementCollector(RvtDBDoc)
+                .OfCategory(BuiltInCategory.OST_Rooms)
+                .WhereElementIsNotElementType()
+                .Cast<Room>())
+            {
+                if (PassesRoomFilters(room, optBoundary, optLocation, boundaryOptions))
+                    rooms.Add(room);
+            }
+            return rooms;
+        }
+
+        public IList<Room> GetElementsRoom(int optBoundary, int optLocation, Level level)
+        {
+            IEnumerable<Room> rooms = GetElementsRoom(optBoundary, optLocation);
+            if (level != null)
+                rooms = rooms.Where(r => r.LevelId == level.Id);
+            return rooms.ToList();
+        }
+
+        /// <summary>
+        /// Resolves rooms for an area plan: first by associated level, then by view visibility.
+        /// Area plans can show rooms whose Level element differs from GenLevel (e.g. Ground vs Grade).
+        /// </summary>
+        public IList<Room> GetRoomsForAreaPlan(ViewPlan areaPlan)
+        {
+            if (areaPlan == null)
+                return new List<Room>();
+
+            IList<Room> rooms = GetElementsRoom(1, 1, areaPlan.GenLevel);
+            if (rooms.Count > 0)
+                return rooms;
+
+            var boundaryOptions = new SpatialElementBoundaryOptions();
+            return new FilteredElementCollector(RvtDBDoc, areaPlan.Id)
                 .OfCategory(BuiltInCategory.OST_Rooms)
                 .WhereElementIsNotElementType()
                 .Cast<Room>()
+                .Where(r => PassesRoomFilters(r, 1, 1, boundaryOptions))
                 .ToList();
         }
 
-        public IList<Room> GetElementsRoom(int _a, int _b, Level level)
+        static bool PassesRoomFilters(Room room, int optBoundary, int optLocation, SpatialElementBoundaryOptions boundaryOptions)
         {
-            if (level == null)
-                return GetElementsRoom(1, 1);
-            return GetElementsRoom(1, 1).Where(r => r.LevelId == level.Id).ToList();
+            if (room == null)
+                return false;
+
+            if (optBoundary == 1)
+            {
+                IList<IList<BoundarySegment>> segments = room.GetBoundarySegments(boundaryOptions);
+                if (segments == null || segments.Count == 0)
+                    return false;
+            }
+            else if (optBoundary == 2)
+            {
+                IList<IList<BoundarySegment>> segments = room.GetBoundarySegments(boundaryOptions);
+                if (segments != null && segments.Count > 0)
+                    return false;
+            }
+
+            if (optLocation == 1 && room.Location == null)
+                return false;
+
+            if (optLocation == 2 && room.Location != null)
+                return false;
+
+            return true;
         }
 
         public IList<Room> GetElementsSelectionRoom(int _a, int _b, bool _) 

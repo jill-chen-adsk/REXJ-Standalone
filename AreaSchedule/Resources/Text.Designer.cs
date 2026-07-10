@@ -609,6 +609,33 @@ namespace ADSK.JExtRAC.AreaSchedule.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to メートル (m).
+        /// </summary>
+        internal static string IDS_TXT_METERSUNIT {
+            get {
+                return ResourceManager.GetString("IDS_TXT_METERSUNIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to プロジェクト単位 ({0}).
+        /// </summary>
+        internal static string IDS_TXT_PROJECTUNITS {
+            get {
+                return ResourceManager.GetString("IDS_TXT_PROJECTUNITS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 面積はプロジェクト単位 ({0}) を使用します。.
+        /// </summary>
+        internal static string IDS_TXT_AREAUNITNOTE {
+            get {
+                return ResourceManager.GetString("IDS_TXT_AREAUNITNOTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 名称.
         /// </summary>
         internal static string IDS_TXT_NAME {
