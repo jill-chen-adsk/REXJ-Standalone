@@ -23,28 +23,60 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         public double Approx0Len => DefaultApprox0Len;
         public double Approx0Ang => DefaultApprox0Ang;
 
-        public double UnitCoe
+        public bool IsImperial
         {
             get
             {
-                var units = _rvtUIDoc.Document.GetUnits();
-                var lengthSpec = SpecTypeId.Length;
-                var fmtOpts = units.GetFormatOptions(lengthSpec);
-                var unitTypeId = fmtOpts.GetUnitTypeId();
-                if (unitTypeId == UnitTypeId.Millimeters) return 304.8;
-                if (unitTypeId == UnitTypeId.Centimeters) return 30.48;
-                if (unitTypeId == UnitTypeId.Meters) return 0.3048;
-                if (unitTypeId == UnitTypeId.Feet) return 1.0;
-                if (unitTypeId == UnitTypeId.Inches) return 12.0;
-                return 304.8;
+                try { return _rvtUIDoc.Document.DisplayUnitSystem == DisplayUnit.IMPERIAL; }
+                catch { return false; }
             }
         }
 
-        /// <summary>Feet (internal) to meters — used with length display in meters.</summary>
-        public double UnitCoeTh => 0.3048;
+        public ForgeTypeId LengthUnitTypeId =>
+            RvtDBDoc.GetUnits().GetFormatOptions(SpecTypeId.Length).GetUnitTypeId();
 
-        /// <summary>Square feet (internal) to square meters.</summary>
-        public double UnitCoeM2 => 0.09290304;
+        public ForgeTypeId AreaUnitTypeId =>
+            RvtDBDoc.GetUnits().GetFormatOptions(SpecTypeId.Area).GetUnitTypeId();
+
+        /// <summary>Display length units per one internal foot.</summary>
+        public double UnitCoe =>
+            UnitUtils.ConvertFromInternalUnits(1.0, LengthUnitTypeId);
+
+        /// <summary>Display length in meters per one internal foot (legacy dialog option).</summary>
+        public double UnitCoeTh =>
+            UnitUtils.ConvertFromInternalUnits(1.0, UnitTypeId.Meters);
+
+        /// <summary>Display area units per one internal square foot.</summary>
+        public double UnitCoeM2 =>
+            UnitUtils.ConvertFromInternalUnits(1.0, AreaUnitTypeId);
+
+        /// <summary>Default length-unit dialog index: 0 = project display unit, 1 = alternate unit.</summary>
+        public int DefaultLengthUnit =>
+            LengthUnitTypeId == UnitTypeId.Meters ? 1 : 0;
+
+        /// <summary>Alternate length unit for grounds-expression rounding: m (metric) or in (imperial).</summary>
+        public ForgeTypeId AlternateLengthUnitTypeId =>
+            IsImperial ? UnitTypeId.Inches : UnitTypeId.Meters;
+
+        public string AlternateLengthUnitLabel => GetUnitLabel(AlternateLengthUnitTypeId);
+
+        public string LengthUnitLabel => GetUnitLabel(LengthUnitTypeId);
+
+        public string AreaUnitLabel => GetUnitLabel(AreaUnitTypeId);
+
+        private static string GetUnitLabel(ForgeTypeId unitTypeId)
+        {
+            if (unitTypeId == UnitTypeId.Millimeters) return "mm";
+            if (unitTypeId == UnitTypeId.Centimeters) return "cm";
+            if (unitTypeId == UnitTypeId.Meters) return "m";
+            if (unitTypeId == UnitTypeId.Feet) return "ft";
+            if (unitTypeId == UnitTypeId.FeetFractionalInches) return "ft";
+            if (unitTypeId == UnitTypeId.Inches) return "in";
+            if (unitTypeId == UnitTypeId.SquareMeters) return "m\u00B2";
+            if (unitTypeId == UnitTypeId.SquareFeet) return "ft\u00B2";
+            if (unitTypeId == UnitTypeId.SquareMillimeters) return "mm\u00B2";
+            return unitTypeId.TypeId;
+        }
 
         public Document RvtDBDoc => _rvtUIDoc.Document;
 

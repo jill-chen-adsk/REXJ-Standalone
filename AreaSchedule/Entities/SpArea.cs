@@ -330,9 +330,22 @@ namespace ADSK.JExtRAC.AreaSchedule.Entities
     {
       set
       {
-        if ( base.CurrentElem != null && _DefValAreaCalc != null) {
-          base.CurrentElem.LookupParameter( _DefValAreaCalc?.DefName )?.SetValueString( value ) ;
+        if ( base.CurrentElem == null || _DefValAreaCalc == null ) {
+          return ;
         }
+
+        var param = base.CurrentElem.LookupParameter( _DefValAreaCalc.DefName ) ;
+        if ( param == null ) {
+          return ;
+        }
+
+        if ( !double.TryParse( value, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double displayArea ) ) {
+          return ;
+        }
+
+        var areaUnit = base.CurrentElem.Document.GetUnits().GetFormatOptions( SpecTypeId.Area ).GetUnitTypeId() ;
+        double internalArea = UnitUtils.ConvertToInternalUnits( displayArea, areaUnit ) ;
+        param.Set( internalArea ) ;
       }
     }
 

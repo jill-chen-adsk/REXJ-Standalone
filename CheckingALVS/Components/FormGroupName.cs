@@ -44,6 +44,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         public FormGroupName(RvtExtApp.Components.Attribute cmpAttribute)
         {
             InitializeComponent();
+            RevitFormTheme.Apply(this);
 
             _CmpAttribute = cmpAttribute;
         }

@@ -98,7 +98,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Entities
             _TagID = -1;
             _TagNameOpt = 0;
 
-            Initvalue(0, true);
+            Initvalue(0, CmpGeometry.LengthUnitTypeId == Revit.DB.UnitTypeId.Millimeters);
             _PiOpt = 0;
 
             _DataPI = new System.Data.DataTable();
@@ -200,7 +200,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Entities
         ///                               <p>0=全て初期化</p>
         ///                               <p>1=長さのみ初期化</p>
         ///                               <p>2=面積のみ初期化</p></param>
-        /// <param name="isLenUnitMM" >長さ単位がmm</param>
+        /// <param name="useExtendedLengthDecimalRange" >長さ小数桁の拡張範囲(1-5)を使用する</param>
         ///
         /// <history>2011/08/02 Created GSA,Inc. Shinichi Ishii</history>
         /// ================================================================================
@@ -208,10 +208,13 @@ namespace ADSK.JExtRAC.AreaSchedule.Entities
         {
             if ((flag == 0) || (flag == 1))
             {
-                _LengthUnit = 0;
-                _LengthDecimal = 3;
+                if (flag == 0)
+                {
+                    _LengthUnit = CmpGeometry.DefaultLengthUnit;
+                    isLenUnitMM = CmpGeometry.LengthUnitTypeId == Revit.DB.UnitTypeId.Millimeters;
+                }
 
-                // 長さ単位がmm
+                _LengthDecimal = 2;
                 if (isLenUnitMM == true)
                 {
                     _LengthDecimal = 1;
@@ -238,7 +241,7 @@ namespace ADSK.JExtRAC.AreaSchedule.Entities
         /// <history><p>2011/08/02 Created GSA,Inc. Shinichi Ishii</p>
         ///         <p>2011/11/24 Modifed Applied Techbology</p><history>
         /// ================================================================================
-        public string SetErrPvdDecimalText(string value, bool check1, bool check2, bool isLenUnitMM)
+        public string SetErrPvdDecimalText(string value, bool check1, bool check2, bool useExtendedLengthDecimalRange)
         {
             string errMsg = "";
 
@@ -265,19 +268,12 @@ namespace ADSK.JExtRAC.AreaSchedule.Entities
                     if (check2)
                     {
                         int iValue = int.Parse(value);
-                        if (!isLenUnitMM)
+                        int maxDecimals = useExtendedLengthDecimalRange
+                            ? DecimalMax - 4
+                            : DecimalMax - 7;
+                        if ((iValue < DecimalMin) || (iValue > maxDecimals))
                         {
-                            if ((iValue < DecimalMin) || (iValue > DecimalMax - 7))
-                            {
-                                errMsg = base.CmpAttribute.ResourceText("IDS_ERR_VALRANGE");
-                            }
-                        }
-                        else
-                        {
-                            if ((iValue < DecimalMin) || (iValue > DecimalMax - 4))
-                            {
-                                errMsg = base.CmpAttribute.ResourceText("IDS_ERR_VALRANGE");
-                            }
+                            errMsg = base.CmpAttribute.ResourceText("IDS_ERR_VALRANGE");
                         }
                     }
                 }
@@ -455,6 +451,17 @@ namespace ADSK.JExtRAC.AreaSchedule.Entities
                 _LengthUnit = value;
             }
         }
+
+        public string ProjectLengthUnitLabel => CmpGeometry.LengthUnitLabel;
+
+        public string ProjectAreaUnitLabel => CmpGeometry.AreaUnitLabel;
+
+        public bool ProjectLengthUnitIsMillimeters =>
+            CmpGeometry.LengthUnitTypeId == Revit.DB.UnitTypeId.Millimeters;
+
+        public bool ProjectIsImperial => CmpGeometry.IsImperial;
+
+        public string AlternateLengthUnitLabel => CmpGeometry.AlternateLengthUnitLabel;
 
         /// ================================================================================
         /// <summary>PIタイプ</summary>

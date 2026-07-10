@@ -298,18 +298,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
         {
             get
             {
-                double ret = 0.0;
-                if (base.CurrentElem != null)
-                {
-                    if (base.CmpParameters.GetValue(base.CurrentElem,
-                                                    _DefValLegalArea.DefName,
-                                                    _DefValLegalArea.ParamType,
-                                                    _DefValLegalArea.BltParamGroup,
-                                                    ref ret) < -1)
-                    {
-                    }
-                }
-                return ret;
+                return TryGetLegalAreaValue();
             }
             set
             {
@@ -324,6 +313,45 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                     }
                 }
             }
+        }
+
+        double TryGetLegalAreaValue()
+        {
+            if (base.CurrentElem == null)
+                return 0.0;
+
+            double value = 0.0;
+            if (TryGetLegalAreaFromParameter(_DefValLegalArea.DefName, ref value))
+                return value;
+
+            // AreaSchedule writes this English parameter name via JPExtension.txt.
+            if (TryGetLegalAreaFromParameter("Legal Area (Room shared)", ref value))
+                return value;
+
+            // Legacy CheckingALVS English binding and Japanese projects.
+            if (TryGetLegalAreaFromParameter("Legal Area", ref value))
+                return value;
+
+            if (TryGetLegalAreaFromParameter("法定面積", ref value))
+                return value;
+
+            return 0.0;
+        }
+
+        bool TryGetLegalAreaFromParameter(string paramName, ref double value)
+        {
+            double localValue = 0.0;
+            if (base.CmpParameters.GetValue(base.CurrentElem,
+                                            paramName,
+                                            _DefValLegalArea.ParamType,
+                                            _DefValLegalArea.BltParamGroup,
+                                            ref localValue) < -1)
+            {
+                return false;
+            }
+
+            value = localValue;
+            return true;
         }
 
         /// ================================================================================

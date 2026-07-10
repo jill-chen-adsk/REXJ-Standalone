@@ -3,12 +3,11 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.ComponentModel;
+using System.Windows.Interop;
 using System.Reflection;
 
-using Collections = System.Collections;
-using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.AreaSchedule;
+using ADSK.JExtRAC.AreaSchedule.Utils;
 
 namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
 {
@@ -16,41 +15,20 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
     /// <summary>画面 面積計算 (WPF版)</summary>
     /// <history>2025/05/07 Created</history>
     /// ================================================================================
-    public partial class FormCalcAreaWPF : Window
+    public partial class FormCalcAreaWPF : Window, IWeaveChromeWindow
     {
         #region Member Variables
 
-        /// <summary>属性</summary>
         private RvtExtApp.Components.Attribute _CmpAttribute;
-
-        /// <summary>メートル用長さの小数点位置</summary>
         private string _MLengthDecimal;
-
-        /// <summary>データテーブル - エリア</summary>
         private RvtExtApp.Entities.DtArea _EntDtArea;
-
-        /// <summary>データテーブル - コマンド</summary>
         private RvtExtApp.Entities.DtCmd _EntDtCmd;
-
-        /// <summary>Check radio button mm or m</summary>
-        private bool _checkRdn = false;
-
-        /// <summary>IsCheck radio button mm or m</summary>
         private bool _isCheckRdb;
 
         #endregion
 
         #region Constructor
 
-        /// ================================================================================
-        /// <summary>コンストラクタ</summary>
-        ///
-        /// <param name="cmpAttribute">属性</param>
-        /// <param name="entDtArea">データテーブル - エリア</param>
-        /// <param name="entDtCmd">データテーブル - コマンド</param>
-        ///
-        /// <history>2024/03/21 Created</history>
-        /// ================================================================================
         public FormCalcAreaWPF(RvtExtApp.Components.Attribute cmpAttribute,
                               RvtExtApp.Entities.DtArea entDtArea,
                               RvtExtApp.Entities.DtCmd entDtCmd)
@@ -61,7 +39,8 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
             _EntDtCmd = entDtCmd;
             _MLengthDecimal = "1";
 
-            // コマンドの設定
+            WeaveTheme.Apply(this, this, WeaveCommandTitles.GroundsExpression(_CmpAttribute), CancelDialog);
+
             btnLengthDefault.Command = new RoutedCommand();
             btnLengthDefault.CommandBindings.Add(new CommandBinding(btnLengthDefault.Command, BtnLengthDefault_Click));
 
@@ -75,8 +54,8 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
             btnOK.Click += BtnOK_Click;
             btnLengthDefault.Click += BtnLengthDefault_Click;
             btnAreaDefault.Click += BtnAreaDefault_Click;
-            rdbLengthMM.Checked += RdbLengthMM_Checked;
-            rdbLengthM.Checked += RdbLengthM_Checked;
+            rdbLengthProject.Checked += RdbLengthUnit_Checked;
+            rdbLengthMeters.Checked += RdbLengthUnit_Checked;
             txtLengthDecimal.TextChanged += TxtLengthDecimal_TextChanged;
             txtAreaDecimal.TextChanged += TxtAreaDecimal_TextChanged;
         }
@@ -101,35 +80,38 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
             }
         }
 
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        private void BtnCancel_Click(object sender, ExecutedRoutedEventArgs e)
+        {
+            CancelDialog();
+        }
+
+        private void CancelDialog()
         {
             DialogResult = false;
             Close();
         }
 
+        public Border ChromeOuterBorder => chromeOuterBorder;
+        public Grid ChromeTitleBar => chromeTitleBar;
+        public Border ChromeDivider => chromeDivider;
+        public TextBlock ChromeTitleText => chromeTitleText;
+        public Button ChromeCloseButton => chromeCloseButton;
+
         private void BtnLengthDefault_Click(object sender, RoutedEventArgs e)
         {
-            _EntDtArea.Initvalue(1, rdbLengthMM.IsChecked ?? false);
+            _EntDtArea.Initvalue(1, UsesMillimeterPrecision());
             txtLengthDecimal.Text = _EntDtArea.LengthDecimal.ToString();
             SetLengthRounding(_EntDtArea.LengthRoundingOpt);
         }
 
         private void BtnAreaDefault_Click(object sender, RoutedEventArgs e)
         {
-            _EntDtArea.Initvalue(2, rdbLengthMM.IsChecked ?? false);
+            _EntDtArea.Initvalue(2, UsesMillimeterPrecision());
             txtAreaDecimal.Text = _EntDtArea.AreaDecimal.ToString();
             SetAreaRounding(_EntDtArea.AreaRoundingOpt);
         }
 
-        private void RdbLengthMM_Checked(object sender, RoutedEventArgs e)
-        {
-            if (_isCheckRdb)
-                SetLengthUnit();
-            else
-                _isCheckRdb = true;
-        }
-
-        private void RdbLengthM_Checked(object sender, RoutedEventArgs e)
+        private void RdbLengthUnit_Checked(object sender, RoutedEventArgs e)
         {
             if (_isCheckRdb)
                 SetLengthUnit();
@@ -153,50 +135,58 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
 
         private void SetText()
         {
-            Title = _CmpAttribute.ResourceText("IDS_TXT_CALCAREA") + 
-                   string.Format("[Ver.{0}]", Assembly.GetExecutingAssembly().GetName().Version);
+            WeaveWindowChrome.SetTitle(this, this, WeaveCommandTitles.GroundsExpression(_CmpAttribute));
 
-            var gpbLength = (System.Windows.Controls.GroupBox)FindName("gpbLength");
-            if (gpbLength == null)
-            {
-                var grid = (Grid)Content;
-                gpbLength = (System.Windows.Controls.GroupBox)grid.Children[0];
-            }
-            gpbLength.Header = _CmpAttribute.ResourceText("IDS_TXT_LENGTHDECIMAL");
+            lblLengthSection.Text = _CmpAttribute.ResourceText("IDS_TXT_LENGTHDECIMAL");
+            lblUnit.Text = _CmpAttribute.ResourceText("IDS_TXT_PROJECTUNITSLABEL") + ":";
+            UpdateUnitLabels();
 
-            FindLabel("lblUnit").Content = _CmpAttribute.ResourceText("IDS_TXT_UNIT") + ":";
-            FindLabel("lblLengthDecimal").Content = _CmpAttribute.ResourceText("IDS_TXT_DECIMAL");
-            FindLabel("lblLengthOrder").Content = _CmpAttribute.ResourceText("IDS_TXT_ORDER");
-
+            lblLengthDecimal.Text = _CmpAttribute.ResourceText("IDS_TXT_DECIMAL");
+            lblLengthOrder.Text = _CmpAttribute.ResourceText("IDS_TXT_ORDER");
             rdbLengthCut.Content = _CmpAttribute.ResourceText("IDS_TXT_CUTOFF");
             rdbLengthClose.Content = _CmpAttribute.ResourceText("IDS_TXT_CLOSE");
             rdbLengthRounding.Content = _CmpAttribute.ResourceText("IDS_TXT_ROUNDINGOFF");
-            btnLengthDefault.Content = _CmpAttribute.ResourceText("IDS_TXT_DEFAULT") + "(_B)";
+            btnLengthDefault.Content = _CmpAttribute.ResourceText("IDS_TXT_DEFAULT");
 
-            var grid2 = (Grid)Content;
-            var gpbArea = (System.Windows.Controls.GroupBox)grid2.Children[1];
-            gpbArea.Header = _CmpAttribute.ResourceText("IDS_TXT_AREADECIMAL");
-
-            FindLabel("lblAreaDecimal").Content = _CmpAttribute.ResourceText("IDS_TXT_DECIMAL");
-            FindLabel("lblAreaOrder").Content = _CmpAttribute.ResourceText("IDS_TXT_ORDER");
-
+            lblAreaSection.Text = _CmpAttribute.ResourceText("IDS_TXT_AREADECIMAL");
+            lblAreaDecimal.Text = _CmpAttribute.ResourceText("IDS_TXT_DECIMAL");
+            lblAreaOrder.Text = _CmpAttribute.ResourceText("IDS_TXT_ORDER");
             rdbAreaCut.Content = _CmpAttribute.ResourceText("IDS_TXT_CUTOFF");
             rdbAreaClose.Content = _CmpAttribute.ResourceText("IDS_TXT_CLOSE");
             rdbAreaRounding.Content = _CmpAttribute.ResourceText("IDS_TXT_ROUNDINGOFF");
-            btnAreaDefault.Content = _CmpAttribute.ResourceText("IDS_TXT_DEFAULT") + "(_F)";
+            btnAreaDefault.Content = _CmpAttribute.ResourceText("IDS_TXT_DEFAULT");
 
-            var gpbPi = (System.Windows.Controls.GroupBox)grid2.Children[2];
-            gpbPi.Header = _CmpAttribute.ResourceText("IDS_TXT_PI");
-
+            lblPiSection.Text = _CmpAttribute.ResourceText("IDS_TXT_PI");
             btnOK.Content = _CmpAttribute.ResourceText("IDS_TXT_OK");
-            btnCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL") + "(_C)";
+            btnCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL") + " (_C)";
         }
 
-        private System.Windows.Controls.Label FindLabel(string name)
+        private void UpdateUnitLabels()
         {
-            var lbl = (System.Windows.Controls.Label)FindName(name);
-            if (lbl != null) return lbl;
-            return new System.Windows.Controls.Label();
+            string areaLabel = _EntDtArea.ProjectAreaUnitLabel;
+
+            rdbLengthProject.Content = GetProjectLengthUnitOptionLabel();
+            rdbLengthMeters.Content = _EntDtArea.ProjectIsImperial
+                ? _CmpAttribute.ResourceText("IDS_TXT_INCHESUNIT")
+                : _CmpAttribute.ResourceText("IDS_TXT_METERSUNIT");
+            lblAreaUnitNote.Text = string.Format(
+                _CmpAttribute.ResourceText("IDS_TXT_AREAUNITNOTE"), areaLabel);
+        }
+
+        private string GetProjectLengthUnitOptionLabel()
+        {
+            if (_EntDtArea.ProjectIsImperial)
+                return _CmpAttribute.ResourceText("IDS_TXT_FEETUNIT");
+
+            if (_EntDtArea.ProjectLengthUnitIsMillimeters)
+                return _CmpAttribute.ResourceText("IDS_TXT_MILLIMETERSUNIT");
+
+            if (_EntDtArea.ProjectLengthUnitLabel == _CmpAttribute.ResourceText("IDS_TXT_M"))
+                return _CmpAttribute.ResourceText("IDS_TXT_METERSUNIT");
+
+            return string.Format(
+                _CmpAttribute.ResourceText("IDS_TXT_PROJECTUNITS"),
+                _EntDtArea.ProjectLengthUnitLabel);
         }
 
         private void SetData()
@@ -206,10 +196,12 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
             txtLengthDecimal.Text = _EntDtArea.LengthDecimal.ToString();
             _MLengthDecimal = txtLengthDecimal.Text;
             txtAreaDecimal.Text = _EntDtArea.AreaDecimal.ToString();
-            
+
             SetLengthRounding(_EntDtArea.LengthRoundingOpt);
             SetAreaRounding(_EntDtArea.AreaRoundingOpt);
             SetLengthUnit(_EntDtArea.LengthUnit);
+            UpdateUnitLabels();
+            ClampLengthDecimalForCurrentUnit();
 
             cboPi.ItemsSource = _EntDtArea.DataPI.DefaultView;
             cboPi.DisplayMemberPath = _EntDtArea.DataPI.Columns[1].ColumnName;
@@ -247,11 +239,11 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
 
         private bool ValidateLengthDecimal()
         {
-            _checkRdn = GetCheckRdn();
-            string error = _EntDtArea.SetErrPvdDecimalText(txtLengthDecimal.Text.Trim(), true, true, _checkRdn);
+            string error = _EntDtArea.SetErrPvdDecimalText(
+                txtLengthDecimal.Text.Trim(), true, true, UsesExtendedLengthDecimalRange());
             if (!string.IsNullOrEmpty(error))
             {
-                MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowValidationMessage(error);
                 return false;
             }
             return true;
@@ -262,7 +254,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
             string error = _EntDtArea.SetErrPvdDecimalText(txtAreaDecimal.Text.Trim(), false, false, false);
             if (!string.IsNullOrEmpty(error))
             {
-                MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowValidationMessage(error);
                 return false;
             }
             return true;
@@ -272,31 +264,35 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
         {
             string errMsg = "";
 
-            if (rdbLengthMM.IsChecked ?? false)
+            if (rdbLengthProject.IsChecked ?? false)
             {
-                errMsg = _EntDtArea.SetErrPvdDecimalText(txtLengthDecimal.Text.Trim(), true, false, false);
+                errMsg = _EntDtArea.SetErrPvdDecimalText(
+                    txtLengthDecimal.Text.Trim(), true, false, UsesExtendedLengthDecimalRange());
                 if (string.IsNullOrEmpty(errMsg))
                 {
                     _MLengthDecimal = txtLengthDecimal.Text.Trim();
 
-                    if (txtLengthDecimal.Text.Trim() == "5")
-                        txtLengthDecimal.Text = "2";
-                    else if (txtLengthDecimal.Text.Trim() == "1" ||
-                            txtLengthDecimal.Text.Trim() == "2" ||
-                            txtLengthDecimal.Text.Trim() == "3" ||
-                            txtLengthDecimal.Text.Trim() == "4")
+                    if (UsesExtendedLengthDecimalRange())
                     {
-                        txtLengthDecimal.Text = "1";
-                    }
-                    else
-                    {
-                        txtLengthDecimal.Text = "1";
+                        if (txtLengthDecimal.Text.Trim() == "5")
+                            txtLengthDecimal.Text = "2";
+                        else if (txtLengthDecimal.Text.Trim() == "1" ||
+                                txtLengthDecimal.Text.Trim() == "2" ||
+                                txtLengthDecimal.Text.Trim() == "3" ||
+                                txtLengthDecimal.Text.Trim() == "4")
+                        {
+                            txtLengthDecimal.Text = "1";
+                        }
+                        else
+                        {
+                            txtLengthDecimal.Text = "1";
+                        }
                     }
                 }
                 else
                 {
-                    rdbLengthMM.IsChecked = false;
-                    rdbLengthM.IsChecked = true;
+                    rdbLengthProject.IsChecked = false;
+                    rdbLengthMeters.IsChecked = true;
                 }
             }
             else
@@ -321,20 +317,50 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
                 }
                 else
                 {
-                    rdbLengthMM.IsChecked = true;
-                    rdbLengthM.IsChecked = false;
+                    rdbLengthProject.IsChecked = true;
+                    rdbLengthMeters.IsChecked = false;
                 }
             }
         }
 
-        private bool GetCheckRdn()
+        private bool UsesExtendedLengthDecimalRange()
         {
-            return GetLengthUnit() == 1;
+            if (rdbLengthMeters.IsChecked ?? false)
+                return true;
+
+            return _EntDtArea.ProjectLengthUnitIsMillimeters;
+        }
+
+        private void ClampLengthDecimalForCurrentUnit()
+        {
+            if (!int.TryParse(txtLengthDecimal.Text.Trim(), out int value))
+                return;
+
+            int min = _EntDtArea.DecimalMin;
+            int max = UsesExtendedLengthDecimalRange()
+                ? _EntDtArea.DecimalMax - 4
+                : _EntDtArea.DecimalMax - 7;
+
+            if (value < min)
+                value = min;
+            else if (value > max)
+                value = max;
+
+            txtLengthDecimal.Text = value.ToString();
+            _MLengthDecimal = txtLengthDecimal.Text;
+        }
+
+        private bool UsesMillimeterPrecision()
+        {
+            if (rdbLengthMeters.IsChecked ?? false)
+                return false;
+
+            return _EntDtArea.ProjectLengthUnitIsMillimeters;
         }
 
         private int GetLengthUnit()
         {
-            return rdbLengthMM.IsChecked ?? false ? 0 : 1;
+            return rdbLengthProject.IsChecked ?? false ? 0 : 1;
         }
 
         private void SetLengthUnit(int value)
@@ -342,10 +368,10 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
             switch (value)
             {
                 case 0:
-                    rdbLengthMM.IsChecked = true;
+                    rdbLengthProject.IsChecked = true;
                     break;
                 case 1:
-                    rdbLengthM.IsChecked = true;
+                    rdbLengthMeters.IsChecked = true;
                     break;
             }
         }
@@ -398,6 +424,16 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
             }
         }
 
+        private void ShowValidationMessage(string message)
+        {
+            IntPtr ownerHandle = new WindowInteropHelper(this).Handle;
+            WeaveDialogHost.ShowMessage(
+                ownerHandle,
+                message,
+                WeaveCommandTitles.GroundsExpression(_CmpAttribute),
+                _CmpAttribute.ResourceText("IDS_TXT_OK"));
+        }
+
         #endregion
     }
-} 
+}

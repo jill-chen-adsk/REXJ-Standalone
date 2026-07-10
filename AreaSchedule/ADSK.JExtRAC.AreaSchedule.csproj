@@ -50,8 +50,21 @@
     <Compile Update="GroundsExpression\FormCalcAreaWPF.xaml.cs">
       <DependentUpon>FormCalcAreaWPF.xaml</DependentUpon>
     </Compile>
+    <Page Update="Resources\WeaveDialogResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Compile Update="LegalArea\FormWarningRoomsWPF.xaml.cs">
       <DependentUpon>FormWarningRoomsWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Utils\WeaveProgressWindow.xaml.cs">
+      <DependentUpon>WeaveProgressWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Utils\WeaveMessageDialog.xaml.cs">
+      <DependentUpon>WeaveMessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="RoomConvertedToArea\FormChoiceWorkWPF.xaml.cs">
+      <DependentUpon>FormChoiceWorkWPF.xaml</DependentUpon>
     </Compile>
     <Compile Update="GroundsExpression\FormCalcArea.cs">
       <SubType>Form</SubType>

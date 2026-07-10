@@ -1,98 +1,183 @@
 <Window x:Class="ADSK.JExtRAC.AreaSchedule.GroundsExpression.FormCalcAreaWPF"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Calculated area" Height="420" Width="320" WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
-    <Grid Margin="10">
+        Title="Calculated area"
+        Height="560"
+        Width="420"
+        MinWidth="380"
+        MinHeight="420"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="CanResizeWithGrip"
+        FontFamily="Segoe UI"
+        FontSize="12">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ADSK.JExtRAC.AreaSchedule;component/Resources/WeaveDialogResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border x:Name="chromeOuterBorder" CornerRadius="4">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" ShadowDepth="4" Opacity="0.3" Color="#000000"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="chromeTitleBar" Grid.Row="0">
+                <TextBlock x:Name="chromeTitleText"
+                           FontSize="14"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           Margin="20,0,48,0"/>
+                <Button x:Name="chromeCloseButton"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="0,0,12,0"
+                        Width="28"
+                        Height="28"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="bd" Background="Transparent" CornerRadius="4">
+                                <Path Data="M18,6 L6,18 M6,6 L18,18"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="2"
+                                      Width="14"
+                                      Height="14"
+                                      Stretch="Uniform"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bd" Property="Background" Value="#20000000"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Border x:Name="chromeDivider" Grid.Row="1"/>
+
+    <Grid Grid.Row="2" Margin="24">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <GroupBox x:Name="gpbLength" Grid.Row="0" Header="Length rounding" Margin="0,0,0,10" Padding="0,0,0,0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Margin="0,0,0,16">
+            <StackPanel>
+                <Border x:Name="gpbLength" Style="{StaticResource Weave.SectionPanel}">
+                    <StackPanel>
+                        <TextBlock x:Name="lblLengthSection" Style="{StaticResource Weave.SectionTitle}" Text="Length rounding"/>
 
-                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,0,0,10">
-                    <Label x:Name="lblUnit" Content="Units:" VerticalAlignment="Center"/>
-                    <RadioButton x:Name="rdbLengthMM" Content="mm" Margin="5,0" VerticalAlignment="Center"/>
-                    <RadioButton x:Name="rdbLengthM" Content="m" Margin="5,0" VerticalAlignment="Center"/>
-                </StackPanel>
+                        <TextBlock x:Name="lblUnit" Style="{StaticResource Weave.BodyText}" Text="Project Units:" Margin="0,0,0,8"/>
+                        <RadioButton x:Name="rdbLengthProject"
+                                     Style="{StaticResource Weave.RadioButton.Stacked}"
+                                     GroupName="LengthUnit"
+                                     Content="Feet (ft)"/>
+                        <RadioButton x:Name="rdbLengthMeters"
+                                     Style="{StaticResource Weave.RadioButton.Stacked}"
+                                     GroupName="LengthUnit"
+                                     Margin="0,0,0,16"
+                                     Content="Inch (in)"/>
 
-                <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10" VerticalAlignment="Top">
-                        <Label x:Name="lblLengthDecimal" Content="Decimals" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtLengthDecimal" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
-                        <Label x:Name="lblLengthOrder" Content="digit(s)" VerticalAlignment="Center"/>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top">
+                                <TextBlock x:Name="lblLengthDecimal" Style="{StaticResource Weave.BodyText}" Text="Decimals" Margin="0,0,8,0"/>
+                                <TextBox x:Name="txtLengthDecimal" Style="{StaticResource Weave.TextBox}" Width="56" TextAlignment="Right"/>
+                            </StackPanel>
+
+                            <Border Grid.Column="1" Style="{StaticResource Weave.RoundingPanel}">
+                                <StackPanel>
+                                    <TextBlock x:Name="lblLengthOrder" Style="{StaticResource Weave.SectionTitle}" Text="Order" Margin="0,0,0,8"/>
+                                    <RadioButton x:Name="rdbLengthCut" Style="{StaticResource Weave.RadioButton.Stacked}" GroupName="LengthRounding" Content="Cutoff"/>
+                                    <RadioButton x:Name="rdbLengthClose" Style="{StaticResource Weave.RadioButton.Stacked}" GroupName="LengthRounding" Content="Round Up"/>
+                                    <RadioButton x:Name="rdbLengthRounding" Style="{StaticResource Weave.RadioButton.Stacked}" GroupName="LengthRounding" Margin="0" Content="Round Off"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+
+                        <Button x:Name="btnLengthDefault" Style="{StaticResource Weave.Button.Tertiary}" Content="Default" HorizontalAlignment="Left">
+                            <Button.InputBindings>
+                                <KeyBinding Key="B" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
+                            </Button.InputBindings>
+                        </Button>
                     </StackPanel>
+                </Border>
 
-                    <GroupBox Grid.Row="2" Grid.Column="0" Margin="0,0,0,0" Width="120">
-                        <StackPanel>
-                            <RadioButton x:Name="rdbLengthCut" Content="Cutoff" Margin="0,5"/>
-                            <RadioButton x:Name="rdbLengthClose" Content="Round Up" Margin="0,5"/>
-                            <RadioButton x:Name="rdbLengthRounding" Content="Round Off" Margin="0,5"/>
-                        </StackPanel>
-                    </GroupBox>
+                <Border x:Name="gpbArea" Style="{StaticResource Weave.SectionPanel}">
+                    <StackPanel>
+                        <TextBlock x:Name="lblAreaSection" Style="{StaticResource Weave.SectionTitle}" Text="Area rounding"/>
+                        <TextBlock x:Name="lblAreaUnitNote" Style="{StaticResource Weave.HintText}" Margin="0,0,0,12"/>
 
-                </StackPanel>
+                        <Grid Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                <Button x:Name="btnLengthDefault" Grid.Row="1" Grid.Column="0" Content="Default(_B)" 
-                        VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10,5" Width="80">
-                    <Button.InputBindings>
-                        <KeyBinding Key="B" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
-                    </Button.InputBindings>
-                </Button>
-            </Grid>
-        </GroupBox>
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top">
+                                <TextBlock x:Name="lblAreaDecimal" Style="{StaticResource Weave.BodyText}" Text="Decimals" Margin="0,0,8,0"/>
+                                <TextBox x:Name="txtAreaDecimal" Style="{StaticResource Weave.TextBox}" Width="56" TextAlignment="Right"/>
+                            </StackPanel>
 
-        <GroupBox x:Name="gpbArea" Grid.Row="1" Header="Area rounding" Margin="0,0,0,10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+                            <Border Grid.Column="1" Style="{StaticResource Weave.RoundingPanel}">
+                                <StackPanel>
+                                    <TextBlock x:Name="lblAreaOrder" Style="{StaticResource Weave.SectionTitle}" Text="Order" Margin="0,0,0,8"/>
+                                    <RadioButton x:Name="rdbAreaCut" Style="{StaticResource Weave.RadioButton.Stacked}" GroupName="AreaRounding" Content="Cutoff"/>
+                                    <RadioButton x:Name="rdbAreaClose" Style="{StaticResource Weave.RadioButton.Stacked}" GroupName="AreaRounding" Content="Round Up"/>
+                                    <RadioButton x:Name="rdbAreaRounding" Style="{StaticResource Weave.RadioButton.Stacked}" GroupName="AreaRounding" Margin="0" Content="Round Off"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
 
-                <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" >
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10"  VerticalAlignment="Top">
-                        <Label x:Name="lblAreaDecimal" Content="Decimals" VerticalAlignment="Center"/>
-                        <TextBox x:Name="txtAreaDecimal" Width="50" TextAlignment="Right" VerticalAlignment="Center"/>
-                        <Label x:Name="lblAreaOrder" Content="digit(s)" VerticalAlignment="Center"/>
+                        <Button x:Name="btnAreaDefault" Style="{StaticResource Weave.Button.Tertiary}" Content="Default" HorizontalAlignment="Left">
+                            <Button.InputBindings>
+                                <KeyBinding Key="F" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
+                            </Button.InputBindings>
+                        </Button>
                     </StackPanel>
+                </Border>
 
-                    <GroupBox Margin="0,0,0,0" Width="120">
-                        <StackPanel>
-                            <RadioButton x:Name="rdbAreaCut" Content="Cutoff" Margin="0,5"/>
-                            <RadioButton x:Name="rdbAreaClose" Content="Round Up" Margin="0,5"/>
-                            <RadioButton x:Name="rdbAreaRounding" Content="Round Off" Margin="0,5"/>
-                        </StackPanel>
-                    </GroupBox>
+                <Border x:Name="gpbPi" Style="{StaticResource Weave.SectionPanel}" Margin="0">
+                    <StackPanel>
+                        <TextBlock x:Name="lblPiSection" Style="{StaticResource Weave.SectionTitle}" Text="Pi (π)"/>
+                        <ComboBox x:Name="cboPi" Style="{StaticResource Weave.ComboBox}" Width="120" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
 
-                </StackPanel>
-
-                <Button x:Name="btnAreaDefault" Grid.Row="1" Grid.Column="0" Content="Default(_F)" 
-                        VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Padding="10,5" Width="80">
-                    <Button.InputBindings>
-                        <KeyBinding Key="F" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
-                    </Button.InputBindings>
-                </Button>
-            </Grid>
-        </GroupBox>
-
-        <GroupBox x:Name="gpbPi" Grid.Row="2" Header="Pi (π)" Margin="0,0,0,10">
-            <ComboBox x:Name="cboPi" Width="100" HorizontalAlignment="Left" Margin="10,5"/>
-        </GroupBox>
-
-        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,0">
-            <Button x:Name="btnOK" Content="OK" Width="96" Margin="0,0,10,0" Padding="10,5"/>
-            <Button x:Name="btnCancel" Content="Cancel(_C)" Width="96" Padding="10,5">
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnOK" Style="{StaticResource Weave.Button.Primary}" Content="OK" Margin="0,0,8,0"/>
+            <Button x:Name="btnCancel" Style="{StaticResource Weave.Button.Secondary}" Content="Cancel (_C)">
                 <Button.InputBindings>
                     <KeyBinding Key="C" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
                 </Button.InputBindings>
             </Button>
         </StackPanel>
     </Grid>
-</Window> 
+        </Grid>
+    </Border>
+</Window>

@@ -1156,4 +1156,13 @@
     <value>排煙有効面積</value>
     <comment>排煙有効面積</comment>
   </data>
+  <data name="IDS_TXT_CMD_DAYLIGHTCHECK" xml:space="preserve">
+    <value>採光チェック</value>
+  </data>
+  <data name="IDS_TXT_CMD_SMOKEEXHAUST" xml:space="preserve">
+    <value>排煙チェック</value>
+  </data>
+  <data name="IDS_TXT_CMD_VENTILATIONCHECK" xml:space="preserve">
+    <value>換気チェック</value>
+  </data>
 </root>

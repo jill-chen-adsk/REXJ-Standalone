@@ -1183,6 +1183,12 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
             {
                 ret = "-";
             }
+            else if (UtilValue.IsNumber(ret) == true)
+            {
+                double millimeters = double.Parse(ret);
+                ret = CmpGeometry.FromMillimeters(millimeters).ToString(
+                    System.Globalization.CultureInfo.InvariantCulture);
+            }
             return ret;
         }
 
