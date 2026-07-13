@@ -1,9 +1,9 @@
-﻿; REXJ Standalone - Legal Compliance Check for Rooms Installer for Revit 2027
+; REXJ Standalone - Legal Compliance Check for Rooms Installer for Revit 2027
 ; Built with Inno Setup 6
-; Weave-compliant: Dark/light theme support for Daylight, Smoke, and Ventilation Check dialogs
+; Weave-compliant: WPF dialogs for Daylight, Smoke Exhaust, and Ventilation Check
 
 #define MyAppName "REXJ - Legal Compliance Check for Rooms"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.1.2"
 #define MyAppPublisher "ADSK REXJ"
 #define MyAppURL "https://github.com/jill-chen-adsk/REXJ-Standalone"
 #define RevitYear "2027"
