@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
@@ -304,7 +304,12 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                         _EntSpRoom.Kind = _Data.Rows[i][ColNameRoomKind].ToString();
 
                         // グループ
-                        _EntSpRoom.Group = _Data.Rows[i][ColNameGroupName].ToString();
+                        string groupName = _Data.Rows[i][ColNameGroupName].ToString();
+                        if (groupName == base.CmpAttribute.ResourceText("IDS_TXT_NOTHING"))
+                        {
+                            groupName = "";
+                        }
+                        _EntSpRoom.Group = groupName;
 
                         // 計算グループ
                         _EntSpRoom.CalcGroup = _Data.Rows[i][ColNameCalcGroupName].ToString();
@@ -735,6 +740,66 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
         string GetGroupName(string roomID)
         {
             return UtilData.GetValueTableData(_Data, ColNameID, roomID, ColNameGroupName);
+        }
+
+        /// ================================================================================
+        /// <summary>部屋のグループ名を更新</summary>
+        ///
+        /// <param name="roomId"   >部屋ID</param>
+        /// <param name="groupName">グループ名</param>
+        ///
+        /// <returns>更新できた場合は true</returns>
+        /// ================================================================================
+        public
+        bool AssignRoomToGroup(string roomId, string groupName)
+        {
+            if (_Data == null || string.IsNullOrWhiteSpace(roomId))
+                return false;
+
+            return AssignRoomsToGroup(new[] { roomId }, groupName);
+        }
+
+        /// ================================================================================
+        /// <summary>複数部屋のグループ名を更新</summary>
+        ///
+        /// <param name="roomIds"  >部屋ID</param>
+        /// <param name="groupName">グループ名</param>
+        ///
+        /// <returns>更新できた場合は true</returns>
+        /// ================================================================================
+        public
+        bool AssignRoomsToGroup(Collections.Generic.IEnumerable<string> roomIds, string groupName)
+        {
+            if (_Data == null || roomIds == null)
+                return false;
+
+            var roomIdSet = new Collections.Generic.HashSet<string>();
+            foreach (string roomId in roomIds)
+            {
+                if (!string.IsNullOrWhiteSpace(roomId))
+                    roomIdSet.Add(roomId);
+            }
+
+            if (roomIdSet.Count == 0)
+                return false;
+
+            System.Data.DataTable dummy = _Data.Copy();
+            bool changed = false;
+            for (int i = 0; i < dummy.Rows.Count; ++i)
+            {
+                string rowRoomId = dummy.Rows[i][ColNameID].ToString();
+                if (!roomIdSet.Contains(rowRoomId))
+                    continue;
+
+                dummy.Rows[i][ColNameGroupName] = groupName;
+                changed = true;
+            }
+
+            if (!changed)
+                return false;
+
+            _Data = dummy.Copy();
+            return true;
         }
 
         /// ================================================================================

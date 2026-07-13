@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using Autodesk.Revit.DB ;
 using Collections = System.Collections;
@@ -354,6 +354,75 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
             return true;
         }
 
+        bool TryGetStringFromParameter(ParamDefStrc def, string paramName, ref string value)
+        {
+            string localValue = "";
+            if (base.CmpParameters.GetValue(base.CurrentElem,
+                                            paramName,
+                                            def.ParamType,
+                                            def.BltParamGroup,
+                                            ref localValue) != 0)
+            {
+                return false;
+            }
+
+            value = localValue ?? "";
+            return true;
+        }
+
+        string TryGetSharedStringValue(ParamDefStrc def, string alternateJapaneseName, string alternateEnglishName)
+        {
+            string value = "";
+            if (TryGetStringFromParameter(def, def.DefName, ref value))
+            {
+                return value;
+            }
+
+            if (TryGetStringFromParameter(def, alternateJapaneseName, ref value))
+            {
+                return value;
+            }
+
+            if (TryGetStringFromParameter(def, alternateEnglishName, ref value))
+            {
+                return value;
+            }
+
+            return "";
+        }
+
+        bool TrySetSharedStringValue(ParamDefStrc def, string alternateJapaneseName, string alternateEnglishName, string value)
+        {
+            if (base.CmpParameters.SetValue(base.CurrentElem,
+                                            def.DefName,
+                                            def.ParamType,
+                                            def.BltParamGroup,
+                                            value) == 0)
+            {
+                return true;
+            }
+
+            if (base.CmpParameters.SetValue(base.CurrentElem,
+                                            alternateJapaneseName,
+                                            def.ParamType,
+                                            def.BltParamGroup,
+                                            value) == 0)
+            {
+                return true;
+            }
+
+            if (base.CmpParameters.SetValue(base.CurrentElem,
+                                            alternateEnglishName,
+                                            def.ParamType,
+                                            def.BltParamGroup,
+                                            value) == 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         /// ================================================================================
         /// <summary>種類</summary>
         /// <history><p>2011/07/29 Created  GSA,Inc. Shinichi Ishii</p>
@@ -402,30 +471,18 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
         {
             get
             {
-                string ret = "";
-                if (base.CurrentElem != null)
+                if (base.CurrentElem == null)
                 {
-                    if (base.CmpParameters.GetValue(base.CurrentElem,
-                                                    _DefValGroup.DefName,
-                                                    _DefValGroup.ParamType,
-                                                    _DefValGroup.BltParamGroup,
-                                                    ref ret) < -1)
-                    {
-                    }
+                    return "";
                 }
-                return ret;
+
+                return TryGetSharedStringValue(_DefValGroup, "部屋グループ", "Room Group");
             }
             set
             {
                 if (base.CurrentElem != null)
                 {
-                    if (base.CmpParameters.SetValue(base.CurrentElem,
-                                                    _DefValGroup.DefName,
-                                                    _DefValGroup.ParamType,
-                                                    _DefValGroup.BltParamGroup,
-                                                    value) < -1)
-                    {
-                    }
+                    TrySetSharedStringValue(_DefValGroup, "部屋グループ", "Room Group", value);
                 }
             }
         }
@@ -440,30 +497,18 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
         {
             get
             {
-                string ret = "";
-                if (base.CurrentElem != null)
+                if (base.CurrentElem == null)
                 {
-                    if (base.CmpParameters.GetValue(base.CurrentElem,
-                                                    _DefValCalcGroup.DefName,
-                                                    _DefValCalcGroup.ParamType,
-                                                    _DefValCalcGroup.BltParamGroup,
-                                                    ref ret) < -1)
-                    {
-                    }
+                    return "";
                 }
-                return ret;
+
+                return TryGetSharedStringValue(_DefValCalcGroup, "部屋計算グループ", "Room Calc Group");
             }
             set
             {
                 if (base.CurrentElem != null)
                 {
-                    if (base.CmpParameters.SetValue(base.CurrentElem,
-                                                    _DefValCalcGroup.DefName,
-                                                    _DefValCalcGroup.ParamType,
-                                                    _DefValCalcGroup.BltParamGroup,
-                                                    value) < -1)
-                    {
-                    }
+                    TrySetSharedStringValue(_DefValCalcGroup, "部屋計算グループ", "Room Calc Group", value);
                 }
             }
         }

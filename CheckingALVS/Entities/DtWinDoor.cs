@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
@@ -427,6 +427,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
             {
                 ceilingHeight = (dValue * base.CmpGeometry.UnitCoe).ToString();
             }
+            ceilingHeight = NormalizeCeilingDisplayLength(ceilingHeight, headHeight);
             row[ColNameCeilingHeight] = UtilValue.Rounding(ceilingHeight, 1, 2);
 
             // 防煙壁長さ
@@ -618,80 +619,80 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                     }
 
                     Revit.DB.FamilyInstance familyInstance = base.CmpElements.GetFamilyInstance(id);
+                    if (familyInstance == null)
+                        continue;
+
                     Revit.DB.FamilySymbol familySymbol = familyInstance.Symbol;
-                    if (familyInstance != null)
-                    {
-                        _EntSpWinDoor.CurrentElem = familyInstance;
-                        _EntSpWinDoorType.CurrentElem = familySymbol;
+                    _EntSpWinDoor.CurrentElem = familyInstance;
+                    _EntSpWinDoorType.CurrentElem = familySymbol;
 
-                        // 縁側
-                        bValue = bool.Parse(_Data.Rows[i][ColNameVeranda].ToString());
-                        _EntSpWinDoor.Veranda = bValue;
+                    // 縁側
+                    bValue = bool.Parse(_Data.Rows[i][ColNameVeranda].ToString());
+                    _EntSpWinDoor.Veranda = bValue;
 
-                        // 道路面
-                        bValue = bool.Parse(_Data.Rows[i][ColNameRoadSide].ToString());
-                        _EntSpWinDoor.RoadSide = bValue;
+                    // 道路面
+                    bValue = bool.Parse(_Data.Rows[i][ColNameRoadSide].ToString());
+                    _EntSpWinDoor.RoadSide = bValue;
 
-                        // 水平測定距離
-                        dValue = double.Parse(_Data.Rows[i][ColNameDistHorizontalMeas].ToString());
-                        _EntSpWinDoor.HorizontalMeasDist = dValue / unitCoe;
+                    // 水平測定距離
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameDistHorizontalMeas].ToString());
+                    _EntSpWinDoor.HorizontalMeasDist = dValue / unitCoe;
 
-                        // 水平補正距離
-                        dValue = double.Parse(_Data.Rows[i][ColNameDistHorizontalCorr].ToString());
-                        _EntSpWinDoor.HorizontalCorrDist = dValue / unitCoe;
+                    // 水平補正距離
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameDistHorizontalCorr].ToString());
+                    _EntSpWinDoor.HorizontalCorrDist = dValue / unitCoe;
 
-                        // 水平距離
-                        dValue = double.Parse(_Data.Rows[i][base.ColNameHorizontalDist].ToString());
-                        _EntSpWinDoor.HorizontalDist = dValue / unitCoe;
+                    // 水平距離
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][base.ColNameHorizontalDist].ToString());
+                    _EntSpWinDoor.HorizontalDist = dValue / unitCoe;
 
-                        // 垂直測定距離
-                        dValue = double.Parse(_Data.Rows[i][ColNameDistVerticalMeas].ToString());
-                        _EntSpWinDoor.VerticalMeasDist = dValue / unitCoe;
+                    // 垂直測定距離
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameDistVerticalMeas].ToString());
+                    _EntSpWinDoor.VerticalMeasDist = dValue / unitCoe;
 
-                        // 垂直補正距離
-                        dValue = double.Parse(_Data.Rows[i][ColNameDistVerticalCorr].ToString());
-                        _EntSpWinDoor.VerticalCorrDist = dValue / unitCoe;
+                    // 垂直補正距離
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameDistVerticalCorr].ToString());
+                    _EntSpWinDoor.VerticalCorrDist = dValue / unitCoe;
 
-                        // 垂直距離
-                        dValue = double.Parse(_Data.Rows[i][base.ColNameVerticalDist].ToString());
-                        _EntSpWinDoor.VerticalDist = dValue / unitCoe;
+                    // 垂直距離
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][base.ColNameVerticalDist].ToString());
+                    _EntSpWinDoor.VerticalDist = dValue / unitCoe;
 
-                        // 有効幅
-                        dValue = double.Parse(_Data.Rows[i][base.ColNameUsableWidth].ToString());
-                        _EntSpWinDoorType.UsableWidth = dValue / unitCoe;
+                    // 有効幅
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][base.ColNameUsableWidth].ToString());
+                    _EntSpWinDoorType.UsableWidth = dValue / unitCoe;
 
-                        // 有効高さ
-                        dValue = double.Parse(_Data.Rows[i][base.ColNameUsableHeight].ToString());
-                        _EntSpWinDoorType.UsableHeight = dValue / unitCoe;
+                    // 有効高さ
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][base.ColNameUsableHeight].ToString());
+                    _EntSpWinDoorType.UsableHeight = dValue / unitCoe;
 
-                        // 排煙有効高さ
-                        dValue = double.Parse(_Data.Rows[i][base.ColNameUsableHeightSmoke].ToString());
-                        _EntSpWinDoor.UsableHeightSmoke = dValue / unitCoe;
+                    // 排煙有効高さ
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][base.ColNameUsableHeightSmoke].ToString());
+                    _EntSpWinDoor.UsableHeightSmoke = dValue / unitCoe;
 
-                        // 排煙窓幅
-                        dValue = double.Parse(_Data.Rows[i][ColNameSmokeWinWidth].ToString());
-                        _EntSpWinDoorType.SmokeWinWidth = dValue / unitCoe;
+                    // 排煙窓幅
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameSmokeWinWidth].ToString());
+                    _EntSpWinDoorType.SmokeWinWidth = dValue / unitCoe;
 
-                        // 排煙窓高さ
-                        dValue = double.Parse(_Data.Rows[i][ColNameSmokeWinHeight].ToString());
-                        _EntSpWinDoorType.SmokeWinHeight = dValue / unitCoe;
+                    // 排煙窓高さ
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameSmokeWinHeight].ToString());
+                    _EntSpWinDoorType.SmokeWinHeight = dValue / unitCoe;
 
-                        // 開口係数
-                        dValue = double.Parse(_Data.Rows[i][base.ColNameOpenCoefficient].ToString());
-                        _EntSpWinDoorType.OpenCoeff = dValue;
+                    // 開口係数
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][base.ColNameOpenCoefficient].ToString());
+                    _EntSpWinDoorType.OpenCoeff = dValue;
 
-                        // 天端高さ
-                        dValue = double.Parse(_Data.Rows[i][ColNameHeadHeight].ToString());
-                        _EntSpWinDoor.HeadHeight = dValue / unitCoe;
+                    // 天端高さ
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameHeadHeight].ToString());
+                    _EntSpWinDoor.HeadHeight = dValue / unitCoe;
 
-                        // 天井高さ
-                        dValue = double.Parse(_Data.Rows[i][ColNameCeilingHeight].ToString());
-                        _EntSpWinDoor.CeilingHeight = dValue / unitCoe;
+                    // 天井高さ
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameCeilingHeight].ToString());
+                    _EntSpWinDoor.CeilingHeight = dValue / unitCoe;
 
-                        // 防煙長さ
-                        dValue = double.Parse(_Data.Rows[i][ColNameSmokeWallLength].ToString());
-                        _EntSpWinDoor.SmokeWallLength = dValue / unitCoe;
-                    }
+                    // 防煙長さ
+                    dValue = UtilValue.ParseNumberOrDefault(_Data.Rows[i][ColNameSmokeWallLength].ToString());
+                    _EntSpWinDoor.SmokeWallLength = dValue / unitCoe;
                 }
             }
 
@@ -997,9 +998,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
 
             if (UtilValue.IsNumber(horizontal) == true)
             {
-                dHorizontal = double.Parse(horizontal);
-                // メート変換
-                dHorizontal *= 0.001;
+                dHorizontal = base.CmpGeometry.DisplayLengthToMeters(double.Parse(horizontal));
             }
 
             if (UtilValue.IsNumber(d) == true)
@@ -1146,7 +1145,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
             }
             else
             {
-                dArea = dArea * System.Math.Pow(0.001, 2.0);
+                dArea = base.CmpGeometry.DisplayLengthProductToDisplayArea(dwidth, dheight);
                 ret = UtilValue.Rounding(dArea, _EntDtCmd.EffectiveOpeningAreaRoundingDecimal, _EntDtCmd.EffectiveOpeningAreaRoundingOpt);
             }
 
@@ -1281,7 +1280,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
             }
             else
             {
-                dArea = dArea * System.Math.Pow(0.001, 2.0);
+                dArea = base.CmpGeometry.DisplayLengthProductToDisplayArea(dwidth, dheight) * dOpenCoefficient;
                 ret = dArea.ToString();
             }
 
@@ -1438,6 +1437,20 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
         }
 
         /// ================================================================================
+        /// <summary>Normalize ceiling height to project length display units using head height as reference.</summary>
+        /// ================================================================================
+        string NormalizeCeilingDisplayLength(string ceilingHeight, string headHeight)
+        {
+            if (UtilValue.IsNumber(ceilingHeight) == false || UtilValue.IsNumber(headHeight) == false)
+                return ceilingHeight;
+
+            double ceiling = double.Parse(ceilingHeight);
+            double head = double.Parse(headHeight);
+            ceiling = base.CmpGeometry.ResolveDisplayLength(ceiling, head);
+            return ceiling.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        /// ================================================================================
         /// <summary>排煙有効高さ取得</summary>
         ///
         /// <param name="height"          >建具高さ</param>
@@ -1480,12 +1493,14 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                 dSmokeWallLength = double.Parse(smokeWallLength);
             }
 
+            var geometry = base.CmpGeometry;
+            dCeilingHeight = geometry.ResolveDisplayLength(dCeilingHeight, dHeadHeight);
+
             // 計算1(c1)
             //  天井高さ >= 3000mm :
             //    天井高さ / 2 < 2100mm : 2100mm
             //                       : 天井高さ / 2
             double c1 = 0.0;
-            var geometry = base.CmpGeometry;
             double ceilingHeightMin = geometry.FromMillimeters(3000);
             stdBtm = geometry.FromMillimeters(2100);
             if (dCeilingHeight >= ceilingHeightMin)

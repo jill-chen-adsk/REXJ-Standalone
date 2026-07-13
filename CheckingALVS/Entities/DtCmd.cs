@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
@@ -60,7 +60,9 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
                                                      itemNum);
             if (_EntSpCmd.DefSuccess == false)
             {
-                base.ErrMsg = base.CmpAttribute.ResourceText("IDS_ERR_PARAMDEF");
+                string strParam = base.CmpAttribute.ResourceText("IDS_TXT_PARAMETER");
+                base.ErrMsg = base.CmpAttribute.ResourceText("IDS_ERR_PARAMDEF") + "\n" +
+                              "    " + strParam + "[" + defName + "]";
             }
             else
             {

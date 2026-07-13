@@ -162,9 +162,6 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         void GetRoomHeight(Collections.Generic.IList<Revit.DB.Architecture.Room> rooms,
                            ref Collections.Generic.IList<String> heights)
         {
-            double unitCoeM2 = _CmpGeometry.UnitCoeM2;
-            double unitCoeM3 = _CmpGeometry.UnitCoeM3;
-
             Revit.DB.SpatialElementBoundaryLocation roomBndLocTypeCurrent = _CmpSettings.GetRoomAreaComputation();
             Revit.DB.SpatialElementBoundaryLocation roomBndLocType = Revit.DB.SpatialElementBoundaryLocation.Finish;
             _CmpSettings.SetRoomAreaComputation(roomBndLocType);
@@ -174,12 +171,13 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
 
             foreach (Revit.DB.Architecture.Room room in rooms)
             {
-                double roomArea = room.Area * unitCoeM2;
-                double roomVol = room.Volume * unitCoeM3;
                 double roomHeight = 0.0;
-                if (roomArea != 0.0)
+                if (room.Area != 0.0)
                 {
-                    roomHeight = roomVol / roomArea;
+                    // Volume/Area is height in Revit internal length units; convert to project length display units
+                    // so it matches head height, smoke wall, and FromMillimeters() thresholds (e.g. mm vs m).
+                    double roomHeightInternal = room.Volume / room.Area;
+                    roomHeight = _CmpGeometry.ConvertInternalLengthToDisplay(roomHeightInternal);
                 }
                 string roomHeightStr = _CmpSettings.Round(roomHeight).ToString();
                 heights.Add(roomHeightStr);
@@ -205,59 +203,57 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                                               Collections.Generic.IList<Revit.DB.Curve> curves,
                                               double normalDist)
         {
-            // 戻り値
-            double dist = 0.0;
+            if (curves == null || curves.Count == 0)
+                return 0.0;
 
-            // カーブのZ値
-            double curveZ = 0.0;
-            if (curves.Count > 0)
+            // Plan elevation — horizontal distance is measured in plan view (XY only).
+            Revit.DB.XYZ instancePos = GetOpeningPlanPosition(familyInstance, 0.0);
+
+            // Shoot along the opening exterior normal (plan view).
+            Revit.DB.XYZ facingPlan = new Revit.DB.XYZ(
+                familyInstance.FacingOrientation.X,
+                familyInstance.FacingOrientation.Y,
+                0.0);
+            if (facingPlan.GetLength() <= _CmpGeometry.Approx0Len)
             {
-                curveZ = curves[0].GetEndPoint(0).Z;
+                Revit.DB.Transform instanceTransform = _CmpGeometry.GetElemTransform(familyInstance);
+                facingPlan = new Revit.DB.XYZ(instanceTransform.BasisY.X, instanceTransform.BasisY.Y, 0.0);
             }
 
-            // ファミリ位置
-            Revit.DB.Transform instanceTransform = _CmpGeometry.GetElemTransform(familyInstance);
-            Revit.DB.XYZ instancePos = new Revit.DB.XYZ(instanceTransform.Origin.X,
-                                                        instanceTransform.Origin.Y,
-                                                        curveZ);
+            if (facingPlan.GetLength() <= _CmpGeometry.Approx0Len)
+                return 0.0;
 
-            // フリップ対応
-            double normalFlag = 1.0;
-            if (_CmpGeometry.Distance2D(instanceTransform.BasisY, familyInstance.FacingOrientation) > _CmpGeometry.Approx0Len)
+            facingPlan = facingPlan.Normalize();
+            Revit.DB.XYZ forwardEnd = instancePos + facingPlan.Multiply(normalDist);
+
+            double dist = _CmpGeometry.GetNearestPlanRayIntersection(instancePos, forwardEnd, curves);
+            if (dist > _CmpGeometry.Approx0Len)
+                return dist;
+
+            // Some families store the facing normal opposite to the exterior direction.
+            Revit.DB.XYZ backwardEnd = instancePos - facingPlan.Multiply(normalDist);
+            return _CmpGeometry.GetNearestPlanRayIntersection(instancePos, backwardEnd, curves);
+        }
+
+        private static
+        Revit.DB.XYZ GetOpeningPlanPosition(Revit.DB.FamilyInstance familyInstance, double z)
+        {
+            Revit.DB.XYZ planPoint;
+            if (familyInstance.Location is Revit.DB.LocationPoint locationPoint)
             {
-                normalFlag = -1.0;
+                planPoint = locationPoint.Point;
+            }
+            else if (familyInstance.Location is Revit.DB.LocationCurve locationCurve &&
+                     locationCurve.Curve != null)
+            {
+                planPoint = locationCurve.Curve.Evaluate(0.5, true);
+            }
+            else
+            {
+                planPoint = familyInstance.GetTransform().Origin;
             }
 
-            // 法線方向
-            double posX = 0.0;
-            double posY = normalDist * normalFlag;
-            double posZ = 0.0;
-            Revit.DB.XYZ basisX = new Revit.DB.XYZ(posX * instanceTransform.BasisX.X, posX * instanceTransform.BasisX.Y, posX * instanceTransform.BasisX.Z);
-            Revit.DB.XYZ basisY = new Revit.DB.XYZ(posY * instanceTransform.BasisY.X, posY * instanceTransform.BasisY.Y, posY * instanceTransform.BasisY.Z);
-            Revit.DB.XYZ basisZ = new Revit.DB.XYZ(posZ * instanceTransform.BasisZ.X, posZ * instanceTransform.BasisZ.Y, posZ * instanceTransform.BasisZ.Z);
-
-            posX = basisX.X + basisY.X + basisZ.X;
-            posY = basisX.Y + basisY.Y + basisZ.Y;
-            posZ = basisX.Z + basisY.Z + basisZ.Z;
-            Revit.DB.XYZ normalPos = new Revit.DB.XYZ(instanceTransform.Origin.X + posX,
-                                                      instanceTransform.Origin.Y + posY,
-                                                      curveZ);
-
-            // 法線
-            Revit.DB.Line normLine = Revit.DB.Line.CreateBound(instancePos, normalPos);
-
-            // 敷地境界線との交点
-            foreach (Revit.DB.Curve curve in curves)
-            {
-                Revit.DB.XYZ interPos = null;
-                _CmpGeometry.IntersecCurve2D(normLine, curve, ref interPos);
-                if (interPos != null)
-                {
-                    dist = _CmpGeometry.Distance2D(instancePos, interPos);
-                    break;
-                }
-            }
-            return dist;
+            return new Revit.DB.XYZ(planPoint.X, planPoint.Y, z);
         }
 
         /// ================================================================================
@@ -275,13 +271,9 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         {
             double unitCoe = _CmpGeometry.UnitCoe;
 
-            // 敷地境界線
-            Collections.Generic.IList<Revit.DB.PropertyLine> propLines = _CmpElements.PropertyLines;
-            Collections.Generic.IList<Revit.DB.Curve> propCurves = new Collections.Generic.List<Revit.DB.Curve>();
-            foreach (Revit.DB.PropertyLine propLine in propLines)
-            {
-                propCurves = _CmpGeometry.GetCurveElem(propLine);
-            }
+            // 敷地境界線 — host model plus loaded links, full boundary loops
+            Collections.Generic.IList<Revit.DB.Curve> propCurves =
+                _CmpGeometry.GetAllPropertyLineCurves();
 
             Revit.DB.BoundingBoxXYZ propBBoxXYZ = null;
             double propCurvesDist = 0.0;
@@ -637,7 +629,6 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         string WorkFlow(int commandKind)
         {
             string ret = null;
-            System.Windows.Forms.DialogResult formResult;
 
             // Excelユーティリティ
             // 既存
@@ -772,11 +763,10 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                 Collections.Generic.IList<int> affiliationRoomParts = new Collections.Generic.List<int>();
                 GetAffiliationRoomParts(selSetWinDoors, ref affiliationRoomParts);
 
-                RvtExtApp.Components.FormSetting formSetting = new RvtExtApp.Components.FormSetting(commandKind,
-                                                                                                    _CmpAttribute,
-                                                                                                    entDtCmd);
-                formSetting.ShowDialog();
-                if (formSetting.DialogResult != System.Windows.Forms.DialogResult.OK)
+                RvtExtApp.UI.FormSettingWPF formSetting = new RvtExtApp.UI.FormSettingWPF(commandKind,
+                                                                                          _CmpAttribute,
+                                                                                          entDtCmd);
+                if (WeaveDialogHost.ShowDialog(formSetting) != true)
                 {
                     _CmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
@@ -806,19 +796,20 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
 
                 // 画面表示
                 bool flagExcel = false;
-                RvtExtApp.Components.FormEnvironmentalCheck form = new RvtExtApp.Components.FormEnvironmentalCheck(_CmpAttribute,
-                                                                                                                   _EntDtRoom,
-                                                                                                                   _EntDtWinDoor,
-                                                                                                                   entDtCmd);
-                formResult = System.Windows.Forms.DialogResult.Ignore;
+                RvtExtApp.UI.EnvironmentalCheckCloseAction closeAction = RvtExtApp.UI.EnvironmentalCheckCloseAction.Ignore;
 
-                while (formResult == System.Windows.Forms.DialogResult.Ignore)
+                while (closeAction == RvtExtApp.UI.EnvironmentalCheckCloseAction.Ignore)
                 {
-                    formResult = form.ShowDialog();
+                    RvtExtApp.UI.FormEnvironmentalCheckWPF formWpf = new RvtExtApp.UI.FormEnvironmentalCheckWPF(_CmpAttribute,
+                                                                                                                  _EntDtRoom,
+                                                                                                                  _EntDtWinDoor,
+                                                                                                                  entDtCmd);
+                    WeaveDialogHost.ShowDialog(formWpf);
+                    closeAction = formWpf.CloseAction;
 
-                    if (formResult != System.Windows.Forms.DialogResult.Cancel)
+                    if (closeAction != RvtExtApp.UI.EnvironmentalCheckCloseAction.Cancel)
                     {
-                        if (formResult != System.Windows.Forms.DialogResult.Ignore)
+                        if (closeAction != RvtExtApp.UI.EnvironmentalCheckCloseAction.Ignore)
                         {
                             trans.Start("SetParamValue");
 
@@ -828,7 +819,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
 
                             trans.Commit();
 
-                            if (formResult == System.Windows.Forms.DialogResult.Yes)
+                            if (closeAction == RvtExtApp.UI.EnvironmentalCheckCloseAction.Excel)
                             {
                                 trans.Start("SetValueExcel");
                                 _EntDtExcel.SetData(_EntDtRoom, _EntDtWinDoor);

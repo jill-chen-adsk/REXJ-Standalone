@@ -43,6 +43,14 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
             return double.TryParse(value.Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out _);
         }
 
+        public static double ParseNumberOrDefault(string value, double defaultValue = 0.0)
+        {
+            if (!IsNumber(value))
+                return defaultValue;
+
+            return double.Parse(value.Trim(), NumberStyles.Float, CultureInfo.InvariantCulture);
+        }
+
         /// <summary>Round numeric string or double; roundingMode maps to midpoint rules (AwayFromZero / ToEven).</summary>
         public static string Rounding(object value, int decimals, int roundingMode)
         {

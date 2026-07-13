@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
@@ -78,11 +78,18 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
         private
         bool SetDef()
         {
+            if (base.CmpParameters.IsSharedParameterAvailable(_ElemProjInfo,
+                    _ParamNameCmd,
+                    base.CmpSettings.CategoryProjInfo))
+            {
+                return true;
+            }
+
             return base.CmpParameters.SetDefinition(null,
                                                     base.CmpSettings.CategoryProjInfo,
                                                     _ParamNameCmd,
                                                     Revit.DB.SpecTypeId.String.Text,
-                                                    new Revit.DB.ForgeTypeId(string.Empty),
+                                                    Revit.DB.GroupTypeId.IdentityData,
                                                     false,
                                                     0);
         }

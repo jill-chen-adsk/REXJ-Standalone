@@ -57,6 +57,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Resources\WeaveDialogResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UI\Controls\RoundingSectionPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UI\FormSettingWPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UI\FormEnvironmentalCheckWPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Update="UI\Controls\RoundingSectionPanel.xaml.cs">
+      <DependentUpon>RoundingSectionPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\FormSettingWPF.xaml.cs">
+      <DependentUpon>FormSettingWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="UI\FormEnvironmentalCheckWPF.xaml.cs">
+      <DependentUpon>FormEnvironmentalCheckWPF.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Text.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Text.resx</DependentUpon>
@@ -101,6 +122,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Data\Coefficient.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Coefficient.ja.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="RexJParam.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Images\*.png">

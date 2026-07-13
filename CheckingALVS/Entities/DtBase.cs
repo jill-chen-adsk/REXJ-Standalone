@@ -1123,7 +1123,8 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
             if (errMsg == "")
             {
                 double dValue = double.Parse(value);
-                if (dValue < 0.5)
+                double minSmokeWallLength = CmpGeometry.FromMillimeters(500);
+                if (dValue < minSmokeWallLength)
                 {
                     errMsg = _CmpAttribute.ResourceText("IDS_ERR_VALSMOKEWALLLENGTH");
                 }

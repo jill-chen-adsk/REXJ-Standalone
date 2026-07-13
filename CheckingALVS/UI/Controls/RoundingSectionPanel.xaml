@@ -1,0 +1,48 @@
+<UserControl x:Class="ADSK.JExtRAC.CheckingALVS.UI.Controls.RoundingSectionPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="Segoe UI"
+             FontSize="12">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ADSK.JExtRAC.CheckingALVS;component/Resources/WeaveDialogResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border Style="{StaticResource Weave.SectionPanel}">
+        <StackPanel>
+            <TextBlock x:Name="sectionTitleText" Style="{StaticResource Weave.SectionTitle}"/>
+
+            <Grid Margin="0,0,0,12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" VerticalAlignment="Top">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="decimalLabelText" Style="{StaticResource Weave.BodyText}" Margin="0,0,8,0"/>
+                        <TextBox x:Name="decimalTextBox"
+                                 Style="{StaticResource Weave.TextBox}"
+                                 Width="56"
+                                 TextAlignment="Right"
+                                 LostFocus="DecimalTextBox_LostFocus"/>
+                    </StackPanel>
+                    <TextBlock x:Name="errorTextBlock" Style="{StaticResource Weave.ErrorText}" Visibility="Collapsed"/>
+                </StackPanel>
+
+                <Border Grid.Column="1" Style="{StaticResource Weave.RoundingPanel}">
+                    <StackPanel>
+                        <TextBlock x:Name="orderLabelText" Style="{StaticResource Weave.SectionTitle}" Text="Order" Margin="0,0,0,8"/>
+                        <RadioButton x:Name="cutRadio" Style="{StaticResource Weave.RadioButton.Stacked}"/>
+                        <RadioButton x:Name="closeRadio" Style="{StaticResource Weave.RadioButton.Stacked}"/>
+                        <RadioButton x:Name="roundingRadio" Style="{StaticResource Weave.RadioButton.Stacked}" Margin="0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Button x:Name="defaultButton" Style="{StaticResource Weave.Button.Tertiary}" Content="Default" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Border>
+</UserControl>

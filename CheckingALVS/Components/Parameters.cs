@@ -70,59 +70,184 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
             return SetDefinition(elem, categories, defName, paramType, bltParamGroup, visible, bindingMode);
         }
 
+        public bool IsSharedParameterBound(string defName, Category category)
+        {
+            if (category == null)
+                return false;
+
+            return IsDefinitionBoundToCategories(defName, new List<Category> { category });
+        }
+
+        public bool IsSharedParameterAvailable(Element elem, string defName, Category category)
+        {
+            if (FindParameter(elem, defName) != null)
+                return true;
+
+            return IsSharedParameterBound(defName, category);
+        }
+
         public bool SetDefinition(Element elem, string folderName, string fileName, string groupName,
             IList<Category> categories, string defName, ForgeTypeId paramType, ForgeTypeId bltParamGroup,
             bool visible, int bindingMode)
         {
             try
             {
+                if (IsDefinitionBoundToCategories(defName, categories))
+                    return true;
+
                 var app = _rvtUIDoc.Application.Application;
-                string filePath = Path.Combine(folderName, fileName);
+                string addInFilePath = Path.Combine(folderName, fileName);
+                string filePath = ResolveSharedParameterFilePath(addInFilePath);
 
                 if (!File.Exists(filePath))
                     using (File.Create(filePath)) { }
 
-                string origFile = app.SharedParametersFilename;
+                string origFile = null;
+                try { origFile = app.SharedParametersFilename; } catch { }
+
                 app.SharedParametersFilename = filePath;
                 var defFile = app.OpenSharedParameterFile();
-                if (defFile == null) return false;
+                if (defFile == null)
+                    return false;
 
-                var group = defFile.Groups.get_Item(groupName);
-                if (group == null)
-                    group = defFile.Groups.Create(groupName);
+                var group = defFile.Groups.get_Item(groupName) ?? defFile.Groups.Create(groupName);
 
                 var def = group.Definitions.get_Item(defName);
                 if (def == null)
                 {
-                    var opts = new ExternalDefinitionCreationOptions(defName, paramType);
-                    opts.Visible = visible;
+                    var opts = new ExternalDefinitionCreationOptions(defName, paramType) { Visible = visible };
                     def = group.Definitions.Create(opts);
                 }
 
-                if (def != null)
-                {
-                    var catSet = new CategorySet();
-                    foreach (var cat in categories)
-                    {
-                        if (cat != null) catSet.Insert(cat);
-                    }
+                if (def == null)
+                    return false;
 
-                    var existingBinding = RvtDBDoc.ParameterBindings.get_Item(def);
-                    if (existingBinding == null)
-                    {
-                        ElementBinding binding;
-                        if (bindingMode == 1)
-                            binding = app.Create.NewTypeBinding(catSet);
-                        else
-                            binding = app.Create.NewInstanceBinding(catSet);
-                        RvtDBDoc.ParameterBindings.Insert(def, binding, bltParamGroup);
-                    }
+                var catSet = app.Create.NewCategorySet();
+                foreach (var cat in categories)
+                {
+                    if (cat != null && CanBindToCategory(cat))
+                        catSet.Insert(cat);
                 }
 
-                try { app.SharedParametersFilename = origFile; } catch { }
+                if (catSet.IsEmpty)
+                    return IsDefinitionBoundToCategories(defName, categories);
+
+                var bindingMap = RvtDBDoc.ParameterBindings;
+                Autodesk.Revit.DB.Binding binding = bindingMode == 1
+                    ? app.Create.NewTypeBinding(catSet)
+                    : app.Create.NewInstanceBinding(catSet);
+
+                ForgeTypeId paramGroup = ResolveParameterGroup(bltParamGroup);
+
+                if (bindingMap.Contains(def))
+                    bindingMap.ReInsert(def, binding, paramGroup);
+                else
+                    bindingMap.Insert(def, binding, paramGroup);
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(origFile))
+                        app.SharedParametersFilename = origFile;
+                }
+                catch { }
+
                 return true;
             }
-            catch { return false; }
+            catch
+            {
+                return IsDefinitionBoundToCategories(defName, categories);
+            }
+        }
+
+        string ResolveSharedParameterFilePath(string addInFilePath)
+        {
+            if (!string.IsNullOrEmpty(_shParamDefaultFileName) &&
+                File.Exists(_shParamDefaultFileName) &&
+                !string.Equals(_shParamDefaultFileName, addInFilePath, StringComparison.OrdinalIgnoreCase))
+            {
+                return _shParamDefaultFileName;
+            }
+
+            return addInFilePath;
+        }
+
+        static bool CanBindToCategory(Category category)
+        {
+            if (category.AllowsBoundParameters)
+                return true;
+
+            try
+            {
+                return category.BuiltInCategory == BuiltInCategory.OST_ProjectInformation;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        static ForgeTypeId ResolveParameterGroup(ForgeTypeId bltParamGroup)
+        {
+            if (bltParamGroup == null || string.IsNullOrEmpty(bltParamGroup.TypeId))
+                return GroupTypeId.IdentityData;
+
+            return bltParamGroup;
+        }
+
+        bool IsDefinitionBoundToCategories(string defName, IList<Category> categories)
+        {
+            if (categories == null || categories.Count == 0)
+                return false;
+
+            var targetCategoryIds = new HashSet<ElementId>();
+            foreach (var category in categories)
+            {
+                if (category != null)
+                    targetCategoryIds.Add(category.Id);
+            }
+
+            if (targetCategoryIds.Count == 0)
+                return false;
+
+            var bindings = RvtDBDoc.ParameterBindings;
+            var iterator = bindings.ForwardIterator();
+            while (iterator.MoveNext())
+            {
+                if (iterator.Key is not Definition definition)
+                    continue;
+
+                if (!string.Equals(definition.Name, defName, StringComparison.Ordinal))
+                    continue;
+
+                if (iterator.Current is not ElementBinding elementBinding)
+                    continue;
+
+                foreach (Category boundCategory in elementBinding.Categories)
+                {
+                    if (targetCategoryIds.Contains(boundCategory.Id))
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        static Parameter FindParameter(Element elem, string paramName)
+        {
+            if (elem == null || string.IsNullOrEmpty(paramName))
+                return null;
+
+            var param = elem.LookupParameter(paramName);
+            if (param != null)
+                return param;
+
+            foreach (Parameter candidate in elem.Parameters)
+            {
+                if (string.Equals(candidate?.Definition?.Name, paramName, StringComparison.Ordinal))
+                    return candidate;
+            }
+
+            return null;
         }
 
         public int GetValue(Element elem, BuiltInParameter bip, ref int value)
@@ -175,7 +300,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         {
             try
             {
-                var param = elem.LookupParameter(paramName);
+                var param = FindParameter(elem, paramName);
                 if (param != null)
                 {
                     value = param.AsString() ?? param.AsValueString() ?? "";
@@ -191,7 +316,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         {
             try
             {
-                var param = elem.LookupParameter(paramName);
+                var param = FindParameter(elem, paramName);
                 if (param != null && param.HasValue)
                 {
                     value = param.AsDouble();
@@ -237,11 +362,10 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         {
             try
             {
-                var param = elem.LookupParameter(paramName);
+                var param = FindParameter(elem, paramName);
                 if (param != null && param.HasValue)
                 {
-                    bool b = param.AsInteger() != 0;
-                    value = b;
+                    value = param.AsInteger() != 0;
                     return 0;
                 }
                 return -2;
@@ -254,7 +378,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         {
             try
             {
-                var param = elem.LookupParameter(paramName);
+                var param = FindParameter(elem, paramName);
                 if (param != null)
                 {
                     param.Set(value);
@@ -270,7 +394,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         {
             try
             {
-                var param = elem.LookupParameter(paramName);
+                var param = FindParameter(elem, paramName);
                 if (param != null)
                 {
                     param.Set(value ? 1 : 0);
@@ -286,7 +410,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         {
             try
             {
-                var param = elem.LookupParameter(paramName);
+                var param = FindParameter(elem, paramName);
                 if (param != null)
                 {
                     param.Set(value);

@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.IO;
+using System.Threading;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.CheckingALVS;
@@ -52,14 +54,39 @@ namespace ADSK.JExtRAC.CheckingALVS.Entities
             // 初期化
             _CmpAttribute = cmpAttribute;
 
-            string itemsFoldr = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string itemsFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string fileName = _CmpAttribute.ResourceText("IDS_FILE_COEFFICIENT");
+            _FileCoeff = ResolveCoefficientFilePath(itemsFolder, fileName);
+        }
 
-            // ファイル - 係数
-            _FileCoeff = itemsFoldr + "\\" + _CmpAttribute.ResourceText("IDS_FILE_COEFFICIENT");
-            if (System.IO.File.Exists(_FileCoeff) == false)
+        static string ResolveCoefficientFilePath(string assemblyDirectory, string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(assemblyDirectory) || string.IsNullOrWhiteSpace(fileName))
+                return null;
+
+            string baseName = Path.GetFileNameWithoutExtension(fileName);
+            string extension = Path.GetExtension(fileName);
+            if (string.IsNullOrEmpty(extension))
+                extension = ".xml";
+
+            var candidatePaths = new Collections.Generic.List<string>();
+            string culture = Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+            if (!string.Equals(culture, "en", StringComparison.OrdinalIgnoreCase))
             {
-                _FileCoeff = null;
+                candidatePaths.Add(Path.Combine(assemblyDirectory, "Data", baseName + "." + culture + extension));
+                candidatePaths.Add(Path.Combine(assemblyDirectory, culture, fileName));
             }
+
+            candidatePaths.Add(Path.Combine(assemblyDirectory, "Data", fileName));
+            candidatePaths.Add(Path.Combine(assemblyDirectory, fileName));
+
+            foreach (string candidatePath in candidatePaths)
+            {
+                if (File.Exists(candidatePath))
+                    return candidatePath;
+            }
+
+            return null;
         }
 
         #endregion Constructor
