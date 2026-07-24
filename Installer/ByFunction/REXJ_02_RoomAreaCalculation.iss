@@ -1,4 +1,4 @@
-﻿; REXJ Standalone - Room Area Calculation for Building Application Installer for Revit 2027
+; REXJ Standalone - Room Area Calculation for Building Application Installer for Revit 2027
 ; Built with Inno Setup 6
 ; Weave-compliant: Dark/light theme WPF dialogs for Legal Area, Grounds Expression, and Room to Area
 
