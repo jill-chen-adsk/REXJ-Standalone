@@ -9,6 +9,9 @@
     <Color x:Key="Weave.Color.Input">#FFFFFF</Color>
     <Color x:Key="Weave.Color.Accent">#0696D7</Color>
     <Color x:Key="Weave.Color.Accent.Hover">#0586C1</Color>
+    <Color x:Key="Weave.Color.Shadow">#000000</Color>
+
+    <SolidColorBrush x:Key="Weave.Brush.Chrome.CloseHover" Color="#20000000"/>
 
     <SolidColorBrush x:Key="Weave.Brush.Text.Primary" Color="{DynamicResource Weave.Color.Text.Primary}"/>
     <SolidColorBrush x:Key="Weave.Brush.Text.Secondary" Color="{DynamicResource Weave.Color.Text.Secondary}"/>
@@ -24,6 +27,10 @@
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+    </Style>
+
+    <Style x:Key="Weave.ChromeWindow" TargetType="Window" BasedOn="{StaticResource Weave.Window}">
+        <Setter Property="Background" Value="Transparent"/>
     </Style>
 
     <Style x:Key="Weave.SectionTitle" TargetType="TextBlock">
