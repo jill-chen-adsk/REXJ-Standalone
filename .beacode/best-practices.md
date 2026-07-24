@@ -38,10 +38,10 @@ These guidelines apply to the REXJ Standalone Revit 2027 add-in suite in this re
 
 ## Build and Deploy
 
-- Build output lands in `bin\x64\Release 2027\`.
-- Deploy via `.claude/skills/run-rexj/deploy.ps1` to `C:\REXJ\Standalone\Released\<Tool>\`.
-- Revit must be closed before deploying; DLLs are locked while Revit is running.
-- Configuration name must be exactly `"Release 2027"` (includes a space).
+- Build with configuration `Release 2027` and platform `x64` (note the space in the config name).
+- Build output lands in `<Tool>\bin\x64\Release 2027\`.
+- For local testing, copy each tool's build output (DLL + dependencies) into `%APPDATA%\Autodesk\Revit\Addins\2027\<Tool>\`, with its `.addin` manifest in the Addins folder root. See `README.md` Deployment section.
+- Revit must be closed before overwriting DLLs; they are locked while Revit is running.
 
 ## Testing Expectations
 

@@ -1,8 +1,10 @@
 beacode:
   target_branch: "main"
-  review_request_changes: true
+  # Start advisory-only; set true after validating BeaCode signal quality on this repo.
+  review_request_changes: false
   auto_resolve_threads: true
-  review_draft_prs: true
+  # Skip WIP draft PRs to reduce noise; set true if you want early feedback on drafts.
+  review_draft_prs: false
   beta_feature_flags:
     new_review_prompt: true
     context_management: true
