@@ -1,0 +1,11 @@
+beacode:
+  target_branch: "main"
+  review_request_changes: true
+  auto_resolve_threads: true
+  review_draft_prs: true
+  beta_feature_flags:
+    new_review_prompt: true
+    context_management: true
+  guidelines:
+    enabled: true
+    file_path: ".beacode/best-practices.md"
