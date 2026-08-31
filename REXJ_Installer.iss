@@ -3,7 +3,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "REXJ Standalone Add-ins"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.1.3"
 #define MyAppPublisher "ADSK REXJ"
 #define MyAppURL "https://github.com/rexj"
 #define RevitYear "2027"
@@ -40,7 +40,7 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 ; --- Building Code Check ---
 Name: "codecheck"; Description: "Building Code Check"; Types: full compact
 Name: "codecheck\areaschedule"; Description: "Area Schedule (Legal Area / Grounds Expression / Room to Area)"; Types: full compact
-Name: "codecheck\avesitelevel"; Description: "Avg Site Level Calculation"; Types: full compact
+Name: "codecheck\avesitelevel"; Description: "Avg Site Level Calculation (Weave-compliant)"; Types: full compact
 Name: "codecheck\checkingalvs"; Description: "Daylight / Smoke Exhaust / Ventilation Check"; Types: full compact
 
 ; --- Excel Tools ---
@@ -117,7 +117,7 @@ Name: "manager\rexjmanager"; Description: "REXJ Manager"; Types: full compact
 ; --- Utility Tools ---
 Name: "utility"; Description: "Utility Tools"; Types: full
 Name: "utility\valuecopy"; Description: "Copy Parameter"; Types: full
-Name: "utility\printregion"; Description: "Range Print"; Types: full
+Name: "utility\printregion"; Description: "Range Print (Weave-compliant)"; Types: full
 
 ; ============================================================
 ; FILES
