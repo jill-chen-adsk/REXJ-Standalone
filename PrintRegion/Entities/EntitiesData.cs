@@ -23,6 +23,12 @@ namespace ADSK.JExtRAC.PrintRegion.Entities
         /// <summary>Region print max</summary>
         public XYZ _pointPickMax = null;
 
+        /// <summary>Region pick min in model coordinates</summary>
+        public XYZ _pointPickMinModel = null;
+
+        /// <summary>Region pick max in model coordinates</summary>
+        public XYZ _pointPickMaxModel = null;
+
         /// <summary>Current view scale</summary>
         public int _viewScale = -1;
 

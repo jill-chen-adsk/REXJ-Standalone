@@ -55,7 +55,13 @@ namespace ADSK.JExtRAC.PrintRegion.Commands
             using (TransactionGroup transGroup = new TransactionGroup(rvtUIDoc.Document)) {
                 transGroup.Start(cmpAttribute.ResourceText("IDS_TXT_TRANSACTION_PRINT_REGION"));
 
-                if (cmpElements.PickPoints(cmpAttribute, rvtUIDoc, out _entData._pointPickMin, out _entData._pointPickMax) == false)
+                if (cmpElements.PickPoints(
+                        cmpAttribute,
+                        rvtUIDoc,
+                        out _entData._pointPickMin,
+                        out _entData._pointPickMax,
+                        out _entData._pointPickMinModel,
+                        out _entData._pointPickMaxModel) == false)
                     return Result.Cancelled;
                 // 現ビューのスケールの利用
                 _entData._viewScale = rvtUIDoc.ActiveView.Scale;
@@ -71,8 +77,24 @@ namespace ADSK.JExtRAC.PrintRegion.Commands
                             return Result.Cancelled;
                         }
 
-                        // Set crop box and scale default to view
-                        cmpElements.SetInfomationView(rvtUIDoc, viewDuplicate, _entData._pointPickMin, _entData._pointPickMax, _entData._viewScale);
+                        cmpElements.SetInfomationView(
+                            rvtUIDoc,
+                            viewDuplicate,
+                            _entData._pointPickMin,
+                            _entData._pointPickMax,
+                            _entData._viewScale,
+                            _entData._pointPickMinModel,
+                            _entData._pointPickMaxModel);
+                        if (cmpElements.TryGetCropLocalBounds(
+                                viewDuplicate,
+                                _entData._pointPickMinModel,
+                                _entData._pointPickMaxModel,
+                                out XYZ cropMin,
+                                out XYZ cropMax))
+                        {
+                            _entData._pointPickMin = cropMin;
+                            _entData._pointPickMax = cropMax;
+                        }
                         // 通芯のトリミング
                         cmpElements.TrimGrid(rvtUIDoc, viewDuplicate, _entData._pointPickMin, _entData._pointPickMax);
                         // 断面ビューなどを非表示

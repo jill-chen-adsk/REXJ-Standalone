@@ -82,41 +82,38 @@ namespace ADSK.JExtRAC.PrintRegion.Components
         ///
         /// <history>2022/01/17 Created Applied Technology</history>
         /// ================================================================================
-        public bool SetInfomationView(UIDocument uiDoc, View viewPrint, XYZ p1, XYZ p2, int scaleView)
+        public bool SetInfomationView(
+            UIDocument uiDoc,
+            View viewPrint,
+            XYZ p1,
+            XYZ p2,
+            int scaleView,
+            XYZ modelPickMin = null,
+            XYZ modelPickMax = null)
         {
             try
             {
                 if (viewPrint == null)
                     return false;
-               
-                // Set scale
-                viewPrint.Scale = scaleView;
-                
-                // Set box — update XY from pick; preserve crop depth (Z) so plan picks do not collapse.
-                BoundingBoxXYZ box = viewPrint.CropBox;
-                double minZ = box.Min.Z;
-                double maxZ = box.Max.Z;
-                double minX = Math.Min(p1.X, p2.X);
-                double maxX = Math.Max(p1.X, p2.X);
-                double minY = Math.Min(p1.Y, p2.Y);
-                double maxY = Math.Max(p1.Y, p2.Y);
 
-                box.Min = new XYZ(minX, minY, minZ);
-                box.Max = new XYZ(maxX, maxY, maxZ);
-                viewPrint.CropBox = box;
+                XYZ cropMin = p1;
+                XYZ cropMax = p2;
+                if (modelPickMin != null && modelPickMax != null)
+                    TryGetCropLocalBounds(viewPrint, modelPickMin, modelPickMax, out cropMin, out cropMax);
+
+                TryClearViewTemplate(viewPrint);
+
+                viewPrint.Scale = scaleView;
                 viewPrint.CropBoxActive = true;
+                viewPrint.CropBoxVisible = true;
+
+                if (modelPickMin != null && modelPickMax != null)
+                    TryApplyCropShape(viewPrint, modelPickMin, modelPickMax);
+
+                ApplyCropBox(viewPrint, cropMin, cropMax);
+                ApplyAnnotationCropOffsets(viewPrint);
                 viewPrint.CropBoxVisible = false;
 
-                // 注釈トリミング領域を最小限に設定
-                viewPrint.get_Parameter(BuiltInParameter.VIEWER_ANNOTATION_CROP_ACTIVE).Set(1);
-                ViewCropRegionShapeManager manager = viewPrint.GetCropRegionShapeManager();
-                double minOffset = UnitUtils.ConvertToInternalUnits(0.125, UnitTypeId.Inches);
-                manager.BottomAnnotationCropOffset = minOffset;
-                manager.TopAnnotationCropOffset = minOffset;
-                manager.LeftAnnotationCropOffset = minOffset;
-                manager.RightAnnotationCropOffset = minOffset;
-
-                // Regen model to draw
                 uiDoc.Document.Regenerate();
 
                 return true;
@@ -126,6 +123,94 @@ namespace ADSK.JExtRAC.PrintRegion.Components
                 var mess = ex.Message;
                 return false;
             }
+        }
+
+        private static void TryClearViewTemplate(View viewPrint)
+        {
+            try
+            {
+                if (viewPrint.ViewTemplateId != ElementId.InvalidElementId)
+                    viewPrint.ViewTemplateId = ElementId.InvalidElementId;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private static void ApplyCropBox(View viewPrint, XYZ cropMin, XYZ cropMax)
+        {
+            BoundingBoxXYZ existingBox = viewPrint.CropBox;
+            double minZ = existingBox.Min.Z;
+            double maxZ = existingBox.Max.Z;
+            double minX = Math.Min(cropMin.X, cropMax.X);
+            double maxX = Math.Max(cropMin.X, cropMax.X);
+            double minY = Math.Min(cropMin.Y, cropMax.Y);
+            double maxY = Math.Max(cropMin.Y, cropMax.Y);
+
+            viewPrint.CropBox = new BoundingBoxXYZ
+            {
+                Transform = existingBox.Transform,
+                Min = new XYZ(minX, minY, minZ),
+                Max = new XYZ(maxX, maxY, maxZ)
+            };
+        }
+
+        private static void ApplyAnnotationCropOffsets(View viewPrint)
+        {
+            viewPrint.get_Parameter(BuiltInParameter.VIEWER_ANNOTATION_CROP_ACTIVE).Set(1);
+            ViewCropRegionShapeManager manager = viewPrint.GetCropRegionShapeManager();
+            double minOffset = UnitUtils.ConvertToInternalUnits(0.125, UnitTypeId.Inches);
+            manager.BottomAnnotationCropOffset = minOffset;
+            manager.TopAnnotationCropOffset = minOffset;
+            manager.LeftAnnotationCropOffset = minOffset;
+            manager.RightAnnotationCropOffset = minOffset;
+        }
+
+        private static void TryApplyCropShape(View viewPrint, XYZ modelPickMin, XYZ modelPickMax)
+        {
+            try
+            {
+                if (!TryBuildModelCropLoop(viewPrint, modelPickMin, modelPickMax, out CurveLoop cropLoop))
+                    return;
+
+                viewPrint.GetCropRegionShapeManager().SetCropShape(cropLoop);
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private static XYZ ProjectToViewPlane(View view, XYZ point)
+        {
+            XYZ normal = view.ViewDirection;
+            double distanceToPlane = (point - view.Origin).DotProduct(normal);
+            return point - distanceToPlane * normal;
+        }
+
+        private static bool TryBuildModelCropLoop(View view, XYZ pickMin, XYZ pickMax, out CurveLoop loop)
+        {
+            loop = null;
+
+            const double alpha = 1e5;
+            XYZ p1 = ProjectToViewPlane(view, pickMin);
+            XYZ p2 = ProjectToViewPlane(view, pickMax);
+
+            Line horizontal = Line.CreateBound(
+                p1 - alpha * view.RightDirection,
+                p1 + alpha * view.RightDirection);
+            XYZ corner3 = horizontal.Project(p2).XYZPoint;
+
+            Line vertical = Line.CreateBound(
+                p1 - alpha * view.UpDirection,
+                p1 + alpha * view.UpDirection);
+            XYZ corner4 = vertical.Project(p2).XYZPoint;
+
+            loop = new CurveLoop();
+            loop.Append(Line.CreateBound(p1, corner3));
+            loop.Append(Line.CreateBound(corner3, p2));
+            loop.Append(Line.CreateBound(p2, corner4));
+            loop.Append(Line.CreateBound(corner4, p1));
+            return true;
         }
 
         /// <summary>
@@ -554,10 +639,18 @@ namespace ADSK.JExtRAC.PrintRegion.Components
         ///
         /// <history>2022/01/17 Created Applied Technology</history>
         /// ================================================================================
-        public bool PickPoints(Attribute cmpAttribute, UIDocument uiDoc, out XYZ p1, out XYZ p2)
+        public bool PickPoints(
+            Attribute cmpAttribute,
+            UIDocument uiDoc,
+            out XYZ p1,
+            out XYZ p2,
+            out XYZ modelPickMin,
+            out XYZ modelPickMax)
         {
             p1 = XYZ.Zero;
             p2 = XYZ.Zero;
+            modelPickMin = XYZ.Zero;
+            modelPickMax = XYZ.Zero;
 
             Transaction t = new Transaction(uiDoc.Document);
             try
@@ -585,11 +678,11 @@ namespace ADSK.JExtRAC.PrintRegion.Components
                     return false;
                 }
 
-                XYZ P1 = pickedBox.Min;
-                XYZ P2 = pickedBox.Max;
+                modelPickMin = pickedBox.Min;
+                modelPickMax = pickedBox.Max;
                 View activeView = uiDoc.Document.ActiveView;
 
-                return TryGetCropLocalBounds(activeView, P1, P2, out p1, out p2);
+                return TryGetCropLocalBounds(activeView, modelPickMin, modelPickMax, out p1, out p2);
             }
             catch (Exception ex)
             {
@@ -606,7 +699,7 @@ namespace ADSK.JExtRAC.PrintRegion.Components
         /// <summary>
         /// Converts a screen pick box to crop-local min/max using all four view-oriented corners.
         /// </summary>
-        private bool TryGetCropLocalBounds(View view, XYZ pickMin, XYZ pickMax, out XYZ cropMin, out XYZ cropMax)
+        public bool TryGetCropLocalBounds(View view, XYZ pickMin, XYZ pickMax, out XYZ cropMin, out XYZ cropMax)
         {
             cropMin = XYZ.Zero;
             cropMax = XYZ.Zero;

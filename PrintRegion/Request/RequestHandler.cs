@@ -44,9 +44,18 @@ namespace ADSK.JExtRAC.PrintRegion.Request
 
                             // Set view information
                             Components.Elements cmpElements = new Components.Elements(CmdPrint._entData._rvtUIApp.ActiveUIDocument);
-                            cmpElements.SetInfomationView(uiDoc, currentView, CmdPrint._entData._pointPickMin, CmdPrint._entData._pointPickMax, CmdPrint._entData._viewScale);
-                            //cmpElements.TrimGrid(uiDoc, currentView, CmdPrint._entData._pointPickMin, CmdPrint._entData._pointPickMax);
-                            //cmpElements.HideElements(uiDoc, currentView);
+                            cmpElements.SetInfomationView(
+                                uiDoc,
+                                currentView,
+                                CmdPrint._entData._pointPickMin,
+                                CmdPrint._entData._pointPickMax,
+                                CmdPrint._entData._viewScale,
+                                CmdPrint._entData._pointPickMinModel,
+                                CmdPrint._entData._pointPickMaxModel);
+
+                            PrintManager printManager = doc.PrintManager;
+                            printManager.PrintRange = PrintRange.Current;
+                            printManager.Apply();
 
                             // Print region
                             CmdPrint._entData._pMgr.SubmitPrint(currentView);
@@ -91,8 +100,15 @@ namespace ADSK.JExtRAC.PrintRegion.Request
                             Transaction tr = new Transaction(doc);
                             tr.Start("Set view scale");
 
-                            // Change scale
-                            currentView.Scale = CmdPrint._entData._viewScale;
+                            Components.Elements cmpElements = new Components.Elements(uiDoc);
+                            cmpElements.SetInfomationView(
+                                uiDoc,
+                                currentView,
+                                CmdPrint._entData._pointPickMin,
+                                CmdPrint._entData._pointPickMax,
+                                CmdPrint._entData._viewScale,
+                                CmdPrint._entData._pointPickMinModel,
+                                CmdPrint._entData._pointPickMaxModel);
 
                             // Commit transaction
                             tr.Commit();
