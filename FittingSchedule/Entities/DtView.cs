@@ -389,6 +389,21 @@ namespace ADSK.JExtRAC.FittingSchedule.Entities
 
 
         /// ================================================================================
+        /// <summary>Is the project using Imperial units</summary>
+        /// ================================================================================
+        public bool IsImperial
+        {
+            get
+            {
+                try
+                {
+                    return CmpElements.RvtDBDoc.DisplayUnitSystem == Revit.DB.DisplayUnit.IMPERIAL;
+                }
+                catch { return false; }
+            }
+        }
+
+        /// ================================================================================
         /// <summary>縮尺の最小値</summary>
         /// <history>2011/08/02 Created GSA,Inc. Shinichi Ishii</history>
         /// ================================================================================
