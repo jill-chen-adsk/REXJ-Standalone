@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>REXJ MCP Host</Name>
+    <Assembly>REXJ.McpHost\REXJ.McpHost.dll</Assembly>
+    <AddInId>E1F2A3B4-C5D6-7890-1234-567890ABCDEF</AddInId>
+    <FullClassName>REXJ.McpHost.App.McpHostApp</FullClassName>
+    <VendorId>ADSK</VendorId>
+    <VendorDescription>Autodesk, www.autodesk.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

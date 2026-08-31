@@ -1,0 +1,61 @@
+{
+  "version": "0.1.0-spike",
+  "host": "REXJ.McpHost",
+  "port": 28733,
+  "capabilities": [
+    {
+      "name": "rexj.rac.query.elements-by-level",
+      "description": "Query Revit element IDs filtered by level name(s) and optional category names.",
+      "sideEffects": false,
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "levelNames": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Level names to filter (case-insensitive)."
+          },
+          "levelIds": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "description": "Level element IDs."
+          },
+          "categoryNames": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Optional category names (OR filter)."
+          },
+          "maxResults": {
+            "type": "integer",
+            "default": 5000,
+            "description": "Maximum element IDs returned."
+          }
+        },
+        "anyOf": [
+          { "required": ["levelNames"] },
+          { "required": ["levelIds"] }
+        ]
+      }
+    },
+    {
+      "name": "rexj.rac.diagnose.join-order",
+      "description": "Inspect join order for an element: which joined elements cut it vs are cut by it.",
+      "sideEffects": false,
+      "inputSchema": {
+        "type": "object",
+        "required": ["elementId"],
+        "properties": {
+          "elementId": {
+            "type": "integer",
+            "description": "Revit element ID to inspect."
+          },
+          "applyViewOverrides": {
+            "type": "boolean",
+            "default": false,
+            "description": "When true, applies color overrides in the active view (side effect)."
+          }
+        }
+      }
+    }
+  ]
+}
