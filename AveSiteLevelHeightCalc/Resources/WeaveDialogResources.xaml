@@ -1,0 +1,325 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Weave.Color.Text.Primary">#3C3C3C</Color>
+    <Color x:Key="Weave.Color.Text.Secondary">#6B6B6B</Color>
+    <Color x:Key="Weave.Color.Border">#D9D9D9</Color>
+    <Color x:Key="Weave.Color.Surface">#FFFFFF</Color>
+    <Color x:Key="Weave.Color.Surface.Subtle">#F5F5F5</Color>
+    <Color x:Key="Weave.Color.Input">#FFFFFF</Color>
+    <Color x:Key="Weave.Color.Accent">#0696D7</Color>
+    <Color x:Key="Weave.Color.Accent.Hover">#0586C1</Color>
+    <Color x:Key="Weave.Color.Error">#E34850</Color>
+
+    <SolidColorBrush x:Key="Weave.Brush.Text.Primary" Color="{DynamicResource Weave.Color.Text.Primary}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Text.Secondary" Color="{DynamicResource Weave.Color.Text.Secondary}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Border" Color="{DynamicResource Weave.Color.Border}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Surface" Color="{DynamicResource Weave.Color.Surface}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Surface.Subtle" Color="{DynamicResource Weave.Color.Surface.Subtle}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Input" Color="{DynamicResource Weave.Color.Input}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Accent" Color="{StaticResource Weave.Color.Accent}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Accent.Hover" Color="{StaticResource Weave.Color.Accent.Hover}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Error" Color="{StaticResource Weave.Color.Error}"/>
+
+    <Style x:Key="Weave.SectionTitle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="Margin" Value="0,0,0,12"/>
+    </Style>
+
+    <Style x:Key="Weave.BodyText" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.ErrorText" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Error}"/>
+        <Setter Property="Margin" Value="0,4,0,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="Weave.SectionPanel" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+
+    <Style x:Key="Weave.TextBox" TargetType="TextBox">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Input}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.RadioButton" TargetType="RadioButton">
+        <Setter Property="Margin" Value="0,0,16,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+    </Style>
+
+    <Style x:Key="Weave.RadioButton.Stacked" TargetType="RadioButton" BasedOn="{StaticResource Weave.RadioButton}">
+        <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+
+    <Style x:Key="Weave.RoundingPanel" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="MinWidth" Value="148"/>
+    </Style>
+
+    <Style x:Key="Weave.Button.Primary" TargetType="Button">
+        <Setter Property="MinWidth" Value="88"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Padding" Value="16,0"/>
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="2"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent.Hover}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Weave.Button.Secondary" TargetType="Button" BasedOn="{StaticResource Weave.Button.Primary}">
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Weave.Button.Tertiary" TargetType="Button" BasedOn="{StaticResource Weave.Button.Secondary}">
+        <Setter Property="MinWidth" Value="72"/>
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Padding" Value="12,0"/>
+    </Style>
+
+    <Style x:Key="Weave.Button.Tertiary.Compact" TargetType="Button" BasedOn="{StaticResource Weave.Button.Tertiary}">
+        <Setter Property="MinWidth" Value="0"/>
+        <Setter Property="Padding" Value="8,0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style x:Key="Weave.ComboBoxItem" TargetType="ComboBoxItem">
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Input}"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
+            </Trigger>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Weave.ComboBox" TargetType="ComboBox">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Input}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource Weave.ComboBoxItem}"/>
+    </Style>
+
+    <Style x:Key="Weave.CheckBox" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.GroupPanel" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Margin" Value="0,0,0,12"/>
+    </Style>
+
+    <Style x:Key="Weave.TreeView" TargetType="TreeView">
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="Padding" Value="4"/>
+    </Style>
+
+    <Style x:Key="Weave.TreeViewItem" TargetType="TreeViewItem">
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="Padding" Value="2,4"/>
+    </Style>
+
+    <Style x:Key="Weave.DataGridRow" TargetType="DataGridRow">
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Weave.DataGridColumnHeader" TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="12,4"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="MinHeight" Value="44"/>
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"
+                               FontSize="12"
+                               FontWeight="SemiBold"
+                               TextWrapping="Wrap"
+                               TextTrimming="None"
+                               TextAlignment="Center"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               LineStackingStrategy="BlockLineHeight"
+                               LineHeight="12"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Weave.DataGridCell" TargetType="DataGridCell">
+        <Setter Property="Padding" Value="12,6"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Foreground}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Weave.DataGridTextBlock" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Foreground}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.DataGridTextBlock.Left" TargetType="TextBlock" BasedOn="{StaticResource Weave.DataGridTextBlock}">
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.DataGridTextBlock.Right" TargetType="TextBlock" BasedOn="{StaticResource Weave.DataGridTextBlock}">
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.DataGridTextBlock.Center" TargetType="TextBlock" BasedOn="{StaticResource Weave.DataGridTextBlock}"/>
+
+    <Style x:Key="Weave.DataGridTextBox" TargetType="TextBox">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Foreground}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.DataGridCheckBox" TargetType="CheckBox" BasedOn="{StaticResource Weave.CheckBox}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.DataGridComboBox" TargetType="ComboBox" BasedOn="{StaticResource Weave.ComboBox}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="Weave.DataGrid" TargetType="DataGrid">
+        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource Weave.Brush.Border}"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="RowBackground" Value="{DynamicResource Weave.Brush.Surface}"/>
+        <Setter Property="AlternatingRowBackground" Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+        <Setter Property="RowStyle" Value="{StaticResource Weave.DataGridRow}"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserDeleteRows" Value="False"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
+        <Setter Property="CanUserResizeColumns" Value="True"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="SelectionUnit" Value="FullRow"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="ColumnHeaderStyle" Value="{StaticResource Weave.DataGridColumnHeader}"/>
+        <Setter Property="CellStyle" Value="{StaticResource Weave.DataGridCell}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+    </Style>
+
+</ResourceDictionary>

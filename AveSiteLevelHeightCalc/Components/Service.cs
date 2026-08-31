@@ -121,30 +121,24 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
             if (_CmpElements.LoadSymbolAndTag(currentDoc, scale, ref symbolCircle, ref symbolTag) == false)
                 return ret;
 
-            // 地形面取得
-            var flagTopo = true;
-            var topoSurfaces = _CmpElements.TopoSurface ;
-            if (topoSurfaces.Count == 0)
-            {
-                flagTopo = false;
-            }
+            // 地形面 / 地形ソリッド取得
+            var topoSurfaces = _CmpElements.TopoSurface;
+            Collections.Generic.IList<Revit.DB.MeshTriangle> topoTriMeshes = new Collections.Generic.List<Revit.DB.MeshTriangle>();
 
-            // 地形面のメッシュ取得
-            Collections.Generic.IList<Revit.DB.MeshTriangle>  topoTriMeshes = new Collections.Generic.List<Revit.DB.MeshTriangle>();
-
-            
-            // 地形ソリッド取得
             #if (REVIT2021 || REVIT2022 || REVIT2023 )
             #else
-            var toposolids = _CmpElements.TopoSolids ;
-            if ( toposolids.Count > 0 ) {
-                foreach ( var toposolid in toposolids ) _CmpGeometry.GetTriMeshTopoSurface( toposolid, ref topoTriMeshes ) ;
+            var toposolids = _CmpElements.TopoSolids;
+            if (toposolids.Count > 0)
+            {
+                foreach (var toposolid in toposolids)
+                    _CmpGeometry.GetTriMeshTopoSurface(toposolid, ref topoTriMeshes);
             }
             #endif
 
-
-            if (topoSurfaces.Count >0) {
-                foreach (var topoSurface in topoSurfaces) _CmpGeometry.GetTriMeshTopoSurface(topoSurface, ref topoTriMeshes);
+            if (topoSurfaces.Count > 0)
+            {
+                foreach (var topoSurface in topoSurfaces)
+                    _CmpGeometry.GetTriMeshTopoSurface(topoSurface, ref topoTriMeshes);
             }
 
             // エリア境界取得
@@ -177,9 +171,11 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
                 flagAdd = true;
                 if (topoTriMeshes.Count > 0)
                 {
-                    flagAdd = false;
-                    if (CheckTrianglePoint(pos1, topoTriMeshes, ref zValue) == true)
+                    flagAdd = CheckTrianglePoint(pos1, topoTriMeshes, ref zValue);
+                    if (flagAdd == false)
                     {
+                        // Keep boundary vertices even when the mesh edge test misses (common on corners).
+                        zValue = 0.0;
                         flagAdd = true;
                     }
                 }
@@ -194,11 +190,12 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
                     pos1 = pos2;
                     zValue = 0;
                     flagAdd = true;
-                    if (flagTopo == true)
+                    if (topoTriMeshes.Count > 0)
                     {
-                        flagAdd = false;
-                        if (CheckTrianglePoint(pos1, topoTriMeshes, ref zValue) == true)
+                        flagAdd = CheckTrianglePoint(pos1, topoTriMeshes, ref zValue);
+                        if (flagAdd == false)
                         {
+                            zValue = 0.0;
                             flagAdd = true;
                         }
                     }
@@ -232,6 +229,9 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
                         ObjectTag objTag = new ObjectTag();
                         objTag.CircleTag = fmCircle;
                         objTag.Tag = tag;
+                        objTag.Number = i;
+                        objTag.Level = zValue;
+                        objTag.HasStoredValues = true;
 
                         // Add to list tag
                         aveGlLevelCalcPosList.Add(objTag);
@@ -259,7 +259,7 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
                 flagEndPosConnect = true;
             }
 
-            ret = true;
+            ret = aveGlLevelCalcPosList.Count > 0;
             return ret;
         }
 
@@ -1981,8 +1981,13 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
             // View scale
             int nViewScale = doc.ActiveView.Scale;
 
+            // Place on the area-plan level elevation when available.
+            double levelElevation = 0.0;
+            if (doc.ActiveView.GenLevel != null)
+                levelElevation = doc.ActiveView.GenLevel.Elevation;
+
             // Get Z of tag
-            pos = new Revit.DB.XYZ(pos.X, pos.Y, doc.ActiveView.GenLevel.Elevation);
+            pos = new Revit.DB.XYZ(pos.X, pos.Y, levelElevation);
 
             try
             {

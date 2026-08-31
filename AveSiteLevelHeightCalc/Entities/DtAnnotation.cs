@@ -562,10 +562,16 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Entities
                         row["IDTag"] = aveGlLvlCalcPos.Tag.Id.ToString();
 
                         // 番号
-                        row["Number"] = _EntSpAnnotation.AveGlLvlCalcPosCircleNo;
+                        if (aveGlLvlCalcPos.HasStoredValues)
+                            row["Number"] = aveGlLvlCalcPos.Number;
+                        else
+                            row["Number"] = _EntSpAnnotation.AveGlLvlCalcPosCircleNo;
 
                         // レベル
-                        dValue = _EntSpAnnotation.AveGlLvlCalcPosLevel;
+                        if (aveGlLvlCalcPos.HasStoredValues)
+                            dValue = aveGlLvlCalcPos.Level;
+                        else
+                            dValue = _EntSpAnnotation.AveGlLvlCalcPosLevel;
                         if (CmpElements._IsSelectElement)
                             dValue = dValue * unitCoe;
 

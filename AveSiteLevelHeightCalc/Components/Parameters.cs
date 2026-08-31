@@ -144,64 +144,87 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
             return 0;
         }
 
-        public int GetValue(Element elem, string paramName, ForgeTypeId paramType, ForgeTypeId groupType, ref string value)
+        private static bool ParameterNameMatches(string definitionName, string paramName)
         {
-            if (elem == null) return -2;
+            if (definitionName == paramName)
+                return true;
+
+            // RFA families use Japanese parameter names; the UI may be English.
+            if ((paramName == "Number" || paramName == "番号") &&
+                (definitionName == "Number" || definitionName == "番号"))
+                return true;
+
+            if ((paramName == "Display Level" || paramName == "表示レベル") &&
+                (definitionName == "Display Level" || definitionName == "表示レベル"))
+                return true;
+
+            return false;
+        }
+
+        private static Parameter FindParameter(Element elem, string paramName)
+        {
+            if (elem == null)
+                return null;
+
             foreach (Parameter param in elem.Parameters)
             {
-                if (param.Definition.Name != paramName) continue;
-
-                if (param.StorageType == StorageType.String)
-                    value = param.AsString() ?? "";
-                else
-                    value = param.AsValueString() ?? "";
-                return 0;
+                if (ParameterNameMatches(param.Definition.Name, paramName))
+                    return param;
             }
-            return -2;
+
+            return null;
+        }
+
+        public int GetValue(Element elem, string paramName, ForgeTypeId paramType, ForgeTypeId groupType, ref string value)
+        {
+            Parameter param = FindParameter(elem, paramName);
+            if (param == null) return -2;
+
+            if (param.StorageType == StorageType.String)
+                value = param.AsString() ?? "";
+            else
+                value = param.AsValueString() ?? "";
+            return 0;
         }
 
         public int GetValue(Element elem, string paramName, ForgeTypeId paramType, ForgeTypeId groupType, ref double value)
         {
-            if (elem == null) return -2;
-            foreach (Parameter param in elem.Parameters)
+            Parameter param = FindParameter(elem, paramName);
+            if (param == null) return -2;
+
+            if (param.StorageType == StorageType.Double)
             {
-                if (param.Definition.Name != paramName) continue;
-
-                if (param.StorageType == StorageType.Double)
-                {
-                    value = param.AsDouble();
-                    return 0;
-                }
-
-                if (double.TryParse(param.AsValueString(), System.Globalization.NumberStyles.Any,
-                        System.Globalization.CultureInfo.InvariantCulture, out double d))
-                {
-                    value = d;
-                    return 0;
-                }
+                value = param.AsDouble();
+                return 0;
             }
+
+            if (double.TryParse(param.AsValueString(), System.Globalization.NumberStyles.Any,
+                    System.Globalization.CultureInfo.InvariantCulture, out double d))
+            {
+                value = d;
+                return 0;
+            }
+
             return -2;
         }
 
         public int GetValue(Element elem, string paramName, ForgeTypeId paramType, ForgeTypeId groupType, ref int value)
         {
-            if (elem == null) return -2;
-            foreach (Parameter param in elem.Parameters)
+            Parameter param = FindParameter(elem, paramName);
+            if (param == null) return -2;
+
+            if (param.StorageType == StorageType.Integer)
             {
-                if (param.Definition.Name != paramName) continue;
-
-                if (param.StorageType == StorageType.Integer)
-                {
-                    value = param.AsInteger();
-                    return 0;
-                }
-
-                if (int.TryParse(param.AsValueString(), out int i))
-                {
-                    value = i;
-                    return 0;
-                }
+                value = param.AsInteger();
+                return 0;
             }
+
+            if (int.TryParse(param.AsValueString(), out int i))
+            {
+                value = i;
+                return 0;
+            }
+
             return -2;
         }
 
@@ -223,44 +246,29 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
 
         public int SetValue(Element elem, string paramName, ForgeTypeId paramType, ForgeTypeId groupType, string value)
         {
-            if (elem == null) return -2;
-            foreach (Parameter param in elem.Parameters)
-            {
-                if (param.Definition.Name == paramName && !param.IsReadOnly)
-                {
-                    param.Set(value);
-                    return 0;
-                }
-            }
-            return -2;
+            Parameter param = FindParameter(elem, paramName);
+            if (param == null || param.IsReadOnly) return -2;
+
+            param.Set(value);
+            return 0;
         }
 
         public int SetValue(Element elem, string paramName, ForgeTypeId paramType, ForgeTypeId groupType, double value)
         {
-            if (elem == null) return -2;
-            foreach (Parameter param in elem.Parameters)
-            {
-                if (param.Definition.Name == paramName && !param.IsReadOnly)
-                {
-                    param.Set(value);
-                    return 0;
-                }
-            }
-            return -2;
+            Parameter param = FindParameter(elem, paramName);
+            if (param == null || param.IsReadOnly) return -2;
+
+            param.Set(value);
+            return 0;
         }
 
         public int SetValue(Element elem, string paramName, ForgeTypeId paramType, ForgeTypeId groupType, int value)
         {
-            if (elem == null) return -2;
-            foreach (Parameter param in elem.Parameters)
-            {
-                if (param.Definition.Name == paramName && !param.IsReadOnly)
-                {
-                    param.Set(value);
-                    return 0;
-                }
-            }
-            return -2;
+            Parameter param = FindParameter(elem, paramName);
+            if (param == null || param.IsReadOnly) return -2;
+
+            param.Set(value);
+            return 0;
         }
 
         public string StrZeroPadding(string sValue, int decimalType)
