@@ -57,6 +57,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Image.resx</DependentUpon>
     </Compile>
+    <Compile Update="UI\PrintFrmWPF.xaml.cs">
+      <DependentUpon>PrintFrmWPF.xaml</DependentUpon>
+    </Compile>
     <Compile Update="UI\PrintFrm.cs">
       <SubType>Form</SubType>
     </Compile>

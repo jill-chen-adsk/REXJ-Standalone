@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using ADSK.JExtRAC.PrintRegion.Utils;
 using Autodesk.Revit.UI.Selection;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
@@ -65,78 +66,8 @@ namespace ADSK.JExtRAC.PrintRegion.Components
         /// ================================================================================
         public System.Data.DataTable GetDataScale()
         {
-            System.Data.DataTable scaleData = new System.Data.DataTable();
-
-            System.Data.DataRow row;
-            scaleData.Columns.Add("Name", typeof(string));
-            scaleData.Columns.Add("Value", typeof(int));
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:1";
-            row["Value"] = 1;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:2";
-            row["Value"] = 2;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:5";
-            row["Value"] = 5;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:10";
-            row["Value"] = 10;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:20";
-            row["Value"] = 20;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:25";
-            row["Value"] = 25;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:50";
-            row["Value"] = 50;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:100";
-            row["Value"] = 100;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:200";
-            row["Value"] = 200;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:500";
-            row["Value"] = 500;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:1000";
-            row["Value"] = 1000;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:2000";
-            row["Value"] = 2000;
-            scaleData.Rows.Add(row);
-
-            row = scaleData.NewRow();
-            row["Name"] = "1:5000";
-            row["Value"] = 5000;
-            scaleData.Rows.Add(row);
-
-            return scaleData;
+            bool isImperial = ViewScaleHelper.IsImperial(RvtDBDoc);
+            return ViewScaleHelper.CreateScaleDataTable(isImperial);
         }
 
         /// ================================================================================
@@ -161,10 +92,17 @@ namespace ADSK.JExtRAC.PrintRegion.Components
                 // Set scale
                 viewPrint.Scale = scaleView;
                 
-                // Set box
+                // Set box — update XY from pick; preserve crop depth (Z) so plan picks do not collapse.
                 BoundingBoxXYZ box = viewPrint.CropBox;
-                box.Min = p1;
-                box.Max = p2;
+                double minZ = box.Min.Z;
+                double maxZ = box.Max.Z;
+                double minX = Math.Min(p1.X, p2.X);
+                double maxX = Math.Max(p1.X, p2.X);
+                double minY = Math.Min(p1.Y, p2.Y);
+                double maxY = Math.Max(p1.Y, p2.Y);
+
+                box.Min = new XYZ(minX, minY, minZ);
+                box.Max = new XYZ(maxX, maxY, maxZ);
                 viewPrint.CropBox = box;
                 viewPrint.CropBoxActive = true;
                 viewPrint.CropBoxVisible = false;
@@ -649,56 +587,9 @@ namespace ADSK.JExtRAC.PrintRegion.Components
 
                 XYZ P1 = pickedBox.Min;
                 XYZ P2 = pickedBox.Max;
+                View activeView = uiDoc.Document.ActiveView;
 
-                //3Dビューの場合は、pickedBoxで選択した四角形の４頂点を変換後、最小・最大を取得する
-                if (uiDoc.Document.ActiveView.ViewType == ViewType.ThreeD) {
-
-                    //適当な長さのLineを作成するために使用する適当な係数
-                    double alpha = 1e5;
-
-                    //pickedBox.Minを通るLineを作成する際に使用する任意の2点を作成
-                    XYZ P3_prime_start = pickedBox.Min - alpha * uiDoc.Document.ActiveView.RightDirection;
-                    XYZ P3_prime_end = pickedBox.Min + alpha * uiDoc.Document.ActiveView.RightDirection;
-                    //横方向のLineを作成
-                    Line line1 = Line.CreateBound(P3_prime_start, P3_prime_end);
-
-                    //pickedBoxから取得した点をLineに投影
-                    IntersectionResult ir = line1.Project(pickedBox.Max);
-                    XYZ P3 = ir.XYZPoint;
-
-                    //pickedBox.Minを通るLineを作成する際に使用する任意の2点を作成
-                    XYZ P4_prime_start = pickedBox.Min - alpha * uiDoc.Document.ActiveView.UpDirection;
-                    XYZ P4_prime_end = pickedBox.Min + alpha * uiDoc.Document.ActiveView.UpDirection;
-                    //縦方向のLineを作成
-                    Line line2 = Line.CreateBound(P4_prime_start, P4_prime_end);
-
-                    //pickedBoxから取得した点をLineに投影
-                    IntersectionResult inr = line2.Project(pickedBox.Max);
-                    XYZ P4 = inr.XYZPoint;
-
-                    TransformPoint(uiDoc.Document.ActiveView, P1, out P1);
-                    TransformPoint(uiDoc.Document.ActiveView, P2, out P2);
-                    TransformPoint(uiDoc.Document.ActiveView, P3, out P3);
-                    TransformPoint(uiDoc.Document.ActiveView, P4, out P4);
-
-                    var OutX = new double[4] { P1.X, P2.X, P3.X, P4.X };
-                    var OutY = new double[4] { P1.Y, P2.Y, P3.Y, P4.Y };
-
-                    p1 = new XYZ(OutX.Min(), OutY.Min(), -1000);
-                    p2 = new XYZ(OutX.Max(), OutY.Max(), 0);
-                }
-                else {
-                    XYZ pMin = new XYZ(Math.Min(P1.X, P2.X), Math.Min(P1.Y, P2.Y), Math.Min(P1.Z, P2.Z));
-                    XYZ pMax = new XYZ(Math.Max(P1.X, P2.X), Math.Max(P1.Y, P2.Y), Math.Max(P1.Z, P2.Z));
-
-                    TransformPoint(uiDoc.Document.ActiveView, pMin, out pMin);
-                    TransformPoint(uiDoc.Document.ActiveView, pMax, out pMax);
-
-                    p1 = new XYZ(Math.Min(pMin.X, pMax.X), Math.Min(pMin.Y, pMax.Y), Math.Min(pMin.Z, pMax.Z));
-                    p2 = new XYZ(Math.Max(pMin.X, pMax.X), Math.Max(pMin.Y, pMax.Y), Math.Max(pMin.Z, pMax.Z));
-                }
-
-                return true;
+                return TryGetCropLocalBounds(activeView, P1, P2, out p1, out p2);
             }
             catch (Exception ex)
             {
@@ -710,6 +601,44 @@ namespace ADSK.JExtRAC.PrintRegion.Components
                 if (t.HasStarted())
                     t.RollBack();
             }
+        }
+
+        /// <summary>
+        /// Converts a screen pick box to crop-local min/max using all four view-oriented corners.
+        /// </summary>
+        private bool TryGetCropLocalBounds(View view, XYZ pickMin, XYZ pickMax, out XYZ cropMin, out XYZ cropMax)
+        {
+            cropMin = XYZ.Zero;
+            cropMax = XYZ.Zero;
+
+            const double alpha = 1e5;
+
+            Line horizontal = Line.CreateBound(
+                pickMin - alpha * view.RightDirection,
+                pickMin + alpha * view.RightDirection);
+            XYZ pickCorner3 = horizontal.Project(pickMax).XYZPoint;
+
+            Line vertical = Line.CreateBound(
+                pickMin - alpha * view.UpDirection,
+                pickMin + alpha * view.UpDirection);
+            XYZ pickCorner4 = vertical.Project(pickMax).XYZPoint;
+
+            if (!TransformPoint(view, pickMin, out XYZ local1) ||
+                !TransformPoint(view, pickMax, out XYZ local2) ||
+                !TransformPoint(view, pickCorner3, out XYZ local3) ||
+                !TransformPoint(view, pickCorner4, out XYZ local4))
+            {
+                return false;
+            }
+
+            double minX = Math.Min(Math.Min(local1.X, local2.X), Math.Min(local3.X, local4.X));
+            double maxX = Math.Max(Math.Max(local1.X, local2.X), Math.Max(local3.X, local4.X));
+            double minY = Math.Min(Math.Min(local1.Y, local2.Y), Math.Min(local3.Y, local4.Y));
+            double maxY = Math.Max(Math.Max(local1.Y, local2.Y), Math.Max(local3.Y, local4.Y));
+
+            cropMin = new XYZ(minX, minY, -1000);
+            cropMax = new XYZ(maxX, maxY, 0);
+            return true;
         }
 
         /// <summary>Transform a point by crop box of view</summary>

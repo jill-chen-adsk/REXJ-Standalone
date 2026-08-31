@@ -101,12 +101,7 @@ namespace ADSK.JExtRAC.PrintRegion.Commands
                         System.Diagnostics.Process process = System.Diagnostics.Process.GetCurrentProcess();
                         System.IntPtr h = process.MainWindowHandle;
 
-                        _entData._printFrm = new PrintFrm(cmpAttribute, cmpElements, _entData._pMgr);
-                        // Form is already open
-                        foreach (System.Windows.Forms.Form openedForm in System.Windows.Forms.Application.OpenForms) {
-                            if (openedForm.GetType().Name == _entData._printFrm.Name)
-                                return Result.Failed;
-                        }
+                        _entData._printFrm = new PrintFrmWPF(cmpAttribute, cmpElements, _entData._pMgr);
 
                         // Off dialogbox showing
                         _entData._rvtUIApp.DialogBoxShowing += _rvtUIApp_DialogBoxShowing;
@@ -115,7 +110,7 @@ namespace ADSK.JExtRAC.PrintRegion.Commands
                         _entData._revitHandle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
 
                         // Show form
-                        _entData._printFrm.ShowDialog(new JtWindowHandle(h));
+                        WeaveDialogHost.ShowDialog(_entData._printFrm, h);
 
                     }
                     catch (System.Exception) {

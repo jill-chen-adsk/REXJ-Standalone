@@ -120,6 +120,9 @@
   <data name="IDS_ERROR_FORMAT_SCALE" xml:space="preserve">
     <value>”1:整数”形式で入力してください。</value>
   </data>
+  <data name="IDS_ERROR_FORMAT_SCALE_IMPERIAL" xml:space="preserve">
+    <value>”1/4” = 1'-0"” または ”1:48” 形式で入力してください。</value>
+  </data>
   <data name="IDS_ERR_NO_PLANE" xml:space="preserve">
     <value>このビューでスケッチ面が見つかりません</value>
   </data>

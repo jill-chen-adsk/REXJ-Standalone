@@ -30,7 +30,7 @@ namespace ADSK.JExtRAC.PrintRegion.Entities
         public IntPtr _revitHandle;
 
         /// <summary>Form main</summary>
-        public PrintFrm _printFrm = null;
+        public PrintFrmWPF _printFrm = null;
 
         /// <summary>View duplicate</summary>
         public View _viewDuplicate = null;

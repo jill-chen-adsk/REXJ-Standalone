@@ -61,6 +61,9 @@
   <data name="IDS_ERROR_FORMAT_SCALE" xml:space="preserve">
     <value>Please enter in "1:integer" format.</value>
   </data>
+  <data name="IDS_ERROR_FORMAT_SCALE_IMPERIAL" xml:space="preserve">
+    <value>Enter scale as "1/4" = 1'-0"" or "1:48".</value>
+  </data>
   <data name="IDS_ERR_NO_PLANE" xml:space="preserve">
     <value>No sketch plane found in this view</value>
   </data>
