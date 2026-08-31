@@ -16,6 +16,16 @@
 **Room Area Calculation (#02 — AreaSchedule):**
 - Weave message and progress dialogs refactored onto shared dialog resources for consistent theming
 
+**Fitting Schedule / Window Door View (FittingSchedule):**
+- First shipped build of the Weave-compliant **Create View** dialog — the UI was written in v1.1.0 but never made it into a released binary
+- Restored the project unit lookup the dialog depends on, so imperial and metric projects both populate correctly
+
+**Legal Compliance Check (#09 — CheckingALVS):**
+- No changes in v1.1.3 — see [v1.1.2](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/tag/v1.1.2) for Weave WPF dialogs and smoke unit fixes
+
+**Build:**
+- All 40 tool projects are now referenced by the solution. Previously only 19 were, so release builds silently skipped the rest and packaged whatever stale binaries remained on disk — this is why FittingSchedule had been shipping a pre-Weave DLL
+
 ---
 
 ### Full Installer (Recommended)
@@ -98,6 +108,7 @@ Individual installers organized by function. Install only the functions you need
 |-----------|----------|-------------|---------|--------------|
 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_EnhancedSectionBox_Setup_1.1.0.exe) | **🌐 Enhanced Section Box (Weave-Compliant)** | Dark/light theme WPF dialogs for Box View and Section Box Adjustment | **1.1.0** | **2026-06-04** |
 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_FittingSchedule_Setup_1.1.0.exe) | **🌐 Fitting Schedule / Window Door View (Weave-Compliant)** | Per-tool installer for FittingSchedule | **1.1.0** | **2026-06-04** |
+| [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.3/REXJ_Standalone_Setup_1.1.3.exe) | **🌐 Fitting Schedule / Window Door View (Weave-Compliant)** | **First working build of the Weave Create View dialog — available in the full bundle only** | **1.1.3** | **2026-08-31** |
 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_LevelFilter_Setup_1.1.0.exe) | **🌐 Level Filter (Weave-Compliant)** | Per-tool installer for Level Filter | **1.1.0** | **2026-06-04** |
 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_MepManholeTool_Setup_1.0.0.exe) | Manhole Tool | Places and documents manhole elements for MEP | 1.0.0 | 2026-05-13 |
 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_REXJManager_Setup_1.0.0.exe) | REXJ Manager | Controls visibility of REXJ Standalone ribbon tabs and command presets | 1.0.0 | 2026-05-13 |
