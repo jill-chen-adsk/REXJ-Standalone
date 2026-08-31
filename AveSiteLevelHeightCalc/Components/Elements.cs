@@ -174,12 +174,16 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
                 else
                     familyLoaded = lstFamilyInProject.FirstOrDefault();
 
-                // Find symbol by name
+                // Find symbol by name; fall back to the first type when names differ from the RFA.
+                Revit.DB.FamilySymbol fallbackSymbol = null;
                 foreach (Revit.DB.ElementId symbolId in familyLoaded.GetFamilySymbolIds())
                 {
                     Revit.DB.FamilySymbol fmSymbol = doc.GetElement(symbolId) as Revit.DB.FamilySymbol;
                     if (fmSymbol == null)
                         continue;
+
+                    if (fallbackSymbol == null)
+                        fallbackSymbol = fmSymbol;
 
                     if (fmSymbol.Name != symbolName)
                         continue;
@@ -187,7 +191,7 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
                     return fmSymbol;
                 }
 
-                return null;
+                return fallbackSymbol;
             }
             catch
             {
@@ -379,6 +383,30 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Components
             // 要素取得
             Collections.Generic.IList<Revit.DB.Category> categories = GetCategoriesList(Revit.DB.BuiltInCategory.OST_AreaSchemeLines);
             Collections.Generic.IList<Revit.DB.Element> elems = GetElementsSelection(null, categories, null, true);
+
+            // Pre-selection is cleared when the ribbon command is clicked; fall back to all
+            // area-boundary lines visible in the active area plan.
+            if (elems.Count == 0)
+            {
+                Revit.DB.ViewPlan areaPlan = ActiveViewAreaPlan;
+                if (areaPlan != null)
+                {
+                    var categoryIds = new System.Collections.Generic.HashSet<Revit.DB.ElementId>();
+                    foreach (Revit.DB.Category category in categories)
+                    {
+                        if (category?.Id != null)
+                            categoryIds.Add(category.Id);
+                    }
+
+                    foreach (Revit.DB.Element elem in GetViewElements(areaPlan, typeof(Revit.DB.CurveElement), null))
+                    {
+                        if (elem?.Category?.Id == null || !categoryIds.Contains(elem.Category.Id))
+                            continue;
+
+                        elems.Add(elem);
+                    }
+                }
+            }
 
             foreach (Revit.DB.Element elem in elems)
             {

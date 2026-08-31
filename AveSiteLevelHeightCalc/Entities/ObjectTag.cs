@@ -14,5 +14,14 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Entities
 
         /// <summary>Current tag</summary>
         public IndependentTag Tag { get; set; }
+
+        /// <summary>Point number assigned during creation (used when family params are unavailable).</summary>
+        public int Number { get; set; }
+
+        /// <summary>Sampled elevation in internal units (used when family params are unavailable).</summary>
+        public double Level { get; set; }
+
+        /// <summary>True when <see cref="Number"/> and <see cref="Level"/> were set by the create command.</summary>
+        public bool HasStoredValues { get; set; }
     }
 }

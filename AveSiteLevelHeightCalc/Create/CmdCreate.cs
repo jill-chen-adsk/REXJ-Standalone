@@ -91,7 +91,8 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Create
                 Collections.Generic.IList<Revit.DB.CurveElement> areaCurves = cmpElements.SelAreaCurve();
 
                 // 平均地盤面算定ポイント
-                Collections.Generic.IList<ObjectTag> aveGlLvlCalcPoss = cmpElements.AveGlLevelCalcPos(activeViewAreaPlan);
+                Collections.Generic.IList<ObjectTag> existingCalcPoss = cmpElements.AveGlLevelCalcPos(activeViewAreaPlan);
+                Collections.Generic.IList<ObjectTag> aveGlLvlCalcPoss = existingCalcPoss;
                 bool flagAreaCurvesConnect = true;
                 bool flagEndPosConnect = true;
 
@@ -111,56 +112,50 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Create
                         return retExtCom;
                     }
 
-                    // 平均地盤面算定ポイント存在
-                    if (aveGlLvlCalcPoss.Count > 0)
+                    // Remove any stale calc points before creating new ones.
+                    if (existingCalcPoss.Count > 0)
                     {
-                        retDlg = System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_WAR_DELAVEGLLEVELPOINT"), "",
-                                                                      System.Windows.Forms.MessageBoxButtons.OKCancel);
-                        if (retDlg == System.Windows.Forms.DialogResult.OK)
-                        {
-                            trans.Start("DelAveGlLevelCalcPos");
-                            cmpElements.DelAveGlLevelCalcPos(aveGlLvlCalcPoss);
-                            aveGlLvlCalcPoss = new Collections.Generic.List<ObjectTag>();
-                            trans.Commit();
-                        }
-                        else
-                        {
-                            // トランザクションを統合
-                            transGroup.Assimilate();
-                            return retExtCom;
-                        }
+                        trans.Start("DelAveGlLevelCalcPos");
+                        cmpElements.DelAveGlLevelCalcPos(existingCalcPoss);
+                        aveGlLvlCalcPoss = new Collections.Generic.List<ObjectTag>();
+                        trans.Commit();
                     }
+                }
+                else if (existingCalcPoss.Count > 0)
+                {
+                    // Stale calc tags without usable boundaries — do not reopen the dialog with No.0 rows.
+                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_SELAREABOUNDARY"));
+                    transGroup.Assimilate();
+                    return retExtCom;
                 }
 
                 // エリアから平均地盤面算定ポイント作成
                 trans.Start("CreateAveGlLevelCalcPos");
-                if (aveGlLvlCalcPoss.Count == 0)
+                if (areaCurves.Count > 0)
                 {
-                    if (areaCurves.Count > 0)
+                    aveGlLvlCalcPoss = new Collections.Generic.List<ObjectTag>();
+                    if (cmpService.CreateAveGlLevelCalcPos(areaCurves,
+                                                           ref aveGlLvlCalcPoss,
+                                                           ref flagAreaCurvesConnect,
+                                                           ref flagEndPosConnect) == false)
                     {
-                        if (cmpService.CreateAveGlLevelCalcPos(areaCurves,
-                                                               ref aveGlLvlCalcPoss,
-                                                               ref flagAreaCurvesConnect,
-                                                               ref flagEndPosConnect) == false)
-                        {
-                            System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_CREATEAVEGLLEVELCALCPOS"));
+                        System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_CREATEAVEGLLEVELCALCPOS"));
 
-                            trans.RollBack();
-                            // トランザクションを統合
-                            transGroup.Assimilate();
-                            return retExtCom;
-                        }
-                        if (flagAreaCurvesConnect == false)
-                        {
-                            System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOTCLOSEDAREABOUNDARY"));
-
-                            trans.RollBack();
-                            // トランザクションを統合
-                            transGroup.Assimilate();
-                            return retExtCom;
-                        }
-                        flagNewCalcPoss = true;
+                        trans.RollBack();
+                        // トランザクションを統合
+                        transGroup.Assimilate();
+                        return retExtCom;
                     }
+                    if (flagAreaCurvesConnect == false)
+                    {
+                        System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOTCLOSEDAREABOUNDARY"));
+
+                        trans.RollBack();
+                        // トランザクションを統合
+                        transGroup.Assimilate();
+                        return retExtCom;
+                    }
+                    flagNewCalcPoss = true;
                 }
                 trans.Commit();
 
@@ -224,10 +219,13 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Create
 
                 // Form show
                 // 画面表示
-                RvtExtApp.Create.FormCalcDraw form = new RvtExtApp.Create.FormCalcDraw(cmpAttribute,
-                                                                                       entDtAnnotation,
-                                                                                       entDtCmd);
-                retDlg = form.ShowDialog();
+                IntPtr ownerHandle = rvtUIApp.MainWindowHandle;
+                RvtExtApp.Create.FormCalcDrawWPF form = new RvtExtApp.Create.FormCalcDrawWPF(cmpAttribute,
+                                                                                             entDtAnnotation,
+                                                                                             entDtCmd,
+                                                                                             ownerHandle);
+                WeaveDialogHost.ShowDialog(form, ownerHandle);
+                retDlg = form.WinFormsDialogResult;
                 if (retDlg != System.Windows.Forms.DialogResult.Cancel)
                 {
                     trans.Start("SetParamValue");
