@@ -105,6 +105,15 @@ The installer will be output to `Installer\Output\`.
 |------|-------|----------|
 | REXJManager | Settings | Ribbon Tab Visibility (show/hide tools by preset) |
 
+## Documentation
+
+Product and portfolio docs live in [`docs/`](./docs/):
+
+- **[REXJ Review — Done & Remains](./docs/REXJ_Review_Done_and_Remains.html)** — achievement vs gaps summary (styled HTML)
+- **[Edit source (Markdown)](./docs/REXJ_Review_Done_and_Remains.md)** — preferred file for collaborator updates via pull request
+
+See [`docs/README.md`](./docs/README.md) for the full doc index and editing workflow.
+
 ## License
 
 Internal use. All rights reserved.
