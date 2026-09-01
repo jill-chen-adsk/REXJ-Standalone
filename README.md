@@ -109,10 +109,9 @@ The installer will be output to `Installer\Output\`.
 
 Product and portfolio docs live in [`docs/`](./docs/):
 
-- **[REXJ Review — Done & Remains](./docs/REXJ_Review_Done_and_Remains.html)** — achievement vs gaps summary (styled HTML)
+- **[REXJ Insights Hub](./docs/REXJ_Review_Done_and_Remains.html)** — achievement vs gaps (sidebar nav + deep links)
+- **[Pages URL](https://pages.git.autodesk.com/chenji/REXJ-Standalone/REXJ_Review_Done_and_Remains.html)** — share after enabling Pages from `/docs` (see [docs/README.md](./docs/README.md))
 - **[Edit source (Markdown)](./docs/REXJ_Review_Done_and_Remains.md)** — preferred file for collaborator updates via pull request
-
-See [`docs/README.md`](./docs/README.md) for the full doc index and editing workflow.
 
 ## License
 

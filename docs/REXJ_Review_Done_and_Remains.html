@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-  REXJ portfolio review — styled view.
+  REXJ portfolio review — Insights Hub view (GitHub Pages friendly).
   Preferred edit path: REXJ_Review_Done_and_Remains.md (then sync changes here).
-  See docs/README.md for collaboration workflow.
+  Pages URL: https://pages.git.autodesk.com/chenji/REXJ-Standalone/
 -->
 <html lang="en">
 <head>
@@ -18,14 +18,20 @@
     --text-secondary: #5a6070;
     --accent: #2563eb;
     --accent-light: #eff4ff;
+    --sidebar-bg: #1e293b;
+    --sidebar-text: #e2e8f0;
+    --sidebar-muted: #94a3b8;
+    --sidebar-active: rgba(37, 99, 235, 0.22);
     --green: #16a34a;
     --green-bg: #f0fdf4;
     --yellow: #ca8a04;
     --yellow-bg: #fefce8;
     --red: #dc2626;
     --red-bg: #fef2f2;
+    --sidebar-width: 272px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: var(--bg);
@@ -33,35 +39,136 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  .edit-banner {
-    background: var(--accent-light);
-    border-bottom: 1px solid var(--border);
-    padding: .65rem 1.5rem;
-    font-size: .82rem;
-    color: var(--text-secondary);
-    text-align: center;
+
+  .hub {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
   }
-  .edit-banner a {
-    color: var(--accent);
-    font-weight: 600;
-    text-decoration: none;
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    border-right: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
   }
-  .edit-banner a:hover { text-decoration: underline; }
-  .page-header {
-    background: #1e293b;
+  .sidebar-brand {
+    padding: 1.35rem 1.1rem 1rem;
+    border-bottom: 1px solid #334155;
+  }
+  .sidebar-brand .eyebrow {
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--sidebar-muted);
+    margin-bottom: .35rem;
+  }
+  .sidebar-brand h1 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
     color: #fff;
-    padding: 2.5rem 1.5rem 2rem;
+    margin-bottom: .35rem;
   }
-  .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
-  .page-header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: .35rem; }
+  .sidebar-brand p {
+    font-size: .78rem;
+    color: var(--sidebar-muted);
+    line-height: 1.45;
+  }
+  .sidebar-nav {
+    flex: 1;
+    padding: .85rem .65rem 1rem;
+    overflow-y: auto;
+  }
+  .nav-group {
+    margin-bottom: 1rem;
+  }
+  .nav-group-title {
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--sidebar-muted);
+    padding: .25rem .55rem .4rem;
+  }
+  .nav-link {
+    display: block;
+    padding: .42rem .55rem;
+    font-size: .82rem;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    border-radius: 6px;
+    border-left: 3px solid transparent;
+    line-height: 1.35;
+  }
+  .nav-link:hover {
+    background: rgba(255, 255, 255, .06);
+    color: #fff;
+  }
+  .nav-link.active {
+    background: var(--sidebar-active);
+    color: #fff;
+    border-left-color: var(--accent);
+    font-weight: 600;
+  }
+  .nav-link.sub {
+    padding-left: 1rem;
+    font-size: .78rem;
+    color: var(--sidebar-muted);
+  }
+  .nav-link.sub.active { color: #fff; }
+  .sidebar-footer {
+    padding: .85rem 1rem;
+    border-top: 1px solid #334155;
+    font-size: .72rem;
+    color: var(--sidebar-muted);
+    line-height: 1.45;
+  }
+  .sidebar-footer a {
+    color: #93c5fd;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .sidebar-footer a:hover { text-decoration: underline; }
+
+  .hub-main { min-width: 0; }
+
+  .page-header {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: #fff;
+    padding: 2rem 2rem 1.75rem;
+  }
+  .page-header-inner { max-width: 920px; }
   .page-header .subtitle { color: #94a3b8; font-size: .95rem; }
-  .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .page-header h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin: .25rem 0 .35rem;
+    border: none;
+    display: block;
+    padding: 0;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .85rem; }
   .tag {
-    font-size: .78rem; font-weight: 600;
-    padding: .3rem .75rem; border-radius: 99px;
+    font-size: .75rem; font-weight: 600;
+    padding: .28rem .7rem; border-radius: 99px;
     background: rgba(255,255,255,.12); color: #e2e8f0;
   }
-  main { padding: 2rem 0 3rem; }
+
+  main {
+    max-width: 920px;
+    padding: 1.75rem 2rem 3rem;
+  }
+
+  section {
+    scroll-margin-top: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
 
   .stats {
     display: grid;
@@ -80,12 +187,12 @@
   .stat-value.warn { color: var(--yellow); }
   .stat-value.ok { color: var(--green); }
   .stat-label { font-size: .78rem; color: var(--text-secondary); margin-top: .25rem; }
-  .stat-caption { font-size: .78rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+  .stat-caption { font-size: .78rem; color: var(--text-secondary); margin-bottom: 1rem; }
 
   .callout {
     border-radius: 10px;
     padding: 1.1rem 1.35rem;
-    margin: 1.5rem 0;
+    margin: 1rem 0 0;
     border-left: 4px solid var(--accent);
     background: var(--accent-light);
   }
@@ -93,9 +200,9 @@
   .callout h4 { font-size: .9rem; font-weight: 700; margin-bottom: .4rem; color: var(--text); }
   .callout p { font-size: .92rem; color: var(--text); margin: 0; }
 
-  h2 {
+  h2.section-title {
     font-size: 1.2rem; font-weight: 700;
-    margin: 2rem 0 1rem;
+    margin: 0 0 1rem;
     padding-bottom: .4rem;
     border-bottom: 2px solid var(--accent);
     display: inline-block;
@@ -111,6 +218,7 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
+    scroll-margin-top: 1.25rem;
   }
   .pillar-head {
     display: flex; justify-content: space-between; align-items: center;
@@ -160,6 +268,7 @@
     padding: 1rem 1.15rem;
     margin-bottom: 10px;
     display: flex; gap: 1rem; align-items: flex-start;
+    scroll-margin-top: 1.25rem;
   }
   .lever-main { flex: 1; }
   .lever-title { font-weight: 600; font-size: .92rem; margin-bottom: .25rem; }
@@ -187,7 +296,7 @@
   .todo-list li.medium { border-left: 3px solid var(--accent); }
 
   .footer {
-    margin-top: 2rem; padding-top: 1rem;
+    margin-top: 1rem; padding-top: 1rem;
     border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
     font-size: .78rem; color: var(--text-secondary);
@@ -195,7 +304,37 @@
   .footer a { color: var(--accent); text-decoration: none; }
   .footer a:hover { text-decoration: underline; }
 
-  @media (max-width: 720px) {
+  .mobile-nav-toggle {
+    display: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 30;
+    background: var(--sidebar-bg);
+    color: #fff;
+    border: 1px solid #475569;
+    border-radius: 999px;
+    padding: .65rem 1rem;
+    font-size: .82rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  }
+
+  @media (max-width: 900px) {
+    .hub { grid-template-columns: 1fr; }
+    .sidebar {
+      position: fixed;
+      left: 0; top: 0;
+      width: min(88vw, var(--sidebar-width));
+      z-index: 20;
+      transform: translateX(-105%);
+      transition: transform .22s ease;
+      box-shadow: 8px 0 24px rgba(0,0,0,.18);
+    }
+    .sidebar.open { transform: translateX(0); }
+    .mobile-nav-toggle { display: block; }
+    .page-header, main { padding-left: 1.25rem; padding-right: 1.25rem; }
     .stats { grid-template-columns: 1fr 1fr; }
     .pillars, .split { grid-template-columns: 1fr; }
     .lever-row { flex-direction: column; }
@@ -203,7 +342,8 @@
   }
 
   @media print {
-    .edit-banner { display: none; }
+    .sidebar, .mobile-nav-toggle { display: none; }
+    .hub { grid-template-columns: 1fr; }
     body { background: #fff; }
     .page-header { background: #1e293b; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
@@ -211,280 +351,390 @@
 </head>
 <body>
 
-<div class="edit-banner">
-  Collaborators: edit
-  <a href="./REXJ_Review_Done_and_Remains.md">REXJ_Review_Done_and_Remains.md</a>
-  in a pull request, then sync this HTML view.
-  See <a href="./README.md">docs/README.md</a>.
+<div class="hub">
+  <aside class="sidebar" id="sidebar" aria-label="Review navigation">
+    <div class="sidebar-brand">
+      <p class="eyebrow">REXJ Insights Hub</p>
+      <h1>What's Done &amp; What Remains</h1>
+      <p>APAC PM · ~2 years · Jill Chen · Jul 2026</p>
+    </div>
+    <nav class="sidebar-nav" aria-label="Sections">
+      <div class="nav-group">
+        <div class="nav-group-title">Overview</div>
+        <a class="nav-link" href="#overview">Summary &amp; metrics</a>
+        <a class="nav-link" href="#headline">Headline</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-title">Four pillars</div>
+        <a class="nav-link" href="#four-pillars">All pillars</a>
+        <a class="nav-link sub" href="#pillar-product-catalog">1 · Product catalog</a>
+        <a class="nav-link sub" href="#pillar-adoption-analytics">2 · Adoption analytics</a>
+        <a class="nav-link sub" href="#pillar-operating-model">3 · Operating model</a>
+        <a class="nav-link sub" href="#pillar-recharge">4 · Recharge</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-title">Roadmap</div>
+        <a class="nav-link" href="#two-year-arc">Two-year arc</a>
+        <a class="nav-link" href="#roadmap-levers">Lever readiness</a>
+        <a class="nav-link sub" href="#lever-streamline-delivery">Lever 1 · Delivery</a>
+        <a class="nav-link sub" href="#lever-promote-to-core">Lever 2 · Promote</a>
+        <a class="nav-link sub" href="#lever-agentic-ai">Lever 3 · Agentic AI</a>
+        <a class="nav-link sub" href="#lever-retire-low-value">Lever 4 · Retire</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-title">Review</div>
+        <a class="nav-link" href="#pm-delivered">Delivered vs blocked</a>
+        <a class="nav-link" href="#communication-initiatives">Communication</a>
+        <a class="nav-link" href="#self-review-narrative">Self-review narrative</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      Edit <a href="./REXJ_Review_Done_and_Remains.md">source (.md)</a> ·
+      <a href="./README.md">docs guide</a>
+    </div>
+  </aside>
+
+  <div class="hub-main">
+    <header class="page-header" id="overview">
+      <div class="page-header-inner">
+        <p class="subtitle" style="font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;">Portfolio review</p>
+        <h2>REXJ Review — What's Done and What Remains</h2>
+        <p class="subtitle">Achievement vs remaining gaps · shareable deep links via sidebar (#section)</p>
+        <div class="tag-row">
+          <span class="tag">3 of 4 pillars delivered</span>
+          <span class="tag">1 blocked on engineering</span>
+          <span class="tag">38 tools catalogued</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="metrics" aria-labelledby="metrics-title">
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value">38</div>
+            <div class="stat-label">Tools documented</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">2,705</div>
+            <div class="stat-label">MAU (FY27 Jun)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value ok">4.0</div>
+            <div class="stat-label">CSAT</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value warn">Manual</div>
+            <div class="stat-label">Release pipeline</div>
+          </div>
+        </div>
+        <p class="stat-caption">MAU (FY27 Jun) / CSAT (FY26) from extension dashboard &amp; micro-engagement survey · pipeline = 7 steps, 3 people</p>
+      </section>
+
+      <section id="headline">
+        <div class="callout">
+          <h4>Headline for your review</h4>
+          <p>Moved REXJ from opaque regional add-on to a data-informed, strategy-ready portfolio — catalog, analytics, customer evidence, English internal builds, and a process diagnosis. The remaining gap is engineering sponsorship to validate and implement the operating model.</p>
+        </div>
+      </section>
+
+      <section id="four-pillars">
+        <h2 class="section-title">Four pillars — achievement vs gap</h2>
+        <div class="pillars">
+
+          <article class="pillar" id="pillar-product-catalog">
+            <div class="pillar-head">
+              <h3>1 · Product catalog</h3>
+              <span class="status delivered">Delivered</span>
+            </div>
+            <div class="pillar-body">
+              <p class="pillar-sub">Feature summary with Tetsuya (Hishida)</p>
+              <p class="pillar-roadmap">Roadmap: Foundation for Levers 2–4</p>
+              <h4>Achievements</h4>
+              <ul>
+                <li>Documented all 38 REXJ tools — purpose, workflow, customer value</li>
+                <li>Created shared language for PM, Japan team, and leadership</li>
+                <li>Enabled usage analytics to map to named tools (not anonymous add-on)</li>
+              </ul>
+              <h4>Gaps remaining</h4>
+              <ul>
+                <li>Tool-level ownership not yet tied to promote / retire decisions</li>
+                <li>Internal teams still lack lightweight entry point for tool discovery</li>
+              </ul>
+              <div class="bar-wrap">
+                <div class="bar-label">Maturity 90%</div>
+                <div class="bar-track"><div class="bar-fill green" style="width:90%"></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="pillar" id="pillar-adoption-analytics">
+            <div class="pillar-head">
+              <h3>2 · Adoption analytics</h3>
+              <span class="status delivered">Delivered</span>
+            </div>
+            <div class="pillar-body">
+              <p class="pillar-sub">Looker / extension dashboards</p>
+              <p class="pillar-roadmap">Roadmap: Informs Lever 4 (Retire) + Lever 2 (Promote)</p>
+              <h4>Achievements</h4>
+              <ul>
+                <li>Overall REXJ adoption trends (MAU, CSAT — 2,705 MAU FY27 Jun, 4.0 CSAT FY26)</li>
+                <li>Adoption by company — concentration vs design-firm gap surfaced</li>
+                <li>Per-tool usage — which of 38 tools earn maintenance cost</li>
+              </ul>
+              <h4>Gaps remaining</h4>
+              <ul>
+                <li>Analytics → roadmap decisions not yet on a quarterly cadence</li>
+                <li>Low-usage tool sunset list not leadership-approved</li>
+              </ul>
+              <div class="bar-wrap">
+                <div class="bar-label">Maturity 85%</div>
+                <div class="bar-track"><div class="bar-fill green" style="width:85%"></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="pillar" id="pillar-operating-model">
+            <div class="pillar-head">
+              <h3>3 · Operating model</h3>
+              <span class="status blocked">Blocked</span>
+            </div>
+            <div class="pillar-body">
+              <p class="pillar-sub">Dev · maintenance · delivery process</p>
+              <p class="pillar-roadmap">Roadmap: Lever 1 — Streamline Dev &amp; Delivery</p>
+              <h4>Achievements</h4>
+              <ul>
+                <li>Mapped 7-step manual release pipeline (Hayashi → Paul → Arent → AppStore)</li>
+                <li>Quantified 3× effort per Revit version; automation feasibility assessed</li>
+                <li>Process optimization report + staffing options (4 paths) published</li>
+                <li>Japan local contractor (Arent) engaged on improvements</li>
+              </ul>
+              <h4>Gaps remaining</h4>
+              <ul>
+                <li>Internal engineering validation — no team prioritized to support</li>
+                <li>Release cadence still not aligned with Revit annual ship</li>
+                <li>Automation/testing bar undefined with engineering sign-off</li>
+                <li>Staffing decision (Option 1–4) not closed</li>
+              </ul>
+              <div class="bar-wrap">
+                <div class="bar-label">Maturity 55%</div>
+                <div class="bar-track"><div class="bar-fill yellow" style="width:55%"></div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="pillar" id="pillar-recharge">
+            <div class="pillar-head">
+              <h3>4 · Recharge — English visibility</h3>
+              <span class="status delivered">Delivered</span>
+            </div>
+            <div class="pillar-body">
+              <p class="pillar-sub">Internal globalization via recharge sprint</p>
+              <p class="pillar-roadmap">Roadmap: Enables Lever 2 + Lever 3 discovery</p>
+              <h4>Achievements</h4>
+              <ul>
+                <li>English UI across menus, dialogs, exports — any locale can install internally</li>
+                <li>Weave modernization on selected tools; GitHub releases + changelogs</li>
+                <li>AI-assisted delivery model proven (PM-led, no C# expertise required)</li>
+                <li>Internal teams can now evaluate REXJ for promote-to-core / agentic mapping</li>
+              </ul>
+              <h4>Gaps remaining</h4>
+              <ul>
+                <li>Cross-team outreach depends on bandwidth</li>
+                <li>Customer-facing globalization (EN/JA/ZH) is a separate track</li>
+                <li>Feedback loop from internal evaluators not structured yet</li>
+              </ul>
+              <div class="bar-wrap">
+                <div class="bar-label">Maturity 75%</div>
+                <div class="bar-track"><div class="bar-fill green" style="width:75%"></div></div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="two-year-arc">
+        <h2 class="section-title">Two-year arc</h2>
+        <table>
+          <thead>
+            <tr><th>Phase</th><th>Focus</th><th>Key outputs</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Year 1</td><td>Understand the product</td><td>Customer voice · tool inventory start · adoption baselines</td></tr>
+            <tr><td>Year 2 H1</td><td>Make it legible</td><td>38-tool summary w/ Tetsuya · company &amp; tool analytics · customer stories</td></tr>
+            <tr><td>Year 2 H2</td><td>Make it sustainable</td><td>Process report · roadmap levers · recharge English · contractor path</td></tr>
+            <tr><td>Next</td><td>Close the loop</td><td>Eng validation · staffing decision · cross-team comms · release SLA</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="roadmap-levers">
+        <h2 class="section-title">Roadmap lever readiness (your contribution)</h2>
+
+        <div class="lever-row" id="lever-streamline-delivery">
+          <div class="lever-main">
+            <div class="lever-title">Lever 1 · Streamline delivery</div>
+            <div class="lever-work">Your work: Process map, automation assessment, contractor engagement, decision doc</div>
+            <span class="lever-status">Diagnosed — blocked on eng sponsorship</span>
+          </div>
+          <div class="lever-bar">
+            <div class="bar-label">40%</div>
+            <div class="bar-track"><div class="bar-fill yellow" style="width:40%"></div></div>
+          </div>
+        </div>
+
+        <div class="lever-row" id="lever-promote-to-core">
+          <div class="lever-main">
+            <div class="lever-title">Lever 2 · Promote to core</div>
+            <div class="lever-work">Your work: 38-tool catalog + usage data + English internal builds</div>
+            <span class="lever-status">Ready to socialize — needs PM conversations</span>
+          </div>
+          <div class="lever-bar">
+            <div class="bar-label">65%</div>
+            <div class="bar-track"><div class="bar-fill green" style="width:65%"></div></div>
+          </div>
+        </div>
+
+        <div class="lever-row" id="lever-agentic-ai">
+          <div class="lever-main">
+            <div class="lever-title">Lever 3 · Agentic AI candidates</div>
+            <div class="lever-work">Your work: Tool classification, MCP overlap analysis, recharge demo</div>
+            <span class="lever-status">Signal ready — needs FLATT / surge alignment</span>
+          </div>
+          <div class="lever-bar">
+            <div class="bar-label">50%</div>
+            <div class="bar-track"><div class="bar-fill blue" style="width:50%"></div></div>
+          </div>
+        </div>
+
+        <div class="lever-row" id="lever-retire-low-value">
+          <div class="lever-main">
+            <div class="lever-title">Lever 4 · Retire low-value</div>
+            <div class="lever-work">Your work: Per-tool adoption analytics</div>
+            <span class="lever-status">Data ready — need input for RUG and local team</span>
+          </div>
+          <div class="lever-bar">
+            <div class="bar-label">45%</div>
+            <div class="bar-track"><div class="bar-fill yellow" style="width:45%"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pm-delivered">
+        <h2 class="section-title">PM-delivered vs org-dependent</h2>
+        <div class="split">
+          <div class="split-card">
+            <div class="split-head">You delivered</div>
+            <div class="split-body">
+              <ul>
+                <li>✓ 38-tool feature catalog with Japan PM</li>
+                <li>✓ Adoption analytics — overall, company, per-tool</li>
+                <li>✓ Customer evidence pack (20+ firms, 2029 narrative)</li>
+                <li>✓ Process diagnosis + automation feasibility + staffing options</li>
+                <li>✓ English internal builds via recharge</li>
+                <li>✓ 4-lever roadmap shape-of-investment framing</li>
+              </ul>
+            </div>
+          </div>
+          <div class="split-card">
+            <div class="split-head">Blocked without eng / leadership</div>
+            <div class="split-body">
+              <ul>
+                <li>○ Validate automation + testing bar with eng sign-off</li>
+                <li>○ Release cadence aligned to Revit GA</li>
+                <li>○ Close staffing decision (partner + scrum vs contractor)</li>
+                <li>○ Named system owner for pipeline / signing / branching</li>
+                <li>○ Promote-to-core and retire decisions on usage data</li>
+                <li>○ Customer-facing globalization (EN/JA/ZH) execution</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="communication-initiatives">
+        <h2 class="section-title">Communication initiatives (bandwidth-dependent)</h2>
+        <p style="font-size:.88rem;color:var(--text-secondary);">Recharge English builds unlocked internal evaluation — outreach is the next lever you can pull without waiting for engineering.</p>
+        <ul class="todo-list">
+          <li class="critical"><strong>Critical</strong> — Engineering (Pawel / Emily / Scott): bounded capability assessment for contractor + automation bar</li>
+          <li class="critical"><strong>Critical</strong> — Leadership: close staffing decision; scope Obj 2 to governance not execution</li>
+          <li class="high"><strong>High</strong> — Core / domain PMs: share English builds + top usage tools — promote interest</li>
+          <li class="high"><strong>High</strong> — FLATT / Agentic surge: REXJ ↔ agentic overlap brief (tags, dims, code-check)</li>
+          <li class="medium"><strong>Medium</strong> — Japan team (Tetsuya, Hayashi, Kitta): contractor expectations + FY28 model</li>
+        </ul>
+      </section>
+
+      <section id="self-review-narrative">
+        <div class="callout warn">
+          <h4>Suggested self-review narrative</h4>
+          <p>Over two years I turned REXJ from a black box into a managed portfolio: we know what 38 tools do, who uses them, what customers need through 2029, and what the release process costs. Recharge made it visible internally. What I cannot close alone is engineering validation of the operating model — that needs a named owner or an explicit decision to stay partner-maintained.</p>
+        </div>
+        <div class="footer">
+          <span>Artifacts: Roadmap exec summary · Process decision · Recharge deck · Globalization assessment</span>
+          <span>Next: eng assessment · leadership staffing · cross-team comms</span>
+        </div>
+      </section>
+    </main>
+  </div>
 </div>
 
-<header class="page-header">
-  <div class="container">
-    <p class="subtitle" style="margin-bottom:.25rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;">APAC PM · ~2 years</p>
-    <h1>REXJ Review — What's Done and What Remains</h1>
-    <p class="subtitle">Achievement vs remaining gaps · Jill Chen · Jul 2026</p>
-    <div class="tag-row">
-      <span class="tag">3 of 4 pillars delivered</span>
-      <span class="tag">1 blocked on engineering</span>
-      <span class="tag">38 tools catalogued</span>
-    </div>
-  </div>
-</header>
+<button type="button" class="mobile-nav-toggle" id="nav-toggle" aria-controls="sidebar" aria-expanded="false">Sections</button>
 
-<main class="container">
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+  var sections = links.map(function (link) {
+    var id = link.getAttribute('href').slice(1);
+    return document.getElementById(id);
+  }).filter(Boolean);
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-value">38</div>
-      <div class="stat-label">Tools documented</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">2,705</div>
-      <div class="stat-label">MAU (FY27 Jun)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value ok">4.0</div>
-      <div class="stat-label">CSAT</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value warn">Manual</div>
-      <div class="stat-label">Release pipeline</div>
-    </div>
-  </div>
-  <p class="stat-caption">MAU (FY27 Jun) / CSAT (FY26) from extension dashboard &amp; micro-engagement survey · pipeline = 7 steps, 3 people</p>
+  function setActive(id) {
+    links.forEach(function (link) {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+    });
+  }
 
-  <div class="callout">
-    <h4>Headline for your review</h4>
-    <p>Moved REXJ from opaque regional add-on to a data-informed, strategy-ready portfolio — catalog, analytics, customer evidence, English internal builds, and a process diagnosis. The remaining gap is engineering sponsorship to validate and implement the operating model.</p>
-  </div>
+  function currentSectionId() {
+    var y = window.scrollY + 120;
+    var current = sections[0];
+    sections.forEach(function (section) {
+      if (section.offsetTop <= y) current = section;
+    });
+    return current ? current.id : 'overview';
+  }
 
-  <h2>Four pillars — achievement vs gap</h2>
-  <div class="pillars">
+  var scrollTimer;
+  window.addEventListener('scroll', function () {
+    window.clearTimeout(scrollTimer);
+    scrollTimer = window.setTimeout(function () {
+      setActive(currentSectionId());
+    }, 80);
+  }, { passive: true });
 
-    <div class="pillar">
-      <div class="pillar-head">
-        <h3>1 · Product catalog</h3>
-        <span class="status delivered">Delivered</span>
-      </div>
-      <div class="pillar-body">
-        <p class="pillar-sub">Feature summary with Tetsuya (Hishida)</p>
-        <p class="pillar-roadmap">Roadmap: Foundation for Levers 2–4</p>
-        <h4>Achievements</h4>
-        <ul>
-          <li>Documented all 38 REXJ tools — purpose, workflow, customer value</li>
-          <li>Created shared language for PM, Japan team, and leadership</li>
-          <li>Enabled usage analytics to map to named tools (not anonymous add-on)</li>
-        </ul>
-        <h4>Gaps remaining</h4>
-        <ul>
-          <li>Tool-level ownership not yet tied to promote / retire decisions</li>
-          <li>Internal teams still lack lightweight entry point for tool discovery</li>
-        </ul>
-        <div class="bar-wrap">
-          <div class="bar-label">Maturity 90%</div>
-          <div class="bar-track"><div class="bar-fill green" style="width:90%"></div></div>
-        </div>
-      </div>
-    </div>
+  window.addEventListener('hashchange', function () {
+    var id = location.hash.replace('#', '');
+    if (id) setActive(id);
+  });
 
-    <div class="pillar">
-      <div class="pillar-head">
-        <h3>2 · Adoption analytics</h3>
-        <span class="status delivered">Delivered</span>
-      </div>
-      <div class="pillar-body">
-        <p class="pillar-sub">Looker / extension dashboards</p>
-        <p class="pillar-roadmap">Roadmap: Informs Lever 4 (Retire) + Lever 2 (Promote)</p>
-        <h4>Achievements</h4>
-        <ul>
-          <li>Overall REXJ adoption trends (MAU, CSAT — 2,705 MAU FY27 Jun, 4.0 CSAT FY26)</li>
-          <li>Adoption by company — concentration vs design-firm gap surfaced</li>
-          <li>Per-tool usage — which of 38 tools earn maintenance cost</li>
-        </ul>
-        <h4>Gaps remaining</h4>
-        <ul>
-          <li>Analytics → roadmap decisions not yet on a quarterly cadence</li>
-          <li>Low-usage tool sunset list not leadership-approved</li>
-        </ul>
-        <div class="bar-wrap">
-          <div class="bar-label">Maturity 85%</div>
-          <div class="bar-track"><div class="bar-fill green" style="width:85%"></div></div>
-        </div>
-      </div>
-    </div>
+  links.forEach(function (link) {
+    link.addEventListener('click', function () {
+      setActive(link.getAttribute('href').slice(1));
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('nav-toggle').setAttribute('aria-expanded', 'false');
+    });
+  });
 
-    <div class="pillar">
-      <div class="pillar-head">
-        <h3>3 · Operating model</h3>
-        <span class="status blocked">Blocked</span>
-      </div>
-      <div class="pillar-body">
-        <p class="pillar-sub">Dev · maintenance · delivery process</p>
-        <p class="pillar-roadmap">Roadmap: Lever 1 — Streamline Dev &amp; Delivery</p>
-        <h4>Achievements</h4>
-        <ul>
-          <li>Mapped 7-step manual release pipeline (Hayashi → Paul → Arent → AppStore)</li>
-          <li>Quantified 3× effort per Revit version; automation feasibility assessed</li>
-          <li>Process optimization report + staffing options (4 paths) published</li>
-          <li>Japan local contractor (Arent) engaged on improvements</li>
-        </ul>
-        <h4>Gaps remaining</h4>
-        <ul>
-          <li>Internal engineering validation — no team prioritized to support</li>
-          <li>Release cadence still not aligned with Revit annual ship</li>
-          <li>Automation/testing bar undefined with engineering sign-off</li>
-          <li>Staffing decision (Option 1–4) not closed</li>
-        </ul>
-        <div class="bar-wrap">
-          <div class="bar-label">Maturity 55%</div>
-          <div class="bar-track"><div class="bar-fill yellow" style="width:55%"></div></div>
-        </div>
-      </div>
-    </div>
+  var toggle = document.getElementById('nav-toggle');
+  var sidebar = document.getElementById('sidebar');
+  toggle.addEventListener('click', function () {
+    var open = sidebar.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 
-    <div class="pillar">
-      <div class="pillar-head">
-        <h3>4 · Recharge — English visibility</h3>
-        <span class="status delivered">Delivered</span>
-      </div>
-      <div class="pillar-body">
-        <p class="pillar-sub">Internal globalization via recharge sprint</p>
-        <p class="pillar-roadmap">Roadmap: Enables Lever 2 + Lever 3 discovery</p>
-        <h4>Achievements</h4>
-        <ul>
-          <li>English UI across menus, dialogs, exports — any locale can install internally</li>
-          <li>Weave modernization on selected tools; GitHub releases + changelogs</li>
-          <li>AI-assisted delivery model proven (PM-led, no C# expertise required)</li>
-          <li>Internal teams can now evaluate REXJ for promote-to-core / agentic mapping</li>
-        </ul>
-        <h4>Gaps remaining</h4>
-        <ul>
-          <li>Cross-team outreach depends on bandwidth</li>
-          <li>Customer-facing globalization (EN/JA/ZH) is a separate track</li>
-          <li>Feedback loop from internal evaluators not structured yet</li>
-        </ul>
-        <div class="bar-wrap">
-          <div class="bar-label">Maturity 75%</div>
-          <div class="bar-track"><div class="bar-fill green" style="width:75%"></div></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <h2>Two-year arc</h2>
-  <table>
-    <thead>
-      <tr><th>Phase</th><th>Focus</th><th>Key outputs</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Year 1</td><td>Understand the product</td><td>Customer voice · tool inventory start · adoption baselines</td></tr>
-      <tr><td>Year 2 H1</td><td>Make it legible</td><td>38-tool summary w/ Tetsuya · company &amp; tool analytics · customer stories</td></tr>
-      <tr><td>Year 2 H2</td><td>Make it sustainable</td><td>Process report · roadmap levers · recharge English · contractor path</td></tr>
-      <tr><td>Next</td><td>Close the loop</td><td>Eng validation · staffing decision · cross-team comms · release SLA</td></tr>
-    </tbody>
-  </table>
-
-  <h2>Roadmap lever readiness (your contribution)</h2>
-
-  <div class="lever-row">
-    <div class="lever-main">
-      <div class="lever-title">Lever 1 · Streamline delivery</div>
-      <div class="lever-work">Your work: Process map, automation assessment, contractor engagement, decision doc</div>
-      <span class="lever-status">Diagnosed — blocked on eng sponsorship</span>
-    </div>
-    <div class="lever-bar">
-      <div class="bar-label">40%</div>
-      <div class="bar-track"><div class="bar-fill yellow" style="width:40%"></div></div>
-    </div>
-  </div>
-
-  <div class="lever-row">
-    <div class="lever-main">
-      <div class="lever-title">Lever 2 · Promote to core</div>
-      <div class="lever-work">Your work: 38-tool catalog + usage data + English internal builds</div>
-      <span class="lever-status">Ready to socialize — needs PM conversations</span>
-    </div>
-    <div class="lever-bar">
-      <div class="bar-label">65%</div>
-      <div class="bar-track"><div class="bar-fill green" style="width:65%"></div></div>
-    </div>
-  </div>
-
-  <div class="lever-row">
-    <div class="lever-main">
-      <div class="lever-title">Lever 3 · Agentic AI candidates</div>
-      <div class="lever-work">Your work: Tool classification, MCP overlap analysis, recharge demo</div>
-      <span class="lever-status">Signal ready — needs FLATT / surge alignment</span>
-    </div>
-    <div class="lever-bar">
-      <div class="bar-label">50%</div>
-      <div class="bar-track"><div class="bar-fill blue" style="width:50%"></div></div>
-    </div>
-  </div>
-
-  <div class="lever-row">
-    <div class="lever-main">
-      <div class="lever-title">Lever 4 · Retire low-value</div>
-      <div class="lever-work">Your work: Per-tool adoption analytics</div>
-      <span class="lever-status">Data ready — need input for RUG and local team</span>
-    </div>
-    <div class="lever-bar">
-      <div class="bar-label">45%</div>
-      <div class="bar-track"><div class="bar-fill yellow" style="width:45%"></div></div>
-    </div>
-  </div>
-
-  <h2>PM-delivered vs org-dependent</h2>
-  <div class="split">
-    <div class="split-card">
-      <div class="split-head">You delivered</div>
-      <div class="split-body">
-        <ul>
-          <li>✓ 38-tool feature catalog with Japan PM</li>
-          <li>✓ Adoption analytics — overall, company, per-tool</li>
-          <li>✓ Customer evidence pack (20+ firms, 2029 narrative)</li>
-          <li>✓ Process diagnosis + automation feasibility + staffing options</li>
-          <li>✓ English internal builds via recharge</li>
-          <li>✓ 4-lever roadmap shape-of-investment framing</li>
-        </ul>
-      </div>
-    </div>
-    <div class="split-card">
-      <div class="split-head">Blocked without eng / leadership</div>
-      <div class="split-body">
-        <ul>
-          <li>○ Validate automation + testing bar with eng sign-off</li>
-          <li>○ Release cadence aligned to Revit GA</li>
-          <li>○ Close staffing decision (partner + scrum vs contractor)</li>
-          <li>○ Named system owner for pipeline / signing / branching</li>
-          <li>○ Promote-to-core and retire decisions on usage data</li>
-          <li>○ Customer-facing globalization (EN/JA/ZH) execution</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <h2>Communication initiatives (bandwidth-dependent)</h2>
-  <p style="font-size:.88rem;color:var(--text-secondary);">Recharge English builds unlocked internal evaluation — outreach is the next lever you can pull without waiting for engineering.</p>
-  <ul class="todo-list">
-    <li class="critical"><strong>Critical</strong> — Engineering (Pawel / Emily / Scott): bounded capability assessment for contractor + automation bar</li>
-    <li class="critical"><strong>Critical</strong> — Leadership: close staffing decision; scope Obj 2 to governance not execution</li>
-    <li class="high"><strong>High</strong> — Core / domain PMs: share English builds + top usage tools — promote interest</li>
-    <li class="high"><strong>High</strong> — FLATT / Agentic surge: REXJ ↔ agentic overlap brief (tags, dims, code-check)</li>
-    <li class="medium"><strong>Medium</strong> — Japan team (Tetsuya, Hayashi, Kitta): contractor expectations + FY28 model</li>
-  </ul>
-
-  <div class="callout warn">
-    <h4>Suggested self-review narrative</h4>
-    <p>Over two years I turned REXJ from a black box into a managed portfolio: we know what 38 tools do, who uses them, what customers need through 2029, and what the release process costs. Recharge made it visible internally. What I cannot close alone is engineering validation of the operating model — that needs a named owner or an explicit decision to stay partner-maintained.</p>
-  </div>
-
-  <div class="footer">
-    <span>Artifacts: Roadmap exec summary · Process decision · Recharge deck · Globalization assessment</span>
-    <span>Next: eng assessment · leadership staffing · cross-team comms · <a href="./REXJ_Review_Done_and_Remains.md">Edit source (.md)</a></span>
-  </div>
-
-</main>
+  var initial = location.hash.replace('#', '') || 'overview';
+  setActive(initial);
+})();
+</script>
 </body>
 </html>
