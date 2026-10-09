@@ -241,4 +241,12 @@
     <None Include="MEPExtension.addin" />
   </ItemGroup>
 
+  <!-- CmdDuctDisplacement loads the S-curve families from the assembly folder (FAMILY_FOLDER = "\") -->
+  <ItemGroup>
+    <Content Include="CmdDuctDisplacement\rfa2027\*.rfa">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

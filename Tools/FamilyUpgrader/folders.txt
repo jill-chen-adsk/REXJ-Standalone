@@ -1,0 +1,9 @@
+# Folders whose .rfa files are upgraded to the running Revit version.
+# One path per line, relative to the REXJ-Standalone root (or absolute). Subfolders are not included.
+AveSiteLevelHeightCalc\rfa2027
+Fukashi\Families
+MEPExtension\CmdDuctDisplacement\rfa2027
+MepManholeTool\Resources
+MepManholeTool\Resources\rfa2027
+MepVerticalMark\rfa2027
+SectionListRC\rfa

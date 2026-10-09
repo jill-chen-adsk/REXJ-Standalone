@@ -142,7 +142,7 @@
     <Copy SourceFiles="@(RfaFiles)" DestinationFolder="$(TargetDir)" SkipUnchangedFiles="true" Condition="Exists('%(FullPath)')" />
   </Target>
   <ItemGroup>
-    <RfaFiles Include="rfa2026\*.rfa" />
+    <RfaFiles Include="rfa2027\*.rfa" />
   </ItemGroup>
 
 </Project>
