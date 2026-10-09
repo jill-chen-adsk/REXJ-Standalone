@@ -42,13 +42,13 @@ namespace MepManholeTool.Tools
                 }
                 
                 app.FailuresProcessing += new EventHandler<FailuresProcessingEventArgs>( HandleFailures! ) ;
-                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2026" ), "RJ_2D_凡_配管付属品_桝_断面") ;
-                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2026"), "桝詳細項目タグ" ) ;
-                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2026"), "00_RJ_タグ_配管付属品_CL15" ) ;
-                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2026"), "08070_公共桝" ) ;
-                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2026"), "08060_ため桝_RC" ) ;
-                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2026"), "08050_インバート桝_SC" ) ;
-                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2026"), "08060_トラップ桝" ) ;
+                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2027" ), "RJ_2D_凡_配管付属品_桝_断面") ;
+                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2027"), "桝詳細項目タグ" ) ;
+                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2027"), "00_RJ_タグ_配管付属品_CL15" ) ;
+                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2027"), "08070_公共桝" ) ;
+                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2027"), "08060_ため桝_RC" ) ;
+                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2027"), "08050_インバート桝_SC" ) ;
+                LoadSymbolAndTag( rvtDoc, Path.Combine( folder, "Resources", "rfa2027"), "08060_トラップ桝" ) ;
                 if ( ! IsDetailFamilyLoaded( rvtDoc, "RJ_2D_凡_配管付属品_桝_断面" ) )
                     return Result.Cancelled ;
                 var topoSolids = new FilteredElementCollector( rvtDoc ).OfClass( typeof( Toposolid ) )

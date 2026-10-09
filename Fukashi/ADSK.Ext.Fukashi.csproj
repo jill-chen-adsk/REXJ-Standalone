@@ -87,6 +87,14 @@
     </None>
   </ItemGroup>
 
+  <!-- Face/Opening load the Fukashi families from the assembly folder -->
+  <ItemGroup>
+    <Content Include="Families\*.rfa">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.8" />
     <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />

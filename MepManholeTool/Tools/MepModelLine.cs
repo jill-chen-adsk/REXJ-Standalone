@@ -86,10 +86,12 @@ namespace MepManholeTool.Tools
         /// </summary>
         private void LoadFamiliesForDocument(Document doc)
         {
+            if (doc.IsFamilyDocument) return;
+
             var folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             if (string.IsNullOrEmpty(folder)) return;
             
-            LoadFamiliesForVersion(doc, Path.Combine(folder, "Resources", "rfa2026"));
+            LoadFamiliesForVersion(doc, Path.Combine(folder, "Resources", "rfa2027"));
         }
         
         /// <summary>

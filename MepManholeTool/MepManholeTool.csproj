@@ -39,7 +39,7 @@
     <Content Include="Resources\ParameterMapping.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\rfa2026\**\*">
+    <Content Include="Resources\rfa2027\**\*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
