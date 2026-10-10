@@ -68,32 +68,16 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
             if (chrome == null)
                 return;
 
-            if (WeaveTheme.IsDarkTheme)
-            {
-                SetBrush(chrome.ChromeOuterBorder, System.Windows.Controls.Border.BackgroundProperty, "#263545");
-                SetBrush(chrome.ChromeTitleBar, System.Windows.Controls.Panel.BackgroundProperty, "#263545");
-                SetBrush(chrome.ChromeDivider, System.Windows.Controls.Border.BackgroundProperty, "#3A4F63");
-                SetBrush(chrome.ChromeTitleText, System.Windows.Controls.TextBlock.ForegroundProperty, "#E0E8F0");
-                if (chrome.ChromeCloseButton != null)
-                    SetBrush(chrome.ChromeCloseButton, System.Windows.Controls.Control.ForegroundProperty, "#8FA4B8");
-            }
-            else
-            {
-                SetBrush(chrome.ChromeOuterBorder, System.Windows.Controls.Border.BackgroundProperty, "#FFFFFF");
-                SetBrush(chrome.ChromeTitleBar, System.Windows.Controls.Panel.BackgroundProperty, "#F5F5F5");
-                SetBrush(chrome.ChromeDivider, System.Windows.Controls.Border.BackgroundProperty, "#E0E0E0");
-                SetBrush(chrome.ChromeTitleText, System.Windows.Controls.TextBlock.ForegroundProperty, "#1E1E1E");
-                if (chrome.ChromeCloseButton != null)
-                    SetBrush(chrome.ChromeCloseButton, System.Windows.Controls.Control.ForegroundProperty, "#5C5C5C");
-            }
+            SetBrush(chrome.ChromeOuterBorder, System.Windows.Controls.Border.BackgroundProperty, "Weave.Brush.Surface");
+            SetBrush(chrome.ChromeTitleBar, System.Windows.Controls.Panel.BackgroundProperty, "Weave.Brush.Surface.Subtle");
+            SetBrush(chrome.ChromeDivider, System.Windows.Controls.Border.BackgroundProperty, "Weave.Brush.Border");
+            SetBrush(chrome.ChromeTitleText, System.Windows.Controls.TextBlock.ForegroundProperty, "Weave.Brush.Text.Primary");
+            SetBrush(chrome.ChromeCloseButton, System.Windows.Controls.Control.ForegroundProperty, "Weave.Brush.Text.Secondary");
         }
 
-        static void SetBrush(DependencyObject element, DependencyProperty property, string hex)
+        static void SetBrush(FrameworkElement element, DependencyProperty property, string resourceKey)
         {
-            if (element == null)
-                return;
-
-            element.SetValue(property, WeaveTheme.BrushFromHex(hex));
+            element?.SetResourceReference(property, resourceKey);
         }
     }
 }

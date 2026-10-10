@@ -68,32 +68,16 @@ namespace ADSK.JExtRAC.ParameterFilter.Utils
             if (chrome == null)
                 return;
 
-            if (WeaveTheme.IsDarkTheme)
-            {
-                SetBrush(chrome.ChromeOuterBorder, Border.BackgroundProperty, "#263545");
-                SetBrush(chrome.ChromeTitleBar, Panel.BackgroundProperty, "#263545");
-                SetBrush(chrome.ChromeDivider, Border.BackgroundProperty, "#3A4F63");
-                SetBrush(chrome.ChromeTitleText, TextBlock.ForegroundProperty, "#E0E8F0");
-                if (chrome.ChromeCloseButton != null)
-                    SetBrush(chrome.ChromeCloseButton, Control.ForegroundProperty, "#8FA4B8");
-            }
-            else
-            {
-                SetBrush(chrome.ChromeOuterBorder, Border.BackgroundProperty, "#FFFFFF");
-                SetBrush(chrome.ChromeTitleBar, Panel.BackgroundProperty, "#F5F5F5");
-                SetBrush(chrome.ChromeDivider, Border.BackgroundProperty, "#E0E0E0");
-                SetBrush(chrome.ChromeTitleText, TextBlock.ForegroundProperty, "#1E1E1E");
-                if (chrome.ChromeCloseButton != null)
-                    SetBrush(chrome.ChromeCloseButton, Control.ForegroundProperty, "#5C5C5C");
-            }
+            SetBrush(chrome.ChromeOuterBorder, Border.BackgroundProperty, "Weave.Brush.Surface");
+            SetBrush(chrome.ChromeTitleBar, Panel.BackgroundProperty, "Weave.Brush.Surface.Subtle");
+            SetBrush(chrome.ChromeDivider, Border.BackgroundProperty, "Weave.Brush.Border");
+            SetBrush(chrome.ChromeTitleText, TextBlock.ForegroundProperty, "Weave.Brush.Text.Primary");
+            SetBrush(chrome.ChromeCloseButton, Control.ForegroundProperty, "Weave.Brush.Text.Secondary");
         }
 
-        static void SetBrush(DependencyObject element, DependencyProperty property, string hex)
+        static void SetBrush(FrameworkElement element, DependencyProperty property, string resourceKey)
         {
-            if (element == null)
-                return;
-
-            element.SetValue(property, WeaveTheme.BrushFromHex(hex));
+            element?.SetResourceReference(property, resourceKey);
         }
     }
 }

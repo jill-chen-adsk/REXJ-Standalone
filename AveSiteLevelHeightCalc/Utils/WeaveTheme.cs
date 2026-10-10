@@ -11,13 +11,6 @@ namespace ADSK.JExtRAC.AveSiteLevelHeightCalc.Utils
         public static bool IsDarkTheme =>
             UIThemeManager.CurrentTheme == UITheme.Dark;
 
-        public static SolidColorBrush BrushFromHex(string hex)
-        {
-            var brush = new SolidColorBrush((WpfColor)ColorConverter.ConvertFromString(hex));
-            brush.Freeze();
-            return brush;
-        }
-
         public static void Apply(Window window)
         {
             if (window == null)
