@@ -3,7 +3,7 @@
 ; https://jrsoftware.org/isinfo.php
 
 #define MyAppName "REXJ Standalone Add-ins"
-#define MyAppVersion "1.1.3"
+#define MyAppVersion "1.1.4"
 #define MyAppPublisher "ADSK REXJ"
 #define MyAppURL "https://github.com/rexj"
 #define RevitYear "2027"
@@ -39,9 +39,9 @@ Name: "custom"; Description: "Custom installation"; Flags: iscustom
 [Components]
 ; --- Building Code Check ---
 Name: "codecheck"; Description: "Building Code Check"; Types: full compact
-Name: "codecheck\areaschedule"; Description: "Area Schedule (Legal Area / Grounds Expression / Room to Area)"; Types: full compact
+Name: "codecheck\areaschedule"; Description: "Area Schedule (Legal Area / Grounds Expression / Room to Area) (Weave-compliant)"; Types: full compact
 Name: "codecheck\avesitelevel"; Description: "Avg Site Level Calculation (Weave-compliant)"; Types: full compact
-Name: "codecheck\checkingalvs"; Description: "Daylight / Smoke Exhaust / Ventilation Check"; Types: full compact
+Name: "codecheck\checkingalvs"; Description: "Daylight / Smoke Exhaust / Ventilation Check (Weave-compliant)"; Types: full compact
 
 ; --- Excel Tools ---
 Name: "excel"; Description: "Excel Tools"; Types: full
@@ -52,18 +52,18 @@ Name: "excel\excelimage"; Description: "Insert Excel Image"; Types: full
 
 ; --- Floor Tools ---
 Name: "floor"; Description: "Floor Tools"; Types: full
-Name: "floor\autofloor"; Description: "Auto Floor Creation"; Types: full
-Name: "floor\locateslab"; Description: "Slab Join && Split"; Types: full
+Name: "floor\autofloor"; Description: "Auto Floor Creation (Weave-compliant)"; Types: full
+Name: "floor\locateslab"; Description: "Slab Join && Split (Weave-compliant)"; Types: full
 
 ; --- Filter Tools ---
 Name: "filter"; Description: "Filter Tools"; Types: full compact
 Name: "filter\levelfilter"; Description: "Level Filter (Weave-compliant)"; Types: full compact
-Name: "filter\paramfilter"; Description: "Parameter Filter"; Types: full compact
+Name: "filter\paramfilter"; Description: "Parameter Filter (Weave-compliant)"; Types: full compact
 
 ; --- Dimension Tools ---
 Name: "dimension"; Description: "Dimension Tools"; Types: full
 Name: "dimension\autocreatedim"; Description: "Auto Create Dimension"; Types: full
-Name: "dimension\griddim"; Description: "Grid Dimension"; Types: full
+Name: "dimension\griddim"; Description: "Grid Dimension (Weave-compliant)"; Types: full
 Name: "dimension\floorheightdim"; Description: "Floor Height Dimension"; Types: full
 
 ; --- View Tools ---
@@ -116,7 +116,7 @@ Name: "manager\rexjmanager"; Description: "REXJ Manager"; Types: full compact
 
 ; --- Utility Tools ---
 Name: "utility"; Description: "Utility Tools"; Types: full
-Name: "utility\valuecopy"; Description: "Copy Parameter"; Types: full
+Name: "utility\valuecopy"; Description: "Copy Parameter (Weave-compliant)"; Types: full
 Name: "utility\printregion"; Description: "Range Print (Weave-compliant)"; Types: full
 
 ; ============================================================
