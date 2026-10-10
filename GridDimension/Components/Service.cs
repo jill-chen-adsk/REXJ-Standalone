@@ -81,6 +81,9 @@ namespace ADSK.JExtRAC.GridDimension.Components
 
         #endregion Constructor
 
+        /// <summary>Revit main window handle used to own message dialogs</summary>
+        public IntPtr OwnerHandle { get; set; }
+
         // メンバ関数
 
         #region Member Functions
@@ -159,11 +162,11 @@ namespace ADSK.JExtRAC.GridDimension.Components
                 return ret;
             // 距離
             double distA = 0.0;
-            if (_CmpGeometry.TryParseDisplayLength(strDistA, out double distAInternal))
+            if (_CmpGeometry.TryParseStoredLength(strDistA, out double distAInternal))
                 distA = distAInternal;
 
             double distB = 0.0;
-            if (_CmpGeometry.TryParseDisplayLength(strDistB, out double distBInternal))
+            if (_CmpGeometry.TryParseStoredLength(strDistB, out double distBInternal))
                 distB = distBInternal;
 
             // ビュー縮尺
@@ -630,7 +633,7 @@ namespace ADSK.JExtRAC.GridDimension.Components
             // 距離
             double minInternal = UnitUtils.ConvertToInternalUnits(1.0, _CmpGeometry.LengthUnitTypeId);
             double distB = minInternal;
-            if (_CmpGeometry.TryParseDisplayLength(strDistB, out double distBInternal))
+            if (_CmpGeometry.TryParseStoredLength(strDistB, out double distBInternal))
             {
                 distB = distBInternal;
                 if (distB < minInternal)
@@ -659,7 +662,7 @@ namespace ADSK.JExtRAC.GridDimension.Components
             if (!CheckNumberPointIntersection(checkedView, lstGridLine, lstGridArc, left, right, top, bottom))
             {
                 ADSK.JExtRAC.GridDimension.Utils.WeaveDialogHost.ShowMessage(
-                    ADSK.JExtRAC.GridDimension.Utils.WeaveDialogHost.RevitWindowHandle,
+                    OwnerHandle,
                     _CmpAttribute.ResourceText("IDS_ERR_HAS_ONE_INTERSECTION"),
                     _CmpAttribute.ResourceText("IDS_TXT_ERROR"),
                     _CmpAttribute.ResourceText("IDS_TXT_OK"));

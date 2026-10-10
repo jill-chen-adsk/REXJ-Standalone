@@ -103,7 +103,7 @@
                 <CheckBox x:Name="cbkSelecAll"
                           Grid.Row="1"
                           Style="{StaticResource Weave.CheckBox}"
-                          IsThreeState="True"
+                          IsThreeState="False"
                           Margin="0,0,0,16"
                           Checked="CbkSelecAll_Changed"
                           Unchecked="CbkSelecAll_Changed"/>

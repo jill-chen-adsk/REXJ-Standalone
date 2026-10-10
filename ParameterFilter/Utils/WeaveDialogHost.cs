@@ -14,9 +14,6 @@ namespace ADSK.JExtRAC.ParameterFilter.Utils
 
     public static class WeaveDialogHost
     {
-        public static IntPtr RevitWindowHandle =>
-            System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
-
         public static void SetOwner(Window window, IntPtr ownerHandle)
         {
             if (window == null || ownerHandle == IntPtr.Zero)

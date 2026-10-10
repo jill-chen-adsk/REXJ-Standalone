@@ -24,7 +24,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
             RvtExtApp.Components.Service cmpService = new RvtExtApp.Components.Service(cmpAttribute, cmpElements, cmpGeometry, cmpParameters, cmpSettings);
 
             Result retExtCom = Result.Cancelled;
-            IntPtr revitHandle = WeaveDialogHost.RevitWindowHandle;
+            IntPtr revitHandle = rvtUIApp.MainWindowHandle;
             string okText = cmpAttribute.ResourceText("IDS_TXT_OK");
             string errorTitle = cmpAttribute.ResourceText("IDS_TXT_ERROR");
 

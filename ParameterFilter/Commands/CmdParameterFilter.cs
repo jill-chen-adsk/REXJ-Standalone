@@ -66,7 +66,7 @@ namespace ADSK.JExtRAC.ParameterFilter.Commands
                 if (selElems.Count == 0)
                 {
                     WeaveDialogHost.ShowMessage(
-                        WeaveDialogHost.RevitWindowHandle,
+                        rvtUIApp.MainWindowHandle,
                         cmpAttribute.ResourceText("IDS_ERR_NOELEMENTSELECT"),
                         cmpAttribute.ResourceText("IDS_ERR_ERROR"),
                         cmpAttribute.ResourceText("IDS_TXT_OK"));
@@ -81,13 +81,13 @@ namespace ADSK.JExtRAC.ParameterFilter.Commands
                     cmpAttribute,
                     cmpElements,
                     objectElements,
-                    WeaveDialogHost.RevitWindowHandle);
-                WeaveDialogHost.ShowDialog(formFilter, WeaveDialogHost.RevitWindowHandle);
+                    rvtUIApp.MainWindowHandle);
+                WeaveDialogHost.ShowDialog(formFilter, rvtUIApp.MainWindowHandle);
             }
             catch (System.Exception)
             {
                 WeaveDialogHost.ShowMessage(
-                    WeaveDialogHost.RevitWindowHandle,
+                    rvtUIApp.MainWindowHandle,
                     cmpAttribute.ResourceText("IDS_ERR_COMMAND"),
                     cmpAttribute.ResourceText("IDS_ERR_ERROR"),
                     cmpAttribute.ResourceText("IDS_TXT_OK"));

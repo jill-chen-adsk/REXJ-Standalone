@@ -22,7 +22,7 @@ namespace ADSK.JExtRAC.LocateSlab.Config
             var cmpService = new Components.Service(cmpAttribute, cmpElements, cmpGeometry,
                 cmpParameters, cmpSettings);
 
-            IntPtr revitHandle = WeaveDialogHost.RevitWindowHandle;
+            IntPtr revitHandle = rvtUIApp.MainWindowHandle;
             string okText = cmpAttribute.ResourceText("IDS_TXT_OK");
             string errorTitle = cmpAttribute.ResourceText("IDS_TXT_ERROR");
 

@@ -54,7 +54,8 @@ namespace ADSK.JExtRAC.GridDimension.Commands
             // 戻り値
             Revit.UI.Result retExtCom = Revit.UI.Result.Cancelled;
 
-            IntPtr revitHandle = WeaveDialogHost.RevitWindowHandle;
+            IntPtr revitHandle = rvtUIApp.MainWindowHandle;
+            cmpService.OwnerHandle = revitHandle;
             string okText = cmpAttribute.ResourceText("IDS_TXT_OK");
             string errorTitle = cmpAttribute.ResourceText("IDS_TXT_ERROR");
 

@@ -147,7 +147,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
 
         void TabParameterFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (_suppressTabChange)
+            if (_suppressTabChange || _engine == null)
                 return;
             if (tabParameterFilter.SelectedIndex != _engine.CurrentTabIndex)
                 tabParameterFilter.SelectedIndex = _engine.CurrentTabIndex;

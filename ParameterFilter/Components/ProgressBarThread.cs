@@ -109,8 +109,6 @@ namespace ADSK.JExtRAC.ParameterFilter.Components
         {
             if (_window != null)
                 _window.Dispatcher.Invoke(DispatcherPriority.Background, new Action(() => { }));
-
-            System.Windows.Forms.Application.DoEvents();
         }
     }
 }

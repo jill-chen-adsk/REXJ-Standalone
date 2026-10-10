@@ -57,6 +57,20 @@ namespace ADSK.JExtRAC.GridDimension.Components
         public string FormatStoredLength(double displayLength) =>
             displayLength.ToString("0.####", CultureInfo.InvariantCulture);
 
+        /// <summary>Parse a value written by <see cref="FormatStoredLength"/>; never use the project's unit format here.</summary>
+        public bool TryParseStoredLength(string storedValue, out double internalFeet)
+        {
+            internalFeet = 0.0;
+            if (string.IsNullOrWhiteSpace(storedValue))
+                return false;
+
+            if (!double.TryParse(storedValue.Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out double displayValue))
+                return false;
+
+            internalFeet = UnitUtils.ConvertToInternalUnits(displayValue, LengthUnitTypeId);
+            return true;
+        }
+
         public bool TryParseDisplayLength(string text, out double internalFeet)
         {
             internalFeet = 0.0;

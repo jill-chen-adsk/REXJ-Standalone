@@ -1013,7 +1013,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
         {
             IntPtr owner = OwnerHandle != IntPtr.Zero
                 ? OwnerHandle
-                : WeaveDialogHost.RevitWindowHandle;
+                : _rvtUIDoc.Application.MainWindowHandle;
 
             if (owner != IntPtr.Zero)
             {

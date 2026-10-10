@@ -49,7 +49,7 @@ namespace ADSK.JExtRAC.ValueCopy.Commands
             Units units = rvtDbDoc.GetUnits();
 
             // Parent handle so dialogs stay owned by the Revit main window
-            System.IntPtr revitHandle = WeaveDialogHost.RevitWindowHandle;
+            System.IntPtr revitHandle = rvtUIApp.MainWindowHandle;
 
             // Start transaction
             TransactionGroup transGroup = null;
