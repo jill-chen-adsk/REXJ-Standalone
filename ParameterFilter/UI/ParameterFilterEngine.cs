@@ -486,14 +486,12 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                                     lstObjPara.Add(item.objPara);
                             }
 
-                            var singleLengthMm = groupValue.First().Key;
                             var paraRow = new ParameterFilterRow
                             {
                                 IsChecked = true,
                                 Category = row.SubName,
                                 FamilyType = row.Name,
                                 ParameterName = objElement.FirstOrDefault().objPara.NameParameterLength,
-                                Value = FormatLengthMillimeters(singleLengthMm),
                                 CountDisplay = count.ToString(),
                                 TypeKey = guidSameElement,
                                 LengthParameters = lstObjPara
@@ -512,8 +510,6 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                             Category = row.SubName,
                             FamilyType = row.Name,
                             ParameterName = objElement.FirstOrDefault().objPara.NameParameterLength,
-                            Min = FormatLengthMillimeters(minVal),
-                            Max = FormatLengthMillimeters(maxVal),
                             CountDisplay = objElement.Count().ToString(),
                             TypeKey = guidSameElement,
                             LengthParameters = lstObjParaMax,
@@ -988,14 +984,6 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                     LengthParameters = lstTemp
                 });
             }
-        }
-
-        static string FormatLengthMillimeters(double lengthMm)
-        {
-            if (double.IsNaN(lengthMm) || lengthMm == double.MinValue)
-                return string.Empty;
-
-            return ((int)Math.Round(lengthMm, MidpointRounding.AwayFromZero)).ToString();
         }
 
         void SetSelectedGroupParameter(List<ForgeTypeId> lstSelectedGroup)
