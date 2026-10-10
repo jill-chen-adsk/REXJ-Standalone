@@ -10,6 +10,7 @@
     <Color x:Key="Weave.Color.Accent">#0696D7</Color>
     <Color x:Key="Weave.Color.Accent.Hover">#0586C1</Color>
     <Color x:Key="Weave.Color.Error">#E34850</Color>
+    <Color x:Key="Weave.Color.Error.Glyph">#FFFFFF</Color>
     <Color x:Key="Weave.Color.Shadow">#000000</Color>
 
     <SolidColorBrush x:Key="Weave.Brush.Chrome.CloseHover" Color="#20000000"/>
@@ -62,10 +63,36 @@
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
     </Style>
 
+    <SolidColorBrush x:Key="Weave.Brush.Error.Glyph" Color="{StaticResource Weave.Color.Error.Glyph}"/>
+
+    <Style x:Key="Weave.ErrorMessage" TargetType="DockPanel">
+        <Setter Property="Margin" Value="0,4,0,0"/>
+    </Style>
+
+    <Style x:Key="Weave.ErrorIcon" TargetType="Control">
+        <Setter Property="Width" Value="14"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="Margin" Value="0,0,6,0"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="DockPanel.Dock" Value="Left"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Control">
+                    <Grid>
+                        <Ellipse Fill="{DynamicResource Weave.Brush.Error}"/>
+                        <Path Fill="{DynamicResource Weave.Brush.Error.Glyph}"
+                              Data="M6,3 H8 V8.5 H6 Z M6,10 H8 V12 H6 Z"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="Weave.ErrorText" TargetType="TextBlock">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Error}"/>
-        <Setter Property="Margin" Value="0,4,0,0"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 

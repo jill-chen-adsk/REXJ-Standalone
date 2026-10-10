@@ -106,9 +106,13 @@
                     <ComboBox x:Name="cbScale"
                               Style="{StaticResource Weave.ComboBox.Editable}"
                               IsEditable="True"/>
-                    <TextBlock x:Name="scaleErrorText"
-                               Style="{StaticResource Weave.ErrorText}"
-                               Visibility="Collapsed"/>
+                    <DockPanel Style="{StaticResource Weave.ErrorMessage}"
+                               Visibility="{Binding Visibility, ElementName=scaleErrorText}">
+                        <Control Style="{StaticResource Weave.ErrorIcon}"/>
+                        <TextBlock x:Name="scaleErrorText"
+                                   Style="{StaticResource Weave.ErrorText}"
+                                   Visibility="Collapsed"/>
+                    </DockPanel>
                 </StackPanel>
 
                 <StackPanel Grid.Row="3"

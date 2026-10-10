@@ -179,12 +179,14 @@ namespace ADSK.JExtRAC.PrintRegion.UI
         {
             scaleErrorText.Text = message;
             scaleErrorText.Visibility = Visibility.Visible;
+            cbScale.SetResourceReference(Control.BorderBrushProperty, "Weave.Brush.Error");
         }
 
         private void ClearScaleError()
         {
             scaleErrorText.Text = string.Empty;
             scaleErrorText.Visibility = Visibility.Collapsed;
+            cbScale.ClearValue(Control.BorderBrushProperty);
         }
 
         private void CbPrintName_SelectionChanged(object sender, SelectionChangedEventArgs e)

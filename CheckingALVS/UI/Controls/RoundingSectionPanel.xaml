@@ -29,7 +29,11 @@
                                  TextAlignment="Right"
                                  LostFocus="DecimalTextBox_LostFocus"/>
                     </StackPanel>
-                    <TextBlock x:Name="errorTextBlock" Style="{StaticResource Weave.ErrorText}" Visibility="Collapsed"/>
+                    <DockPanel Style="{StaticResource Weave.ErrorMessage}"
+                               Visibility="{Binding Visibility, ElementName=errorTextBlock}">
+                        <Control Style="{StaticResource Weave.ErrorIcon}"/>
+                        <TextBlock x:Name="errorTextBlock" Style="{StaticResource Weave.ErrorText}" Visibility="Collapsed"/>
+                    </DockPanel>
                 </StackPanel>
 
                 <Border Grid.Column="1" Style="{StaticResource Weave.RoundingPanel}">
