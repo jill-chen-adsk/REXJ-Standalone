@@ -1,5 +1,6 @@
 using System;
 using ADSK.JExtRAC.ParameterFilter.Entities;
+using ADSK.JExtRAC.ParameterFilter.Utils;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Electrical;
 using System.Collections.Generic;
@@ -572,13 +573,13 @@ namespace ADSK.JExtRAC.ParameterFilter.Components
                 try {
                     var objGroup = new ObjectSelectGroup();
                     objGroup.GroupTypeId = prGroup;
-                    objGroup.ParameterGroupVal = LabelUtils.GetLabelForBuiltInParameter(prGroup);
+                    objGroup.ParameterGroupVal = ParameterGroupLabels.GetLabel(prGroup);
                     objGroup.IsSelected = true;
                     retVal.Add(objGroup);
                 }
                 catch (Exception)
                 {
-                    //GetLabelForBuiltInParameterで取得できない場合の例外処理
+                    // Skip groups that cannot be labeled in this Revit version.
                 }
             }
 

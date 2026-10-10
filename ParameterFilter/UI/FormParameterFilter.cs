@@ -1,5 +1,6 @@
 using ADSK.JExtRAC.ParameterFilter.Components;
 using ADSK.JExtRAC.ParameterFilter.Entities;
+using ADSK.JExtRAC.ParameterFilter.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -36,6 +37,15 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
 
         private int _checkBoxSize;
 
+        private bool _weaveHostMode;
+        private IntPtr _ownerHandle;
+
+        public event EventHandler TabChanged;
+
+        public bool CanGoPrevious => _CurrentIndexTab > 0;
+
+        public bool CanGoNext => _CurrentIndexTab < tabParameterFilter.TabPages.Count - 1;
+
         #endregion Member Variables
 
         #region Constructor
@@ -62,6 +72,86 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
         }
 
         #endregion Constructor
+
+        public void ConfigureWeaveHost(IntPtr ownerHandle)
+        {
+            _weaveHostMode = true;
+            _ownerHandle = ownerHandle;
+
+            FormBorderStyle = FormBorderStyle.None;
+            ShowInTaskbar = false;
+            TopLevel = false;
+            ControlBox = false;
+            StartPosition = FormStartPosition.Manual;
+
+            btnOK.Visible = false;
+            btnCancel.Visible = false;
+            btnPrevious.Visible = false;
+            btnNext.Visible = false;
+            btnPrewview.Visible = false;
+
+            tabParameterFilter.Dock = DockStyle.Fill;
+            tabParameterFilter.Margin = new Padding(0);
+
+            ApplyWeaveWinFormsTheme();
+            RaiseTabChanged();
+        }
+
+        public void HostPrevious() => btnPrevious_Click(this, EventArgs.Empty);
+
+        public void HostNext() => btnNext_Click(this, EventArgs.Empty);
+
+        public void HostPreview() => btnPrewview_Click(this, EventArgs.Empty);
+
+        public bool HostOk()
+        {
+            var retVal = UpdateSelection();
+            return retVal;
+        }
+
+        private void ApplyWeaveWinFormsTheme()
+        {
+            bool dark = WeaveTheme.IsDarkTheme;
+            var surface = dark ? System.Drawing.Color.FromArgb(0x26, 0x35, 0x45) : System.Drawing.Color.White;
+            var surfaceSubtle = dark ? System.Drawing.Color.FromArgb(0x2E, 0x3F, 0x50) : System.Drawing.Color.FromArgb(0xF5, 0xF5, 0xF5);
+            var text = dark ? System.Drawing.Color.FromArgb(0xE0, 0xE8, 0xF0) : System.Drawing.Color.FromArgb(0x3C, 0x3C, 0x3C);
+            var border = dark ? System.Drawing.Color.FromArgb(0x3A, 0x4F, 0x63) : System.Drawing.Color.FromArgb(0xD9, 0xD9, 0xD9);
+
+            BackColor = surface;
+            ForeColor = text;
+
+            foreach (TabPage page in tabParameterFilter.TabPages)
+            {
+                page.BackColor = surfaceSubtle;
+                page.ForeColor = text;
+            }
+
+            var grids = new[] { dgvCategory, dgvFamily, dgvFamilyType, dgvParameter };
+            foreach (var dgv in grids)
+            {
+                dgv.BackgroundColor = surface;
+                dgv.DefaultCellStyle.BackColor = surface;
+                dgv.DefaultCellStyle.ForeColor = text;
+                dgv.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(0x06, 0x96, 0xD7);
+                dgv.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+                dgv.ColumnHeadersDefaultCellStyle.BackColor = surfaceSubtle;
+                dgv.ColumnHeadersDefaultCellStyle.ForeColor = text;
+                dgv.GridColor = border;
+                dgv.EnableHeadersVisualStyles = false;
+            }
+
+            cbkSelectConnect.ForeColor = text;
+        }
+
+        private void ShowWeaveMessage(string message, string title)
+        {
+            if (_ownerHandle != IntPtr.Zero)
+                WeaveDialogHost.ShowMessage(_ownerHandle, message, title, _CmpAttribute.ResourceText("IDS_TXT_OK"));
+            else
+                MessageBox.Show(message, title, MessageBoxButtons.OK);
+        }
+
+        private void RaiseTabChanged() => TabChanged?.Invoke(this, EventArgs.Empty);
 
         #region Events
 
@@ -214,6 +304,9 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                 this.DialogResult = DialogResult.None;
                 return;
             }
+
+            if (_weaveHostMode)
+                return;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -692,7 +785,10 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
 
             // Show form select group
             FormParameterGroup frm = new FormParameterGroup(_CmpAttribute, _LstObjectSelectedGroup);
-            frm.ShowDialog();
+            if (_weaveHostMode)
+                WeaveDialogHost.ShowWinFormsDialog(frm, _ownerHandle);
+            else
+                frm.ShowDialog();
             if (frm.DialogResult != DialogResult.OK)
                 return;
 
@@ -729,6 +825,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
 
             // Set status button Previous and Next
             SetEnableNextAndPreviousButton();
+            RaiseTabChanged();
         }
 
         /// ================================================================================
@@ -750,6 +847,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
 
             // Set status button Previous and Next
             SetEnableNextAndPreviousButton();
+            RaiseTabChanged();
         }
 
         /// ================================================================================
@@ -1251,7 +1349,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
             {
                 bRet = false;
                 string errMsg = ex.Message;
-                MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_COMMAND"), _CmpAttribute.ResourceText("IDS_ERR_ERROR"));
+                ShowWeaveMessage(_CmpAttribute.ResourceText("IDS_ERR_COMMAND"), _CmpAttribute.ResourceText("IDS_ERR_ERROR"));
             }
 
             return bRet;
@@ -1278,6 +1376,8 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
 
             // ProgressBar
             ProgressBarThread progressBarThread = new ProgressBarThread(false, true);
+            if (_ownerHandle != IntPtr.Zero)
+                progressBarThread.SetOwner(_ownerHandle);
             progressBarThread.SetData(_CmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), 0);
 
             // Show ProgressBar
@@ -1819,6 +1919,8 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                 btnPrevious.Enabled = true;
                 btnNext.Enabled = true;
             }
+
+            RaiseTabChanged();
         }
 
         /// ================================================================================

@@ -70,29 +70,15 @@ namespace ADSK.JExtRAC.LocateSlab.Components
             return new XYZ(dx / len, dy / len, 0);
         }
 
-        public XYZ IntersecVector2D(Curve c1, Curve c2)
-        {
-            var p1 = c1.GetEndPoint(0);
-            var p2 = c1.GetEndPoint(1);
-            var p3 = c2.GetEndPoint(0);
-            var p4 = c2.GetEndPoint(1);
-
-            double x1 = p1.X, y1 = p1.Y;
-            double x2 = p2.X, y2 = p2.Y;
-            double x3 = p3.X, y3 = p3.Y;
-            double x4 = p4.X, y4 = p4.Y;
-
-            double denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
-            if (Math.Abs(denom) < Approx0Len) return null;
-
-            double t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
-            double ix = x1 + t * (x2 - x1);
-            double iy = y1 + t * (y2 - y1);
-            return new XYZ(ix, iy, 0);
-        }
-
         public void IntersecCurve2D(Curve c1, Curve c2, ref IList<XYZ> result)
         {
+            IntersecCurve2D(c1, c2, 0.0, ref result);
+        }
+
+        // Each segment is treated as extended by endTolerance (internal units) past both ends
+        // so beams that stop short of each other still connect.
+        public void IntersecCurve2D(Curve c1, Curve c2, double endTolerance, ref IList<XYZ> result)
+        {
             var p1 = c1.GetEndPoint(0);
             var p2 = c1.GetEndPoint(1);
             var p3 = c2.GetEndPoint(0);
@@ -104,13 +90,18 @@ namespace ADSK.JExtRAC.LocateSlab.Components
             double x4 = p4.X, y4 = p4.Y;
 
             double denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
-            if (Math.Abs(denom) < Approx0Len) return;
+            if (Math.Abs(denom) < 1e-12) return;
 
             double t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
             double u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / denom;
 
-            if (t >= -Approx0Len && t <= 1.0 + Approx0Len &&
-                u >= -Approx0Len && u <= 1.0 + Approx0Len)
+            double len1 = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+            double len2 = Math.Sqrt((x4 - x3) * (x4 - x3) + (y4 - y3) * (y4 - y3));
+            if (len1 < Approx0Len || len2 < Approx0Len) return;
+            double ext1 = Approx0Len + endTolerance / len1;
+            double ext2 = Approx0Len + endTolerance / len2;
+
+            if (t >= -ext1 && t <= 1.0 + ext1 && u >= -ext2 && u <= 1.0 + ext2)
             {
                 double ix = x1 + t * (x2 - x1);
                 double iy = y1 + t * (y2 - y1);
@@ -118,27 +109,19 @@ namespace ADSK.JExtRAC.LocateSlab.Components
             }
         }
 
-        public void SortXYPos(IList<XYZ> positions, int mode,
-            ref IList<int> sortedIdx, ref IList<XYZ> sortedPos)
+        // Sort points in the order they occur along the curve, from its start point
+        public IList<XYZ> SortAlongCurve(Curve curve, IList<XYZ> posAry)
         {
-            sortedIdx = new List<int>();
-            sortedPos = new List<XYZ>();
+            XYZ start = curve.GetEndPoint(0);
+            XYZ end = curve.GetEndPoint(1);
+            double dx = end.X - start.X;
+            double dy = end.Y - start.Y;
 
-            var indices = new List<int>();
-            for (int i = 0; i < positions.Count; i++) indices.Add(i);
-
-            indices.Sort((a, b) =>
-            {
-                int cmp = positions[a].X.CompareTo(positions[b].X);
-                if (cmp != 0) return cmp;
-                return positions[a].Y.CompareTo(positions[b].Y);
-            });
-
-            foreach (int i in indices)
-            {
-                sortedIdx.Add(i);
-                sortedPos.Add(positions[i]);
-            }
+            var sorted = new List<XYZ>(posAry);
+            sorted.Sort((a, b) =>
+                ((a.X - start.X) * dx + (a.Y - start.Y) * dy)
+                    .CompareTo((b.X - start.X) * dx + (b.Y - start.Y) * dy));
+            return sorted;
         }
 
         public XYZ PolygonGravity2D(IList<Curve> curves)
@@ -243,35 +226,10 @@ namespace ADSK.JExtRAC.LocateSlab.Components
             }
             else
             {
-                bool flagInter = false;
-                var interPos = IntersecVector2D(curve1, curve2);
-                if (interPos != null)
-                {
-                    interPos = new XYZ(interPos.X, interPos.Y, curve1.GetEndPoint(0).Z);
-                    if (Distance2D(interPos, pos10) < ToleranceInter) flagInter = true;
-                    else if (Distance2D(interPos, pos11) < ToleranceInter) flagInter = true;
-                    else if (Distance2D(interPos, pos20) < ToleranceInter)
-                    {
-                        if (GetCurveOnPos2D(curve1, interPos)) flagInter = true;
-                    }
-                    else if (Distance2D(interPos, pos21) < ToleranceInter)
-                    {
-                        if (GetCurveOnPos2D(curve1, interPos)) flagInter = true;
-                    }
-                }
-                if (flagInter) ret.Add(interPos);
-
-                var interPosAryTmp = new List<XYZ>();
-                IList<XYZ> tmp = interPosAryTmp;
-                IntersecCurve2D(curve1, curve2, ref tmp);
+                IList<XYZ> tmp = new List<XYZ>();
+                IntersecCurve2D(curve1, curve2, ToleranceInter, ref tmp);
                 for (int i = 0; i < tmp.Count; ++i)
-                {
-                    var interPosTmp = new XYZ(tmp[i].X, tmp[i].Y, curve1.GetEndPoint(0).Z);
-                    bool flag = true;
-                    if (flagInter && Distance2D(interPos, interPosTmp) < ToleranceInter)
-                        flag = false;
-                    if (flag) ret.Add(interPosTmp);
-                }
+                    ret.Add(new XYZ(tmp[i].X, tmp[i].Y, curve1.GetEndPoint(0).Z));
             }
             return ret;
         }
@@ -291,9 +249,7 @@ namespace ADSK.JExtRAC.LocateSlab.Components
                     foreach (var p in interPosAryTmp) interPosAryTmp1.Add(p);
                 }
 
-                IList<int> sortedIdxAry = null;
-                IList<XYZ> sortedPosAryTmp1 = null;
-                SortXYPos(interPosAryTmp1, 1, ref sortedIdxAry, ref sortedPosAryTmp1);
+                var sortedPosAryTmp1 = SortAlongCurve(curve1, interPosAryTmp1);
 
                 var interPosAryTmp2 = new List<XYZ>();
                 for (int j = 0; j < sortedPosAryTmp1.Count; ++j)

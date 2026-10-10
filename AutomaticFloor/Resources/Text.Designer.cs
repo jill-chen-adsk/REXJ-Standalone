@@ -37,7 +37,13 @@ namespace ADSK.JExtRAC.AutomaticFloor.Resources
         internal static string IDS_ERR_COMMAND => ResourceManager.GetString("IDS_ERR_COMMAND", resourceCulture);
         internal static string IDS_ERR_CURVBEAMS => ResourceManager.GetString("IDS_ERR_CURVBEAMS", resourceCulture);
         internal static string IDS_ERR_LEVELBEAMS => ResourceManager.GetString("IDS_ERR_LEVELBEAMS", resourceCulture);
+        internal static string IDS_ERR_NO_BOUNDARY_BEAMS => ResourceManager.GetString("IDS_ERR_NO_BOUNDARY_BEAMS", resourceCulture);
+        internal static string IDS_ERR_NO_BOUNDARY_WALLS => ResourceManager.GetString("IDS_ERR_NO_BOUNDARY_WALLS", resourceCulture);
+        internal static string IDS_ERR_NO_FLOOR_TYPE => ResourceManager.GetString("IDS_ERR_NO_FLOOR_TYPE", resourceCulture);
+        internal static string IDS_ERR_NO_FOUNDATION_SLAB_TYPE => ResourceManager.GetString("IDS_ERR_NO_FOUNDATION_SLAB_TYPE", resourceCulture);
         internal static string IDS_ERR_PARAMDEF => ResourceManager.GetString("IDS_ERR_PARAMDEF", resourceCulture);
+        internal static string IDS_ERR_PICK_OUTSIDE_BEAMS => ResourceManager.GetString("IDS_ERR_PICK_OUTSIDE_BEAMS", resourceCulture);
+        internal static string IDS_ERR_PICK_OUTSIDE_WALLS => ResourceManager.GetString("IDS_ERR_PICK_OUTSIDE_WALLS", resourceCulture);
         internal static string IDS_ERR_SLABTYPE => ResourceManager.GetString("IDS_ERR_SLABTYPE", resourceCulture);
         internal static string IDS_ERR_VALNULL => ResourceManager.GetString("IDS_ERR_VALNULL", resourceCulture);
         internal static string IDS_ERR_VALNUMBER => ResourceManager.GetString("IDS_ERR_VALNUMBER", resourceCulture);
@@ -46,6 +52,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.Resources
         internal static string IDS_INFO_ACTIVE_VIEW => ResourceManager.GetString("IDS_INFO_ACTIVE_VIEW", resourceCulture);
         internal static string IDS_INFO_NO_EXIST_BEAMS => ResourceManager.GetString("IDS_INFO_NO_EXIST_BEAMS", resourceCulture);
         internal static string IDS_INFO_NO_EXIST_WALLS => ResourceManager.GetString("IDS_INFO_NO_EXIST_WALLS", resourceCulture);
+        internal static string IDS_INFO_SKIPPED_BEAMS => ResourceManager.GetString("IDS_INFO_SKIPPED_BEAMS", resourceCulture);
         internal static string IDS_INFO_PICK_POINT => ResourceManager.GetString("IDS_INFO_PICK_POINT", resourceCulture);
         internal static string IDS_SHPARAM_DEF_CMD_LOCATESLAB => ResourceManager.GetString("IDS_SHPARAM_DEF_CMD_LOCATESLAB", resourceCulture);
         internal static string IDS_SHPARAM_FILE => ResourceManager.GetString("IDS_SHPARAM_FILE", resourceCulture);

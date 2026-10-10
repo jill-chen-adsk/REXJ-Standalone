@@ -47,8 +47,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Config\FormConfig.Designer.cs">
-      <DependentUpon>FormConfig.cs</DependentUpon>
+    <Compile Remove="Config\FormConfig.cs" />
+    <Compile Remove="Config\FormConfig.Designer.cs" />
+    <EmbeddedResource Remove="Config\FormConfig.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Config\FormConfigWPF.xaml.cs">
+      <DependentUpon>FormConfigWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Utils\WeaveMessageDialog.xaml.cs">
+      <DependentUpon>WeaveMessageDialog.xaml</DependentUpon>
     </Compile>
     <Compile Update="Resources\Text.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -58,9 +67,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Config\FormConfig.resx">
-      <DependentUpon>FormConfig.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Text.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Text.Designer.cs</LastGenOutput>

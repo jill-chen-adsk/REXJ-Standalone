@@ -28,9 +28,14 @@ namespace ADSK.JExtRAC.LocateSlab.Components
 
         public string ErrMsg => _errMsg;
 
+        public int SkippedBeamCount { get; private set; }
+        public List<string> SkippedBeamUsages { get; private set; } = new List<string>();
+
         public IList<Element> GetSelSetBeams()
         {
             var ret = new List<Element>();
+            SkippedBeamCount = 0;
+            SkippedBeamUsages = new List<string>();
             var sysTypes = new List<Type> { typeof(FamilyInstance) };
             var categories = new List<Category>
             {
@@ -44,6 +49,14 @@ namespace ADSK.JExtRAC.LocateSlab.Components
                 _cmpParameters.GetValue(elem, BuiltInParameter.INSTANCE_STRUCT_USAGE_PARAM, ref iValue);
                 if (iValue == 3 || iValue == 4)
                     ret.Add(elem);
+                else
+                {
+                    SkippedBeamCount++;
+                    string usageName = "";
+                    _cmpParameters.GetValue(elem, BuiltInParameter.INSTANCE_STRUCT_USAGE_PARAM, ref usageName);
+                    if (!string.IsNullOrEmpty(usageName) && !SkippedBeamUsages.Contains(usageName))
+                        SkippedBeamUsages.Add(usageName);
+                }
             }
             return ret;
         }
@@ -112,6 +125,11 @@ namespace ADSK.JExtRAC.LocateSlab.Components
 
             var beamsInterPosAry = _cmpGeometry.GetInterPosCurves(beamsCurve);
             var floorsCurvesTmp = _cmpGeometry.GetPlanFaceCurveInterPos(beamsInterPosAry, beamHeight);
+            if (floorsCurvesTmp.Count == 0)
+            {
+                _errMsg = _cmpAttribute.ResourceText("IDS_ERR_NO_BOUNDARY_BEAMS");
+                return false;
+            }
 
             for (int i = 0; i < floorsCurvesTmp.Count; ++i)
             {

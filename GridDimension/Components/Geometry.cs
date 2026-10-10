@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
@@ -8,6 +9,9 @@ namespace ADSK.JExtRAC.GridDimension.Components
     /// <summary>図形</summary>
     public class Geometry
     {
+        public const int DistanceStorageVersion = 1;
+        public const int DistanceStorageVersionIndex = 8;
+
         private readonly UIDocument _rvtUIDoc;
 
         public Geometry(UIDocument rvtUIDoc)
@@ -18,10 +22,103 @@ namespace ADSK.JExtRAC.GridDimension.Components
 
         public Document RvtDBDoc { get; }
 
-        /// <summary>mm→内部単位（フィート）換算（1mm = 1/304.8 ft）</summary>
-        public double UnitCoe => 304.8;
-
         public double Approx0Len => 1e-6;
+
+        public bool IsImperial
+        {
+            get
+            {
+                try
+                {
+                    return RvtDBDoc.DisplayUnitSystem == DisplayUnit.IMPERIAL;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
+        public ForgeTypeId LengthUnitTypeId =>
+            RvtDBDoc.GetUnits().GetFormatOptions(SpecTypeId.Length).GetUnitTypeId();
+
+        public string LengthUnitLabel => GetUnitLabel(LengthUnitTypeId);
+
+        /// <summary>Convert a legacy millimeter value to project length display units.</summary>
+        public double FromMillimeters(double millimeters) =>
+            UnitUtils.ConvertFromInternalUnits(
+                UnitUtils.ConvertToInternalUnits(millimeters, UnitTypeId.Millimeters),
+                LengthUnitTypeId);
+
+        public string FormatDisplayLength(double displayLength) =>
+            displayLength.ToString("0.####", CultureInfo.CurrentCulture);
+
+        public bool TryParseDisplayLength(string text, out double internalFeet)
+        {
+            internalFeet = 0.0;
+            if (string.IsNullOrWhiteSpace(text))
+                return false;
+
+            string trimmed = text.Trim();
+            Units units = RvtDBDoc.GetUnits();
+
+            if (UnitFormatUtils.TryParse(units, SpecTypeId.Length, trimmed, out internalFeet))
+                return true;
+
+            if (double.TryParse(trimmed, NumberStyles.Float, CultureInfo.CurrentCulture, out double displayValue)
+                || double.TryParse(trimmed, NumberStyles.Float, CultureInfo.InvariantCulture, out displayValue))
+            {
+                internalFeet = UnitUtils.ConvertToInternalUnits(displayValue, LengthUnitTypeId);
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool UsesLegacyMillimeterStorage(IList<string> data)
+        {
+            if (data == null || data.Count <= DistanceStorageVersionIndex)
+                return true;
+
+            return data[DistanceStorageVersionIndex] != DistanceStorageVersion.ToString(CultureInfo.InvariantCulture);
+        }
+
+        public string ConvertStoredDistanceForDisplay(string storedValue, bool useLegacyMillimeterStorage)
+        {
+            if (string.IsNullOrWhiteSpace(storedValue))
+                return storedValue;
+
+            if (!useLegacyMillimeterStorage || !IsImperial)
+                return storedValue;
+
+            if (!double.TryParse(storedValue, NumberStyles.Float, CultureInfo.InvariantCulture, out double millimeters)
+                && !double.TryParse(storedValue, NumberStyles.Float, CultureInfo.CurrentCulture, out millimeters))
+            {
+                return storedValue;
+            }
+
+            return FormatDisplayLength(FromMillimeters(millimeters));
+        }
+
+        public static string GetUnitLabel(ForgeTypeId unitTypeId)
+        {
+            if (unitTypeId == UnitTypeId.Millimeters)
+                return "mm";
+            if (unitTypeId == UnitTypeId.Centimeters)
+                return "cm";
+            if (unitTypeId == UnitTypeId.Meters)
+                return "m";
+            if (unitTypeId == UnitTypeId.Feet)
+                return "ft";
+            if (unitTypeId == UnitTypeId.FeetFractionalInches)
+                return "ft-in";
+            if (unitTypeId == UnitTypeId.Inches)
+                return "in";
+            if (unitTypeId == UnitTypeId.FractionalInches)
+                return "in";
+
+            return unitTypeId.TypeId;
+        }
 
         public double Distance(XYZ pos1, XYZ pos2)
         {

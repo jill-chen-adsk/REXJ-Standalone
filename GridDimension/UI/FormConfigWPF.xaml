@@ -1,0 +1,216 @@
+<Window x:Class="ADSK.JExtRAC.GridDimension.UI.FormConfigWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormConfig"
+        Height="720"
+        Width="400"
+        MinWidth="380"
+        MinHeight="680"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="CanResizeWithGrip"
+        FontFamily="Segoe UI"
+        FontSize="12">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ADSK.JExtRAC.GridDimension;component/Resources/WeaveDialogResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border x:Name="chromeOuterBorder" CornerRadius="4">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20"
+                              ShadowDepth="4"
+                              Opacity="0.3"
+                              Color="{DynamicResource Weave.Color.Shadow}"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="chromeTitleBar" Grid.Row="0">
+                <TextBlock x:Name="chromeTitleText"
+                           FontSize="14"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"
+                           Margin="20,0,48,0"/>
+                <Button x:Name="chromeCloseButton"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="0,0,12,0"
+                        Width="28"
+                        Height="28"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="bd" Background="Transparent" CornerRadius="4">
+                                <Path Data="M18,6 L6,18 M6,6 L18,18"
+                                      Stroke="{TemplateBinding Foreground}"
+                                      StrokeThickness="2"
+                                      Width="14"
+                                      Height="14"
+                                      Stretch="Uniform"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="bd"
+                                            Property="Background"
+                                            Value="{DynamicResource Weave.Brush.Chrome.CloseHover}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+
+            <Border x:Name="chromeDivider" Grid.Row="1"/>
+
+            <Grid Grid.Row="2" Margin="24">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0,0,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="lblType"
+                               Grid.Column="0"
+                               Style="{StaticResource Weave.BodyText}"
+                               Margin="0,0,12,0"/>
+                    <ComboBox x:Name="cbDimensionType"
+                              Grid.Column="1"
+                              Style="{StaticResource Weave.ComboBox}"/>
+                </Grid>
+
+                <Border Grid.Row="1" Style="{StaticResource Weave.GroupPanel}">
+                    <StackPanel>
+                        <TextBlock x:Name="gpbDist" Style="{StaticResource Weave.SectionTitle}"/>
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="lblA"
+                                       Grid.Row="0"
+                                       Grid.Column="0"
+                                       Style="{StaticResource Weave.BodyText}"
+                                       Margin="0,0,12,8"/>
+                            <TextBox x:Name="txtA"
+                                     Grid.Row="0"
+                                     Grid.Column="1"
+                                     Style="{StaticResource Weave.TextBox}"
+                                     TextAlignment="Right"
+                                     Margin="0,0,8,8"/>
+                            <TextBlock x:Name="lblAUnit"
+                                       Grid.Row="0"
+                                       Grid.Column="2"
+                                       Style="{StaticResource Weave.BodyText}"
+                                       Margin="0,0,0,8"/>
+
+                            <TextBlock x:Name="lblB"
+                                       Grid.Row="1"
+                                       Grid.Column="0"
+                                       Style="{StaticResource Weave.BodyText}"
+                                       Margin="0,0,12,0"/>
+                            <TextBox x:Name="txtB"
+                                     Grid.Row="1"
+                                     Grid.Column="1"
+                                     Style="{StaticResource Weave.TextBox}"
+                                     TextAlignment="Right"
+                                     Margin="0,0,8,0"/>
+                            <TextBlock x:Name="lblBUnit"
+                                       Grid.Row="1"
+                                       Grid.Column="2"
+                                       Style="{StaticResource Weave.BodyText}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Row="2"
+                        Style="{StaticResource Weave.SectionPanel}"
+                        Margin="0,0,0,12"
+                        Padding="12">
+                    <Grid Width="345"
+                          Height="360"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+                        <Viewbox x:Name="diagramVector"
+                                 Margin="20"
+                                 Stretch="Uniform"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"/>
+                        <Image x:Name="picDist"
+                               MaxWidth="321"
+                               MaxHeight="333"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Stretch="Uniform"
+                               Visibility="Collapsed"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               SnapsToDevicePixels="True"/>
+                        <Canvas Width="345"
+                                Height="360">
+                            <CheckBox x:Name="ckbLeft"
+                                      Style="{StaticResource Weave.CheckBox}"
+                                      Canvas.Left="0"
+                                      Canvas.Top="171"/>
+                            <CheckBox x:Name="ckbRight"
+                                      Style="{StaticResource Weave.CheckBox}"
+                                      Canvas.Left="327"
+                                      Canvas.Top="171"/>
+                            <CheckBox x:Name="ckbTop"
+                                      Style="{StaticResource Weave.CheckBox}"
+                                      Canvas.Left="164"
+                                      Canvas.Top="0"/>
+                            <CheckBox x:Name="ckbBottom"
+                                      Style="{StaticResource Weave.CheckBox}"
+                                      Canvas.Left="164"
+                                      Canvas.Top="342"/>
+                        </Canvas>
+                    </Grid>
+                </Border>
+
+                <CheckBox x:Name="ckbMultiView"
+                          Grid.Row="3"
+                          Style="{StaticResource Weave.CheckBox}"
+                          Margin="0,0,0,16"/>
+
+                <StackPanel Grid.Row="4"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button x:Name="btnOK"
+                            Style="{StaticResource Weave.Button.Primary}"
+                            Margin="0,0,8,0"
+                            IsDefault="True"
+                            Click="BtnOK_Click"/>
+                    <Button x:Name="btnCancel"
+                            Style="{StaticResource Weave.Button.Secondary}"
+                            IsCancel="True"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -1,4 +1,5 @@
 using ADSK.JExtRAC.ParameterFilter.UI;
+using ADSK.JExtRAC.ParameterFilter.Utils;
 using Autodesk.Revit.DB;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,21 +65,32 @@ namespace ADSK.JExtRAC.ParameterFilter.Commands
                 // Show mess when user didn't select element
                 if (selElems.Count == 0)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOELEMENTSELECT"), cmpAttribute.ResourceText("IDS_ERR_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
+                    WeaveDialogHost.ShowMessage(
+                        WeaveDialogHost.RevitWindowHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_NOELEMENTSELECT"),
+                        cmpAttribute.ResourceText("IDS_ERR_ERROR"),
+                        cmpAttribute.ResourceText("IDS_TXT_OK"));
                     return result;
                 }
 
                 // Get value
                 var objectElements = cmpElements.GetDataElement(selElems);
 
-                // Show form
-                FormParameterFilter formFilter = new FormParameterFilter(rvtUIDoc, cmpAttribute, cmpElements, objectElements);
-                formFilter.ShowDialog();
+                var formFilter = new FormParameterFilterWPF(
+                    rvtUIDoc,
+                    cmpAttribute,
+                    cmpElements,
+                    objectElements,
+                    WeaveDialogHost.RevitWindowHandle);
+                WeaveDialogHost.ShowDialog(formFilter, WeaveDialogHost.RevitWindowHandle);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
-                string errMsg = ex.Message;
-                System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_COMMAND"), cmpAttribute.ResourceText("IDS_ERR_ERROR"));
+                WeaveDialogHost.ShowMessage(
+                    WeaveDialogHost.RevitWindowHandle,
+                    cmpAttribute.ResourceText("IDS_ERR_COMMAND"),
+                    cmpAttribute.ResourceText("IDS_ERR_ERROR"),
+                    cmpAttribute.ResourceText("IDS_TXT_OK"));
 
                 return Revit.UI.Result.Failed;
             }

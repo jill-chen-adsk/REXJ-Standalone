@@ -34,6 +34,8 @@ namespace ADSK.JExtRAC.AutomaticFloor.Components
         public List<Element> GetElements(View view, eFloorType eFloorType)
         {
             List<Element> ret = new List<Element>();
+            SkippedBeamCount = 0;
+            SkippedBeamUsages = new List<string>();
 
             ElementCategoryFilter catFilter;
             if (eFloorType == eFloorType.Arch)
@@ -62,6 +64,14 @@ namespace ADSK.JExtRAC.AutomaticFloor.Components
                     _CmpParameters.GetValue(elem, BuiltInParameter.INSTANCE_STRUCT_USAGE_PARAM, ref iValue);
                     if (iValue == 3 || iValue == 4)
                         ret.Add(elem);
+                    else
+                    {
+                        SkippedBeamCount++;
+                        string usageName = "";
+                        _CmpParameters.GetValue(elem, BuiltInParameter.INSTANCE_STRUCT_USAGE_PARAM, ref usageName);
+                        if (!string.IsNullOrEmpty(usageName) && !SkippedBeamUsages.Contains(usageName))
+                            SkippedBeamUsages.Add(usageName);
+                    }
                 }
             }
             return ret;
@@ -175,5 +185,8 @@ namespace ADSK.JExtRAC.AutomaticFloor.Components
         }
 
         public string ErrMsg => _ErrMsg;
+
+        public int SkippedBeamCount { get; private set; }
+        public List<string> SkippedBeamUsages { get; private set; } = new List<string>();
     }
 }

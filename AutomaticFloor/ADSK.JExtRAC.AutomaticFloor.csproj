@@ -56,12 +56,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Image.resx</DependentUpon>
     </Compile>
-    <Compile Update="UI\FormConfig.cs">
-      <SubType>Form</SubType>
+    <Compile Update="UI\FormConfigWPF.xaml.cs">
+      <DependentUpon>FormConfigWPF.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\FormConfig.Designer.cs">
-      <DependentUpon>FormConfig.cs</DependentUpon>
+    <Compile Update="Utils\WeaveMessageDialog.xaml.cs">
+      <DependentUpon>WeaveMessageDialog.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="UI\FormConfig.cs" />
+    <Compile Remove="UI\FormConfig.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="UI\FormConfig.resx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,9 +84,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Text.en.resx" />
-    <EmbeddedResource Update="UI\FormConfig.resx">
-      <DependentUpon>FormConfig.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

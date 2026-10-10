@@ -212,4 +212,10 @@
   <data name="IDS_TXT_LOGFILEFILTER" xml:space="preserve">
     <value>Text Documents (*.txt)|*.txt|All files (*.*)|*.*</value>
   </data>
+  <data name="IDS_TXT_PARAMETERVALUEFORM" xml:space="preserve">
+    <value>パラメータ値</value>
+  </data>
+  <data name="IDS_TXT_SELECTPARAMETER" xml:space="preserve">
+    <value>コピーするパラメータを選択してください。</value>
+  </data>
 </root>

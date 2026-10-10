@@ -138,8 +138,34 @@
   <data name="IDS_ERR_LEVELBEAMS" xml:space="preserve">
     <value>Could not retrieve beam level.</value>
   </data>
+  <data name="IDS_ERR_NO_BOUNDARY_BEAMS" xml:space="preserve">
+    <value>Could not create floor.
+
+The beams in this view do not enclose any area. This command uses beams (Structural Usage: Girder or Joist) as the floor boundary, not walls. Place beams around the area so that their ends meet or cross.</value>
+  </data>
+  <data name="IDS_ERR_NO_BOUNDARY_WALLS" xml:space="preserve">
+    <value>Could not create floor.
+
+The room-bounding walls in this view do not enclose any area. Make sure the walls are joined at their ends to form a closed boundary.</value>
+  </data>
+  <data name="IDS_ERR_NO_FLOOR_TYPE" xml:space="preserve">
+    <value>No floor types found in this project. Load or create a floor type, then run the command again.</value>
+  </data>
+  <data name="IDS_ERR_NO_FOUNDATION_SLAB_TYPE" xml:space="preserve">
+    <value>No foundation slab types found in this project. Load or create a foundation slab type, then run the command again.</value>
+  </data>
   <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
     <value>Failed to define parameter.</value>
+  </data>
+  <data name="IDS_ERR_PICK_OUTSIDE_BEAMS" xml:space="preserve">
+    <value>Could not create floor.
+
+The picked point is not inside an area enclosed by beams. This command uses beams (Structural Usage: Girder or Joist) as the floor boundary, not walls. Pick a point inside a bay that is closed on all sides by beams.</value>
+  </data>
+  <data name="IDS_ERR_PICK_OUTSIDE_WALLS" xml:space="preserve">
+    <value>Could not create floor.
+
+The picked point is not inside an area enclosed by room-bounding walls. Pick a point inside a closed wall boundary.</value>
   </data>
   <data name="IDS_ERR_SLABTYPE" xml:space="preserve">
     <value>Slab type has not been set.</value>
@@ -160,10 +186,17 @@
     <value>Please run in a Floor Plan, Ceiling Plan, or Engineering Plan view.</value>
   </data>
   <data name="IDS_INFO_NO_EXIST_BEAMS" xml:space="preserve">
-    <value>No beams found for floor creation.</value>
+    <value>No beams found for floor creation.
+
+This command uses beams visible in the active view whose Structural Usage is Girder or Joist. Check that such beams are visible in this view.</value>
   </data>
   <data name="IDS_INFO_NO_EXIST_WALLS" xml:space="preserve">
-    <value>No walls found for floor creation.</value>
+    <value>No walls found for floor creation.
+
+This command uses room-bounding walls visible in the active view. Check that such walls are visible in this view.</value>
+  </data>
+  <data name="IDS_INFO_SKIPPED_BEAMS" xml:space="preserve">
+    <value>{0} beam(s) in this view were not used because their Structural Usage is: {1}. Only beams with Structural Usage Girder or Joist are used. To include them, select the beams and change Structural Usage to Girder or Joist in Properties.</value>
   </data>
   <data name="IDS_INFO_PICK_POINT" xml:space="preserve">
     <value>Pick a point where you want to create the floor. Press [Esc] to finish.</value>
