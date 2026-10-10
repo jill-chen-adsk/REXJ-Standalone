@@ -486,14 +486,12 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                                     lstObjPara.Add(item.objPara);
                             }
 
-                            var singleLengthMm = groupValue.First().Key;
                             var paraRow = new ParameterFilterRow
                             {
                                 IsChecked = true,
                                 Category = row.SubName,
                                 FamilyType = row.Name,
                                 ParameterName = objElement.FirstOrDefault().objPara.NameParameterLength,
-                                Value = FormatLengthMillimeters(singleLengthMm),
                                 CountDisplay = count.ToString(),
                                 TypeKey = guidSameElement,
                                 LengthParameters = lstObjPara
@@ -512,8 +510,6 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                             Category = row.SubName,
                             FamilyType = row.Name,
                             ParameterName = objElement.FirstOrDefault().objPara.NameParameterLength,
-                            Min = FormatLengthMillimeters(minVal),
-                            Max = FormatLengthMillimeters(maxVal),
                             CountDisplay = objElement.Count().ToString(),
                             TypeKey = guidSameElement,
                             LengthParameters = lstObjParaMax,
@@ -616,16 +612,16 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
             var lstSelected = new List<ElementId>();
             var dicSameTypeSelect = new Dictionary<string, List<ObjectLengthParameter>>();
 
-            var progressBarThread = new ProgressBarThread(false, true);
+            var progressDialog = new ProgressDialog();
             try
             {
                 if (OwnerHandle != IntPtr.Zero)
-                    progressBarThread.SetOwner(OwnerHandle);
-                progressBarThread.SetData(_cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), 0);
-                progressBarThread.ShowDialog();
+                    progressDialog.SetOwner(OwnerHandle);
+                progressDialog.SetData(_cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), 0);
+                progressDialog.ShowDialog();
 
                 int dgvCurrentCountVisible = ParameterRows.Count(r => r.IsVisible);
-                progressBarThread.SetData(dgvCurrentCountVisible, 0);
+                progressDialog.SetData(dgvCurrentCountVisible, 0);
 
                 int count = 0;
                 for (int i = 0; i < ParameterRows.Count; i++)
@@ -664,7 +660,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                         row.CountTag = lstObjElementNeedSelect.Count;
                     }
 
-                    progressBarThread.SetData(count);
+                    progressDialog.SetData(count);
                 }
 
                 UpdateCount(dicSameTypeSelect);
@@ -681,7 +677,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
             }
             finally
             {
-                progressBarThread.Close();
+                progressDialog.Close();
             }
         }
 
@@ -988,14 +984,6 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                     LengthParameters = lstTemp
                 });
             }
-        }
-
-        static string FormatLengthMillimeters(double lengthMm)
-        {
-            if (double.IsNaN(lengthMm) || lengthMm == double.MinValue)
-                return string.Empty;
-
-            return ((int)Math.Round(lengthMm, MidpointRounding.AwayFromZero)).ToString();
         }
 
         void SetSelectedGroupParameter(List<ForgeTypeId> lstSelectedGroup)
