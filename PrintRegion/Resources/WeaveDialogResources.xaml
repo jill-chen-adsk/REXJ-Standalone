@@ -10,6 +10,7 @@
     <Color x:Key="Weave.Color.Accent">#0696D7</Color>
     <Color x:Key="Weave.Color.Accent.Hover">#0586C1</Color>
     <Color x:Key="Weave.Color.Error">#E34850</Color>
+    <Color x:Key="Weave.Color.Error.Glyph">#FFFFFF</Color>
     <Color x:Key="Weave.Color.Shadow">#000000</Color>
 
     <SolidColorBrush x:Key="Weave.Brush.Chrome.CloseHover" Color="#20000000"/>
@@ -37,7 +38,7 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
-    <SolidColorBrush x:Key="Weave.Brush.Error.Glyph" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="Weave.Brush.Error.Glyph" Color="{StaticResource Weave.Color.Error.Glyph}"/>
 
     <Style x:Key="Weave.ErrorMessage" TargetType="DockPanel">
         <Setter Property="Margin" Value="0,4,0,0"/>
