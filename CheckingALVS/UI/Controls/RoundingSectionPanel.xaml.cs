@@ -82,11 +82,13 @@ namespace ADSK.JExtRAC.CheckingALVS.UI.Controls
             {
                 errorTextBlock.Text = string.Empty;
                 errorTextBlock.Visibility = System.Windows.Visibility.Collapsed;
+                decimalTextBox.ClearValue(System.Windows.Controls.Control.BorderBrushProperty);
             }
             else
             {
                 errorTextBlock.Text = message;
                 errorTextBlock.Visibility = System.Windows.Visibility.Visible;
+                decimalTextBox.SetResourceReference(System.Windows.Controls.Control.BorderBrushProperty, "Weave.Brush.Error");
             }
         }
 

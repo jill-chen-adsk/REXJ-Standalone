@@ -125,9 +125,13 @@
                                        Style="{StaticResource Weave.BodyText}"
                                        Margin="8,0,0,0"/>
                         </StackPanel>
-                        <TextBlock x:Name="lblHeightOffsetError"
-                                   Style="{StaticResource Weave.ErrorText}"
-                                   Visibility="Collapsed"/>
+                        <DockPanel Style="{StaticResource Weave.ErrorMessage}"
+                                   Visibility="{Binding Visibility, ElementName=lblHeightOffsetError}">
+                            <Control Style="{StaticResource Weave.ErrorIcon}"/>
+                            <TextBlock x:Name="lblHeightOffsetError"
+                                       Style="{StaticResource Weave.ErrorText}"
+                                       Visibility="Collapsed"/>
+                        </DockPanel>
                     </StackPanel>
 
                     <TextBlock x:Name="lblDirectionAngle"
@@ -147,9 +151,13 @@
                                        Style="{StaticResource Weave.BodyText}"
                                        Margin="8,0,0,0"/>
                         </StackPanel>
-                        <TextBlock x:Name="lblDirectionAngleError"
-                                   Style="{StaticResource Weave.ErrorText}"
-                                   Visibility="Collapsed"/>
+                        <DockPanel Style="{StaticResource Weave.ErrorMessage}"
+                                   Visibility="{Binding Visibility, ElementName=lblDirectionAngleError}">
+                            <Control Style="{StaticResource Weave.ErrorIcon}"/>
+                            <TextBlock x:Name="lblDirectionAngleError"
+                                       Style="{StaticResource Weave.ErrorText}"
+                                       Visibility="Collapsed"/>
+                        </DockPanel>
                     </StackPanel>
                 </Grid>
 
