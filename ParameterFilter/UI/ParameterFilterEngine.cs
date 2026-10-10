@@ -616,16 +616,16 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
             var lstSelected = new List<ElementId>();
             var dicSameTypeSelect = new Dictionary<string, List<ObjectLengthParameter>>();
 
-            var progressBarThread = new ProgressBarThread(false, true);
+            var progressDialog = new ProgressDialog();
             try
             {
                 if (OwnerHandle != IntPtr.Zero)
-                    progressBarThread.SetOwner(OwnerHandle);
-                progressBarThread.SetData(_cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), 0);
-                progressBarThread.ShowDialog();
+                    progressDialog.SetOwner(OwnerHandle);
+                progressDialog.SetData(_cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), 0);
+                progressDialog.ShowDialog();
 
                 int dgvCurrentCountVisible = ParameterRows.Count(r => r.IsVisible);
-                progressBarThread.SetData(dgvCurrentCountVisible, 0);
+                progressDialog.SetData(dgvCurrentCountVisible, 0);
 
                 int count = 0;
                 for (int i = 0; i < ParameterRows.Count; i++)
@@ -664,7 +664,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
                         row.CountTag = lstObjElementNeedSelect.Count;
                     }
 
-                    progressBarThread.SetData(count);
+                    progressDialog.SetData(count);
                 }
 
                 UpdateCount(dicSameTypeSelect);
@@ -681,7 +681,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
             }
             finally
             {
-                progressBarThread.Close();
+                progressDialog.Close();
             }
         }
 

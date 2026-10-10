@@ -49,7 +49,7 @@
     <Compile Update="Commands\CmdParameterFilter.cs" />
     <Compile Update="Components\Attribute.cs" />
     <Compile Update="Components\Elements.cs" />
-    <Compile Update="Components\ProgressBarThread.cs" />
+    <Compile Update="Components\ProgressDialog.cs" />
     <Compile Update="Entities\ObjectElement.cs" />
     <Compile Update="Entities\ObjectLengthParameter.cs" />
     <Compile Update="Entities\ObjectSelectGroup.cs" />
@@ -62,18 +62,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Text.resx</DependentUpon>
-    </Compile>
-    <Compile Update="UI\FormParameterFilter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="UI\FormParameterFilter.Designer.cs">
-      <DependentUpon>FormParameterFilter.cs</DependentUpon>
-    </Compile>
-    <Compile Update="UI\FormParameterGroup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="UI\FormParameterGroup.Designer.cs">
-      <DependentUpon>FormParameterGroup.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -88,12 +76,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Text.en.resx" />
-    <EmbeddedResource Update="UI\FormParameterFilter.resx">
-      <DependentUpon>FormParameterFilter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="UI\FormParameterGroup.resx">
-      <DependentUpon>FormParameterGroup.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

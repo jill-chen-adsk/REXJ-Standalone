@@ -4,17 +4,12 @@ using ADSK.JExtRAC.ParameterFilter.Utils;
 
 namespace ADSK.JExtRAC.ParameterFilter.Components
 {
-    public sealed class ProgressBarThread : IDisposable
+    public sealed class ProgressDialog : IDisposable
     {
         private WeaveProgressWindow _window;
         private int _maximum = 100;
         private IntPtr _ownerHandle = IntPtr.Zero;
         private string _caption = string.Empty;
-
-        public ProgressBarThread(bool _, bool unusedTopMostFlag)
-        {
-            _ = unusedTopMostFlag;
-        }
 
         public void SetOwner(IntPtr ownerHandle)
         {
