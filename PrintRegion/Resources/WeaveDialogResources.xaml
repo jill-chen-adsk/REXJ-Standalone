@@ -80,7 +80,7 @@
                     <Grid>
                         <ToggleButton x:Name="ToggleButton"
                                       Focusable="False"
-                                      HorizontalContentAlignment="Left"
+                                      HorizontalContentAlignment="Stretch"
                                       IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                       ClickMode="Press"
                                       Background="{TemplateBinding Background}"

@@ -237,6 +237,9 @@
   <data name="IDS_TXT_LEVELHEIGHTOFFSET" xml:space="preserve">
     <value>レベル高さオフセット</value>
   </data>
+  <data name="IDS_TXT_SELECT_TYPE" xml:space="preserve">
+    <value>タイプを選択</value>
+  </data>
   <data name="IDS_TXT_LOCK_ARCHITECT" xml:space="preserve">
     <value>壁に拘束</value>
   </data>

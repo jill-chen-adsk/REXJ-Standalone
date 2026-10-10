@@ -237,6 +237,9 @@ This command uses room-bounding walls visible in the active view. Check that suc
   <data name="IDS_TXT_LEVELHEIGHTOFFSET" xml:space="preserve">
     <value>Level Height Offset</value>
   </data>
+  <data name="IDS_TXT_SELECT_TYPE" xml:space="preserve">
+    <value>Select a type</value>
+  </data>
   <data name="IDS_TXT_LOCK_ARCHITECT" xml:space="preserve">
     <value>Lock to Walls</value>
   </data>

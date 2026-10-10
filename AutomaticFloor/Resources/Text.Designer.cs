@@ -66,6 +66,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.Resources
         internal static string IDS_TXT_FOUDATION_SLAB_FTYPE => ResourceManager.GetString("IDS_TXT_FOUDATION_SLAB_FTYPE", resourceCulture);
         internal static string IDS_TXT_INFORMATION => ResourceManager.GetString("IDS_TXT_INFORMATION", resourceCulture);
         internal static string IDS_TXT_LEVELHEIGHTOFFSET => ResourceManager.GetString("IDS_TXT_LEVELHEIGHTOFFSET", resourceCulture);
+        internal static string IDS_TXT_SELECT_TYPE => ResourceManager.GetString("IDS_TXT_SELECT_TYPE", resourceCulture);
         internal static string IDS_TXT_LOCK_ARCHITECT => ResourceManager.GetString("IDS_TXT_LOCK_ARCHITECT", resourceCulture);
         internal static string IDS_TXT_LOCK_FOUNDATION_SLAB => ResourceManager.GetString("IDS_TXT_LOCK_FOUNDATION_SLAB", resourceCulture);
         internal static string IDS_TXT_LOCK_STRUCTURAL => ResourceManager.GetString("IDS_TXT_LOCK_STRUCTURAL", resourceCulture);

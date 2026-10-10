@@ -77,6 +77,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.UI
                 chbLock.Content = _CmpAttribute.ResourceText("IDS_TXT_LOCK_FOUNDATION_SLAB");
             }
 
+            cboSlabType.Tag = _CmpAttribute.ResourceText("IDS_TXT_SELECT_TYPE");
             lblDirectionAngle.Text = _CmpAttribute.ResourceText("IDS_TXT_SLAB_DIRECTION");
             lblHeightOffset.Text = _CmpAttribute.ResourceText("IDS_TXT_LEVELHEIGHTOFFSET");
             lblHeightOffsetUnit.Text = _CmpAttribute.ResourceText("IDS_UNIT_MM");
