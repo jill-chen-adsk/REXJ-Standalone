@@ -617,67 +617,72 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
             var dicSameTypeSelect = new Dictionary<string, List<ObjectLengthParameter>>();
 
             var progressBarThread = new ProgressBarThread(false, true);
-            if (OwnerHandle != IntPtr.Zero)
-                progressBarThread.SetOwner(OwnerHandle);
-            progressBarThread.SetData(_cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), 0);
-            progressBarThread.ShowDialog();
-
-            int dgvCurrentCountVisible = ParameterRows.Count(r => r.IsVisible);
-            progressBarThread.SetData(dgvCurrentCountVisible, 0);
-
-            int count = 0;
-            for (int i = 0; i < ParameterRows.Count; i++)
+            try
             {
-                var row = ParameterRows[i];
-                row.CountTag = 0;
-                count++;
+                if (OwnerHandle != IntPtr.Zero)
+                    progressBarThread.SetOwner(OwnerHandle);
+                progressBarThread.SetData(_cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), 0);
+                progressBarThread.ShowDialog();
 
-                if (!row.IsVisible || !row.IsChecked || row.LengthParameters == null)
-                    continue;
+                int dgvCurrentCountVisible = ParameterRows.Count(r => r.IsVisible);
+                progressBarThread.SetData(dgvCurrentCountVisible, 0);
 
-                object prValueDgv = row.Value;
-                object prMinDgv = row.Min;
-                object prMaxDgv = row.Max;
-
-                foreach (var objElement in row.LengthParameters)
+                int count = 0;
+                for (int i = 0; i < ParameterRows.Count; i++)
                 {
-                    objElement.prValueDgv = prValueDgv;
-                    objElement.prMinDgv = prMinDgv;
-                    objElement.prMaxDgv = prMaxDgv;
+                    var row = ParameterRows[i];
+                    row.CountTag = 0;
+                    count++;
+
+                    if (!row.IsVisible || !row.IsChecked || row.LengthParameters == null)
+                        continue;
+
+                    object prValueDgv = row.Value;
+                    object prMinDgv = row.Min;
+                    object prMaxDgv = row.Max;
+
+                    foreach (var objElement in row.LengthParameters)
+                    {
+                        objElement.prValueDgv = prValueDgv;
+                        objElement.prMinDgv = prMinDgv;
+                        objElement.prMaxDgv = prMaxDgv;
+                    }
+
+                    if (SelectConnectChecked)
+                    {
+                        var lstElementNeedSelect = _cmpElements.GetSelectElementConnect(row.LengthParameters);
+                        UnionSelectWithSameType(row, ref dicSameTypeSelect, lstElementNeedSelect);
+                        row.CountTag = lstElementNeedSelect.Count;
+                    }
+                    else
+                    {
+                        var lstObjElementNeedSelect = _cmpElements.FilterParameterByUserInput(row.LengthParameters, prValueDgv, prMinDgv, prMaxDgv);
+                        if (lstObjElementNeedSelect == null)
+                            return false;
+
+                        UnionSelectWithSameType(row, ref dicSameTypeSelect, lstObjElementNeedSelect);
+                        row.CountTag = lstObjElementNeedSelect.Count;
+                    }
+
+                    progressBarThread.SetData(count);
                 }
 
-                if (SelectConnectChecked)
-                {
-                    var lstElementNeedSelect = _cmpElements.GetSelectElementConnect(row.LengthParameters);
-                    UnionSelectWithSameType(row, ref dicSameTypeSelect, lstElementNeedSelect);
-                    row.CountTag = lstElementNeedSelect.Count;
-                }
-                else
-                {
-                    var lstObjElementNeedSelect = _cmpElements.FilterParameterByUserInput(row.LengthParameters, prValueDgv, prMinDgv, prMaxDgv);
-                    if (lstObjElementNeedSelect == null)
-                        return false;
+                UpdateCount(dicSameTypeSelect);
 
-                    UnionSelectWithSameType(row, ref dicSameTypeSelect, lstObjElementNeedSelect);
-                    row.CountTag = lstObjElementNeedSelect.Count;
-                }
+                foreach (var keyPair in dicSameTypeSelect)
+                    lstElementSelect.AddRange(keyPair.Value);
 
-                progressBarThread.SetData(count);
+                lstSelected.AddRange(lstElementSelect.Select(x => x.ElementCurrent.Id).ToList());
+                _rvtUIDoc.Selection.SetElementIds(lstSelected);
+                _rvtUIDoc.RefreshActiveView();
+
+                RefreshParameterTabState();
+                return true;
             }
-
-            progressBarThread.Close();
-
-            UpdateCount(dicSameTypeSelect);
-
-            foreach (var keyPair in dicSameTypeSelect)
-                lstElementSelect.AddRange(keyPair.Value);
-
-            lstSelected.AddRange(lstElementSelect.Select(x => x.ElementCurrent.Id).ToList());
-            _rvtUIDoc.Selection.SetElementIds(lstSelected);
-            _rvtUIDoc.RefreshActiveView();
-
-            RefreshParameterTabState();
-            return true;
+            finally
+            {
+                progressBarThread.Close();
+            }
         }
 
         void UpdateCount(Dictionary<string, List<ObjectLengthParameter>> dicData)
@@ -1006,8 +1011,17 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
 
         void ShowWeaveMessage(string message, string title)
         {
-            if (OwnerHandle != IntPtr.Zero)
-                WeaveDialogHost.ShowMessage(OwnerHandle, message, title, _cmpAttribute.ResourceText("IDS_TXT_OK"));
+            IntPtr owner = OwnerHandle != IntPtr.Zero
+                ? OwnerHandle
+                : WeaveDialogHost.RevitWindowHandle;
+
+            if (owner != IntPtr.Zero)
+            {
+                WeaveDialogHost.ShowMessage(owner, message, title, _cmpAttribute.ResourceText("IDS_TXT_OK"));
+                return;
+            }
+
+            MessageBox.Show(message, title, MessageBoxButton.OK);
         }
 
         void RaiseTabChanged() => TabChanged?.Invoke(this, EventArgs.Empty);

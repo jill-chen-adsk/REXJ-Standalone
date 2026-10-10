@@ -151,11 +151,7 @@ namespace ADSK.JExtRAC.ParameterFilter.UI
             }
         }
 
-        void RefreshButtonState()
-        {
-            ParserData();
-            UpdateSelectAllButtons();
-        }
+        void RefreshButtonState() => UpdateSelectAllButtons();
 
         void GroupCheckBox_Click(object sender, RoutedEventArgs e) => RefreshButtonState();
 

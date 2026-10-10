@@ -53,6 +53,10 @@ namespace ADSK.JExtRAC.GridDimension.Components
         public string FormatDisplayLength(double displayLength) =>
             displayLength.ToString("0.####", CultureInfo.CurrentCulture);
 
+        /// <summary>Format length for comma-separated SpCmd persistence (invariant decimal separator).</summary>
+        public string FormatStoredLength(double displayLength) =>
+            displayLength.ToString("0.####", CultureInfo.InvariantCulture);
+
         public bool TryParseDisplayLength(string text, out double internalFeet)
         {
             internalFeet = 0.0;
@@ -88,16 +92,24 @@ namespace ADSK.JExtRAC.GridDimension.Components
             if (string.IsNullOrWhiteSpace(storedValue))
                 return storedValue;
 
-            if (!useLegacyMillimeterStorage || !IsImperial)
-                return storedValue;
-
-            if (!double.TryParse(storedValue, NumberStyles.Float, CultureInfo.InvariantCulture, out double millimeters)
-                && !double.TryParse(storedValue, NumberStyles.Float, CultureInfo.CurrentCulture, out millimeters))
+            if (useLegacyMillimeterStorage)
             {
-                return storedValue;
+                if (!double.TryParse(storedValue, NumberStyles.Float, CultureInfo.InvariantCulture, out double millimeters)
+                    && !double.TryParse(storedValue, NumberStyles.Float, CultureInfo.CurrentCulture, out millimeters))
+                {
+                    return storedValue;
+                }
+
+                return FormatDisplayLength(FromMillimeters(millimeters));
             }
 
-            return FormatDisplayLength(FromMillimeters(millimeters));
+            if (double.TryParse(storedValue, NumberStyles.Float, CultureInfo.InvariantCulture, out double displayUnits)
+                || double.TryParse(storedValue, NumberStyles.Float, CultureInfo.CurrentCulture, out displayUnits))
+            {
+                return FormatDisplayLength(displayUnits);
+            }
+
+            return storedValue;
         }
 
         public static string GetUnitLabel(ForgeTypeId unitTypeId)

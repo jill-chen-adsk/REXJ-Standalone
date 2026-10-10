@@ -167,13 +167,14 @@ namespace ADSK.JExtRAC.GridDimension.UI
             if (currentIndex < 0)
                 return;
 
-            bool isChecked = _items[currentIndex].IsChecked;
+            bool targetChecked = !_items[currentIndex].IsChecked;
             int upper = Math.Max(_lastIndex, currentIndex);
             int lower = Math.Min(_lastIndex, currentIndex);
 
             for (int i = lower; i <= upper; i++)
-                _items[i].IsChecked = isChecked;
+                _items[i].IsChecked = targetChecked;
 
+            _lastIndex = currentIndex;
             UpdateSelectAllState();
             e.Handled = true;
         }

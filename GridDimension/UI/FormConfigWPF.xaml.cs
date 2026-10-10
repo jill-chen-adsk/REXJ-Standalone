@@ -250,7 +250,7 @@ namespace ADSK.JExtRAC.GridDimension.UI
                 return false;
             }
 
-            _EntDtCmd.Data[0] = _CmpGeometry.FormatDisplayLength(
+            _EntDtCmd.Data[0] = _CmpGeometry.FormatStoredLength(
                 Revit.DB.UnitUtils.ConvertFromInternalUnits(distAInternal, _CmpGeometry.LengthUnitTypeId));
 
             if (!_CmpGeometry.TryParseDisplayLength(txtB.Text, out double distBInternal))
@@ -273,7 +273,7 @@ namespace ADSK.JExtRAC.GridDimension.UI
                 return false;
             }
 
-            _EntDtCmd.Data[1] = _CmpGeometry.FormatDisplayLength(
+            _EntDtCmd.Data[1] = _CmpGeometry.FormatStoredLength(
                 Revit.DB.UnitUtils.ConvertFromInternalUnits(distBInternal, _CmpGeometry.LengthUnitTypeId));
             _EntDtCmd.Data[2] = (ckbMultiView.IsChecked == true).ToString();
 
