@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -173,8 +174,28 @@ namespace ADSK.JExtRAC.AutomaticFloor.UI
             return isValid;
         }
 
+        private bool ValidateHeightOffset()
+        {
+            string text = txtHeightOffset.Text.Trim();
+            bool isValid = text.Length == 0 || double.TryParse(text, out _);
+
+            lblHeightOffsetError.Text = isValid ? string.Empty : _CmpAttribute.ResourceText("IDS_ERR_VALNUMBER");
+            lblHeightOffsetError.Visibility = isValid ? Visibility.Collapsed : Visibility.Visible;
+            txtHeightOffset.SetResourceReference(
+                Control.BorderBrushProperty,
+                isValid ? "Weave.Brush.Border" : "Weave.Brush.Error");
+
+            return isValid;
+        }
+
         private void BtnOK_Click(object sender, RoutedEventArgs e)
         {
+            if (!ValidateHeightOffset())
+            {
+                txtHeightOffset.Focus();
+                return;
+            }
+
             if (!ValidateDirectionAngle())
             {
                 cboDirectionAngle.Focus();
@@ -188,18 +209,25 @@ namespace ADSK.JExtRAC.AutomaticFloor.UI
 
         private void TxtHeightOffset_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            string decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
             string current = txtHeightOffset.Text;
             foreach (char c in e.Text)
             {
                 bool allowed = char.IsDigit(c)
-                    || (c == '.' && current.IndexOf('.') < 0)
-                    || (c == '-' && current.IndexOf('-') < 0);
+                    || (decimalSeparator.IndexOf(c) >= 0 && !current.Contains(decimalSeparator))
+                    || (c == '-' && txtHeightOffset.CaretIndex == 0 && current.IndexOf('-') < 0);
                 if (!allowed)
                 {
                     e.Handled = true;
                     return;
                 }
             }
+        }
+
+        private void TxtHeightOffset_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (lblHeightOffsetError.Visibility == Visibility.Visible)
+                ValidateHeightOffset();
         }
 
         private void CboDirectionAngle_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)

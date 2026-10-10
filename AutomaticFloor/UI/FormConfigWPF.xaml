@@ -110,19 +110,25 @@
                                Grid.Row="1"
                                Grid.Column="0"
                                Style="{StaticResource Weave.BodyText}"
-                               Margin="0,0,16,12"/>
+                               VerticalAlignment="Top"
+                               Margin="0,6,16,12"/>
                     <StackPanel Grid.Row="1"
                                 Grid.Column="1"
-                                Orientation="Horizontal"
                                 Margin="0,0,0,12">
-                        <TextBox x:Name="txtHeightOffset"
-                                 Width="120"
-                                 Style="{StaticResource Weave.TextBox}"
-                                 TextAlignment="Right"
-                                 PreviewTextInput="TxtHeightOffset_PreviewTextInput"/>
-                        <TextBlock x:Name="lblHeightOffsetUnit"
-                                   Style="{StaticResource Weave.BodyText}"
-                                   Margin="8,0,0,0"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="txtHeightOffset"
+                                     Width="120"
+                                     Style="{StaticResource Weave.TextBox}"
+                                     TextAlignment="Right"
+                                     PreviewTextInput="TxtHeightOffset_PreviewTextInput"
+                                     TextChanged="TxtHeightOffset_TextChanged"/>
+                            <TextBlock x:Name="lblHeightOffsetUnit"
+                                       Style="{StaticResource Weave.BodyText}"
+                                       Margin="8,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock x:Name="lblHeightOffsetError"
+                                   Style="{StaticResource Weave.ErrorText}"
+                                   Visibility="Collapsed"/>
                     </StackPanel>
 
                     <TextBlock x:Name="lblDirectionAngle"
