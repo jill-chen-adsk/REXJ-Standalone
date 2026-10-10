@@ -1,4 +1,6 @@
 using System;
+using ADSK.JExtRAC.GridDimension.UI;
+using ADSK.JExtRAC.GridDimension.Utils;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.GridDimension;
@@ -52,6 +54,11 @@ namespace ADSK.JExtRAC.GridDimension.Commands
             // 戻り値
             Revit.UI.Result retExtCom = Revit.UI.Result.Cancelled;
 
+            IntPtr revitHandle = rvtUIApp.MainWindowHandle;
+            cmpService.OwnerHandle = revitHandle;
+            string okText = cmpAttribute.ResourceText("IDS_TXT_OK");
+            string errorTitle = cmpAttribute.ResourceText("IDS_TXT_ERROR");
+
             // トランザクショングループ
             Revit.DB.TransactionGroup transGroup = new Revit.DB.TransactionGroup(cmpElements.RvtDBDoc);
             // スタート
@@ -65,7 +72,11 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                 Revit.DB.View activeView = cmpElements.ActiveView;
                 if (activeView == null)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_OPENVIEWPLAN"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(
+                        revitHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_OPENVIEWPLAN"),
+                        errorTitle,
+                        okText);
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -79,7 +90,11 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOGRIDSELECT"), cmpAttribute.ResourceText("IDS_TXT_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
+                    WeaveDialogHost.ShowMessage(
+                        revitHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_NOGRIDSELECT"),
+                        errorTitle,
+                        okText);
 
                     return retExtCom;
                 }
@@ -96,11 +111,11 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                                                                                  cmpSettings,
                                                                                  elemProjInfo,
                                                                                  cmpAttribute.ResourceText("IDS_SHPARAM_DEF_CMD_GRIDDIMENSION"),
-                                                                                 8);
+                                                                                 9);
                 if (entDtCmd.ErrMsg != "")
                 {
                     trans.RollBack();
-                    System.Windows.Forms.MessageBox.Show(entDtCmd.ErrMsg);
+                    WeaveDialogHost.ShowMessage(revitHandle, entDtCmd.ErrMsg, errorTitle, okText);
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
@@ -129,7 +144,11 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                     bool isErrorLog = cmpService.IsMultiIntersection(rvtDoc, elemGrids);
                     if (isErrorLog)
                     {
-                        System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_HAS_MUTIL_INTERSECTION"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                        WeaveDialogHost.ShowMessage(
+                            revitHandle,
+                            cmpAttribute.ResourceText("IDS_ERR_HAS_MUTIL_INTERSECTION"),
+                            errorTitle,
+                            okText);
                         cmpParameters.SetSharedParamDefault();
 
                         // トランザクションを統合
@@ -141,7 +160,11 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                 bool isError = cmpService.IsGridParallel(rvtDoc, LstSegmentGrids);
                 if (isError)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_POLYLINES"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(
+                        revitHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_POLYLINES"),
+                        errorTitle,
+                        okText);
                     cmpParameters.SetSharedParamDefault();
 
                     // トランザクションを統合
@@ -153,7 +176,11 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                 bool hasGridXAndY = cmpGeometry.IsHasDirectionXAndY(elemGrids);
                 if (!isCurveDim && hasGridXAndY)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_CHOOSE_X_AND_Y"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(
+                        revitHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_CHOOSE_X_AND_Y"),
+                        errorTitle,
+                        okText);
 
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
@@ -162,13 +189,12 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                 }
 
                 // 画面表示
-                RvtExtApp.UI.FormConfig form = null;
+                FormConfigWPF form = null;
                 while (true)
                 {
                     // Create form
-                    form = new RvtExtApp.UI.FormConfig(cmpAttribute, entDtCmd, list_dimensionType, isCurveDim, optDirection);
-                    form.ShowDialog();
-                    if (form.DialogResult != System.Windows.Forms.DialogResult.OK)
+                    form = new FormConfigWPF(cmpAttribute, cmpGeometry, entDtCmd, list_dimensionType, isCurveDim, optDirection);
+                    if (WeaveDialogHost.ShowDialog(form, revitHandle) != true)
                     {
                         cmpParameters.SetSharedParamDefault();
 
@@ -178,7 +204,11 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                     }
                     if (form.GetSelectedCheckBox())
                     {
-                        System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NO_CHECKBOX"), cmpAttribute.ResourceText("IDS_TXT_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
+                        WeaveDialogHost.ShowMessage(
+                            revitHandle,
+                            cmpAttribute.ResourceText("IDS_ERR_NO_CHECKBOX"),
+                            errorTitle,
+                            okText);
                     }
                     else
                         break;
@@ -231,10 +261,9 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                     if (viewList.Count != 0)
                     {
                         // 画面表示
-                        RvtExtApp.UI.FormSelectView frmSelectView = new RvtExtApp.UI.FormSelectView(cmpAttribute, entDtCmd, viewList, activeView);
+                        FormSelectViewWPF frmSelectView = new FormSelectViewWPF(cmpAttribute, entDtCmd, viewList, activeView);
 
-                        frmSelectView.ShowDialog();
-                        if (frmSelectView.DialogResult != System.Windows.Forms.DialogResult.OK)
+                        if (WeaveDialogHost.ShowDialog(frmSelectView, revitHandle) != true)
                         {
                             cmpParameters.SetSharedParamDefault();
                             // トランザクションを統合
@@ -271,7 +300,7 @@ namespace ADSK.JExtRAC.GridDimension.Commands
                             if (plane == null)
                                 continue;
 
-                            if (cmpService.CreateDimension(view, plane, elemGrids, entDtCmd.Data[0], entDtCmd.Data[1], (form as RvtExtApp.UI.FormConfig).GetSelectDimensionType,
+                            if (cmpService.CreateDimension(view, plane, elemGrids, entDtCmd.Data[0], entDtCmd.Data[1], form.GetSelectDimensionType,
                                 isDirectionX, form.GetSelectLeft, form.GetSelectRight, form.GetSelectTop, form.GetSelectBottom) == false)
                             {
                                 subtr.Dispose();
@@ -292,10 +321,13 @@ namespace ADSK.JExtRAC.GridDimension.Commands
 
                 retExtCom = Revit.UI.Result.Succeeded;
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
-                string errMsg = ex.Message;
-                System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_COMMAND"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                WeaveDialogHost.ShowMessage(
+                    revitHandle,
+                    cmpAttribute.ResourceText("IDS_ERR_COMMAND"),
+                    errorTitle,
+                    okText);
             }
 
             cmpParameters.SetSharedParamDefault();

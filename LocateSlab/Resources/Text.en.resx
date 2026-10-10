@@ -98,10 +98,27 @@
     <value>LocateSlab.xml</value>
   </data>
   <data name="IDS_INFO_ACTIVE_VIEW" xml:space="preserve">
-    <value>Please activate a plan view before running this command.</value>
+    <value>Could not create floor.
+
+Open a floor plan, ceiling plan, structural plan, or area plan view, then run this command again.</value>
   </data>
   <data name="IDS_INFO_NO_EXIST_BEAMS" xml:space="preserve">
-    <value>No beams found for floor generation.</value>
+    <value>Could not create floor.
+
+No usable beams were selected. Select the beams (Structural Usage: Girder or Joist) that surround the areas to fill, then run this command again.</value>
+  </data>
+  <data name="IDS_ERR_NO_BOUNDARY_BEAMS" xml:space="preserve">
+    <value>Could not create floor.
+
+The selected beams do not enclose any area. A floor is created in each area fully enclosed by the centerlines of the selected beams. Make sure the beam ends meet or cross in plan (small gaps are closed automatically), and that every beam around the area is selected.</value>
+  </data>
+  <data name="IDS_ERR_NO_FLOOR_TYPE" xml:space="preserve">
+    <value>Could not create floor.
+
+This project has no floor types. Load or create a floor type, then run this command again.</value>
+  </data>
+  <data name="IDS_INFO_SKIPPED_BEAMS" xml:space="preserve">
+    <value>{0} selected beam(s) were not used because their Structural Usage is: {1}. Only beams with Structural Usage Girder or Joist are used. To include them, select the beams and change Structural Usage to Girder or Joist in Properties.</value>
   </data>
   <data name="IDS_SHPARAM_DEF_CMD_LOCATESLAB" xml:space="preserve">
     <value>RexJpn-LocateSlab-Config</value>

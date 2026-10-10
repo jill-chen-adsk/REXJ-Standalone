@@ -1,4 +1,5 @@
 using ADSK.JExtRAC.ValueCopy.Entities;
+using ADSK.JExtRAC.ValueCopy.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,9 +8,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media;
-using System.Windows.Media.TextFormatting;
-using System.Windows.Shapes;
 using RvtExtApp = ADSK.JExtRAC.ValueCopy;
 
 namespace ADSK.JExtRAC.ValueCopy.UI
@@ -43,7 +41,7 @@ namespace ADSK.JExtRAC.ValueCopy.UI
     ///
     /// <history>2024/03/21 Created</history>
     /// ================================================================================
-    public partial class FormParameterWPF : Window
+    public partial class FormParameterWPF : Window, IWeaveChromeWindow
     {
         // Member variable
 
@@ -81,16 +79,31 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         public FormParameterWPF(RvtExtApp.Components.Attribute cmpAttribute, ObjectElement objElement)
         {
             InitializeComponent();
+            Style = (Style)FindResource("Weave.ChromeWindow");
 
             _CmpAttribute = cmpAttribute;
             _ObjElement = objElement;
             _IndexGroups = new List<ObjectIndexGroup>();
+
+            WeaveTheme.Apply(this, this, cmpAttribute.ResourceText("IDS_TXT_COPYFORM"));
 
             InitText();
             InitData();
         }
 
         #endregion Constructor
+
+        // Weave chrome parts
+
+        #region Weave Chrome
+
+        public Border ChromeOuterBorder => chromeOuterBorder;
+        public Grid ChromeTitleBar => chromeTitleBar;
+        public Border ChromeDivider => chromeDivider;
+        public TextBlock ChromeTitleText => chromeTitleText;
+        public Button ChromeCloseButton => chromeCloseButton;
+
+        #endregion Weave Chrome
 
         // Member Functions
 
@@ -103,7 +116,10 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         /// ================================================================================
         private void InitText()
         {
-            this.Title = _CmpAttribute.ResourceText("IDS_TXT_COPYFORM");
+            WeaveWindowChrome.SetTitle(this, this, _CmpAttribute.ResourceText("IDS_TXT_COPYFORM"));
+            lblHint.Text = _CmpAttribute.ResourceText("IDS_TXT_SELECTPARAMETER");
+            lblColumnName.Text = _CmpAttribute.ResourceText("IDS_TXT_PARAMETERNAMEFORM");
+            lblColumnValue.Text = _CmpAttribute.ResourceText("IDS_TXT_PARAMETERVALUEFORM");
             btApply.Content = _CmpAttribute.ResourceText("IDS_TXT_APPLY");
             btCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL");
         }
@@ -297,7 +313,11 @@ namespace ADSK.JExtRAC.ValueCopy.UI
 
             if (!isHasCopy)
             {
-                MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_INPUTVALUE"));
+                WeaveDialogHost.ShowMessage(
+                    new System.Windows.Interop.WindowInteropHelper(this).Handle,
+                    _CmpAttribute.ResourceText("IDS_ERR_INPUTVALUE"),
+                    _CmpAttribute.ResourceText("IDS_TXT_COPYFORM"),
+                    _CmpAttribute.ResourceText("IDS_TXT_OK"));
                 return;
             }
 

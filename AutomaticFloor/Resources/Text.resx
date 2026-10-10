@@ -138,6 +138,32 @@
   <data name="IDS_ERR_LEVELBEAMS" xml:space="preserve">
     <value>梁のレベルが取得できませんでした。</value>
   </data>
+  <data name="IDS_ERR_NO_BOUNDARY_BEAMS" xml:space="preserve">
+    <value>床が作成できません。
+
+このビューの梁が閉じた領域を形成していません。このコマンドは壁ではなく梁（構造用途：大梁または小梁）を床の境界として使用します。梁の端部が接続または交差するように、領域の周囲に梁を配置してください。</value>
+  </data>
+  <data name="IDS_ERR_NO_BOUNDARY_WALLS" xml:space="preserve">
+    <value>床が作成できません。
+
+このビューの部屋境界壁が閉じた領域を形成していません。壁の端部どうしを結合し、閉じた境界になるようにしてください。</value>
+  </data>
+  <data name="IDS_ERR_NO_FLOOR_TYPE" xml:space="preserve">
+    <value>プロジェクトに床タイプがありません。床タイプをロードまたは作成してから、再度コマンドを実行してください。</value>
+  </data>
+  <data name="IDS_ERR_NO_FOUNDATION_SLAB_TYPE" xml:space="preserve">
+    <value>プロジェクトに基礎スラブタイプがありません。基礎スラブタイプをロードまたは作成してから、再度コマンドを実行してください。</value>
+  </data>
+  <data name="IDS_ERR_PICK_OUTSIDE_BEAMS" xml:space="preserve">
+    <value>床が作成できません。
+
+ピックした位置が梁で囲まれた領域の内側にありません。このコマンドは壁ではなく梁（構造用途：大梁または小梁）を床の境界として使用します。四方を梁で囲まれた領域の内側をピックしてください。</value>
+  </data>
+  <data name="IDS_ERR_PICK_OUTSIDE_WALLS" xml:space="preserve">
+    <value>床が作成できません。
+
+ピックした位置が部屋境界壁で囲まれた領域の内側にありません。閉じた壁の境界の内側をピックしてください。</value>
+  </data>
   <data name="IDS_ERR_PARAMDEF" xml:space="preserve">
     <value>パラメータの定義に失敗しました</value>
   </data>
@@ -160,10 +186,17 @@
     <value>平面図・天井伏図・構造伏図ビューで実行して下さい。</value>
   </data>
   <data name="IDS_INFO_NO_EXIST_BEAMS" xml:space="preserve">
-    <value>床生成対象の梁が存在しません。</value>
+    <value>床生成対象の梁が存在しません。
+
+このコマンドは、アクティブビューに表示されている構造用途が「大梁」または「小梁」の梁を使用します。該当する梁がこのビューに表示されていることを確認してください。</value>
   </data>
   <data name="IDS_INFO_NO_EXIST_WALLS" xml:space="preserve">
-    <value>床生成対象の壁が存在しません。</value>
+    <value>床生成対象の壁が存在しません。
+
+このコマンドは、アクティブビューに表示されている部屋境界壁を使用します。該当する壁がこのビューに表示されていることを確認してください。</value>
+  </data>
+  <data name="IDS_INFO_SKIPPED_BEAMS" xml:space="preserve">
+    <value>このビューの梁のうち {0} 本は、構造用途が「{1}」のため使用されませんでした。構造用途が「大梁」または「小梁」の梁のみが使用されます。これらの梁を使用するには、梁を選択し、プロパティで構造用途を「大梁」または「小梁」に変更してください。</value>
   </data>
   <data name="IDS_INFO_PICK_POINT" xml:space="preserve">
     <value>床を作成したい位置をピックしてください。終了するときは、[Esc]キーを押してください。</value>
@@ -203,6 +236,9 @@
   </data>
   <data name="IDS_TXT_LEVELHEIGHTOFFSET" xml:space="preserve">
     <value>レベル高さオフセット</value>
+  </data>
+  <data name="IDS_TXT_SELECT_TYPE" xml:space="preserve">
+    <value>タイプを選択</value>
   </data>
   <data name="IDS_TXT_LOCK_ARCHITECT" xml:space="preserve">
     <value>壁に拘束</value>

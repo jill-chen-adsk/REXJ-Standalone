@@ -1,9 +1,12 @@
 using ADSK.JExtRAC.ValueCopy.Entities;
+using ADSK.JExtRAC.ValueCopy.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Interop;
 using RvtExtApp = ADSK.JExtRAC.ValueCopy;
 
 namespace ADSK.JExtRAC.ValueCopy.UI
@@ -13,7 +16,7 @@ namespace ADSK.JExtRAC.ValueCopy.UI
     ///
     /// <history>2024/03/21 Created</history>
     /// ================================================================================
-    public partial class FormReportWPF : Window
+    public partial class FormReportWPF : Window, IWeaveChromeWindow
     {
         //Member Variables
 
@@ -50,6 +53,7 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         public FormReportWPF(RvtExtApp.Components.Elements cmpElements, RvtExtApp.Components.Attribute cmpAttribute, List<ObjectReportCopy> ObjectReports, StringBuilder errorMess)
         {
             InitializeComponent();
+            Style = (Style)FindResource("Weave.ChromeWindow");
             btShowLog.Click += btShowLog_Click;
 
             _CmpElements = cmpElements;
@@ -57,11 +61,25 @@ namespace ADSK.JExtRAC.ValueCopy.UI
             _ObjectReports = ObjectReports;
             _ErrorMess = errorMess;
 
+            WeaveTheme.Apply(this, this, cmpAttribute.ResourceText("IDS_TXT_REPORTFORM"), CloseDialog);
+
             InitText();
             InitData();
         }
 
         #endregion Constructor
+
+        // Weave chrome parts
+
+        #region Weave Chrome
+
+        public Border ChromeOuterBorder => chromeOuterBorder;
+        public Grid ChromeTitleBar => chromeTitleBar;
+        public Border ChromeDivider => chromeDivider;
+        public TextBlock ChromeTitleText => chromeTitleText;
+        public Button ChromeCloseButton => chromeCloseButton;
+
+        #endregion Weave Chrome
 
         // Member Functions
 
@@ -74,7 +92,7 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         /// ================================================================================
         private void InitText()
         {
-            this.Title = _CmpAttribute.ResourceText("IDS_TXT_REPORTFORM");
+            WeaveWindowChrome.SetTitle(this, this, _CmpAttribute.ResourceText("IDS_TXT_REPORTFORM"));
             btOK.Content = _CmpAttribute.ResourceText("IDS_TXT_OK");
             btShowLog.Content = _CmpAttribute.ResourceText("IDS_TXT_ERRORDISPLAY");
 
@@ -228,7 +246,7 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         private void btShowLog_Click(object sender, RoutedEventArgs e)
         {
             var frm = new FormLogWPF(_CmpAttribute, _ErrorMess);
-            frm.ShowDialog();
+            WeaveDialogHost.ShowDialog(frm, new WindowInteropHelper(this).Handle);
         }
 
         /// ================================================================================
@@ -240,6 +258,16 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         /// <history>2024/03/21 Created</history>
         /// ================================================================================
         private void btOK_Click(object sender, RoutedEventArgs e)
+        {
+            CloseDialog();
+        }
+
+        /// ================================================================================
+        /// <summary>Close the dialog with a positive result</summary>
+        ///
+        /// <history>2024/03/21 Created</history>
+        /// ================================================================================
+        private void CloseDialog()
         {
             this.DialogResult = true;
             this.Close();

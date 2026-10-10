@@ -1,10 +1,10 @@
 using ADSK.JExtRAC.ValueCopy.Entities;
 using ADSK.JExtRAC.ValueCopy.UI;
+using ADSK.JExtRAC.ValueCopy.Utils;
 using Autodesk.Revit.DB;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows;
 using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.ValueCopy;
 
@@ -48,6 +48,9 @@ namespace ADSK.JExtRAC.ValueCopy.Commands
             // Get current unit display
             Units units = rvtDbDoc.GetUnits();
 
+            // Parent handle so dialogs stay owned by the Revit main window
+            System.IntPtr revitHandle = rvtUIApp.MainWindowHandle;
+
             // Start transaction
             TransactionGroup transGroup = null;
             try
@@ -57,7 +60,11 @@ namespace ADSK.JExtRAC.ValueCopy.Commands
                 List<Element> elementNeedTrafer = cmpElements.GetElementSelected(rvtUIDoc);
                 if (elementNeedTrafer.Count == 0)
                 {
-                    MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOSELECTELEMENT"));
+                    WeaveDialogHost.ShowMessage(
+                        revitHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_NOSELECTELEMENT"),
+                        cmpAttribute.ResourceText("IDS_TXT_COPYFORM"),
+                        cmpAttribute.ResourceText("IDS_TXT_OK"));
                     return Revit.UI.Result.Cancelled;
                 }
 
@@ -77,7 +84,7 @@ namespace ADSK.JExtRAC.ValueCopy.Commands
 
                 // Show form parameter
                 FormParameterWPF frm = new FormParameterWPF(cmpAttribute, objElement);
-                if (frm.ShowDialog() != true)
+                if (WeaveDialogHost.ShowDialog(frm, revitHandle) != true)
                     return Revit.UI.Result.Cancelled;
 
                 // Convert to object report
@@ -97,13 +104,15 @@ namespace ADSK.JExtRAC.ValueCopy.Commands
                 cmpElements.SetPreviousProjectUnitDisplay(rvtDbDoc, units);
 
                 FormReportWPF frmReport = new FormReportWPF(cmpElements, cmpAttribute, ObjectReports, errorMess);
-                frmReport.ShowDialog();
+                WeaveDialogHost.ShowDialog(frmReport, revitHandle);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
-                string mess = ex.Message;
-
-                MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_COMMAND"), cmpAttribute.ResourceText("IDS_ERR_ERROR"));
+                WeaveDialogHost.ShowMessage(
+                    revitHandle,
+                    cmpAttribute.ResourceText("IDS_ERR_COMMAND"),
+                    cmpAttribute.ResourceText("IDS_ERR_ERROR"),
+                    cmpAttribute.ResourceText("IDS_TXT_OK"));
 
                 return Revit.UI.Result.Failed;
             }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using System.Windows.Forms;
 using RvtExtApp = ADSK.JExtRAC.AutomaticFloor;
 
 namespace ADSK.JExtRAC.AutomaticFloor.Utils
@@ -25,6 +24,10 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
             RvtExtApp.Components.Service cmpService = new RvtExtApp.Components.Service(cmpAttribute, cmpElements, cmpGeometry, cmpParameters, cmpSettings);
 
             Result retExtCom = Result.Cancelled;
+            IntPtr revitHandle = rvtUIApp.MainWindowHandle;
+            string okText = cmpAttribute.ResourceText("IDS_TXT_OK");
+            string errorTitle = cmpAttribute.ResourceText("IDS_TXT_ERROR");
+
             TransactionGroup transGroup = new TransactionGroup(cmpElements.RvtDBDoc);
             transGroup.Start("CreateFloor");
             Transaction trans = new Transaction(cmpElements.RvtDBDoc);
@@ -36,19 +39,30 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
                     rvtUIDoc.ActiveView.ViewType != ViewType.AreaPlan &&
                     rvtUIDoc.ActiveView.ViewType != ViewType.EngineeringPlan)
                 {
-                    MessageBox.Show(cmpAttribute.ResourceText("IDS_INFO_ACTIVE_VIEW"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(revitHandle, cmpAttribute.ResourceText("IDS_INFO_ACTIVE_VIEW"), errorTitle, okText);
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
                 }
 
                 List<Element> elementList = cmpService.GetElements(rvtUIDoc.ActiveView, efloorType);
+
+                string WithSkippedBeamNote(string message)
+                {
+                    if (efloorType == eFloorType.Arch || cmpService.SkippedBeamCount == 0)
+                        return message;
+                    return message + "\n\n" + string.Format(
+                        cmpAttribute.ResourceText("IDS_INFO_SKIPPED_BEAMS"),
+                        cmpService.SkippedBeamCount,
+                        string.Join(", ", cmpService.SkippedBeamUsages));
+                }
+
                 if (elementList.Count == 0)
                 {
                     if (efloorType == eFloorType.Arch)
-                        MessageBox.Show(cmpAttribute.ResourceText("IDS_INFO_NO_EXIST_WALLS"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                        WeaveDialogHost.ShowMessage(revitHandle, cmpAttribute.ResourceText("IDS_INFO_NO_EXIST_WALLS"), errorTitle, okText);
                     else
-                        MessageBox.Show(cmpAttribute.ResourceText("IDS_INFO_NO_EXIST_BEAMS"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                        WeaveDialogHost.ShowMessage(revitHandle, WithSkippedBeamNote(cmpAttribute.ResourceText("IDS_INFO_NO_EXIST_BEAMS")), errorTitle, okText);
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -57,6 +71,8 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
                 IList<Element> elemFloorTypes = cmpElements.GetFloorTypes(efloorType);
                 if (elemFloorTypes.Count == 0)
                 {
+                    string noTypeId = efloorType == eFloorType.Slab ? "IDS_ERR_NO_FOUNDATION_SLAB_TYPE" : "IDS_ERR_NO_FLOOR_TYPE";
+                    WeaveDialogHost.ShowMessage(revitHandle, cmpAttribute.ResourceText(noTypeId), errorTitle, okText);
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -67,7 +83,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
                 RvtExtApp.Entities.DtSlabType entDtSlabType = new RvtExtApp.Entities.DtSlabType(cmpAttribute, cmpElements, cmpGeometry, cmpParameters, cmpSettings);
                 if (entDtSlabType.ErrMsg != "")
                 {
-                    MessageBox.Show(entDtSlabType.ErrMsg, cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(revitHandle, entDtSlabType.ErrMsg, errorTitle, okText);
                     trans.RollBack();
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
@@ -80,7 +96,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
                     elemProjInfo, cmpAttribute.ResourceText("IDS_SHPARAM_DEF_CMD_LOCATESLAB"), 4);
                 if (entDtCmd.ErrMsg != "")
                 {
-                    MessageBox.Show(entDtCmd.ErrMsg, cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(revitHandle, entDtCmd.ErrMsg, errorTitle, okText);
                     trans.RollBack();
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
@@ -88,9 +104,8 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
                 }
                 trans.Commit();
 
-                RvtExtApp.Config.FormConfig form = new RvtExtApp.Config.FormConfig(cmpAttribute, entDtSlabType, entDtCmd, efloorType);
-                form.ShowDialog();
-                if (form.DialogResult != DialogResult.OK)
+                var form = new RvtExtApp.UI.FormConfigWPF(cmpAttribute, entDtSlabType, entDtCmd, efloorType);
+                if (WeaveDialogHost.ShowDialog(form, revitHandle) != true)
                 {
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
@@ -103,6 +118,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
                 Dictionary<int, List<int>> dic_indexs = null;
                 List<ElementId> floorIds = new List<ElementId>();
                 bool pickPoint_end = false;
+                bool usesWalls = efloorType == eFloorType.Arch;
 
                 while (!pickPoint_end)
                 {
@@ -134,14 +150,29 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
                     if (floorsCurves == null || level == null || floorType == null)
                     {
                         if (!cmpService.GetData(entDtSlabType, elementList, efloorType, out level, out floorType, out floorsCurves, out dic_indexs))
-                            continue;
+                        {
+                            WeaveDialogHost.ShowMessage(revitHandle,
+                                cmpAttribute.ResourceText("IDS_TXT_NO_CREATE_FLOOR") + "\n\n" + cmpService.ErrMsg,
+                                errorTitle, okText);
+                            break;
+                        }
+
+                        if (dic_indexs.Count == 0)
+                        {
+                            WeaveDialogHost.ShowMessage(revitHandle,
+                                WithSkippedBeamNote(cmpAttribute.ResourceText(usesWalls ? "IDS_ERR_NO_BOUNDARY_WALLS" : "IDS_ERR_NO_BOUNDARY_BEAMS")),
+                                errorTitle, okText);
+                            break;
+                        }
                     }
 
                     trans.Start("CreateFloor");
                     var floor = cmpService.CreateFloor(floorsCurves, dic_indexs, level, efloorType, floorType, pickPoint);
                     if (floor == null)
                     {
-                        MessageBox.Show(cmpAttribute.ResourceText("IDS_TXT_NO_CREATE_FLOOR"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                        WeaveDialogHost.ShowMessage(revitHandle,
+                            WithSkippedBeamNote(cmpAttribute.ResourceText(usesWalls ? "IDS_ERR_PICK_OUTSIDE_WALLS" : "IDS_ERR_PICK_OUTSIDE_BEAMS")),
+                            errorTitle, okText);
                         trans.RollBack();
                         continue;
                     }
@@ -195,7 +226,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.Utils
             }
             catch (Exception)
             {
-                MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_COMMAND"), cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                WeaveDialogHost.ShowMessage(revitHandle, cmpAttribute.ResourceText("IDS_ERR_COMMAND"), errorTitle, okText);
                 if (trans.GetStatus() != TransactionStatus.Committed)
                     trans.RollBack();
             }

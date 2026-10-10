@@ -1,6 +1,7 @@
 using System ;
 using Autodesk.Revit.DB;
 using System.Collections.Generic;
+using ADSK.JExtRAC.ParameterFilter.Utils;
 
 namespace ADSK.JExtRAC.ParameterFilter.Entities
 {
@@ -57,8 +58,7 @@ namespace ADSK.JExtRAC.ParameterFilter.Entities
 
                     ObjectSelectGroup objGroup = new ObjectSelectGroup();
                     objGroup.GroupTypeId = pr.Definition.GetGroupTypeId();
-                    objGroup.ParameterGroupVal = LabelUtils.GetLabelForBuiltInParameter(pr.Definition.GetGroupTypeId());
-                    // LabelUtils.GetLabelForBuiltInParameter は見つからない場合に例外を吐く
+                    objGroup.ParameterGroupVal = ParameterGroupLabels.GetLabel(pr.Definition.GetGroupTypeId());
                     
                     objGroup.IsSelected = true;
                     obj.ObjectGroupVal = objGroup;

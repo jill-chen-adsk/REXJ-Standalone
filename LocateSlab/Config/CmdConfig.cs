@@ -1,8 +1,8 @@
 using System;
-using System.Windows.Forms;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using ADSK.JExtRAC.LocateSlab.Utils;
 
 namespace ADSK.JExtRAC.LocateSlab.Config
 {
@@ -22,6 +22,20 @@ namespace ADSK.JExtRAC.LocateSlab.Config
             var cmpService = new Components.Service(cmpAttribute, cmpElements, cmpGeometry,
                 cmpParameters, cmpSettings);
 
+            IntPtr revitHandle = rvtUIApp.MainWindowHandle;
+            string okText = cmpAttribute.ResourceText("IDS_TXT_OK");
+            string errorTitle = cmpAttribute.ResourceText("IDS_TXT_ERROR");
+
+            string WithSkippedBeamNote(string text)
+            {
+                if (cmpService.SkippedBeamCount == 0)
+                    return text;
+                return text + "\n\n" + string.Format(
+                    cmpAttribute.ResourceText("IDS_INFO_SKIPPED_BEAMS"),
+                    cmpService.SkippedBeamCount,
+                    string.Join(", ", cmpService.SkippedBeamUsages));
+            }
+
             var retExtCom = Result.Cancelled;
             var transGroup = new TransactionGroup(cmpElements.RvtDBDoc);
             transGroup.Start(cmpAttribute.ResourceText("IDS_TXT_LOCATESLAB"));
@@ -35,9 +49,8 @@ namespace ADSK.JExtRAC.LocateSlab.Config
                     activeView.ViewType != ViewType.AreaPlan &&
                     activeView.ViewType != ViewType.EngineeringPlan)
                 {
-                    MessageBox.Show(
-                        cmpAttribute.ResourceText("IDS_INFO_ACTIVE_VIEW"),
-                        cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(revitHandle,
+                        cmpAttribute.ResourceText("IDS_INFO_ACTIVE_VIEW"), errorTitle, okText);
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -46,9 +59,9 @@ namespace ADSK.JExtRAC.LocateSlab.Config
                 var elemBeams = cmpService.GetSelSetBeams();
                 if (elemBeams.Count == 0)
                 {
-                    MessageBox.Show(
-                        cmpAttribute.ResourceText("IDS_INFO_NO_EXIST_BEAMS"),
-                        cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(revitHandle,
+                        WithSkippedBeamNote(cmpAttribute.ResourceText("IDS_INFO_NO_EXIST_BEAMS")),
+                        errorTitle, okText);
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -57,6 +70,8 @@ namespace ADSK.JExtRAC.LocateSlab.Config
                 var elemFloorTypes = cmpElements.FloorTypes;
                 if (elemFloorTypes.Count == 0)
                 {
+                    WeaveDialogHost.ShowMessage(revitHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_NO_FLOOR_TYPE"), errorTitle, okText);
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -68,7 +83,7 @@ namespace ADSK.JExtRAC.LocateSlab.Config
                     cmpGeometry, cmpParameters, cmpSettings);
                 if (entDtSlabType.ErrMsg != "")
                 {
-                    MessageBox.Show(entDtSlabType.ErrMsg, cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(revitHandle, entDtSlabType.ErrMsg, errorTitle, okText);
                     trans.RollBack();
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
@@ -83,7 +98,7 @@ namespace ADSK.JExtRAC.LocateSlab.Config
 
                 if (entDtCmd.ErrMsg != "")
                 {
-                    MessageBox.Show(entDtCmd.ErrMsg, cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(revitHandle, entDtCmd.ErrMsg, errorTitle, okText);
                     trans.RollBack();
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
@@ -92,9 +107,8 @@ namespace ADSK.JExtRAC.LocateSlab.Config
 
                 trans.Commit();
 
-                var form = new FormConfig(cmpAttribute, entDtSlabType, entDtCmd);
-                form.ShowDialog();
-                if (form.DialogResult != DialogResult.OK)
+                var form = new FormConfigWPF(cmpAttribute, entDtSlabType, entDtCmd);
+                if (WeaveDialogHost.ShowDialog(form, revitHandle) != true)
                 {
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
@@ -106,7 +120,8 @@ namespace ADSK.JExtRAC.LocateSlab.Config
                 if (!cmpService.CreateSlab(entDtSlabType, elemBeams,
                     entDtCmd.Data[0], entDtCmd.Data[2]))
                 {
-                    MessageBox.Show(cmpService.ErrMsg, cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                    WeaveDialogHost.ShowMessage(revitHandle,
+                        WithSkippedBeamNote(cmpService.ErrMsg), errorTitle, okText);
                     trans.RollBack();
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
@@ -124,9 +139,8 @@ namespace ADSK.JExtRAC.LocateSlab.Config
             }
             catch (Exception)
             {
-                MessageBox.Show(
-                    cmpAttribute.ResourceText("IDS_ERR_COMMAND"),
-                    cmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                WeaveDialogHost.ShowMessage(revitHandle,
+                    cmpAttribute.ResourceText("IDS_ERR_COMMAND"), errorTitle, okText);
                 if (trans.GetStatus() != TransactionStatus.Committed)
                     trans.RollBack();
             }

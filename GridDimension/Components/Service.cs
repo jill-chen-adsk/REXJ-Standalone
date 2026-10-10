@@ -81,6 +81,9 @@ namespace ADSK.JExtRAC.GridDimension.Components
 
         #endregion Constructor
 
+        /// <summary>Revit main window handle used to own message dialogs</summary>
+        public IntPtr OwnerHandle { get; set; }
+
         // メンバ関数
 
         #region Member Functions
@@ -159,16 +162,12 @@ namespace ADSK.JExtRAC.GridDimension.Components
                 return ret;
             // 距離
             double distA = 0.0;
-            if (double.TryParse(strDistA, out double distAParsed))
-                distA = distAParsed;
-
-            distA /= _CmpGeometry.UnitCoe;
+            if (_CmpGeometry.TryParseStoredLength(strDistA, out double distAInternal))
+                distA = distAInternal;
 
             double distB = 0.0;
-            if (double.TryParse(strDistB, out double distBParsed))
-                distB = distBParsed;
-
-            distB /= _CmpGeometry.UnitCoe;
+            if (_CmpGeometry.TryParseStoredLength(strDistB, out double distBInternal))
+                distB = distBInternal;
 
             // ビュー縮尺
             double viewScale = checkedView.Scale * 1.0;
@@ -632,16 +631,14 @@ namespace ADSK.JExtRAC.GridDimension.Components
                 return false;
 
             // 距離
-
-            double distB = 1;
-            if (double.TryParse(strDistB, out double distBCurve))
+            double minInternal = UnitUtils.ConvertToInternalUnits(1.0, _CmpGeometry.LengthUnitTypeId);
+            double distB = minInternal;
+            if (_CmpGeometry.TryParseStoredLength(strDistB, out double distBInternal))
             {
-                distB = distBCurve;
-                if (distB < 1)
-                    distB = 1;
+                distB = distBInternal;
+                if (distB < minInternal)
+                    distB = minInternal;
             }
-
-            distB /= _CmpGeometry.UnitCoe;
 
             // ビュー縮尺
             double viewScale = checkedView.Scale;
@@ -664,7 +661,11 @@ namespace ADSK.JExtRAC.GridDimension.Components
             // Check number point
             if (!CheckNumberPointIntersection(checkedView, lstGridLine, lstGridArc, left, right, top, bottom))
             {
-                System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_HAS_ONE_INTERSECTION"), _CmpAttribute.ResourceText("IDS_TXT_ERROR"));
+                ADSK.JExtRAC.GridDimension.Utils.WeaveDialogHost.ShowMessage(
+                    OwnerHandle,
+                    _CmpAttribute.ResourceText("IDS_ERR_HAS_ONE_INTERSECTION"),
+                    _CmpAttribute.ResourceText("IDS_TXT_ERROR"),
+                    _CmpAttribute.ResourceText("IDS_TXT_OK"));
                 return false;
             }
 

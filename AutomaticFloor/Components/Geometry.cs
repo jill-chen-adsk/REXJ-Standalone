@@ -63,6 +63,13 @@ namespace ADSK.JExtRAC.AutomaticFloor.Components
         // Find 2D intersection of two line segments
         public void IntersecCurve2D(Curve curve1, Curve curve2, ref IList<XYZ> interPosAry)
         {
+            IntersecCurve2D(curve1, curve2, 0.0, ref interPosAry);
+        }
+
+        // Find 2D intersection of two line segments, treating each segment as extended by
+        // endTolerance (internal units) past both ends so beams that stop short still connect.
+        public void IntersecCurve2D(Curve curve1, Curve curve2, double endTolerance, ref IList<XYZ> interPosAry)
+        {
             XYZ p1 = curve1.GetEndPoint(0);
             XYZ p2 = curve1.GetEndPoint(1);
             XYZ p3 = curve2.GetEndPoint(0);
@@ -79,7 +86,13 @@ namespace ADSK.JExtRAC.AutomaticFloor.Components
             double t = ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denom;
             double u = -((x1 - x2) * (y1 - y3) - (y1 - y2) * (x1 - x3)) / denom;
 
-            if (t >= -Approx0Len && t <= 1.0 + Approx0Len && u >= -Approx0Len && u <= 1.0 + Approx0Len)
+            double len1 = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+            double len2 = Math.Sqrt((x4 - x3) * (x4 - x3) + (y4 - y3) * (y4 - y3));
+            if (len1 < Approx0Len || len2 < Approx0Len) return;
+            double ext1 = Approx0Len + endTolerance / len1;
+            double ext2 = Approx0Len + endTolerance / len2;
+
+            if (t >= -ext1 && t <= 1.0 + ext1 && u >= -ext2 && u <= 1.0 + ext2)
             {
                 double ix = x1 + t * (x2 - x1);
                 double iy = y1 + t * (y2 - y1);
@@ -87,27 +100,19 @@ namespace ADSK.JExtRAC.AutomaticFloor.Components
             }
         }
 
-        // Sort points by distance from first point along the line direction
-        public void SortXYPos(IList<XYZ> posAry, int sortMode, ref IList<int> sortedIdxAry, ref IList<XYZ> sortedPosAry)
+        // Sort points in the order they occur along the curve, from its start point
+        public IList<XYZ> SortAlongCurve(Curve curve, IList<XYZ> posAry)
         {
-            if (posAry == null || posAry.Count == 0) return;
+            XYZ start = curve.GetEndPoint(0);
+            XYZ end = curve.GetEndPoint(1);
+            double dx = end.X - start.X;
+            double dy = end.Y - start.Y;
 
-            var indexedList = new List<(int idx, XYZ pos, double dist)>();
-            XYZ origin = posAry[0];
-
-            for (int i = 0; i < posAry.Count; i++)
-            {
-                double dist = Distance2D(origin, posAry[i]);
-                indexedList.Add((i, posAry[i], dist));
-            }
-
-            indexedList.Sort((a, b) => a.dist.CompareTo(b.dist));
-
-            foreach (var item in indexedList)
-            {
-                sortedIdxAry.Add(item.idx);
-                sortedPosAry.Add(item.pos);
-            }
+            var sorted = new List<XYZ>(posAry);
+            sorted.Sort((a, b) =>
+                ((a.X - start.X) * dx + (a.Y - start.Y) * dy)
+                    .CompareTo((b.X - start.X) * dx + (b.Y - start.Y) * dy));
+            return sorted;
         }
 
         public XYZ PolygonGravity2D(IList<Curve> curves)
@@ -218,19 +223,9 @@ namespace ADSK.JExtRAC.AutomaticFloor.Components
             else
             {
                 IList<XYZ> interPosAryTmp = new List<XYZ>();
-                IntersecCurve2D(curve1, curve2, ref interPosAryTmp);
+                IntersecCurve2D(curve1, curve2, ToleranceInter, ref interPosAryTmp);
                 for (int i = 0; i < interPosAryTmp.Count; ++i)
-                {
-                    XYZ interPosTmp = new XYZ(interPosAryTmp[i].X, interPosAryTmp[i].Y, curve1.GetEndPoint(0).Z);
-                    bool flag = true;
-                    if (interPos != null)
-                    {
-                        if (Distance2D(interPos, interPosTmp) < ToleranceInter)
-                            flag = false;
-                    }
-                    if (flag)
-                        ret.Add(interPosTmp);
-                }
+                    ret.Add(new XYZ(interPosAryTmp[i].X, interPosAryTmp[i].Y, curve1.GetEndPoint(0).Z));
             }
 
             return ret;
@@ -254,9 +249,7 @@ namespace ADSK.JExtRAC.AutomaticFloor.Components
                         interPosAryTmp1.Add(interPosAryTmp[k]);
                 }
 
-                IList<int> sortedIdxAry = new List<int>();
-                IList<XYZ> sortedPosAryTmp1 = new List<XYZ>();
-                SortXYPos(interPosAryTmp1, 1, ref sortedIdxAry, ref sortedPosAryTmp1);
+                IList<XYZ> sortedPosAryTmp1 = SortAlongCurve(curve1, interPosAryTmp1);
 
                 IList<XYZ> interPosAryTmp2 = new List<XYZ>();
                 for (int j = 0; j < sortedPosAryTmp1.Count; ++j)

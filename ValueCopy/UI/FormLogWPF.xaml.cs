@@ -1,9 +1,11 @@
+using ADSK.JExtRAC.ValueCopy.Utils;
 using System;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Interop;
 using Microsoft.Win32;
-using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.ValueCopy;
 
 namespace ADSK.JExtRAC.ValueCopy.UI
@@ -13,7 +15,7 @@ namespace ADSK.JExtRAC.ValueCopy.UI
     ///
     /// <history>2024/03/21 Created</history>
     /// ================================================================================
-    public partial class FormLogWPF : Window
+    public partial class FormLogWPF : Window, IWeaveChromeWindow
     {
         // Member variable
 
@@ -42,15 +44,30 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         public FormLogWPF(RvtExtApp.Components.Attribute cmpAttribute, StringBuilder strLog)
         {
             InitializeComponent();
+            Style = (Style)FindResource("Weave.ChromeWindow");
 
             _cmpAttribute = cmpAttribute;
             _strLog = strLog;
+
+            WeaveTheme.Apply(this, this, cmpAttribute.ResourceText("IDS_TXT_LOG"));
 
             SetText();
             SetData();
         }
 
         #endregion Constructor
+
+        // Weave chrome parts
+
+        #region Weave Chrome
+
+        public Border ChromeOuterBorder => chromeOuterBorder;
+        public Grid ChromeTitleBar => chromeTitleBar;
+        public Border ChromeDivider => chromeDivider;
+        public TextBlock ChromeTitleText => chromeTitleText;
+        public Button ChromeCloseButton => chromeCloseButton;
+
+        #endregion Weave Chrome
 
         // Member function
 
@@ -63,7 +80,7 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         /// ================================================================================
         private void SetText()
         {
-            this.Title = _cmpAttribute.ResourceText("IDS_TXT_LOG");
+            WeaveWindowChrome.SetTitle(this, this, _cmpAttribute.ResourceText("IDS_TXT_LOG"));
             this.btnSave.Content = _cmpAttribute.ResourceText("IDS_TXT_SAVELOG");
             this.btnClose.Content = _cmpAttribute.ResourceText("IDS_TXT_CLOSELOG");
         }
@@ -105,7 +122,11 @@ namespace ADSK.JExtRAC.ValueCopy.UI
             }
             catch (Exception ex)
             {
-                Revit.UI.TaskDialog.Show(_cmpAttribute.ResourceText("IDS_TXT_ERROR"), ex.ToString());
+                WeaveDialogHost.ShowMessage(
+                    new WindowInteropHelper(this).Handle,
+                    ex.Message,
+                    _cmpAttribute.ResourceText("IDS_TXT_ERROR"),
+                    _cmpAttribute.ResourceText("IDS_TXT_OK"));
                 return false;
             }
         }
@@ -115,19 +136,6 @@ namespace ADSK.JExtRAC.ValueCopy.UI
         // Events
 
         #region Events
-
-        /// ================================================================================
-        /// <summary>Handles the Click event of the btnClose control</summary>
-        ///
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.Windows.RoutedEventArgs"/> instance containing the event data.</param>
-        ///
-        /// <history>2024/03/21 Created</history>
-        /// ================================================================================
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
 
         /// ================================================================================
         /// <summary>Handles the Click event of the btnSave control</summary>

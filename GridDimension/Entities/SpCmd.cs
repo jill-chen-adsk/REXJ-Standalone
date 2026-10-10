@@ -51,15 +51,11 @@ namespace ADSK.JExtRAC.GridDimension.Entities
             {
             }
             string[] valueSplit = sValue.Split(',');
-            bool flag = false;
-            if (_ItemNum == valueSplit.Length)
-                flag = true;
-
             if (_ItemNum > 0)
             {
                 for (int i = 0; i < _ItemNum; ++i)
                 {
-                    if (flag == true)
+                    if (i < valueSplit.Length)
                         ret.Add(valueSplit[i]);
                     else
                         ret.Add("");
