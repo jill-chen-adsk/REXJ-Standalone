@@ -259,4 +259,14 @@ ty</value>
   <data name="IDS_TXT_UP" xml:space="preserve">
     <value>Up</value>
   </data>
+  <data name="IDS_TXT_PRIORITY_HINT" xml:space="preserve">
+    <value>High ↑
+Low ↓</value>
+  </data>
+  <data name="IDS_TXT_TOOLTIP_PRIORITY_UP" xml:space="preserve">
+    <value>Move up (higher join priority)</value>
+  </data>
+  <data name="IDS_TXT_TOOLTIP_PRIORITY_DOWN" xml:space="preserve">
+    <value>Move down (lower join priority)</value>
+  </data>
 </root>

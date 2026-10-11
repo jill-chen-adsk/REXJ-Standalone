@@ -21,7 +21,7 @@ namespace ADSK.JExtRAC.JoinOrderInspector.Commands
 
                 UIApplication uiapp = commandData.Application;
                 var window = new UI.JoinOrderInspectWindow(uiapp);
-                window.Show();
+                WeaveDialogHost.Show(window, uiapp.MainWindowHandle);
                 return Result.Succeeded;
             }
             catch (Exception ex)

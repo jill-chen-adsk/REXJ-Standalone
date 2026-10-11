@@ -4,6 +4,7 @@ using ADSK.JExtRAC.SwitchJoinOrder.Utils;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Windows;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using RvtExtApp = ADSK.JExtRAC.SwitchJoinOrder;
@@ -15,18 +16,22 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
     public class CmdSwitchJoin : IExternalCommand
     {
         public static UIApplication _rvtUIApp;
+        private static FormSwitchJoinWPF _openDialog;
 
         private Dictionary<ElementId, List<Solid>> m_DicSolidsElement =
             new Dictionary<ElementId, List<Solid>>();
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            try
+            {
             CultureHelper.InitializeCulture();
 
             _rvtUIApp = commandData.Application;
             UIDocument rvtUIDoc = _rvtUIApp.ActiveUIDocument;
             RvtExtApp.Components.Attribute cmpAttribute = new RvtExtApp.Components.Attribute();
             RvtExtApp.Components.Elements cmpElements = new RvtExtApp.Components.Elements(rvtUIDoc);
+            IntPtr ownerHandle = _rvtUIApp.MainWindowHandle;
 
             Result retExtCom = Result.Succeeded;
 
@@ -34,32 +39,38 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
 
             if (listElement == null || listElement.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_TXT_INFORMATION"), cmpAttribute.ResourceText("IDS_TXT_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
+                WeaveDialogHost.ShowMessage(
+                    ownerHandle,
+                    cmpAttribute.ResourceText("IDS_TXT_INFORMATION"),
+                    cmpAttribute.ResourceText("IDS_TXT_ERROR"),
+                    cmpAttribute.ResourceText("IDS_TXT_OK"));
                 return Result.Failed;
             }
 
+            if (_openDialog != null)
+                return Result.Failed;
+
             CategoryItems groupCategory = cmpElements.GroupingData(rvtUIDoc.Document, listElement);
 
-            RvtExtApp.UI.FormSwitchJoin form = new RvtExtApp.UI.FormSwitchJoin(rvtUIDoc.Document, cmpAttribute, groupCategory);
+            var form = new FormSwitchJoinWPF(rvtUIDoc.Document, cmpAttribute, groupCategory);
+            _openDialog = form;
+            form.Closed += (_, __) => _openDialog = null;
 
-            foreach (System.Windows.Forms.Form openedForm in System.Windows.Forms.Application.OpenForms)
-            {
-                if (openedForm.GetType().Name == form.Name)
-                    return Result.Failed;
-            }
-            if (form.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            if (WeaveDialogHost.ShowDialog(form, ownerHandle) != true)
                 return Result.Cancelled;
 
             try
             {
-                bool isJoinGeometry = !form.GetChecked;
+                bool processOnlyJoined = form.GetChecked;
+                bool isJoinGeometry = !processOnlyJoined;
                 System.Text.StringBuilder strLog = new System.Text.StringBuilder();
                 m_DicSolidsElement.Clear();
 
-                int numProgress = groupCategory.CountEle();
+                int numProgress = CountProcessingSteps(rvtUIDoc.Document, groupCategory, processOnlyJoined);
                 int cntProgress = 0;
 
-                ProgressDialog progressDialog = new ProgressDialog(cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), numProgress);
+                using ProgressDialog progressDialog = new ProgressDialog(cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), numProgress);
+                progressDialog.SetOwner(ownerHandle);
                 progressDialog.ShowNonModal();
 
                 Transaction tr = new Transaction(cmpElements.RvtDBDoc);
@@ -68,7 +79,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 foreach (var cate in groupCategory._categoryShow)
                 {
                     if (cate._isJoinFami)
-                        SwitchJoinFamily(rvtUIDoc, cmpAttribute, cmpElements, cate, isJoinGeometry, ref strLog, ref cntProgress, progressDialog);
+                        SwitchJoinFamily(rvtUIDoc, cmpAttribute, cmpElements, cate, processOnlyJoined, isJoinGeometry, ref strLog, ref cntProgress, progressDialog);
 
                     List<ElementId> listElementIdFind = new List<ElementId>();
                     foreach (var ss in groupCategory._categoryShow)
@@ -83,21 +94,23 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                     foreach (var fistElementId in cate._listElementId)
                     {
                         var firstElement = rvtUIDoc.Document.GetElement(fistElementId) as Element;
+                        if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, listElementIdFind))
+                            continue;
+
                         Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, false, ref strLog);
                         progressDialog.UpdateProgress(++cntProgress);
                     }
                 }
 
                 progressDialog.Close();
-                progressDialog.Dispose();
 
                 rvtUIDoc.Document.Regenerate();
                 tr.Commit();
 
                 if (strLog.Length != 0)
                 {
-                    FormLog frmLog = new FormLog(cmpAttribute, strLog);
-                    frmLog.ShowDialog();
+                    var frmLog = new FormLogWPF(cmpAttribute, strLog);
+                    WeaveDialogHost.ShowDialog(frmLog, ownerHandle);
                 }
             }
             catch (Exception)
@@ -105,11 +118,17 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             }
 
             return retExtCom;
+            }
+            catch (Exception ex)
+            {
+                message = ex.ToString();
+                return Result.Failed;
+            }
         }
 
         private bool SwitchJoinFamily(UIDocument rvtUIDoc,
             RvtExtApp.Components.Attribute cmpAttribute,
-            RvtExtApp.Components.Elements cmpElements, CategoryItem cate, bool isJoinGeometry,
+            RvtExtApp.Components.Elements cmpElements, CategoryItem cate, bool processOnlyJoined, bool isJoinGeometry,
             ref System.Text.StringBuilder strLog,
             ref int cntProgress,
             ProgressDialog progressDialog)
@@ -138,6 +157,9 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                     foreach (var fistElementId in fami._listElementIdOfFamily)
                     {
                         var firstElement = rvtUIDoc.Document.GetElement(fistElementId) as Element;
+                        if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, listElementIdFind))
+                            continue;
+
                         Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, true, ref strLog);
                         progressDialog.UpdateProgress(++cntProgress);
                     }
@@ -265,6 +287,80 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 }
             }
             catch (Exception) { }
+        }
+
+        private static bool HasJoinedPartnerAmong(Document doc, Element element, List<ElementId> candidateIds)
+        {
+            if (doc == null || element == null || candidateIds == null || candidateIds.Count == 0)
+                return false;
+
+            var candidates = new HashSet<ElementId>(candidateIds);
+            foreach (ElementId joinedId in JoinGeometryUtils.GetJoinedElements(doc, element))
+            {
+                if (candidates.Contains(joinedId))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static int CountProcessingSteps(Document doc, CategoryItems groupCategory, bool processOnlyJoined)
+        {
+            if (groupCategory?._categoryShow == null || groupCategory._categoryShow.Count == 0)
+                return 0;
+
+            if (!processOnlyJoined)
+                return groupCategory.CountEle();
+
+            int count = 0;
+            for (int i = 0; i < groupCategory._categoryShow.Count - 1; i++)
+            {
+                CategoryItem cate = groupCategory._categoryShow[i];
+
+                if (cate._isJoinFami && cate._listFamilyItem != null)
+                {
+                    foreach (FamilyItem fami in cate._listFamilyItem)
+                    {
+                        List<ElementId> listElementIdFind = new List<ElementId>();
+                        foreach (FamilyItem ss in cate._listFamilyItem)
+                        {
+                            if (fami._indexFami >= ss._indexFami)
+                                continue;
+                            listElementIdFind.AddRange(ss._listElementIdOfFamily);
+                        }
+
+                        if (listElementIdFind.Count == 0 || fami._listElementIdOfFamily == null)
+                            continue;
+
+                        foreach (ElementId elementId in fami._listElementIdOfFamily)
+                        {
+                            Element element = doc.GetElement(elementId);
+                            if (element != null && HasJoinedPartnerAmong(doc, element, listElementIdFind))
+                                count++;
+                        }
+                    }
+                }
+
+                List<ElementId> lowerPriorityIds = new List<ElementId>();
+                foreach (CategoryItem ss in groupCategory._categoryShow)
+                {
+                    if (cate.index >= ss.index)
+                        continue;
+                    lowerPriorityIds.AddRange(ss._listElementId);
+                }
+
+                if (lowerPriorityIds.Count == 0 || cate._listElementId == null)
+                    continue;
+
+                foreach (ElementId elementId in cate._listElementId)
+                {
+                    Element element = doc.GetElement(elementId);
+                    if (element != null && HasJoinedPartnerAmong(doc, element, lowerPriorityIds))
+                        count++;
+                }
+            }
+
+            return count;
         }
     }
 }
