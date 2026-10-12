@@ -841,7 +841,7 @@ namespace ADSK.JExtRAC.ParameterFilter.Components
         public List<ObjectElement> GetDataElement(List<Element> elemSet)
         {
             List<ObjectElement> retVal = new List<ObjectElement>();
-            string strOrder = "＜なし＞";
+            string strOrder = new Attribute().ResourceText("IDS_TXT_OTHER");
 
             foreach (Element elem in (IEnumerable<Element>)elemSet)
             {
