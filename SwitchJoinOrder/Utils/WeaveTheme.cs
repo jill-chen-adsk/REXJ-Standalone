@@ -17,11 +17,13 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Utils
 
             ApplyPalette(window.Resources);
 
-            window.SetResourceReference(Window.BackgroundProperty, "Weave.Brush.Surface");
             window.SetResourceReference(Window.ForegroundProperty, "Weave.Brush.Text.Primary");
 
+            // Chrome windows keep a transparent background so their rounded outer border shows.
             if (window is IWeaveChromeWindow chrome)
                 WeaveWindowChrome.ApplyTheme(chrome);
+            else
+                window.SetResourceReference(Window.BackgroundProperty, "Weave.Brush.Surface");
         }
 
         public static void Apply(

@@ -107,7 +107,9 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 }
 
                 rvtUIDoc.Document.Regenerate();
-                tr.Commit();
+                // Cancelling Revit's warning dialog rolls back the whole transaction.
+                if (tr.Commit() != TransactionStatus.Committed)
+                    return Result.Cancelled;
 
                 if (unreportedCount > 0)
                 {

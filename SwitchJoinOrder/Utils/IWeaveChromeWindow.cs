@@ -52,7 +52,21 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Utils
                 }
             }
 
+            ClipToCorners(chrome.ChromeOuterBorder);
             ApplyTheme(chrome);
+        }
+
+        // Border.CornerRadius does not clip children, so the title bar fill would square off the top corners.
+        static void ClipToCorners(Border border)
+        {
+            if (border?.Child is not FrameworkElement content)
+                return;
+
+            content.SizeChanged += (_, __) =>
+            {
+                double radius = border.CornerRadius.TopLeft;
+                content.Clip = new RectangleGeometry(new Rect(content.RenderSize), radius, radius);
+            };
         }
 
         public static void SetTitle(Window window, IWeaveChromeWindow chrome, string title)
