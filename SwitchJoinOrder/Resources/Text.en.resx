@@ -259,4 +259,20 @@ ty</value>
   <data name="IDS_TXT_UP" xml:space="preserve">
     <value>Up</value>
   </data>
+  <data name="IDS_TXT_JOIN_REFUSED" xml:space="preserve">
+    <value>Join Adjustment could not join these elements or switch their join order.</value>
+  </data>
+  <data name="IDS_TXT_JOIN_REFUSED_COUNT" xml:space="preserve">
+    <value>{0} element pair(s) could not be joined or have their join order switched.</value>
+  </data>
+  <data name="IDS_TXT_PRIORITY_HINT" xml:space="preserve">
+    <value>High ↑
+Low ↓</value>
+  </data>
+  <data name="IDS_TXT_TOOLTIP_PRIORITY_UP" xml:space="preserve">
+    <value>Move up (higher join priority)</value>
+  </data>
+  <data name="IDS_TXT_TOOLTIP_PRIORITY_DOWN" xml:space="preserve">
+    <value>Move down (lower join priority)</value>
+  </data>
 </root>

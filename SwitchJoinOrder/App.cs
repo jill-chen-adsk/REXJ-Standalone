@@ -12,6 +12,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder
         public Result OnStartup(UIControlledApplication application)
         {
             CultureHelper.InitializeCulture();
+            JoinFailures.Register(new Components.Attribute().ResourceText("IDS_TXT_JOIN_REFUSED"));
 
             string tabName = "REXJ Standalone";
             try { application.CreateRibbonTab(tabName); } catch { }

@@ -1,6 +1,7 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using ADSK.JExtRAC.JoinOrderInspector.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,10 +11,11 @@ using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using WpfGrid = System.Windows.Controls.Grid;
 
 namespace ADSK.JExtRAC.JoinOrderInspector.UI
 {
-    public partial class JoinOrderInspectWindow : Window
+    public partial class JoinOrderInspectWindow : Window, IWeaveChromeWindow
     {
         private readonly UIDocument _uidoc;
         private readonly Document _doc;
@@ -22,6 +24,7 @@ namespace ADSK.JExtRAC.JoinOrderInspector.UI
         public JoinOrderInspectWindow(UIApplication uiapp)
         {
             InitializeComponent();
+            Style = (Style)FindResource("Weave.ChromeWindow");
 
             _uidoc = uiapp.ActiveUIDocument;
             _doc = _uidoc.Document;
@@ -29,11 +32,17 @@ namespace ADSK.JExtRAC.JoinOrderInspector.UI
                 "ADSK.JExtRAC.JoinOrderInspector.Resources.Text",
                 Assembly.GetExecutingAssembly());
 
-            this.Topmost = true;
-
             SetLocalizedText();
+            WeaveTheme.Apply(this, this, Title, Close);
+
             AnalyzeAndDisplayResults();
         }
+
+        public Border ChromeOuterBorder => chromeOuterBorder;
+        public WpfGrid ChromeTitleBar => chromeTitleBar;
+        public Border ChromeDivider => chromeDivider;
+        public TextBlock ChromeTitleText => chromeTitleText;
+        public Button ChromeCloseButton => chromeCloseButton;
 
         private string Res(string key)
         {
@@ -42,7 +51,9 @@ namespace ADSK.JExtRAC.JoinOrderInspector.UI
 
         private void SetLocalizedText()
         {
-            this.Title = Res("IDS_WINDOW_TITLE");
+            string title = Res("IDS_WINDOW_TITLE");
+            Title = title;
+            WeaveWindowChrome.SetTitle(this, this, title);
             legendSelected.Text = Res("IDS_LEGEND_SELECTED");
             legendCutting.Text = Res("IDS_LEGEND_CUTTING");
             legendCutBy.Text = Res("IDS_LEGEND_CUT_BY");
@@ -130,19 +141,28 @@ namespace ADSK.JExtRAC.JoinOrderInspector.UI
             ogs.SetSurfaceForegroundPatternId(fillPattern.Id);
             ogs.SetCutForegroundPatternId(fillPattern.Id);
 
-            ogs.SetSurfaceForegroundPatternColor(new Color(255, 255, 101));
-            ogs.SetCutForegroundPatternColor(new Color(221, 221, 0));
+            SetFillColor(ogs, "Weave.Color.Legend.Selected");
             _doc.ActiveView.SetElementOverrides(selectedElem.Id, ogs);
 
-            ogs.SetSurfaceForegroundPatternColor(new Color(255, 153, 153));
-            ogs.SetCutForegroundPatternColor(new Color(206, 89, 89));
+            SetFillColor(ogs, "Weave.Color.Legend.Cutting");
             foreach (Element elem in cuttingElements)
                 _doc.ActiveView.SetElementOverrides(elem.Id, ogs);
 
-            ogs.SetSurfaceForegroundPatternColor(new Color(101, 178, 255));
-            ogs.SetCutForegroundPatternColor(new Color(48, 109, 255));
+            SetFillColor(ogs, "Weave.Color.Legend.CutBy");
             foreach (Element elem in cutByElements)
                 _doc.ActiveView.SetElementOverrides(elem.Id, ogs);
+        }
+
+        private void SetFillColor(OverrideGraphicSettings ogs, string legendColorKey)
+        {
+            ogs.SetSurfaceForegroundPatternColor(GetLegendColor(legendColorKey));
+            ogs.SetCutForegroundPatternColor(GetLegendColor(legendColorKey + ".Border"));
+        }
+
+        private Color GetLegendColor(string key)
+        {
+            var legend = (System.Windows.Media.Color)FindResource(key);
+            return new Color(legend.R, legend.G, legend.B);
         }
 
         private void DisplayResults(Element selectElem,

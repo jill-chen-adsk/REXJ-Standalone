@@ -7,7 +7,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>ADSK.JExtRAC.SwitchJoinOrder</RootNamespace>
     <AssemblyName>ADSK.JExtRAC.SwitchJoinOrder</AssemblyName>
-    <UseWindowsForms>true</UseWindowsForms>
     <UseWpf>true</UseWpf>
     <Platforms>x64</Platforms>
     <PlatformTarget>x64</PlatformTarget>
@@ -56,24 +55,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Image.resx</DependentUpon>
     </Compile>
-    <Compile Update="UI\FormSwitchJoin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="UI\FormSwitchJoin.Designer.cs">
-      <DependentUpon>FormSwitchJoin.cs</DependentUpon>
-    </Compile>
-    <Compile Update="UI\FormSettingDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="UI\FormSettingDetail.Designer.cs">
-      <DependentUpon>FormSettingDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Update="UI\FormLog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="UI\FormLog.Designer.cs">
-      <DependentUpon>FormLog.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -87,15 +68,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Text.en.resx" />
-    <EmbeddedResource Update="UI\FormSwitchJoin.resx">
-      <DependentUpon>FormSwitchJoin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="UI\FormSettingDetail.resx">
-      <DependentUpon>FormSettingDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="UI\FormLog.resx">
-      <DependentUpon>FormLog.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

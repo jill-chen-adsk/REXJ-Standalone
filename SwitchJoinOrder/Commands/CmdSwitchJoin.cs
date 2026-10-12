@@ -4,6 +4,7 @@ using ADSK.JExtRAC.SwitchJoinOrder.Utils;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Windows;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using RvtExtApp = ADSK.JExtRAC.SwitchJoinOrder;
@@ -21,12 +22,15 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            try
+            {
             CultureHelper.InitializeCulture();
 
             _rvtUIApp = commandData.Application;
             UIDocument rvtUIDoc = _rvtUIApp.ActiveUIDocument;
             RvtExtApp.Components.Attribute cmpAttribute = new RvtExtApp.Components.Attribute();
             RvtExtApp.Components.Elements cmpElements = new RvtExtApp.Components.Elements(rvtUIDoc);
+            IntPtr ownerHandle = _rvtUIApp.MainWindowHandle;
 
             Result retExtCom = Result.Succeeded;
 
@@ -34,41 +38,42 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
 
             if (listElement == null || listElement.Count == 0)
             {
-                System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_TXT_INFORMATION"), cmpAttribute.ResourceText("IDS_TXT_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
+                WeaveDialogHost.ShowMessage(
+                    ownerHandle,
+                    cmpAttribute.ResourceText("IDS_TXT_INFORMATION"),
+                    cmpAttribute.ResourceText("IDS_TXT_ERROR"),
+                    cmpAttribute.ResourceText("IDS_TXT_OK"));
                 return Result.Failed;
             }
 
             CategoryItems groupCategory = cmpElements.GroupingData(rvtUIDoc.Document, listElement);
 
-            RvtExtApp.UI.FormSwitchJoin form = new RvtExtApp.UI.FormSwitchJoin(rvtUIDoc.Document, cmpAttribute, groupCategory);
-
-            foreach (System.Windows.Forms.Form openedForm in System.Windows.Forms.Application.OpenForms)
-            {
-                if (openedForm.GetType().Name == form.Name)
-                    return Result.Failed;
-            }
-            if (form.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            var form = new FormSwitchJoinWPF(rvtUIDoc.Document, cmpAttribute, groupCategory);
+            if (WeaveDialogHost.ShowDialog(form, ownerHandle) != true)
                 return Result.Cancelled;
 
+            Transaction tr = null;
             try
             {
-                bool isJoinGeometry = !form.GetChecked;
-                System.Text.StringBuilder strLog = new System.Text.StringBuilder();
+                bool processOnlyJoined = form.GetChecked;
+                bool isJoinGeometry = !processOnlyJoined;
+                var refusedPairs = new HashSet<(ElementId First, ElementId Second)>();
                 m_DicSolidsElement.Clear();
 
-                int numProgress = groupCategory.CountEle();
+                int numProgress = CountProcessingSteps(rvtUIDoc.Document, groupCategory, processOnlyJoined);
                 int cntProgress = 0;
 
-                ProgressDialog progressDialog = new ProgressDialog(cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), numProgress);
+                using ProgressDialog progressDialog = new ProgressDialog(cmpAttribute.ResourceText("IDS_TXT_PROGESSBAR"), numProgress);
+                progressDialog.SetOwner(ownerHandle);
                 progressDialog.ShowNonModal();
 
-                Transaction tr = new Transaction(cmpElements.RvtDBDoc);
+                tr = new Transaction(cmpElements.RvtDBDoc);
                 tr.Start("SwitchJoinOder");
 
                 foreach (var cate in groupCategory._categoryShow)
                 {
                     if (cate._isJoinFami)
-                        SwitchJoinFamily(rvtUIDoc, cmpAttribute, cmpElements, cate, isJoinGeometry, ref strLog, ref cntProgress, progressDialog);
+                        SwitchJoinFamily(rvtUIDoc, cmpAttribute, cmpElements, cate, processOnlyJoined, isJoinGeometry, refusedPairs, ref cntProgress, progressDialog);
 
                     List<ElementId> listElementIdFind = new List<ElementId>();
                     foreach (var ss in groupCategory._categoryShow)
@@ -80,37 +85,66 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                     if (listElementIdFind.Count == 0)
                         continue;
 
+                    var candidateSet = new HashSet<ElementId>(listElementIdFind);
                     foreach (var fistElementId in cate._listElementId)
                     {
                         var firstElement = rvtUIDoc.Document.GetElement(fistElementId) as Element;
-                        Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, false, ref strLog);
+                        if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, candidateSet))
+                            continue;
+
+                        Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, false, refusedPairs);
                         progressDialog.UpdateProgress(++cntProgress);
                     }
                 }
 
                 progressDialog.Close();
-                progressDialog.Dispose();
+
+                int unreportedCount = 0;
+                foreach (var pair in refusedPairs)
+                {
+                    if (!JoinFailures.Post(rvtUIDoc.Document, pair.First, pair.Second))
+                        unreportedCount++;
+                }
 
                 rvtUIDoc.Document.Regenerate();
-                tr.Commit();
+                // Cancelling Revit's warning dialog rolls back the whole transaction.
+                if (tr.Commit() != TransactionStatus.Committed)
+                    return Result.Cancelled;
 
-                if (strLog.Length != 0)
+                if (unreportedCount > 0)
                 {
-                    FormLog frmLog = new FormLog(cmpAttribute, strLog);
-                    frmLog.ShowDialog();
+                    WeaveDialogHost.ShowMessage(
+                        ownerHandle,
+                        string.Format(cmpAttribute.ResourceText("IDS_TXT_JOIN_REFUSED_COUNT"), unreportedCount),
+                        cmpAttribute.ResourceText("IDS_TXT_SWITCHJOINORDER"),
+                        cmpAttribute.ResourceText("IDS_TXT_OK"));
                 }
             }
             catch (Exception)
             {
+                if (tr != null && tr.HasStarted() && !tr.HasEnded())
+                    tr.RollBack();
+                throw;
+            }
+            finally
+            {
+                tr?.Dispose();
             }
 
             return retExtCom;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("SwitchJoinOrder: command failed. " + ex);
+                message = ex.Message;
+                return Result.Failed;
+            }
         }
 
         private bool SwitchJoinFamily(UIDocument rvtUIDoc,
             RvtExtApp.Components.Attribute cmpAttribute,
-            RvtExtApp.Components.Elements cmpElements, CategoryItem cate, bool isJoinGeometry,
-            ref System.Text.StringBuilder strLog,
+            RvtExtApp.Components.Elements cmpElements, CategoryItem cate, bool processOnlyJoined, bool isJoinGeometry,
+            HashSet<(ElementId First, ElementId Second)> refusedPairs,
             ref int cntProgress,
             ProgressDialog progressDialog)
         {
@@ -135,10 +169,14 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                     if (listElementIdFind.Count == 0)
                         continue;
 
+                    var candidateSet = new HashSet<ElementId>(listElementIdFind);
                     foreach (var fistElementId in fami._listElementIdOfFamily)
                     {
                         var firstElement = rvtUIDoc.Document.GetElement(fistElementId) as Element;
-                        Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, true, ref strLog);
+                        if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, candidateSet))
+                            continue;
+
+                        Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, true, refusedPairs);
                         progressDialog.UpdateProgress(++cntProgress);
                     }
                 }
@@ -154,7 +192,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             List<ElementId> listElementIdFind,
             bool isJoinGeometry,
             bool isSameCategory,
-            ref System.Text.StringBuilder strLog)
+            HashSet<(ElementId First, ElementId Second)> refusedPairs)
         {
             try
             {
@@ -196,13 +234,9 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                                     {
                                         JoinGeometryUtils.JoinGeometry(rvtUIDoc.Document, secondElement, firstElement);
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
-                                        strLog.AppendLine("-----------------------");
-                                        strLog.AppendLine(ex.Message);
-                                        strLog.AppendLine("\t" + firstElement.Category.Name + ": " + (rvtUIDoc.Document.GetElement(firstElement.GetTypeId()) as ElementType)?.FamilyName + ": " + firstElement.Name + " [ID: " + firstElement.Id.ToString() + "]");
-                                        strLog.AppendLine("\t" + secondElement.Category.Name + ": " + (rvtUIDoc.Document.GetElement(secondElement.GetTypeId()) as ElementType)?.FamilyName + ": " + secondElement.Name + " [ID: " + secondElement.Id.ToString() + "]");
-                                        strLog.AppendLine("-----------------------");
+                                        refusedPairs.Add((firstElement.Id, secondElement.Id));
                                         subtr.Dispose();
                                         continue;
                                     }
@@ -248,13 +282,9 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                                 {
                                     JoinGeometryUtils.SwitchJoinOrder(rvtUIDoc.Document, firstElement, secondElement);
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
-                                    strLog.AppendLine("-----------------------");
-                                    strLog.AppendLine(ex.Message);
-                                    strLog.AppendLine("\t" + firstElement.Category.Name + ": " + (rvtUIDoc.Document.GetElement(firstElement.GetTypeId()) as ElementType)?.FamilyName + ": " + firstElement.Name + " [ID: " + firstElement.Id.ToString() + "]");
-                                    strLog.AppendLine("\t" + secondElement.Category.Name + ": " + (rvtUIDoc.Document.GetElement(secondElement.GetTypeId()) as ElementType)?.FamilyName + ": " + secondElement.Name + " [ID: " + secondElement.Id.ToString() + "]");
-                                    strLog.AppendLine("-----------------------");
+                                    refusedPairs.Add((firstElement.Id, secondElement.Id));
                                     subtr.Dispose();
                                     continue;
                                 }
@@ -265,6 +295,81 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 }
             }
             catch (Exception) { }
+        }
+
+        private static bool HasJoinedPartnerAmong(Document doc, Element element, HashSet<ElementId> candidates)
+        {
+            if (doc == null || element == null || candidates == null || candidates.Count == 0)
+                return false;
+
+            try
+            {
+                return JoinGeometryUtils.GetJoinedElements(doc, element).Any(candidates.Contains);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"SwitchJoinOrder: could not read joins for element {element.Id}. {ex.Message}");
+                return false;
+            }
+        }
+
+        private static int CountProcessingSteps(Document doc, CategoryItems groupCategory, bool processOnlyJoined)
+        {
+            if (groupCategory?._categoryShow == null || groupCategory._categoryShow.Count == 0)
+                return 0;
+
+            if (!processOnlyJoined)
+                return groupCategory.CountEle();
+
+            int count = 0;
+            for (int i = 0; i < groupCategory._categoryShow.Count; i++)
+            {
+                CategoryItem cate = groupCategory._categoryShow[i];
+
+                if (cate._isJoinFami && cate._listFamilyItem != null)
+                {
+                    foreach (FamilyItem fami in cate._listFamilyItem)
+                    {
+                        var lowerPriorityFamilyIds = new HashSet<ElementId>();
+                        foreach (FamilyItem ss in cate._listFamilyItem)
+                        {
+                            if (fami._indexFami >= ss._indexFami)
+                                continue;
+                            lowerPriorityFamilyIds.UnionWith(ss._listElementIdOfFamily);
+                        }
+
+                        if (lowerPriorityFamilyIds.Count == 0 || fami._listElementIdOfFamily == null)
+                            continue;
+
+                        foreach (ElementId elementId in fami._listElementIdOfFamily)
+                        {
+                            Element element = doc.GetElement(elementId);
+                            if (element != null && HasJoinedPartnerAmong(doc, element, lowerPriorityFamilyIds))
+                                count++;
+                        }
+                    }
+                }
+
+                var lowerPriorityIds = new HashSet<ElementId>();
+                foreach (CategoryItem ss in groupCategory._categoryShow)
+                {
+                    if (cate.index >= ss.index)
+                        continue;
+                    lowerPriorityIds.UnionWith(ss._listElementId);
+                }
+
+                if (lowerPriorityIds.Count == 0 || cate._listElementId == null)
+                    continue;
+
+                foreach (ElementId elementId in cate._listElementId)
+                {
+                    Element element = doc.GetElement(elementId);
+                    if (element != null && HasJoinedPartnerAmong(doc, element, lowerPriorityIds))
+                        count++;
+                }
+            }
+
+            return count;
         }
     }
 }
