@@ -57,7 +57,8 @@ namespace ADSK.JExtRAC.CheckingALVS.AirVentilation
                 string retMsg = cmpService.WorkFlow(2);
                 if (retMsg != null)
                 {
-                    System.Windows.Forms.MessageBox.Show(retMsg);
+                    WeaveDialogHost.ShowMessage(rvtUIApp.MainWindowHandle, retMsg,
+                        CheckingCommandTitles.GetCommandTitle(cmpAttribute, 2), cmpAttribute.ResourceText("IDS_TXT_OK"));
                     retExtCom = Revit.UI.Result.Failed;
                 }
                 retExtCom = Revit.UI.Result.Succeeded;
@@ -67,7 +68,8 @@ namespace ADSK.JExtRAC.CheckingALVS.AirVentilation
                 string errMsg = cmpAttribute.ResourceText("IDS_ERR_COMMAND")
                     + System.Environment.NewLine + System.Environment.NewLine
                     + ex.GetType().Name + ": " + ex.Message;
-                System.Windows.Forms.MessageBox.Show(errMsg);
+                WeaveDialogHost.ShowMessage(rvtUIApp.MainWindowHandle, errMsg,
+                    CheckingCommandTitles.GetCommandTitle(cmpAttribute, 2), cmpAttribute.ResourceText("IDS_TXT_OK"));
             }
 
             cmpParameters.SetSharedParamDefault();

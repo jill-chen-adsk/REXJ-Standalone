@@ -39,6 +39,9 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         /// <summary>データテーブル - エクセル</summary>
         private RvtExtApp.Entities.DtExcel _EntDtExcel;
 
+        /// <summary>Title for message dialogs shown during WorkFlow</summary>
+        private string _CommandTitle = string.Empty;
+
         #endregion Memeber Variables
 
         // コンストラクタ
@@ -470,6 +473,12 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         ///          <p>2012/04/30 Modified GSA,Inc. Shinichi Ishii</p></history>
         /// ================================================================================
         private
+        bool ConfirmYesNo(string message)
+        {
+            return WeaveDialogHost.Confirm(IntPtr.Zero, message, _CommandTitle,
+                _CmpAttribute.ResourceText("IDS_TXT_YES"), _CmpAttribute.ResourceText("IDS_TXT_NO"));
+        }
+
         void SetExcelData(UtilExcel utilExcel,
                           RvtExtApp.Entities.DtExcel entDtExcel,
                           bool chkCreateHeader)
@@ -495,10 +504,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
 
             if (utilExcel.FlagNewXlsbook == false)
             {
-                if (System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_EXCELUPDATE"),
-                                                         "",
-                                                         System.Windows.Forms.MessageBoxButtons.YesNo) ==
-                                                         System.Windows.Forms.DialogResult.No)
+                if (!ConfirmYesNo(_CmpAttribute.ResourceText("IDS_ERR_EXCELUPDATE")))
                 {
                     utilExcel.SetExcelWorkbook(null);
                 }
@@ -629,6 +635,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         string WorkFlow(int commandKind)
         {
             string ret = null;
+            _CommandTitle = CheckingCommandTitles.GetCommandTitle(_CmpAttribute, commandKind);
 
             // Excelユーティリティ
             // 既存
@@ -702,7 +709,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                                                  30);
                 if (entDtCmd.ErrMsg != "")
                 {
-                    System.Windows.Forms.MessageBox.Show(entDtCmd.ErrMsg);
+                    WeaveDialogHost.ShowMessage(IntPtr.Zero, entDtCmd.ErrMsg, _CommandTitle, _CmpAttribute.ResourceText("IDS_TXT_OK"));
 
                     trans.RollBack();
                     _CmpParameters.SetSharedParamDefault();
@@ -719,10 +726,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                 Collections.Generic.IList<string> roomAreas;
                 if (GetRoomArea(selSetRooms, ref roomLglAreas, ref roomRvtAreas) == false)
                 {
-                    if (System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_ROOMNOLEGALAREA"),
-                                                             "",
-                                                             System.Windows.Forms.MessageBoxButtons.YesNo) ==
-                        System.Windows.Forms.DialogResult.No)
+                    if (!ConfirmYesNo(_CmpAttribute.ResourceText("IDS_ERR_ROOMNOLEGALAREA")))
                     {
                         
                         _CmpParameters.SetSharedParamDefault();

@@ -759,6 +759,18 @@
     <value>OK</value>
     <comment>文字 OK</comment>
   </data>
+  <data name="IDS_TXT_YES" xml:space="preserve">
+    <value>はい</value>
+    <comment>文字 はい</comment>
+  </data>
+  <data name="IDS_TXT_NO" xml:space="preserve">
+    <value>いいえ</value>
+    <comment>文字 いいえ</comment>
+  </data>
+  <data name="IDS_ERR_NOVISIBLEOPENINGS" xml:space="preserve">
+    <value>選択した部屋に表示されている建具がありません。</value>
+    <comment>エラー 表示建具なし</comment>
+  </data>
   <data name="IDS_TXT_OPENCOEFF" xml:space="preserve">
     <value>開口係数</value>
     <comment>文字 開口係数</comment>

@@ -34,6 +34,28 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
             return dialog.ShowDialog();
         }
 
+        public static void ShowMessage(IntPtr ownerHandle, string message, string title, string okText = "OK")
+        {
+            ShowDialog(new WeaveMessageDialog(message, title, okText), OwnerOrRevit(ownerHandle));
+        }
+
+        public static void ShowMessage(Window owner, string message, string title, string okText = "OK")
+        {
+            ShowDialog(new WeaveMessageDialog(message, title, okText) { Owner = owner });
+        }
+
+        public static bool Confirm(IntPtr ownerHandle, string message, string title, string yesText, string noText)
+        {
+            return ShowDialog(new WeaveMessageDialog(message, title, yesText, noText), OwnerOrRevit(ownerHandle)) == true;
+        }
+
+        static IntPtr OwnerOrRevit(IntPtr ownerHandle)
+        {
+            return ownerHandle != IntPtr.Zero
+                ? ownerHandle
+                : System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
+        }
+
         public static DialogResult ShowWinFormsDialog(Form form, Window owner = null)
         {
             if (form == null)

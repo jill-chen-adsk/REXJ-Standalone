@@ -38,7 +38,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
             WeaveWindowChrome.Initialize(window, chrome, title, onClose, showCloseButton);
         }
 
-        static void ApplyPalette(ResourceDictionary resources)
+        internal static void ApplyPalette(ResourceDictionary resources)
         {
             if (IsDarkTheme)
             {
