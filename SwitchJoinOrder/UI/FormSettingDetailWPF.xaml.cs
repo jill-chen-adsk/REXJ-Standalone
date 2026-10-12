@@ -210,26 +210,14 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
 
         private void BtnUp_Click(object sender, RoutedEventArgs e)
         {
-            int idx = listPriority.SelectedIndex;
-            if (idx <= 0)
-                return;
-
-            _categoryItem.SwapFml(idx, idx - 1);
-            PriorityRows.Move(idx, idx - 1);
-            listPriority.SelectedIndex = idx - 1;
-            MarkDirty();
+            if (PriorityListActions.MoveSelected(listPriority, PriorityRows, -1, _categoryItem.SwapFml))
+                MarkDirty();
         }
 
         private void BtnDown_Click(object sender, RoutedEventArgs e)
         {
-            int idx = listPriority.SelectedIndex;
-            if (idx < 0 || idx >= PriorityRows.Count - 1)
-                return;
-
-            _categoryItem.SwapFml(idx + 1, idx);
-            PriorityRows.Move(idx, idx + 1);
-            listPriority.SelectedIndex = idx + 1;
-            MarkDirty();
+            if (PriorityListActions.MoveSelected(listPriority, PriorityRows, 1, _categoryItem.SwapFml))
+                MarkDirty();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -258,7 +246,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
 
         private void ListAvailable_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (listAvailable.SelectedItem is PriorityListRow row)
+            if (PriorityListActions.IsItemDoubleClick(listAvailable, e) && listAvailable.SelectedItem is PriorityListRow row)
             {
                 AvailableRows.Remove(row);
                 if (row.Tag is FamilyItem familyItem)
@@ -269,7 +257,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
 
         private void ListPriority_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (listPriority.SelectedItem is PriorityListRow row)
+            if (PriorityListActions.IsItemDoubleClick(listPriority, e) && listPriority.SelectedItem is PriorityListRow row)
             {
                 PriorityRows.Remove(row);
                 if (row.Tag is FamilyItem familyItem)

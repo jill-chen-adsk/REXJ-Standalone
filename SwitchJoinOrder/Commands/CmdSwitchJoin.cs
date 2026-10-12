@@ -302,13 +302,15 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             if (doc == null || element == null || candidates == null || candidates.Count == 0)
                 return false;
 
-            foreach (ElementId joinedId in JoinGeometryUtils.GetJoinedElements(doc, element))
+            try
             {
-                if (candidates.Contains(joinedId))
-                    return true;
+                return JoinGeometryUtils.GetJoinedElements(doc, element).Any(candidates.Contains);
             }
-
-            return false;
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"SwitchJoinOrder: could not read joins for element {element.Id}. {ex.Message}");
+                return false;
+            }
         }
 
         private static int CountProcessingSteps(Document doc, CategoryItems groupCategory, bool processOnlyJoined)
