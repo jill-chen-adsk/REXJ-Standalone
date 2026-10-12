@@ -38,6 +38,11 @@ Each tool has an `.addin` file that references `<ToolFolder>\<Assembly>.dll`. Pl
 If you have Inno Setup 6 installed:
 
 ```
+dotnet build REXJ-Standalone.sln -c "Release 2027" -p:Platform=x64
+powershell -ExecutionPolicy Bypass -File Tools\Stage-InstallerPayload.ps1
+# Optional, only if some tools were not rebuilt and you have a prior Released tree
+# (must not be this repo's own Released\ folder; use e.g. deploy output):
+# powershell -ExecutionPolicy Bypass -File Tools\Stage-InstallerPayload.ps1 -FallbackReleased C:\REXJ\Standalone\Released
 "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" REXJ_Installer.iss
 ```
 
