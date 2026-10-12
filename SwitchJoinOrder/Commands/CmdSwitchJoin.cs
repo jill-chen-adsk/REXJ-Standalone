@@ -64,7 +64,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             {
                 bool processOnlyJoined = form.GetChecked;
                 bool isJoinGeometry = !processOnlyJoined;
-                System.Text.StringBuilder strLog = new System.Text.StringBuilder();
+                var refusedPairs = new List<ElementId[]>();
                 m_DicSolidsElement.Clear();
 
                 int numProgress = CountProcessingSteps(rvtUIDoc.Document, groupCategory, processOnlyJoined);
@@ -80,7 +80,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 foreach (var cate in groupCategory._categoryShow)
                 {
                     if (cate._isJoinFami)
-                        SwitchJoinFamily(rvtUIDoc, cmpAttribute, cmpElements, cate, processOnlyJoined, isJoinGeometry, ref strLog, ref cntProgress, progressDialog);
+                        SwitchJoinFamily(rvtUIDoc, cmpAttribute, cmpElements, cate, processOnlyJoined, isJoinGeometry, refusedPairs, ref cntProgress, progressDialog);
 
                     List<ElementId> listElementIdFind = new List<ElementId>();
                     foreach (var ss in groupCategory._categoryShow)
@@ -98,21 +98,18 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                         if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, listElementIdFind))
                             continue;
 
-                        Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, false, ref strLog);
+                        Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, false, refusedPairs);
                         progressDialog.UpdateProgress(++cntProgress);
                     }
                 }
 
                 progressDialog.Close();
 
+                foreach (ElementId[] pair in refusedPairs)
+                    JoinFailures.Post(rvtUIDoc.Document, pair[0], pair[1]);
+
                 rvtUIDoc.Document.Regenerate();
                 tr.Commit();
-
-                if (strLog.Length != 0)
-                {
-                    var frmLog = new FormLogWPF(cmpAttribute, strLog);
-                    WeaveDialogHost.ShowDialog(frmLog, ownerHandle);
-                }
             }
             catch (Exception)
             {
@@ -137,7 +134,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
         private bool SwitchJoinFamily(UIDocument rvtUIDoc,
             RvtExtApp.Components.Attribute cmpAttribute,
             RvtExtApp.Components.Elements cmpElements, CategoryItem cate, bool processOnlyJoined, bool isJoinGeometry,
-            ref System.Text.StringBuilder strLog,
+            List<ElementId[]> refusedPairs,
             ref int cntProgress,
             ProgressDialog progressDialog)
         {
@@ -168,7 +165,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                         if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, listElementIdFind))
                             continue;
 
-                        Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, true, ref strLog);
+                        Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, true, refusedPairs);
                         progressDialog.UpdateProgress(++cntProgress);
                     }
                 }
@@ -184,7 +181,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             List<ElementId> listElementIdFind,
             bool isJoinGeometry,
             bool isSameCategory,
-            ref System.Text.StringBuilder strLog)
+            List<ElementId[]> refusedPairs)
         {
             try
             {
@@ -226,13 +223,9 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                                     {
                                         JoinGeometryUtils.JoinGeometry(rvtUIDoc.Document, secondElement, firstElement);
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
-                                        strLog.AppendLine("-----------------------");
-                                        strLog.AppendLine(ex.Message);
-                                        strLog.AppendLine("\t" + firstElement.Category.Name + ": " + (rvtUIDoc.Document.GetElement(firstElement.GetTypeId()) as ElementType)?.FamilyName + ": " + firstElement.Name + " [ID: " + firstElement.Id.ToString() + "]");
-                                        strLog.AppendLine("\t" + secondElement.Category.Name + ": " + (rvtUIDoc.Document.GetElement(secondElement.GetTypeId()) as ElementType)?.FamilyName + ": " + secondElement.Name + " [ID: " + secondElement.Id.ToString() + "]");
-                                        strLog.AppendLine("-----------------------");
+                                        refusedPairs.Add(new[] { firstElement.Id, secondElement.Id });
                                         subtr.Dispose();
                                         continue;
                                     }
@@ -278,13 +271,9 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                                 {
                                     JoinGeometryUtils.SwitchJoinOrder(rvtUIDoc.Document, firstElement, secondElement);
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
-                                    strLog.AppendLine("-----------------------");
-                                    strLog.AppendLine(ex.Message);
-                                    strLog.AppendLine("\t" + firstElement.Category.Name + ": " + (rvtUIDoc.Document.GetElement(firstElement.GetTypeId()) as ElementType)?.FamilyName + ": " + firstElement.Name + " [ID: " + firstElement.Id.ToString() + "]");
-                                    strLog.AppendLine("\t" + secondElement.Category.Name + ": " + (rvtUIDoc.Document.GetElement(secondElement.GetTypeId()) as ElementType)?.FamilyName + ": " + secondElement.Name + " [ID: " + secondElement.Id.ToString() + "]");
-                                    strLog.AppendLine("-----------------------");
+                                    refusedPairs.Add(new[] { firstElement.Id, secondElement.Id });
                                     subtr.Dispose();
                                     continue;
                                 }

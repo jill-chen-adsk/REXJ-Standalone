@@ -77,20 +77,6 @@
         <Setter Property="CaretBrush" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
-
-    <Style x:Key="Weave.RichTextBox" TargetType="RichTextBox">
-        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Input}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Padding" Value="12,8"/>
-        <Setter Property="FontFamily" Value="Consolas"/>
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
-    </Style>
-
     <Style x:Key="Weave.ComboBoxItem" TargetType="ComboBoxItem">
         <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
         <Setter Property="Background" Value="{DynamicResource Weave.Brush.Input}"/>
