@@ -75,7 +75,8 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
                 return;
 
             var listAllName = new List<string>();
-            string setting = SwitchJoinSettingsStore.Get(Name, listPriority.Name, "");
+            string setting = SwitchJoinSettingsStore.Get(
+                SwitchJoinSettingsStore.FamilyPrioritySection, SwitchJoinSettingsStore.PriorityKey, "");
             if (!string.IsNullOrEmpty(setting))
                 listAllName.AddRange(setting.Split(','));
 
@@ -165,7 +166,8 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
 
         private void SaveSetting()
         {
-            string setting = SwitchJoinSettingsStore.Get(Name, listPriority.Name, "");
+            string setting = SwitchJoinSettingsStore.Get(
+                SwitchJoinSettingsStore.FamilyPrioritySection, SwitchJoinSettingsStore.PriorityKey, "");
             if (!string.IsNullOrEmpty(setting))
             {
                 foreach (var item in setting.Split(','))
@@ -202,7 +204,8 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
             string retSave = _host.ListValueSetting.Count > 0
                 ? string.Join(",", _host.ListValueSetting)
                 : string.Empty;
-            SwitchJoinSettingsStore.Save(Name, listPriority.Name, retSave);
+            SwitchJoinSettingsStore.Save(
+                SwitchJoinSettingsStore.FamilyPrioritySection, SwitchJoinSettingsStore.PriorityKey, retSave);
         }
 
         private void BtnUp_Click(object sender, RoutedEventArgs e)

@@ -59,6 +59,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             if (WeaveDialogHost.ShowDialog(form, ownerHandle) != true)
                 return Result.Cancelled;
 
+            Transaction tr = null;
             try
             {
                 bool processOnlyJoined = form.GetChecked;
@@ -73,7 +74,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 progressDialog.SetOwner(ownerHandle);
                 progressDialog.ShowNonModal();
 
-                Transaction tr = new Transaction(cmpElements.RvtDBDoc);
+                tr = new Transaction(cmpElements.RvtDBDoc);
                 tr.Start("SwitchJoinOder");
 
                 foreach (var cate in groupCategory._categoryShow)
@@ -115,6 +116,13 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             }
             catch (Exception)
             {
+                if (tr != null && tr.HasStarted() && !tr.HasEnded())
+                    tr.RollBack();
+                throw;
+            }
+            finally
+            {
+                tr?.Dispose();
             }
 
             return retExtCom;
@@ -313,7 +321,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 return groupCategory.CountEle();
 
             int count = 0;
-            for (int i = 0; i < groupCategory._categoryShow.Count - 1; i++)
+            for (int i = 0; i < groupCategory._categoryShow.Count; i++)
             {
                 CategoryItem cate = groupCategory._categoryShow[i];
 

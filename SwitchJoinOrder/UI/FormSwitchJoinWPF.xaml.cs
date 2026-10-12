@@ -63,7 +63,10 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
 
         public void OpenFamilyDetail(CategoryItem categoryItem)
         {
-            var detail = new FormSettingDetailWPF(this, _doc, _cmpAttribute, categoryItem);
+            var detail = new FormSettingDetailWPF(this, _doc, _cmpAttribute, categoryItem)
+            {
+                Owner = this
+            };
             WeaveDialogHost.ShowDialog(detail);
         }
 
@@ -91,7 +94,8 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
                 return;
 
             var listAllName = new List<string>();
-            string setting = SwitchJoinSettingsStore.Get(Name, listPriority.Name, "");
+            string setting = SwitchJoinSettingsStore.Get(
+                SwitchJoinSettingsStore.CategoryPrioritySection, SwitchJoinSettingsStore.PriorityKey, "");
             if (!string.IsNullOrEmpty(setting))
             {
                 string[] strArray = setting.Split(',');
@@ -245,7 +249,8 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.UI
         {
             string retSave = string.Join(",", PriorityRows.Select(r => (r.Tag as CategoryItem)?._name).Where(n => !string.IsNullOrEmpty(n)));
             if (!string.IsNullOrEmpty(retSave))
-                SwitchJoinSettingsStore.Save(Name, listPriority.Name, retSave);
+                SwitchJoinSettingsStore.Save(
+                    SwitchJoinSettingsStore.CategoryPrioritySection, SwitchJoinSettingsStore.PriorityKey, retSave);
 
             GetData();
             DialogResult = true;

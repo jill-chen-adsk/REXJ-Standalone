@@ -5,6 +5,11 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Utils
 {
     internal static class SwitchJoinSettingsStore
     {
+        // Must match the WinForms Form/DataGridView names used by earlier releases so saved priorities still load.
+        public const string CategoryPrioritySection = "FormSwitchJoin";
+        public const string FamilyPrioritySection = "FormSettingDetail";
+        public const string PriorityKey = "dgvRight";
+
         private static string RegistryBasePath =>
             @"Software\VB and VBA Program Settings\" + Assembly.GetExecutingAssembly().GetName().Name;
 
