@@ -127,7 +127,7 @@
                             </Button>
                             <TextBlock Grid.Column="1"
                                        Text="{Binding Info}"
-                                       Style="{StaticResource Weave.BodyText}"
+                                       Style="{StaticResource Weave.ListViewTextBlock}"
                                        TextWrapping="Wrap"/>
                         </Grid>
                     </DataTemplate>

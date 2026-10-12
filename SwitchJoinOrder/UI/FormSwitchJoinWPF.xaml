@@ -107,7 +107,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}"
-                                       Style="{StaticResource Weave.BodyText}"
+                                       Style="{StaticResource Weave.ListViewTextBlock}"
                                        TextTrimming="CharacterEllipsis"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -155,11 +155,11 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0"
                                            Text="{Binding Name}"
-                                           Style="{StaticResource Weave.BodyText}"
+                                           Style="{StaticResource Weave.ListViewTextBlock}"
                                            TextTrimming="CharacterEllipsis"/>
                                 <TextBlock Grid.Column="1"
                                            Text="{Binding Count}"
-                                           Style="{StaticResource Weave.HintText}"
+                                           Style="{StaticResource Weave.ListViewTextBlock.Secondary}"
                                            HorizontalAlignment="Right"/>
                             </Grid>
                         </DataTemplate>

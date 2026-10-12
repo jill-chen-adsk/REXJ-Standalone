@@ -16,7 +16,6 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
     public class CmdSwitchJoin : IExternalCommand
     {
         public static UIApplication _rvtUIApp;
-        private static FormSwitchJoinWPF _openDialog;
 
         private Dictionary<ElementId, List<Solid>> m_DicSolidsElement =
             new Dictionary<ElementId, List<Solid>>();
@@ -47,15 +46,9 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 return Result.Failed;
             }
 
-            if (_openDialog != null)
-                return Result.Failed;
-
             CategoryItems groupCategory = cmpElements.GroupingData(rvtUIDoc.Document, listElement);
 
             var form = new FormSwitchJoinWPF(rvtUIDoc.Document, cmpAttribute, groupCategory);
-            _openDialog = form;
-            form.Closed += (_, __) => _openDialog = null;
-
             if (WeaveDialogHost.ShowDialog(form, ownerHandle) != true)
                 return Result.Cancelled;
 
@@ -92,10 +85,11 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                     if (listElementIdFind.Count == 0)
                         continue;
 
+                    var candidateSet = new HashSet<ElementId>(listElementIdFind);
                     foreach (var fistElementId in cate._listElementId)
                     {
                         var firstElement = rvtUIDoc.Document.GetElement(fistElementId) as Element;
-                        if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, listElementIdFind))
+                        if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, candidateSet))
                             continue;
 
                         Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, false, refusedPairs);
@@ -159,10 +153,11 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                     if (listElementIdFind.Count == 0)
                         continue;
 
+                    var candidateSet = new HashSet<ElementId>(listElementIdFind);
                     foreach (var fistElementId in fami._listElementIdOfFamily)
                     {
                         var firstElement = rvtUIDoc.Document.GetElement(fistElementId) as Element;
-                        if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, listElementIdFind))
+                        if (processOnlyJoined && !HasJoinedPartnerAmong(rvtUIDoc.Document, firstElement, candidateSet))
                             continue;
 
                         Join(cmpElements, firstElement, listElementIdFind, isJoinGeometry, true, refusedPairs);
@@ -286,12 +281,11 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             catch (Exception) { }
         }
 
-        private static bool HasJoinedPartnerAmong(Document doc, Element element, List<ElementId> candidateIds)
+        private static bool HasJoinedPartnerAmong(Document doc, Element element, HashSet<ElementId> candidates)
         {
-            if (doc == null || element == null || candidateIds == null || candidateIds.Count == 0)
+            if (doc == null || element == null || candidates == null || candidates.Count == 0)
                 return false;
 
-            var candidates = new HashSet<ElementId>(candidateIds);
             foreach (ElementId joinedId in JoinGeometryUtils.GetJoinedElements(doc, element))
             {
                 if (candidates.Contains(joinedId))
@@ -318,32 +312,32 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                 {
                     foreach (FamilyItem fami in cate._listFamilyItem)
                     {
-                        List<ElementId> listElementIdFind = new List<ElementId>();
+                        var lowerPriorityFamilyIds = new HashSet<ElementId>();
                         foreach (FamilyItem ss in cate._listFamilyItem)
                         {
                             if (fami._indexFami >= ss._indexFami)
                                 continue;
-                            listElementIdFind.AddRange(ss._listElementIdOfFamily);
+                            lowerPriorityFamilyIds.UnionWith(ss._listElementIdOfFamily);
                         }
 
-                        if (listElementIdFind.Count == 0 || fami._listElementIdOfFamily == null)
+                        if (lowerPriorityFamilyIds.Count == 0 || fami._listElementIdOfFamily == null)
                             continue;
 
                         foreach (ElementId elementId in fami._listElementIdOfFamily)
                         {
                             Element element = doc.GetElement(elementId);
-                            if (element != null && HasJoinedPartnerAmong(doc, element, listElementIdFind))
+                            if (element != null && HasJoinedPartnerAmong(doc, element, lowerPriorityFamilyIds))
                                 count++;
                         }
                     }
                 }
 
-                List<ElementId> lowerPriorityIds = new List<ElementId>();
+                var lowerPriorityIds = new HashSet<ElementId>();
                 foreach (CategoryItem ss in groupCategory._categoryShow)
                 {
                     if (cate.index >= ss.index)
                         continue;
-                    lowerPriorityIds.AddRange(ss._listElementId);
+                    lowerPriorityIds.UnionWith(ss._listElementId);
                 }
 
                 if (lowerPriorityIds.Count == 0 || cate._listElementId == null)
