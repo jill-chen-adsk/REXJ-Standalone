@@ -141,19 +141,24 @@ namespace ADSK.JExtRAC.JoinOrderInspector.UI
             ogs.SetSurfaceForegroundPatternId(fillPattern.Id);
             ogs.SetCutForegroundPatternId(fillPattern.Id);
 
-            ogs.SetSurfaceForegroundPatternColor(new Color(255, 255, 101));
-            ogs.SetCutForegroundPatternColor(new Color(221, 221, 0));
+            SetFillColor(ogs, "Weave.Color.Legend.Selected");
             _doc.ActiveView.SetElementOverrides(selectedElem.Id, ogs);
 
-            ogs.SetSurfaceForegroundPatternColor(new Color(255, 153, 153));
-            ogs.SetCutForegroundPatternColor(new Color(206, 89, 89));
+            SetFillColor(ogs, "Weave.Color.Legend.Cutting");
             foreach (Element elem in cuttingElements)
                 _doc.ActiveView.SetElementOverrides(elem.Id, ogs);
 
-            ogs.SetSurfaceForegroundPatternColor(new Color(101, 178, 255));
-            ogs.SetCutForegroundPatternColor(new Color(48, 109, 255));
+            SetFillColor(ogs, "Weave.Color.Legend.CutBy");
             foreach (Element elem in cutByElements)
                 _doc.ActiveView.SetElementOverrides(elem.Id, ogs);
+        }
+
+        private void SetFillColor(OverrideGraphicSettings ogs, string legendColorKey)
+        {
+            var legend = (System.Windows.Media.Color)FindResource(legendColorKey);
+            var color = new Color(legend.R, legend.G, legend.B);
+            ogs.SetSurfaceForegroundPatternColor(color);
+            ogs.SetCutForegroundPatternColor(color);
         }
 
         private void DisplayResults(Element selectElem,

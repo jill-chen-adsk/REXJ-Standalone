@@ -510,12 +510,13 @@
         <Setter Property="Margin" Value="12,0,16,0"/>
     </Style>
 
-    <Color x:Key="Weave.Color.Legend.Selected">#FFF9C4</Color>
-    <Color x:Key="Weave.Color.Legend.Selected.Border">#FFD54F</Color>
-    <Color x:Key="Weave.Color.Legend.Cutting">#FFCDD2</Color>
-    <Color x:Key="Weave.Color.Legend.Cutting.Border">#EF9A9A</Color>
-    <Color x:Key="Weave.Color.Legend.CutBy">#BBDEFB</Color>
-    <Color x:Key="Weave.Color.Legend.CutBy.Border">#90CAF9</Color>
+    <!-- Also used as the model-view override colors, so the legend always matches the canvas. -->
+    <Color x:Key="Weave.Color.Legend.Selected">#FFFF65</Color>
+    <Color x:Key="Weave.Color.Legend.Selected.Border">#DDDD00</Color>
+    <Color x:Key="Weave.Color.Legend.Cutting">#FF9999</Color>
+    <Color x:Key="Weave.Color.Legend.Cutting.Border">#CE5959</Color>
+    <Color x:Key="Weave.Color.Legend.CutBy">#65B2FF</Color>
+    <Color x:Key="Weave.Color.Legend.CutBy.Border">#306DFF</Color>
 
     <SolidColorBrush x:Key="Weave.Brush.Legend.Selected" Color="{StaticResource Weave.Color.Legend.Selected}"/>
     <SolidColorBrush x:Key="Weave.Brush.Legend.Selected.Border" Color="{StaticResource Weave.Color.Legend.Selected.Border}"/>
