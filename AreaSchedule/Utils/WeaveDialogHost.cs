@@ -21,6 +21,13 @@ namespace ADSK.JExtRAC.AreaSchedule.Utils
             dialog.ShowDialog();
         }
 
+        public static bool Confirm(IntPtr ownerHandle, string message, string title, string yesText, string noText)
+        {
+            var dialog = new WeaveMessageDialog(message, title, yesText, noText);
+            SetOwner(dialog, ownerHandle);
+            return dialog.ShowDialog() == true;
+        }
+
         public static bool? ShowDialog(Window dialog, IntPtr ownerHandle)
         {
             WeaveTheme.Apply(dialog);

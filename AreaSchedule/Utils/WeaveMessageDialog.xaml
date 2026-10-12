@@ -92,6 +92,12 @@
                         MinWidth="88"
                         IsDefault="True"
                         Click="BtnOK_Click"/>
+                <Button x:Name="btnCancel"
+                        Style="{StaticResource Weave.Button.Secondary}"
+                        MinWidth="88"
+                        Margin="8,0,0,0"
+                        IsCancel="True"
+                        Click="BtnCancel_Click"/>
             </StackPanel>
         </Grid>
     </Border>

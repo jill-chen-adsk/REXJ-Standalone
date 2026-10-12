@@ -168,7 +168,8 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         /// ================================================================================
         /// <summary>部屋の境界線配置タイプをチェック</summary>
         ///
-        /// <param name="type">境界線配置タイプ</param>
+        /// <param name="type"       >境界線配置タイプ</param>
+        /// <param name="ownerHandle">Revit main window handle</param>
         ///
         /// <returns><p>結果</p>
         ///             <p>True  = 処理続行</p>
@@ -177,34 +178,21 @@ namespace ADSK.JExtRAC.AreaSchedule.Components
         /// <history>2011/07/26 Created GSA,Inc. Shinichi Ishii</history>
         /// ================================================================================
         public
-        bool CheckRoomBndLocType(Revit.DB.SpatialElementBoundaryLocation type)
+        bool CheckRoomBndLocType(Revit.DB.SpatialElementBoundaryLocation type, IntPtr ownerHandle)
         {
-            bool ret = true;
-            System.Windows.Forms.DialogResult formResult;
-
+            string messageKey;
             if (type == Revit.DB.SpatialElementBoundaryLocation.CoreBoundary)
-            {
-                formResult = System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_AREAOPTWALLCORELAYE"),
-                                                                  _CmpAttribute.ResourceText("IDS_TXT_AREACALC"),
-                                                                  System.Windows.Forms.MessageBoxButtons.YesNo,
-                                                                  System.Windows.Forms.MessageBoxIcon.Warning);
-                if (formResult == System.Windows.Forms.DialogResult.No)
-                {
-                    ret = false;
-                }
-            }
+                messageKey = "IDS_ERR_AREAOPTWALLCORELAYE";
             else if (type == Revit.DB.SpatialElementBoundaryLocation.Finish)
-            {
-                formResult = System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_AREAOPTWALLFINISH"),
-                                                                  _CmpAttribute.ResourceText("IDS_TXT_AREACALC"),
-                                                                  System.Windows.Forms.MessageBoxButtons.YesNo,
-                                                                  System.Windows.Forms.MessageBoxIcon.Warning);
-                if (formResult == System.Windows.Forms.DialogResult.No)
-                {
-                    ret = false;
-                }
-            }
-            return ret;
+                messageKey = "IDS_ERR_AREAOPTWALLFINISH";
+            else
+                return true;
+
+            return Utils.WeaveDialogHost.Confirm(ownerHandle,
+                                                 _CmpAttribute.ResourceText(messageKey),
+                                                 _CmpAttribute.ResourceText("IDS_TXT_AREACALC"),
+                                                 _CmpAttribute.ResourceText("IDS_TXT_YES"),
+                                                 _CmpAttribute.ResourceText("IDS_TXT_NO"));
         }
 
         /// ================================================================================

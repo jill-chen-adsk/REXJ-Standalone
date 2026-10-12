@@ -339,6 +339,14 @@
     <value>OK</value>
     <comment>OK</comment>
   </data>
+  <data name="IDS_TXT_YES" xml:space="preserve">
+    <value>Yes</value>
+    <comment>Yes</comment>
+  </data>
+  <data name="IDS_TXT_NO" xml:space="preserve">
+    <value>No</value>
+    <comment>No</comment>
+  </data>
   <data name="IDS_TXT_ORDER" xml:space="preserve">
     <value>Order</value>
     <comment>位を</comment>

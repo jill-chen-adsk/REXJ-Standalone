@@ -152,9 +152,8 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
                                                                                            entDtRoom.EntSpRoom);
 
                 // 面積計算オプションをチェック
-                if (cmpService.CheckRoomBndLocType(entDtRoom.RoomBndLocType) == false)
+                if (cmpService.CheckRoomBndLocType(entDtRoom.RoomBndLocType, ownerHandle) == false)
                 {
-                    ShowMessage(ownerHandle, cmpAttribute, cmpAttribute.ResourceText("IDS_ERR_GETAREACALCOPT"));
                     cmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
                     transGroup.Assimilate();
