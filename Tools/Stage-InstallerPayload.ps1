@@ -18,6 +18,31 @@ if ($FallbackReleased -and -not (Test-Path $FallbackReleased)) {
 
 $releasedRoot = Join-Path $Root "Released"
 
+function Get-NormalizedDirectoryPath {
+    param([string]$Path)
+
+    if (-not $Path) {
+        return $null
+    }
+    return [System.IO.Path]::GetFullPath($Path).TrimEnd('\', '/')
+}
+
+function Test-SyncWouldWipeSource {
+    param(
+        [string]$SourceNorm,
+        [string]$DestNorm
+    )
+
+    if (-not $SourceNorm -or -not $DestNorm) {
+        return $false
+    }
+    if ($SourceNorm -ieq $DestNorm) {
+        return $true
+    }
+    $destPrefix = $DestNorm + [System.IO.Path]::DirectorySeparatorChar
+    return $SourceNorm.StartsWith($destPrefix, [StringComparison]::OrdinalIgnoreCase)
+}
+
 function Get-ToolSourceDir {
     param([string]$ToolFolder)
 
@@ -46,12 +71,24 @@ function Sync-ToolPayload {
     $source = Get-ToolSourceDir -ToolFolder $ToolFolder
     $addins = Get-ChildItem (Join-Path $Root $ToolFolder) -Filter "*.addin" -File -ErrorAction SilentlyContinue
 
+    $sourceNorm = Get-NormalizedDirectoryPath $source
+
     foreach ($dest in $DestDirs) {
-        if (Test-Path $dest) {
-            Remove-Item -Path $dest -Recurse -Force
+        $destNorm = Get-NormalizedDirectoryPath $dest
+        $wipeWouldDestroySource = Test-SyncWouldWipeSource -SourceNorm $sourceNorm -DestNorm $destNorm
+
+        if ($wipeWouldDestroySource) {
+            Write-Host "  Skipped payload wipe/copy (destination is the copy source): $ToolFolder -> $dest"
+            New-Item -ItemType Directory -Force -Path $dest | Out-Null
         }
-        New-Item -ItemType Directory -Force -Path $dest | Out-Null
-        Copy-Item -Path "$source\*" -Destination $dest -Recurse -Force
+        else {
+            if (Test-Path $dest) {
+                Remove-Item -Path $dest -Recurse -Force
+            }
+            New-Item -ItemType Directory -Force -Path $dest | Out-Null
+            Copy-Item -Path "$source\*" -Destination $dest -Recurse -Force
+        }
+
         foreach ($addin in $addins) {
             Copy-Item -Path $addin.FullName -Destination $dest -Force
         }
