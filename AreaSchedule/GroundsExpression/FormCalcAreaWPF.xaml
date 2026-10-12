@@ -171,7 +171,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="btnOK" Style="{StaticResource Weave.Button.Primary}" Content="OK" Margin="0,0,8,0"/>
-            <Button x:Name="btnCancel" Style="{StaticResource Weave.Button.Secondary}" Content="Cancel (_C)">
+            <Button x:Name="btnCancel" Style="{StaticResource Weave.Button.Secondary}" Content="Cancel">
                 <Button.InputBindings>
                     <KeyBinding Key="C" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
                 </Button.InputBindings>

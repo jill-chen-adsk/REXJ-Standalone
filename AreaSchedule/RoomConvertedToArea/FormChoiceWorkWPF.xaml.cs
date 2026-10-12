@@ -90,7 +90,7 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
             rdbUseRoomName.Content = _CmpAttribute.ResourceText("IDS_TXT_USEROOMNAME");
             rdbUseRoomNo.Content = _CmpAttribute.ResourceText("IDS_TXT_USEROOMNO");
             btnOK.Content = _CmpAttribute.ResourceText("IDS_TXT_OK");
-            btnCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL") + " (_C)";
+            btnCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL");
         }
 
         private void SetData()

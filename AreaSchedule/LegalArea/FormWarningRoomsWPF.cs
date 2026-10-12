@@ -104,7 +104,7 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
 
             // ボタンのテキストを設定
             btnOK.Content = _CmpAttribute.ResourceText("IDS_TXT_OK");
-            btnCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL") + " (_C)";
+            btnCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL");
         }
 
         private void SetData()
