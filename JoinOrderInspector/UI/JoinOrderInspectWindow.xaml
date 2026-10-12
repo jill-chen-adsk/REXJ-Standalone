@@ -82,17 +82,29 @@
                 <Border Style="{StaticResource Weave.LegendChip}"
                         Background="{DynamicResource Weave.Brush.Legend.Selected}"
                         BorderBrush="{DynamicResource Weave.Brush.Legend.Selected.Border}">
-                    <TextBlock x:Name="legendSelected" FontWeight="SemiBold" Style="{StaticResource Weave.LegendChip.Text}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource Weave.LegendChip.Swatch}"
+                                Background="{DynamicResource Weave.Brush.Legend.Selected.Border}"/>
+                        <TextBlock x:Name="legendSelected" FontWeight="SemiBold" Style="{StaticResource Weave.LegendChip.Text}"/>
+                    </StackPanel>
                 </Border>
                 <Border Style="{StaticResource Weave.LegendChip}"
                         Background="{DynamicResource Weave.Brush.Legend.Cutting}"
                         BorderBrush="{DynamicResource Weave.Brush.Legend.Cutting.Border}">
-                    <TextBlock x:Name="legendCutting" Style="{StaticResource Weave.LegendChip.Text}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource Weave.LegendChip.Swatch}"
+                                Background="{DynamicResource Weave.Brush.Legend.Cutting.Border}"/>
+                        <TextBlock x:Name="legendCutting" Style="{StaticResource Weave.LegendChip.Text}"/>
+                    </StackPanel>
                 </Border>
                 <Border Style="{StaticResource Weave.LegendChip}"
                         Background="{DynamicResource Weave.Brush.Legend.CutBy}"
                         BorderBrush="{DynamicResource Weave.Brush.Legend.CutBy.Border}">
-                    <TextBlock x:Name="legendCutBy" Style="{StaticResource Weave.LegendChip.Text}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource Weave.LegendChip.Swatch}"
+                                Background="{DynamicResource Weave.Brush.Legend.CutBy.Border}"/>
+                        <TextBlock x:Name="legendCutBy" Style="{StaticResource Weave.LegendChip.Text}"/>
+                    </StackPanel>
                 </Border>
             </StackPanel>
 

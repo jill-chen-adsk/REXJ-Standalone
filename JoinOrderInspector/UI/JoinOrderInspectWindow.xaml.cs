@@ -155,10 +155,14 @@ namespace ADSK.JExtRAC.JoinOrderInspector.UI
 
         private void SetFillColor(OverrideGraphicSettings ogs, string legendColorKey)
         {
-            var legend = (System.Windows.Media.Color)FindResource(legendColorKey);
-            var color = new Color(legend.R, legend.G, legend.B);
-            ogs.SetSurfaceForegroundPatternColor(color);
-            ogs.SetCutForegroundPatternColor(color);
+            ogs.SetSurfaceForegroundPatternColor(GetLegendColor(legendColorKey));
+            ogs.SetCutForegroundPatternColor(GetLegendColor(legendColorKey + ".Border"));
+        }
+
+        private Color GetLegendColor(string key)
+        {
+            var legend = (System.Windows.Media.Color)FindResource(key);
+            return new Color(legend.R, legend.G, legend.B);
         }
 
         private void DisplayResults(Element selectElem,
