@@ -53,21 +53,27 @@ namespace ADSK.JExtRAC.CheckingALVS.SmokeExhaustion
                                                                                            cmpElements,
                                                                                            cmpGeometry,
                                                                                            cmpParameters,
-                                                                                           cmpSettings);
+                                                                                           cmpSettings,
+                                                                                           rvtUIApp.MainWindowHandle);
                 string retMsg = cmpService.WorkFlow(1);
                 if (retMsg != null)
                 {
-                    System.Windows.Forms.MessageBox.Show(retMsg);
+                    WeaveDialogHost.ShowMessage(rvtUIApp.MainWindowHandle, retMsg,
+                        CheckingCommandTitles.GetCommandTitle(cmpAttribute, 1), cmpAttribute.ResourceText("IDS_TXT_OK"));
                     retExtCom = Revit.UI.Result.Failed;
                 }
-                retExtCom = Revit.UI.Result.Succeeded;
+                else
+                {
+                    retExtCom = Revit.UI.Result.Succeeded;
+                }
             }
             catch (System.Exception ex)
             {
                 string errMsg = cmpAttribute.ResourceText("IDS_ERR_COMMAND")
                     + System.Environment.NewLine + System.Environment.NewLine
                     + ex.GetType().Name + ": " + ex.Message;
-                System.Windows.Forms.MessageBox.Show(errMsg);
+                WeaveDialogHost.ShowMessage(rvtUIApp.MainWindowHandle, errMsg,
+                    CheckingCommandTitles.GetCommandTitle(cmpAttribute, 1), cmpAttribute.ResourceText("IDS_TXT_OK"));
             }
 
             cmpParameters.SetSharedParamDefault();

@@ -735,7 +735,7 @@ namespace ADSK.JExtRAC.CheckingALVS.UI
           !ValidateNumericValue(textBox.Text, false, out string errorMessage))
       {
         e.Cancel = true;
-        System.Windows.MessageBox.Show(this, errorMessage, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+        ShowWarning(errorMessage);
         return;
       }
 
@@ -885,7 +885,7 @@ namespace ADSK.JExtRAC.CheckingALVS.UI
     {
       if (!ValidateNumericValue(source.Text, false, out string errorMessage))
       {
-        System.Windows.MessageBox.Show(this, errorMessage, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+        ShowWarning(errorMessage);
         return;
       }
 
@@ -900,12 +900,7 @@ namespace ADSK.JExtRAC.CheckingALVS.UI
 
       if (updatedCount == 0)
       {
-        System.Windows.MessageBox.Show(
-            this,
-            "No openings are visible for the selected room.",
-            Title,
-            MessageBoxButton.OK,
-            MessageBoxImage.Information);
+        ShowWarning(_cmpAttribute.ResourceText("IDS_ERR_NOVISIBLEOPENINGS"));
       }
     }
 
@@ -962,6 +957,11 @@ namespace ADSK.JExtRAC.CheckingALVS.UI
       return column.SortMemberPath ?? string.Empty;
     }
 
+    void ShowWarning(string message)
+    {
+      WeaveDialogHost.ShowMessage(this, message, Title, _cmpAttribute.ResourceText("IDS_TXT_OK"));
+    }
+
     bool ValidateNumericValue(string value, bool allowEmpty, out string errorMessage)
     {
       errorMessage = _entDtRoom.SetErrPvdNumeric(value?.Trim() ?? string.Empty, allowEmpty);
@@ -1009,7 +1009,7 @@ namespace ADSK.JExtRAC.CheckingALVS.UI
           string value = rowView[columnName]?.ToString() ?? string.Empty;
           if (!ValidateNumericValue(value, false, out string errorMessage))
           {
-            System.Windows.MessageBox.Show(this, errorMessage, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+            ShowWarning(errorMessage);
             return false;
           }
         }
@@ -1020,7 +1020,7 @@ namespace ADSK.JExtRAC.CheckingALVS.UI
           string smokeWall = rowView[_entDtWinDoor.ColNameSmokeWallLength]?.ToString() ?? string.Empty;
           if (!ValidateSmokeWallLength(smokeWall, out string smokeError))
           {
-            System.Windows.MessageBox.Show(this, smokeError, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+            ShowWarning(smokeError);
             return false;
           }
         }
@@ -1051,7 +1051,7 @@ namespace ADSK.JExtRAC.CheckingALVS.UI
 
         if (!ValidateNumericValue(textBox.Text, allowEmpty, out string errorMessage))
         {
-          System.Windows.MessageBox.Show(this, errorMessage, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+          ShowWarning(errorMessage);
           textBox.Focus();
           return false;
         }

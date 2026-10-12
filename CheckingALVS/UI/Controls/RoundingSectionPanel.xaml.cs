@@ -11,6 +11,8 @@ namespace ADSK.JExtRAC.CheckingALVS.UI.Controls
         public RoundingSectionPanel()
         {
             InitializeComponent();
+            // The control merges its own copy of the light palette, which would shadow the window's theme.
+            Utils.WeaveTheme.ApplyPalette(Resources);
             defaultButton.Click += (_, __) => DefaultClick?.Invoke(this, EventArgs.Empty);
         }
 

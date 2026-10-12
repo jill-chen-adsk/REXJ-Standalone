@@ -39,6 +39,12 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         /// <summary>データテーブル - エクセル</summary>
         private RvtExtApp.Entities.DtExcel _EntDtExcel;
 
+        /// <summary>Title for message dialogs shown during WorkFlow</summary>
+        private string _CommandTitle = string.Empty;
+
+        /// <summary>Revit main window, used as the owner of message dialogs</summary>
+        private readonly IntPtr _OwnerHandle;
+
         #endregion Memeber Variables
 
         // コンストラクタ
@@ -53,6 +59,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         /// <param name="cmpGeometry"   >図形</param>
         /// <param name="cmpParameters" >パラメータ</param>
         /// <param name="cmpSettings"   >設定</param>
+        /// <param name="ownerHandle"   >Revit main window handle</param>
         ///
         /// <history>2011/07/27 Created GSA,Inc. Shinichi Ishii</history>
         /// ================================================================================
@@ -60,9 +67,11 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                        RvtExtApp.Components.Elements cmpElements,
                        RvtExtApp.Components.Geometry cmpGeometry,
                        RvtExtApp.Components.Parameters cmpParameters,
-                       RvtExtApp.Components.Settings cmpSettings)
+                       RvtExtApp.Components.Settings cmpSettings,
+                       IntPtr ownerHandle)
         {
             // 初期化
+            _OwnerHandle = ownerHandle;
             _CmpAttribute = cmpAttribute;
             _CmpElements = cmpElements;
             _CmpGeometry = cmpGeometry;
@@ -459,6 +468,12 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
             }
         }
 
+        bool ConfirmYesNo(string message)
+        {
+            return WeaveDialogHost.Confirm(_OwnerHandle, message, _CommandTitle,
+                _CmpAttribute.ResourceText("IDS_TXT_YES"), _CmpAttribute.ResourceText("IDS_TXT_NO"));
+        }
+
         /// ================================================================================
         /// <summary>Excelデータ設定</summary>
         ///
@@ -495,10 +510,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
 
             if (utilExcel.FlagNewXlsbook == false)
             {
-                if (System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_EXCELUPDATE"),
-                                                         "",
-                                                         System.Windows.Forms.MessageBoxButtons.YesNo) ==
-                                                         System.Windows.Forms.DialogResult.No)
+                if (!ConfirmYesNo(_CmpAttribute.ResourceText("IDS_ERR_EXCELUPDATE")))
                 {
                     utilExcel.SetExcelWorkbook(null);
                 }
@@ -629,6 +641,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
         string WorkFlow(int commandKind)
         {
             string ret = null;
+            _CommandTitle = CheckingCommandTitles.GetCommandTitle(_CmpAttribute, commandKind);
 
             // Excelユーティリティ
             // 既存
@@ -702,7 +715,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                                                  30);
                 if (entDtCmd.ErrMsg != "")
                 {
-                    System.Windows.Forms.MessageBox.Show(entDtCmd.ErrMsg);
+                    WeaveDialogHost.ShowMessage(_OwnerHandle, entDtCmd.ErrMsg, _CommandTitle, _CmpAttribute.ResourceText("IDS_TXT_OK"));
 
                     trans.RollBack();
                     _CmpParameters.SetSharedParamDefault();
@@ -719,10 +732,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                 Collections.Generic.IList<string> roomAreas;
                 if (GetRoomArea(selSetRooms, ref roomLglAreas, ref roomRvtAreas) == false)
                 {
-                    if (System.Windows.Forms.MessageBox.Show(_CmpAttribute.ResourceText("IDS_ERR_ROOMNOLEGALAREA"),
-                                                             "",
-                                                             System.Windows.Forms.MessageBoxButtons.YesNo) ==
-                        System.Windows.Forms.DialogResult.No)
+                    if (!ConfirmYesNo(_CmpAttribute.ResourceText("IDS_ERR_ROOMNOLEGALAREA")))
                     {
                         
                         _CmpParameters.SetSharedParamDefault();
@@ -766,7 +776,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                 RvtExtApp.UI.FormSettingWPF formSetting = new RvtExtApp.UI.FormSettingWPF(commandKind,
                                                                                           _CmpAttribute,
                                                                                           entDtCmd);
-                if (WeaveDialogHost.ShowDialog(formSetting) != true)
+                if (WeaveDialogHost.ShowDialog(formSetting, _OwnerHandle) != true)
                 {
                     _CmpParameters.SetSharedParamDefault();
                     // トランザクションを統合
@@ -804,7 +814,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Components
                                                                                                                   _EntDtRoom,
                                                                                                                   _EntDtWinDoor,
                                                                                                                   entDtCmd);
-                    WeaveDialogHost.ShowDialog(formWpf);
+                    WeaveDialogHost.ShowDialog(formWpf, _OwnerHandle);
                     closeAction = formWpf.CloseAction;
 
                     if (closeAction != RvtExtApp.UI.EnvironmentalCheckCloseAction.Cancel)

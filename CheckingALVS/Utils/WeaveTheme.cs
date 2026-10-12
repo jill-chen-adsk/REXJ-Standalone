@@ -18,11 +18,13 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
 
             ApplyPalette(window.Resources);
 
-            window.SetResourceReference(Window.BackgroundProperty, "Weave.Brush.Surface");
             window.SetResourceReference(Window.ForegroundProperty, "Weave.Brush.Text.Primary");
 
+            // Chrome windows keep a transparent background so their rounded outer border shows.
             if (window is IWeaveChromeWindow chrome)
                 WeaveWindowChrome.ApplyTheme(chrome);
+            else
+                window.SetResourceReference(Window.BackgroundProperty, "Weave.Brush.Surface");
         }
 
         public static void Apply(
@@ -36,7 +38,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
             WeaveWindowChrome.Initialize(window, chrome, title, onClose, showCloseButton);
         }
 
-        static void ApplyPalette(ResourceDictionary resources)
+        internal static void ApplyPalette(ResourceDictionary resources)
         {
             if (IsDarkTheme)
             {

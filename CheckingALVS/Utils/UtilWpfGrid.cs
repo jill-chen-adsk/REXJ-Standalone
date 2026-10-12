@@ -130,7 +130,8 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
         bool visible,
         IEnumerable itemsSource,
         string displayMemberPath,
-        string selectedValuePath)
+        string selectedValuePath,
+        string emptyText = null)
     {
       if (!visible)
         return;
@@ -140,7 +141,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
       {
         Header = header,
         ItemsSource = itemsSource,
-        DisplayMemberPath = displayMemberPath,
+        DisplayMemberPath = emptyText == null ? displayMemberPath : null,
         SelectedValuePath = selectedValuePath,
         IsReadOnly = false,
         SelectedValueBinding = new System.Windows.Data.Binding(bindingPath)
@@ -150,13 +151,46 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
       };
       ApplyFixedColumnWidth(column, resolvedWidth);
 
-      if (grid.TryFindResource("Weave.DataGridComboBox") is Style comboStyle)
+      Style comboStyle = grid.TryFindResource("Weave.DataGridComboBox") as Style;
+      if (emptyText != null)
+      {
+        // Shows emptyText for items whose display value is empty; the stored value stays empty.
+        var text = new FrameworkElementFactory(typeof(TextBlock));
+        text.SetBinding(TextBlock.TextProperty, new System.Windows.Data.Binding(displayMemberPath)
+        {
+          Converter = new EmptyTextConverter(emptyText)
+        });
+        comboStyle = new Style(typeof(System.Windows.Controls.ComboBox), comboStyle)
+        {
+          Setters = { new Setter(ItemsControl.ItemTemplateProperty, new DataTemplate { VisualTree = text }) }
+        };
+      }
+
+      if (comboStyle != null)
       {
         column.ElementStyle = comboStyle;
         column.EditingElementStyle = comboStyle;
       }
 
       grid.Columns.Add(column);
+    }
+
+    sealed class EmptyTextConverter : IValueConverter
+    {
+      readonly string _emptyText;
+
+      public EmptyTextConverter(string emptyText) => _emptyText = emptyText;
+
+      public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+      {
+        string text = value?.ToString();
+        return string.IsNullOrEmpty(text) ? _emptyText : text;
+      }
+
+      public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+      {
+        return System.Windows.Data.Binding.DoNothing;
+      }
     }
 
     public static bool HasColumn(System.Data.DataTable table, string columnName)

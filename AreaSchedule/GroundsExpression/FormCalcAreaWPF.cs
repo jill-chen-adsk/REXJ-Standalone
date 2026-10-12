@@ -158,7 +158,7 @@ namespace ADSK.JExtRAC.AreaSchedule.GroundsExpression
 
             lblPiSection.Text = _CmpAttribute.ResourceText("IDS_TXT_PI");
             btnOK.Content = _CmpAttribute.ResourceText("IDS_TXT_OK");
-            btnCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL") + " (_C)";
+            btnCancel.Content = _CmpAttribute.ResourceText("IDS_TXT_CANCEL");
         }
 
         private void UpdateUnitLabels()

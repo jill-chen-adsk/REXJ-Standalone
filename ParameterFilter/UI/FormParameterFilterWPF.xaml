@@ -132,11 +132,11 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0,20,0">
-                                <TextBlock x:Name="lblCountTypeCategory" Style="{StaticResource Weave.HintText}" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="lblCountTypeCategory" Style="{StaticResource Weave.HintText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="lblCounterCategory" FontWeight="Bold" Style="{StaticResource Weave.BodyText}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <TextBlock x:Name="lblCountObjCate" Style="{StaticResource Weave.HintText}" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="lblCountObjCate" Style="{StaticResource Weave.HintText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="lblObjCounterCategory" FontWeight="Bold" Style="{StaticResource Weave.BodyText}"/>
                             </StackPanel>
                             <Button x:Name="btnSelectAllCategory" Grid.Column="3"
@@ -197,11 +197,11 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0,20,0">
-                                <TextBlock x:Name="lblCountTypeFamily" Style="{StaticResource Weave.HintText}" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="lblCountTypeFamily" Style="{StaticResource Weave.HintText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="lblTypeCounterFamily" FontWeight="Bold" Style="{StaticResource Weave.BodyText}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <TextBlock x:Name="lblCountObjectFamily" Style="{StaticResource Weave.HintText}" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="lblCountObjectFamily" Style="{StaticResource Weave.HintText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="lblObjectCounterFamily" FontWeight="Bold" Style="{StaticResource Weave.BodyText}"/>
                             </StackPanel>
                             <Button x:Name="btnSelectAllFamily" Grid.Column="3"
@@ -262,11 +262,11 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0,20,0">
-                                <TextBlock x:Name="lblCountTypeFamilyType" Style="{StaticResource Weave.HintText}" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="lblCountTypeFamilyType" Style="{StaticResource Weave.HintText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="lblTypeCounterFamilyType" FontWeight="Bold" Style="{StaticResource Weave.BodyText}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <TextBlock x:Name="lblCountObjectFamilyType" Style="{StaticResource Weave.HintText}" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="lblCountObjectFamilyType" Style="{StaticResource Weave.HintText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="lblObjectCounterFamilyType" FontWeight="Bold" Style="{StaticResource Weave.BodyText}"/>
                             </StackPanel>
                             <Button x:Name="btnSelectAllFamilyType" Grid.Column="3"
@@ -334,7 +334,7 @@
                                                     ElementStyle="{StaticResource Weave.DataGridTextBlock.Left}"/>
                                 <DataGridTextColumn x:Name="colParamName" Binding="{Binding ParameterName}" Width="*" IsReadOnly="True"
                                                     ElementStyle="{StaticResource Weave.DataGridTextBlock.Left}"/>
-                                <DataGridTemplateColumn x:Name="colParamValue" Header="Value" Width="80">
+                                <DataGridTemplateColumn x:Name="colParamValue" Header="Value" Width="Auto" MinWidth="80">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
@@ -346,7 +346,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn x:Name="colParamMin" Header="Min" Width="80">
+                                <DataGridTemplateColumn x:Name="colParamMin" Header="Min" Width="Auto" MinWidth="80">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox Text="{Binding Min, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
@@ -365,7 +365,7 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn x:Name="colParamMax" Header="Max" Width="80">
+                                <DataGridTemplateColumn x:Name="colParamMax" Header="Max" Width="Auto" MinWidth="80">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox Text="{Binding Max, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
@@ -395,11 +395,11 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0,20,0">
-                                <TextBlock x:Name="lblCountTypeParameter" Style="{StaticResource Weave.HintText}" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="lblCountTypeParameter" Style="{StaticResource Weave.HintText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="lblTypeCounterTypeParameter" FontWeight="Bold" Style="{StaticResource Weave.BodyText}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <TextBlock x:Name="lblCountObjectTypeParameter" Style="{StaticResource Weave.HintText}" Margin="0,0,8,0"/>
+                                <TextBlock x:Name="lblCountObjectTypeParameter" Style="{StaticResource Weave.HintText}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock x:Name="lblObjectCounterTypeParameter" FontWeight="Bold" Style="{StaticResource Weave.BodyText}"/>
                             </StackPanel>
                             <Button x:Name="btnSelectAllParameter" Grid.Column="3"
