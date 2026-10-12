@@ -120,11 +120,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="btnOK" Style="{StaticResource Weave.Button.Primary}" Content="OK" Margin="0,0,8,0" IsDefault="True"/>
-            <Button x:Name="btnCancel" Style="{StaticResource Weave.Button.Secondary}" Content="Cancel" IsCancel="True">
-                <Button.InputBindings>
-                    <KeyBinding Key="C" Modifiers="Alt" Command="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Command}"/>
-                </Button.InputBindings>
-            </Button>
+            <Button x:Name="btnCancel" Style="{StaticResource Weave.Button.Secondary}" Content="Cancel" IsCancel="True"/>
         </StackPanel>
     </Grid>
         </Grid>
