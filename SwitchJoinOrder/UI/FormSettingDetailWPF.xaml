@@ -10,7 +10,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        ResizeMode="CanResize"
+        ResizeMode="NoResize"
         ShowInTaskbar="False">
     <Window.Resources>
         <ResourceDictionary>

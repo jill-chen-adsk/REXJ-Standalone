@@ -57,7 +57,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             {
                 bool processOnlyJoined = form.GetChecked;
                 bool isJoinGeometry = !processOnlyJoined;
-                var refusedPairs = new List<ElementId[]>();
+                var refusedPairs = new HashSet<(ElementId First, ElementId Second)>();
                 m_DicSolidsElement.Clear();
 
                 int numProgress = CountProcessingSteps(rvtUIDoc.Document, groupCategory, processOnlyJoined);
@@ -99,11 +99,24 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
 
                 progressDialog.Close();
 
-                foreach (ElementId[] pair in refusedPairs)
-                    JoinFailures.Post(rvtUIDoc.Document, pair[0], pair[1]);
+                int unreportedCount = 0;
+                foreach (var pair in refusedPairs)
+                {
+                    if (!JoinFailures.Post(rvtUIDoc.Document, pair.First, pair.Second))
+                        unreportedCount++;
+                }
 
                 rvtUIDoc.Document.Regenerate();
                 tr.Commit();
+
+                if (unreportedCount > 0)
+                {
+                    WeaveDialogHost.ShowMessage(
+                        ownerHandle,
+                        string.Format(cmpAttribute.ResourceText("IDS_TXT_JOIN_REFUSED_COUNT"), unreportedCount),
+                        cmpAttribute.ResourceText("IDS_TXT_SWITCHJOINORDER"),
+                        cmpAttribute.ResourceText("IDS_TXT_OK"));
+                }
             }
             catch (Exception)
             {
@@ -120,7 +133,8 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             }
             catch (Exception ex)
             {
-                message = ex.ToString();
+                System.Diagnostics.Debug.WriteLine("SwitchJoinOrder: command failed. " + ex);
+                message = ex.Message;
                 return Result.Failed;
             }
         }
@@ -128,7 +142,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
         private bool SwitchJoinFamily(UIDocument rvtUIDoc,
             RvtExtApp.Components.Attribute cmpAttribute,
             RvtExtApp.Components.Elements cmpElements, CategoryItem cate, bool processOnlyJoined, bool isJoinGeometry,
-            List<ElementId[]> refusedPairs,
+            HashSet<(ElementId First, ElementId Second)> refusedPairs,
             ref int cntProgress,
             ProgressDialog progressDialog)
         {
@@ -176,7 +190,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
             List<ElementId> listElementIdFind,
             bool isJoinGeometry,
             bool isSameCategory,
-            List<ElementId[]> refusedPairs)
+            HashSet<(ElementId First, ElementId Second)> refusedPairs)
         {
             try
             {
@@ -220,7 +234,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                                     }
                                     catch (Exception)
                                     {
-                                        refusedPairs.Add(new[] { firstElement.Id, secondElement.Id });
+                                        refusedPairs.Add((firstElement.Id, secondElement.Id));
                                         subtr.Dispose();
                                         continue;
                                     }
@@ -268,7 +282,7 @@ namespace ADSK.JExtRAC.SwitchJoinOrder.Commands
                                 }
                                 catch (Exception)
                                 {
-                                    refusedPairs.Add(new[] { firstElement.Id, secondElement.Id });
+                                    refusedPairs.Add((firstElement.Id, secondElement.Id));
                                     subtr.Dispose();
                                     continue;
                                 }
