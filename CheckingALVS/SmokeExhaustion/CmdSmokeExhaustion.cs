@@ -62,7 +62,10 @@ namespace ADSK.JExtRAC.CheckingALVS.SmokeExhaustion
                         CheckingCommandTitles.GetCommandTitle(cmpAttribute, 1), cmpAttribute.ResourceText("IDS_TXT_OK"));
                     retExtCom = Revit.UI.Result.Failed;
                 }
-                retExtCom = Revit.UI.Result.Succeeded;
+                else
+                {
+                    retExtCom = Revit.UI.Result.Succeeded;
+                }
             }
             catch (System.Exception ex)
             {

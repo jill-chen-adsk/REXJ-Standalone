@@ -62,7 +62,10 @@ namespace ADSK.JExtRAC.CheckingALVS.AirVentilation
                         CheckingCommandTitles.GetCommandTitle(cmpAttribute, 2), cmpAttribute.ResourceText("IDS_TXT_OK"));
                     retExtCom = Revit.UI.Result.Failed;
                 }
-                retExtCom = Revit.UI.Result.Succeeded;
+                else
+                {
+                    retExtCom = Revit.UI.Result.Succeeded;
+                }
             }
             catch (System.Exception ex)
             {
