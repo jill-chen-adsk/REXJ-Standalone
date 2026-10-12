@@ -1,10 +1,10 @@
-## REXJ Standalone Add-ins for Revit 2027 — v1.1.5
+## REXJ Standalone Add-ins for Revit 2027  -  v1.1.5
 
 ### What's Changed
 
-**Join Adjustment and Join Order Inspector (#05 — SwitchJoinOrder, JoinOrderInspector):**
+**Join Adjustment and Join Order Inspector (#05  -  SwitchJoinOrder, JoinOrderInspector):**
 - Weave-compliant WPF dialogs with rounded chrome corners
-- Join Adjustment reports refused joins through Revit’s warning dialog instead of a separate log window
+- Join Adjustment reports refused joins through Revit's warning dialog instead of a separate log window
 - Safer handling of joined-element queries, multi-select priority moves, and double-click on blank list space
 - Join Order Inspector shows separate surface and cut colors in the legend and in the view, readable in dark mode
 
@@ -26,7 +26,7 @@
 |------|-------------|---------|--------------|
 | [REXJ_Standalone_Setup_1.1.5.exe](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | Complete bundle: choose components and install every REXJ Standalone tool for Revit 2027 | **1.1.5** | **2026-10-12** |
 
-> **Note:** The full bundle has been rebuilt for v1.1.5 with rounded Weave chrome, Join Adjustment / Join Order Inspector updates, and the v1.1.4 Weave tools (Auto Floor, Slab Join & Split, Copy Parameter, Grid Dimension, Parameter Filter) — there are no standalone per-function installers for these yet. It also includes every v1.1.3 update.
+> **Note:** The full bundle has been rebuilt for v1.1.5 with rounded Weave chrome, Join Adjustment / Join Order Inspector updates, and the v1.1.4 Weave tools (Auto Floor, Slab Join & Split, Copy Parameter, Grid Dimension, Parameter Filter)  -  there are no standalone per-function installers for these yet. It also includes every v1.1.3 update.
 
 ---
 
@@ -39,21 +39,21 @@ Individual installers organized by function. Install only the functions you need
 | # | Installer | Function | Description | Version | Last Updated |
 |---|-----------|----------|-------------|---------|--------------|
 | 01 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_01_MeanGroundSurface_Setup_1.0.0.exe) | Calculate mean ground surface | Computes average ground elevation from topography or boundary points for planning inputs | 1.0.0 | 2026-05-13 |
-| 01 | [Full bundle](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.3/REXJ_Standalone_Setup_1.1.3.exe) | **🌐 Avg Site Level Calculation (Weave-Compliant)** | Dark/light theme WPF dialogs — available in the full bundle only, no per-function installer yet | 1.1.3 | 2026-08-31 |
+| 01 | [Full bundle](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.3/REXJ_Standalone_Setup_1.1.3.exe) | **Avg Site Level Calculation (Weave-Compliant)** | Dark/light theme WPF dialogs  -  available in the full bundle only, no per-function installer yet | 1.1.3 | 2026-08-31 |
 | 02 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.1/REXJ_02_RoomAreaCalculation_Setup_1.0.1.exe) | Room area calculation for building application | Legal Area, Grounds Expression, and Room-to-Area workflows with schedules and annotations | 1.0.1 | 2026-05-19 |
-| 02 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.1/REXJ_02_RoomAreaCalculation_Setup_1.1.0.exe) | **🌐 Room area calculation (Weave-Compliant)** | Dark/light theme WPF dialogs for Legal Area, Grounds Expression, and Room to Area | 1.1.0 | 2026-07-10 |
+| 02 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.1/REXJ_02_RoomAreaCalculation_Setup_1.1.0.exe) | **Room area calculation (Weave-Compliant)** | Dark/light theme WPF dialogs for Legal Area, Grounds Expression, and Room to Area | 1.1.0 | 2026-07-10 |
 | 03 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_03_WindowDoorView_Setup_1.0.0.exe) | Window/Door View | Creates and organizes views focused on doors and windows | 1.0.0 | 2026-05-13 |
-| 03 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_03_WindowDoorView_Weave_Setup_1.1.0.exe) | **🌐 Window/Door View (Weave-Compliant)** | Dark/light theme, globalized (JA/EN), WebView2 UI | **1.1.0** | **2026-06-04** |
+| 03 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_03_WindowDoorView_Weave_Setup_1.1.0.exe) | **Window/Door View (Weave-Compliant)** | Dark/light theme, globalized (JA/EN), WebView2 UI | **1.1.0** | **2026-06-04** |
 | 04 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_04_AutoFloor_Setup_1.0.0.exe) | Auto Floor | Automated floor slab creation plus slab join and split helpers | 1.0.0 | 2026-05-13 |
-| **04** | [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **🌐 Auto Floor and Slab Join & Split (Weave-Compliant)** | **Dark/light theme WPF dialogs with input validation — available in the full bundle only** | **1.1.5** | **2026-10-12** |
+| **04** | [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **Auto Floor and Slab Join & Split (Weave-Compliant)** | **Dark/light theme WPF dialogs with input validation  -  available in the full bundle only** | **1.1.5** | **2026-10-12** |
 | 05 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_05_JoinOrderAdjustment_Setup_1.0.0.exe) | Join Order Adjustment | Adjusts join geometry order and inspects join relationships between elements | 1.0.0 | 2026-05-13 |
-| **05** | [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **🌐 Join Adjustment and Join Order Inspector (Weave-Compliant)** | **Rounded Weave dialogs — available in the full bundle only** | **1.1.5** | **2026-10-12** |
+| **05** | [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **Join Adjustment and Join Order Inspector (Weave-Compliant)** | **Rounded Weave dialogs  -  available in the full bundle only** | **1.1.5** | **2026-10-12** |
 | 06 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_06_FillConcreteGap_Setup_1.0.0.exe) | Fill concrete gap (Fukashi) | Face furring and region furring tools for concrete gaps | 1.0.0 | 2026-05-13 |
 | 07 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_07_GenerateRoomView_Setup_1.0.0.exe) | Generate View for each room | Bulk-creates views tied to individual rooms | 1.0.0 | 2026-05-13 |
 | 08 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_08_InteriorElevation_Setup_1.0.0.exe) | Interior elevation for rooms | Generates interior elevation views per room | 1.0.0 | 2026-05-13 |
 | 09 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_09_LegalComplianceCheck_Setup_1.0.0.exe) | Legal compliance check for Rooms | Daylight, smoke exhaust, and ventilation checks with Excel report | 1.0.0 | 2026-05-13 |
-| 09 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.1/REXJ_09_LegalComplianceCheck_Setup_1.1.0.exe) | **🌐 Legal compliance check (Weave-Compliant)** | Dark/light theme dialogs for Daylight, Smoke, and Ventilation Check | 1.1.0 | 2026-07-10 |
-| 09 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.2/REXJ_09_LegalComplianceCheck_Setup_1.1.2.exe) | **🌐 Legal compliance check (Weave-Compliant)** | Weave WPF dialogs for all checks; smoke unit fixes and calculation improvements | 1.1.2 | 2026-07-13 |
+| 09 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.1/REXJ_09_LegalComplianceCheck_Setup_1.1.0.exe) | **Legal compliance check (Weave-Compliant)** | Dark/light theme dialogs for Daylight, Smoke, and Ventilation Check | 1.1.0 | 2026-07-10 |
+| 09 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.2/REXJ_09_LegalComplianceCheck_Setup_1.1.2.exe) | **Legal compliance check (Weave-Compliant)** | Weave WPF dialogs for all checks; smoke unit fixes and calculation improvements | 1.1.2 | 2026-07-13 |
 
 **Structure (5 functions)**
 
@@ -84,29 +84,29 @@ Individual installers organized by function. Install only the functions you need
 | 28 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_28_ChooseFamilyByParam_Setup_1.0.0.exe) | Choose Family based on parameter | Swaps or picks families according to parameter rules | 1.0.0 | 2026-05-13 |
 | 29 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_29_AutoDimension_Setup_1.0.0.exe) | Generate dimension Automatically | Automated dimension chains from model geometry | 1.0.0 | 2026-05-13 |
 | 30 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_30_EyedropperTool_Setup_1.0.0.exe) | Eyedropper tool (Copy Parameter) | Copies parameter values between matching elements | 1.0.0 | 2026-05-13 |
-| **30** | [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **🌐 Eyedropper tool / Copy Parameter (Weave-Compliant)** | **Dark/light theme WPF dialog — available in the full bundle only** | **1.1.5** | **2026-10-12** |
+| **30** | [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **Eyedropper tool / Copy Parameter (Weave-Compliant)** | **Dark/light theme WPF dialog  -  available in the full bundle only** | **1.1.5** | **2026-10-12** |
 | 31 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_31_AdvancedSectionBox_Setup_1.0.0.exe) | Advanced Section box | Enhanced section box manipulation for 3D views | 1.0.0 | 2026-05-13 |
-| 31 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_31_AdvancedSectionBox_Setup_1.1.0.exe) | **🌐 Advanced Section Box (Weave-Compliant)** | Dark/light theme, WPF borderless dialogs | **1.1.0** | **2026-06-04** |
+| 31 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_31_AdvancedSectionBox_Setup_1.1.0.exe) | **Advanced Section Box (Weave-Compliant)** | Dark/light theme, WPF borderless dialogs | **1.1.0** | **2026-06-04** |
 | **32** | [**Download**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.2/REXJ_32_AutoTag_Setup_1.0.2.exe) | **Auto Tag** | **Automated tag placement on views** | **1.0.2** | **2026-05-28** |
 | 33 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_33_ViewDuplication_Setup_1.0.0.exe) | View duplication tool | Duplicates views with naming and option presets | 1.0.0 | 2026-05-13 |
 | 34 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_34_PrintRegion_Setup_1.0.0.exe) | Print Region tool | Prints user-defined regions on sheets | 1.0.0 | 2026-05-13 |
-| 34 | [Full bundle](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.3/REXJ_Standalone_Setup_1.1.3.exe) | **🌐 Print Region / Range Print (Weave-Compliant)** | Dark/light theme WPF dialog, metric and imperial scale presets, plan-view region crop fix | 1.1.3 | 2026-08-31 |
+| 34 | [Full bundle](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.3/REXJ_Standalone_Setup_1.1.3.exe) | **Print Region / Range Print (Weave-Compliant)** | Dark/light theme WPF dialog, metric and imperial scale presets, plan-view region crop fix | 1.1.3 | 2026-08-31 |
 | 35 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_35_SpreadsheetExportImport_Setup_1.0.0.exe) | Spreadsheet Export/Import | Export to Excel, export schedules, import from Excel, insert Excel images | 1.0.0 | 2026-05-13 |
 | 36 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_36_GridElevationDimension_Setup_1.0.0.exe) | Grid/Elevation dimension | Grid dimensions and floor-to-floor height dimensions | 1.0.0 | 2026-05-13 |
-| **36** | [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **🌐 Grid Dimension (Weave-Compliant)** | **Dark/light theme WPF dialog — available in the full bundle only** | **1.1.5** | **2026-10-12** |
+| **36** | [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **Grid Dimension (Weave-Compliant)** | **Dark/light theme WPF dialog  -  available in the full bundle only** | **1.1.5** | **2026-10-12** |
 | 37 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_37_MultiQueryFilter_Setup_1.0.0.exe) | Multi query filter (Level Filter) | Advanced filtering including level-based queries | 1.0.0 | 2026-05-13 |
-| 37 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_37_MultiQueryFilter_Setup_1.1.0.exe) | **🌐 Multi Query Filter / Level Filter (Weave-Compliant)** | Dark/light theme, WPF DataGrid, tabbed UI | **1.1.0** | **2026-06-04** |
+| 37 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_37_MultiQueryFilter_Setup_1.1.0.exe) | **Multi Query Filter / Level Filter (Weave-Compliant)** | Dark/light theme, WPF DataGrid, tabbed UI | **1.1.0** | **2026-06-04** |
 | 38 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_38_SheetAutoLayout_Setup_1.0.0.exe) | Sheet auto layout tool | Automates sheet layouts and viewport placement | 1.0.0 | 2026-05-13 |
 
 **Additional**
 
 | Installer | Function | Description | Version | Last Updated |
 |-----------|----------|-------------|---------|--------------|
-| [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_EnhancedSectionBox_Setup_1.1.0.exe) | **🌐 Enhanced Section Box (Weave-Compliant)** | Dark/light theme WPF dialogs for Box View and Section Box Adjustment | **1.1.0** | **2026-06-04** |
-| [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_FittingSchedule_Setup_1.1.0.exe) | **🌐 Fitting Schedule / Window Door View (Weave-Compliant)** | Per-tool installer for FittingSchedule | **1.1.0** | **2026-06-04** |
-| [Full bundle](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.3/REXJ_Standalone_Setup_1.1.3.exe) | **🌐 Fitting Schedule / Window Door View (Weave-Compliant)** | First working build of the Weave Create View dialog — available in the full bundle only | 1.1.3 | 2026-08-31 |
-| [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **🌐 Parameter Filter (Weave-Compliant)** | **Dark/light theme WPF dialog with Weave tabs and progress window — available in the full bundle only** | **1.1.5** | **2026-10-12** |
-| [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_LevelFilter_Setup_1.1.0.exe) | **🌐 Level Filter (Weave-Compliant)** | Per-tool installer for Level Filter | **1.1.0** | **2026-06-04** |
+| [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_EnhancedSectionBox_Setup_1.1.0.exe) | **Enhanced Section Box (Weave-Compliant)** | Dark/light theme WPF dialogs for Box View and Section Box Adjustment | **1.1.0** | **2026-06-04** |
+| [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_FittingSchedule_Setup_1.1.0.exe) | **Fitting Schedule / Window Door View (Weave-Compliant)** | Per-tool installer for FittingSchedule | **1.1.0** | **2026-06-04** |
+| [Full bundle](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.3/REXJ_Standalone_Setup_1.1.3.exe) | **Fitting Schedule / Window Door View (Weave-Compliant)** | First working build of the Weave Create View dialog  -  available in the full bundle only | 1.1.3 | 2026-08-31 |
+| [**Full bundle**](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.5/REXJ_Standalone_Setup_1.1.5.exe) | **Parameter Filter (Weave-Compliant)** | **Dark/light theme WPF dialog with Weave tabs and progress window  -  available in the full bundle only** | **1.1.5** | **2026-10-12** |
+| [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.1.0/REXJ_LevelFilter_Setup_1.1.0.exe) | **Level Filter (Weave-Compliant)** | Per-tool installer for Level Filter | **1.1.0** | **2026-06-04** |
 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_MepManholeTool_Setup_1.0.0.exe) | Manhole Tool | Places and documents manhole elements for MEP | 1.0.0 | 2026-05-13 |
 | [Download](https://github.com/jill-chen-adsk/REXJ-Standalone/releases/download/v1.0.0/REXJ_REXJManager_Setup_1.0.0.exe) | REXJ Manager | Controls visibility of REXJ Standalone ribbon tabs and command presets | 1.0.0 | 2026-05-13 |
 
@@ -114,8 +114,8 @@ Individual installers organized by function. Install only the functions you need
 
 1. Download the installer(s) above
 2. Close Revit 2027 if running
-3. Run the installer — tools deploy to the Revit 2027 Addins folder automatically
-4. Launch Revit 2027 — tools appear under the **REXJ Standalone** ribbon tab
+3. Run the installer  -  tools deploy to the Revit 2027 Addins folder automatically
+4. Launch Revit 2027  -  tools appear under the **REXJ Standalone** ribbon tab
 
 ### Notes
 
