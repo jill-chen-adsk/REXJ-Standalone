@@ -747,6 +747,10 @@
     <value>必要面積</value>
     <comment>文字 必要面積</comment>
   </data>
+  <data name="IDS_TXT_NOTSET" xml:space="preserve">
+    <value>未設定</value>
+    <comment>Not set</comment>
+  </data>
   <data name="IDS_TXT_NONE" xml:space="preserve">
     <value>なし</value>
     <comment>文字 なし</comment>

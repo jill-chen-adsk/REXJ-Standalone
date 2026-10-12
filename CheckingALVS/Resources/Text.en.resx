@@ -747,6 +747,10 @@ Area</value>
     <value>Required Area</value>
     <comment>文字 必要面積</comment>
   </data>
+  <data name="IDS_TXT_NOTSET" xml:space="preserve">
+    <value>Not set</value>
+    <comment>Not set</comment>
+  </data>
   <data name="IDS_TXT_NONE" xml:space="preserve">
     <value>None</value>
     <comment>文字 なし</comment>

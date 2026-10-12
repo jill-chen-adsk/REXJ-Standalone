@@ -29,7 +29,8 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
           UtilWpfGrid.HasColumn(entDtRoom.Data, entDtRoom.ColNameRoomKind) && commandKind == 0,
           entDtRoom.EntDtItems?.RoomKind?.DefaultView,
           "Name",
-          "Name");
+          "Name",
+          cmpAttribute.ResourceText("IDS_TXT_NOTSET"));
 
       UtilWpfGrid.AddTextColumn(grid, entDtRoom.ColNameGroupName, cmpAttribute.ResourceText("IDS_TXT_GROUPNAME"),
           0, UtilWpfGrid.HasColumn(entDtRoom.Data, entDtRoom.ColNameGroupName), true, TextAlignment.Left);
