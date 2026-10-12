@@ -34,9 +34,6 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
 
             WeaveTheme.Apply(this, this, WeaveCommandTitles.RoomToArea(_CmpAttribute), CancelDialog);
 
-            btnCancel.Command = new RoutedCommand();
-            btnCancel.CommandBindings.Add(new CommandBinding(btnCancel.Command, BtnCancel_Executed));
-
             Loaded += FormChoiceWorkWPF_Loaded;
             btnOK.Click += BtnOK_Click;
             btnCancel.Click += BtnCancel_Click;
@@ -56,11 +53,6 @@ namespace ADSK.JExtRAC.AreaSchedule.RoomConvertedToArea
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            CancelDialog();
-        }
-
-        private void BtnCancel_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             CancelDialog();
         }

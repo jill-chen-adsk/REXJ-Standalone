@@ -49,10 +49,6 @@ namespace ADSK.JExtRAC.AreaSchedule.LegalArea
 
             WeaveTheme.Apply(this, this, WeaveCommandTitles.LegalArea(_CmpAttribute), CancelDialog);
 
-            // コマンドの設定
-            btnCancel.Command = new RoutedCommand();
-            btnCancel.CommandBindings.Add(new CommandBinding(btnCancel.Command, BtnCancel_Click));
-
             Loaded += FormWarningRoomsWPF_Loaded;
             btnOK.Click += BtnOK_Click;
             btnCancel.Click += BtnCancel_Click;
