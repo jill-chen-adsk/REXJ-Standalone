@@ -36,7 +36,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
 
         public static void ShowMessage(IntPtr ownerHandle, string message, string title, string okText = "OK")
         {
-            ShowDialog(new WeaveMessageDialog(message, title, okText), OwnerOrRevit(ownerHandle));
+            ShowDialog(new WeaveMessageDialog(message, title, okText), ownerHandle);
         }
 
         public static void ShowMessage(Window owner, string message, string title, string okText = "OK")
@@ -46,14 +46,7 @@ namespace ADSK.JExtRAC.CheckingALVS.Utils
 
         public static bool Confirm(IntPtr ownerHandle, string message, string title, string yesText, string noText)
         {
-            return ShowDialog(new WeaveMessageDialog(message, title, yesText, noText), OwnerOrRevit(ownerHandle)) == true;
-        }
-
-        static IntPtr OwnerOrRevit(IntPtr ownerHandle)
-        {
-            return ownerHandle != IntPtr.Zero
-                ? ownerHandle
-                : System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
+            return ShowDialog(new WeaveMessageDialog(message, title, yesText, noText), ownerHandle) == true;
         }
 
         public static DialogResult ShowWinFormsDialog(Form form, Window owner = null)

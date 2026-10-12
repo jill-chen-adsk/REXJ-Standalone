@@ -53,7 +53,8 @@ namespace ADSK.JExtRAC.CheckingALVS.SmokeExhaustion
                                                                                            cmpElements,
                                                                                            cmpGeometry,
                                                                                            cmpParameters,
-                                                                                           cmpSettings);
+                                                                                           cmpSettings,
+                                                                                           rvtUIApp.MainWindowHandle);
                 string retMsg = cmpService.WorkFlow(1);
                 if (retMsg != null)
                 {

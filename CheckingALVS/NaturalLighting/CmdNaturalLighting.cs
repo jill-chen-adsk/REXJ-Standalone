@@ -54,7 +54,8 @@ namespace ADSK.JExtRAC.CheckingALVS.NaturalLighting
                                                                                            cmpElements,
                                                                                            cmpGeometry,
                                                                                            cmpParameters,
-                                                                                           cmpSettings);
+                                                                                           cmpSettings,
+                                                                                           rvtUIApp.MainWindowHandle);
                 string retMsg = cmpService.WorkFlow(0);
                 if (retMsg != null)
                 {

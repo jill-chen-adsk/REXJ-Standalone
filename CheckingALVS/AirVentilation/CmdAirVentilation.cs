@@ -53,7 +53,8 @@ namespace ADSK.JExtRAC.CheckingALVS.AirVentilation
                                                                                            cmpElements,
                                                                                            cmpGeometry,
                                                                                            cmpParameters,
-                                                                                           cmpSettings);
+                                                                                           cmpSettings,
+                                                                                           rvtUIApp.MainWindowHandle);
                 string retMsg = cmpService.WorkFlow(2);
                 if (retMsg != null)
                 {
