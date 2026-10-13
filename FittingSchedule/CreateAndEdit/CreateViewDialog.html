@@ -359,6 +359,31 @@
         render();
       };
 
+      function tryFormatInchesAsFraction(inches) {
+        var tolerance = 0.001;
+        var denominators = [1, 2, 4, 8, 16, 32, 64];
+        for (var d = 0; d < denominators.length; d++) {
+          var denominator = denominators[d];
+          var scaled = inches * denominator;
+          var rounded = Math.round(scaled);
+          if (Math.abs(scaled - rounded) > tolerance || rounded <= 0) {
+            continue;
+          }
+          var whole = Math.floor(rounded / denominator);
+          var numerator = rounded % denominator;
+          var inchText;
+          if (numerator === 0) {
+            inchText = whole + '"';
+          } else if (whole === 0) {
+            inchText = numerator + '/' + denominator + '"';
+          } else {
+            inchText = whole + ' ' + numerator + '/' + denominator + '"';
+          }
+          return inchText + ' = 1\'-0"';
+        }
+        return null;
+      }
+
       function formatScaleDisplay(scaleDenom) {
         if (!isImperial) return '1:' + scaleDenom;
         for (var i = 0; i < scales.length; i++) {
@@ -366,22 +391,16 @@
             return scales[i].name;
           }
         }
-        var inches = 12 / scaleDenom;
-        var fracs = [
-          [1, 1], [1, 2], [1, 4], [3, 4], [1, 8], [3, 8], [1, 16], [3, 16],
-          [1, 32], [3, 32], [1, 64], [3, 64], [2, 1], [3, 2], [4, 1], [6, 1], [12, 1]
-        ];
-        for (var f = 0; f < fracs.length; f++) {
-          var n = fracs[f][0], d = fracs[f][1];
-          var val = n / d;
-          if (Math.abs(inches - val) < 0.02) {
-            if (n === d * 12) return '12" = 1\'-0"';
-            if (n % d === 0) return (n / d) + '" = 1\'-0"';
-            if (n > d) return Math.floor(n / d) + ' ' + (n % d) + '/' + d + '" = 1\'-0"';
-            return n + '/' + d + '" = 1\'-0"';
+        var paperInchesForOneFoot = 12 / scaleDenom;
+        if (paperInchesForOneFoot >= 0.01 && paperInchesForOneFoot <= 12) {
+          var inchFormatted = tryFormatInchesAsFraction(paperInchesForOneFoot);
+          if (inchFormatted) {
+            return inchFormatted;
           }
         }
-        if (scaleDenom % 12 === 0) return '1" = ' + (scaleDenom / 12) + '\'-0"';
+        if (scaleDenom % 12 === 0) {
+          return '1" = ' + (scaleDenom / 12) + '\'-0"';
+        }
         return '1:' + scaleDenom;
       }
 
