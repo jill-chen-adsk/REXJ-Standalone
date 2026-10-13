@@ -376,7 +376,8 @@
         if (!state.usesCustomScale) {
           var found = scales.some(function(s) { return String(s.value) === state.selectedScaleKey; });
           if (!found && scales.length > 1) {
-            state.selectedScaleKey = String(scales[1].value);
+            var hasQuarterInch = isImperial && scales.some(function(s) { return s.value === 48; });
+            state.selectedScaleKey = hasQuarterInch ? '48' : String(scales[1].value);
           }
         }
 
@@ -760,6 +761,7 @@
               addCustomScaleOption('1:' + val);
             }
             customModalError = '';
+            footerError = '';
             showCustomModal = false;
             render();
           });
