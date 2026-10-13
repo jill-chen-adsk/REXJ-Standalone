@@ -352,12 +352,11 @@
           if (state.usesCustomScale && state.scaleCustom > 0) {
             state.scaleCustomDenom = state.scaleCustom;
             state.selectedScaleKey = CUSTOM_SCALE_VALUE;
-            var display = data.currentSettings.scaleCustomDisplay;
-            if (display) {
-              addCustomScaleOption(display);
-            } else {
-              addCustomScaleOption(formatScaleDisplay(state.scaleCustomDenom));
-            }
+            var display = data.currentSettings.scaleCustomDisplay ||
+              formatScaleDisplay(state.scaleCustomDenom);
+            state.scaleCustomText = isImperial ? display : '';
+            state.customScaleDraft = isImperial ? display : String(state.scaleCustom);
+            addCustomScaleOption(display);
           } else {
             if (isImperial && initScale === 100) {
               initScale = 48;
@@ -438,7 +437,11 @@
           return;
         }
         state.customScaleDraft = isImperial
-          ? (state.usesCustomScale ? (state.scaleCustomText || '') : '')
+          ? (state.usesCustomScale
+            ? (state.scaleCustomText ||
+              (state.scaleCustomDenom > 0 ? formatScaleDisplay(state.scaleCustomDenom) : '') ||
+              '')
+            : '')
           : (state.usesCustomScale ? String(state.scaleCustom) : '');
       }
 
