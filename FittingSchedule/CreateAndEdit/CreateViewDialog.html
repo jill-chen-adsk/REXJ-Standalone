@@ -423,6 +423,16 @@
         state.customScaleDraft = input ? input.value : '';
       }
 
+      function dismissCustomScaleModal() {
+        showCustomModal = false;
+        customModalError = '';
+        if (scaleBeforeCustomModal != null) {
+          state.selectedScaleKey = scaleBeforeCustomModal;
+          state.usesCustomScale = scaleBeforeCustomModal === CUSTOM_SCALE_VALUE;
+        }
+        render();
+      }
+
       function parseScaleInput(text) {
         text = (text || '').trim();
         if (!text) return { ok: false };
@@ -655,6 +665,7 @@
           var scaleOut = state.usesCustomScale ? 0 : parseInt(state.selectedScaleKey, 10);
           var scaleCustomOut = state.usesCustomScale ? state.scaleCustomDenom : state.scaleCustom;
           if (state.usesCustomScale && !isValidScaleValue(scaleCustomOut)) {
+            scaleBeforeCustomModal = state.selectedScaleKey;
             customModalError = labels.scaleCustomInvalid;
             initCustomScaleDraft();
             showCustomModal = true;
@@ -720,25 +731,13 @@
         }
         var btnModalCancel = document.getElementById('btnModalCancel');
         if (btnModalCancel) {
-          btnModalCancel.addEventListener('click', function() {
-            showCustomModal = false;
-            customModalError = '';
-            if (scaleBeforeCustomModal != null) {
-              state.selectedScaleKey = scaleBeforeCustomModal;
-            }
-            render();
-          });
+          btnModalCancel.addEventListener('click', dismissCustomScaleModal);
         }
         var modalOverlay = document.getElementById('modalOverlay');
         if (modalOverlay) {
           modalOverlay.addEventListener('click', function(e) {
             if (e.target === modalOverlay) {
-              showCustomModal = false;
-              customModalError = '';
-              if (scaleBeforeCustomModal != null) {
-                state.selectedScaleKey = scaleBeforeCustomModal;
-              }
-              render();
+              dismissCustomScaleModal();
             }
           });
           var input = document.getElementById('inputCustomScale');
