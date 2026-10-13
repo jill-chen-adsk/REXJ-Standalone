@@ -21,6 +21,7 @@
       --radio-border: #5a7a94;
       --modal-bg: #1e2a3a;
       --chevron-fill: %238fa4b8;
+      --text-error: #ff8a80;
     }
 
     body[data-theme="light"] {
@@ -36,6 +37,7 @@
       --radio-border: #999999;
       --modal-bg: #ffffff;
       --chevron-fill: %23555555;
+      --text-error: #c0392b;
     }
 
     body {
@@ -223,10 +225,9 @@
     }
     .modal-box .modal-error {
       font-size: 12px;
-      color: #c0392b;
+      color: var(--text-error);
       margin: -4px 0 12px 0;
     }
-    body[data-theme="dark"] .modal-box .modal-error { color: #ff8a80; }
     .modal-box .input-row { flex-direction: column; align-items: stretch; }
     .modal-box .input-row > label {
       font-size: 11px;
@@ -256,6 +257,7 @@
         scaleCustom: 100,
         scaleCustomDenom: 0,
         scaleCustomText: '',
+        customScaleDraft: '',
         usesCustomScale: false,
         detailLevel: 2,
         duplicateHandling: 0
@@ -408,6 +410,19 @@
         return typeof n === 'number' && isFinite(n) && n >= scaleMin && n <= scaleMax;
       }
 
+      function initCustomScaleDraft() {
+        if (state.customScaleDraft) {
+          return;
+        }
+        state.customScaleDraft = isImperial
+          ? (state.usesCustomScale ? (state.scaleCustomText || '') : '')
+          : (state.usesCustomScale ? String(state.scaleCustom) : '');
+      }
+
+      function rememberCustomScaleDraft(input) {
+        state.customScaleDraft = input ? input.value : '';
+      }
+
       function parseScaleInput(text) {
         text = (text || '').trim();
         if (!text) return { ok: false };
@@ -536,11 +551,11 @@
             : '';
           var customInputHtml = isImperial
             ? '<label>' + escHtml(labels.scale) + '</label>' +
-              '<input type="text" id="inputCustomScale" placeholder="' + escHtml(labels.scaleCustomPlaceholder) + '" value="' + escHtml(state.scaleCustomText) + '" />'
+              '<input type="text" id="inputCustomScale" placeholder="' + escHtml(labels.scaleCustomPlaceholder) + '" value="' + escHtml(state.customScaleDraft) + '" />'
             : '<label>' + escHtml(labels.scale) + '</label>' +
               '<div style="display:flex;align-items:center;gap:8px;width:100%">' +
                 '<span>' + escHtml(labels.scalePrefix) + '</span>' +
-                '<input type="number" id="inputCustomScale" min="1" max="9999" value="' + state.scaleCustom + '" style="flex:1" />' +
+                '<input type="number" id="inputCustomScale" min="1" max="9999" value="' + escHtml(state.customScaleDraft) + '" style="flex:1" />' +
               '</div>';
           modalHtml =
             '<div class="modal-overlay" id="modalOverlay">' +
@@ -606,6 +621,8 @@
           if (valKey === '0') {
             scaleBeforeCustomModal = state.selectedScaleKey;
             customModalError = '';
+            state.customScaleDraft = '';
+            initCustomScaleDraft();
             showCustomModal = true;
             render();
           } else {
@@ -639,6 +656,7 @@
           var scaleCustomOut = state.usesCustomScale ? state.scaleCustomDenom : state.scaleCustom;
           if (state.usesCustomScale && !isValidScaleValue(scaleCustomOut)) {
             customModalError = labels.scaleCustomInvalid;
+            initCustomScaleDraft();
             showCustomModal = true;
             render();
             return;
@@ -667,6 +685,7 @@
             if (isImperial) {
               var parsed = parseScaleInput(input.value);
               if (!parsed.ok) {
+                rememberCustomScaleDraft(input);
                 customModalError = labels.scaleCustomInvalid;
                 render();
                 return;
@@ -675,11 +694,13 @@
               state.scaleCustomDenom = parsed.scale;
               state.scaleCustom = parsed.scale;
               state.scaleCustomText = parsed.display;
+              state.customScaleDraft = parsed.display;
               state.selectedScaleKey = CUSTOM_SCALE_VALUE;
               addCustomScaleOption(parsed.display);
             } else {
               var val = parseInt(input.value, 10);
               if (!isValidScaleValue(val)) {
+                rememberCustomScaleDraft(input);
                 customModalError = labels.scaleCustomInvalid;
                 render();
                 return;
@@ -688,6 +709,7 @@
               state.scaleCustomDenom = val;
               state.scaleCustom = val;
               state.scaleCustomText = '';
+              state.customScaleDraft = String(val);
               state.selectedScaleKey = CUSTOM_SCALE_VALUE;
               addCustomScaleOption('1:' + val);
             }

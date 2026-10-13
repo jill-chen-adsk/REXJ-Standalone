@@ -74,16 +74,16 @@
     <value>Command failed</value>
   </data>
   <data name="IDS_ERR_CREATEPARTSDRAW" xml:space="preserve">
-    <value>Failed to create fitting elevation drawing</value>
+    <value>Failed to create fitting section views</value>
   </data>
   <data name="IDS_ERR_DELETEACTIVEVIEW" xml:space="preserve">
-    <value>Cannot delete the active view. Please activate a non-fitting-elevation view and try again.</value>
+    <value>Cannot delete the active view. Please activate a non-fitting-section view and try again.</value>
   </data>
   <data name="IDS_ERR_GETVIEWPARTS" xml:space="preserve">
-    <value>Failed to get elevation views</value>
+    <value>Failed to get section views</value>
   </data>
   <data name="IDS_ERR_LAYOUTPARTSDRAW" xml:space="preserve">
-    <value>Failed to layout fitting elevation drawings</value>
+    <value>Failed to layout fitting section views on sheet</value>
   </data>
   <data name="IDS_ERR_LSTNULL" xml:space="preserve">
     <value>List box is empty</value>
@@ -113,7 +113,7 @@
     <value>Value is out of range</value>
   </data>
   <data name="IDS_ERR_VIEWSEC" xml:space="preserve">
-    <value>No section view family type available for creating fitting elevation drawings</value>
+    <value>No section view family type available for creating fitting section views</value>
   </data>
   <data name="IDS_ERR_VIEWSHEET" xml:space="preserve">
     <value>Please open a sheet view before using this command</value>
@@ -181,8 +181,11 @@
   <data name="IDS_TXT_CREATEPARTSDRAWING" xml:space="preserve">
     <value>Create (Doors/Windows) View</value>
   </data>
-  <data name="IDS_TXT_CREATEVIEWPARTS" xml:space="preserve">
+  <data name="IDS_TXT_BTN_CREATEVIEWPARTS" xml:space="preserve">
     <value>Create Section Views</value>
+  </data>
+  <data name="IDS_TXT_CREATEVIEWPARTS" xml:space="preserve">
+    <value>Creating Section Views</value>
   </data>
   <data name="IDS_TXT_CUSTOM" xml:space="preserve">
     <value>Custom...</value>

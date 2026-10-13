@@ -209,6 +209,10 @@ namespace ADSK.JExtRAC.FittingSchedule.Resources {
             get { return ResourceManager.GetString("IDS_TXT_CREATEPARTSDRAWING", resourceCulture); }
         }
 
+        internal static string IDS_TXT_BTN_CREATEVIEWPARTS {
+            get { return ResourceManager.GetString("IDS_TXT_BTN_CREATEVIEWPARTS", resourceCulture); }
+        }
+
         internal static string IDS_TXT_CREATEVIEWPARTS {
             get { return ResourceManager.GetString("IDS_TXT_CREATEVIEWPARTS", resourceCulture); }
         }

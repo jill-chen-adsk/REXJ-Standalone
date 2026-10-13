@@ -249,7 +249,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                     scaleMin = ViewScaleHelper.ScaleMin,
                     scaleMax = ViewScaleHelper.ScaleMax,
                     cancel = _cmpAttribute.ResourceText("IDS_TXT_CANCEL"),
-                    createView = _cmpAttribute.ResourceText("IDS_TXT_CREATEVIEWPARTS"),
+                    createView = _cmpAttribute.ResourceText("IDS_TXT_BTN_CREATEVIEWPARTS"),
                     ok = _cmpAttribute.ResourceText("IDS_TXT_OK")
                 }
             });
