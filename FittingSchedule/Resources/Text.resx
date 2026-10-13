@@ -256,6 +256,18 @@
   <data name="IDS_TXT_SCALE" xml:space="preserve">
     <value>縮尺</value>
   </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL" xml:space="preserve">
+    <value>例: 1/4"、1/4" = 1'-0"、または縮尺分母 48（1～9999）</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_HINT_METRIC" xml:space="preserve">
+    <value>比率の分母を入力してください（1～9999）</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL" xml:space="preserve">
+    <value>1/4" = 1'-0"</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC" xml:space="preserve">
+    <value>1:100</value>
+  </data>
   <data name="IDS_TXT_SETVIEWPORT" xml:space="preserve">
     <value>ビューポート設定</value>
   </data>

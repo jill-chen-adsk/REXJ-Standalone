@@ -270,6 +270,8 @@
       var detailLevels = [];
       var isImperial = false;
       var showCustomModal = false;
+      var scaleMin = 1;
+      var scaleMax = 9999;
       var labels = {
         doorTag: 'Door tag',
         windowTag: 'Window tag',
@@ -283,6 +285,7 @@
         scalePrefix: '1:',
         scaleCustomPlaceholder: '1:100',
         scaleCustomHint: '',
+        scaleCustomInvalid: 'Value is out of range',
         cancel: 'Cancel',
         createView: 'Create Section Views',
         ok: 'OK'
@@ -301,6 +304,8 @@
         }
 
         if (data.isImperial) isImperial = true;
+        if (data.labels && data.labels.scaleMin != null) scaleMin = data.labels.scaleMin;
+        if (data.labels && data.labels.scaleMax != null) scaleMax = data.labels.scaleMax;
         if (data.doorTags) doorTags = data.doorTags;
         if (data.windowTags) windowTags = data.windowTags;
         if (data.scales) scales = data.scales;
@@ -380,6 +385,10 @@
         return '1:' + scaleDenom;
       }
 
+      function isValidScaleValue(n) {
+        return typeof n === 'number' && isFinite(n) && n >= scaleMin && n <= scaleMax;
+      }
+
       function parseScaleInput(text) {
         text = (text || '').trim();
         if (!text) return { ok: false };
@@ -387,23 +396,27 @@
         var ratio = text.match(/^\s*1\s*:\s*(\d+)\s*$/);
         if (ratio) {
           var r = parseInt(ratio[1], 10);
-          if (r >= 1 && r <= 9999) return { ok: true, scale: r, display: '1:' + r };
+          if (isValidScaleValue(r)) return { ok: true, scale: r, display: '1:' + r };
         }
 
         if (/^\d+$/.test(text)) {
           var n = parseInt(text, 10);
-          if (n >= 1 && n <= 9999) {
+          if (isValidScaleValue(n)) {
             return { ok: true, scale: n, display: isImperial ? formatScaleDisplay(n) : '1:' + n };
           }
         }
 
         if (!isImperial) return { ok: false };
 
+        var maxFeet = Math.floor(scaleMax / 12);
         var feet = text.match(/^\s*1\s*"\s*=\s*(\d+)\s*'\s*-?\s*0?\s*"?\s*$/);
         if (feet) {
           var ft = parseInt(feet[1], 10);
-          if (ft > 0) {
-            return { ok: true, scale: ft * 12, display: '1" = ' + ft + '\'-0"' };
+          if (ft > 0 && ft <= maxFeet) {
+            var feetScale = ft * 12;
+            if (isValidScaleValue(feetScale)) {
+              return { ok: true, scale: feetScale, display: '1" = ' + ft + '\'-0"' };
+            }
           }
         }
 
@@ -416,8 +429,10 @@
             var inch = whole + num / den;
             if (inch > 0) {
               var sc = Math.round(12 / inch);
-              var disp = (whole ? whole + ' ' : '') + num + '/' + den + '" = 1\'-0"';
-              return { ok: true, scale: sc, display: disp };
+              if (isValidScaleValue(sc)) {
+                var disp = (whole ? whole + ' ' : '') + num + '/' + den + '" = 1\'-0"';
+                return { ok: true, scale: sc, display: disp };
+              }
             }
           }
         }
@@ -426,7 +441,10 @@
         if (wholeIn) {
           var wi = parseInt(wholeIn[1], 10);
           if (wi > 0) {
-            return { ok: true, scale: Math.round(12 / wi), display: wi + '" = 1\'-0"' };
+            var wholeScale = Math.round(12 / wi);
+            if (isValidScaleValue(wholeScale)) {
+              return { ok: true, scale: wholeScale, display: wi + '" = 1\'-0"' };
+            }
           }
         }
 
@@ -600,6 +618,12 @@
         document.getElementById('btnCreate').addEventListener('click', function() {
           var scaleOut = state.usesCustomScale ? 0 : parseInt(state.selectedScaleKey, 10);
           var scaleCustomOut = state.usesCustomScale ? state.scaleCustomDenom : state.scaleCustom;
+          if (state.usesCustomScale && !isValidScaleValue(scaleCustomOut)) {
+            customModalError = labels.scaleCustomInvalid;
+            showCustomModal = true;
+            render();
+            return;
+          }
           postMessage({
             action: 'create',
             doorTagId: state.doorTagId,
@@ -624,7 +648,7 @@
             if (isImperial) {
               var parsed = parseScaleInput(input.value);
               if (!parsed.ok) {
-                customModalError = labels.scaleCustomHint || 'Invalid scale. Example: 1/4" = 1\'-0" or 48';
+                customModalError = labels.scaleCustomInvalid;
                 render();
                 return;
               }
@@ -636,8 +660,8 @@
               addCustomScaleOption(parsed.display);
             } else {
               var val = parseInt(input.value, 10);
-              if (val < 1 || val > 9999) {
-                customModalError = 'Enter a value from 1 to 9999';
+              if (!isValidScaleValue(val)) {
+                customModalError = labels.scaleCustomInvalid;
                 render();
                 return;
               }

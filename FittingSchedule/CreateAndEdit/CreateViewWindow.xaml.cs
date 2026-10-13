@@ -239,10 +239,15 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                     renameOldView = _cmpAttribute.ResourceText("IDS_TXT_CHANGEOLDVIEW"),
                     customScale = _cmpAttribute.ResourceText("IDS_TXT_CUSTOM"),
                     scalePrefix = _cmpAttribute.ResourceText("IDS_TXT_COLON1"),
-                    scaleCustomPlaceholder = _entDtView.IsImperial ? "1/4\" = 1'-0\"" : "1:100",
+                    scaleCustomPlaceholder = _entDtView.IsImperial
+                        ? _cmpAttribute.ResourceText("IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL")
+                        : _cmpAttribute.ResourceText("IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC"),
                     scaleCustomHint = _entDtView.IsImperial
-                        ? "Examples: 1/4\", 1/4\" = 1'-0\", or scale denominator 48"
-                        : "Enter a ratio denominator (1 to 9999)",
+                        ? _cmpAttribute.ResourceText("IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL")
+                        : _cmpAttribute.ResourceText("IDS_TXT_SCALE_CUSTOM_HINT_METRIC"),
+                    scaleCustomInvalid = _cmpAttribute.ResourceText("IDS_ERR_VALRANGE"),
+                    scaleMin = ViewScaleHelper.ScaleMin,
+                    scaleMax = ViewScaleHelper.ScaleMax,
                     cancel = _cmpAttribute.ResourceText("IDS_TXT_CANCEL"),
                     createView = _cmpAttribute.ResourceText("IDS_TXT_CREATEVIEWPARTS"),
                     ok = _cmpAttribute.ResourceText("IDS_TXT_OK")
@@ -250,6 +255,14 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             });
 
             await webView.CoreWebView2.ExecuteScriptAsync($"window.initSettings({initData})");
+        }
+
+        private void ShowScaleValidationError()
+        {
+            TaskDialog.Show(
+                _cmpAttribute.ResourceText("IDS_TXT_ERROR"),
+                _cmpAttribute.ResourceText("IDS_TXT_SCALE") + "\n" +
+                _cmpAttribute.ResourceText("IDS_ERR_VALRANGE"));
         }
 
         private static object[] DataTableToJson(DataTable table, string valueColumn, string nameColumn)
@@ -298,19 +311,15 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                         {
                             if (!ViewScaleHelper.TryParseScale(scaleCustomText, _entDtView.IsImperial, out int parsedScale))
                             {
-                                TaskDialog.Show(
-                                    _cmpAttribute.ResourceText("IDS_TXT_ERROR"),
-                                    _cmpAttribute.ResourceText("IDS_TXT_SCALE") + ": invalid value.");
+                                ShowScaleValidationError();
                                 return;
                             }
 
                             scaleCustom = parsedScale;
                         }
-                        else if (scaleCustom <= 0)
+                        else if (!ViewScaleHelper.IsValidScale(scaleCustom))
                         {
-                            TaskDialog.Show(
-                                _cmpAttribute.ResourceText("IDS_TXT_ERROR"),
-                                _cmpAttribute.ResourceText("IDS_TXT_SCALE") + ": invalid value.");
+                            ShowScaleValidationError();
                             return;
                         }
                     }

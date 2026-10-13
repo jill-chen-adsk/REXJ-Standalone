@@ -309,6 +309,22 @@ namespace ADSK.JExtRAC.FittingSchedule.Resources {
             get { return ResourceManager.GetString("IDS_TXT_SCALE", resourceCulture); }
         }
 
+        internal static string IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL {
+            get { return ResourceManager.GetString("IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL", resourceCulture); }
+        }
+
+        internal static string IDS_TXT_SCALE_CUSTOM_HINT_METRIC {
+            get { return ResourceManager.GetString("IDS_TXT_SCALE_CUSTOM_HINT_METRIC", resourceCulture); }
+        }
+
+        internal static string IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL {
+            get { return ResourceManager.GetString("IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL", resourceCulture); }
+        }
+
+        internal static string IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC {
+            get { return ResourceManager.GetString("IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC", resourceCulture); }
+        }
+
         internal static string IDS_TXT_SETVIEWPORT {
             get { return ResourceManager.GetString("IDS_TXT_SETVIEWPORT", resourceCulture); }
         }

@@ -256,6 +256,18 @@
   <data name="IDS_TXT_SCALE" xml:space="preserve">
     <value>Scale</value>
   </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL" xml:space="preserve">
+    <value>Examples: 1/4", 1/4" = 1'-0", or scale denominator 48 (1 to 9999)</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_HINT_METRIC" xml:space="preserve">
+    <value>Enter a ratio denominator (1 to 9999)</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL" xml:space="preserve">
+    <value>1/4" = 1'-0"</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC" xml:space="preserve">
+    <value>1:100</value>
+  </data>
   <data name="IDS_TXT_SETVIEWPORT" xml:space="preserve">
     <value>Setting Viewports</value>
   </data>

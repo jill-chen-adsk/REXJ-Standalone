@@ -7,6 +7,9 @@ namespace ADSK.JExtRAC.FittingSchedule.Utils
 {
     internal static class ViewScaleHelper
     {
+        public const int ScaleMin = 1;
+        public const int ScaleMax = 9999;
+
         static readonly (int Value, string Name)[] MetricPresets =
         {
             (1, "1:1"),
@@ -143,6 +146,11 @@ namespace ADSK.JExtRAC.FittingSchedule.Utils
             return false;
         }
 
+        public static bool IsValidScale(int scale)
+        {
+            return scale >= ScaleMin && scale <= ScaleMax;
+        }
+
         public static bool TryParseScale(string text, bool isImperial, out int scale)
         {
             scale = 0;
@@ -155,14 +163,14 @@ namespace ADSK.JExtRAC.FittingSchedule.Utils
 
             Match ratioMatch = Regex.Match(text, @"^\s*1\s*:\s*(\d+)\s*$");
             if (ratioMatch.Success &&
-                int.TryParse(ratioMatch.Groups[1].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out scale) &&
-                scale > 0)
+                int.TryParse(ratioMatch.Groups[1].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int ratioScale) &&
+                TryAcceptScale(ratioScale, out scale))
             {
                 return true;
             }
 
-            if (int.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out scale) &&
-                scale >= 1 && scale <= 9999)
+            if (int.TryParse(text, NumberStyles.Integer, CultureInfo.InvariantCulture, out int integerScale) &&
+                TryAcceptScale(integerScale, out scale))
             {
                 return true;
             }
@@ -177,8 +185,12 @@ namespace ADSK.JExtRAC.FittingSchedule.Utils
                 int.TryParse(feetMatch.Groups[1].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int feet) &&
                 feet > 0)
             {
-                scale = feet * 12;
-                return scale > 0;
+                if (feet > ScaleMax / 12)
+                {
+                    return false;
+                }
+
+                return TryAcceptScale(feet * 12, out scale);
             }
 
             Match inchMatch = Regex.Match(text, @"^\s*(?:(\d+)\s+)?(\d+)\s*/\s*(\d+)\s*""?\s*(?:=\s*1\s*'\s*-?\s*0?\s*""?\s*)?$");
@@ -202,8 +214,8 @@ namespace ADSK.JExtRAC.FittingSchedule.Utils
                     return false;
                 }
 
-                scale = (int)Math.Round(12.0 / inches);
-                return scale > 0;
+                int computedScale = (int)Math.Round(12.0 / inches);
+                return TryAcceptScale(computedScale, out scale);
             }
 
             Match wholeInchMatch = Regex.Match(text, @"^\s*(\d+)\s*""?\s*(?:=\s*1\s*'\s*-?\s*0?\s*""?\s*)?$");
@@ -211,12 +223,24 @@ namespace ADSK.JExtRAC.FittingSchedule.Utils
                 int.TryParse(wholeInchMatch.Groups[1].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int wholeInches) &&
                 wholeInches > 0)
             {
-                scale = (int)Math.Round(12.0 / wholeInches);
-                return scale > 0;
+                int computedScale = (int)Math.Round(12.0 / wholeInches);
+                return TryAcceptScale(computedScale, out scale);
             }
 
             return false;
         }
+
+        static bool TryAcceptScale(int candidate, out int scale)
+        {
+            if (!IsValidScale(candidate))
+            {
+                scale = 0;
+                return false;
+            }
+
+            scale = candidate;
+            return true;
+        }
     }
 }
-
+
