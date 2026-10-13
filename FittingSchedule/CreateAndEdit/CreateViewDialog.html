@@ -21,6 +21,7 @@
       --radio-border: #5a7a94;
       --modal-bg: #1e2a3a;
       --chevron-fill: %238fa4b8;
+      --text-error: #ff8a80;
     }
 
     body[data-theme="light"] {
@@ -36,6 +37,7 @@
       --radio-border: #999999;
       --modal-bg: #ffffff;
       --chevron-fill: %23555555;
+      --text-error: #c0392b;
     }
 
     body {
@@ -125,9 +127,20 @@
 
     .footer {
       display: flex;
-      justify-content: flex-end;
+      flex-direction: column;
+      align-items: stretch;
       gap: 8px;
       padding: 12px 16px;
+    }
+    .footer-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .footer-error {
+      font-size: 12px;
+      color: var(--text-error);
+      margin: 0;
     }
 
     button {
@@ -200,7 +213,40 @@
       font-family: inherit;
       outline: none;
     }
-    .modal-box input[type="number"]:focus { border-color: var(--accent); }
+    .modal-box input[type="number"],
+    .modal-box input[type="text"] {
+      flex: 1;
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+    .modal-box input[type="number"]:focus,
+    .modal-box input[type="text"]:focus { border-color: var(--accent); }
+    .modal-box .field-hint {
+      font-size: 11px;
+      color: var(--text-label);
+      margin: -8px 0 12px 0;
+      line-height: 1.4;
+    }
+    .modal-box .modal-error {
+      font-size: 12px;
+      color: var(--text-error);
+      margin: -4px 0 12px 0;
+    }
+    .modal-box .input-row { flex-direction: column; align-items: stretch; }
+    .modal-box .input-row > label {
+      font-size: 11px;
+      color: var(--text-label);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
     .modal-box .modal-buttons {
       display: flex;
       justify-content: flex-end;
@@ -213,14 +259,24 @@
 
   <script>
     (function() {
+      var CUSTOM_SCALE_VALUE = 'custom';
+
       var state = {
         doorTagId: -1,
         windowTagId: -1,
-        scale: 100,
+        selectedScaleKey: '100',
         scaleCustom: 100,
+        scaleCustomDenom: 0,
+        scaleCustomText: '',
+        customScaleDraft: '',
+        usesCustomScale: false,
         detailLevel: 2,
         duplicateHandling: 0
       };
+
+      var scaleBeforeCustomModal = null;
+      var customModalError = '';
+      var footerError = '';
 
       var doorTags = [];
       var windowTags = [];
@@ -228,6 +284,8 @@
       var detailLevels = [];
       var isImperial = false;
       var showCustomModal = false;
+      var scaleMin = 1;
+      var scaleMax = 9999;
       var labels = {
         doorTag: 'Door tag',
         windowTag: 'Window tag',
@@ -239,8 +297,11 @@
         renameOldView: 'Rename old view and create new',
         customScale: 'Custom Scale',
         scalePrefix: '1:',
+        scaleCustomPlaceholder: '1:100',
+        scaleCustomHint: '',
+        scaleCustomInvalid: 'Value is out of range',
         cancel: 'Cancel',
-        createView: 'Create view',
+        createView: 'Create Section Views',
         ok: 'OK'
       };
 
@@ -250,6 +311,17 @@
         }
       }
 
+      window.showValidationError = function(message) {
+        footerError = message || labels.scaleCustomInvalid;
+        if (state.usesCustomScale) {
+          scaleBeforeCustomModal = state.selectedScaleKey;
+          customModalError = footerError;
+          initCustomScaleDraft();
+          showCustomModal = true;
+        }
+        render();
+      };
+
       window.initSettings = function(data) {
         // Apply theme
         if (data.theme) {
@@ -257,6 +329,8 @@
         }
 
         if (data.isImperial) isImperial = true;
+        if (data.labels && data.labels.scaleMin != null) scaleMin = data.labels.scaleMin;
+        if (data.labels && data.labels.scaleMax != null) scaleMax = data.labels.scaleMax;
         if (data.doorTags) doorTags = data.doorTags;
         if (data.windowTags) windowTags = data.windowTags;
         if (data.scales) scales = data.scales;
@@ -269,10 +343,26 @@
         if (data.currentSettings) {
           state.doorTagId = data.currentSettings.doorTagId != null ? data.currentSettings.doorTagId : -1;
           state.windowTagId = data.currentSettings.windowTagId != null ? data.currentSettings.windowTagId : -1;
-          state.scale = data.currentSettings.scale != null ? data.currentSettings.scale : 100;
+          var initScale = data.currentSettings.scale != null ? data.currentSettings.scale : 100;
           state.scaleCustom = data.currentSettings.scaleCustom != null ? data.currentSettings.scaleCustom : 100;
           state.detailLevel = data.currentSettings.detailLevel != null ? data.currentSettings.detailLevel : 2;
           state.duplicateHandling = data.currentSettings.duplicateHandling != null ? data.currentSettings.duplicateHandling : 0;
+          state.usesCustomScale = !!data.currentSettings.usesCustomScale;
+
+          if (state.usesCustomScale && state.scaleCustom > 0) {
+            state.scaleCustomDenom = state.scaleCustom;
+            state.selectedScaleKey = CUSTOM_SCALE_VALUE;
+            var display = data.currentSettings.scaleCustomDisplay ||
+              formatScaleDisplay(state.scaleCustomDenom);
+            state.scaleCustomText = isImperial ? display : '';
+            state.customScaleDraft = isImperial ? display : String(state.scaleCustom);
+            addCustomScaleOption(display);
+          } else {
+            if (isImperial && initScale === 100) {
+              initScale = 48;
+            }
+            state.selectedScaleKey = String(initScale);
+          }
         }
 
         // Default to first available item if stored ID doesn't match any option
@@ -283,34 +373,160 @@
           state.windowTagId = windowTags[0].value;
         }
 
-        // If a custom scale was previously saved, add it to the scale list
-        if (state.scale === 0 && state.scaleCustom > 0) {
-          addCustomScaleToList(state.scaleCustom);
-        }
-
-        // If saved scale doesn't match any option in the list, default to first real scale
-        if (state.scale !== 0 && state.scale !== -999) {
-          var found = scales.some(function(s) { return s.value === state.scale; });
+        if (!state.usesCustomScale) {
+          var found = scales.some(function(s) { return String(s.value) === state.selectedScaleKey; });
           if (!found && scales.length > 1) {
-            state.scale = scales[1].value;
+            var hasQuarterInch = isImperial && scales.some(function(s) { return s.value === 48; });
+            state.selectedScaleKey = hasQuarterInch ? '48' : String(scales[1].value);
           }
         }
 
         render();
       };
 
-      function formatCustomScale(val) {
-        var tag = ' (' + labels.customScale.replace('...', '').trim() + ')';
-        if (!isImperial) return '1:' + val + tag;
-        if (val === 1) return '12" = 1\'-0"' + tag;
-        if (val <= 12) return Math.round(12 / val) + '" = 1\'-0"' + tag;
-        var feet = Math.round(val / 12);
-        return '1" = ' + feet + '\'-0"' + tag;
+      function tryFormatInchesAsFraction(inches) {
+        var tolerance = 0.001;
+        var denominators = [1, 2, 4, 8, 16, 32, 64];
+        for (var d = 0; d < denominators.length; d++) {
+          var denominator = denominators[d];
+          var scaled = inches * denominator;
+          var rounded = Math.round(scaled);
+          if (Math.abs(scaled - rounded) > tolerance || rounded <= 0) {
+            continue;
+          }
+          var whole = Math.floor(rounded / denominator);
+          var numerator = rounded % denominator;
+          var inchText;
+          if (numerator === 0) {
+            inchText = whole + '"';
+          } else if (whole === 0) {
+            inchText = numerator + '/' + denominator + '"';
+          } else {
+            inchText = whole + ' ' + numerator + '/' + denominator + '"';
+          }
+          return inchText + ' = 1\'-0"';
+        }
+        return null;
       }
 
-      function addCustomScaleToList(val) {
-        scales = scales.filter(function(s) { return s.value !== -999; });
-        var entry = { value: -999, name: formatCustomScale(val) };
+      function formatScaleDisplay(scaleDenom) {
+        if (!isImperial) return '1:' + scaleDenom;
+        for (var i = 0; i < scales.length; i++) {
+          if (scales[i].value === scaleDenom && scales[i].value !== 0 && scales[i].value !== CUSTOM_SCALE_VALUE) {
+            return scales[i].name;
+          }
+        }
+        var paperInchesForOneFoot = 12 / scaleDenom;
+        if (paperInchesForOneFoot >= 0.01 && paperInchesForOneFoot <= 12) {
+          var inchFormatted = tryFormatInchesAsFraction(paperInchesForOneFoot);
+          if (inchFormatted) {
+            return inchFormatted;
+          }
+        }
+        if (scaleDenom % 12 === 0) {
+          return '1" = ' + (scaleDenom / 12) + '\'-0"';
+        }
+        return '1:' + scaleDenom;
+      }
+
+      function isValidScaleValue(n) {
+        return typeof n === 'number' && isFinite(n) && n >= scaleMin && n <= scaleMax;
+      }
+
+      function initCustomScaleDraft() {
+        if (state.customScaleDraft) {
+          return;
+        }
+        state.customScaleDraft = isImperial
+          ? (state.usesCustomScale
+            ? (state.scaleCustomText ||
+              (state.scaleCustomDenom > 0 ? formatScaleDisplay(state.scaleCustomDenom) : '') ||
+              '')
+            : '')
+          : (state.usesCustomScale ? String(state.scaleCustom) : '');
+      }
+
+      function rememberCustomScaleDraft(input) {
+        state.customScaleDraft = input ? input.value : '';
+      }
+
+      function dismissCustomScaleModal() {
+        showCustomModal = false;
+        customModalError = '';
+        if (scaleBeforeCustomModal != null) {
+          state.selectedScaleKey = scaleBeforeCustomModal;
+          state.usesCustomScale = scaleBeforeCustomModal === CUSTOM_SCALE_VALUE;
+        }
+        render();
+      }
+
+      function parseScaleInput(text) {
+        text = (text || '').trim();
+        if (!text) return { ok: false };
+
+        var ratio = text.match(/^\s*1\s*:\s*(\d+)\s*$/);
+        if (ratio) {
+          var r = parseInt(ratio[1], 10);
+          if (isValidScaleValue(r)) return { ok: true, scale: r, display: '1:' + r };
+        }
+
+        if (/^\d+$/.test(text)) {
+          var n = parseInt(text, 10);
+          if (isValidScaleValue(n)) {
+            return { ok: true, scale: n, display: isImperial ? formatScaleDisplay(n) : '1:' + n };
+          }
+        }
+
+        if (!isImperial) return { ok: false };
+
+        var maxFeet = Math.floor(scaleMax / 12);
+        var feet = text.match(/^\s*1\s*"\s*=\s*(\d+)\s*'\s*-?\s*0?\s*"?\s*$/);
+        if (feet) {
+          var ft = parseInt(feet[1], 10);
+          if (ft > 0 && ft <= maxFeet) {
+            var feetScale = ft * 12;
+            if (isValidScaleValue(feetScale)) {
+              return { ok: true, scale: feetScale, display: '1" = ' + ft + '\'-0"' };
+            }
+          }
+        }
+
+        var frac = text.match(/^\s*(?:(\d+)\s+)?(\d+)\s*\/\s*(\d+)\s*"?\s*(?:=\s*1\s*'\s*-?\s*0?\s*"?\s*)?$/);
+        if (frac) {
+          var whole = frac[1] ? parseInt(frac[1], 10) : 0;
+          var num = parseInt(frac[2], 10);
+          var den = parseInt(frac[3], 10);
+          if (num > 0 && den > 0) {
+            var inch = whole + num / den;
+            if (inch > 0) {
+              var sc = Math.round(12 / inch);
+              if (isValidScaleValue(sc)) {
+                var disp = (whole ? whole + ' ' : '') + num + '/' + den + '" = 1\'-0"';
+                return { ok: true, scale: sc, display: disp };
+              }
+            }
+          }
+        }
+
+        var wholeIn = text.match(/^\s*(\d+)\s*"?\s*(?:=\s*1\s*'\s*-?\s*0?\s*"?\s*)?$/);
+        if (wholeIn) {
+          var wi = parseInt(wholeIn[1], 10);
+          if (wi > 0) {
+            var wholeScale = Math.round(12 / wi);
+            if (isValidScaleValue(wholeScale)) {
+              return { ok: true, scale: wholeScale, display: wi + '" = 1\'-0"' };
+            }
+          }
+        }
+
+        return { ok: false };
+      }
+
+      function addCustomScaleOption(displayName) {
+        scales = scales.filter(function(s) { return s.value !== CUSTOM_SCALE_VALUE; });
+        var tag = labels.customScale.replace(/\.\.\./g, '').trim();
+        var name = displayName + (tag ? ' (' + tag + ')' : '');
+        var entry = { value: CUSTOM_SCALE_VALUE, name: name };
         if (scales.length > 0 && scales[0].value === 0) {
           scales.splice(1, 0, entry);
         } else {
@@ -325,11 +541,17 @@
         return d.innerHTML;
       }
 
+      function escAttr(str) {
+        return escHtml(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      }
+
       function buildOptions(items, selectedValue) {
         var html = '';
+        var selKey = String(selectedValue);
         for (var i = 0; i < items.length; i++) {
-          var sel = items[i].value == selectedValue ? ' selected' : '';
-          html += '<option value="' + items[i].value + '"' + sel + '>' + escHtml(items[i].name) + '</option>';
+          var valKey = String(items[i].value);
+          var sel = valKey === selKey ? ' selected' : '';
+          html += '<option value="' + escAttr(valKey) + '"' + sel + '>' + escHtml(items[i].name) + '</option>';
         }
         return html;
       }
@@ -362,14 +584,29 @@
 
         var modalHtml = '';
         if (showCustomModal) {
+          var hintHtml = labels.scaleCustomHint
+            ? '<p class="field-hint">' + escHtml(labels.scaleCustomHint) + '</p>'
+            : '';
+          var errHtml = customModalError
+            ? '<p class="modal-error">' + escHtml(customModalError) + '</p>'
+            : '';
+          var customInputHtml = isImperial
+            ? '<label>' + escHtml(labels.scale) + '</label>' +
+              '<input type="text" id="inputCustomScale" placeholder="' + escAttr(labels.scaleCustomPlaceholder) + '" value="' + escAttr(state.customScaleDraft) + '" />'
+            : '<label>' + escHtml(labels.scale) + '</label>' +
+              '<div style="display:flex;align-items:center;gap:8px;width:100%">' +
+                '<span>' + escHtml(labels.scalePrefix) + '</span>' +
+                '<input type="number" id="inputCustomScale" min="1" max="9999" value="' + escAttr(state.customScaleDraft) + '" style="flex:1" />' +
+              '</div>';
           modalHtml =
             '<div class="modal-overlay" id="modalOverlay">' +
               '<div class="modal-box">' +
                 '<h2>' + escHtml(labels.customScale) + '</h2>' +
                 '<div class="input-row">' +
-                  '<span>' + escHtml(labels.scalePrefix) + '</span>' +
-                  '<input type="number" id="inputCustomScale" min="1" max="9999" value="' + state.scaleCustom + '" />' +
+                  customInputHtml +
                 '</div>' +
+                hintHtml +
+                errHtml +
                 '<div class="modal-buttons">' +
                   '<button class="btn-cancel" id="btnModalCancel">' + escHtml(labels.cancel) + '</button>' +
                   '<button class="btn-create" id="btnModalOK">' + escHtml(labels.ok) + '</button>' +
@@ -390,7 +627,7 @@
             '</div>' +
             '<div class="field-group">' +
               '<label>' + escHtml(labels.scale) + '</label>' +
-              '<select id="selScale">' + buildOptions(scales, state.scale) + '</select>' +
+              '<select id="selScale">' + buildOptions(scales, state.selectedScaleKey) + '</select>' +
             '</div>' +
             '<div class="field-group">' +
               '<label>' + escHtml(labels.detailLevel) + '</label>' +
@@ -404,8 +641,11 @@
           '</div>' +
           '<hr class="divider" />' +
           '<div class="footer">' +
-            '<button class="btn-cancel" id="btnCancel">' + escHtml(labels.cancel) + '</button>' +
-            '<button class="btn-create" id="btnCreate">' + escHtml(labels.createView) + '</button>' +
+            (footerError ? '<p class="footer-error">' + escHtml(footerError) + '</p>' : '') +
+            '<div class="footer-actions">' +
+              '<button class="btn-cancel" id="btnCancel">' + escHtml(labels.cancel) + '</button>' +
+              '<button class="btn-create" id="btnCreate">' + escHtml(labels.createView) + '</button>' +
+            '</div>' +
           '</div>' +
           modalHtml;
 
@@ -421,12 +661,18 @@
           state.windowTagId = Number(e.target.value);
         });
         document.getElementById('selScale').addEventListener('change', function(e) {
-          var val = Number(e.target.value);
-          if (val === 0) {
+          var valKey = e.target.value;
+          if (valKey === '0') {
+            scaleBeforeCustomModal = state.selectedScaleKey;
+            customModalError = '';
+            state.customScaleDraft = '';
+            initCustomScaleDraft();
             showCustomModal = true;
             render();
           } else {
-            state.scale = val;
+            footerError = '';
+            state.usesCustomScale = valKey === CUSTOM_SCALE_VALUE;
+            state.selectedScaleKey = valKey;
           }
         });
 
@@ -451,12 +697,24 @@
         }
 
         document.getElementById('btnCreate').addEventListener('click', function() {
+          footerError = '';
+          var scaleOut = state.usesCustomScale ? 0 : parseInt(state.selectedScaleKey, 10);
+          var scaleCustomOut = state.usesCustomScale ? state.scaleCustomDenom : state.scaleCustom;
+          if (state.usesCustomScale && !isValidScaleValue(scaleCustomOut)) {
+            scaleBeforeCustomModal = state.selectedScaleKey;
+            customModalError = labels.scaleCustomInvalid;
+            initCustomScaleDraft();
+            showCustomModal = true;
+            render();
+            return;
+          }
           postMessage({
             action: 'create',
             doorTagId: state.doorTagId,
             windowTagId: state.windowTagId,
-            scale: state.scale,
-            scaleCustom: state.scaleCustom,
+            scale: scaleOut,
+            scaleCustom: scaleCustomOut,
+            scaleCustomText: state.usesCustomScale ? (state.scaleCustomText || '') : '',
             detailLevel: state.detailLevel,
             duplicateHandling: state.duplicateHandling
           });
@@ -471,33 +729,52 @@
         if (btnModalOK) {
           btnModalOK.addEventListener('click', function() {
             var input = document.getElementById('inputCustomScale');
-            var val = parseInt(input.value, 10);
-            if (val >= 1 && val <= 9999) {
+            if (isImperial) {
+              var parsed = parseScaleInput(input.value);
+              if (!parsed.ok) {
+                rememberCustomScaleDraft(input);
+                customModalError = labels.scaleCustomInvalid;
+                render();
+                return;
+              }
+              state.usesCustomScale = true;
+              state.scaleCustomDenom = parsed.scale;
+              state.scaleCustom = parsed.scale;
+              state.scaleCustomText = parsed.display;
+              state.customScaleDraft = parsed.display;
+              state.selectedScaleKey = CUSTOM_SCALE_VALUE;
+              addCustomScaleOption(parsed.display);
+            } else {
+              var val = parseInt(input.value, 10);
+              if (!isValidScaleValue(val)) {
+                rememberCustomScaleDraft(input);
+                customModalError = labels.scaleCustomInvalid;
+                render();
+                return;
+              }
+              state.usesCustomScale = true;
+              state.scaleCustomDenom = val;
               state.scaleCustom = val;
-              state.scale = -999;
-              addCustomScaleToList(val);
+              state.scaleCustomText = '';
+              state.customScaleDraft = String(val);
+              state.selectedScaleKey = CUSTOM_SCALE_VALUE;
+              addCustomScaleOption('1:' + val);
             }
+            customModalError = '';
+            footerError = '';
             showCustomModal = false;
             render();
           });
         }
         var btnModalCancel = document.getElementById('btnModalCancel');
         if (btnModalCancel) {
-          btnModalCancel.addEventListener('click', function() {
-            showCustomModal = false;
-            var sel = document.getElementById('selScale');
-            if (sel && state.scale !== 0) {
-              sel.value = state.scale;
-            }
-            render();
-          });
+          btnModalCancel.addEventListener('click', dismissCustomScaleModal);
         }
         var modalOverlay = document.getElementById('modalOverlay');
         if (modalOverlay) {
           modalOverlay.addEventListener('click', function(e) {
             if (e.target === modalOverlay) {
-              showCustomModal = false;
-              render();
+              dismissCustomScaleModal();
             }
           });
           var input = document.getElementById('inputCustomScale');

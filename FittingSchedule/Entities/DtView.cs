@@ -3,6 +3,7 @@ using Collections = System.Collections;
 using Revit = Autodesk.Revit;
 using RvtExtApp = ADSK.JExtRAC.FittingSchedule;
 using ADSK.JExtRAC.FittingSchedule.Components;
+using ADSK.JExtRAC.FittingSchedule.Utils;
 
 namespace ADSK.JExtRAC.FittingSchedule.Entities
 {
@@ -282,75 +283,11 @@ namespace ADSK.JExtRAC.FittingSchedule.Entities
             {
                 if (_DataScale == null)
                 {
-                    _DataScale = new System.Data.DataTable();
-                    System.Data.DataRow row;
-                    _DataScale.Columns.Add("Name", typeof(string));
-                    _DataScale.Columns.Add("Value", typeof(int));
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "Custom...";
-                    row["Value"] = 0;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:1";
-                    row["Value"] = 1;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:2";
-                    row["Value"] = 2;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:5";
-                    row["Value"] = 5;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:10";
-                    row["Value"] = 10;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:20";
-                    row["Value"] = 20;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:50";
-                    row["Value"] = 50;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:100";
-                    row["Value"] = 100;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:200";
-                    row["Value"] = 200;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:500";
-                    row["Value"] = 500;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:1000";
-                    row["Value"] = 1000;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:2000";
-                    row["Value"] = 2000;
-                    _DataScale.Rows.Add(row);
-
-                    row = _DataScale.NewRow();
-                    row["Name"] = "1:5000";
-                    row["Value"] = 5000;
-                    _DataScale.Rows.Add(row);
+                    _DataScale = ViewScaleHelper.CreateScaleDataTable(IsImperial);
+                    System.Data.DataRow customRow = _DataScale.NewRow();
+                    customRow["Name"] = CmpAttribute.ResourceText("IDS_TXT_CUSTOM");
+                    customRow["Value"] = 0;
+                    _DataScale.Rows.InsertAt(customRow, 0);
                 }
                 return _DataScale;
             }

@@ -74,16 +74,16 @@
     <value>Command failed</value>
   </data>
   <data name="IDS_ERR_CREATEPARTSDRAW" xml:space="preserve">
-    <value>Failed to create fitting elevation drawing</value>
+    <value>Failed to create fitting section views</value>
   </data>
   <data name="IDS_ERR_DELETEACTIVEVIEW" xml:space="preserve">
-    <value>Cannot delete the active view. Please activate a non-fitting-elevation view and try again.</value>
+    <value>Cannot delete the active view. Please activate a non-fitting-section view and try again.</value>
   </data>
   <data name="IDS_ERR_GETVIEWPARTS" xml:space="preserve">
-    <value>Failed to get elevation views</value>
+    <value>Failed to get section views</value>
   </data>
   <data name="IDS_ERR_LAYOUTPARTSDRAW" xml:space="preserve">
-    <value>Failed to layout fitting elevation drawings</value>
+    <value>Failed to layout fitting section views on sheet</value>
   </data>
   <data name="IDS_ERR_LSTNULL" xml:space="preserve">
     <value>List box is empty</value>
@@ -113,7 +113,7 @@
     <value>Value is out of range</value>
   </data>
   <data name="IDS_ERR_VIEWSEC" xml:space="preserve">
-    <value>No section view family type available for creating fitting elevation drawings</value>
+    <value>No section view family type available for creating fitting section views</value>
   </data>
   <data name="IDS_ERR_VIEWSHEET" xml:space="preserve">
     <value>Please open a sheet view before using this command</value>
@@ -181,8 +181,11 @@
   <data name="IDS_TXT_CREATEPARTSDRAWING" xml:space="preserve">
     <value>Create (Doors/Windows) View</value>
   </data>
+  <data name="IDS_TXT_BTN_CREATEVIEWPARTS" xml:space="preserve">
+    <value>Create Section Views</value>
+  </data>
   <data name="IDS_TXT_CREATEVIEWPARTS" xml:space="preserve">
-    <value>Creating Elevation Views</value>
+    <value>Creating Section Views</value>
   </data>
   <data name="IDS_TXT_CUSTOM" xml:space="preserve">
     <value>Custom...</value>
@@ -212,7 +215,7 @@
     <value>Error</value>
   </data>
   <data name="IDS_TXT_GETVIEWPARTS" xml:space="preserve">
-    <value>Getting Elevation Views</value>
+    <value>Getting Section Views</value>
   </data>
   <data name="IDS_TXT_HANDLINGDUPLICATEVIEW" xml:space="preserve">
     <value>Handling Duplicate Views</value>
@@ -224,7 +227,7 @@
     <value>Layout (Doors/Windows) Views in Sheet</value>
   </data>
   <data name="IDS_TXT_LAYOUTVIEWPARTS" xml:space="preserve">
-    <value>Laying out Elevation Views</value>
+    <value>Laying out Section Views</value>
   </data>
   <data name="IDS_TXT_LEFT" xml:space="preserve">
     <value>Left</value>
@@ -245,7 +248,7 @@
     <value>Parameter</value>
   </data>
   <data name="IDS_TXT_PLACEMENTSOLIDPICTURE" xml:space="preserve">
-    <value>Elevations to Place on Sheet</value>
+    <value>Section Views to Place on Sheet</value>
   </data>
   <data name="IDS_TXT_RIGHT" xml:space="preserve">
     <value>Right</value>
@@ -255,6 +258,18 @@
   </data>
   <data name="IDS_TXT_SCALE" xml:space="preserve">
     <value>Scale</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL" xml:space="preserve">
+    <value>Examples: 1/4", 1/4" = 1'-0", or scale denominator 48 (1 to 9999)</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_HINT_METRIC" xml:space="preserve">
+    <value>Enter a ratio denominator (1 to 9999)</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL" xml:space="preserve">
+    <value>1/4" = 1'-0"</value>
+  </data>
+  <data name="IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC" xml:space="preserve">
+    <value>1:100</value>
   </data>
   <data name="IDS_TXT_SETVIEWPORT" xml:space="preserve">
     <value>Setting Viewports</value>
@@ -272,7 +287,7 @@
     <value>↑</value>
   </data>
   <data name="IDS_TXT_SOLIDPICTURE" xml:space="preserve">
-    <value>Elevation Drawings</value>
+    <value>Section Drawings</value>
   </data>
   <data name="IDS_TXT_TOP" xml:space="preserve">
     <value>Top</value>

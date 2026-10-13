@@ -6,11 +6,13 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using Microsoft.Web.WebView2.Core;
 using Autodesk.Revit.UI;
 
 using RvtExtApp = ADSK.JExtRAC.FittingSchedule;
+using ADSK.JExtRAC.FittingSchedule.Utils;
 
 namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
 {
@@ -32,7 +34,8 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             RvtExtApp.Components.Attribute cmpAttribute,
             RvtExtApp.Entities.DtView entDtView,
             RvtExtApp.Entities.DtWinDoorType entDtWinDoorType,
-            RvtExtApp.Entities.DtCmd entDtCmd)
+            RvtExtApp.Entities.DtCmd entDtCmd,
+            IntPtr ownerHandle)
         {
             InitializeComponent();
             _cmpAttribute = cmpAttribute;
@@ -40,9 +43,18 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             _entDtWinDoorType = entDtWinDoorType;
             _entDtCmd = entDtCmd;
 
+            if (ownerHandle != IntPtr.Zero)
+            {
+                new WindowInteropHelper(this) { Owner = ownerHandle };
+                WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            }
+            else
+            {
+                RestorePosition();
+            }
+
             _isDarkTheme = UIThemeManager.CurrentTheme == UITheme.Dark;
             ApplyThemeColors();
-            RestorePosition();
 
             Loaded += OnWindowLoaded;
             Closing += OnWindowClosing;
@@ -188,6 +200,12 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             var scales = DataTableToJson(_entDtView.DataScale, "Value", "Name");
             var detailLevels = DataTableToJson(_entDtView.DetailLevel, "Value", "Name");
 
+            int defaultScale = _entDtView.ViewScaleDefault;
+            if (_entDtView.IsImperial && defaultScale == 100 && _entDtView.ViewScaleCustom == 100)
+            {
+                defaultScale = 48;
+            }
+
             var initData = JsonSerializer.Serialize(new
             {
                 theme = _isDarkTheme ? "dark" : "light",
@@ -200,10 +218,14 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                 {
                     doorTagId = _entDtWinDoorType.IdDoorTag,
                     windowTagId = _entDtWinDoorType.IdWindowTag,
-                    scale = _entDtView.ViewScaleDefault,
+                    scale = defaultScale,
                     detailLevel = _entDtView.ViewDetailLevel,
                     duplicateHandling = _entDtView.DuplicateViewOpt,
-                    scaleCustom = _entDtView.ViewScaleCustom
+                    scaleCustom = _entDtView.ViewScaleCustom,
+                    usesCustomScale = _entDtView.ViewScaleDefault == 0 && _entDtView.ViewScaleCustom > 0,
+                    scaleCustomDisplay = _entDtView.ViewScaleDefault == 0 && _entDtView.ViewScaleCustom > 0
+                        ? ViewScaleHelper.FormatScale(_entDtView.ViewScaleCustom, _entDtView.IsImperial)
+                        : null
                 },
                 labels = new
                 {
@@ -217,13 +239,35 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                     renameOldView = _cmpAttribute.ResourceText("IDS_TXT_CHANGEOLDVIEW"),
                     customScale = _cmpAttribute.ResourceText("IDS_TXT_CUSTOM"),
                     scalePrefix = _cmpAttribute.ResourceText("IDS_TXT_COLON1"),
+                    scaleCustomPlaceholder = _entDtView.IsImperial
+                        ? _cmpAttribute.ResourceText("IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL")
+                        : _cmpAttribute.ResourceText("IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC"),
+                    scaleCustomHint = _entDtView.IsImperial
+                        ? _cmpAttribute.ResourceText("IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL")
+                        : _cmpAttribute.ResourceText("IDS_TXT_SCALE_CUSTOM_HINT_METRIC"),
+                    scaleCustomInvalid = _cmpAttribute.ResourceText("IDS_ERR_VALRANGE"),
+                    scaleMin = ViewScaleHelper.ScaleMin,
+                    scaleMax = ViewScaleHelper.ScaleMax,
                     cancel = _cmpAttribute.ResourceText("IDS_TXT_CANCEL"),
-                    createView = _cmpAttribute.ResourceText("IDS_TXT_CREATEVIEWPARTS"),
+                    createView = _cmpAttribute.ResourceText("IDS_TXT_BTN_CREATEVIEWPARTS"),
                     ok = _cmpAttribute.ResourceText("IDS_TXT_OK")
                 }
             });
 
             await webView.CoreWebView2.ExecuteScriptAsync($"window.initSettings({initData})");
+        }
+
+        private async Task PostScaleValidationErrorAsync()
+        {
+            if (webView.CoreWebView2 == null)
+            {
+                return;
+            }
+
+            string message = _cmpAttribute.ResourceText("IDS_TXT_SCALE") + ": " +
+                             _cmpAttribute.ResourceText("IDS_ERR_VALRANGE");
+            string script = $"window.showValidationError({JsonSerializer.Serialize(message)})";
+            await webView.CoreWebView2.ExecuteScriptAsync(script);
         }
 
         private static object[] DataTableToJson(DataTable table, string valueColumn, string nameColumn)
@@ -244,7 +288,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             return rows;
         }
 
-        private void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
+        private async void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
         {
             try
             {
@@ -262,11 +306,27 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                     int detailLevel = root.GetProperty("detailLevel").GetInt32();
                     int duplicateHandling = root.GetProperty("duplicateHandling").GetInt32();
                     int scaleCustom = root.GetProperty("scaleCustom").GetInt32();
+                    string scaleCustomText = root.TryGetProperty("scaleCustomText", out var scaleCustomTextEl)
+                        ? scaleCustomTextEl.GetString()
+                        : null;
 
-                    // -999 is the marker for "user selected custom scale entry"
-                    if (scale == -999)
+                    if (scale == 0)
                     {
-                        scale = 0;
+                        if (!string.IsNullOrWhiteSpace(scaleCustomText))
+                        {
+                            if (!ViewScaleHelper.TryParseScale(scaleCustomText, _entDtView.IsImperial, out int parsedScale))
+                            {
+                                await PostScaleValidationErrorAsync();
+                                return;
+                            }
+
+                            scaleCustom = parsedScale;
+                        }
+                        else if (!ViewScaleHelper.IsValidScale(scaleCustom))
+                        {
+                            await PostScaleValidationErrorAsync();
+                            return;
+                        }
                     }
 
                     _entDtWinDoorType.IdDoorTag = doorTagId;

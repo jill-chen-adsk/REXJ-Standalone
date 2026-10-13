@@ -209,6 +209,10 @@ namespace ADSK.JExtRAC.FittingSchedule.Resources {
             get { return ResourceManager.GetString("IDS_TXT_CREATEPARTSDRAWING", resourceCulture); }
         }
 
+        internal static string IDS_TXT_BTN_CREATEVIEWPARTS {
+            get { return ResourceManager.GetString("IDS_TXT_BTN_CREATEVIEWPARTS", resourceCulture); }
+        }
+
         internal static string IDS_TXT_CREATEVIEWPARTS {
             get { return ResourceManager.GetString("IDS_TXT_CREATEVIEWPARTS", resourceCulture); }
         }
@@ -307,6 +311,22 @@ namespace ADSK.JExtRAC.FittingSchedule.Resources {
 
         internal static string IDS_TXT_SCALE {
             get { return ResourceManager.GetString("IDS_TXT_SCALE", resourceCulture); }
+        }
+
+        internal static string IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL {
+            get { return ResourceManager.GetString("IDS_TXT_SCALE_CUSTOM_HINT_IMPERIAL", resourceCulture); }
+        }
+
+        internal static string IDS_TXT_SCALE_CUSTOM_HINT_METRIC {
+            get { return ResourceManager.GetString("IDS_TXT_SCALE_CUSTOM_HINT_METRIC", resourceCulture); }
+        }
+
+        internal static string IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL {
+            get { return ResourceManager.GetString("IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_IMPERIAL", resourceCulture); }
+        }
+
+        internal static string IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC {
+            get { return ResourceManager.GetString("IDS_TXT_SCALE_CUSTOM_PLACEHOLDER_METRIC", resourceCulture); }
         }
 
         internal static string IDS_TXT_SETVIEWPORT {
