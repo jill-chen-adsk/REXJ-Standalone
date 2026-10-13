@@ -257,12 +257,17 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             await webView.CoreWebView2.ExecuteScriptAsync($"window.initSettings({initData})");
         }
 
-        private void ShowScaleValidationError()
+        private async Task PostScaleValidationErrorAsync()
         {
-            TaskDialog.Show(
-                _cmpAttribute.ResourceText("IDS_TXT_ERROR"),
-                _cmpAttribute.ResourceText("IDS_TXT_SCALE") + "\n" +
-                _cmpAttribute.ResourceText("IDS_ERR_VALRANGE"));
+            if (webView.CoreWebView2 == null)
+            {
+                return;
+            }
+
+            string message = _cmpAttribute.ResourceText("IDS_TXT_SCALE") + ": " +
+                             _cmpAttribute.ResourceText("IDS_ERR_VALRANGE");
+            string script = $"window.showValidationError({JsonSerializer.Serialize(message)})";
+            await webView.CoreWebView2.ExecuteScriptAsync(script);
         }
 
         private static object[] DataTableToJson(DataTable table, string valueColumn, string nameColumn)
@@ -283,7 +288,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
             return rows;
         }
 
-        private void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
+        private async void OnWebMessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs e)
         {
             try
             {
@@ -311,7 +316,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                         {
                             if (!ViewScaleHelper.TryParseScale(scaleCustomText, _entDtView.IsImperial, out int parsedScale))
                             {
-                                ShowScaleValidationError();
+                                await PostScaleValidationErrorAsync();
                                 return;
                             }
 
@@ -319,7 +324,7 @@ namespace ADSK.JExtRAC.FittingSchedule.CreateAndEdit
                         }
                         else if (!ViewScaleHelper.IsValidScale(scaleCustom))
                         {
-                            ShowScaleValidationError();
+                            await PostScaleValidationErrorAsync();
                             return;
                         }
                     }

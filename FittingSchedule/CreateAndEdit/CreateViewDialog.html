@@ -127,9 +127,20 @@
 
     .footer {
       display: flex;
-      justify-content: flex-end;
+      flex-direction: column;
+      align-items: stretch;
       gap: 8px;
       padding: 12px 16px;
+    }
+    .footer-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .footer-error {
+      font-size: 12px;
+      color: var(--text-error);
+      margin: 0;
     }
 
     button {
@@ -265,6 +276,7 @@
 
       var scaleBeforeCustomModal = null;
       var customModalError = '';
+      var footerError = '';
 
       var doorTags = [];
       var windowTags = [];
@@ -298,6 +310,17 @@
           window.chrome.webview.postMessage(msg);
         }
       }
+
+      window.showValidationError = function(message) {
+        footerError = message || labels.scaleCustomInvalid;
+        if (state.usesCustomScale) {
+          scaleBeforeCustomModal = state.selectedScaleKey;
+          customModalError = footerError;
+          initCustomScaleDraft();
+          showCustomModal = true;
+        }
+        render();
+      };
 
       window.initSettings = function(data) {
         // Apply theme
@@ -514,13 +537,17 @@
         return d.innerHTML;
       }
 
+      function escAttr(str) {
+        return escHtml(str).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      }
+
       function buildOptions(items, selectedValue) {
         var html = '';
         var selKey = String(selectedValue);
         for (var i = 0; i < items.length; i++) {
           var valKey = String(items[i].value);
           var sel = valKey === selKey ? ' selected' : '';
-          html += '<option value="' + escHtml(valKey) + '"' + sel + '>' + escHtml(items[i].name) + '</option>';
+          html += '<option value="' + escAttr(valKey) + '"' + sel + '>' + escHtml(items[i].name) + '</option>';
         }
         return html;
       }
@@ -561,11 +588,11 @@
             : '';
           var customInputHtml = isImperial
             ? '<label>' + escHtml(labels.scale) + '</label>' +
-              '<input type="text" id="inputCustomScale" placeholder="' + escHtml(labels.scaleCustomPlaceholder) + '" value="' + escHtml(state.customScaleDraft) + '" />'
+              '<input type="text" id="inputCustomScale" placeholder="' + escAttr(labels.scaleCustomPlaceholder) + '" value="' + escAttr(state.customScaleDraft) + '" />'
             : '<label>' + escHtml(labels.scale) + '</label>' +
               '<div style="display:flex;align-items:center;gap:8px;width:100%">' +
                 '<span>' + escHtml(labels.scalePrefix) + '</span>' +
-                '<input type="number" id="inputCustomScale" min="1" max="9999" value="' + escHtml(state.customScaleDraft) + '" style="flex:1" />' +
+                '<input type="number" id="inputCustomScale" min="1" max="9999" value="' + escAttr(state.customScaleDraft) + '" style="flex:1" />' +
               '</div>';
           modalHtml =
             '<div class="modal-overlay" id="modalOverlay">' +
@@ -610,8 +637,11 @@
           '</div>' +
           '<hr class="divider" />' +
           '<div class="footer">' +
-            '<button class="btn-cancel" id="btnCancel">' + escHtml(labels.cancel) + '</button>' +
-            '<button class="btn-create" id="btnCreate">' + escHtml(labels.createView) + '</button>' +
+            (footerError ? '<p class="footer-error">' + escHtml(footerError) + '</p>' : '') +
+            '<div class="footer-actions">' +
+              '<button class="btn-cancel" id="btnCancel">' + escHtml(labels.cancel) + '</button>' +
+              '<button class="btn-create" id="btnCreate">' + escHtml(labels.createView) + '</button>' +
+            '</div>' +
           '</div>' +
           modalHtml;
 
@@ -636,6 +666,7 @@
             showCustomModal = true;
             render();
           } else {
+            footerError = '';
             state.usesCustomScale = valKey === CUSTOM_SCALE_VALUE;
             state.selectedScaleKey = valKey;
           }
@@ -662,6 +693,7 @@
         }
 
         document.getElementById('btnCreate').addEventListener('click', function() {
+          footerError = '';
           var scaleOut = state.usesCustomScale ? 0 : parseInt(state.selectedScaleKey, 10);
           var scaleCustomOut = state.usesCustomScale ? state.scaleCustomDenom : state.scaleCustom;
           if (state.usesCustomScale && !isValidScaleValue(scaleCustomOut)) {
