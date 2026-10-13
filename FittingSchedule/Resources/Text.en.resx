@@ -182,7 +182,7 @@
     <value>Create (Doors/Windows) View</value>
   </data>
   <data name="IDS_TXT_CREATEVIEWPARTS" xml:space="preserve">
-    <value>Creating Elevation Views</value>
+    <value>Create Section Views</value>
   </data>
   <data name="IDS_TXT_CUSTOM" xml:space="preserve">
     <value>Custom...</value>
@@ -212,7 +212,7 @@
     <value>Error</value>
   </data>
   <data name="IDS_TXT_GETVIEWPARTS" xml:space="preserve">
-    <value>Getting Elevation Views</value>
+    <value>Getting Section Views</value>
   </data>
   <data name="IDS_TXT_HANDLINGDUPLICATEVIEW" xml:space="preserve">
     <value>Handling Duplicate Views</value>
@@ -224,7 +224,7 @@
     <value>Layout (Doors/Windows) Views in Sheet</value>
   </data>
   <data name="IDS_TXT_LAYOUTVIEWPARTS" xml:space="preserve">
-    <value>Laying out Elevation Views</value>
+    <value>Laying out Section Views</value>
   </data>
   <data name="IDS_TXT_LEFT" xml:space="preserve">
     <value>Left</value>
@@ -245,7 +245,7 @@
     <value>Parameter</value>
   </data>
   <data name="IDS_TXT_PLACEMENTSOLIDPICTURE" xml:space="preserve">
-    <value>Elevations to Place on Sheet</value>
+    <value>Section Views to Place on Sheet</value>
   </data>
   <data name="IDS_TXT_RIGHT" xml:space="preserve">
     <value>Right</value>
@@ -272,7 +272,7 @@
     <value>↑</value>
   </data>
   <data name="IDS_TXT_SOLIDPICTURE" xml:space="preserve">
-    <value>Elevation Drawings</value>
+    <value>Section Drawings</value>
   </data>
   <data name="IDS_TXT_TOP" xml:space="preserve">
     <value>Top</value>

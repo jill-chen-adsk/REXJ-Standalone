@@ -1,8 +1,9 @@
 ; REXJ Standalone - Window Door View (Weave) Installer for Revit 2027
 ; Built with Inno Setup 6
 
-#define MyAppName "REXJ - Window Door View (Weave)"
-#define MyAppVersion "1.1.0"
+; Do not use "/" in MyAppName — Windows rejects it in DefaultGroupName ("The folder name is not valid").
+#define MyAppName "REXJ - Fitting Schedule and Window Door View (Weave)"
+#define MyAppVersion "1.1.5"
 #define MyAppPublisher "ADSK REXJ"
 #define MyAppURL "https://github.com/jill-chen-adsk/REXJ-Standalone"
 #define RevitYear "2027"
@@ -71,7 +72,10 @@ begin
                 SubDirName := SearchRec.Name;
                 if (Length(SubDirName) > 2) and (SubDirName[2] = '_') then
                   SubDirName := Copy(SubDirName, 3, Length(SubDirName) - 2);
-                SubDirName := Copy(SubDirName, 1, Length(SubDirName) - 6);
+                if (Length(SubDirName) > 6) and (CompareText(Copy(SubDirName, Length(SubDirName) - 5, 6), '.addin') = 0) then
+                  SubDirName := Copy(SubDirName, 1, Length(SubDirName) - 6)
+                else
+                  SubDirName := ChangeFileExt(SubDirName, '');
                 NewAssembly := '    <Assembly>' + ExpandConstant('{app}') + '\' + SubDirName + '\' + DllName + '</Assembly>';
                 Lines[I] := NewAssembly;
               end;
