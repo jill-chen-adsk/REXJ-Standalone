@@ -327,6 +327,12 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Resources {
             }
         }
         
+        internal static string IDS_TRN_CREATE_DIMENSION {
+            get {
+                return ResourceManager.GetString("IDS_TRN_CREATE_DIMENSION", resourceCulture);
+            }
+        }
+        
         internal static string IDS_MSG_PICK_DIM_BASE_POINT {
             get {
                 return ResourceManager.GetString("IDS_MSG_PICK_DIM_BASE_POINT", resourceCulture);

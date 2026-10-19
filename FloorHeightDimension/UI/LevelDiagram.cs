@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -64,8 +66,24 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
                 double y = LevelYs[i];
                 AddLine(canvas, neutral, OuterLeft, y, OuterRight, y);
 
-                string name = "\u25BD" + string.Format(levelFormat, LevelYs.Length - i);
+                string name = "\u25BD" + FormatLevelName(levelFormat, LevelYs.Length - i);
                 AddTextAt(canvas, name, CenterX + 5.0, y - 1.0, LevelFontSize, neutral, bold: true);
+            }
+        }
+
+        // The format comes from a localizable resource; a broken translation must not abort the command.
+        private static string FormatLevelName(string levelFormat, int levelNumber)
+        {
+            if (string.IsNullOrEmpty(levelFormat))
+                return levelNumber.ToString(CultureInfo.CurrentCulture);
+
+            try
+            {
+                return string.Format(CultureInfo.CurrentCulture, levelFormat, levelNumber);
+            }
+            catch (FormatException)
+            {
+                return levelFormat;
             }
         }
 

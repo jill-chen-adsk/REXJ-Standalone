@@ -44,11 +44,13 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Utils
 
                 // Saturated red loses too much luminance against the dark surface.
                 SetColorBrush(resources, "Weave.Color.Diagram.Accent", "Weave.Brush.Diagram.Accent", "#FF7B84");
+                SetColorBrush(resources, "Weave.Color.Chrome.CloseHover", "Weave.Brush.Chrome.CloseHover", "#33FFFFFF");
             }
             else
             {
                 SetPair(resources, "#3C3C3C", "#6B6B6B", "#D9D9D9", "#FFFFFF", "#F5F5F5", "#FFFFFF");
                 SetColorBrush(resources, "Weave.Color.Diagram.Accent", "Weave.Brush.Diagram.Accent", "#D92B36");
+                SetColorBrush(resources, "Weave.Color.Chrome.CloseHover", "Weave.Brush.Chrome.CloseHover", "#20000000");
             }
         }
 

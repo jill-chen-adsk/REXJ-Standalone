@@ -12,8 +12,11 @@
     <Color x:Key="Weave.Color.Error">#E34850</Color>
     <Color x:Key="Weave.Color.Shadow">#000000</Color>
     <Color x:Key="Weave.Color.Diagram.Accent">#D92B36</Color>
+    <Color x:Key="Weave.Color.Accent.Foreground">#FFFFFF</Color>
+    <Color x:Key="Weave.Color.Chrome.CloseHover">#20000000</Color>
 
-    <SolidColorBrush x:Key="Weave.Brush.Chrome.CloseHover" Color="#20000000"/>
+    <SolidColorBrush x:Key="Weave.Brush.Chrome.CloseHover" Color="{DynamicResource Weave.Color.Chrome.CloseHover}"/>
+    <SolidColorBrush x:Key="Weave.Brush.Accent.Foreground" Color="{DynamicResource Weave.Color.Accent.Foreground}"/>
 
     <SolidColorBrush x:Key="Weave.Brush.Text.Primary" Color="{DynamicResource Weave.Color.Text.Primary}"/>
     <SolidColorBrush x:Key="Weave.Brush.Text.Secondary" Color="{DynamicResource Weave.Color.Text.Secondary}"/>
@@ -100,11 +103,11 @@
             </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
                 <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Accent.Foreground}"/>
             </Trigger>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Accent.Foreground}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -220,7 +223,7 @@
         <Setter Property="Height" Value="32"/>
         <Setter Property="Padding" Value="16,0"/>
         <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Accent.Foreground}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">

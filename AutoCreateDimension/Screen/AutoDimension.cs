@@ -392,8 +392,24 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
         /// </summary>
         private static bool IsNegativeDimension(Dimension dim)
         {
-            string value = dim.ValueString;
-            return !string.IsNullOrEmpty(value) && value.TrimStart().StartsWith("-", StringComparison.Ordinal);
+            // 連続寸法では Dimension.Value / ValueString が null になるため、セグメントごとに判定する
+            if (dim.NumberOfSegments > 1) {
+                foreach (DimensionSegment segment in dim.Segments) {
+                    if (IsNegativeValue(segment.Value, segment.ValueString)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return IsNegativeValue(dim.Value, dim.ValueString);
+        }
+
+        private static bool IsNegativeValue(double? value, string valueString)
+        {
+            if (value.HasValue && value.Value < 0) {
+                return true;
+            }
+            return !string.IsNullOrEmpty(valueString) && valueString.TrimStart().StartsWith("-", StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -1649,7 +1665,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                         {
                             minY = cornerList[1];
                         }
-                        using (Transaction t = new Transaction(Doc, "詳細線分"))
+                        using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE))
                         {
                             t.Start();
                             Line l1 = Line.CreateBound(minY, maxX);
@@ -2279,7 +2295,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                         {
                             minY = cornerList[1];
                         }
-                        using (Transaction t = new Transaction(Doc, "詳細線分"))
+                        using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE))
                         {
                             t.Start();
                             Line l1 = Line.CreateBound(minY, maxX);
@@ -2368,7 +2384,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                     cornerList.Remove(p2);
                     XYZ p3 = cornerList.First();
                     XYZ p4 = cornerList.Last();
-                    using (Transaction t = new Transaction(Doc, "詳細線分"))
+                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE))
                     {
                         t.Start();
                         FilteredElementCollector detailLineCollection =
@@ -2867,7 +2883,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -3004,7 +3020,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -3213,7 +3229,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         List<CurveElement> lineList = GetElements<CurveElement>(Doc);
                                         Line l1 = Line.CreateBound(p1, p2);
@@ -3337,7 +3353,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -3690,7 +3706,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -3827,7 +3843,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -4055,7 +4071,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         List<CurveElement> lineList = GetElements<CurveElement>(Doc);
                                         Line l1 = Line.CreateBound(p1, p2);
@@ -4179,7 +4195,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -4621,7 +4637,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -4757,7 +4773,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                 cornerList.Remove(p2);
                                 XYZ p3 = cornerList.First();
                                 XYZ p4 = cornerList.Last();
-                                using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                     t.Start();
                                     FilteredElementCollector detailLineCollection =
                                     new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -5007,7 +5023,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                         cornerList.Remove(p2);
                                         XYZ p3 = cornerList.First();
                                         XYZ p4 = cornerList.Last();
-                                        using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                        using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                             t.Start();
                                             FilteredElementCollector detailLineCollection =
                                             new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -5123,7 +5139,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
+                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -6668,7 +6684,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
 
             try {
                 Line line = Line.CreateBound(p1, p2);
-                using (Transaction transaction = new Transaction(Doc, "寸法作成")) {
+                using (Transaction transaction = new Transaction(Doc, ResText.IDS_TRN_CREATE_DIMENSION)) {
                     transaction.Start();
                     Dimension dim = RemoveZeroSegments(view, line, Doc.Create.NewDimension(view, line, references));
                     if (dim == null || IsZeroDimension(dim)) {
@@ -6720,7 +6736,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
 
                 Line line = Line.CreateBound(p1, p2);
 
-                using (Transaction transaction = new Transaction(Doc, "寸法作成")) {
+                using (Transaction transaction = new Transaction(Doc, ResText.IDS_TRN_CREATE_DIMENSION)) {
                     transaction.Start();
                     Dimension dim = Doc.Create.NewDimension(
                     Doc.ActiveView, line, ra);
@@ -7613,7 +7629,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
 
                             Line line = Line.CreateBound(point1, point2);
 
-                            using (Transaction transaction = new Transaction(Doc, "寸法作成")) {
+                            using (Transaction transaction = new Transaction(Doc, ResText.IDS_TRN_CREATE_DIMENSION)) {
                                 transaction.Start();
                                 Dimension dim = Doc.Create.NewDimension(
                                 Doc.ActiveView, line, ra);
@@ -7890,7 +7906,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
 
                             Line line = Line.CreateBound(point1, point2);
 
-                            using (Transaction transaction = new Transaction(Doc, "寸法作成")) {
+                            using (Transaction transaction = new Transaction(Doc, ResText.IDS_TRN_CREATE_DIMENSION)) {
                                 transaction.Start();
                                 Dimension dim = Doc.Create.NewDimension(
                                 Doc.ActiveView, line, ra);
