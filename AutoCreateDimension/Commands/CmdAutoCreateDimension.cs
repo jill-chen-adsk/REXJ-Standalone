@@ -70,9 +70,13 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Commands
                                 }
                             }
                             catch (Autodesk.Revit.Exceptions.OperationCanceledException) {
+                                // Esc during PickPoint finishes the command; keep the dimensions placed so far.
+                                transGroup.Assimilate();
                                 return Result.Succeeded;
                             }
                             catch (System.Exception ex) {
+                                // IDS_MSG_DIM_FAILED tells the user nothing was changed, so undo the whole command.
+                                transGroup.RollBack();
                                 ComDialog.ShowDialog(
                                     revitHandle,
                                     ResText.IDS_MSG_WARN_TITLE,

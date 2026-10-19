@@ -335,11 +335,6 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             }
         }
 
-        /// <summary>
-        /// キャンセルボタンクリック時の処理。
-        /// </summary>
-        /// <param name="sender">イベントを送信したオブジェクト</param>
-        /// <param name="e">イベントデータ</param>
         private void ApplyLocalizedFormText()
         {
             Text = ResText.IDS_DIM_FORM_TITLE;
@@ -412,9 +407,6 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             return !string.IsNullOrEmpty(valueString) && valueString.TrimStart().StartsWith("-", StringComparison.Ordinal);
         }
 
-        /// <summary>
-        /// 長さ0の寸法かどうか（同一直線上に並ぶ要素の直交方向寸法など）
-        /// </summary>
         private static List<ElementId> ParseElementIds(IEnumerable<string> ids)
         {
             List<ElementId> result = new List<ElementId>();
@@ -426,6 +418,9 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             return result;
         }
 
+        /// <summary>
+        /// 長さ0の寸法かどうか（同一直線上に並ぶ要素の直交方向寸法など）
+        /// </summary>
         private static bool IsZeroDimension(Dimension dim)
         {
             double? value = dim.Value;
@@ -456,6 +451,11 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
+        /// <summary>
+        /// キャンセルボタンクリック時の処理。
+        /// </summary>
+        /// <param name="sender">イベントを送信したオブジェクト</param>
+        /// <param name="e">イベントデータ</param>
         private void CancelButton_Click(object sender, EventArgs e)
         {
             // 画面を閉じる
@@ -1423,7 +1423,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                         }
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception) {
                     if (e1 != null) {
                         errorIdSet.Add(e1.Id.ToString());
                     }
@@ -1528,7 +1528,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                                                out List<Face> faceList, out List<Edge> edgeList, out DetailCurve mDl1);
                     }
                 }
-                catch (Exception ex) {
+                catch (Exception) {
                     if (e1 != null) {
                         errorIdSet.Add(e1.Id.ToString());
                     }
@@ -6322,16 +6322,6 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             return Math.Abs(a - b) < _eps;
         }
 
-        /// <summary>
-        /// 寸法作成処理
-        /// </summary>
-        /// <param name="view">ビュー</param>
-        /// <param name="p1">点1</param>
-        /// <param name="r1">リファレンス1</param>
-        /// <param name="p2">点2</param>
-        /// <param name="r2">リファレンス2</param>
-        /// <param name="e1">要素1</param>
-        /// <param name="e2">要素2</param>
         private List<Face> GetFaceListFaceToFaceXY(Element element, XYZ elementDirection, View activeView, Options opt)
         {
             Line elementLine = Line.CreateBound(XYZ.Zero, elementDirection);
@@ -6719,6 +6709,16 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             }
         }
 
+        /// <summary>
+        /// 寸法作成処理
+        /// </summary>
+        /// <param name="view">ビュー</param>
+        /// <param name="p1">点1</param>
+        /// <param name="r1">リファレンス1</param>
+        /// <param name="p2">点2</param>
+        /// <param name="r2">リファレンス2</param>
+        /// <param name="e1">要素1</param>
+        /// <param name="e2">要素2</param>
         private void CreateDimensionElement(
          View view,
          XYZ p1,
@@ -7921,7 +7921,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                 transaction.RollBack();
                             }
                         }
-                        catch (Exception ex) {
+                        catch (Exception) {
                             checkFlag = false;
                             if (element1 != null) {
                                 errorIdSet.Add(element1.Id.ToString());

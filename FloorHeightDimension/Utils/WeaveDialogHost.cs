@@ -19,7 +19,8 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Utils
             if (dialog == null)
                 return false;
 
-            WeaveTheme.Apply(dialog);
+            if (ownerHandle == IntPtr.Zero)
+                dialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             SetOwner(dialog, ownerHandle);
 
             return dialog.ShowDialog();
