@@ -25,4 +25,6 @@
   <data name="IDS_TXT_TOTALDIST" xml:space="preserve"><value>B</value></data>
   <data name="IDS_TXT_TYPE" xml:space="preserve"><value>Dimension type</value></data>
   <data name="IDS_UNIT_MM" xml:space="preserve"><value>mm</value></data>
+  <data name="IDS_TXT_DIAGRAM_LEVEL" xml:space="preserve"><value>Level {0}</value></data>
+  <data name="IDS_TXT_DIAGRAM_BASEPOINT" xml:space="preserve"><value>Picked point</value></data>
 </root>

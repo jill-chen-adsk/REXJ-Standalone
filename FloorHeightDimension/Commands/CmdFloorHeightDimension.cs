@@ -1,3 +1,5 @@
+using ADSK.JExtRAC.FloorHeightDimension.UI;
+using ADSK.JExtRAC.FloorHeightDimension.Utils;
 using System;
 using Collections = System.Collections;
 using Revit = Autodesk.Revit;
@@ -16,6 +18,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
         {
             Revit.UI.UIApplication rvtUIApp = commandData.Application;
             Revit.UI.UIDocument rvtUIDoc = rvtUIApp.ActiveUIDocument;
+            IntPtr revitHandle = rvtUIApp.MainWindowHandle;
             RvtExtApp.Components.Attribute cmpAttribute = new RvtExtApp.Components.Attribute();
             RvtExtApp.Components.Elements cmpElements = new RvtExtApp.Components.Elements(rvtUIDoc);
             RvtExtApp.Components.Geometry cmpGeometry = new RvtExtApp.Components.Geometry(rvtUIDoc);
@@ -28,6 +31,8 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
                                                                                              cmpSettings);
 
             Revit.UI.Result retExtCom = Revit.UI.Result.Cancelled;
+            string okText = cmpAttribute.ResourceText("IDS_TXT_OK");
+            string errorTitle = cmpAttribute.ResourceText("IDS_TXT_ERROR");
 
             System.Windows.Forms.DialogResult retDlg;
 
@@ -40,7 +45,11 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
                 Revit.DB.ViewSection viewSection = cmpElements.ActiveViewSection;
                 if (viewSection == null)
                 {
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_OPENVIEWSECTION"));
+                    WeaveDialogHost.ShowMessage(
+                        revitHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_OPENVIEWSECTION"),
+                        errorTitle,
+                        okText);
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -51,7 +60,11 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
                 {
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
-                    System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_NOLEVELSELECT"), cmpAttribute.ResourceText("IDS_TXT_ERROR"), System.Windows.Forms.MessageBoxButtons.OK);
+                    WeaveDialogHost.ShowMessage(
+                        revitHandle,
+                        cmpAttribute.ResourceText("IDS_ERR_NOLEVELSELECT"),
+                        errorTitle,
+                        okText);
                     return retExtCom;
                 }
 
@@ -78,7 +91,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
                 if (entDtCmd.ErrMsg != "")
                 {
                     trans.RollBack();
-                    System.Windows.Forms.MessageBox.Show(entDtCmd.ErrMsg);
+                    WeaveDialogHost.ShowMessage(revitHandle, entDtCmd.ErrMsg, errorTitle, okText);
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
                     return retExtCom;
@@ -87,14 +100,14 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
 
                 Revit.DB.XYZ locPos = null;
 
-                RvtExtApp.UI.FormConfig form = new RvtExtApp.UI.FormConfig(cmpAttribute, entDtCmd, list_dimesionType);
-
+                FormConfigWPF form = null;
                 retDlg = System.Windows.Forms.DialogResult.Yes;
 
                 while (retDlg == System.Windows.Forms.DialogResult.Yes)
                 {
-                    retDlg = form.ShowDialog();
-                    form.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+                    form = new FormConfigWPF(cmpAttribute, entDtCmd, list_dimesionType);
+                    WeaveDialogHost.ShowDialog(form, revitHandle);
+                    retDlg = form.LegacyDialogResult;
 
                     if (retDlg == System.Windows.Forms.DialogResult.Yes)
                     {
@@ -108,7 +121,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
                     }
                 }
 
-                if (form.DialogResult != System.Windows.Forms.DialogResult.OK)
+                if (form == null || form.LegacyDialogResult != System.Windows.Forms.DialogResult.OK)
                 {
                     cmpParameters.SetSharedParamDefault();
                     transGroup.Assimilate();
@@ -160,10 +173,9 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
 
                     if (viewList.Count != 0)
                     {
-                        RvtExtApp.UI.FormSelectView frmSelectView = new RvtExtApp.UI.FormSelectView(cmpAttribute, entDtCmd, viewList, viewSection);
+                        FormSelectViewWPF frmSelectView = new FormSelectViewWPF(cmpAttribute, entDtCmd, viewList, viewSection);
 
-                        frmSelectView.ShowDialog();
-                        if (frmSelectView.DialogResult != System.Windows.Forms.DialogResult.OK)
+                        if (WeaveDialogHost.ShowDialog(frmSelectView, revitHandle) != true)
                         {
                             cmpParameters.SetSharedParamDefault();
                             transGroup.Assimilate();
@@ -199,10 +211,9 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
 
                 retExtCom = Revit.UI.Result.Succeeded;
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
-                string errMsg = ex.Message;
-                System.Windows.Forms.MessageBox.Show(cmpAttribute.ResourceText("IDS_ERR_COMMAND"));
+                WeaveDialogHost.ShowMessage(revitHandle, cmpAttribute.ResourceText("IDS_ERR_COMMAND"), errorTitle, okText);
             }
 
             cmpParameters.SetSharedParamDefault();
