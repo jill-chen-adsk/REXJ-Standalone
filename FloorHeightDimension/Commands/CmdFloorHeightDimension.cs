@@ -211,9 +211,11 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Commands
 
                 retExtCom = Revit.UI.Result.Succeeded;
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                WeaveDialogHost.ShowMessage(revitHandle, cmpAttribute.ResourceText("IDS_ERR_COMMAND"), errorTitle, okText);
+                System.Diagnostics.Trace.TraceError("FloorHeightDimension: command failed. " + ex);
+                string errorText = cmpAttribute.ResourceText("IDS_ERR_COMMAND") + Environment.NewLine + Environment.NewLine + ex.Message;
+                WeaveDialogHost.ShowMessage(revitHandle, errorText, errorTitle, okText);
             }
 
             cmpParameters.SetSharedParamDefault();

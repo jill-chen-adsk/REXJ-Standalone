@@ -94,8 +94,7 @@
                             <CheckBox Style="{StaticResource Weave.CheckBox}"
                                       Content="{Binding Title}"
                                       IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                      Checked="ViewCheckBox_Changed"
-                                      Unchecked="ViewCheckBox_Changed"/>
+                                      Click="ViewCheckBox_Click"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

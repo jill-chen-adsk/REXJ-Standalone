@@ -25,7 +25,6 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
         private readonly List<ViewSelectionItem> _items = new List<ViewSelectionItem>();
         private int _lastIndex;
         private bool _ignoreSelectAllEvents;
-        private bool _bulkUpdating;
 
         public FormSelectViewWPF(
             RvtExtApp.Components.Attribute cmpAttribute,
@@ -191,15 +190,14 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             return null;
         }
 
-        private void ViewCheckBox_Changed(object sender, RoutedEventArgs e)
+        // Click (not Checked/Unchecked) so only user input moves the Shift-range anchor;
+        // realizing a virtualized row sets IsChecked through the binding and must not.
+        private void ViewCheckBox_Click(object sender, RoutedEventArgs e)
         {
             if (sender is not CheckBox checkBox)
                 return;
 
             if (checkBox.DataContext is not ViewSelectionItem item)
-                return;
-
-            if (_bulkUpdating)
                 return;
 
             int currentIndex = _items.IndexOf(item);
@@ -217,20 +215,12 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             SetCheckedRange(0, _items.Count - 1, cbkSelecAll.IsChecked == true);
         }
 
-        // Rows outside the virtualized viewport raise no CheckBox events, so the header
-        // state is recomputed once from _items after the whole range is updated.
+        // Programmatic changes raise no row Click events, so the header state is
+        // recomputed once from _items after the whole range is updated.
         private void SetCheckedRange(int lower, int upper, bool isChecked)
         {
-            _bulkUpdating = true;
-            try
-            {
-                for (int i = lower; i <= upper; i++)
-                    _items[i].IsChecked = isChecked;
-            }
-            finally
-            {
-                _bulkUpdating = false;
-            }
+            for (int i = lower; i <= upper; i++)
+                _items[i].IsChecked = isChecked;
 
             UpdateSelectAllState();
         }
