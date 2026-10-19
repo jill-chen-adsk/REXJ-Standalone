@@ -53,11 +53,6 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
-    <Style x:Key="Weave.HintText" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Secondary}"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-    </Style>
 
     <Style x:Key="Weave.GroupPanel" TargetType="Border">
         <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
@@ -68,23 +63,7 @@
         <Setter Property="Margin" Value="0,0,0,12"/>
     </Style>
 
-    <Style x:Key="Weave.SectionPanel" TargetType="Border">
-        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="CornerRadius" Value="4"/>
-    </Style>
 
-    <Style x:Key="Weave.TextBox" TargetType="TextBox">
-        <Setter Property="Height" Value="28"/>
-        <Setter Property="Padding" Value="8,4"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Input}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
-        <Setter Property="CaretBrush" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-    </Style>
 
     <Style x:Key="Weave.CheckBox" TargetType="CheckBox">
         <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
@@ -110,132 +89,9 @@
         <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
     </Style>
 
-    <Style x:Key="Weave.ComboBoxItem" TargetType="ComboBoxItem">
-        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
-        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Input}"/>
-        <Setter Property="Padding" Value="8,4"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
-            </Trigger>
-            <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
-                <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Accent.Foreground}"/>
-            </Trigger>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Weave.Brush.Accent}"/>
-                <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Accent.Foreground}"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 
-    <Style x:Key="Weave.ComboBox" TargetType="ComboBox">
-        <Setter Property="Height" Value="28"/>
-        <Setter Property="Padding" Value="8,4"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
-        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Input}"/>
-        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="ItemContainerStyle" Value="{StaticResource Weave.ComboBoxItem}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ComboBox">
-                    <Grid>
-                        <ToggleButton x:Name="ToggleButton"
-                                      Focusable="False"
-                                      HorizontalContentAlignment="Stretch"
-                                      IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                      ClickMode="Press"
-                                      Background="{TemplateBinding Background}"
-                                      BorderBrush="{TemplateBinding BorderBrush}"
-                                      BorderThickness="{TemplateBinding BorderThickness}"
-                                      Foreground="{TemplateBinding Foreground}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition Width="20"/>
-                                </Grid.ColumnDefinitions>
-                                <ContentPresenter x:Name="ContentSite"
-                                                  Margin="8,4,4,4"
-                                                  HorizontalAlignment="Left"
-                                                  VerticalAlignment="Center"
-                                                  Content="{TemplateBinding SelectionBoxItem}"
-                                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                                  TextElement.Foreground="{TemplateBinding Foreground}"/>
-                                <Path Grid.Column="1"
-                                      HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"
-                                      Fill="{TemplateBinding Foreground}"
-                                      Data="M 0 0 L 4 4 L 8 0 Z"/>
-                            </Grid>
-                        </ToggleButton>
-                        <Popup x:Name="PART_Popup"
-                               Placement="Bottom"
-                               IsOpen="{TemplateBinding IsDropDownOpen}"
-                               AllowsTransparency="True"
-                               Focusable="False"
-                               PopupAnimation="Slide">
-                            <Grid MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
-                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                <Border Background="{DynamicResource Weave.Brush.Input}"
-                                        BorderBrush="{DynamicResource Weave.Brush.Border}"
-                                        BorderThickness="1"
-                                        CornerRadius="2"/>
-                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
-                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
-                                </ScrollViewer>
-                            </Grid>
-                        </Popup>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
-    <Style x:Key="Weave.ListView" TargetType="ListView">
-        <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Weave.Brush.Border}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
-        <Setter Property="SelectionMode" Value="Single"/>
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-    </Style>
 
-    <Style x:Key="Weave.ListViewItem" TargetType="ListViewItem">
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="8,4"/>
-        <Setter Property="MinHeight" Value="28"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ListViewItem">
-                    <Border x:Name="rowBorder"
-                            Background="{TemplateBinding Background}"
-                            Padding="{TemplateBinding Padding}"
-                            SnapsToDevicePixels="True">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="rowBorder"
-                                    Property="Background"
-                                    Value="{DynamicResource Weave.Brush.Surface.Subtle}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
     <Style x:Key="Weave.Button.Primary" TargetType="Button">
         <Setter Property="MinWidth" Value="88"/>

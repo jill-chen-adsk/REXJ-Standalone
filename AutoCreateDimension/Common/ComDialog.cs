@@ -8,7 +8,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Common
     /// ================================================================================
     public static class ComDialog
     {
-        public static void ShowDialog(IntPtr ownerHandle, string title, string message, string okText = "OK")
+        public static void ShowDialog(IntPtr ownerHandle, string title, string message, string okText = null)
         {
             WeaveDialogHost.ShowMessage(ownerHandle, message, title, okText);
         }

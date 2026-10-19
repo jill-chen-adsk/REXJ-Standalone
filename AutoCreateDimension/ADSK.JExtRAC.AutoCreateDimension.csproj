@@ -75,11 +75,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="UI\FormLog.cs" />
-    <Compile Remove="UI\FormLog.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="Resources\Image.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Image.Designer.cs</LastGenOutput>
@@ -93,7 +88,6 @@
     <EmbeddedResource Update="Screen\AutoDimension.resx">
       <DependentUpon>AutoDimension.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Remove="UI\FormLog.resx" />
   </ItemGroup>
 
   <ItemGroup>

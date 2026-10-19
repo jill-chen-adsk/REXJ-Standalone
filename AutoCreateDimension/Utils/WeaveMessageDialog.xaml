@@ -1,7 +1,6 @@
 <Window x:Class="ADSK.JExtRAC.AutoCreateDimension.Utils.WeaveMessageDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Information"
         Width="440"
         MinWidth="360"
         MaxWidth="560"
@@ -88,7 +87,6 @@
                         Margin="24,20,24,24">
                 <Button x:Name="btnOK"
                         Style="{StaticResource Weave.Button.Primary}"
-                        Content="OK"
                         IsDefault="True"
                         Click="BtnOK_Click"/>
             </StackPanel>

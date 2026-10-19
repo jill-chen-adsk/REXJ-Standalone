@@ -10,7 +10,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Utils
             InitializeComponent();
             Style = (Style)FindResource("Weave.ChromeWindow");
             MessageText.Text = message ?? string.Empty;
-            btnOK.Content = string.IsNullOrEmpty(okText) ? "OK" : okText;
+            btnOK.Content = string.IsNullOrEmpty(okText) ? ADSK.JExtRAC.FloorHeightDimension.Resources.Text.IDS_TXT_OK : okText;
             WeaveTheme.Apply(this, this, title, () =>
             {
                 DialogResult = true;

@@ -68,13 +68,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="UI\FormConfig.cs" />
-    <Compile Remove="UI\FormConfig.Designer.cs" />
-    <Compile Remove="UI\FormSelectView.cs" />
-    <Compile Remove="UI\FormSelectView.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="Resources\Image.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Image.Designer.cs</LastGenOutput>
@@ -85,8 +78,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Text.en.resx" />
-    <EmbeddedResource Remove="UI\FormConfig.resx" />
-    <EmbeddedResource Remove="UI\FormSelectView.resx" />
   </ItemGroup>
 
   <ItemGroup>

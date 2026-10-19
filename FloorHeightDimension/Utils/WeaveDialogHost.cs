@@ -25,7 +25,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.Utils
             return dialog.ShowDialog();
         }
 
-        public static void ShowMessage(IntPtr ownerHandle, string message, string title, string okText = "OK")
+        public static void ShowMessage(IntPtr ownerHandle, string message, string title, string okText = null)
         {
             var dialog = new WeaveMessageDialog(message, title, okText);
             SetOwner(dialog, ownerHandle);

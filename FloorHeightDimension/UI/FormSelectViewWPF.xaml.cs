@@ -25,6 +25,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
         private readonly List<ViewSelectionItem> _items = new List<ViewSelectionItem>();
         private int _lastIndex;
         private bool _ignoreSelectAllEvents;
+        private bool _bulkUpdating;
 
         public FormSelectViewWPF(
             RvtExtApp.Components.Attribute cmpAttribute,
@@ -171,11 +172,9 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             int upper = Math.Max(_lastIndex, currentIndex);
             int lower = Math.Min(_lastIndex, currentIndex);
 
-            for (int i = lower; i <= upper; i++)
-                _items[i].IsChecked = targetChecked;
+            SetCheckedRange(lower, upper, targetChecked);
 
             _lastIndex = currentIndex;
-            UpdateSelectAllState();
             e.Handled = true;
         }
 
@@ -200,6 +199,9 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             if (checkBox.DataContext is not ViewSelectionItem item)
                 return;
 
+            if (_bulkUpdating)
+                return;
+
             int currentIndex = _items.IndexOf(item);
             if (currentIndex >= 0)
                 _lastIndex = currentIndex;
@@ -212,9 +214,25 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             if (_ignoreSelectAllEvents || cbkSelecAll.IsChecked == null)
                 return;
 
-            bool isChecked = cbkSelecAll.IsChecked == true;
-            foreach (ViewSelectionItem item in _items)
-                item.IsChecked = isChecked;
+            SetCheckedRange(0, _items.Count - 1, cbkSelecAll.IsChecked == true);
+        }
+
+        // Rows outside the virtualized viewport raise no CheckBox events, so the header
+        // state is recomputed once from _items after the whole range is updated.
+        private void SetCheckedRange(int lower, int upper, bool isChecked)
+        {
+            _bulkUpdating = true;
+            try
+            {
+                for (int i = lower; i <= upper; i++)
+                    _items[i].IsChecked = isChecked;
+            }
+            finally
+            {
+                _bulkUpdating = false;
+            }
+
+            UpdateSelectAllState();
         }
     }
 
