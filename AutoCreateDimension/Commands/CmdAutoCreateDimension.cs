@@ -2,6 +2,7 @@
 
 using ADSK.JExtRAC.AutoCreateDimension.Common;
 using ADSK.JExtRAC.AutoCreateDimension.Screen;
+using ADSK.JExtRAC.AutoCreateDimension.Utils;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
@@ -25,10 +26,11 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Commands
             UIDocument UiDoc = UiApp.ActiveUIDocument;
             Application App = UiApp.Application;
             Document Doc = UiDoc.Document;
+            var revitHandle = UiApp.MainWindowHandle;
 
             ICollection<ElementId> elementIdList = UiDoc.Selection.GetElementIds();
             if (elementIdList.Count == 0) {
-                ComDialog.ShowDialog(ResText.IDS_MSG_WARN_TITLE, TaskDialogIcon.TaskDialogIconWarning, ResText.IDS_MSG_SELECT_OBJECTS, false);
+                ComDialog.ShowDialog(revitHandle, ResText.IDS_MSG_WARN_TITLE, ResText.IDS_MSG_SELECT_OBJECTS, ResText.IDS_TXT_OK);
                 return Result.Succeeded;
             }
             using (TransactionGroup transGroup = new TransactionGroup(Doc, ResText.IDS_TRN_PLACEMENT)) {
@@ -36,8 +38,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Commands
 
                 while (true) {
                     AutoDimension form = new AutoDimension(commandData, elementIdList);
-                    System.Windows.Forms.NativeWindow nativeWindow = System.Windows.Forms.NativeWindow.FromHandle(UiApp.MainWindowHandle);
-                    form.ShowDialog(nativeWindow);
+                    WeaveDialogHost.ShowDialog(new AutoDimensionWPF(form), revitHandle);
 
                     while (form.DialogResult == System.Windows.Forms.DialogResult.OK && form._isSelectPoint) {
                         if (form._isPoint) {
@@ -68,8 +69,16 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Commands
                                     }
                                 }
                             }
-                            catch (System.Exception) {
+                            catch (Autodesk.Revit.Exceptions.OperationCanceledException) {
                                 return Result.Succeeded;
+                            }
+                            catch (System.Exception ex) {
+                                ComDialog.ShowDialog(
+                                    revitHandle,
+                                    ResText.IDS_MSG_WARN_TITLE,
+                                    string.Format(ResText.IDS_MSG_DIM_FAILED, ex.Message),
+                                    ResText.IDS_TXT_OK);
+                                return Result.Failed;
                             }
                         }
                     }

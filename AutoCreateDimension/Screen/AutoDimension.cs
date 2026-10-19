@@ -1,7 +1,8 @@
 using ADSK.JExtRAC.AutoCreateDimension.UI;
 using Autodesk.Revit.DB;
-using ResText = ADSK.JExtRAC.AutoCreateDimension.Resources.Text;
 using Autodesk.Revit.UI;
+using ResText = ADSK.JExtRAC.AutoCreateDimension.Resources.Text;
+using ADSK.JExtRAC.AutoCreateDimension.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -153,25 +154,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                 // 対象となる要素を抽出
                 foreach (ElementId id in elementIdList) {
                     Element ele = Doc.GetElement(id);
-                    if (ele.GetType().Name == "Group") {
-                        continue;
-                    }
-                    if (ele.Category.Name == "文字注記") {
-                        continue;
-                    }
-                    if (ele.Category.Name == "ビュー") {
-                        continue;
-                    }
-                    if (ele.Category.Name == "立面図") {
-                        continue;
-                    }
-                    if (ele.Category.Name == "プロジェクト基準点") {
-                        continue;
-                    }
-                    if (ele.Category.Name == "寸法") {
-                        continue;
-                    }
-                    if (ele.Category.Name == "参照図") {
+                    if (IsSkippedElement(ele, CrossSectionSkippedCategories)) {
                         continue;
                     }
                     if (ele.GetType().Name == "MultiSegmentGrid") {
@@ -357,6 +340,106 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
         /// </summary>
         /// <param name="sender">イベントを送信したオブジェクト</param>
         /// <param name="e">イベントデータ</param>
+        private void ApplyLocalizedFormText()
+        {
+            Text = ResText.IDS_DIM_FORM_TITLE;
+            groupBox1.Text = ResText.IDS_DIM_GROUPBOX_PLACEMENT_TYPE;
+            faceCoreRadio.Text = ResText.IDS_DIM_RADIO_FACE_CORE;
+            faceRadio.Text = ResText.IDS_DIM_RADIO_FACE_FACE;
+            coreRadio.Text = ResText.IDS_DIM_RADIO_CORE_CORE;
+            dimensionButton.Text = ResText.IDS_TXT_OK;
+            cancelButton.Text = ResText.IDS_TXT_CANCEL;
+            lineCheck.Text = ResText.IDS_DIM_CHECK_DETAIL_LINE_NOTE;
+        }
+
+        // Compared by BuiltInCategory, never by Category.Name, which is localized.
+        private static readonly HashSet<BuiltInCategory> CrossSectionSkippedCategories = new HashSet<BuiltInCategory>
+        {
+            BuiltInCategory.OST_TextNotes,
+            BuiltInCategory.OST_Views,
+            BuiltInCategory.OST_Elev,
+            BuiltInCategory.OST_ProjectBasePoint,
+            BuiltInCategory.OST_Dimensions,
+            BuiltInCategory.OST_ReferenceViewer,
+        };
+
+        private static readonly HashSet<BuiltInCategory> PlanSkippedCategories = new HashSet<BuiltInCategory>
+        {
+            BuiltInCategory.OST_TextNotes,
+            BuiltInCategory.OST_Views,
+            BuiltInCategory.OST_Elev,
+            BuiltInCategory.OST_ProjectBasePoint,
+            BuiltInCategory.OST_Dimensions,
+            BuiltInCategory.OST_CLines,
+        };
+
+        /// <summary>
+        /// 寸法対象外の要素（グループ、注記、タグ、カテゴリなし等）かどうか
+        /// </summary>
+        private static bool IsSkippedElement(Element ele, HashSet<BuiltInCategory> skippedCategories)
+        {
+            if (ele == null || ele is Group || ele is IndependentTag || ele is SpatialElementTag) {
+                return true;
+            }
+            if (ele.Category == null) {
+                return true;
+            }
+            return skippedCategories.Contains(ele.Category.BuiltInCategory);
+        }
+
+        /// <summary>
+        /// 寸法値が負かどうか。フィート・インチ表記（例: 11' - 0"）の区切りの "-" は負号ではないため、先頭のみ判定する。
+        /// </summary>
+        private static bool IsNegativeDimension(Dimension dim)
+        {
+            string value = dim.ValueString;
+            return !string.IsNullOrEmpty(value) && value.TrimStart().StartsWith("-", StringComparison.Ordinal);
+        }
+
+        /// <summary>
+        /// 長さ0の寸法かどうか（同一直線上に並ぶ要素の直交方向寸法など）
+        /// </summary>
+        private static List<ElementId> ParseElementIds(IEnumerable<string> ids)
+        {
+            List<ElementId> result = new List<ElementId>();
+            foreach (string id in ids) {
+                if (long.TryParse(id, out long value)) {
+                    result.Add(new ElementId(value));
+                }
+            }
+            return result;
+        }
+
+        private static bool IsZeroDimension(Dimension dim)
+        {
+            double? value = dim.Value;
+            return value.HasValue && Math.Abs(value.Value) < 1e-6;
+        }
+
+        public DimensionPlacementType PlacementType =>
+            faceRadio.Checked ? DimensionPlacementType.FaceFace :
+            faceCoreRadio.Checked ? DimensionPlacementType.FaceCore :
+            DimensionPlacementType.CoreCore;
+
+        public bool CreateDetailLines => lineCheck.Checked;
+
+        public bool CanCreateDetailLines => lineCheck.Enabled;
+
+        /// <summary>
+        /// WPFダイアログで確定した設定を反映し、配置基準点の指定へ進む。
+        /// </summary>
+        public void ConfirmOptions(DimensionPlacementType placement, bool createDetailLines)
+        {
+            coreRadio.Checked = placement == DimensionPlacementType.CoreCore;
+            faceRadio.Checked = placement == DimensionPlacementType.FaceFace;
+            faceCoreRadio.Checked = placement == DimensionPlacementType.FaceCore;
+            lineCheck.Checked = createDetailLines && lineCheck.Enabled;
+
+            _isPoint = true;
+            _isSelectPoint = true;
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
+
         private void CancelButton_Click(object sender, EventArgs e)
         {
             // 画面を閉じる
@@ -374,18 +457,6 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             _isPoint = true;
             _isSelectPoint = true;
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        }
-
-        private void ApplyLocalizedFormText()
-        {
-            this.Text = ResText.IDS_DIM_FORM_TITLE;
-            this.groupBox1.Text = ResText.IDS_DIM_GROUPBOX_PLACEMENT_TYPE;
-            this.faceCoreRadio.Text = ResText.IDS_DIM_RADIO_FACE_CORE;
-            this.faceRadio.Text = ResText.IDS_DIM_RADIO_FACE_FACE;
-            this.coreRadio.Text = ResText.IDS_DIM_RADIO_CORE_CORE;
-            this.dimensionButton.Text = ResText.IDS_TXT_OK;
-            this.cancelButton.Text = ResText.IDS_TXT_CANCEL;
-            this.lineCheck.Text = ResText.IDS_DIM_CHECK_DETAIL_LINE_NOTE;
         }
 
         /// <summary>
@@ -420,14 +491,17 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                     }
                 }
             }
+            if (errorId != "" && DimensionFailures.Report(Doc, ParseElementIds(errorIdSet), ResText.IDS_TRN_BATCH_DIMENSION)) {
+                errorId = "";
+            }
             if (errorId != "") {
                 // エラーメッセージの表示
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine(ResText.IDS_DIM_ERROR_FACES_CORES);
                 sb.Append(errorId);
                 RvtExtApp.Components.Attribute cmpAttribute = new RvtExtApp.Components.Attribute();
-                FormLog frm = new FormLog(cmpAttribute, sb);
-                frm.ShowDialog();
+                var frm = new FormLogWPF(cmpAttribute, sb);
+                WeaveDialogHost.ShowDialog(frm, UiApp.MainWindowHandle);
             }
             // 画面を閉じる
             Close();
@@ -455,25 +529,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             // 要素リストの設定
             foreach (ElementId id in elementIdListXY) {
                 Element ele = Doc.GetElement(id);
-                if (ele.GetType().Name == "Group") {
-                    continue;
-                }
-                if (ele.Category.Name == "文字注記") {
-                    continue;
-                }
-                if (ele.Category.Name == "ビュー") {
-                    continue;
-                }
-                if (ele.Category.Name == "立面図") {
-                    continue;
-                }
-                if (ele.Category.Name == "プロジェクト基準点") {
-                    continue;
-                }
-                if (ele.Category.Name == "寸法") {
-                    continue;
-                }
-                if (ele.Category.Name == "参照面") {
+                if (IsSkippedElement(ele, PlanSkippedCategories)) {
                     continue;
                 }
                 if (ele.GetType().Name == "MultiSegmentGrid") {
@@ -1351,7 +1407,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                         }
                     }
                 }
-                catch (Exception) {
+                catch (Exception ex) {
                     if (e1 != null) {
                         errorIdSet.Add(e1.Id.ToString());
                     }
@@ -1456,7 +1512,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                                                out List<Face> faceList, out List<Edge> edgeList, out DetailCurve mDl1);
                     }
                 }
-                catch (Exception) {
+                catch (Exception ex) {
                     if (e1 != null) {
                         errorIdSet.Add(e1.Id.ToString());
                     }
@@ -1593,7 +1649,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                         {
                             minY = cornerList[1];
                         }
-                        using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE))
+                        using (Transaction t = new Transaction(Doc, "詳細線分"))
                         {
                             t.Start();
                             Line l1 = Line.CreateBound(minY, maxX);
@@ -2223,7 +2279,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                         {
                             minY = cornerList[1];
                         }
-                        using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE))
+                        using (Transaction t = new Transaction(Doc, "詳細線分"))
                         {
                             t.Start();
                             Line l1 = Line.CreateBound(minY, maxX);
@@ -2312,7 +2368,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                     cornerList.Remove(p2);
                     XYZ p3 = cornerList.First();
                     XYZ p4 = cornerList.Last();
-                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE))
+                    using (Transaction t = new Transaction(Doc, "詳細線分"))
                     {
                         t.Start();
                         FilteredElementCollector detailLineCollection =
@@ -2451,6 +2507,20 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
             int countXY = 0;
             Element e1 = null;
             Element e2 = null;
+
+            // 面-面・面-芯かつ複数要素: 同一寸法線上に2参照寸法を並べると文字が重なるため、
+            // 並び方向は1本の連続寸法、整列した要素の直交方向は代表要素の横に1本だけ作成する。
+            if ((faceRadio.Checked || faceCoreRadio.Checked) && newElementList.Count >= 2) {
+                if (CreateFaceDimensionsXY(newElementList, elementDirection, activeView)) {
+                    return;
+                }
+            }
+            if (coreRadio.Checked && newElementList.Count >= 2) {
+                if (CreateCenterChainedDimensionXY(newElementList, elementDirection, activeView)) {
+                    return;
+                }
+            }
+
             for (int i = 0; i < newElementList.Count - 1; i++) {
                 try {
                     Element element1 = newElementList[i];
@@ -2797,7 +2867,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -2934,7 +3004,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -3143,7 +3213,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         List<CurveElement> lineList = GetElements<CurveElement>(Doc);
                                         Line l1 = Line.CreateBound(p1, p2);
@@ -3267,7 +3337,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -3620,7 +3690,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -3757,7 +3827,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -3985,7 +4055,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         List<CurveElement> lineList = GetElements<CurveElement>(Doc);
                                         Line l1 = Line.CreateBound(p1, p2);
@@ -4109,7 +4179,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -4551,7 +4621,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -4687,7 +4757,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                 cornerList.Remove(p2);
                                 XYZ p3 = cornerList.First();
                                 XYZ p4 = cornerList.Last();
-                                using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                     t.Start();
                                     FilteredElementCollector detailLineCollection =
                                     new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -4937,7 +5007,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                         cornerList.Remove(p2);
                                         XYZ p3 = cornerList.First();
                                         XYZ p4 = cornerList.Last();
-                                        using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                        using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                             t.Start();
                                             FilteredElementCollector detailLineCollection =
                                             new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -5053,7 +5123,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                     cornerList.Remove(p2);
                                     XYZ p3 = cornerList.First();
                                     XYZ p4 = cornerList.Last();
-                                    using (Transaction t = new Transaction(Doc, ResText.IDS_TRN_DETAIL_LINE)) {
+                                    using (Transaction t = new Transaction(Doc, "詳細線分")) {
                                         t.Start();
                                         FilteredElementCollector detailLineCollection =
                                         new FilteredElementCollector(Doc).OfClass(typeof(CurveElement))
@@ -6192,7 +6262,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                         ModelCurve mc = doc.Create.NewModelCurve(Line.CreateBound(XYZ.Zero, new XYZ(10, 10, 10)), SketchPlane.Create(doc, refPlane.Id));
                         refArr.Append(mc.GeometryCurve.GetEndPointReference(0));
                         dim = doc.Create.NewDimension(doc.ActiveView, Line.CreateBound(XYZ.Zero, viewRightDirection * 10), refArr);
-                        if (dim.ValueString.Contains("-")) {
+                        if (IsNegativeDimension(dim)) {
                             doc.Delete(dim.Id);
                             deleteFlag = false;
                         }
@@ -6246,6 +6316,393 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
         /// <param name="r2">リファレンス2</param>
         /// <param name="e1">要素1</param>
         /// <param name="e2">要素2</param>
+        private List<Face> GetFaceListFaceToFaceXY(Element element, XYZ elementDirection, View activeView, Options opt)
+        {
+            Line elementLine = Line.CreateBound(XYZ.Zero, elementDirection);
+            XYZ normal = NormalViewDirection(elementLine, activeView.ViewDirection);
+            if (Math.Round(normal.X, 3, MidpointRounding.AwayFromZero) == 0
+                && Math.Round(normal.Y, 3, MidpointRounding.AwayFromZero) == 0
+                && Math.Round(normal.Z, 3, MidpointRounding.AwayFromZero) == 0) {
+                if (Math.Round(elementDirection.X, 3, MidpointRounding.AwayFromZero) == 0) {
+                    normal = NormalViewDirection(elementLine, XYZ.BasisX);
+                }
+                else if (Math.Round(elementDirection.Y, 3, MidpointRounding.AwayFromZero) == 0) {
+                    normal = NormalViewDirection(elementLine, XYZ.BasisY);
+                }
+                else {
+                    normal = NormalViewDirection(elementLine, XYZ.BasisZ);
+                }
+            }
+
+            List<Face> faceList;
+            if (element.GetType().Name == "FamilyInstance" || element.GetType().Name == "FabricationPart") {
+                List<Face> list = GetInstanceClosestFaceList(element, normal, opt);
+                List<int> intList = new List<int>();
+                foreach (Face face in list) {
+                    intList.Add(face.Id);
+                }
+                faceList = GetSymbolClosestFaceList(element, intList, opt);
+            }
+            else {
+                faceList = GetClosestFaceList(element, normal, opt);
+                if (faceList.Count > 0) {
+                    faceList = FaceSortPointByDirection(normal, faceList);
+                }
+            }
+
+            return faceList;
+        }
+
+        private static bool ReferencesEquivalent(Reference left, Reference right)
+        {
+            if (left == null || right == null) {
+                return false;
+            }
+            return left.ElementId == right.ElementId
+                && left.LinkedElementId == right.LinkedElementId
+                && left.ElementReferenceType == right.ElementReferenceType
+                && string.Equals(left.ConvertToStableRepresentation(Doc), right.ConvertToStableRepresentation(Doc), StringComparison.Ordinal);
+        }
+
+        private void AppendFaceToFaceChainReference(ReferenceArray chain, Reference reference)
+        {
+            if (reference == null) {
+                return;
+            }
+            if (chain.Size > 0 && ReferencesEquivalent(chain.get_Item(chain.Size - 1), reference)) {
+                return;
+            }
+            chain.Append(reference);
+        }
+
+        private sealed class FaceDimensionTarget
+        {
+            public Element Element;
+            public ReferenceArray References;
+            public double Min;
+            public double Max;
+            public double CrossMin;
+            public double CrossMax;
+            public double PickDistance;
+        }
+
+        private const double FaceDimensionExtentTolerance = 0.01;
+        private const double FaceDimensionSideOffsetMm = 8.0;
+
+        private XYZ GetDimensionLineDirectionXY(XYZ elementDirection, View activeView)
+        {
+            Line elementLine = Line.CreateBound(XYZ.Zero, elementDirection);
+            XYZ normal = NormalViewDirection(elementLine, activeView.ViewDirection);
+            if (Math.Round(normal.X, 3, MidpointRounding.AwayFromZero) == 0
+                && Math.Round(normal.Y, 3, MidpointRounding.AwayFromZero) == 0
+                && Math.Round(normal.Z, 3, MidpointRounding.AwayFromZero) == 0) {
+                if (Math.Round(elementDirection.X, 3, MidpointRounding.AwayFromZero) == 0) {
+                    normal = NormalViewDirection(elementLine, XYZ.BasisX);
+                }
+                else if (Math.Round(elementDirection.Y, 3, MidpointRounding.AwayFromZero) == 0) {
+                    normal = NormalViewDirection(elementLine, XYZ.BasisY);
+                }
+                else {
+                    normal = NormalViewDirection(elementLine, XYZ.BasisZ);
+                }
+            }
+            return normal;
+        }
+
+        private Reference GetCenterReferenceXY(Element element, XYZ elementDirection, View activeView, bool allowGrid = false)
+        {
+            if (element is FamilyInstance instance) {
+                FamilyInstanceReferenceType[] types = {
+                    FamilyInstanceReferenceType.CenterFrontBack,
+                    FamilyInstanceReferenceType.CenterLeftRight,
+                    FamilyInstanceReferenceType.CenterElevation
+                };
+                foreach (FamilyInstanceReferenceType type in types) {
+                    foreach (Reference r in instance.GetReferences(type)) {
+                        XYZ xyz = GetReferenceDirection(Doc, activeView.RightDirection, r);
+                        if (xyz.IsZeroLength()) {
+                            continue;
+                        }
+                        XYZ v = NormalViewDirection(Line.CreateBound(XYZ.Zero, xyz), activeView.ViewDirection);
+                        if (IsParallel(v, elementDirection)) {
+                            return r;
+                        }
+                    }
+                }
+                return null;
+            }
+            if (element.GetType().Name == "FabricationPart") {
+                Line line = GetSymbolLine(element, GetInstanceLine(element, elementDirection));
+                return line?.Reference;
+            }
+            if (element is Grid grid) {
+                return allowGrid && grid.Curve is Line gridLine && IsParallelInView(gridLine.Direction, elementDirection, activeView)
+                    ? new Reference(grid)
+                    : null;
+            }
+            if (element.Location is LocationCurve locationCurve && locationCurve.Curve is Line locationLine
+                && IsParallelInView(locationLine.Direction, elementDirection, activeView)) {
+                return new Reference(element);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// ビュー平面に投影した方向同士が平行かどうか（勾配のあるダクト・配管などのZ成分を無視する）
+        /// </summary>
+        private bool IsParallelInView(XYZ direction, XYZ elementDirection, View activeView)
+        {
+            XYZ a = NormalViewDirection(Line.CreateBound(XYZ.Zero, direction), activeView.ViewDirection);
+            XYZ b = NormalViewDirection(Line.CreateBound(XYZ.Zero, elementDirection), activeView.ViewDirection);
+            return !a.IsZeroLength() && !b.IsZeroLength() && IsParallel(a, b);
+        }
+
+        private static bool TryGetProjectedExtent(Element element, XYZ axis, out double min, out double max)
+        {
+            min = double.MaxValue;
+            max = double.MinValue;
+            BoundingBoxXYZ box = element.get_BoundingBox(null);
+            if (box == null) {
+                return false;
+            }
+            Transform transform = box.Transform ?? Transform.Identity;
+            foreach (double x in new[] { box.Min.X, box.Max.X }) {
+                foreach (double y in new[] { box.Min.Y, box.Max.Y }) {
+                    foreach (double z in new[] { box.Min.Z, box.Max.Z }) {
+                        double value = transform.OfPoint(new XYZ(x, y, z)).DotProduct(axis);
+                        min = Math.Min(min, value);
+                        max = Math.Max(max, value);
+                    }
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 面-面／面-芯の寸法を作成する。並び方向は指定点を通る1本の連続寸法、
+        /// 同じ範囲に重なって整列する要素は代表要素（指定点に最も近い要素）の横に1本だけ作成する。
+        /// 面または芯を取得できない要素がある場合は false を返し、従来の処理に任せる。
+        /// </summary>
+        private bool CreateFaceDimensionsXY(
+            List<Element> newElementList,
+            XYZ elementDirection,
+            View activeView)
+        {
+            Options opt = new Options {
+                ComputeReferences = true,
+                View = activeView,
+                IncludeNonVisibleObjects = false
+            };
+            XYZ lineDirection = GetDimensionLineDirectionXY(elementDirection, activeView);
+            XYZ crossDirection = elementDirection.Normalize();
+            bool withCenter = faceCoreRadio.Checked;
+
+            List<FaceDimensionTarget> targets = new List<FaceDimensionTarget>();
+            HashSet<ElementId> seen = new HashSet<ElementId>();
+            foreach (Element element in newElementList) {
+                if (element == null || !seen.Add(element.Id)) {
+                    continue;
+                }
+                List<Face> faceList = GetFaceListFaceToFaceXY(element, elementDirection, activeView, opt);
+                if (faceList.Count == 0) {
+                    return false;
+                }
+                ReferenceArray references = new ReferenceArray();
+                AppendFaceToFaceChainReference(references, faceList.First().Reference);
+                if (withCenter) {
+                    Reference center = GetCenterReferenceXY(element, elementDirection, activeView);
+                    if (center == null) {
+                        return false;
+                    }
+                    AppendFaceToFaceChainReference(references, center);
+                }
+                AppendFaceToFaceChainReference(references, faceList.Last().Reference);
+
+                FaceDimensionTarget target = new FaceDimensionTarget { Element = element, References = references };
+                if (!TryGetProjectedExtent(element, lineDirection, out target.Min, out target.Max)
+                    || !TryGetProjectedExtent(element, crossDirection, out target.CrossMin, out target.CrossMax)) {
+                    return false;
+                }
+                double alongPick = dimensionPoint.DotProduct(lineDirection) - (target.Min + target.Max) / 2;
+                double crossPick = dimensionPoint.DotProduct(crossDirection) - (target.CrossMin + target.CrossMax) / 2;
+                target.PickDistance = Math.Sqrt(alongPick * alongPick + crossPick * crossPick);
+                targets.Add(target);
+            }
+            if (targets.Count < 2) {
+                return false;
+            }
+
+            // 寸法方向の範囲が重なる要素をクラスタにまとめ、クラスタ内は同一範囲ごとにグループ化する
+            List<List<List<FaceDimensionTarget>>> clusters = new List<List<List<FaceDimensionTarget>>>();
+            double clusterMax = double.MinValue;
+            foreach (FaceDimensionTarget target in targets.OrderBy(t => t.Min)) {
+                if (clusters.Count == 0 || target.Min >= clusterMax - FaceDimensionExtentTolerance) {
+                    clusters.Add(new List<List<FaceDimensionTarget>>());
+                    clusterMax = double.MinValue;
+                }
+                List<List<FaceDimensionTarget>> cluster = clusters.Last();
+                List<FaceDimensionTarget> group = cluster.FirstOrDefault(g =>
+                    Math.Abs(g[0].Min - target.Min) < FaceDimensionExtentTolerance
+                    && Math.Abs(g[0].Max - target.Max) < FaceDimensionExtentTolerance);
+                if (group == null) {
+                    group = new List<FaceDimensionTarget>();
+                    cluster.Add(group);
+                }
+                group.Add(target);
+                clusterMax = Math.Max(clusterMax, target.Max);
+            }
+
+            List<List<FaceDimensionTarget>> sideGroups = new List<List<FaceDimensionTarget>>();
+            if (clusters.Count >= 2) {
+                ReferenceArray chain = new ReferenceArray();
+                List<Element> chainElements = new List<Element>();
+                foreach (List<List<FaceDimensionTarget>> cluster in clusters) {
+                    List<FaceDimensionTarget> primary = cluster.OrderBy(g => g.Min(t => t.PickDistance)).First();
+                    FaceDimensionTarget representative = primary.OrderBy(t => t.PickDistance).First();
+                    foreach (Reference reference in representative.References) {
+                        AppendFaceToFaceChainReference(chain, reference);
+                    }
+                    chainElements.AddRange(primary.Select(t => t.Element));
+                    sideGroups.AddRange(cluster.Where(g => g != primary));
+                }
+                CreateChainedDimensionElement(activeView, dimensionPoint, dimensionPoint + lineDirection, chain, chainElements);
+            }
+            else {
+                sideGroups.AddRange(clusters[0]);
+            }
+
+            double sideOffset = FaceDimensionSideOffsetMm / 304.8 * activeView.Scale;
+            double pickCross = dimensionPoint.DotProduct(crossDirection);
+            foreach (List<FaceDimensionTarget> group in sideGroups) {
+                FaceDimensionTarget representative = group.OrderBy(t => t.PickDistance).First();
+                List<Element> groupElements = group.Select(t => t.Element).ToList();
+                if (representative.References.Size < 2) {
+                    foreach (Element element in groupElements) {
+                        errorIdSet.Add(element.Id.ToString());
+                    }
+                    continue;
+                }
+                double center = (representative.CrossMin + representative.CrossMax) / 2;
+                double lineCross = pickCross >= center
+                    ? representative.CrossMax + sideOffset
+                    : representative.CrossMin - sideOffset;
+                XYZ p1 = dimensionPoint + crossDirection * (lineCross - pickCross);
+                CreateChainedDimensionElement(activeView, p1, p1 + lineDirection, representative.References, groupElements);
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 芯-芯の寸法を、指定点を通る1本の連続寸法として作成する。
+        /// 芯を取得できない要素がある場合は false を返し、従来の処理に任せる。
+        /// </summary>
+        private bool CreateCenterChainedDimensionXY(
+            List<Element> newElementList,
+            XYZ elementDirection,
+            View activeView)
+        {
+            ReferenceArray chain = new ReferenceArray();
+            List<Element> chainElements = new List<Element>();
+            HashSet<ElementId> seen = new HashSet<ElementId>();
+            foreach (Element element in newElementList) {
+                if (element == null || !seen.Add(element.Id)) {
+                    continue;
+                }
+                Reference center = GetCenterReferenceXY(element, elementDirection, activeView, allowGrid: true);
+                if (center == null) {
+                    // 継手など平行な芯を持たない要素は連続寸法から除外する
+                    continue;
+                }
+                AppendFaceToFaceChainReference(chain, center);
+                chainElements.Add(element);
+            }
+            if (chainElements.Count < 2) {
+                return false;
+            }
+
+            XYZ lineDirection = GetDimensionLineDirectionXY(elementDirection, activeView);
+            CreateChainedDimensionElement(activeView, dimensionPoint, dimensionPoint + lineDirection, chain, chainElements);
+            return true;
+        }
+
+        /// <summary>
+        /// 長さ0のセグメントを含む場合、その参照を除いて連続寸法を作り直す
+        /// </summary>
+        private Dimension RemoveZeroSegments(View view, Line line, Dimension dim)
+        {
+            while (dim != null && dim.NumberOfSegments > 1) {
+                int zeroIndex = -1;
+                for (int i = 0; i < dim.Segments.Size; i++) {
+                    double? value = dim.Segments.get_Item(i).Value;
+                    if (value.HasValue && Math.Abs(value.Value) < 1e-6) {
+                        zeroIndex = i;
+                        break;
+                    }
+                }
+                if (zeroIndex < 0) {
+                    break;
+                }
+                ReferenceArray current = dim.References;
+                ReferenceArray pruned = new ReferenceArray();
+                for (int i = 0; i < current.Size; i++) {
+                    if (i != zeroIndex + 1) {
+                        pruned.Append(current.get_Item(i));
+                    }
+                }
+                Doc.Delete(dim.Id);
+                dim = pruned.Size >= 2 ? Doc.Create.NewDimension(view, line, pruned) : null;
+            }
+            return dim;
+        }
+
+        private void CreateChainedDimensionElement(
+            View view,
+            XYZ p1,
+            XYZ p2,
+            ReferenceArray references,
+            IList<Element> elements)
+        {
+            if (references == null || references.Size < 2) {
+                return;
+            }
+
+            try {
+                Line line = Line.CreateBound(p1, p2);
+                using (Transaction transaction = new Transaction(Doc, "寸法作成")) {
+                    transaction.Start();
+                    Dimension dim = RemoveZeroSegments(view, line, Doc.Create.NewDimension(view, line, references));
+                    if (dim == null || IsZeroDimension(dim)) {
+                        if (dim != null) {
+                            Doc.Delete(dim.Id);
+                        }
+                    }
+                    else if (IsNegativeDimension(dim)) {
+                        foreach (Element element in elements) {
+                            if (element != null) {
+                                errorIdSet.Add(element.Id.ToString());
+                            }
+                        }
+                        Doc.Delete(dim.Id);
+                    }
+                    else {
+                        foreach (Element element in elements) {
+                            if (element != null) {
+                                successIdSet.Add(element.Id.ToString());
+                            }
+                        }
+                    }
+                    transaction.Commit();
+                }
+            }
+            catch (Exception) {
+                foreach (Element element in elements) {
+                    if (element != null) {
+                        errorIdSet.Add(element.Id.ToString());
+                    }
+                }
+            }
+        }
+
         private void CreateDimensionElement(
          View view,
          XYZ p1,
@@ -6267,7 +6724,10 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                     transaction.Start();
                     Dimension dim = Doc.Create.NewDimension(
                     Doc.ActiveView, line, ra);
-                    if (dim.ValueString.Contains("-")) {
+                    if (IsZeroDimension(dim)) {
+                        Doc.Delete(dim.Id);
+                    }
+                    else if (IsNegativeDimension(dim)) {
                         if (e1 != null) {
                             errorIdSet.Add(e1.Id.ToString());
                         }
@@ -6886,7 +7346,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                 Grid grid = (Grid)element2;
                 curve2 = grid.Curve;
             }
-            else if (element1.GetType().Name == "FamilyInstance") {
+            else if (element2.GetType().Name == "FamilyInstance") {
                 FamilyInstance instance = (FamilyInstance)element2;
                 Transform t = instance.GetTransform();
                 XYZ zero = new XYZ(0, 0, 0);
@@ -7157,7 +7617,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                 transaction.Start();
                                 Dimension dim = Doc.Create.NewDimension(
                                 Doc.ActiveView, line, ra);
-                                if (dim.ValueString.Contains("-")) {
+                                if (IsNegativeDimension(dim)) {
                                     checkFlag = false;
                                 }
                                 else {
@@ -7434,7 +7894,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                 transaction.Start();
                                 Dimension dim = Doc.Create.NewDimension(
                                 Doc.ActiveView, line, ra);
-                                if (dim.ValueString.Contains("-")) {
+                                if (IsNegativeDimension(dim)) {
                                     checkFlag = false;
                                 }
                                 else {
@@ -7445,7 +7905,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
                                 transaction.RollBack();
                             }
                         }
-                        catch (Exception) {
+                        catch (Exception ex) {
                             checkFlag = false;
                             if (element1 != null) {
                                 errorIdSet.Add(element1.Id.ToString());

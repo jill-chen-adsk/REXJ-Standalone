@@ -12,6 +12,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension
         public Result OnStartup(UIControlledApplication application)
         {
             CultureHelper.InitializeCulture();
+            DimensionFailures.Register(Resources.Text.IDS_DIM_ERROR_FACES_CORES);
 
             string tabName = "REXJ Standalone";
             try { application.CreateRibbonTab(tabName); } catch { }
