@@ -8,9 +8,9 @@ using System.Windows.Media;
 namespace ADSK.ViewExtension.ViewDuplicate.Utils
 {
     /// <summary>
-    /// Restores a window to its last saved position, falling back to centering on its
-    /// (possibly native) owner window. WPF's CenterOwner is unreliable for SizeToContent
-    /// windows owned by a native HWND such as Revit's main window.
+    /// Positions dialogs over their (possibly native) owner window, optionally restoring the
+    /// last saved position. WPF's CenterOwner is unreliable for SizeToContent windows owned
+    /// by a native HWND such as Revit's main window.
     /// </summary>
     public static class WindowPositionMemory
     {
@@ -46,6 +46,13 @@ namespace ADSK.ViewExtension.ViewDuplicate.Utils
             window.WindowStartupLocation = WindowStartupLocation.Manual;
             window.Loaded += (s, e) => Restore(window, settingsSection);
             window.Closing += (s, e) => Save(window, settingsSection);
+        }
+
+        /// <summary>Centers the window on its owner once its size is known, without remembering the position.</summary>
+        public static void CenterOnOwnerWhenLoaded(Window window)
+        {
+            window.WindowStartupLocation = WindowStartupLocation.Manual;
+            window.Loaded += (s, e) => CenterOnOwner(window);
         }
 
         private static void Restore(Window window, string section)
@@ -84,7 +91,7 @@ namespace ADSK.ViewExtension.ViewDuplicate.Utils
             return MonitorFromPoint(pt, MonitorDefaultToNull) != IntPtr.Zero;
         }
 
-        private static void CenterOnOwner(Window window)
+        public static void CenterOnOwner(Window window)
         {
             Rect ownerRect;
             if (window.Owner != null)

@@ -19,7 +19,7 @@ namespace ADSK.ViewExtension.ViewDuplicate.Utils
             if (dialog == null)
                 return false;
 
-            if (ownerHandle == IntPtr.Zero)
+            if (ownerHandle == IntPtr.Zero && dialog.WindowStartupLocation != WindowStartupLocation.Manual)
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             SetOwner(dialog, ownerHandle);
 
@@ -31,6 +31,8 @@ namespace ADSK.ViewExtension.ViewDuplicate.Utils
             var dialog = new WeaveMessageDialog(message, title, okText);
             if (ownerHandle == IntPtr.Zero)
                 dialog.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            else
+                WindowPositionMemory.CenterOnOwnerWhenLoaded(dialog);
             SetOwner(dialog, ownerHandle);
             dialog.ShowDialog();
         }

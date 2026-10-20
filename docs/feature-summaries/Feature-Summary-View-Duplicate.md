@@ -1,8 +1,7 @@
 # Feature Summary — View Duplicate
 
 > **Deck type:** Final Feature Summary (REXJ Standalone **v1.1.7, planned**, Revit 2027)  
-> **PPTX master (Save As first):** `Feature Summary Template - SAVEAS.pptx`  
-> (`C:\Users\chenji\.cursor\skills\feature-summary-slides\assets\pptx\Feature-Summary-Template-SAVEAS.pptx`)  
+> **PPTX master (Save As first):** `Feature Summary Template - SAVEAS.pptx` (Revit org-wide Final Feature Summary template)  
 > **Scope:** **View Duplicate** (`ADSK.ViewExtension.ViewDuplicate`) — main dialog + **Add rule** dialog, Weave WPF UI  
 > **Vocabulary:** Ribbon button **View Copy** vs dialog title **View Duplicate**. In the dialog, **View category** = Revit view kind (Floor Plan, Section, …); **View type** = view family type (e.g. a "Mechanical Plan" type). Keep the two separate on every slide.
 
