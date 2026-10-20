@@ -12,7 +12,7 @@
     <Color x:Key="Weave.Color.Header.Background">#3A4F63</Color>
     <Color x:Key="Weave.Color.Header.Rule">#C0CCD8</Color>
     <Color x:Key="Weave.Color.Chrome.CloseHover">#33FFFFFF</Color>
-    <Color x:Key="Weave.Color.State.Hover">#33000000</Color>
+    <Color x:Key="Weave.Color.State.Hover">#26FFFFFF</Color>
 
     <SolidColorBrush x:Key="Weave.Brush.Text.Primary" Color="{StaticResource Weave.Color.Text.Primary}"/>
     <SolidColorBrush x:Key="Weave.Brush.Text.Secondary" Color="{StaticResource Weave.Color.Text.Secondary}"/>

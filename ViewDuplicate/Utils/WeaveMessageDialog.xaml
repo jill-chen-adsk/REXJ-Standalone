@@ -73,11 +73,18 @@
 
             <Border x:Name="chromeDivider" Grid.Row="1"/>
 
-            <TextBlock x:Name="MessageText"
-                       Grid.Row="2"
-                       Style="{StaticResource Weave.BodyText}"
-                       TextWrapping="Wrap"
-                       Margin="24,16,24,0"/>
+            <ScrollViewer Grid.Row="2"
+                          MaxHeight="360"
+                          Margin="24,16,12,0"
+                          Padding="0,0,12,0"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled"
+                          Focusable="False">
+                <TextBlock x:Name="MessageText"
+                           Style="{StaticResource Weave.BodyText}"
+                           VerticalAlignment="Top"
+                           TextWrapping="Wrap"/>
+            </ScrollViewer>
 
             <StackPanel Grid.Row="3"
                         Orientation="Horizontal"
