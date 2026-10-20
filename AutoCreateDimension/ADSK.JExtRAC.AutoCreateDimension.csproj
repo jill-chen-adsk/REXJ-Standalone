@@ -63,11 +63,14 @@
     <Compile Update="Screen\AutoDimension.Designer.cs">
       <DependentUpon>AutoDimension.cs</DependentUpon>
     </Compile>
-    <Compile Update="UI\FormLog.cs">
-      <SubType>Form</SubType>
+    <Compile Update="Screen\AutoDimensionWPF.xaml.cs">
+      <DependentUpon>AutoDimensionWPF.xaml</DependentUpon>
     </Compile>
-    <Compile Update="UI\FormLog.Designer.cs">
-      <DependentUpon>FormLog.cs</DependentUpon>
+    <Compile Update="UI\FormLogWPF.xaml.cs">
+      <DependentUpon>FormLogWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Utils\WeaveMessageDialog.xaml.cs">
+      <DependentUpon>WeaveMessageDialog.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -84,9 +87,6 @@
     <EmbeddedResource Update="Resources\Text.en.resx" />
     <EmbeddedResource Update="Screen\AutoDimension.resx">
       <DependentUpon>AutoDimension.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Update="UI\FormLog.resx">
-      <DependentUpon>FormLog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
 

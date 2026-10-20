@@ -291,6 +291,12 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Resources {
             }
         }
         
+        internal static string IDS_MSG_DIM_FAILED {
+            get {
+                return ResourceManager.GetString("IDS_MSG_DIM_FAILED", resourceCulture);
+            }
+        }
+        
         internal static string IDS_MSG_SELECT_OBJECTS {
             get {
                 return ResourceManager.GetString("IDS_MSG_SELECT_OBJECTS", resourceCulture);
@@ -318,6 +324,12 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Resources {
         internal static string IDS_TRN_DETAIL_LINE {
             get {
                 return ResourceManager.GetString("IDS_TRN_DETAIL_LINE", resourceCulture);
+            }
+        }
+        
+        internal static string IDS_TRN_CREATE_DIMENSION {
+            get {
+                return ResourceManager.GetString("IDS_TRN_CREATE_DIMENSION", resourceCulture);
             }
         }
         

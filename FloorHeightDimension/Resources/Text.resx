@@ -198,4 +198,12 @@
     <value>mm</value>
     <comment>単位 1</comment>
   </data>
+  <data name="IDS_TXT_DIAGRAM_LEVEL" xml:space="preserve">
+    <value>レベル{0}</value>
+    <comment>説明図 レベル名</comment>
+  </data>
+  <data name="IDS_TXT_DIAGRAM_BASEPOINT" xml:space="preserve">
+    <value>指定位置</value>
+    <comment>説明図 指定位置</comment>
+  </data>
 </root>
