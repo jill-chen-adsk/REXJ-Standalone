@@ -142,7 +142,7 @@ namespace ADSK.ViewExtension.ViewDuplicate.UI
             _currentViewType = viewTypeItem.ViewType;
             ViewDiscipline discipline = disciplineItem.Discipline;
 
-            var familyTypes = new List<object> { new ItmViewFamilyType() };
+            var familyTypes = new List<object>();
             var seen = new HashSet<ElementId>();
             foreach (RevitView view in CollectViews(v => v.Discipline == discipline && v.ViewType == _currentViewType))
             {
@@ -150,6 +150,8 @@ namespace ADSK.ViewExtension.ViewDuplicate.UI
                     familyTypes.Add(new ItmViewFamilyType(vft));
             }
 
+            // "<All>" stays at index 0: saved indices and the first-run default depend on it.
+            cbxViewFamilyType.Items.Add(new ItmViewFamilyType());
             AddSorted(cbxViewFamilyType, familyTypes);
             RestoreSelectedIndex(cbxViewFamilyType, SettingsSection, KeyViewFamilyType);
         }

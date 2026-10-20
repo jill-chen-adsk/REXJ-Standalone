@@ -97,7 +97,7 @@ The **Duplication rules** table shows **Prefix / suffix**, **Added text**, **Vie
 
 **Set view type, template, and naming**
 
-**Add** opens a rule dialog. Choose the target **View type** (types in the same view family as the source views). Choose a **View template** for the same view category, or **\<None\>** if no template is available. Pick **Prefix** or **Suffix** and enter **Text to add**; the field is pre-filled with the template name and can be edited.
+**Add** opens a rule dialog. Choose the target **View type** (types in the same view family as the source views). Choose a **View template** for the same view category; if no template is available, the list is empty and the rule is shown with **\<None\>** in the table. Pick **Prefix** or **Suffix** and enter **Text to add**; the field is pre-filled with the template name and can be edited.
 
 *(If the chosen view type assigns its own template on creation, **View template** shows that template and is locked. Prefix/Suffix and the last view type are remembered.)*
 
