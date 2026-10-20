@@ -12,7 +12,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
     /// follows the active Weave palette and shows localized labels instead of the Japanese
     /// text baked into the original bitmap.
     /// </summary>
-    internal static class LevelDiagram
+    internal sealed class LevelDiagram
     {
         public const double DesignWidth = 300.0;
         public const double DesignHeight = 196.0;
@@ -41,7 +41,19 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
         /// <paramref name="accent"/> draws the picked point and the A/B call-outs.
         /// <paramref name="levelFormat"/> receives the level number as {0}.
         /// </summary>
-        public static Canvas Create(Brush neutral, Brush accent, string levelFormat, string basePointLabel)
+        public static Canvas Create(Brush neutral, Brush accent, FontFamily fontFamily, string levelFormat, string basePointLabel)
+        {
+            return new LevelDiagram(fontFamily).Build(neutral, accent, levelFormat, basePointLabel);
+        }
+
+        private readonly FontFamily _fontFamily;
+
+        private LevelDiagram(FontFamily fontFamily)
+        {
+            _fontFamily = fontFamily;
+        }
+
+        private Canvas Build(Brush neutral, Brush accent, string levelFormat, string basePointLabel)
         {
             var canvas = new Canvas
             {
@@ -59,7 +71,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             return canvas;
         }
 
-        private static void DrawLevels(Canvas canvas, Brush neutral, string levelFormat)
+        private void DrawLevels(Canvas canvas, Brush neutral, string levelFormat)
         {
             for (int i = 0; i < LevelYs.Length; i++)
             {
@@ -87,7 +99,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             }
         }
 
-        private static void DrawHeightDimensions(Canvas canvas, Brush neutral)
+        private void DrawHeightDimensions(Canvas canvas, Brush neutral)
         {
             double top = LevelYs[0];
             double middle = LevelYs[1];
@@ -109,7 +121,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             }
         }
 
-        private static void DrawDirectionArrows(Canvas canvas, Brush accent)
+        private void DrawDirectionArrows(Canvas canvas, Brush accent)
         {
             double y = (LevelYs[0] + LevelYs[1]) / 2.0;
 
@@ -120,7 +132,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             AddText(canvas, "+", CenterX + 50.0, y, SignFontSize, accent, bold: true);
         }
 
-        private static void DrawBasePointAndRail(Canvas canvas, Brush neutral, Brush accent, string basePointLabel)
+        private void DrawBasePointAndRail(Canvas canvas, Brush neutral, Brush accent, string basePointLabel)
         {
             AddLine(canvas, accent, CenterX, LevelYs[0] - 14.0, CenterX, RailY, dashed: true, thickness: 1.0);
 
@@ -143,7 +155,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             AddText(canvas, basePointLabel, CenterX, RailY + 17.0, LevelFontSize, neutral, bold: true);
         }
 
-        private static void AddVerticalDimension(
+        private void AddVerticalDimension(
             Canvas canvas,
             Brush neutral,
             double x,
@@ -214,7 +226,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             canvas.Children.Add(line);
         }
 
-        private static TextBlock CreateText(string text, double fontSize, Brush foreground, bool bold)
+        private TextBlock CreateText(string text, double fontSize, Brush foreground, bool bold)
         {
             var block = new TextBlock
             {
@@ -222,13 +234,13 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
                 FontSize = fontSize,
                 Foreground = foreground,
                 FontWeight = bold ? FontWeights.Bold : FontWeights.Normal,
-                FontFamily = new FontFamily("Segoe UI"),
+                FontFamily = _fontFamily,
             };
             block.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             return block;
         }
 
-        private static void AddText(
+        private void AddText(
             Canvas canvas,
             string text,
             double centreX,
@@ -252,7 +264,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
         }
 
         /// <summary>Places text with its left edge at <paramref name="left"/> and its bottom at <paramref name="bottom"/>.</summary>
-        private static void AddTextAt(
+        private void AddTextAt(
             Canvas canvas,
             string text,
             double left,

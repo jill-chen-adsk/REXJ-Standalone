@@ -6324,21 +6324,7 @@ namespace ADSK.JExtRAC.AutoCreateDimension.Screen
 
         private List<Face> GetFaceListFaceToFaceXY(Element element, XYZ elementDirection, View activeView, Options opt)
         {
-            Line elementLine = Line.CreateBound(XYZ.Zero, elementDirection);
-            XYZ normal = NormalViewDirection(elementLine, activeView.ViewDirection);
-            if (Math.Round(normal.X, 3, MidpointRounding.AwayFromZero) == 0
-                && Math.Round(normal.Y, 3, MidpointRounding.AwayFromZero) == 0
-                && Math.Round(normal.Z, 3, MidpointRounding.AwayFromZero) == 0) {
-                if (Math.Round(elementDirection.X, 3, MidpointRounding.AwayFromZero) == 0) {
-                    normal = NormalViewDirection(elementLine, XYZ.BasisX);
-                }
-                else if (Math.Round(elementDirection.Y, 3, MidpointRounding.AwayFromZero) == 0) {
-                    normal = NormalViewDirection(elementLine, XYZ.BasisY);
-                }
-                else {
-                    normal = NormalViewDirection(elementLine, XYZ.BasisZ);
-                }
-            }
+            XYZ normal = GetDimensionLineDirectionXY(elementDirection, activeView);
 
             List<Face> faceList;
             if (element.GetType().Name == "FamilyInstance" || element.GetType().Name == "FabricationPart") {

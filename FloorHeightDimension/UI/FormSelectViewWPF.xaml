@@ -10,9 +10,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        ResizeMode="CanResizeWithGrip"
-        FontFamily="Segoe UI"
-        FontSize="12">
+        ResizeMode="CanResizeWithGrip">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -37,8 +35,7 @@
 
             <Grid x:Name="chromeTitleBar" Grid.Row="0">
                 <TextBlock x:Name="chromeTitleText"
-                           FontSize="14"
-                           FontWeight="SemiBold"
+                           Style="{StaticResource Weave.TitleText}"
                            VerticalAlignment="Center"
                            Margin="20,0,48,0"/>
                 <Button x:Name="chromeCloseButton"

@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <Color x:Key="Weave.Color.Text.Primary">#3C3C3C</Color>
     <Color x:Key="Weave.Color.Text.Secondary">#6B6B6B</Color>
@@ -14,6 +15,11 @@
     <Color x:Key="Weave.Color.Diagram.Accent">#D92B36</Color>
     <Color x:Key="Weave.Color.Accent.Foreground">#FFFFFF</Color>
     <Color x:Key="Weave.Color.Chrome.CloseHover">#20000000</Color>
+
+    <FontFamily x:Key="Weave.Font.Family">Artifakt Element, ArtifaktElement, Segoe UI</FontFamily>
+    <sys:Double x:Key="Weave.FontSize.S">11</sys:Double>
+    <sys:Double x:Key="Weave.FontSize.M">12</sys:Double>
+    <sys:Double x:Key="Weave.FontSize.Title">14</sys:Double>
 
     <SolidColorBrush x:Key="Weave.Brush.Chrome.CloseHover" Color="{DynamicResource Weave.Color.Chrome.CloseHover}"/>
     <SolidColorBrush x:Key="Weave.Brush.Accent.Foreground" Color="{DynamicResource Weave.Color.Accent.Foreground}"/>
@@ -31,8 +37,8 @@
 
     <Style x:Key="Weave.Window" TargetType="Window">
         <Setter Property="Background" Value="{DynamicResource Weave.Brush.Surface}"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="{StaticResource Weave.Font.Family}"/>
+        <Setter Property="FontSize" Value="{StaticResource Weave.FontSize.M}"/>
         <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
     </Style>
 
@@ -40,21 +46,27 @@
         <Setter Property="Background" Value="Transparent"/>
     </Style>
 
+    <Style x:Key="Weave.TitleText" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource Weave.FontSize.Title}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
+    </Style>
+
     <Style x:Key="Weave.SectionTitle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontSize" Value="{StaticResource Weave.FontSize.M}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
         <Setter Property="Margin" Value="0,0,0,8"/>
     </Style>
 
     <Style x:Key="Weave.BodyText" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontSize" Value="{StaticResource Weave.FontSize.M}"/>
         <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Primary}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="Weave.HintText" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontSize" Value="{StaticResource Weave.FontSize.S}"/>
         <Setter Property="Foreground" Value="{DynamicResource Weave.Brush.Text.Secondary}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>

@@ -36,8 +36,7 @@
 
             <Grid x:Name="chromeTitleBar" Grid.Row="0">
                 <TextBlock x:Name="chromeTitleText"
-                           FontSize="14"
-                           FontWeight="SemiBold"
+                           Style="{StaticResource Weave.TitleText}"
                            VerticalAlignment="Center"
                            Margin="20,0,48,0"/>
                 <Button x:Name="chromeCloseButton"

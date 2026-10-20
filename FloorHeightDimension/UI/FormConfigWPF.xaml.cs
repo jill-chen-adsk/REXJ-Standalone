@@ -95,6 +95,7 @@ namespace ADSK.JExtRAC.FloorHeightDimension.UI
             diagramVector.Child = LevelDiagram.Create(
                 (System.Windows.Media.Brush)FindResource("Weave.Brush.Text.Primary"),
                 (System.Windows.Media.Brush)FindResource("Weave.Brush.Diagram.Accent"),
+                (System.Windows.Media.FontFamily)FindResource("Weave.Font.Family"),
                 _CmpAttribute.ResourceText("IDS_TXT_DIAGRAM_LEVEL"),
                 _CmpAttribute.ResourceText("IDS_TXT_DIAGRAM_BASEPOINT"));
         }
