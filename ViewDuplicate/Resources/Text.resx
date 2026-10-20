@@ -111,4 +111,8 @@
   <data name="TXT_VIEWTYPE_THREE_D" xml:space="preserve"><value>3D</value></data>
   <data name="TXT_VIEWTYPE_UNDEFINED" xml:space="preserve"><value>未定義</value></data>
   <data name="TXT_VIEWTYPE_WALKTHROUGH" xml:space="preserve"><value>ウォークスルー</value></data>
+  <data name="BTN_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="LBL_VIEWS" xml:space="preserve"><value>複製するビュー</value></data>
+  <data name="LBL_RULES" xml:space="preserve"><value>複製規則</value></data>
+  <data name="TXT_NO_TEMPLATE" xml:space="preserve"><value>&lt;なし&gt;</value></data>
 </root>

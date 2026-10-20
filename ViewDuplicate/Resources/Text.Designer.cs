@@ -33,6 +33,7 @@ namespace ADSK.ViewExtension.ViewDuplicate.Resources
         public static string BTN_ADD => ResourceManager.GetString(nameof(BTN_ADD), resourceCulture);
         public static string BTN_CANCEL => ResourceManager.GetString(nameof(BTN_CANCEL), resourceCulture);
         public static string BTN_DELETE => ResourceManager.GetString(nameof(BTN_DELETE), resourceCulture);
+        public static string BTN_OK => ResourceManager.GetString(nameof(BTN_OK), resourceCulture);
         public static string CMD_VIEWDUPLICATE => ResourceManager.GetString(nameof(CMD_VIEWDUPLICATE), resourceCulture);
         public static string DGCOL_ADDED_TEXT => ResourceManager.GetString(nameof(DGCOL_ADDED_TEXT), resourceCulture);
         public static string DGCOL_PREFIX_SUFFIX => ResourceManager.GetString(nameof(DGCOL_PREFIX_SUFFIX), resourceCulture);
@@ -51,11 +52,14 @@ namespace ADSK.ViewExtension.ViewDuplicate.Resources
         public static string LBL_DUP_KIND => ResourceManager.GetString(nameof(LBL_DUP_KIND), resourceCulture);
         public static string LBL_ITEM_VIEW_TEMPLATE => ResourceManager.GetString(nameof(LBL_ITEM_VIEW_TEMPLATE), resourceCulture);
         public static string LBL_ITEM_VIEW_TYPE => ResourceManager.GetString(nameof(LBL_ITEM_VIEW_TYPE), resourceCulture);
+        public static string LBL_RULES => ResourceManager.GetString(nameof(LBL_RULES), resourceCulture);
         public static string LBL_VIEW_CATEGORY => ResourceManager.GetString(nameof(LBL_VIEW_CATEGORY), resourceCulture);
         public static string LBL_VIEW_TYPE_FILTER => ResourceManager.GetString(nameof(LBL_VIEW_TYPE_FILTER), resourceCulture);
+        public static string LBL_VIEWS => ResourceManager.GetString(nameof(LBL_VIEWS), resourceCulture);
         public static string TXT_CANNOTCOPYVIEW => ResourceManager.GetString(nameof(TXT_CANNOTCOPYVIEW), resourceCulture);
         public static string TXT_ERROR => ResourceManager.GetString(nameof(TXT_ERROR), resourceCulture);
         public static string TXT_LEFTBRACE => ResourceManager.GetString(nameof(TXT_LEFTBRACE), resourceCulture);
+        public static string TXT_NO_TEMPLATE => ResourceManager.GetString(nameof(TXT_NO_TEMPLATE), resourceCulture);
         public static string TXT_PREFIX => ResourceManager.GetString(nameof(TXT_PREFIX), resourceCulture);
         public static string TXT_RIGHTBRACE => ResourceManager.GetString(nameof(TXT_RIGHTBRACE), resourceCulture);
         public static string TXT_SUFFIX => ResourceManager.GetString(nameof(TXT_SUFFIX), resourceCulture);

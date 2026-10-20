@@ -4,21 +4,19 @@ namespace ADSK.ViewExtension.ViewDuplicate.DialogItem
 {
     public class ItmView
     {
-        private View _view;
-
         public ItmView(View myView)
         {
-            _view = myView;
+            View = myView;
+            Name = myView.Name;
         }
 
-        public View View
-        {
-            get => _view;
-            set => _view = value;
-        }
+        public View View { get; }
 
-        public override string ToString() => _view.Name;
+        // Cached so list rendering and selection never call back into the Revit API.
+        public string Name { get; }
 
-        public ViewType ViewType => _view.ViewType;
+        public override string ToString() => Name;
+
+        public ViewType ViewType => View.ViewType;
     }
 }

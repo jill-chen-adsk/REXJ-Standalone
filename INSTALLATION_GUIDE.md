@@ -1060,11 +1060,11 @@ C:\REXJ\Standalone\
 │   ├── ADSK.ViewExtension.ViewDuplicate.addin
 │   ├── App.cs                       ← Ribbon registration (Views panel)
 │   ├── Commands\                    ← CmdViewDuplicate (IExternalCommand)
-│   ├── DialogItem\                  ← ItmView, ItmViewDiscipline, ItmViewFamilyType, ItmViewType
+│   ├── DialogItem\                  ← ItmView, ItmViewDiscipline, ItmViewFamilyType, ItmViewType, ItmDuplicateRule
 │   ├── Sorter\                      ← CmpLevel
-│   ├── Resources\                   ← Text.resx (JA), Text.en.resx (EN)
-│   ├── UI\                          ← DlgViewDuplicate, DlgViewDuplicateItem (WinForms)
-│   └── Utils\                       ← DialogUtil, RegistryHelper, CultureHelper
+│   ├── Resources\                   ← Text.resx (JA), Text.en.resx (EN), WeaveDialogResources.xaml
+│   ├── UI\                          ← FormViewDuplicateWPF, FormViewDuplicateItemWPF (Weave WPF)
+│   └── Utils\                       ← DialogUtil, WeaveTheme, WeaveDialogHost, WeaveMessageDialog, WindowPositionMemory
 │
 └── TenkaiView\                      ← Interior Elevation for Room (VB→C# conversion)
     ├── ADSK.ViewExtension.TenkaiView.csproj
