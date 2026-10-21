@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280, initial-scale=1">
+  <title>Feature Summary — View Duplicate</title>
+  <style>
+    :root {
+      --font-family: Arial, sans-serif;
+      --color-text: #3c3c3c;
+      --color-text-black: #000000;
+      --color-label: #666666;
+      --color-accent-line: #0696d7;
+      --color-box-fill: #f2f2f2;
+      --color-slide-bg: #ffffff;
+      --size-cover-title: 28pt;
+      --size-slide-title: 16pt;
+      --size-body: 12pt;
+      --size-caption-heading: 11pt;
+      --size-section-label: 11pt;
+      --rule-width: 51px;
+      --rule-height: 1.5pt;
+      --line-height-body: 1.35;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: var(--font-family);
+      background: #e8e8e8;
+      color: var(--color-text);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .deck-meta { font-size: 9pt; color: var(--color-label); max-width: 1280px; width: 100%; }
+    .slide {
+      width: 1280px; height: 720px;
+      background: var(--color-slide-bg);
+      padding: 36px 48px 32px;
+      display: grid; grid-template-rows: auto 1fr auto; gap: 12px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    }
+    .slide.internal { outline: 2px dashed #b8b8b8; outline-offset: -10px; }
+    .internal-flag { font-size: 9pt; font-weight: 700; color: var(--color-label); letter-spacing: 0.04em; text-transform: uppercase; }
+    .cover { display: grid; grid-template-rows: 1fr auto; }
+    .cover-inner { display: flex; flex-direction: column; justify-content: center; padding: 0 24px; }
+    .cover h1 { font-size: var(--size-cover-title); font-weight: 700; color: var(--color-text-black); line-height: var(--line-height-body); }
+    .cover .cover-sub { font-size: var(--size-body); color: var(--color-label); margin-top: 12px; max-width: 900px; line-height: var(--line-height-body); }
+    .header { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+    .header-rule { width: var(--rule-width); height: var(--rule-height); background: var(--color-text); }
+    .header h2 { font-size: var(--size-slide-title); font-weight: 700; color: var(--color-text-black); }
+    .body { padding-top: 2px; display: grid; gap: 14px; align-content: start; }
+    .lead { font-size: var(--size-body); line-height: var(--line-height-body); max-width: 1080px; }
+    .lead .scope { display: block; margin-top: 8px; font-style: italic; }
+    .benefits { list-style: none; max-width: 1080px; }
+    .benefits li { font-size: var(--size-body); line-height: var(--line-height-body); padding-left: 16px; position: relative; margin-bottom: 4px; }
+    .benefits li::before { content: "•"; position: absolute; left: 0; }
+    .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1080px; }
+    .ba-box { background: var(--color-box-fill); padding: 14px 18px; }
+    .ba-box .lab { font-size: var(--size-caption-heading); font-weight: 700; color: var(--color-label); margin-bottom: 6px; }
+    .ba-box ol, .ba-box p { font-size: var(--size-body); line-height: var(--line-height-body); }
+    .ba-box ol { padding-left: 18px; }
+    .detail { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .caption .lab { font-size: var(--size-caption-heading); font-weight: 700; color: var(--color-label); margin-bottom: 8px; }
+    .caption .desc, .caption .note { font-size: var(--size-body); line-height: var(--line-height-body); }
+    .caption .desc + .desc { margin-top: 8px; }
+    .caption .note { font-style: italic; margin-top: 8px; }
+    .tag { display: inline-block; font-size: 10pt; font-weight: 700; color: var(--color-label); margin-bottom: 6px; }
+    .placeholder {
+      border: 1.5px dashed #b8b8b8; background: var(--color-box-fill);
+      min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 20px; text-align: center;
+    }
+    .ph-label { font-size: var(--size-caption-heading); font-weight: 700; color: var(--color-label); margin-bottom: 6px; }
+    .ph-note { font-size: 10pt; color: var(--color-label); max-width: 360px; line-height: var(--line-height-body); }
+    .footer { font-size: 9pt; color: var(--color-label); text-align: center; }
+    .fs-header { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .fs-title { font-size: var(--size-slide-title); font-weight: 700; color: var(--color-text-black); }
+    .fs-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; height: 100%; }
+    .fs-left { display: flex; flex-direction: column; gap: 6px; }
+    .fs-right { display: grid; grid-template-rows: auto 1fr; gap: 18px; }
+    .fs-section-label { font-size: var(--size-section-label); font-weight: 700; color: var(--color-label); display: flex; align-items: center; margin-bottom: 6px; }
+    .fs-section-label::before { content: ""; flex: 0 0 36px; border-top: 1.5pt dotted var(--color-accent-line); margin-right: 6px; }
+    .fs-box { background: var(--color-box-fill); padding: 14px 18px; flex: 1; }
+    .fs-box ul { list-style: none; font-size: 11pt; line-height: var(--line-height-body); }
+    .fs-box li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+    .fs-box li::before { content: "•"; position: absolute; left: 0; }
+    .fs-box p { font-size: 11pt; line-height: var(--line-height-body); }
+  </style>
+</head>
+<body>
+
+<p class="deck-meta">View Duplicate · Final · v1.1.7 (planned) · 7 numbered slides + 1 internal-only · 1280×720</p>
+
+<!-- Internal only: delete before external circulation. Not counted in slide numbers. -->
+<section class="slide internal">
+  <div class="header">
+    <span class="internal-flag">Internal only — do not circulate</span>
+    <div class="header-rule"></div>
+    <h2>Customer problem: building parallel view sets</h2>
+  </div>
+  <div class="body">
+    <p class="lead">
+      Project teams build parallel view sets from one base set — for example, floor plans L1–L5 copied into Mechanical, Electrical, and Plumbing working views, each with its own <strong>View type</strong>, <strong>View template</strong>, and naming convention.
+    </p>
+    <div class="before-after">
+      <div class="ba-box">
+        <p class="lab">In Revit alone — per view, per discipline</p>
+        <ol>
+          <li>Duplicate the view (named <em>"L2 Copy 1"</em>)</li>
+          <li>Rename it to the office convention</li>
+          <li>Change its view type</li>
+          <li>Assign the discipline view template</li>
+        </ol>
+        <p style="margin-top:8px">5 levels × 3 disciplines = 15 new views, each needing a rename and a type/template check. Skipped templates, inconsistent prefixes, and leftover default names are easy to miss.</p>
+      </div>
+      <div class="ba-box">
+        <p class="lab">With View Duplicate — one dialog run</p>
+        <ol>
+          <li>Pick the source views once</li>
+          <li>Add one rule per target set: text to add, view type, view template</li>
+          <li>Click OK — every copy is created, named, typed, and templated</li>
+        </ol>
+        <p style="margin-top:8px">Consistent names across the set; name clashes are numbered instead of failing; any view that cannot be copied is listed.</p>
+      </div>
+    </div>
+    <p class="lead"><span class="scope">Illustrative example from the tool's workflow; no customer data on this slide.</span></p>
+  </div>
+  <div class="footer">Internal</div>
+</section>
+
+<section class="slide cover">
+  <div class="cover-inner">
+    <h1>View Duplicate</h1>
+    <p class="cover-sub">Batch view duplication with naming, view type, and view template rules<br>REXJ Standalone · Views panel · Revit 2027 · Weave-compliant UI</p>
+  </div>
+  <div class="footer">-- 1 of 7 --</div>
+</section>
+
+<section class="slide">
+  <div class="header"><div class="header-rule"></div><h2>View Duplicate</h2></div>
+  <div class="body">
+    <p class="lead">
+      <strong>View Duplicate</strong> creates multiple copies of selected views in one step. Users pick source views, define one or more duplication rules, and the tool creates one new view per source view per rule — named with the rule's prefix or suffix, set to the rule's <strong>View type</strong>, and assigned the rule's <strong>View template</strong>.
+      <span class="scope">(Before: duplicate, rename, change type, and assign a template view by view. Now: one dialog run for the whole set.)</span>
+    </p>
+    <ul class="benefits">
+      <li>Filter by <strong>Discipline</strong>, <strong>View category</strong>, and <strong>View type</strong>, then multi-select in <strong>Views to duplicate</strong> (Shift / Ctrl)</li>
+      <li>Choose <strong>Duplicate</strong> or <strong>Duplicate with detailing</strong></li>
+      <li>Add several rules to produce several view sets from the same sources in one run</li>
+      <li>Unique names automatically: an existing name gets a number appended, e.g. <em>M-L2(1)</em></li>
+      <li>Views that cannot be duplicated are listed in one message; other copies are kept</li>
+    </ul>
+  </div>
+  <div class="footer">-- 2 of 7 --</div>
+</section>
+
+<section class="slide">
+  <div class="header"><div class="header-rule"></div><h2>View Duplicate</h2></div>
+  <div class="body detail">
+    <div class="caption">
+      <span class="tag">Main dialog</span>
+      <p class="lab">Narrow the list, then multi-select</p>
+      <p class="desc">Click <strong>View Copy</strong> on the <strong>Views</strong> panel. Choose <strong>Discipline</strong> and <strong>View category</strong>, and optionally a <strong>View type</strong> (or <strong>&lt;All&gt;</strong>). Select one or many views in <strong>Views to duplicate</strong>, then set <strong>Duplicate mode</strong>.</p>
+      <p class="note">Templates and views Revit cannot duplicate are not listed. Last filters, mode, and dialog position are remembered.</p>
+    </div>
+    <div class="placeholder">
+      <span class="ph-label">[SCREENSHOT]</span>
+      <span class="ph-note">Views panel → View Copy; View Duplicate dialog with Mechanical / Floor Plan filters and L2–L5 selected.</span>
+    </div>
+  </div>
+  <div class="footer">-- 3 of 7 --</div>
+</section>
+
+<section class="slide">
+  <div class="header"><div class="header-rule"></div><h2>View Duplicate</h2></div>
+  <div class="body detail">
+    <div class="caption">
+      <span class="tag">Duplication rules</span>
+      <p class="lab">One rule per output view set</p>
+      <p class="desc">The table shows <strong>Prefix / suffix</strong>, <strong>Added text</strong>, <strong>View template</strong>, and <strong>View type</strong>. <strong>Add</strong> creates a rule; <strong>Delete</strong> removes selected rows. Double-click <strong>Added text</strong> to edit in place.</p>
+      <p class="note">Each selected view is copied once per rule: 4 views × 3 rules = 12 new views.</p>
+    </div>
+    <div class="placeholder">
+      <span class="ph-label">[SCREENSHOT]</span>
+      <span class="ph-note">Rules table with M-, E-, P- prefixes and matching view templates.</span>
+    </div>
+  </div>
+  <div class="footer">-- 4 of 7 --</div>
+</section>
+
+<section class="slide">
+  <div class="header"><div class="header-rule"></div><h2>View Duplicate</h2></div>
+  <div class="body detail">
+    <div class="caption">
+      <span class="tag">Add rule</span>
+      <p class="lab">Set view type, template, and naming</p>
+      <p class="desc">Choose the target <strong>View type</strong> (same view family as the source views) and a <strong>View template</strong> for the same view category. If no template is available, the list is empty and the rule shows <strong>&lt;None&gt;</strong> in the table. Pick <strong>Prefix</strong> or <strong>Suffix</strong> and enter <strong>Text to add</strong> — pre-filled with the template name.</p>
+      <p class="note">If the view type assigns its own template on creation, View template shows it and is locked. Prefix/Suffix and the last view type are remembered.</p>
+    </div>
+    <div class="placeholder">
+      <span class="ph-label">[SCREENSHOT]</span>
+      <span class="ph-note">Add rule dialog: View type, View template, Prefix/Suffix panel with Text to add.</span>
+    </div>
+  </div>
+  <div class="footer">-- 5 of 7 --</div>
+</section>
+
+<section class="slide">
+  <div class="header"><div class="header-rule"></div><h2>View Duplicate</h2></div>
+  <div class="body detail">
+    <div class="caption">
+      <span class="tag">Run</span>
+      <p class="lab">Checked before, reported after</p>
+      <p class="desc">On <strong>OK</strong>, the tool checks for selected views, at least one rule, non-empty <strong>Added text</strong>, and matching view families. Problems are listed in one message before anything is created.</p>
+      <p class="desc">Each copy is created in its own step. If one fails, only that copy is undone; the rest are kept and the failed views are listed.</p>
+      <p class="note">All copies are part of one Revit undo step.</p>
+    </div>
+    <div class="placeholder">
+      <span class="ph-label">[SCREENSHOT]</span>
+      <span class="ph-note">Project Browser with M-L2 … M-L5 and E-L2 … E-L5; optional message listing a failed view.</span>
+    </div>
+  </div>
+  <div class="footer">-- 6 of 7 --</div>
+</section>
+
+<section class="slide">
+  <div class="fs-header"><div class="header-rule"></div><p class="fs-title">Feedback &amp; Status</p></div>
+  <div class="fs-layout">
+    <div class="fs-left">
+      <div class="fs-section-label">Requested Feedback</div>
+      <div class="fs-box">
+        <ul>
+          <li>How many duplication rules do you typically need in one run, and for which disciplines?</li>
+          <li>Should the dialog remember the full set of selected views between sessions?</li>
+          <li>Is the default naming for duplicates, e.g. <em>M-L2(1)</em>, acceptable for your office standards?</li>
+          <li>Would you use <strong>Duplicate as Dependent</strong> if it were offered as a third mode?</li>
+          <li>Please let us know if you encounter any difficulties.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fs-right">
+      <div>
+        <div class="fs-section-label">Development context</div>
+        <div class="fs-box"><p>Weave dialogs, run reporting, and naming fixes are implemented and targeted for v1.1.7 (planned); final validation is in progress.</p></div>
+      </div>
+      <div>
+        <div class="fs-section-label">Known Limitations</div>
+        <div class="fs-box">
+          <ul>
+            <li>Active document only; one Discipline and View category per run.</li>
+            <li>A rule's View type must match the source views' view family.</li>
+            <li>Duplicate as Dependent is not offered.</li>
+            <li>Only the first selected view is remembered between sessions.</li>
+            <li>Shift-range selection reported slow in some sessions; under investigation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">-- 7 of 7 --</div>
+</section>
+
+</body>
+</html>

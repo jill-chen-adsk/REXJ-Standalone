@@ -1,4 +1,5 @@
 using ADSK.ViewExtension.ViewDuplicate.UI;
+using ADSK.ViewExtension.ViewDuplicate.Utils;
 using TextRes = ADSK.ViewExtension.ViewDuplicate.Resources.Text;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
@@ -23,18 +24,16 @@ namespace ADSK.ViewExtension.ViewDuplicate.Commands
                 {
                     try
                     {
-                        using (var dlg1 = new DlgViewDuplicate(commandData))
+                        var dialog = new FormViewDuplicateWPF(commandData);
+                        if (WeaveDialogHost.ShowDialog(dialog, commandData.Application.MainWindowHandle) == true)
                         {
-                            if (dlg1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                            {
-                                tr1.Commit();
-                                uiRet = Result.Succeeded;
-                            }
-                            else
-                            {
-                                tr1.RollBack();
-                                uiRet = Result.Cancelled;
-                            }
+                            tr1.Commit();
+                            uiRet = Result.Succeeded;
+                        }
+                        else
+                        {
+                            tr1.RollBack();
+                            uiRet = Result.Cancelled;
                         }
                     }
                     catch (Exception ex)

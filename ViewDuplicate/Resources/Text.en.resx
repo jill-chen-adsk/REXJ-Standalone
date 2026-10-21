@@ -78,4 +78,8 @@
   <data name="TXT_VIEWTYPE_THREE_D" xml:space="preserve"><value>3D</value></data>
   <data name="TXT_VIEWTYPE_UNDEFINED" xml:space="preserve"><value>Undefined</value></data>
   <data name="TXT_VIEWTYPE_WALKTHROUGH" xml:space="preserve"><value>Walkthrough</value></data>
+  <data name="BTN_OK" xml:space="preserve"><value>OK</value></data>
+  <data name="LBL_VIEWS" xml:space="preserve"><value>Views to duplicate</value></data>
+  <data name="LBL_RULES" xml:space="preserve"><value>Duplication rules</value></data>
+  <data name="TXT_NO_TEMPLATE" xml:space="preserve"><value>&lt;None&gt;</value></data>
 </root>
